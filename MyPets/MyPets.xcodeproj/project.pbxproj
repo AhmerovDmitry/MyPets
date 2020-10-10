@@ -12,6 +12,7 @@
 		BCB610072530C82400C4FD2F /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB610062530C82400C4FD2F /* AuthorizationViewController.swift */; };
 		BCB6100C2530C82700C4FD2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCB6100B2530C82700C4FD2F /* Assets.xcassets */; };
 		BCB6100F2530C82700C4FD2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCB6100D2530C82700C4FD2F /* LaunchScreen.storyboard */; };
+		BCDE73E5253250CE0054AF56 /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDE73E4253250CE0054AF56 /* OnboardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		BCB6100B2530C82700C4FD2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BCB6100E2530C82700C4FD2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BCB610102530C82700C4FD2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "MyPets/Assets + LS + Info.plist/Info.plist"; sourceTree = SOURCE_ROOT; };
+		BCDE73E4253250CE0054AF56 /* OnboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		BCB610012530C82400C4FD2F /* MyPets */ = {
 			isa = PBXGroup;
 			children = (
+				BCDE73E3253250A70054AF56 /* OnboardViewController */,
 				BCB6101D2530CB3800C4FD2F /* AuthorizationViewController */,
 				BCB6101A2530C97600C4FD2F /* App + Scene */,
 				BCB610182530C87800C4FD2F /* Assets + LS + Info.plist */,
@@ -86,6 +89,14 @@
 				BCB610062530C82400C4FD2F /* AuthorizationViewController.swift */,
 			);
 			path = AuthorizationViewController;
+			sourceTree = "<group>";
+		};
+		BCDE73E3253250A70054AF56 /* OnboardViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BCDE73E4253250CE0054AF56 /* OnboardViewController.swift */,
+			);
+			path = OnboardViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,6 +169,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCB610072530C82400C4FD2F /* AuthorizationViewController.swift in Sources */,
+<<<<<<< Updated upstream
+=======
+				BC3DBC3D2530DFFF0007BDF2 /* UIColor.swift in Sources */,
+				BCDE73E5253250CE0054AF56 /* OnboardViewController.swift in Sources */,
+>>>>>>> Stashed changes
 				BCB610032530C82400C4FD2F /* AppDelegate.swift in Sources */,
 				BCB610052530C82400C4FD2F /* SceneDelegate.swift in Sources */,
 			);
