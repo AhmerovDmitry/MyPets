@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  AuthorizationViewController.swift
 //  MyPets
 //
 //  Created by Дмитрий Ахмеров on 09.10.2020.
@@ -8,15 +8,34 @@
 import UIKit
 
 class AuthorizationViewController: UIViewController {
+    private let logoStackView = UIStackView()
+    private let logoLabel = UIImageView()
+    private let textLabel = UIImageView()
+    
+    private let authorizationStackView = UIStackView()
+    private let logInButton = UIButton(type: .system)
+    private let signInButton = UIButton(type: .system)
+    
+    private let socialNetworksLabel = UILabel()
+    private let textLine = UILabel()
+    
+    private let socialIconsStackView = UIStackView()
+    private let facebookButton = UIButton(type: .custom)
+    private let okButton = UIButton(type: .custom)
+    private let vkButton = UIButton(type: .custom)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
+        setup()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
 
 }
 
-<<<<<<< Updated upstream
-=======
 extension AuthorizationViewController: AuthorizationViewControllerProtocol {
     func setup() {
         setupConstraint()
@@ -26,7 +45,7 @@ extension AuthorizationViewController: AuthorizationViewControllerProtocol {
     func setupConstraint() {
         //MARK: - Logo Constraints
         view.addSubview(logoStackView)
-        logoStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 202).isActive = true
+        logoStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 149).isActive = true
         logoStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
         [logoLabel, textLabel].forEach({ logoStackView.addArrangedSubview($0) })
@@ -128,17 +147,6 @@ extension AuthorizationViewController: AuthorizationViewControllerProtocol {
         facebookButton.setImage(UIImage(named: "facebookIcon"), for: .normal)
         okButton.setImage(UIImage(named: "okIcon"), for: .normal)
         vkButton.setImage(UIImage(named: "vkIcon"), for: .normal)
-        
-        signInButton.addTarget(self, action: #selector(fetchData), for: .touchUpInside)
     }
     
 }
-
-@objc
-extension AuthorizationViewController {
-    func fetchData() {
-        print("bounds - ", logoStackView.bounds)
-        print("frame - ",logoStackView.frame)
-    }
-}
->>>>>>> Stashed changes
