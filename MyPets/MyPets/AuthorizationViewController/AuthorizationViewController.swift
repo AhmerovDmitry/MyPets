@@ -40,8 +40,7 @@ extension AuthorizationViewController: AuthorizationViewControllerProtocol {
         view.addSubview(mainStackView)
         socialNetworksLabel.addSubview(textLine)
         
-        mainStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 202).isActive = true
-        //mainStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 205).isActive = true
+        mainStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -3).isActive = true
         
         [logoLabel,
          textLabel,
@@ -63,7 +62,9 @@ extension AuthorizationViewController: AuthorizationViewControllerProtocol {
         socialNetworksLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true
         
         textLine.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
-        textLine.widthAnchor.constraint(equalToConstant: 343).isActive = true
+        textLine.leftAnchor.constraint(greaterThanOrEqualTo: view.leftAnchor, constant: 16).isActive = true
+        textLine.rightAnchor.constraint(greaterThanOrEqualTo: view.rightAnchor, constant: -16).isActive = true
+        //MARK: - Constraint Error!!!
         textLine.centerYAnchor.constraint(equalTo: socialNetworksLabel.centerYAnchor).isActive = true
         
         socialIconsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true

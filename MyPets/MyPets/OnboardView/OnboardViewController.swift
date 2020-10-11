@@ -9,6 +9,9 @@ import UIKit
 import SwiftUI
 
 class OnboardViewController: UIViewController {
+//    private let mainStackView = UIStackView()
+//    private let pageControl = UIPageControl()
+//    private let doneButton = UIButton(type: .system)
     private let descs = [
         "Вся информация о питомце всегда под рукой",
         "Вы не забудите купить корм или сделать прививку",
@@ -37,6 +40,7 @@ class OnboardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        setup()
         view.backgroundColor = .white
         
         collectionView.delegate = self
@@ -48,6 +52,51 @@ class OnboardViewController: UIViewController {
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         collectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
     }
+    
+//    func setup() {
+//        setupConstraint()
+//        setupViewsAndLabels()
+//    }
+//
+//    func setupConstraint() {
+//        view.addSubview(mainStackView)
+//        [pageControl, doneButton].forEach({ mainStackView.addArrangedSubview($0) })
+//
+//        mainStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 284).isActive = true
+//        mainStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//
+//        pageControl.widthAnchor.constraint(equalToConstant: 50).isActive = true
+//        pageControl.heightAnchor.constraint(equalToConstant: 8).isActive = true
+//
+//        doneButton.widthAnchor.constraint(equalToConstant: 311).isActive = true
+//        doneButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+//    }
+//
+//    func setupViewsAndLabels() {
+//        [mainStackView,
+//         pageControl,
+//         doneButton].forEach({
+//            $0.translatesAutoresizingMaskIntoConstraints = false
+//        })
+//
+//        mainStackView.axis = .vertical
+//        mainStackView.alignment = .center
+//        mainStackView.spacing = 16
+//        mainStackView.setCustomSpacing(32, after: pageControl)
+//
+//        pageControl.currentPage = 0
+//        pageControl.numberOfPages = 4
+//        pageControl.currentPageIndicatorTintColor = UIColor.CustomColor.purple
+//        pageControl.pageIndicatorTintColor = UIColor.CustomColor.lightGray
+//
+//        doneButton.setTitle("Далее", for: .normal)
+//        doneButton.backgroundColor = .white
+//        doneButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+//        doneButton.setTitleColor(UIColor.CustomColor.purple, for: .normal)
+//        doneButton.layer.borderWidth = 1
+//        doneButton.layer.borderColor = UIColor.CustomColor.purple.cgColor
+//        doneButton.layer.cornerRadius = 25
+//    }
 }
 
 //MARK: - Canvas settings

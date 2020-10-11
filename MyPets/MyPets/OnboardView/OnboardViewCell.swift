@@ -8,8 +8,8 @@
 import UIKit
 
 class OnboardViewCell: UICollectionViewCell {
-    private let imageView = UIImageView()
     private let mainStackView = UIStackView()
+    private let imageView = UIImageView()
     private let textLabel = UILabel()
     private let pageControl = UIPageControl()
     private let doneButton = UIButton(type: .system)
@@ -37,13 +37,11 @@ extension OnboardViewCell: OnboardViewControllerProtocol {
         contentView.addSubview(mainStackView)
         [imageView, textLabel, pageControl, doneButton].forEach({ mainStackView.addArrangedSubview($0) })
 
-        mainStackView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        mainStackView.widthAnchor.constraint(equalTo: contentView.widthAnchor).isActive = true
+        mainStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -49).isActive = true
         mainStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         
-        imageView.widthAnchor.constraint(equalTo: contentView.widthAnchor).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 375).isActive = true
         imageView.heightAnchor.constraint(lessThanOrEqualToConstant: 282).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: contentView.topAnchor, constant: 424).isActive = true
 
         textLabel.widthAnchor.constraint(equalToConstant: 263).isActive = true
         textLabel.heightAnchor.constraint(equalToConstant: 47).isActive = true
