@@ -10,8 +10,11 @@
 		BC3C7C772532F56B00209C51 /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3C7C762532F56B00209C51 /* OnboardViewController.swift */; };
 		BC3DBC3D2530DFFF0007BDF2 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3DBC3C2530DFFF0007BDF2 /* UIColor.swift */; };
 		BC41C7F52530CE5A00AB02CD /* AuthorizationViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC41C7F42530CE5A00AB02CD /* AuthorizationViewControllerProtocol.swift */; };
+		BC9357EA253328DF00C6C390 /* OnboardViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9357E9253328DF00C6C390 /* OnboardViewControllerProtocol.swift */; };
+		BC9357F125335D3100C6C390 /* OnboardViewControllerDelegate + Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9357F025335D3100C6C390 /* OnboardViewControllerDelegate + Layout.swift */; };
+		BC9357F425335DFA00C6C390 /* OnboardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9357F325335DFA00C6C390 /* OnboardViewCell.swift */; };
+		BC9357F925336DDE00C6C390 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC9357F825336DDE00C6C390 /* Storyboard.storyboard */; };
 		BCB404252532F5FE00993A5C /* @objc Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB404242532F5FE00993A5C /* @objc Extension.swift */; };
-		BCB404292532FD3B00993A5C /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCB404282532FD3B00993A5C /* Storyboard.storyboard */; };
 		BCB610032530C82400C4FD2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB610022530C82400C4FD2F /* AppDelegate.swift */; };
 		BCB610052530C82400C4FD2F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB610042530C82400C4FD2F /* SceneDelegate.swift */; };
 		BCB610072530C82400C4FD2F /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB610062530C82400C4FD2F /* AuthorizationViewController.swift */; };
@@ -23,8 +26,11 @@
 		BC3C7C762532F56B00209C51 /* OnboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
 		BC3DBC3C2530DFFF0007BDF2 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		BC41C7F42530CE5A00AB02CD /* AuthorizationViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewControllerProtocol.swift; sourceTree = "<group>"; };
+		BC9357E9253328DF00C6C390 /* OnboardViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewControllerProtocol.swift; sourceTree = "<group>"; };
+		BC9357F025335D3100C6C390 /* OnboardViewControllerDelegate + Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardViewControllerDelegate + Layout.swift"; sourceTree = "<group>"; };
+		BC9357F325335DFA00C6C390 /* OnboardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewCell.swift; sourceTree = "<group>"; };
+		BC9357F825336DDE00C6C390 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		BCB404242532F5FE00993A5C /* @objc Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "@objc Extension.swift"; sourceTree = "<group>"; };
-		BCB404282532FD3B00993A5C /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		BCB60FFF2530C82400C4FD2F /* MyPets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCB610022530C82400C4FD2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCB610042530C82400C4FD2F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +55,9 @@
 			isa = PBXGroup;
 			children = (
 				BC3C7C762532F56B00209C51 /* OnboardViewController.swift */,
+				BC9357F325335DFA00C6C390 /* OnboardViewCell.swift */,
+				BC9357F025335D3100C6C390 /* OnboardViewControllerDelegate + Layout.swift */,
+				BC9357E8253328BA00C6C390 /* Protocol */,
 			);
 			path = OnboardView;
 			sourceTree = "<group>";
@@ -69,10 +78,18 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		BC9357E8253328BA00C6C390 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				BC9357E9253328DF00C6C390 /* OnboardViewControllerProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		BCB60FF62530C82400C4FD2F = {
 			isa = PBXGroup;
 			children = (
-				BCB404282532FD3B00993A5C /* Storyboard.storyboard */,
+				BC9357F825336DDE00C6C390 /* Storyboard.storyboard */,
 				BC3DBC3F2530E0040007BDF2 /* Extension */,
 				BCB610012530C82400C4FD2F /* MyPets */,
 				BCB610002530C82400C4FD2F /* Products */,
@@ -186,7 +203,7 @@
 			files = (
 				BCB6100F2530C82700C4FD2F /* LaunchScreen.storyboard in Resources */,
 				BCB6100C2530C82700C4FD2F /* Assets.xcassets in Resources */,
-				BCB404292532FD3B00993A5C /* Storyboard.storyboard in Resources */,
+				BC9357F925336DDE00C6C390 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,9 +216,12 @@
 			files = (
 				BCB610072530C82400C4FD2F /* AuthorizationViewController.swift in Sources */,
 				BC3DBC3D2530DFFF0007BDF2 /* UIColor.swift in Sources */,
+				BC9357F425335DFA00C6C390 /* OnboardViewCell.swift in Sources */,
 				BCB404252532F5FE00993A5C /* @objc Extension.swift in Sources */,
 				BC3C7C772532F56B00209C51 /* OnboardViewController.swift in Sources */,
+				BC9357EA253328DF00C6C390 /* OnboardViewControllerProtocol.swift in Sources */,
 				BCB610032530C82400C4FD2F /* AppDelegate.swift in Sources */,
+				BC9357F125335D3100C6C390 /* OnboardViewControllerDelegate + Layout.swift in Sources */,
 				BCB610052530C82400C4FD2F /* SceneDelegate.swift in Sources */,
 				BC41C7F52530CE5A00AB02CD /* AuthorizationViewControllerProtocol.swift in Sources */,
 			);

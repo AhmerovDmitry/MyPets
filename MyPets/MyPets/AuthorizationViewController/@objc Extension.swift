@@ -10,6 +10,8 @@ import UIKit
 @objc
 extension AuthorizationViewController {
     func pushOnboard() {
-        present(OnboardViewController(), animated: true, completion: nil)
+        let onboardView = OnboardViewController()
+        onboardView.modalPresentationStyle = .fullScreen
+        present(onboardView, animated: true, completion: nil)
     }
 }
