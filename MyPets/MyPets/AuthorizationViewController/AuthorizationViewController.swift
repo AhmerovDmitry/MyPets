@@ -142,6 +142,7 @@ extension AuthorizationViewController: AuthorizationViewControllerProtocol {
         socialNetworksLabel.font = UIFont.systemFont(ofSize: 14)
         socialNetworksLabel.textAlignment = .center
         socialNetworksLabel.backgroundColor = .white
+        socialNetworksLabel.textColor = .black
         
         //MARK: - Social Networ Icon Settings
         facebookButton.setImage(UIImage(named: "facebookIcon"), for: .normal)
