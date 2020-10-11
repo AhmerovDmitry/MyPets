@@ -1,5 +1,5 @@
 //
-//  @objc Extension.swift
+//  @objc AuthorizationViewControllerExtension.swift
 //  MyPets
 //
 //  Created by Дмитрий Ахмеров on 11.10.2020.
