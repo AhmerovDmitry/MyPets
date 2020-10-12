@@ -14,17 +14,24 @@ extension OnboardViewController {
         let indexPath = IndexPath(item: nextIndex, section: 0)
         pageControl.currentPage = nextIndex
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        print(nextIndex)
         if nextIndex == 3 {
             doneButton.removeTarget(nil, action: nil, for: .allEvents)
             doneButton.setTitle("Приступим!", for: .normal)
             doneButton.backgroundColor = UIColor.CustomColor.purple
             doneButton.setTitleColor(.white, for: .normal)
-            doneButton.addTarget(self, action: #selector(nextView), for: .touchUpInside)
+            doneButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
         }
     }
-    
-    func nextView() {
-        dismiss(animated: true, completion: nil)
+    @objc func presentController() {
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromRight
+        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+        view.window!.layer.add(transition, forKey: kCATransition)
+        
+        let premiumVC = PremiumViewController()
+        premiumVC.modalPresentationStyle = .fullScreen
+        present(premiumVC, animated: false, completion: nil)
     }
 }

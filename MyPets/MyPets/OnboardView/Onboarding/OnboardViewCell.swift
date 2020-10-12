@@ -71,4 +71,7 @@ extension OnboardViewCell: OnboardViewControllerProtocol {
         textLabel.numberOfLines = 0
         textLabel.text = "Вся информация о питомце всегда под рукой"
     }
+    
+    func presentController() {
+    }
 }

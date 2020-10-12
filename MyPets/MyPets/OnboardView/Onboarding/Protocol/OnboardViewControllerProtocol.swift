@@ -11,4 +11,6 @@ protocol OnboardViewControllerProtocol {
     func setup()
     func setupConstraint()
     func setupViewsAndLabels()
+    
+    func presentController()
 }

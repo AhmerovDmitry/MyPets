@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 
-class OnboardViewController: UIViewController {
+class OnboardViewController: UIViewController, OnboardViewControllerProtocol {
     private let mainStackView = UIStackView()
     lazy var pageControl = UIPageControl()
     let doneButton = UIButton(type: .system)
@@ -93,20 +93,8 @@ class OnboardViewController: UIViewController {
         doneButton.layer.cornerRadius = 25
         doneButton.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
     }
-}
-
-//MARK: - Canvas settings
-struct MyProvider: PreviewProvider {
-    static var previews: some View {
-        ContianerView().edgesIgnoringSafeArea(.all)
-    }
     
-    struct ContianerView: UIViewControllerRepresentable {
-        func makeUIViewController(context: Context) -> some AuthorizationViewController {
-            return AuthorizationViewController()
-        }
-        
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-        }
+    deinit {
+        print("OnboardViewController - deinit")
     }
 }

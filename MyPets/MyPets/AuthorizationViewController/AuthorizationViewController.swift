@@ -65,7 +65,7 @@ extension AuthorizationViewController: AuthorizationViewControllerProtocol {
         textLine.leftAnchor.constraint(greaterThanOrEqualTo: view.leftAnchor, constant: 16).isActive = true
         textLine.rightAnchor.constraint(greaterThanOrEqualTo: view.rightAnchor, constant: -16).isActive = true
         //MARK: - Constraint Error!!!
-        textLine.centerYAnchor.constraint(equalTo: socialNetworksLabel.centerYAnchor).isActive = true
+        //textLine.centerYAnchor.constraint(equalTo: socialNetworksLabel.centerYAnchor).isActive = true
         
         socialIconsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
@@ -128,6 +128,6 @@ extension AuthorizationViewController: AuthorizationViewControllerProtocol {
         okButton.setImage(UIImage(named: "okIcon"), for: .normal)
         vkButton.setImage(UIImage(named: "vkIcon"), for: .normal)
         
-        logInButton.addTarget(self, action: #selector(pushOnboard), for: .touchUpInside)
+        logInButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
     }
 }
