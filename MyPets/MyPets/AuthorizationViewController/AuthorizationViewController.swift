@@ -128,6 +128,6 @@ extension AuthorizationViewController: AuthorizationViewControllerProtocol {
         okButton.setImage(UIImage(named: "okIcon"), for: .normal)
         vkButton.setImage(UIImage(named: "vkIcon"), for: .normal)
         
-        logInButton.addTarget(self, action: #selector(pushOnboard), for: .touchUpInside)
+        logInButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
     }
 }

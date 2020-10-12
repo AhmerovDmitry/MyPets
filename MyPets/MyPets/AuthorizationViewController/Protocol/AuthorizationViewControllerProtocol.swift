@@ -11,4 +11,6 @@ protocol AuthorizationViewControllerProtocol {
     func setup()
     func setupConstraint()
     func setupViewsAndLabels()
+    
+    func presentController()
 }

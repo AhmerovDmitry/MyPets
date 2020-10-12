@@ -10,6 +10,10 @@
 		BC3C7C772532F56B00209C51 /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3C7C762532F56B00209C51 /* OnboardViewController.swift */; };
 		BC3DBC3D2530DFFF0007BDF2 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3DBC3C2530DFFF0007BDF2 /* UIColor.swift */; };
 		BC41C7F52530CE5A00AB02CD /* AuthorizationViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC41C7F42530CE5A00AB02CD /* AuthorizationViewControllerProtocol.swift */; };
+		BC7073252534A6F600B2979F /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073242534A6F600B2979F /* UIButton.swift */; };
+		BC7073282534A9B600B2979F /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073272534A9B600B2979F /* Canvas.swift */; };
+		BC70732E2534AEC800B2979F /* PremiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70732D2534AEC800B2979F /* PremiumViewController.swift */; };
+		BC7073322534BA3800B2979F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073312534BA3800B2979F /* UIView.swift */; };
 		BC9357EA253328DF00C6C390 /* OnboardViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9357E9253328DF00C6C390 /* OnboardViewControllerProtocol.swift */; };
 		BC9357F125335D3100C6C390 /* OnboardViewControllerDelegate + Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9357F025335D3100C6C390 /* OnboardViewControllerDelegate + Layout.swift */; };
 		BC9357F425335DFA00C6C390 /* OnboardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9357F325335DFA00C6C390 /* OnboardViewCell.swift */; };
@@ -28,6 +32,10 @@
 		BC3C7C762532F56B00209C51 /* OnboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
 		BC3DBC3C2530DFFF0007BDF2 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		BC41C7F42530CE5A00AB02CD /* AuthorizationViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewControllerProtocol.swift; sourceTree = "<group>"; };
+		BC7073242534A6F600B2979F /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		BC7073272534A9B600B2979F /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
+		BC70732D2534AEC800B2979F /* PremiumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumViewController.swift; sourceTree = "<group>"; };
+		BC7073312534BA3800B2979F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		BC9357E9253328DF00C6C390 /* OnboardViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewControllerProtocol.swift; sourceTree = "<group>"; };
 		BC9357F025335D3100C6C390 /* OnboardViewControllerDelegate + Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardViewControllerDelegate + Layout.swift"; sourceTree = "<group>"; };
 		BC9357F325335DFA00C6C390 /* OnboardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewCell.swift; sourceTree = "<group>"; };
@@ -58,12 +66,8 @@
 		BC3C7C752532F54700209C51 /* OnboardView */ = {
 			isa = PBXGroup;
 			children = (
-				BC3C7C762532F56B00209C51 /* OnboardViewController.swift */,
-				BCA5B27A2533A29B00A7B15B /* @objc OnboardViewControllerExtension.swift */,
-				BC9357F325335DFA00C6C390 /* OnboardViewCell.swift */,
-				BC9357F025335D3100C6C390 /* OnboardViewControllerDelegate + Layout.swift */,
-				BC9358242533961B00C6C390 /* Model */,
-				BC9357E8253328BA00C6C390 /* Protocol */,
+				BC70732C2534AE9400B2979F /* PremiumController */,
+				BC70732A2534AE8600B2979F /* Onboarding */,
 			);
 			path = OnboardView;
 			sourceTree = "<group>";
@@ -72,6 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				BC3DBC3C2530DFFF0007BDF2 /* UIColor.swift */,
+				BC7073312534BA3800B2979F /* UIView.swift */,
+				BC7073242534A6F600B2979F /* UIButton.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -82,6 +88,27 @@
 				BC41C7F42530CE5A00AB02CD /* AuthorizationViewControllerProtocol.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		BC70732A2534AE8600B2979F /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				BC3C7C762532F56B00209C51 /* OnboardViewController.swift */,
+				BCA5B27A2533A29B00A7B15B /* @objc OnboardViewControllerExtension.swift */,
+				BC9357F325335DFA00C6C390 /* OnboardViewCell.swift */,
+				BC9357F025335D3100C6C390 /* OnboardViewControllerDelegate + Layout.swift */,
+				BC9358242533961B00C6C390 /* Model */,
+				BC9357E8253328BA00C6C390 /* Protocol */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		BC70732C2534AE9400B2979F /* PremiumController */ = {
+			isa = PBXGroup;
+			children = (
+				BC70732D2534AEC800B2979F /* PremiumViewController.swift */,
+			);
+			path = PremiumController;
 			sourceTree = "<group>";
 		};
 		BC9357E8253328BA00C6C390 /* Protocol */ = {
@@ -103,6 +130,7 @@
 		BCB60FF62530C82400C4FD2F = {
 			isa = PBXGroup;
 			children = (
+				BC7073272534A9B600B2979F /* Canvas.swift */,
 				BC9357F825336DDE00C6C390 /* Storyboard.storyboard */,
 				BC3DBC3F2530E0040007BDF2 /* Extension */,
 				BCB610012530C82400C4FD2F /* MyPets */,
@@ -228,12 +256,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC7073322534BA3800B2979F /* UIView.swift in Sources */,
 				BCB610072530C82400C4FD2F /* AuthorizationViewController.swift in Sources */,
+				BC7073252534A6F600B2979F /* UIButton.swift in Sources */,
 				BC3DBC3D2530DFFF0007BDF2 /* UIColor.swift in Sources */,
 				BC9357F425335DFA00C6C390 /* OnboardViewCell.swift in Sources */,
 				BCB404252532F5FE00993A5C /* @objc AuthorizationViewControllerExtension.swift in Sources */,
 				BCA5B27B2533A29B00A7B15B /* @objc OnboardViewControllerExtension.swift in Sources */,
+				BC70732E2534AEC800B2979F /* PremiumViewController.swift in Sources */,
 				BC3C7C772532F56B00209C51 /* OnboardViewController.swift in Sources */,
+				BC7073282534A9B600B2979F /* Canvas.swift in Sources */,
 				BC9357EA253328DF00C6C390 /* OnboardViewControllerProtocol.swift in Sources */,
 				BCB610032530C82400C4FD2F /* AppDelegate.swift in Sources */,
 				BC9357F125335D3100C6C390 /* OnboardViewControllerDelegate + Layout.swift in Sources */,
