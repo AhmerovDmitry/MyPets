@@ -16,12 +16,8 @@ extension PremiumViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! PremiumViewControllerCell
         cell.premiumText.text = text[indexPath.row]
         cell.backgroundColor = .clear
+        cell.selectionStyle = .none
         
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
 }

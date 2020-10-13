@@ -57,6 +57,8 @@ extension PremiumViewController: OnboardViewControllerProtocol {
         closeButton.heightAnchor.constraint(equalToConstant: 14).isActive = true
         closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 61).isActive = true
         closeButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15).isActive = true
+        closeButton.contentHorizontalAlignment = .fill
+        closeButton.contentVerticalAlignment = .fill
         
         [mainStackView].forEach({ view.addSubview($0) })
         [titleStackView, tableStackView].forEach({ mainStackView.addArrangedSubview($0) })
