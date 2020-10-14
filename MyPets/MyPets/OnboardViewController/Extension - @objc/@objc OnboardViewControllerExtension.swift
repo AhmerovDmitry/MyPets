@@ -20,6 +20,8 @@ extension OnboardViewController {
             doneButton.backgroundColor = UIColor.CustomColor.purple
             doneButton.setTitleColor(.white, for: .normal)
             doneButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
+            
+            closeButton.isHidden = true
         }
     }
     @objc func presentController() {

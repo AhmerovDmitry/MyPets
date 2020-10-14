@@ -7,18 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC2C33C92536D6E00092D884 /* MainViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2C33C82536D6E00092D884 /* MainViewProtocol.swift */; };
+		BC2C33CF2536D83F0092D884 /* @objc PremiumViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2C33CE2536D83F0092D884 /* @objc PremiumViewControllerExtension.swift */; };
+		BC2C33E02536D98D0092D884 /* PremiumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2C33DF2536D98D0092D884 /* PremiumModel.swift */; };
 		BC3C7C772532F56B00209C51 /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3C7C762532F56B00209C51 /* OnboardViewController.swift */; };
 		BC3DBC3D2530DFFF0007BDF2 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3DBC3C2530DFFF0007BDF2 /* UIColor.swift */; };
-		BC41C7F52530CE5A00AB02CD /* AuthorizationViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC41C7F42530CE5A00AB02CD /* AuthorizationViewControllerProtocol.swift */; };
+		BC4851182534E4F100B874D4 /* PremiumViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4851172534E4F100B874D4 /* PremiumViewControllerCell.swift */; };
+		BC48511B2534E51500B874D4 /* PremiumViewControllerDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC48511A2534E51500B874D4 /* PremiumViewControllerDelegate + DataSource.swift */; };
 		BC7073252534A6F600B2979F /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073242534A6F600B2979F /* UIButton.swift */; };
 		BC7073282534A9B600B2979F /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073272534A9B600B2979F /* Canvas.swift */; };
 		BC70732E2534AEC800B2979F /* PremiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70732D2534AEC800B2979F /* PremiumViewController.swift */; };
 		BC7073322534BA3800B2979F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073312534BA3800B2979F /* UIView.swift */; };
-		BC9357EA253328DF00C6C390 /* OnboardViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9357E9253328DF00C6C390 /* OnboardViewControllerProtocol.swift */; };
-		BC9357F125335D3100C6C390 /* OnboardViewControllerDelegate + Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9357F025335D3100C6C390 /* OnboardViewControllerDelegate + Layout.swift */; };
+		BC9357F125335D3100C6C390 /* OnboardViewControllerDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9357F025335D3100C6C390 /* OnboardViewControllerDelegate + DataSource.swift */; };
 		BC9357F425335DFA00C6C390 /* OnboardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9357F325335DFA00C6C390 /* OnboardViewCell.swift */; };
 		BC9357F925336DDE00C6C390 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC9357F825336DDE00C6C390 /* Storyboard.storyboard */; };
-		BC935822253395F800C6C390 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC935821253395F700C6C390 /* Model.swift */; };
+		BC935822253395F800C6C390 /* OnboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC935821253395F700C6C390 /* OnboardModel.swift */; };
 		BCA5B27B2533A29B00A7B15B /* @objc OnboardViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA5B27A2533A29B00A7B15B /* @objc OnboardViewControllerExtension.swift */; };
 		BCB404252532F5FE00993A5C /* @objc AuthorizationViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB404242532F5FE00993A5C /* @objc AuthorizationViewControllerExtension.swift */; };
 		BCB610032530C82400C4FD2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB610022530C82400C4FD2F /* AppDelegate.swift */; };
@@ -29,18 +32,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BC2C33C82536D6E00092D884 /* MainViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewProtocol.swift; sourceTree = "<group>"; };
+		BC2C33CE2536D83F0092D884 /* @objc PremiumViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "@objc PremiumViewControllerExtension.swift"; sourceTree = "<group>"; };
+		BC2C33DF2536D98D0092D884 /* PremiumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumModel.swift; sourceTree = "<group>"; };
 		BC3C7C762532F56B00209C51 /* OnboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
 		BC3DBC3C2530DFFF0007BDF2 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		BC41C7F42530CE5A00AB02CD /* AuthorizationViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewControllerProtocol.swift; sourceTree = "<group>"; };
+		BC4851172534E4F100B874D4 /* PremiumViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumViewControllerCell.swift; sourceTree = "<group>"; };
+		BC48511A2534E51500B874D4 /* PremiumViewControllerDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PremiumViewControllerDelegate + DataSource.swift"; sourceTree = "<group>"; };
 		BC7073242534A6F600B2979F /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		BC7073272534A9B600B2979F /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
 		BC70732D2534AEC800B2979F /* PremiumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumViewController.swift; sourceTree = "<group>"; };
 		BC7073312534BA3800B2979F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
-		BC9357E9253328DF00C6C390 /* OnboardViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewControllerProtocol.swift; sourceTree = "<group>"; };
-		BC9357F025335D3100C6C390 /* OnboardViewControllerDelegate + Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardViewControllerDelegate + Layout.swift"; sourceTree = "<group>"; };
+		BC9357F025335D3100C6C390 /* OnboardViewControllerDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardViewControllerDelegate + DataSource.swift"; sourceTree = "<group>"; };
 		BC9357F325335DFA00C6C390 /* OnboardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewCell.swift; sourceTree = "<group>"; };
 		BC9357F825336DDE00C6C390 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
-		BC935821253395F700C6C390 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		BC935821253395F700C6C390 /* OnboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardModel.swift; sourceTree = "<group>"; };
 		BCA5B27A2533A29B00A7B15B /* @objc OnboardViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "@objc OnboardViewControllerExtension.swift"; sourceTree = "<group>"; };
 		BCB404242532F5FE00993A5C /* @objc AuthorizationViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "@objc AuthorizationViewControllerExtension.swift"; sourceTree = "<group>"; };
 		BCB60FFF2530C82400C4FD2F /* MyPets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPets.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,13 +69,96 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BC3C7C752532F54700209C51 /* OnboardView */ = {
+		BC2C33C72536D6BE0092D884 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				BC70732C2534AE9400B2979F /* PremiumController */,
-				BC70732A2534AE8600B2979F /* Onboarding */,
+				BC2C33C82536D6E00092D884 /* MainViewProtocol.swift */,
 			);
-			path = OnboardView;
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		BC2C33D22536D84E0092D884 /* UICollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				BC9357F325335DFA00C6C390 /* OnboardViewCell.swift */,
+			);
+			path = UICollectionViewCell;
+			sourceTree = "<group>";
+		};
+		BC2C33D32536D86A0092D884 /* Delegate + DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				BC9357F025335D3100C6C390 /* OnboardViewControllerDelegate + DataSource.swift */,
+			);
+			path = "Delegate + DataSource";
+			sourceTree = "<group>";
+		};
+		BC2C33D52536D8920092D884 /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BC3C7C762532F56B00209C51 /* OnboardViewController.swift */,
+			);
+			path = UIViewController;
+			sourceTree = "<group>";
+		};
+		BC2C33D62536D89D0092D884 /* Extension - @objc */ = {
+			isa = PBXGroup;
+			children = (
+				BCA5B27A2533A29B00A7B15B /* @objc OnboardViewControllerExtension.swift */,
+			);
+			path = "Extension - @objc";
+			sourceTree = "<group>";
+		};
+		BC2C33D82536D8E60092D884 /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BC70732D2534AEC800B2979F /* PremiumViewController.swift */,
+			);
+			path = UIViewController;
+			sourceTree = "<group>";
+		};
+		BC2C33DA2536D9220092D884 /* Extension - @objc */ = {
+			isa = PBXGroup;
+			children = (
+				BC2C33CE2536D83F0092D884 /* @objc PremiumViewControllerExtension.swift */,
+			);
+			path = "Extension - @objc";
+			sourceTree = "<group>";
+		};
+		BC2C33DB2536D9340092D884 /* Delegate + DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				BC48511A2534E51500B874D4 /* PremiumViewControllerDelegate + DataSource.swift */,
+			);
+			path = "Delegate + DataSource";
+			sourceTree = "<group>";
+		};
+		BC2C33DD2536D9570092D884 /* UITableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				BC4851172534E4F100B874D4 /* PremiumViewControllerCell.swift */,
+			);
+			path = UITableViewCell;
+			sourceTree = "<group>";
+		};
+		BC2C33DE2536D9730092D884 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BC2C33DF2536D98D0092D884 /* PremiumModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BC3C7C752532F54700209C51 /* OnboardViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BC2C33D52536D8920092D884 /* UIViewController */,
+				BC2C33D62536D89D0092D884 /* Extension - @objc */,
+				BC2C33D22536D84E0092D884 /* UICollectionViewCell */,
+				BC2C33D32536D86A0092D884 /* Delegate + DataSource */,
+				BC9358242533961B00C6C390 /* Model */,
+			);
+			path = OnboardViewController;
 			sourceTree = "<group>";
 		};
 		BC3DBC3F2530E0040007BDF2 /* Extension */ = {
@@ -82,47 +171,22 @@
 			name = Extension;
 			sourceTree = "<group>";
 		};
-		BC41C7F72530CE8E00AB02CD /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				BC41C7F42530CE5A00AB02CD /* AuthorizationViewControllerProtocol.swift */,
-			);
-			path = Protocol;
-			sourceTree = "<group>";
-		};
-		BC70732A2534AE8600B2979F /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-				BC3C7C762532F56B00209C51 /* OnboardViewController.swift */,
-				BCA5B27A2533A29B00A7B15B /* @objc OnboardViewControllerExtension.swift */,
-				BC9357F325335DFA00C6C390 /* OnboardViewCell.swift */,
-				BC9357F025335D3100C6C390 /* OnboardViewControllerDelegate + Layout.swift */,
-				BC9358242533961B00C6C390 /* Model */,
-				BC9357E8253328BA00C6C390 /* Protocol */,
-			);
-			path = Onboarding;
-			sourceTree = "<group>";
-		};
 		BC70732C2534AE9400B2979F /* PremiumController */ = {
 			isa = PBXGroup;
 			children = (
-				BC70732D2534AEC800B2979F /* PremiumViewController.swift */,
+				BC2C33D82536D8E60092D884 /* UIViewController */,
+				BC2C33DA2536D9220092D884 /* Extension - @objc */,
+				BC2C33DD2536D9570092D884 /* UITableViewCell */,
+				BC2C33DB2536D9340092D884 /* Delegate + DataSource */,
+				BC2C33DE2536D9730092D884 /* Model */,
 			);
 			path = PremiumController;
-			sourceTree = "<group>";
-		};
-		BC9357E8253328BA00C6C390 /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				BC9357E9253328DF00C6C390 /* OnboardViewControllerProtocol.swift */,
-			);
-			path = Protocol;
 			sourceTree = "<group>";
 		};
 		BC9358242533961B00C6C390 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BC935821253395F700C6C390 /* Model.swift */,
+				BC935821253395F700C6C390 /* OnboardModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -133,6 +197,7 @@
 				BC7073272534A9B600B2979F /* Canvas.swift */,
 				BC9357F825336DDE00C6C390 /* Storyboard.storyboard */,
 				BC3DBC3F2530E0040007BDF2 /* Extension */,
+				BC2C33C72536D6BE0092D884 /* Protocol */,
 				BCB610012530C82400C4FD2F /* MyPets */,
 				BCB610002530C82400C4FD2F /* Products */,
 			);
@@ -149,7 +214,8 @@
 		BCB610012530C82400C4FD2F /* MyPets */ = {
 			isa = PBXGroup;
 			children = (
-				BC3C7C752532F54700209C51 /* OnboardView */,
+				BC3C7C752532F54700209C51 /* OnboardViewController */,
+				BC70732C2534AE9400B2979F /* PremiumController */,
 				BCB6101D2530CB3800C4FD2F /* AuthorizationViewController */,
 				BCB6101A2530C97600C4FD2F /* App + Scene */,
 				BCB610182530C87800C4FD2F /* Assets + LS + Info.plist */,
@@ -181,7 +247,6 @@
 			children = (
 				BCB610062530C82400C4FD2F /* AuthorizationViewController.swift */,
 				BCB404242532F5FE00993A5C /* @objc AuthorizationViewControllerExtension.swift */,
-				BC41C7F72530CE8E00AB02CD /* Protocol */,
 			);
 			path = AuthorizationViewController;
 			sourceTree = "<group>";
@@ -256,22 +321,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC2C33C92536D6E00092D884 /* MainViewProtocol.swift in Sources */,
 				BC7073322534BA3800B2979F /* UIView.swift in Sources */,
 				BCB610072530C82400C4FD2F /* AuthorizationViewController.swift in Sources */,
+				BC48511B2534E51500B874D4 /* PremiumViewControllerDelegate + DataSource.swift in Sources */,
 				BC7073252534A6F600B2979F /* UIButton.swift in Sources */,
 				BC3DBC3D2530DFFF0007BDF2 /* UIColor.swift in Sources */,
 				BC9357F425335DFA00C6C390 /* OnboardViewCell.swift in Sources */,
 				BCB404252532F5FE00993A5C /* @objc AuthorizationViewControllerExtension.swift in Sources */,
+				BC4851182534E4F100B874D4 /* PremiumViewControllerCell.swift in Sources */,
 				BCA5B27B2533A29B00A7B15B /* @objc OnboardViewControllerExtension.swift in Sources */,
 				BC70732E2534AEC800B2979F /* PremiumViewController.swift in Sources */,
 				BC3C7C772532F56B00209C51 /* OnboardViewController.swift in Sources */,
+				BC2C33CF2536D83F0092D884 /* @objc PremiumViewControllerExtension.swift in Sources */,
 				BC7073282534A9B600B2979F /* Canvas.swift in Sources */,
-				BC9357EA253328DF00C6C390 /* OnboardViewControllerProtocol.swift in Sources */,
+				BC2C33E02536D98D0092D884 /* PremiumModel.swift in Sources */,
 				BCB610032530C82400C4FD2F /* AppDelegate.swift in Sources */,
-				BC9357F125335D3100C6C390 /* OnboardViewControllerDelegate + Layout.swift in Sources */,
-				BC935822253395F800C6C390 /* Model.swift in Sources */,
+				BC9357F125335D3100C6C390 /* OnboardViewControllerDelegate + DataSource.swift in Sources */,
+				BC935822253395F800C6C390 /* OnboardModel.swift in Sources */,
 				BCB610052530C82400C4FD2F /* SceneDelegate.swift in Sources */,
-				BC41C7F52530CE5A00AB02CD /* AuthorizationViewControllerProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
