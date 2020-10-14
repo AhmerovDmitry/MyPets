@@ -14,8 +14,10 @@ class AuthorizationViewController: UIViewController {
     
     private let logInButton = UIButton(type: .system)
     
+    private var socialNetworkStackView = UIStackView()
     private let socialNetworksLabel = UILabel()
-    private let textLine = UILabel()
+    private let leftTextLine = UILabel()
+    private let rightTextLine = UILabel()
     
     private let socialIconsStackView = UIStackView()
     private let facebookButton = UIButton(type: .custom)
@@ -38,15 +40,17 @@ extension AuthorizationViewController: MainViewProtocol {
     func setupConstraint() {
         //MARK: - Logo Constraints
         view.addSubview(mainStackView)
-        socialNetworksLabel.addSubview(textLine)
+        socialNetworksLabel.addSubview(leftTextLine)
         
         mainStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -3).isActive = true
+        mainStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        mainStackView.leftAnchor.constraint(greaterThanOrEqualTo: view.leftAnchor, constant: 16).isActive = true
+        mainStackView.rightAnchor.constraint(greaterThanOrEqualTo: view.rightAnchor, constant: -16).isActive = true
         
         [logoLabel,
          textLabel,
          logInButton,
-         textLine,
-         socialNetworksLabel,
+         socialNetworkStackView,
          socialIconsStackView].forEach({ mainStackView.addArrangedSubview($0) })
         
         logoLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
@@ -61,13 +65,10 @@ extension AuthorizationViewController: MainViewProtocol {
         socialNetworksLabel.widthAnchor.constraint(equalToConstant: 213).isActive = true
         socialNetworksLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true
         
-        textLine.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
-        textLine.leftAnchor.constraint(greaterThanOrEqualTo: view.leftAnchor, constant: 16).isActive = true
-        textLine.rightAnchor.constraint(greaterThanOrEqualTo: view.rightAnchor, constant: -16).isActive = true
-        //MARK: - Constraint Error!!!
-        textLine.centerYAnchor.constraint(equalTo: socialNetworksLabel.centerYAnchor).isActive = true
-        
-        socialIconsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        leftTextLine.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        leftTextLine.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+        rightTextLine.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        rightTextLine.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
         
         [facebookButton,
          okButton,
@@ -77,6 +78,10 @@ extension AuthorizationViewController: MainViewProtocol {
             icon.widthAnchor.constraint(equalToConstant: 44).isActive = true
             icon.heightAnchor.constraint(equalToConstant: 44).isActive = true
          })
+        
+        [leftTextLine,
+        socialNetworksLabel,
+        rightTextLine].forEach({ socialNetworkStackView.addArrangedSubview($0) })
     }
     
     func setupViewsAndLabels() {
@@ -85,7 +90,8 @@ extension AuthorizationViewController: MainViewProtocol {
          textLabel,
          logInButton,
          socialNetworksLabel,
-         textLine,
+         leftTextLine,
+         rightTextLine,
          socialIconsStackView,
          facebookButton,
          okButton,
@@ -111,7 +117,11 @@ extension AuthorizationViewController: MainViewProtocol {
         logInButton.layer.cornerRadius = 25
         
         //MARK: - Social Networks Settings
-        textLine.backgroundColor = .black
+        socialNetworkStackView.alignment = .center
+        socialNetworkStackView.axis = .horizontal
+        socialNetworkStackView.spacing = 6
+        leftTextLine.backgroundColor = UIColor.CustomColor.lightGray
+        rightTextLine.backgroundColor = UIColor.CustomColor.lightGray
         socialNetworksLabel.text = "Войти через социальные сети"
         socialNetworksLabel.font = UIFont.systemFont(ofSize: 14)
         socialNetworksLabel.textAlignment = .center
@@ -131,4 +141,3 @@ extension AuthorizationViewController: MainViewProtocol {
         logInButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
     }
 }
-
