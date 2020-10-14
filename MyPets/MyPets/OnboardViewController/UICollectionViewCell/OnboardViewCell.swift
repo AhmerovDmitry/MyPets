@@ -31,7 +31,7 @@ class OnboardViewCell: UICollectionViewCell {
     }
 }
 
-extension OnboardViewCell: OnboardViewControllerProtocol {
+extension OnboardViewCell: MainViewProtocol {
     func setup() {
         setupConstraint()
         setupViewsAndLabels()
@@ -70,5 +70,8 @@ extension OnboardViewCell: OnboardViewControllerProtocol {
         textLabel.textColor = .black
         textLabel.numberOfLines = 0
         textLabel.text = "Вся информация о питомце всегда под рукой"
+    }
+    
+    func presentController() {
     }
 }
