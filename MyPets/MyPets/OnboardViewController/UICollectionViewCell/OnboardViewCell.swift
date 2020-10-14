@@ -31,7 +31,7 @@ class OnboardViewCell: UICollectionViewCell {
     }
 }
 
-extension OnboardViewCell: OnboardViewControllerProtocol {
+extension OnboardViewCell: MainViewProtocol {
     func setup() {
         setupConstraint()
         setupViewsAndLabels()

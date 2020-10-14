@@ -8,18 +8,17 @@
 import UIKit
 import SwiftUI
 
-class OnboardViewController: UIViewController, OnboardViewControllerProtocol {
-    private let mainStackView = UIStackView()
-    lazy var pageControl = UIPageControl()
-    let doneButton = UIButton(type: .system)
-    let closeButton = UIButton(type: .system)
+class OnboardViewController: UIViewController, MainViewProtocol {
     let models = [
         OnboardModel(image: "onboardImage_1", text: "Вся информация о питомце всегда под рукой"),
         OnboardModel(image: "onboardImage_2", text: "Вы не забудите купить корм или сделать прививку"),
         OnboardModel(image: "onboardImage_3", text: "Выбирайте, куда сходить с любимым питомцем"),
         OnboardModel(image: "onboardImage_4", text: "Советы и рекомендации по уходу за питомцем")
     ]
-    
+    private let mainStackView = UIStackView()
+    lazy var pageControl = UIPageControl()
+    let doneButton = UIButton(type: .system)
+    let closeButton = UIButton(type: .system)
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -105,9 +104,5 @@ class OnboardViewController: UIViewController, OnboardViewControllerProtocol {
         closeButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         closeButton.setTitleColor(UIColor.CustomColor.purple, for: .normal)
         closeButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
-    }
-    
-    deinit {
-        print("OnboardViewController - deinit")
     }
 }

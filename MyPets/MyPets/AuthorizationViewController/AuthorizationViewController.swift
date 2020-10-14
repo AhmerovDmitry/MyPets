@@ -29,7 +29,7 @@ class AuthorizationViewController: UIViewController {
     }
 }
 
-extension AuthorizationViewController: AuthorizationViewControllerProtocol {
+extension AuthorizationViewController: MainViewProtocol {
     func setup() {
         setupConstraint()
         setupViewsAndLabels()
@@ -131,3 +131,4 @@ extension AuthorizationViewController: AuthorizationViewControllerProtocol {
         logInButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
     }
 }
+

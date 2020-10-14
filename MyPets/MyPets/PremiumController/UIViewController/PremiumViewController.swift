@@ -6,14 +6,15 @@
 //
 
 import UIKit
+import PassKit
 
 class PremiumViewController: UIViewController {
-    let text = [
-        "Неограниченное количество питомцев",
-        "Календарь прививок, лечение и профилактика болезней",
-        "Заболевания, назначения врача",
-        "Все документы питомца в одном месте",
-        "Рекомендации по уходу и питанию"
+    let models = [
+        PremiumModel(text: "Неограниченное количество питомцев"),
+        PremiumModel(text: "Календарь прививок, лечение и профилактика болезней"),
+        PremiumModel(text: "Заболевания, назначения врача"),
+        PremiumModel(text: "Все документы питомца в одном месте"),
+        PremiumModel(text: "Рекомендации по уходу и питанию")
     ]
     private let mainStackView = UIStackView()
     private let tableStackView = UIStackView()
@@ -44,7 +45,7 @@ class PremiumViewController: UIViewController {
     }
 }
 
-extension PremiumViewController: OnboardViewControllerProtocol {
+extension PremiumViewController: MainViewProtocol {
     func setup() {
         setupConstraint()
         setupViewsAndLabels()
@@ -144,21 +145,12 @@ extension PremiumViewController: OnboardViewControllerProtocol {
         buyButton.setTitleColor(UIColor.CustomColor.purple, for: .normal)
         buyButton.backgroundColor = .white
         buyButton.layer.cornerRadius = 25
+        buyButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
     }
     
     func gradientSetup() {
         let colorOne = UIColor(red: 137/255, green: 46/255, blue: 223/255, alpha: 1)
         let colorTwo = UIColor(red: 212/255, green: 165/255, blue: 255/255, alpha: 1)
         view.setGradientBackground(colorOne: colorOne, ColorTwo: colorTwo, startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 1))
-    }
-    
-    @objc func closeController() {
-        let authorizationVC = AuthorizationViewController()
-        authorizationVC.modalPresentationStyle = .fullScreen
-        present(authorizationVC, animated: true, completion: nil)
-    }
-    
-    func presentController() {
-        
     }
 }

@@ -14,9 +14,10 @@ extension PremiumViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! PremiumViewControllerCell
-        cell.premiumText.text = text[indexPath.row]
         cell.backgroundColor = .clear
         cell.selectionStyle = .none
+        let data = models[indexPath.row]
+        cell.model = data
         
         return cell
     }

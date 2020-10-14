@@ -8,6 +8,12 @@
 import UIKit
 
 class PremiumViewControllerCell: UITableViewCell {
+    var model: PremiumModel? {
+        didSet {
+            guard let model = model else { return }
+            premiumText.text = model.text
+        }
+    }
     let premiumText = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -20,7 +26,7 @@ class PremiumViewControllerCell: UITableViewCell {
     }
 }
 
-extension PremiumViewControllerCell: OnboardViewControllerProtocol {
+extension PremiumViewControllerCell: MainViewProtocol {
     func setup() {
         setupConstraint()
         setupViewsAndLabels()
