@@ -45,7 +45,7 @@ class PremiumViewController: UIViewController {
     }
 }
 
-extension PremiumViewController: MainViewProtocol {
+extension PremiumViewController: GeneralSetupProtocol {
     func setup() {
         setupConstraint()
         setupViewsAndLabels()

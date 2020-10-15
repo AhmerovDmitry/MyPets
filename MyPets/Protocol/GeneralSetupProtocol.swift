@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol MainViewProtocol {
+protocol GeneralSetupProtocol {
     func setup()
     func setupConstraint()
     func setupViewsAndLabels()

@@ -26,7 +26,7 @@ class PremiumViewControllerCell: UITableViewCell {
     }
 }
 
-extension PremiumViewControllerCell: MainViewProtocol {
+extension PremiumViewControllerCell: GeneralSetupProtocol {
     func setup() {
         setupConstraint()
         setupViewsAndLabels()

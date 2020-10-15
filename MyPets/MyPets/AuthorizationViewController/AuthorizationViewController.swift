@@ -31,7 +31,7 @@ class AuthorizationViewController: UIViewController {
     }
 }
 
-extension AuthorizationViewController: MainViewProtocol {
+extension AuthorizationViewController: GeneralSetupProtocol {
     func setup() {
         setupConstraint()
         setupViewsAndLabels()
