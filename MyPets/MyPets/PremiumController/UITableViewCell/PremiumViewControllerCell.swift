@@ -47,6 +47,7 @@ extension PremiumViewControllerCell: GeneralSetupProtocol {
         premiumText.textColor = .white
         premiumText.numberOfLines = 0
         premiumText.font = UIFont.systemFont(ofSize: 15, weight: .light)
+        premiumText.adjustsFontSizeToFitWidth = true
     }
     
     func presentController() {

@@ -7,8 +7,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
-    
+class MainViewController: UIViewController, GeneralSetupProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -16,5 +15,20 @@ class MainViewController: UIViewController {
         navigationItem.title = "Главная"
         
         view.backgroundColor = .white
+        setup()
+    }
+    
+    func setup() {
+        setupConstraint()
+        setupViewsAndLabels()
+    }
+    
+    func setupConstraint() {
+    }
+    
+    func setupViewsAndLabels() {
+    }
+    
+    func presentController() {
     }
 }
