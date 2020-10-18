@@ -12,6 +12,7 @@ class MainViewController: UIViewController, GeneralSetupProtocol {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.backgroundColor = .white
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor : UIColor.black]
         navigationItem.title = "Главная"
         
         view.backgroundColor = .white

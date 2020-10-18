@@ -12,6 +12,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.backgroundColor = .white
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor : UIColor.black]
         navigationItem.title = "Профиль"
         
         view.backgroundColor = .white
