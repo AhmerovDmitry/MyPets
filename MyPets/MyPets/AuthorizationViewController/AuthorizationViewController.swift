@@ -42,7 +42,7 @@ extension AuthorizationViewController: GeneralSetupProtocol {
         view.addSubview(mainStackView)
         
         mainStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor,
-                                               constant: -3).isActive = true
+                                               constant: -1.5).isActive = true
         mainStackView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         mainStackView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         

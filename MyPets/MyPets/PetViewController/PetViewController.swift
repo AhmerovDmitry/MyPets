@@ -31,27 +31,57 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
     
     func setupConstraint() {
         view.addSubview(mainStackView)
-        
-        mainStackView.topAnchor.constraint(lessThanOrEqualTo: view.topAnchor, constant: 150).isActive = true
-        mainStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        mainStackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        
         [mainImage,
          titleText,
          descText,
          addButton].forEach({ mainStackView.addArrangedSubview($0) })
         
-        mainImage.widthAnchor.constraint(lessThanOrEqualToConstant: 381).isActive = true
-        mainImage.heightAnchor.constraint(lessThanOrEqualToConstant: 254).isActive = true
+        mainStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor,
+                                               constant: -10).isActive = true
+        mainStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        mainStackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
-        titleText.widthAnchor.constraint(lessThanOrEqualToConstant: 152).isActive = true
-        titleText.heightAnchor.constraint(lessThanOrEqualToConstant: 20).isActive = true
+        mainImage.leftAnchor.constraint(equalTo: mainStackView.leftAnchor,
+                                        constant: 0).isActive = true
+        mainImage.rightAnchor.constraint(equalTo: mainStackView.rightAnchor,
+                                         constant: 0).isActive = true
         
-        descText.widthAnchor.constraint(lessThanOrEqualToConstant: 311).isActive = true
-        descText.heightAnchor.constraint(lessThanOrEqualToConstant: 36).isActive = true
+        titleText.leftAnchor.constraint(equalTo: mainStackView.leftAnchor,
+                                         constant: 32).isActive = true
+        titleText.rightAnchor.constraint(equalTo: mainStackView.rightAnchor,
+                                          constant: -32).isActive = true
+        titleText.addConstraint(NSLayoutConstraint(item: titleText,
+                                                    attribute: .width,
+                                                    relatedBy: .equal,
+                                                    toItem: titleText,
+                                                    attribute: .height,
+                                                    multiplier: 7.6,
+                                                    constant: 0))
         
-        addButton.widthAnchor.constraint(lessThanOrEqualToConstant: 311).isActive = true
-        addButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        descText.leftAnchor.constraint(equalTo: mainStackView.leftAnchor,
+                                         constant: 32).isActive = true
+        descText.rightAnchor.constraint(equalTo: mainStackView.rightAnchor,
+                                          constant: -32).isActive = true
+        descText.addConstraint(NSLayoutConstraint(item: descText,
+                                                    attribute: .width,
+                                                    relatedBy: .equal,
+                                                    toItem: descText,
+                                                    attribute: .height,
+                                                    multiplier: 6,
+                                                    constant: 0))
+        
+        
+        addButton.leftAnchor.constraint(equalTo: mainStackView.leftAnchor,
+                                         constant: 32).isActive = true
+        addButton.rightAnchor.constraint(equalTo: mainStackView.rightAnchor,
+                                          constant: -32).isActive = true
+        addButton.addConstraint(NSLayoutConstraint(item: addButton,
+                                                    attribute: .width,
+                                                    relatedBy: .equal,
+                                                    toItem: addButton,
+                                                    attribute: .height,
+                                                    multiplier: 6,
+                                                    constant: 0))
     }
     
     func setupViewsAndLabels() {
@@ -68,6 +98,7 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
         mainStackView.setCustomSpacing(16, after: descText)
         
         mainImage.image = UIImage(named: "onboardImage_1")
+        mainImage.contentMode = .scaleAspectFit
         
         titleText.text = "Добавьте питомца"
         titleText.textAlignment = .center
@@ -80,10 +111,11 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
         descText.numberOfLines = 0
         descText.adjustsFontSizeToFitWidth = true
         
+        addButton.layoutIfNeeded()
         addButton.backgroundColor = UIColor.CustomColor.purple
         addButton.setTitle("Добавить питомца", for: .normal)
         addButton.tintColor = .white
-        addButton.layer.cornerRadius = 25
+        addButton.layer.cornerRadius = addButton.frame.height / 2
         addButton.titleLabel?.adjustsFontSizeToFitWidth = true
     }
     
