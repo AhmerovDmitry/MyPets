@@ -26,7 +26,7 @@ class PremiumViewControllerCell: UITableViewCell {
     }
 }
 
-extension PremiumViewControllerCell: MainViewProtocol {
+extension PremiumViewControllerCell: GeneralSetupProtocol {
     func setup() {
         setupConstraint()
         setupViewsAndLabels()
@@ -35,10 +35,14 @@ extension PremiumViewControllerCell: MainViewProtocol {
     func setupConstraint() {
         contentView.addSubview(premiumText)
         
-        premiumText.widthAnchor.constraint(lessThanOrEqualToConstant: 300).isActive = true
-        premiumText.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        premiumText.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 19).isActive = true
-        premiumText.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16).isActive = true
+        premiumText.leftAnchor.constraint(equalTo: contentView.leftAnchor,
+                                          constant: 10).isActive = true
+        premiumText.rightAnchor.constraint(equalTo: contentView.rightAnchor,
+                                           constant: -10).isActive = true
+        premiumText.topAnchor.constraint(equalTo: contentView.topAnchor,
+                                         constant: 10).isActive = true
+        premiumText.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,
+                                            constant: -10).isActive = true
     }
     
     func setupViewsAndLabels() {
@@ -47,6 +51,7 @@ extension PremiumViewControllerCell: MainViewProtocol {
         premiumText.textColor = .white
         premiumText.numberOfLines = 0
         premiumText.font = UIFont.systemFont(ofSize: 15, weight: .light)
+        premiumText.adjustsFontSizeToFitWidth = true
     }
     
     func presentController() {

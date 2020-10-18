@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/*
 //MARK: - Canvas settings
 struct MyProvider: PreviewProvider {
     static var previews: some View {
@@ -22,3 +23,4 @@ struct MyProvider: PreviewProvider {
         }
     }
 }
+*/

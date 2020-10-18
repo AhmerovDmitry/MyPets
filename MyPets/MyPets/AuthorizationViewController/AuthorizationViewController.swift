@@ -31,7 +31,7 @@ class AuthorizationViewController: UIViewController {
     }
 }
 
-extension AuthorizationViewController: MainViewProtocol {
+extension AuthorizationViewController: GeneralSetupProtocol {
     func setup() {
         setupConstraint()
         setupViewsAndLabels()
@@ -40,35 +40,17 @@ extension AuthorizationViewController: MainViewProtocol {
     func setupConstraint() {
         //MARK: - Logo Constraints
         view.addSubview(mainStackView)
-        socialNetworksLabel.addSubview(leftTextLine)
         
-        mainStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -3).isActive = true
-        mainStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        mainStackView.leftAnchor.constraint(greaterThanOrEqualTo: view.leftAnchor, constant: 16).isActive = true
-        mainStackView.rightAnchor.constraint(greaterThanOrEqualTo: view.rightAnchor, constant: -16).isActive = true
+        mainStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor,
+                                               constant: -1.5).isActive = true
+        mainStackView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        mainStackView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         
         [logoLabel,
          textLabel,
          logInButton,
          socialNetworkStackView,
          socialIconsStackView].forEach({ mainStackView.addArrangedSubview($0) })
-        
-        logoLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        logoLabel.heightAnchor.constraint(equalToConstant: 124).isActive = true
-        
-        textLabel.widthAnchor.constraint(equalToConstant: 141).isActive = true
-        textLabel.heightAnchor.constraint(equalToConstant: 39).isActive = true
-        
-        logInButton.widthAnchor.constraint(equalToConstant: 311).isActive = true
-        logInButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
-        socialNetworksLabel.widthAnchor.constraint(equalToConstant: 213).isActive = true
-        socialNetworksLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true
-        
-        leftTextLine.widthAnchor.constraint(equalToConstant: 60).isActive = true
-        leftTextLine.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
-        rightTextLine.widthAnchor.constraint(equalToConstant: 60).isActive = true
-        rightTextLine.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
         
         [facebookButton,
          okButton,
@@ -80,8 +62,34 @@ extension AuthorizationViewController: MainViewProtocol {
          })
         
         [leftTextLine,
-        socialNetworksLabel,
-        rightTextLine].forEach({ socialNetworkStackView.addArrangedSubview($0) })
+         socialNetworksLabel,
+         rightTextLine].forEach({ socialNetworkStackView.addArrangedSubview($0) })
+        
+        logoLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        logoLabel.heightAnchor.constraint(equalToConstant: 124).isActive = true
+        
+        textLabel.widthAnchor.constraint(equalToConstant: 141).isActive = true
+        textLabel.heightAnchor.constraint(equalToConstant: 39).isActive = true
+        
+        logInButton.leftAnchor.constraint(equalTo: mainStackView.leftAnchor,
+                                          constant: 32).isActive = true
+        logInButton.rightAnchor.constraint(equalTo: mainStackView.rightAnchor,
+                                           constant: -32).isActive = true
+        logInButton.addConstraint(NSLayoutConstraint(item: logInButton,
+                                                     attribute: .width,
+                                                     relatedBy: .equal,
+                                                     toItem: logInButton,
+                                                     attribute: .height,
+                                                     multiplier: 6,
+                                                     constant: 0))
+        
+        socialNetworksLabel.centerXAnchor.constraint(equalTo: socialNetworkStackView.centerXAnchor).isActive = true
+        leftTextLine.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+        leftTextLine.leftAnchor.constraint(equalTo: mainStackView.leftAnchor,
+                                           constant: 16).isActive = true
+        rightTextLine.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+        rightTextLine.rightAnchor.constraint(equalTo: mainStackView.rightAnchor,
+                                             constant: -16).isActive = true
     }
     
     func setupViewsAndLabels() {
@@ -110,11 +118,13 @@ extension AuthorizationViewController: MainViewProtocol {
         textLabel.image = UIImage(named: "myPetsText")
         
         //MARK: - Authorization Settings
+        logInButton.layoutIfNeeded()
         logInButton.setTitle("Войти", for: .normal)
         logInButton.backgroundColor = UIColor.CustomColor.purple
         logInButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         logInButton.setTitleColor(.white, for: .normal)
-        logInButton.layer.cornerRadius = 25
+        logInButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        logInButton.layer.cornerRadius = logInButton.frame.height / 2
         
         //MARK: - Social Networks Settings
         socialNetworkStackView.alignment = .center
@@ -127,6 +137,7 @@ extension AuthorizationViewController: MainViewProtocol {
         socialNetworksLabel.textAlignment = .center
         socialNetworksLabel.backgroundColor = .white
         socialNetworksLabel.textColor = .black
+        socialNetworksLabel.adjustsFontSizeToFitWidth = true
         
         //MARK: - Social UIStackView Settings
         socialIconsStackView.alignment = .center
