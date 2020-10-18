@@ -11,7 +11,7 @@ import SwiftUI
 class OnboardViewController: UIViewController, GeneralSetupProtocol {
     let models = [
         OnboardModel(image: "onboardImage_1", text: "Вся информация о питомце всегда под рукой"),
-        OnboardModel(image: "onboardImage_2", text: "Вы не забудите купить корм или сделать прививку"),
+        OnboardModel(image: "onboardImage_2", text: "Вы не забудете купить корм или сделать прививку"),
         OnboardModel(image: "onboardImage_3", text: "Выбирайте, куда сходить с любимым питомцем"),
         OnboardModel(image: "onboardImage_4", text: "Советы и рекомендации по уходу за питомцем")
     ]
