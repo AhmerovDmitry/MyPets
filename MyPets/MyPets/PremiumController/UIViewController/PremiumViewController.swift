@@ -73,6 +73,7 @@ extension PremiumViewController: GeneralSetupProtocol {
         
         titleText.widthAnchor.constraint(lessThanOrEqualToConstant: 210).isActive = true
         titleText.heightAnchor.constraint(lessThanOrEqualToConstant: 32).isActive = true
+        titleText.addConstraint(NSLayoutConstraint(item: titleText, attribute: .width, relatedBy: .equal, toItem: titleText, attribute: .height, multiplier: 6.5, constant: 0))
         
         //MARK: - mainStackView
         mainStackView.centerYAnchor.constraint(lessThanOrEqualTo: view.centerYAnchor, constant: -17.5).isActive = true
@@ -83,28 +84,25 @@ extension PremiumViewController: GeneralSetupProtocol {
         tableView.topAnchor.constraint(lessThanOrEqualTo: titleStackView.bottomAnchor, constant: 16).isActive = true
         tableView.leftAnchor.constraint(equalTo: mainStackView.leftAnchor, constant: 32).isActive = true
         tableView.rightAnchor.constraint(equalTo: mainStackView.rightAnchor, constant: -32).isActive = true
-        tableView.heightAnchor.constraint(equalToConstant: 260).isActive = true
-        //tableView.heightAnchor.constraint(greaterThanOrEqualToConstant: 270).isActive = true
-        //tableView.heightAnchor.constraint(lessThanOrEqualToConstant: 320).isActive = true
-        tableView.backgroundColor = .lightGray
+        tableView.heightAnchor.constraint(equalToConstant: 209).isActive = true
         
         //MARK: - Price Label
         priceLabel.topAnchor.constraint(lessThanOrEqualTo: tableView.bottomAnchor, constant: 16).isActive = true
         priceLabel.leftAnchor.constraint(equalTo: mainStackView.leftAnchor, constant: 122).isActive = true
         priceLabel.rightAnchor.constraint(equalTo: mainStackView.rightAnchor, constant: -122).isActive = true
-        //priceLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 58).isActive = true
+        priceLabel.addConstraint(NSLayoutConstraint(item: priceLabel, attribute: .width, relatedBy: .equal, toItem: priceLabel, attribute: .height, multiplier: 2.2, constant: 0))
         
         //MARK: - Price description
         priceDescLabel.topAnchor.constraint(lessThanOrEqualTo: priceLabel.bottomAnchor, constant: 4).isActive = true
         priceDescLabel.leftAnchor.constraint(equalTo: mainStackView.leftAnchor, constant: 95).isActive = true
         priceDescLabel.rightAnchor.constraint(equalTo: mainStackView.rightAnchor, constant: -95).isActive = true
-        //priceDescLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 18).isActive = true
+        priceDescLabel.addConstraint(NSLayoutConstraint(item: priceDescLabel, attribute: .width, relatedBy: .equal, toItem: priceDescLabel, attribute: .height, multiplier: 10.2, constant: 0))
         
         //MARK: - Buy Button
         buyButton.topAnchor.constraint(lessThanOrEqualTo: priceDescLabel.bottomAnchor, constant: 32).isActive = true
         buyButton.leftAnchor.constraint(equalTo: mainStackView.leftAnchor, constant: 32).isActive = true
         buyButton.rightAnchor.constraint(equalTo: mainStackView.rightAnchor, constant: -32).isActive = true
-        buyButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        buyButton.addConstraint(NSLayoutConstraint(item: buyButton, attribute: .width, relatedBy: .equal, toItem: buyButton, attribute: .height, multiplier: 6.2, constant: 0))
     }
     
     func setupViewsAndLabels() {
@@ -120,10 +118,10 @@ extension PremiumViewController: GeneralSetupProtocol {
             $0.translatesAutoresizingMaskIntoConstraints = false
          })
         
-        titleText.adjustsFontSizeToFitWidth = true
-        priceLabel.adjustsFontSizeToFitWidth = true
-        priceDescLabel.adjustsFontSizeToFitWidth = true
-        buyButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        [titleText,
+         priceLabel,
+         priceDescLabel,
+         buyButton.titleLabel].forEach({ $0?.adjustsFontSizeToFitWidth = true })
         
         mainStackView.alignment = .center
         mainStackView.axis = .vertical
@@ -138,7 +136,7 @@ extension PremiumViewController: GeneralSetupProtocol {
         closeButton.setImage(UIImage(named: "closeButton"), for: .normal)
         closeButton.contentHorizontalAlignment = .fill
         closeButton.contentVerticalAlignment = .fill
-        //closeButton.addTarget(self, action: #selector(closeController), for: .touchUpInside)
+        closeButton.addTarget(self, action: #selector(closeController), for: .touchUpInside)
         
         titleLogo.image = UIImage(named: "crownIcon")
         
@@ -169,20 +167,5 @@ extension PremiumViewController: GeneralSetupProtocol {
         let colorOne = UIColor(red: 137/255, green: 46/255, blue: 223/255, alpha: 1)
         let colorTwo = UIColor(red: 212/255, green: 165/255, blue: 255/255, alpha: 1)
         view.setGradientBackground(colorOne: colorOne, ColorTwo: colorTwo, startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 1))
-    }
-}
-
-struct MyProvider: PreviewProvider {
-    static var previews: some View {
-        ContianerView().edgesIgnoringSafeArea(.all)
-    }
-    
-    struct ContianerView: UIViewControllerRepresentable {
-        func makeUIViewController(context: Context) -> some PremiumViewController {
-            return PremiumViewController()
-        }
-        
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-        }
     }
 }

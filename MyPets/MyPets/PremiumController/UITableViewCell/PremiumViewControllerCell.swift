@@ -35,8 +35,6 @@ extension PremiumViewControllerCell: GeneralSetupProtocol {
     func setupConstraint() {
         contentView.addSubview(premiumText)
         
-        premiumText.heightAnchor.constraint(lessThanOrEqualToConstant: 38).isActive = true
-        premiumText.widthAnchor.constraint(lessThanOrEqualToConstant: 300).isActive = true
         premiumText.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10).isActive = true
         premiumText.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10).isActive = true
         premiumText.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
