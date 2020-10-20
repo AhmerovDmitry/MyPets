@@ -8,7 +8,19 @@
 import UIKit
 import YandexMapKit
 
-class LocationViewController: UIViewController {
+class LocationViewController: UIViewController, YMKUserLocationObjectListener {
+    func onObjectAdded(with view: YMKUserLocationView) {
+        
+    }
+    
+    func onObjectRemoved(with view: YMKUserLocationView) {
+        
+    }
+    
+    func onObjectUpdated(with view: YMKUserLocationView, event: YMKObjectEvent) {
+        
+    }
+    
     private let backgroundView = UIImageView()
     //    private let collectionView: UICollectionView = {
     //        let cv = UICollectionView()
@@ -24,15 +36,30 @@ class LocationViewController: UIViewController {
         
         setup()
         
-        userLocation()
-        mapView.mapWindow.map.move(
-            with: YMKCameraPosition(target: YMKPoint(latitude: 55.751574,
-                                                     longitude: 37.573856),
-                                    zoom: 15,
-                                    azimuth: 0,
-                                    tilt: 0),
-            animationType: YMKAnimation(type: YMKAnimationType.smooth,
-                                        duration: 5))
+//        userLocation()
+//        mapView.mapWindow.map.move(
+//            with: YMKCameraPosition(target: YMKPoint(latitude: 55.751574,
+//                                                     longitude: 37.573856),
+//                                    zoom: 15,
+//                                    azimuth: 0,
+//                                    tilt: 0),
+//            animationType: YMKAnimation(type: YMKAnimationType.smooth,
+//                                        duration: 5))
+
+        mapView.mapWindow.map.isRotateGesturesEnabled = false
+        mapView.mapWindow.map.move(with:
+            YMKCameraPosition(target: YMKPoint(latitude: 0, longitude: 0), zoom: 14, azimuth: 0, tilt: 0))
+        
+        let scale = UIScreen.main.scale
+        let mapKit = YMKMapKit.sharedInstance()
+        let userLocationLayer = mapKit.createUserLocationLayer(with: mapView.mapWindow)
+
+        userLocationLayer.setVisibleWithOn(true)
+        userLocationLayer.isHeadingEnabled = true
+        userLocationLayer.setAnchorWithAnchorNormal(
+            CGPoint(x: 0.5 * mapView.frame.size.width * scale, y: 0.5 * mapView.frame.size.height * scale),
+            anchorCourse: CGPoint(x: 0.5 * mapView.frame.size.width * scale, y: 0.83 * mapView.frame.size.height * scale))
+        //userLocationLayer.setObjectListenerWith(self)
     }
 }
 
