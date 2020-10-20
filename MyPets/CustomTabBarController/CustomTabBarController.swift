@@ -10,7 +10,7 @@ import UIKit
 class CustomTabBarController: UITabBarController {
     let mainVC = UINavigationController(rootViewController: MainViewController())
     let petVC = UINavigationController(rootViewController: PetViewController())
-    let locationVC = UINavigationController(rootViewController: LocationViewController())
+    let locationVC = LocationViewController()
     let profileVC = UINavigationController(rootViewController: ProfileViewController())
     
     var controllers: [UIViewController]?
@@ -21,10 +21,11 @@ class CustomTabBarController: UITabBarController {
         
         controllers = [mainVC, petVC, locationVC, profileVC]
         
-        tabBar.backgroundColor = .clear
+        tabBar.backgroundColor = .white
         tabBar.backgroundImage = UIImage()
         tabBar.shadowImage = UIImage()
         tabBar.tintColor = UIColor.CustomColor.purple
+        tabBar.unselectedItemTintColor = UIColor.CustomColor.gray
     }
     
     func setupItems() {
