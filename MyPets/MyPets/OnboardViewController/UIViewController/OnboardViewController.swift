@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SwiftUI
 
 class OnboardViewController: UIViewController, GeneralSetupProtocol {
     let models = [

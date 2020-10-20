@@ -6,35 +6,49 @@
 //
 
 import UIKit
-import MapKit
+import YandexMapKit
 
 class LocationViewController: UIViewController {
     private let backgroundView = UIImageView()
-//    private let collectionView: UICollectionView = {
-//        let cv = UICollectionView()
-//
-//        return cv
-//    }()
-    private let mapView = MKMapView()
+    //    private let collectionView: UICollectionView = {
+    //        let cv = UICollectionView()
+    //
+    //        return cv
+    //    }()
+    let mapView = YMKMapView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.isNavigationBarHidden = true
         
         view.backgroundColor = .white
         
-        setupConstraint()
-        setupViewsAndLabels()
+        setup()
+        
+        userLocation()
+        mapView.mapWindow.map.move(
+            with: YMKCameraPosition(target: YMKPoint(latitude: 55.751574,
+                                                     longitude: 37.573856),
+                                    zoom: 15,
+                                    azimuth: 0,
+                                    tilt: 0),
+            animationType: YMKAnimation(type: YMKAnimationType.smooth,
+                                        duration: 5))
     }
 }
 
 extension LocationViewController: GeneralSetupProtocol {
+    func setup() {
+        setupConstraint()
+        setupViewsAndLabels()
+    }
+    
     func setupConstraint() {
         view.addSubview(mapView)
         view.addSubview(backgroundView)
-                
+        
         mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        mapView.bottomAnchor.constraint(equalTo: backgroundView.topAnchor,
+                                        constant: 10).isActive = true
         mapView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         mapView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         
@@ -56,11 +70,7 @@ extension LocationViewController: GeneralSetupProtocol {
         backgroundView.layer.shadowOpacity = 0.7
         backgroundView.layer.shadowRadius = 5
         
-        mapView.mapType = .standard
         mapView.translatesAutoresizingMaskIntoConstraints = false
-        mapView.isRotateEnabled = false
-        mapView.showsUserLocation = true
-        
     }
     
     func presentController() {
