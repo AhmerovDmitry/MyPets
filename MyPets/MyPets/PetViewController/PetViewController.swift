@@ -104,14 +104,14 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
         titleText.text = "Добавьте питомца"
         titleText.textAlignment = .center
         titleText.font = UIFont.boldSystemFont(ofSize: 16)
-        titleText.textColor = .black
+        titleText.textColor = UIColor.CustomColor.dark
         titleText.numberOfLines = 0
         titleText.adjustsFontSizeToFitWidth = true
         
         descText.text = "Все данные вашего питомца будут всегда под рукой"
         descText.textAlignment = .center
         descText.font = UIFont.systemFont(ofSize: 14)
-        descText.textColor = .black
+        descText.textColor = UIColor.CustomColor.dark
         descText.numberOfLines = 0
         descText.adjustsFontSizeToFitWidth = true
         

@@ -21,10 +21,11 @@ class CustomTabBarController: UITabBarController {
         
         controllers = [mainVC, petVC, locationVC, profileVC]
         
-        tabBar.backgroundColor = .clear
+        tabBar.backgroundColor = .white
         tabBar.backgroundImage = UIImage()
         tabBar.shadowImage = UIImage()
         tabBar.tintColor = UIColor.CustomColor.purple
+        tabBar.unselectedItemTintColor = UIColor.CustomColor.gray
     }
     
     func setupItems() {
