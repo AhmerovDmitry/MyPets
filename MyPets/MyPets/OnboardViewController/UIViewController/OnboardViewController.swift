@@ -39,24 +39,22 @@ class OnboardViewController: UIViewController, GeneralSetupProtocol {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        view.addSubview(collectionView)
-        collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        collectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        collectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        
-        setup()
-    }
-    
-    func setup() {
         setupConstraint()
         setupViewsAndLabels()
     }
     
     func setupConstraint() {
+        view.addSubview(collectionView)
         view.addSubview(mainStackView)
         view.addSubview(closeButton)
-        [pageControl, doneButton].forEach({ mainStackView.addArrangedSubview($0) })
+        
+        collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        collectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        collectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        
+        [pageControl,
+         doneButton].forEach({ mainStackView.addArrangedSubview($0) })
         
         mainStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor,
                                                constant: 142).isActive = true
@@ -108,7 +106,7 @@ class OnboardViewController: UIViewController, GeneralSetupProtocol {
         pageControl.currentPage = 0
         pageControl.numberOfPages = models.count
         pageControl.currentPageIndicatorTintColor = UIColor.CustomColor.purple
-        pageControl.pageIndicatorTintColor = UIColor.CustomColor.lightGray
+        pageControl.pageIndicatorTintColor = UIColor.CustomColor.gray
         if #available(iOS 14.0, *) {
             pageControl.backgroundStyle = .minimal
         } else {

@@ -21,7 +21,8 @@ class OnboardViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        setupConstraint()
+        setupViewsAndLabels()
         
         imageView.image = UIImage(named: "onboardImage_1")
     }
@@ -32,11 +33,6 @@ class OnboardViewCell: UICollectionViewCell {
 }
 
 extension OnboardViewCell: GeneralSetupProtocol {
-    func setup() {
-        setupConstraint()
-        setupViewsAndLabels()
-    }
-    
     func setupConstraint() {
         contentView.addSubview(mainStackView)
         [imageView,
@@ -70,7 +66,7 @@ extension OnboardViewCell: GeneralSetupProtocol {
         
         textLabel.textAlignment = .center
         textLabel.font = UIFont.systemFont(ofSize: 18)
-        textLabel.textColor = .black
+        textLabel.textColor = UIColor.CustomColor.dark
         textLabel.numberOfLines = 0
         textLabel.text = "Вся информация о питомце всегда под рукой"
         textLabel.adjustsFontSizeToFitWidth = true

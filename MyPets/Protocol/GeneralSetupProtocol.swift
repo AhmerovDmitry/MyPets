@@ -8,7 +8,6 @@
 import UIKit
 
 protocol GeneralSetupProtocol {
-    func setup()
     func setupConstraint()
     func setupViewsAndLabels()
     
