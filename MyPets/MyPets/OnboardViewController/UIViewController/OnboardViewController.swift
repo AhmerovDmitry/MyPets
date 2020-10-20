@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SwiftUI
 
 class OnboardViewController: UIViewController, GeneralSetupProtocol {
     let models = [
@@ -108,7 +107,7 @@ class OnboardViewController: UIViewController, GeneralSetupProtocol {
         pageControl.currentPage = 0
         pageControl.numberOfPages = models.count
         pageControl.currentPageIndicatorTintColor = UIColor.CustomColor.purple
-        pageControl.pageIndicatorTintColor = UIColor.CustomColor.lightGray
+        pageControl.pageIndicatorTintColor = UIColor.CustomColor.gray
         if #available(iOS 14.0, *) {
             pageControl.backgroundStyle = .minimal
         } else {

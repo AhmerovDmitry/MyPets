@@ -130,13 +130,13 @@ extension AuthorizationViewController: GeneralSetupProtocol {
         socialNetworkStackView.alignment = .center
         socialNetworkStackView.axis = .horizontal
         socialNetworkStackView.spacing = 6
-        leftTextLine.backgroundColor = UIColor.CustomColor.lightGray
-        rightTextLine.backgroundColor = UIColor.CustomColor.lightGray
+        leftTextLine.backgroundColor = UIColor.CustomColor.dark
+        rightTextLine.backgroundColor = UIColor.CustomColor.dark
         socialNetworksLabel.text = "Войти через социальные сети"
         socialNetworksLabel.font = UIFont.systemFont(ofSize: 14)
         socialNetworksLabel.textAlignment = .center
         socialNetworksLabel.backgroundColor = .white
-        socialNetworksLabel.textColor = .black
+        socialNetworksLabel.textColor = UIColor.CustomColor.dark
         socialNetworksLabel.adjustsFontSizeToFitWidth = true
         
         //MARK: - Social UIStackView Settings
