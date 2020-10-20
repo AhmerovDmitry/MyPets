@@ -21,7 +21,7 @@ class CustomTabBarController: UITabBarController {
         
         controllers = [mainVC, petVC, locationVC, profileVC]
         
-        tabBar.backgroundColor = .clear
+        tabBar.backgroundColor = .white
         tabBar.backgroundImage = UIImage()
         tabBar.shadowImage = UIImage()
         tabBar.unselectedItemTintColor = UIColor.CustomColor.gray
