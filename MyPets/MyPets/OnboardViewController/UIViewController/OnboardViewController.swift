@@ -6,12 +6,11 @@
 //
 
 import UIKit
-import SwiftUI
 
-class OnboardViewController: UIViewController, MainViewProtocol {
+class OnboardViewController: UIViewController, GeneralSetupProtocol {
     let models = [
         OnboardModel(image: "onboardImage_1", text: "Вся информация о питомце всегда под рукой"),
-        OnboardModel(image: "onboardImage_2", text: "Вы не забудите купить корм или сделать прививку"),
+        OnboardModel(image: "onboardImage_2", text: "Вы не забудете купить корм или сделать прививку"),
         OnboardModel(image: "onboardImage_3", text: "Выбирайте, куда сходить с любимым питомцем"),
         OnboardModel(image: "onboardImage_4", text: "Советы и рекомендации по уходу за питомцем")
     ]
@@ -58,19 +57,38 @@ class OnboardViewController: UIViewController, MainViewProtocol {
         view.addSubview(closeButton)
         [pageControl, doneButton].forEach({ mainStackView.addArrangedSubview($0) })
         
-        mainStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 142).isActive = true
-        mainStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        mainStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor,
+                                               constant: 142).isActive = true
+        mainStackView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        mainStackView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         
-        pageControl.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        pageControl.heightAnchor.constraint(equalToConstant: 8).isActive = true
+        pageControl.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        pageControl.addConstraint(NSLayoutConstraint(item: pageControl,
+                                                     attribute: .width,
+                                                     relatedBy: .equal,
+                                                     toItem: pageControl,
+                                                     attribute: .height,
+                                                     multiplier: 6.25,
+                                                     constant: 0))
         
-        doneButton.widthAnchor.constraint(equalToConstant: 311).isActive = true
-        doneButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        doneButton.leftAnchor.constraint(equalTo: collectionView.leftAnchor,
+                                         constant: 32).isActive = true
+        doneButton.rightAnchor.constraint(equalTo: collectionView.rightAnchor,
+                                          constant: -32).isActive = true
+        doneButton.addConstraint(NSLayoutConstraint(item: doneButton,
+                                                    attribute: .width,
+                                                    relatedBy: .equal,
+                                                    toItem: doneButton,
+                                                    attribute: .height,
+                                                    multiplier: 6,
+                                                    constant: 0))
         
-        closeButton.topAnchor.constraint(lessThanOrEqualTo: view.topAnchor, constant: 60).isActive = true
-        closeButton.rightAnchor.constraint(lessThanOrEqualTo: view.rightAnchor, constant: -32).isActive = true
         closeButton.widthAnchor.constraint(lessThanOrEqualToConstant: 97).isActive = true
         closeButton.heightAnchor.constraint(lessThanOrEqualToConstant: 21).isActive = true
+        closeButton.topAnchor.constraint(lessThanOrEqualTo: view.topAnchor,
+                                         constant: 60).isActive = true
+        closeButton.rightAnchor.constraint(lessThanOrEqualTo: view.rightAnchor,
+                                           constant: -15).isActive = true
     }
     
     func setupViewsAndLabels() {
@@ -89,15 +107,22 @@ class OnboardViewController: UIViewController, MainViewProtocol {
         pageControl.currentPage = 0
         pageControl.numberOfPages = models.count
         pageControl.currentPageIndicatorTintColor = UIColor.CustomColor.purple
-        pageControl.pageIndicatorTintColor = UIColor.CustomColor.lightGray
+        pageControl.pageIndicatorTintColor = UIColor.CustomColor.gray
+        if #available(iOS 14.0, *) {
+            pageControl.backgroundStyle = .minimal
+        } else {
+            // Fallback on earlier versions
+        }
         
+        doneButton.layoutIfNeeded()
         doneButton.setTitle("Далее", for: .normal)
         doneButton.backgroundColor = .white
         doneButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         doneButton.setTitleColor(UIColor.CustomColor.purple, for: .normal)
         doneButton.layer.borderWidth = 1
         doneButton.layer.borderColor = UIColor.CustomColor.purple.cgColor
-        doneButton.layer.cornerRadius = 25
+        doneButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        doneButton.layer.cornerRadius = doneButton.frame.height / 2
         doneButton.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
         
         closeButton.setTitle("Пропустить", for: .normal)
