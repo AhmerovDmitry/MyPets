@@ -8,6 +8,7 @@
 import UIKit
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 class LocationViewController: UIViewController, YMKUserLocationObjectListener {
     func onObjectAdded(with view: YMKUserLocationView) {
         
@@ -32,12 +33,16 @@ class LocationViewController: UIViewController, YMKUserLocationObjectListener {
 =======
 class LocationViewController: UIViewController {
 >>>>>>> parent of 9d0f8b3... Update
+=======
+class LocationViewController: UIViewController {
+>>>>>>> parent of 9d0f8b3... Update
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.backgroundColor = .white
         
         view.backgroundColor = .white
+<<<<<<< HEAD
 <<<<<<< HEAD
         
         setup()
@@ -107,6 +112,8 @@ extension LocationViewController: GeneralSetupProtocol {
     }
     
     func presentController() {
+=======
+>>>>>>> parent of 9d0f8b3... Update
 =======
 >>>>>>> parent of 9d0f8b3... Update
     }
