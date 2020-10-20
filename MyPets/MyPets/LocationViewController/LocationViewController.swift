@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import YandexMapKit
+import MapKit
 
 class LocationViewController: UIViewController {
     private let backgroundView = UIImageView()
@@ -15,24 +15,24 @@ class LocationViewController: UIViewController {
     //
     //        return cv
     //    }()
-    let mapView = YMKMapView()
+    
+    let locationManager = CLLocationManager()
+    let mapView = MKMapView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
         
-        setup()
+        locationManager.delegate = self
         
-        userLocation()
-        mapView.mapWindow.map.move(
-            with: YMKCameraPosition(target: YMKPoint(latitude: 55.751574,
-                                                     longitude: 37.573856),
-                                    zoom: 15,
-                                    azimuth: 0,
-                                    tilt: 0),
-            animationType: YMKAnimation(type: YMKAnimationType.smooth,
-                                        duration: 5))
+        setup()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        fetchLocation()
     }
 }
 
@@ -48,7 +48,7 @@ extension LocationViewController: GeneralSetupProtocol {
         
         mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         mapView.bottomAnchor.constraint(equalTo: backgroundView.topAnchor,
-                                        constant: 10).isActive = true
+                                        constant: 7.5).isActive = true
         mapView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         mapView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         
@@ -71,6 +71,7 @@ extension LocationViewController: GeneralSetupProtocol {
         backgroundView.layer.shadowRadius = 5
         
         mapView.translatesAutoresizingMaskIntoConstraints = false
+        mapView.showsUserLocation = true
     }
     
     func presentController() {
