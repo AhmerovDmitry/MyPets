@@ -31,7 +31,7 @@ class OnboardViewCell: UICollectionViewCell {
     }
 }
 
-extension OnboardViewCell: MainViewProtocol {
+extension OnboardViewCell: GeneralSetupProtocol {
     func setup() {
         setupConstraint()
         setupViewsAndLabels()
@@ -41,13 +41,16 @@ extension OnboardViewCell: MainViewProtocol {
         contentView.addSubview(mainStackView)
         [imageView,
          textLabel].forEach({ mainStackView.addArrangedSubview($0) })
-
-        mainStackView.bottomAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 89).isActive = true
+        
+        mainStackView.bottomAnchor.constraint(equalTo: contentView.centerYAnchor,
+                                              constant: 89).isActive = true
         mainStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         
-        imageView.widthAnchor.constraint(equalToConstant: 375).isActive = true
-        imageView.heightAnchor.constraint(lessThanOrEqualToConstant: 282).isActive = true
-
+        imageView.leftAnchor.constraint(equalTo: mainStackView.leftAnchor,
+                                        constant: 0).isActive = true
+        imageView.rightAnchor.constraint(equalTo: mainStackView.rightAnchor,
+                                         constant: 0).isActive = true
+        
         textLabel.widthAnchor.constraint(equalToConstant: 263).isActive = true
         textLabel.heightAnchor.constraint(equalToConstant: 47).isActive = true
     }
@@ -57,7 +60,7 @@ extension OnboardViewCell: MainViewProtocol {
          imageView,
          textLabel].forEach({
             $0.translatesAutoresizingMaskIntoConstraints = false
-        })
+         })
         
         mainStackView.axis = .vertical
         mainStackView.alignment = .center
@@ -70,6 +73,7 @@ extension OnboardViewCell: MainViewProtocol {
         textLabel.textColor = .black
         textLabel.numberOfLines = 0
         textLabel.text = "Вся информация о питомце всегда под рукой"
+        textLabel.adjustsFontSizeToFitWidth = true
     }
     
     func presentController() {

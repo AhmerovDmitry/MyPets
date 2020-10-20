@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import PassKit
 
 class PremiumViewController: UIViewController {
     let models = [
@@ -17,7 +16,6 @@ class PremiumViewController: UIViewController {
         PremiumModel(text: "Рекомендации по уходу и питанию")
     ]
     private let mainStackView = UIStackView()
-    private let tableStackView = UIStackView()
     private let closeButton = UIButton(type: .custom)
     private let titleStackView = UIStackView()
     private let titleLogo = UIImageView()
@@ -45,7 +43,7 @@ class PremiumViewController: UIViewController {
     }
 }
 
-extension PremiumViewController: MainViewProtocol {
+extension PremiumViewController: GeneralSetupProtocol {
     func setup() {
         setupConstraint()
         setupViewsAndLabels()
@@ -53,39 +51,96 @@ extension PremiumViewController: MainViewProtocol {
     }
     
     func setupConstraint() {
-        view.addSubview(closeButton)
+        [mainStackView,
+         closeButton].forEach({ view.addSubview($0) })
+        [titleLogo,
+         titleText].forEach({ titleStackView.addArrangedSubview($0) })
+        [titleStackView,
+         tableView,
+         priceLabel,
+         priceDescLabel,
+         buyButton].forEach({
+            mainStackView.addArrangedSubview($0)
+         })
+        
+        //MARK: - closeButton
         closeButton.widthAnchor.constraint(equalToConstant: 14).isActive = true
         closeButton.heightAnchor.constraint(equalToConstant: 14).isActive = true
-        closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 61).isActive = true
-        closeButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15).isActive = true
-        closeButton.contentHorizontalAlignment = .fill
-        closeButton.contentVerticalAlignment = .fill
+        closeButton.topAnchor.constraint(lessThanOrEqualTo: view.topAnchor,
+                                         constant: 60).isActive = true
+        closeButton.rightAnchor.constraint(lessThanOrEqualTo: view.rightAnchor,
+                                           constant: -15).isActive = true
         
-        [mainStackView].forEach({ view.addSubview($0) })
-        [titleStackView, tableStackView].forEach({ mainStackView.addArrangedSubview($0) })
-        [titleLogo, titleText].forEach({ titleStackView.addArrangedSubview($0) })
-        [tableView, priceLabel, priceDescLabel, buyButton].forEach({ tableStackView.addArrangedSubview($0)})
+        //MARK: - titleStackView + titleLogo, titleText
+        titleStackView.leftAnchor.constraint(equalTo: mainStackView.leftAnchor,
+                                             constant: 63).isActive = true
+        titleStackView.rightAnchor.constraint(equalTo: mainStackView.rightAnchor,
+                                              constant: -63).isActive = true
         
-        mainStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -17.5).isActive = true
-        mainStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        titleLogo.widthAnchor.constraint(equalTo: titleText.heightAnchor).isActive = true
+        titleLogo.heightAnchor.constraint(equalTo: titleText.heightAnchor).isActive = true
         
-        titleLogo.widthAnchor.constraint(equalToConstant: 30).isActive = true
-        titleLogo.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        titleText.widthAnchor.constraint(lessThanOrEqualToConstant: 210).isActive = true
+        titleText.heightAnchor.constraint(lessThanOrEqualToConstant: 32).isActive = true
+        titleText.addConstraint(NSLayoutConstraint(item: titleText,
+                                                   attribute: .width,
+                                                   relatedBy: .equal,
+                                                   toItem: titleText,
+                                                   attribute: .height,
+                                                   multiplier: 6.5,
+                                                   constant: 0))
         
-        titleText.widthAnchor.constraint(equalToConstant: 210).isActive = true
-        titleText.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        //MARK: - mainStackView
+        mainStackView.centerYAnchor.constraint(lessThanOrEqualTo: view.centerYAnchor,
+                                               constant: -17.5).isActive = true
+        mainStackView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        mainStackView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         
-        tableView.widthAnchor.constraint(equalToConstant: 311).isActive = true
-        tableView.heightAnchor.constraint(equalToConstant: 320).isActive = true
+        //MARK: - tableView
+        tableView.leftAnchor.constraint(equalTo: mainStackView.leftAnchor,
+                                        constant: 32).isActive = true
+        tableView.rightAnchor.constraint(equalTo: mainStackView.rightAnchor,
+                                         constant: -32).isActive = true
+        tableView.heightAnchor.constraint(equalToConstant: 209).isActive = true
         
-        priceLabel.widthAnchor.constraint(equalToConstant: 131).isActive = true
-        priceLabel.heightAnchor.constraint(equalToConstant: 58).isActive = true
+        //MARK: - Price Label
+        priceLabel.leftAnchor.constraint(equalTo: mainStackView.leftAnchor,
+                                         constant: 122).isActive = true
+        priceLabel.rightAnchor.constraint(equalTo: mainStackView.rightAnchor,
+                                          constant: -122).isActive = true
+        priceLabel.addConstraint(NSLayoutConstraint(item: priceLabel,
+                                                    attribute: .width,
+                                                    relatedBy: .equal,
+                                                    toItem: priceLabel,
+                                                    attribute: .height,
+                                                    multiplier: 2.2,
+                                                    constant: 0))
         
-        priceDescLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        priceDescLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true
+        //MARK: - Price description
+        priceDescLabel.leftAnchor.constraint(equalTo: mainStackView.leftAnchor,
+                                             constant: 95).isActive = true
+        priceDescLabel.rightAnchor.constraint(equalTo: mainStackView.rightAnchor,
+                                              constant: -95).isActive = true
+        priceDescLabel.addConstraint(NSLayoutConstraint(item: priceDescLabel,
+                                                        attribute: .width,
+                                                        relatedBy: .equal,
+                                                        toItem: priceDescLabel,
+                                                        attribute: .height,
+                                                        multiplier: 10.2,
+                                                        constant: 0))
         
-        buyButton.widthAnchor.constraint(equalToConstant: 311).isActive = true
-        buyButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        //MARK: - Buy Button
+        buyButton.leftAnchor.constraint(equalTo: mainStackView.leftAnchor,
+                                        constant: 32).isActive = true
+        buyButton.rightAnchor.constraint(equalTo: mainStackView.rightAnchor,
+                                         constant: -32).isActive = true
+        buyButton.addConstraint(NSLayoutConstraint(item: buyButton,
+                                                   attribute: .width,
+                                                   relatedBy: .equal,
+                                                   toItem: buyButton,
+                                                   attribute: .height,
+                                                   multiplier: 6.2,
+                                                   constant: 0))
     }
     
     func setupViewsAndLabels() {
@@ -94,33 +149,31 @@ extension PremiumViewController: MainViewProtocol {
          titleStackView,
          titleLogo,
          titleText,
-         tableStackView,
          tableView,
          priceLabel,
          priceDescLabel,
          buyButton].forEach({
             $0.translatesAutoresizingMaskIntoConstraints = false
-        })
+         })
+        
+        [titleText,
+         priceLabel,
+         priceDescLabel,
+         buyButton.titleLabel].forEach({ $0?.adjustsFontSizeToFitWidth = true })
         
         mainStackView.alignment = .center
         mainStackView.axis = .vertical
-        mainStackView.spacing = 5
-        
-        titleStackView.alignment = .center
-        titleStackView.axis = .horizontal
-        titleStackView.spacing = 10
-        
-        tableStackView.alignment = .center
-        tableStackView.axis = .vertical
-        tableStackView.spacing = 32
-        tableStackView.setCustomSpacing(16, after: tableView)
-        tableStackView.setCustomSpacing(4, after: priceLabel)
+        mainStackView.spacing = 16
+        mainStackView.setCustomSpacing(4, after: priceLabel)
+        mainStackView.setCustomSpacing(32, after: priceDescLabel)
         
         titleStackView.alignment = .center
         titleStackView.axis = .horizontal
         titleStackView.spacing = 10
         
         closeButton.setImage(UIImage(named: "closeButton"), for: .normal)
+        closeButton.contentHorizontalAlignment = .fill
+        closeButton.contentVerticalAlignment = .fill
         closeButton.addTarget(self, action: #selector(closeController), for: .touchUpInside)
         
         titleLogo.image = UIImage(named: "crownIcon")
@@ -140,11 +193,12 @@ extension PremiumViewController: MainViewProtocol {
         priceDescLabel.textAlignment = .center
         priceDescLabel.font = UIFont.systemFont(ofSize: 14, weight: .light)
         
+        buyButton.layoutIfNeeded()
         buyButton.setTitle("Получить Premium", for: .normal)
         buyButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         buyButton.setTitleColor(UIColor.CustomColor.purple, for: .normal)
         buyButton.backgroundColor = .white
-        buyButton.layer.cornerRadius = 25
+        buyButton.layer.cornerRadius = buyButton.frame.height / 2
         buyButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
     }
     

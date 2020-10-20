@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BC2C33C92536D6E00092D884 /* MainViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2C33C82536D6E00092D884 /* MainViewProtocol.swift */; };
+		BC2C33C92536D6E00092D884 /* GeneralSetupProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2C33C82536D6E00092D884 /* GeneralSetupProtocol.swift */; };
 		BC2C33CF2536D83F0092D884 /* @objc PremiumViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2C33CE2536D83F0092D884 /* @objc PremiumViewControllerExtension.swift */; };
 		BC2C33E02536D98D0092D884 /* PremiumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2C33DF2536D98D0092D884 /* PremiumModel.swift */; };
 		BC3C7C772532F56B00209C51 /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3C7C762532F56B00209C51 /* OnboardViewController.swift */; };
 		BC3DBC3D2530DFFF0007BDF2 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3DBC3C2530DFFF0007BDF2 /* UIColor.swift */; };
+		BC413CCA253893F7002CDD19 /* PetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC413CC9253893F7002CDD19 /* PetViewController.swift */; };
+		BC413CCE25389494002CDD19 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC413CCD25389494002CDD19 /* LocationViewController.swift */; };
+		BC413CD1253894D1002CDD19 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC413CD0253894D1002CDD19 /* ProfileViewController.swift */; };
+		BC413CD42538A97F002CDD19 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC413CD32538A97F002CDD19 /* CustomTabBarController.swift */; };
 		BC4851182534E4F100B874D4 /* PremiumViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4851172534E4F100B874D4 /* PremiumViewControllerCell.swift */; };
 		BC48511B2534E51500B874D4 /* PremiumViewControllerDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC48511A2534E51500B874D4 /* PremiumViewControllerDelegate + DataSource.swift */; };
 		BC7073252534A6F600B2979F /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073242534A6F600B2979F /* UIButton.swift */; };
@@ -29,14 +33,19 @@
 		BCB610072530C82400C4FD2F /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB610062530C82400C4FD2F /* AuthorizationViewController.swift */; };
 		BCB6100C2530C82700C4FD2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCB6100B2530C82700C4FD2F /* Assets.xcassets */; };
 		BCB6100F2530C82700C4FD2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCB6100D2530C82700C4FD2F /* LaunchScreen.storyboard */; };
+		BCDD33362536F03B008E6545 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDD33352536F03B008E6545 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BC2C33C82536D6E00092D884 /* MainViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewProtocol.swift; sourceTree = "<group>"; };
+		BC2C33C82536D6E00092D884 /* GeneralSetupProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSetupProtocol.swift; sourceTree = "<group>"; };
 		BC2C33CE2536D83F0092D884 /* @objc PremiumViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "@objc PremiumViewControllerExtension.swift"; sourceTree = "<group>"; };
 		BC2C33DF2536D98D0092D884 /* PremiumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumModel.swift; sourceTree = "<group>"; };
 		BC3C7C762532F56B00209C51 /* OnboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
 		BC3DBC3C2530DFFF0007BDF2 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		BC413CC9253893F7002CDD19 /* PetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetViewController.swift; sourceTree = "<group>"; };
+		BC413CCD25389494002CDD19 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		BC413CD0253894D1002CDD19 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		BC413CD32538A97F002CDD19 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		BC4851172534E4F100B874D4 /* PremiumViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumViewControllerCell.swift; sourceTree = "<group>"; };
 		BC48511A2534E51500B874D4 /* PremiumViewControllerDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PremiumViewControllerDelegate + DataSource.swift"; sourceTree = "<group>"; };
 		BC7073242534A6F600B2979F /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
@@ -56,6 +65,7 @@
 		BCB6100B2530C82700C4FD2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BCB6100E2530C82700C4FD2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BCB610102530C82700C4FD2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "MyPets/Assets + LS + Info.plist/Info.plist"; sourceTree = SOURCE_ROOT; };
+		BCDD33352536F03B008E6545 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +82,7 @@
 		BC2C33C72536D6BE0092D884 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				BC2C33C82536D6E00092D884 /* MainViewProtocol.swift */,
+				BC2C33C82536D6E00092D884 /* GeneralSetupProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -171,6 +181,38 @@
 			name = Extension;
 			sourceTree = "<group>";
 		};
+		BC413CC6253893B1002CDD19 /* PetViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BC413CC9253893F7002CDD19 /* PetViewController.swift */,
+			);
+			path = PetViewController;
+			sourceTree = "<group>";
+		};
+		BC413CC7253893C3002CDD19 /* LocationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BC413CCD25389494002CDD19 /* LocationViewController.swift */,
+			);
+			path = LocationViewController;
+			sourceTree = "<group>";
+		};
+		BC413CC8253893D2002CDD19 /* ProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BC413CD0253894D1002CDD19 /* ProfileViewController.swift */,
+			);
+			path = ProfileViewController;
+			sourceTree = "<group>";
+		};
+		BC413CD62538ABBB002CDD19 /* CustomTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				BC413CD32538A97F002CDD19 /* CustomTabBarController.swift */,
+			);
+			path = CustomTabBarController;
+			sourceTree = "<group>";
+		};
 		BC70732C2534AE9400B2979F /* PremiumController */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +240,7 @@
 				BC9357F825336DDE00C6C390 /* Storyboard.storyboard */,
 				BC3DBC3F2530E0040007BDF2 /* Extension */,
 				BC2C33C72536D6BE0092D884 /* Protocol */,
+				BC413CD62538ABBB002CDD19 /* CustomTabBarController */,
 				BCB610012530C82400C4FD2F /* MyPets */,
 				BCB610002530C82400C4FD2F /* Products */,
 			);
@@ -214,9 +257,13 @@
 		BCB610012530C82400C4FD2F /* MyPets */ = {
 			isa = PBXGroup;
 			children = (
-				BC3C7C752532F54700209C51 /* OnboardViewController */,
 				BC70732C2534AE9400B2979F /* PremiumController */,
+				BC3C7C752532F54700209C51 /* OnboardViewController */,
 				BCB6101D2530CB3800C4FD2F /* AuthorizationViewController */,
+				BCDD33312536F011008E6545 /* MainViewController */,
+				BC413CC6253893B1002CDD19 /* PetViewController */,
+				BC413CC7253893C3002CDD19 /* LocationViewController */,
+				BC413CC8253893D2002CDD19 /* ProfileViewController */,
 				BCB6101A2530C97600C4FD2F /* App + Scene */,
 				BCB610182530C87800C4FD2F /* Assets + LS + Info.plist */,
 			);
@@ -249,6 +296,14 @@
 				BCB404242532F5FE00993A5C /* @objc AuthorizationViewControllerExtension.swift */,
 			);
 			path = AuthorizationViewController;
+			sourceTree = "<group>";
+		};
+		BCDD33312536F011008E6545 /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BCDD33352536F03B008E6545 /* MainViewController.swift */,
+			);
+			path = MainViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,11 +376,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC2C33C92536D6E00092D884 /* MainViewProtocol.swift in Sources */,
+				BC2C33C92536D6E00092D884 /* GeneralSetupProtocol.swift in Sources */,
 				BC7073322534BA3800B2979F /* UIView.swift in Sources */,
+				BC413CD42538A97F002CDD19 /* CustomTabBarController.swift in Sources */,
 				BCB610072530C82400C4FD2F /* AuthorizationViewController.swift in Sources */,
 				BC48511B2534E51500B874D4 /* PremiumViewControllerDelegate + DataSource.swift in Sources */,
 				BC7073252534A6F600B2979F /* UIButton.swift in Sources */,
+				BC413CCE25389494002CDD19 /* LocationViewController.swift in Sources */,
 				BC3DBC3D2530DFFF0007BDF2 /* UIColor.swift in Sources */,
 				BC9357F425335DFA00C6C390 /* OnboardViewCell.swift in Sources */,
 				BCB404252532F5FE00993A5C /* @objc AuthorizationViewControllerExtension.swift in Sources */,
@@ -334,12 +391,15 @@
 				BC70732E2534AEC800B2979F /* PremiumViewController.swift in Sources */,
 				BC3C7C772532F56B00209C51 /* OnboardViewController.swift in Sources */,
 				BC2C33CF2536D83F0092D884 /* @objc PremiumViewControllerExtension.swift in Sources */,
+				BC413CCA253893F7002CDD19 /* PetViewController.swift in Sources */,
+				BC413CD1253894D1002CDD19 /* ProfileViewController.swift in Sources */,
 				BC7073282534A9B600B2979F /* Canvas.swift in Sources */,
 				BC2C33E02536D98D0092D884 /* PremiumModel.swift in Sources */,
 				BCB610032530C82400C4FD2F /* AppDelegate.swift in Sources */,
 				BC9357F125335D3100C6C390 /* OnboardViewControllerDelegate + DataSource.swift in Sources */,
 				BC935822253395F800C6C390 /* OnboardModel.swift in Sources */,
 				BCB610052530C82400C4FD2F /* SceneDelegate.swift in Sources */,
+				BCDD33362536F03B008E6545 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
