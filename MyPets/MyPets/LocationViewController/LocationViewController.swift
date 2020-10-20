@@ -6,71 +6,33 @@
 //
 
 import UIKit
+import MapKit
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-class LocationViewController: UIViewController, YMKUserLocationObjectListener {
-    func onObjectAdded(with view: YMKUserLocationView) {
-        
-    }
-    
-    func onObjectRemoved(with view: YMKUserLocationView) {
-        
-    }
-    
-    func onObjectUpdated(with view: YMKUserLocationView, event: YMKObjectEvent) {
-        
-    }
-    
+class LocationViewController: UIViewController {
     private let backgroundView = UIImageView()
     //    private let collectionView: UICollectionView = {
     //        let cv = UICollectionView()
     //
     //        return cv
     //    }()
-    let mapView = YMKMapView()
     
-=======
-class LocationViewController: UIViewController {
->>>>>>> parent of 9d0f8b3... Update
-=======
-class LocationViewController: UIViewController {
->>>>>>> parent of 9d0f8b3... Update
+    let locationManager = CLLocationManager()
+    let mapView = MKMapView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.backgroundColor = .white
         
         view.backgroundColor = .white
-<<<<<<< HEAD
-<<<<<<< HEAD
+        
+        locationManager.delegate = self
         
         setup()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-//        userLocation()
-//        mapView.mapWindow.map.move(
-//            with: YMKCameraPosition(target: YMKPoint(latitude: 55.751574,
-//                                                     longitude: 37.573856),
-//                                    zoom: 15,
-//                                    azimuth: 0,
-//                                    tilt: 0),
-//            animationType: YMKAnimation(type: YMKAnimationType.smooth,
-//                                        duration: 5))
-
-        mapView.mapWindow.map.isRotateGesturesEnabled = false
-        mapView.mapWindow.map.move(with:
-            YMKCameraPosition(target: YMKPoint(latitude: 0, longitude: 0), zoom: 14, azimuth: 0, tilt: 0))
-        
-        let scale = UIScreen.main.scale
-        let mapKit = YMKMapKit.sharedInstance()
-        let userLocationLayer = mapKit.createUserLocationLayer(with: mapView.mapWindow)
-
-        userLocationLayer.setVisibleWithOn(true)
-        userLocationLayer.isHeadingEnabled = true
-        userLocationLayer.setAnchorWithAnchorNormal(
-            CGPoint(x: 0.5 * mapView.frame.size.width * scale, y: 0.5 * mapView.frame.size.height * scale),
-            anchorCourse: CGPoint(x: 0.5 * mapView.frame.size.width * scale, y: 0.83 * mapView.frame.size.height * scale))
-        //userLocationLayer.setObjectListenerWith(self)
+        fetchLocation()
     }
 }
 
@@ -86,7 +48,7 @@ extension LocationViewController: GeneralSetupProtocol {
         
         mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         mapView.bottomAnchor.constraint(equalTo: backgroundView.topAnchor,
-                                        constant: 10).isActive = true
+                                        constant: 7.5).isActive = true
         mapView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         mapView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         
@@ -109,12 +71,9 @@ extension LocationViewController: GeneralSetupProtocol {
         backgroundView.layer.shadowRadius = 5
         
         mapView.translatesAutoresizingMaskIntoConstraints = false
+        mapView.showsUserLocation = true
     }
     
     func presentController() {
-=======
->>>>>>> parent of 9d0f8b3... Update
-=======
->>>>>>> parent of 9d0f8b3... Update
     }
 }
