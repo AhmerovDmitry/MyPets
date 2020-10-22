@@ -58,7 +58,7 @@ class OnboardViewController: UIViewController, GeneralSetupProtocol {
         [pageControl, doneButton].forEach({ mainStackView.addArrangedSubview($0) })
         
         mainStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor,
-                                               constant: 142).isActive = true
+                                               constant: 150).isActive = true
         mainStackView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         mainStackView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         

@@ -98,7 +98,7 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
         mainStackView.setCustomSpacing(8, after: titleText)
         mainStackView.setCustomSpacing(16, after: descText)
         
-        mainImage.image = UIImage(named: "onboardImage_1")
+        mainImage.image = UIImage(named: "IconPet")
         mainImage.contentMode = .scaleAspectFit
         
         titleText.text = "Добавьте питомца"
