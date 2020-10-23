@@ -15,7 +15,7 @@ class OnboardViewController: UIViewController, GeneralSetupProtocol {
         OnboardModel(image: "onboardImage_4", text: "Советы и рекомендации по уходу за питомцем")
     ]
     private let mainStackView = UIStackView()
-    lazy var pageControl = UIPageControl()
+    let pageControl = UIPageControl()
     let doneButton = UIButton(type: .system)
     let closeButton = UIButton(type: .system)
     let collectionView: UICollectionView = {
@@ -58,18 +58,9 @@ class OnboardViewController: UIViewController, GeneralSetupProtocol {
         [pageControl, doneButton].forEach({ mainStackView.addArrangedSubview($0) })
         
         mainStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor,
-                                               constant: 150).isActive = true
+                                               constant: 142).isActive = true
         mainStackView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         mainStackView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        
-        pageControl.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        pageControl.addConstraint(NSLayoutConstraint(item: pageControl,
-                                                     attribute: .width,
-                                                     relatedBy: .equal,
-                                                     toItem: pageControl,
-                                                     attribute: .height,
-                                                     multiplier: 6.25,
-                                                     constant: 0))
         
         doneButton.leftAnchor.constraint(equalTo: collectionView.leftAnchor,
                                          constant: 32).isActive = true
@@ -101,8 +92,7 @@ class OnboardViewController: UIViewController, GeneralSetupProtocol {
         
         mainStackView.axis = .vertical
         mainStackView.alignment = .center
-        mainStackView.spacing = 16
-        mainStackView.setCustomSpacing(32, after: pageControl)
+        mainStackView.spacing = 32
         
         pageControl.currentPage = 0
         pageControl.numberOfPages = models.count

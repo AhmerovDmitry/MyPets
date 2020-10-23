@@ -41,13 +41,12 @@ extension OnboardViewCell: GeneralSetupProtocol {
          textLabel].forEach({ mainStackView.addArrangedSubview($0) })
         
         mainStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor,
-                                               constant: -80).isActive = true
+                                               constant: -77.5).isActive = true
         mainStackView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
         mainStackView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         
-        imageView.heightAnchor.constraint(lessThanOrEqualToConstant: 282).isActive = true
-        imageView.leftAnchor.constraint(equalTo: mainStackView.leftAnchor).isActive = true
-        imageView.rightAnchor.constraint(equalTo: mainStackView.rightAnchor).isActive = true
+        imageView.heightAnchor.constraint(lessThanOrEqualToConstant: 254).isActive = true
+        imageView.widthAnchor.constraint(lessThanOrEqualToConstant: 381).isActive = true
         imageView.addConstraint(NSLayoutConstraint(item: imageView,
                                                    attribute: .width,
                                                    relatedBy: .equal,
@@ -55,9 +54,6 @@ extension OnboardViewCell: GeneralSetupProtocol {
                                                    attribute: .height,
                                                    multiplier: 1.5,
                                                    constant: 0))
-        
-        //textLabel.widthAnchor.constraint(equalToConstant: 263).isActive = true
-        //textLabel.heightAnchor.constraint(equalToConstant: 47).isActive = true
         
         textLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 263).isActive = true
         textLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 47).isActive = true
