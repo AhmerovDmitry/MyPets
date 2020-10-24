@@ -5,7 +5,7 @@
 //  Created by Дмитрий Ахмеров on 11.10.2020.
 //
 
-import Foundation
+import UIKit
 
 struct OnboardModel {
     let image: String

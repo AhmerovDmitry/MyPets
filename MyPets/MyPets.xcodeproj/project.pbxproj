@@ -18,6 +18,7 @@
 		BC413CD42538A97F002CDD19 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC413CD32538A97F002CDD19 /* CustomTabBarController.swift */; };
 		BC4851182534E4F100B874D4 /* PremiumViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4851172534E4F100B874D4 /* PremiumViewControllerCell.swift */; };
 		BC48511B2534E51500B874D4 /* PremiumViewControllerDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC48511A2534E51500B874D4 /* PremiumViewControllerDelegate + DataSource.swift */; };
+		BC4D76CD25442AAA0037EA8D /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4D76CC25442AAA0037EA8D /* LocationModel.swift */; };
 		BC7073252534A6F600B2979F /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073242534A6F600B2979F /* UIButton.swift */; };
 		BC7073282534A9B600B2979F /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073272534A9B600B2979F /* Canvas.swift */; };
 		BC70732E2534AEC800B2979F /* PremiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70732D2534AEC800B2979F /* PremiumViewController.swift */; };
@@ -51,6 +52,7 @@
 		BC413CD32538A97F002CDD19 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		BC4851172534E4F100B874D4 /* PremiumViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumViewControllerCell.swift; sourceTree = "<group>"; };
 		BC48511A2534E51500B874D4 /* PremiumViewControllerDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PremiumViewControllerDelegate + DataSource.swift"; sourceTree = "<group>"; };
+		BC4D76CC25442AAA0037EA8D /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		BC7073242534A6F600B2979F /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		BC7073272534A9B600B2979F /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
 		BC70732D2534AEC800B2979F /* PremiumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumViewController.swift; sourceTree = "<group>"; };
@@ -198,10 +200,11 @@
 		BC413CC7253893C3002CDD19 /* LocationViewController */ = {
 			isa = PBXGroup;
 			children = (
-				BC413CCD25389494002CDD19 /* LocationViewController.swift */,
-				BC73964C25435F9900A89858 /* LocationViewCell.swift */,
-				BC7396492542084D00A89858 /* LocationViewDelegate + DataSource.swift */,
-				BCDBF527253F887E00BCBBFB /* Map Settings.swift */,
+				BC4D76C425442A250037EA8D /* UIViewController */,
+				BC4D76C625442A2E0037EA8D /* UICollectionViewCell */,
+				BC4D76C825442A380037EA8D /* Delegate + DataSource */,
+				BC4D76CA25442A450037EA8D /* Map Settings */,
+				BC4D76CF25442AB70037EA8D /* Model */,
 			);
 			path = LocationViewController;
 			sourceTree = "<group>";
@@ -220,6 +223,46 @@
 				BC413CD32538A97F002CDD19 /* CustomTabBarController.swift */,
 			);
 			path = CustomTabBarController;
+			sourceTree = "<group>";
+		};
+		BC4D76C425442A250037EA8D /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BC413CCD25389494002CDD19 /* LocationViewController.swift */,
+			);
+			path = UIViewController;
+			sourceTree = "<group>";
+		};
+		BC4D76C625442A2E0037EA8D /* UICollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				BC73964C25435F9900A89858 /* LocationViewCell.swift */,
+			);
+			path = UICollectionViewCell;
+			sourceTree = "<group>";
+		};
+		BC4D76C825442A380037EA8D /* Delegate + DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				BC7396492542084D00A89858 /* LocationViewDelegate + DataSource.swift */,
+			);
+			path = "Delegate + DataSource";
+			sourceTree = "<group>";
+		};
+		BC4D76CA25442A450037EA8D /* Map Settings */ = {
+			isa = PBXGroup;
+			children = (
+				BCDBF527253F887E00BCBBFB /* Map Settings.swift */,
+			);
+			path = "Map Settings";
+			sourceTree = "<group>";
+		};
+		BC4D76CF25442AB70037EA8D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BC4D76CC25442AAA0037EA8D /* LocationModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		BC70732C2534AE9400B2979F /* PremiumController */ = {
@@ -397,6 +440,7 @@
 				BC9357F425335DFA00C6C390 /* OnboardViewCell.swift in Sources */,
 				BCB404252532F5FE00993A5C /* @objc AuthorizationViewControllerExtension.swift in Sources */,
 				BC4851182534E4F100B874D4 /* PremiumViewControllerCell.swift in Sources */,
+				BC4D76CD25442AAA0037EA8D /* LocationModel.swift in Sources */,
 				BCA5B27B2533A29B00A7B15B /* @objc OnboardViewControllerExtension.swift in Sources */,
 				BC73964D25435F9900A89858 /* LocationViewCell.swift in Sources */,
 				BC73964A2542084D00A89858 /* LocationViewDelegate + DataSource.swift in Sources */,

@@ -9,10 +9,21 @@ import UIKit
 import MapKit
 
 class LocationViewController: UIViewController {
+    let models = [
+        LocationModel(text: "Bce"),
+        LocationModel(text: "Зоомагазины"),
+        LocationModel(text: "Клиники"),
+        LocationModel(text: "Парки"),
+        LocationModel(text: "Кафе и рестораны"),
+        LocationModel(text: "Площадки для собак"),
+        LocationModel(text: "Отели для животных"),
+        LocationModel(text: "Приюты")
+    ]
     let backgroundView = UIView()
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 8
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .white
         cv.showsHorizontalScrollIndicator = false
@@ -34,19 +45,12 @@ class LocationViewController: UIViewController {
         collectionView.dataSource = self
         
         backgroundView.addSubview(collectionView)
-        collectionView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 10).isActive = true
-        collectionView.leftAnchor.constraint(equalTo: backgroundView.leftAnchor, constant: 10).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -10).isActive = true
-        collectionView.rightAnchor.constraint(equalTo: backgroundView.rightAnchor, constant: -10).isActive = true
+        collectionView.topAnchor.constraint(equalTo: backgroundView.topAnchor).isActive = true
+        collectionView.leftAnchor.constraint(equalTo: backgroundView.leftAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor).isActive = true
+        collectionView.rightAnchor.constraint(equalTo: backgroundView.rightAnchor).isActive = true
         
         setup()
-        
-        //        view.addSubview(collectionView)
-        //        collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
-        //        collectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
-        //        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
-        //        collectionView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -73,7 +77,7 @@ extension LocationViewController: GeneralSetupProtocol {
         
         backgroundView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         backgroundView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        backgroundView.heightAnchor.constraint(equalToConstant: (tabBarController?.tabBar.bounds.height)!).isActive = true
+        backgroundView.heightAnchor.constraint(equalToConstant: (tabBarController?.tabBar.bounds.height)! + 20).isActive = true
         backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor,
                                                constant: -(tabBarController?.tabBar.bounds.height)!).isActive = true
     }
