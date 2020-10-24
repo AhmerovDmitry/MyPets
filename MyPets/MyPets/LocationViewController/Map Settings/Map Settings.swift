@@ -22,7 +22,6 @@ extension LocationViewController {
                       urlForSystemWay: "App-Prefs:root=LOCATION_SERVICES")
         }
     }
-    
     //MARK: - CLLocationManager authorization status
     func checkAuthorization() {
         switch CLLocationManager.authorizationStatus() {
@@ -48,7 +47,6 @@ extension LocationViewController {
             print("Default status")
         }
     }
-    
     //MARK: - Settings for UIAlertController
     func showAlert(title: String, message: String?, urlForSystemWay url: String?) {
         guard let url = url else { return }
@@ -64,7 +62,7 @@ extension LocationViewController {
         
         present(alert, animated: true, completion: nil)
     }
-    
+    //MARK: - Show user location
     func showUserLocation() {
         guard let userLocation = locationManager.location?.coordinate else { return }
         let viewRegion = MKCoordinateRegion(center: userLocation,
