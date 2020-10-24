@@ -31,16 +31,14 @@ class LocationViewController: UIViewController {
         
         return cv
     }()
-    
-    let locationManager = CLLocationManager()
+
     let mapView = MKMapView()
+    lazy var locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = .white
         
-        locationManager.delegate = self
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -69,7 +67,7 @@ extension LocationViewController: GeneralSetupProtocol {
         view.addSubview(mapView)
         view.addSubview(backgroundView)
         
-        mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        mapView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         mapView.bottomAnchor.constraint(equalTo: backgroundView.topAnchor,
                                         constant: 7.5).isActive = true
         mapView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -97,7 +95,7 @@ extension LocationViewController: GeneralSetupProtocol {
         backgroundView.layer.shadowOpacity = 0.7
         backgroundView.layer.shadowRadius = 5
         
-        mapView.showsUserLocation = true
+        mapView.overrideUserInterfaceStyle = .light
     }
     
     func presentController() {
