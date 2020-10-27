@@ -7,7 +7,7 @@
 
 import UIKit
 import MapKit
-import YandexMapKit
+import YandexMapsMobile
 
 class LocationViewController: UIViewController {
     //MARK: - Model
@@ -36,6 +36,11 @@ class LocationViewController: UIViewController {
     }()
     //MARK: - Alert controller
     let alertController = UIAlertController()
+    //MARK: - Search locations properties
+    var searchResponseImage = UIImage()
+    var searchResponseText = String()
+    var searchManager: YMKSearchManager?
+    var searchSession: YMKSearchSession?
     //MARK: - Locations preperties
     var firstUserLocation = true
     var firstShown = true

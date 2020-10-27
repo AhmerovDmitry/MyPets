@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import YandexMapKit
+import YandexMapsMobile
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 

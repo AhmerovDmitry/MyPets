@@ -7,7 +7,7 @@
 
 import UIKit
 import MapKit
-import YandexMapKit
+import YandexMapsMobile
 
 extension LocationViewController: CLLocationManagerDelegate, YMKMapCameraListener {
     //MARK: - Fetch user location
@@ -51,6 +51,8 @@ extension LocationViewController: CLLocationManagerDelegate, YMKMapCameraListene
             userLocationLayer.setVisibleWithOn(true)
             userLocationLayer.isHeadingEnabled = false
             
+            searchManager = YMKSearch.sharedInstance().createSearchManager(with: .combined)
+            
             mapView.mapWindow.map.isRotateGesturesEnabled = false
             mapView.mapWindow.map.addCameraListener(with: self)
         }
@@ -61,7 +63,48 @@ extension LocationViewController: CLLocationManagerDelegate, YMKMapCameraListene
                                 longitude: locations.last!.coordinate.longitude)
     }
     
-    func onCameraPositionChanged(with map: YMKMap, cameraPosition: YMKCameraPosition, cameraUpdateSource: YMKCameraUpdateSource, finished: Bool) {
-        userLocationLayer.resetAnchor()
+    func onCameraPositionChanged(with map: YMKMap, cameraPosition: YMKCameraPosition, cameraUpdateReason: YMKCameraUpdateReason, finished: Bool) {
+        if finished {
+            userLocationLayer.resetAnchor()
+            let responseHandler = {(searchResponse: YMKSearchResponse?, error: Error?) -> Void in
+                if let response = searchResponse {
+                    self.onSearchResponse(response)
+                } else {
+                    self.onSearchError(error!)
+                }
+            }
+            
+            searchSession = searchManager!.submit(
+                withText: searchResponseText,
+                geometry: YMKVisibleRegionUtils.toPolygon(with: map.visibleRegion),
+                searchOptions: YMKSearchOptions(),
+                responseHandler: responseHandler)
+        }
+    }
+    
+    func onSearchResponse(_ response: YMKSearchResponse) {
+        let mapObjects = mapView.mapWindow.map.mapObjects
+        mapObjects.clear()
+        for searchResult in response.collection.children {
+            if let point = searchResult.obj?.geometry.first?.point {
+                let placemark = mapObjects.addPlacemark(with: point)
+                placemark.setIconWith(searchResponseImage)
+            }
+        }
+    }
+    
+    func onSearchError(_ error: Error) {
+        let searchError = (error as NSError).userInfo[YRTUnderlyingErrorKey] as! YRTError
+        var errorMessage = "Unknown error"
+        if searchError.isKind(of: YRTNetworkError.self) {
+            errorMessage = "Network error"
+        } else if searchError.isKind(of: YRTRemoteError.self) {
+            errorMessage = "Remote server error"
+        }
+        
+        let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
     }
 }
