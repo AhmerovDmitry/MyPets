@@ -9,8 +9,6 @@ import UIKit
 import YandexMapKit
 
 extension LocationViewController {
-    var searchManager: YMKSearchManager?
-    var searchSession: YMKSearchSession?
     
     
 }

@@ -10,6 +10,7 @@ import MapKit
 import YandexMapKit
 
 class LocationViewController: UIViewController {
+    //MARK: - Model
     let models = [
         LocationModel(text: "Bce"),
         LocationModel(text: "Зоомагазины"),
@@ -20,6 +21,7 @@ class LocationViewController: UIViewController {
         LocationModel(text: "Отели для животных"),
         LocationModel(text: "Приюты")
     ]
+    //MARK: - All properties
     let backgroundView = UIView()
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -32,7 +34,9 @@ class LocationViewController: UIViewController {
         
         return cv
     }()
+    //MARK: - Alert controller
     let alertController = UIAlertController()
+    //MARK: - Locations preperties
     var firstUserLocation = true
     var firstShown = true
     let nativeLocationManager = CLLocationManager()
@@ -52,7 +56,7 @@ class LocationViewController: UIViewController {
             }
         }
     }
-    
+    //MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -68,7 +72,7 @@ class LocationViewController: UIViewController {
         
         setup()
     }
-    
+    //MARK: - viewDidAppear
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         fetchLocation()
