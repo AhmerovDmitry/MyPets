@@ -53,7 +53,7 @@ class LocationViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        fetchLocation()
+//        fetchLocation()
     }
 }
 
@@ -86,6 +86,10 @@ extension LocationViewController: GeneralSetupProtocol {
          mapView].forEach({
             $0.translatesAutoresizingMaskIntoConstraints = false
          })
+//        [collectionView,
+//         backgroundView].forEach({
+//            $0.translatesAutoresizingMaskIntoConstraints = false
+//         })
         
         backgroundView.backgroundColor = .white
         backgroundView.layer.cornerRadius = 10

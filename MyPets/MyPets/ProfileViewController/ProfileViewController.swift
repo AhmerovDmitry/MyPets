@@ -10,17 +10,23 @@ import YandexMapKit
 import MapKit
 
 class ProfileViewController: UIViewController {
+    private var firstUserLocation = true
+    private var firstShown = true
+    private let nativeLocationManager = CLLocationManager()
+    private var userLocationLayer: YMKUserLocationLayer!
     private let mapView = YMKMapView()
-    private var nativeLocationManager = CLLocationManager()
     private var locationManager: YMKLocationManager!
     var userLocation: YMKPoint? {
         didSet {
-            guard userLocation != nil && userLocation?.latitude != 0 && userLocation?.longitude != 0 else { return }
-            
-            mapView.mapWindow.map.move(
-                with: YMKCameraPosition.init(target: userLocation!, zoom: 16, azimuth: 0, tilt: 0),
-                animationType: YMKAnimation(type: YMKAnimationType.smooth, duration: 1),
-                cameraCallback: nil)
+            if firstShown {
+                firstShown = false
+                guard userLocation != nil && userLocation?.latitude != 0 && userLocation?.longitude != 0 else { return }
+                
+                mapView.mapWindow.map.move(
+                    with: YMKCameraPosition.init(target: userLocation!, zoom: 16, azimuth: 0, tilt: 0),
+                    animationType: YMKAnimation(type: YMKAnimationType.smooth, duration: 2.5),
+                    cameraCallback: nil)
+            }
         }
     }
     
@@ -37,7 +43,7 @@ class ProfileViewController: UIViewController {
             constant: -(tabBarController?.tabBar.bounds.height)!
         ).isActive = true
         mapView.translatesAutoresizingMaskIntoConstraints = false
-        mapView.mapWindow.map.isRotateGesturesEnabled = false
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -46,7 +52,7 @@ class ProfileViewController: UIViewController {
     }
 }
 
-extension ProfileViewController: CLLocationManagerDelegate, YMKUserLocationObjectListener {
+extension ProfileViewController: CLLocationManagerDelegate, YMKMapCameraListener {
     //MARK: - Fetch user location
     func fetchLocation() {
         if CLLocationManager.locationServicesEnabled() {
@@ -66,10 +72,8 @@ extension ProfileViewController: CLLocationManagerDelegate, YMKUserLocationObjec
         switch CLLocationManager.authorizationStatus() {
         case .authorizedAlways:
             setupLocationManager()
-            break
         case .authorizedWhenInUse:
             setupLocationManager()
-            break
         case .denied:
             showAlert(title: "Вы запретили использование местоположения",
                       message: "Хотите это изменить?",
@@ -84,12 +88,18 @@ extension ProfileViewController: CLLocationManagerDelegate, YMKUserLocationObjec
     }
     
     func setupLocationManager() {
-        locationManager = YMKMapKit.sharedInstance().createLocationManager()
-        
-        let mapKit = YMKMapKit.sharedInstance()
-        let userLocationLayer = mapKit.createUserLocationLayer(with: mapView.mapWindow)
-        userLocationLayer.setVisibleWithOn(true)
-        userLocationLayer.isHeadingEnabled = false
+        if firstUserLocation {
+            firstUserLocation = false
+            locationManager = YMKMapKit.sharedInstance().createLocationManager()
+            
+            let mapKit = YMKMapKit.sharedInstance()
+            userLocationLayer = mapKit.createUserLocationLayer(with: mapView.mapWindow)
+            userLocationLayer.setVisibleWithOn(true)
+            userLocationLayer.isHeadingEnabled = false
+            
+            mapView.mapWindow.map.isRotateGesturesEnabled = false
+            mapView.mapWindow.map.addCameraListener(with: self)
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -97,9 +107,7 @@ extension ProfileViewController: CLLocationManagerDelegate, YMKUserLocationObjec
                                 longitude: locations.last!.coordinate.longitude)
     }
     
-    func onObjectAdded(with view: YMKUserLocationView) {}
-    
-    func onObjectRemoved(with view: YMKUserLocationView) {}
-    
-    func onObjectUpdated(with view: YMKUserLocationView, event: YMKObjectEvent) {}
+    func onCameraPositionChanged(with map: YMKMap, cameraPosition: YMKCameraPosition, cameraUpdateSource: YMKCameraUpdateSource, finished: Bool) {
+        userLocationLayer.resetAnchor()
+    }
 }
