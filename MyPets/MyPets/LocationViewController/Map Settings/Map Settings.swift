@@ -7,80 +7,61 @@
 
 import UIKit
 import MapKit
+import YandexMapKit
 
-extension LocationViewController {
+extension LocationViewController: CLLocationManagerDelegate, YMKMapCameraListener {
     //MARK: - Fetch user location
     func fetchLocation() {
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            
-            checkAuthorization()
-        } else {
-            showAlert(title: "Выключена служба геолокации",
-                      message: "Включить?",
-                      urlForSystemWay: "App-Prefs:root=LOCATION_SERVICES")
-        }
+            if CLLocationManager.locationServicesEnabled() {
+                nativeLocationManager.delegate = self
+                nativeLocationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+                nativeLocationManager.startUpdatingLocation()
+                checkAuthorization()
+            } else {
+                alertController.showAlert(title: "Выключена служба геолокации",
+                                          message: "Включить?",
+                                          urlForSystemWay: "App-Prefs:root=LOCATION_SERVICES")
+            }
     }
     //MARK: - CLLocationManager authorization status
     func checkAuthorization() {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedAlways:
-            mapView.showsUserLocation = true
-            locationManager.startUpdatingLocation()
-            showUserLocation()
-            break
+            setupLocationManager()
         case .authorizedWhenInUse:
-            mapView.showsUserLocation = true
-            locationManager.startUpdatingLocation()
-            showUserLocation()
-            break
+            setupLocationManager()
         case .denied:
-            showAlert(title: "Вы запретили использование местоположения",
-                      message: "Хотите это изменить?",
-                      urlForSystemWay: UIApplication.openSettingsURLString)
+            alertController.showAlert(title: "Вы запретили использование местоположения",
+                                      message: "Хотите это изменить?",
+                                      urlForSystemWay: UIApplication.openSettingsURLString)
         case .restricted:
             break
         case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
+            nativeLocationManager.requestWhenInUseAuthorization()
         default:
             print("Default status")
         }
     }
-    //MARK: - Settings for UIAlertController
-    func showAlert(title: String, message: String?, urlForSystemWay url: String?) {
-        guard let url = url else { return }
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let settingsAction = UIAlertAction(title: "Настройки", style: .default) { (alert) in
-            if let url = URL(string: url) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            }
+    func setupLocationManager() {
+        if firstUserLocation {
+            firstUserLocation = false
+            
+            let mapKit = YMKMapKit.sharedInstance()
+            userLocationLayer = mapKit.createUserLocationLayer(with: mapView.mapWindow)
+            userLocationLayer.setVisibleWithOn(true)
+            userLocationLayer.isHeadingEnabled = false
+            
+            mapView.mapWindow.map.isRotateGesturesEnabled = false
+            mapView.mapWindow.map.addCameraListener(with: self)
         }
-        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
-        alert.addAction(cancelAction)
-        alert.addAction(settingsAction)
-        
-        present(alert, animated: true, completion: nil)
     }
-    //MARK: - Show user location
-    func showUserLocation() {
-        guard let userLocation = locationManager.location?.coordinate else { return }
-        let viewRegion = MKCoordinateRegion(center: userLocation,
-                                            latitudinalMeters: 2000,
-                                            longitudinalMeters: 2000)
-        mapView.setRegion(viewRegion, animated: true)
-    }
-}
-//MARK: - CLLocationManagerDelegate
-extension LocationViewController: CLLocationManagerDelegate {
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        userLocation = YMKPoint(latitude: locations.last!.coordinate.latitude,
+                                longitude: locations.last!.coordinate.longitude)
     }
     
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        checkAuthorization()
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("error:: \(error.localizedDescription)")
+    func onCameraPositionChanged(with map: YMKMap, cameraPosition: YMKCameraPosition, cameraUpdateSource: YMKCameraUpdateSource, finished: Bool) {
+        userLocationLayer.resetAnchor()
     }
 }

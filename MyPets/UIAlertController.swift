@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension ProfileViewController {
+extension UIAlertController {
     //MARK: - Settings for UIAlertController
     func showAlert(title: String, message: String?, urlForSystemWay url: String?) {
         guard let url = url else { return }

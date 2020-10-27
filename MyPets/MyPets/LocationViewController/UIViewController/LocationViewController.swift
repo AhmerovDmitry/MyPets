@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import YandexMapKit
 
 class LocationViewController: UIViewController {
     let models = [
@@ -31,9 +32,26 @@ class LocationViewController: UIViewController {
         
         return cv
     }()
-
-    let mapView = MKMapView()
-    lazy var locationManager = CLLocationManager()
+    let alertController = UIAlertController()
+    var firstUserLocation = true
+    var firstShown = true
+    let nativeLocationManager = CLLocationManager()
+    var userLocationLayer: YMKUserLocationLayer!
+    let mapView = YMKMapView()
+    var locationManager: YMKLocationManager!
+    var userLocation: YMKPoint? {
+        didSet {
+            if firstShown {
+                firstShown = false
+                guard userLocation != nil && userLocation?.latitude != 0 && userLocation?.longitude != 0 else { return }
+                
+                mapView.mapWindow.map.move(
+                    with: YMKCameraPosition.init(target: userLocation!, zoom: 16, azimuth: 0, tilt: 0),
+                    animationType: YMKAnimation(type: YMKAnimationType.smooth, duration: 2.5),
+                    cameraCallback: nil)
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +71,7 @@ class LocationViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        fetchLocation()
+        fetchLocation()
     }
 }
 
@@ -86,10 +104,6 @@ extension LocationViewController: GeneralSetupProtocol {
          mapView].forEach({
             $0.translatesAutoresizingMaskIntoConstraints = false
          })
-//        [collectionView,
-//         backgroundView].forEach({
-//            $0.translatesAutoresizingMaskIntoConstraints = false
-//         })
         
         backgroundView.backgroundColor = .white
         backgroundView.layer.cornerRadius = 10
@@ -98,8 +112,6 @@ extension LocationViewController: GeneralSetupProtocol {
         backgroundView.layer.shadowOffset = CGSize(width: 0, height: 0)
         backgroundView.layer.shadowOpacity = 0.7
         backgroundView.layer.shadowRadius = 5
-        
-        mapView.overrideUserInterfaceStyle = .light
     }
     
     func presentController() {
