@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, GeneralSetupProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -16,5 +16,20 @@ class ProfileViewController: UIViewController {
         navigationItem.title = "Профиль"
         
         view.backgroundColor = .white
+        setup()
+    }
+    
+    func setup() {
+        setupConstraint()
+        setupViewsAndLabels()
+    }
+    
+    func setupConstraint() {
+    }
+    
+    func setupViewsAndLabels() {
+    }
+    
+    func presentController() {
     }
 }

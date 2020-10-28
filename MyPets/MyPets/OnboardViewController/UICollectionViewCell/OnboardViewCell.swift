@@ -21,10 +21,7 @@ class OnboardViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupConstraint()
-        setupViewsAndLabels()
-        
-        imageView.image = UIImage(named: "onboardImage_1")
+        setup()
     }
     
     required init?(coder: NSCoder) {
@@ -33,22 +30,40 @@ class OnboardViewCell: UICollectionViewCell {
 }
 
 extension OnboardViewCell: GeneralSetupProtocol {
+    func setup() {
+        setupConstraint()
+        setupViewsAndLabels()
+    }
+    
     func setupConstraint() {
         contentView.addSubview(mainStackView)
         [imageView,
          textLabel].forEach({ mainStackView.addArrangedSubview($0) })
         
-        mainStackView.bottomAnchor.constraint(equalTo: contentView.centerYAnchor,
-                                              constant: 89).isActive = true
-        mainStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        mainStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor,
+                                               constant: -77.5).isActive = true
+        mainStackView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        mainStackView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         
-        imageView.leftAnchor.constraint(equalTo: mainStackView.leftAnchor,
-                                        constant: 0).isActive = true
-        imageView.rightAnchor.constraint(equalTo: mainStackView.rightAnchor,
-                                         constant: 0).isActive = true
+        imageView.heightAnchor.constraint(lessThanOrEqualToConstant: 254).isActive = true
+        imageView.widthAnchor.constraint(lessThanOrEqualToConstant: 381).isActive = true
+        imageView.addConstraint(NSLayoutConstraint(item: imageView,
+                                                   attribute: .width,
+                                                   relatedBy: .equal,
+                                                   toItem: imageView,
+                                                   attribute: .height,
+                                                   multiplier: 1.5,
+                                                   constant: 0))
         
-        textLabel.widthAnchor.constraint(equalToConstant: 263).isActive = true
-        textLabel.heightAnchor.constraint(equalToConstant: 47).isActive = true
+        textLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 263).isActive = true
+        textLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 47).isActive = true
+        textLabel.addConstraint(NSLayoutConstraint(item: textLabel,
+                                                   attribute: .width,
+                                                   relatedBy: .equal,
+                                                   toItem: textLabel,
+                                                   attribute: .height,
+                                                   multiplier: 5.5,
+                                                   constant: 0))
     }
     
     func setupViewsAndLabels() {

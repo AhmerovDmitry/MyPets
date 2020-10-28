@@ -1,20 +1,16 @@
 PODS:
-  - YandexMapKit (3.5.0):
-    - YandexRuntime (= 3.5.0)
-  - YandexRuntime (3.5.0)
+  - YandexMapsMobile (4.0.0-full)
 
 DEPENDENCIES:
-  - YandexMapKit (= 3.5)
+  - YandexMapsMobile (= 4.0.0-full)
 
 SPEC REPOS:
   trunk:
-    - YandexMapKit
-    - YandexRuntime
+    - YandexMapsMobile
 
 SPEC CHECKSUMS:
-  YandexMapKit: ecd4b78de34a35df63d066ac299e6fd0fe46d1ba
-  YandexRuntime: 2d55244d06267106cf9b00c25a1e63f72a73b6fd
+  YandexMapsMobile: 0f3d8c92fad685dc33d07f83eed4eb0166089743
 
-PODFILE CHECKSUM: 6aac2e3c38734719b91a87d319ea8230bdbfd949
+PODFILE CHECKSUM: 9f184fc6600fefd4f2374ccb36314a5bbd701ca0
 
 COCOAPODS: 1.9.3
