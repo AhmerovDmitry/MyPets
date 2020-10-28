@@ -12,7 +12,7 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
     private let mainImage = UIImageView()
     private let titleText = UILabel()
     private let descText = UILabel()
-    private let addButton = UIButton()
+    private let addButton = UIButton(type: .system)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,8 +118,6 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
         addButton.tintColor = .white
         addButton.layer.cornerRadius = addButton.frame.height / 2
         addButton.titleLabel?.adjustsFontSizeToFitWidth = true
-    }
-    
-    func presentController() {
+        addButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
     }
 }

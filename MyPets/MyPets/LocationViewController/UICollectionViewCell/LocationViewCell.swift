@@ -21,7 +21,9 @@ class LocationViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        
+        setupConstraint()
+        setupViewsAndLabels()
     }
     
     required init?(coder: NSCoder) {
@@ -31,11 +33,7 @@ class LocationViewCell: UICollectionViewCell {
 }
 
 extension LocationViewCell: GeneralSetupProtocol {
-    func setup() {
-        setupConstraint()
-        setupViewsAndLabels()
-    }
-    
+
     func setupConstraint() {
         contentView.addSubview(valueButton)
         valueButton.topAnchor.constraint(equalTo: contentView.topAnchor,
