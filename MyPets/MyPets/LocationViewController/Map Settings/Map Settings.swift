@@ -88,7 +88,7 @@ extension LocationViewController: CLLocationManagerDelegate, YMKMapCameraListene
         for searchResult in response.collection.children {
             if let point = searchResult.obj?.geometry.first?.point {
                 let placemark = mapObjects.addPlacemark(with: point)
-                placemark.setIconWith(searchResponseImage)
+                placemark.setIconWith(UIImage(named: "petIcon")!)
             }
         }
     }

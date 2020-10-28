@@ -8,5 +8,6 @@
 import UIKit
 
 struct LocationModel {
-    let text: String
+    let buttonTitle: String
+    let searchText: String
 }

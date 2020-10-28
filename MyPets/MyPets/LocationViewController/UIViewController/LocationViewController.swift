@@ -12,15 +12,24 @@ import YandexMapsMobile
 class LocationViewController: UIViewController {
     //MARK: - Model
     let models = [
-        LocationModel(text: "Bce"),
-        LocationModel(text: "Зоомагазины"),
-        LocationModel(text: "Клиники"),
-        LocationModel(text: "Парки"),
-        LocationModel(text: "Кафе и рестораны"),
-        LocationModel(text: "Площадки для собак"),
-        LocationModel(text: "Отели для животных"),
-        LocationModel(text: "Приюты")
+        LocationModel(buttonTitle: "Bce",
+                      searchText: ""),
+        LocationModel(buttonTitle: "Зоомагазины",
+                      searchText: "зоомагазин"),
+        LocationModel(buttonTitle: "Клиники",
+                      searchText: "ветеринарная клиника"),
+        LocationModel(buttonTitle: "Парки",
+                      searchText: "парк"),
+        LocationModel(buttonTitle: "Кафе и рестораны",
+                      searchText: "кафе"),
+        LocationModel(buttonTitle: "Площадки для собак",
+                      searchText: "площадка для собак"),
+        LocationModel(buttonTitle: "Отели для животных",
+                      searchText: "гостиница для животных"),
+        LocationModel(buttonTitle: "Приюты",
+                      searchText: "приют для животных")
     ]
+    
     //MARK: - All properties
     let backgroundView = UIView()
     private let collectionView: UICollectionView = {
@@ -34,13 +43,16 @@ class LocationViewController: UIViewController {
         
         return cv
     }()
+    
     //MARK: - Alert controller
     let alertController = UIAlertController()
+    
     //MARK: - Search locations properties
     var searchResponseImage = UIImage()
     var searchResponseText = String()
     var searchManager: YMKSearchManager?
     var searchSession: YMKSearchSession?
+    
     //MARK: - Locations preperties
     var firstUserLocation = true
     var firstShown = true
@@ -61,6 +73,7 @@ class LocationViewController: UIViewController {
             }
         }
     }
+    
     //MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +90,7 @@ class LocationViewController: UIViewController {
         
         setup()
     }
+    
     //MARK: - viewDidAppear
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
