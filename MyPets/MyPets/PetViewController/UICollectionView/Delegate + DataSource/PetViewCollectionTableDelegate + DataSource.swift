@@ -1,5 +1,5 @@
 //
-//  PetViewDelegate + DataSource.swift
+//  PetViewCollectionDelegate + DataSource.swift
 //  MyPets
 //
 //  Created by Дмитрий Ахмеров on 28.10.2020.
@@ -24,7 +24,7 @@ extension PetInfoViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellPetId", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCellPetId", for: indexPath) as! PetViewCollectionCell
         
         if indexPath.row == 0 {
             cell.layer.cornerRadius = 20

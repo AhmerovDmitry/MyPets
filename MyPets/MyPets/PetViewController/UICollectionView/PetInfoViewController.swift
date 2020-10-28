@@ -15,9 +15,9 @@ class PetInfoViewController: UIViewController {
         layout.minimumLineSpacing = 12
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .clear
-        cv.translatesAutoresizingMaskIntoConstraints = false
         cv.showsVerticalScrollIndicator = false
-        cv.register(PetViewCell.self, forCellWithReuseIdentifier: "cellPetId")
+        cv.translatesAutoresizingMaskIntoConstraints = false
+        cv.register(PetViewCollectionCell.self, forCellWithReuseIdentifier: "collectionCellPetId")
         
         return cv
     }()
