@@ -9,12 +9,14 @@ import UIKit
 
 class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
     let label = UILabel()
+    let titleLabel = UILabel()
     let tableView: UITableView = {
         let tv = UITableView(frame: .zero, style: .plain)
         tv.isScrollEnabled = false
         tv.translatesAutoresizingMaskIntoConstraints = false
-        tv.register(PremiumViewControllerCell.self, forCellReuseIdentifier: "tableCellPetId")
-        
+        tv.register(PetViewTableCell.self, forCellReuseIdentifier: "tableCellPetId")
+        tv.backgroundColor = .white
+
         return tv
     }()
     
@@ -35,6 +37,8 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
     func setupConstraint() {
         contentView.addSubview(label)
         contentView.addSubview(tableView)
+        contentView.addSubview(titleLabel)
+        
         label.topAnchor.constraint(equalTo: contentView.topAnchor,
                                    constant: 15).isActive = true
         label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,
@@ -44,15 +48,23 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
         label.rightAnchor.constraint(equalTo: contentView.rightAnchor,
                                      constant: -15).isActive = true
         
-        tableView.topAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        tableView.heightAnchor.constraint(lessThanOrEqualToConstant: 390).isActive = true
         tableView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,
+                                           constant: -20).isActive = true
+        titleLabel.bottomAnchor.constraint(equalTo: tableView.topAnchor).isActive = true
+        titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15).isActive = true
     }
     
     func setupViewsAndLabels() {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .white
+                
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.textColor = UIColor.CustomColor.dark
+        titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 25)
     }
     
     func presentController() {}

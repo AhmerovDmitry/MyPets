@@ -8,7 +8,7 @@
 import UIKit
 
 class PetViewTableCell: UITableViewCell, GeneralSetupProtocol {
-    let labelTable = UILabel()
+    let tableCellLable = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -22,20 +22,18 @@ class PetViewTableCell: UITableViewCell, GeneralSetupProtocol {
     }
     
     func setupConstraint() {
-        contentView.addSubview(labelTable)
-        labelTable.topAnchor.constraint(equalTo: contentView.topAnchor,
-                                   constant: 0).isActive = true
-        labelTable.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,
-                                      constant: 0).isActive = true
-        labelTable.leftAnchor.constraint(equalTo: contentView.leftAnchor,
-                                    constant: 0).isActive = true
-        labelTable.rightAnchor.constraint(equalTo: contentView.rightAnchor,
-                                     constant: 0).isActive = true
+        contentView.addSubview(tableCellLable)
+        tableCellLable.leftAnchor.constraint(equalTo: contentView.leftAnchor,
+                                         constant: 15).isActive = true
+        tableCellLable.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        tableCellLable.heightAnchor.constraint(equalToConstant: 45).isActive = true
     }
     
     func setupViewsAndLabels() {
-        labelTable.translatesAutoresizingMaskIntoConstraints = false
-        labelTable.backgroundColor = .yellow
+        tableCellLable.translatesAutoresizingMaskIntoConstraints = false
+        tableCellLable.backgroundColor = .white
+        tableCellLable.textColor = UIColor.CustomColor.dark
+        tableCellLable.font = UIFont.systemFont(ofSize: 15)
     }
     
     func presentController() {}

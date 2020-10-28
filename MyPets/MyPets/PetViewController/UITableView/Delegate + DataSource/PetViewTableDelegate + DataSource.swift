@@ -14,8 +14,15 @@ extension PetViewCollectionCell: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCellPetId") as! PetViewTableCell
-        cell.labelTable.text = "pets pets pets"
+        cell.tableCellLable.text = "pets pets pets"
+        cell.backgroundColor = .white
+        
+        cell.selectionStyle = .none
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.item)
     }
 }

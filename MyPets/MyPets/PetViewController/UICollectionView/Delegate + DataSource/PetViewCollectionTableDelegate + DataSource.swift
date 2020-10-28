@@ -28,8 +28,11 @@ extension PetInfoViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         if indexPath.row == 0 {
             cell.layer.cornerRadius = 20
+            cell.label.isHidden = true
         } else {
             cell.layer.cornerRadius = 10
+            cell.tableView.isHidden = true
+            cell.titleLabel.isHidden = true
         }
         
         let shadowPath = UIBezierPath(rect: cell.bounds).cgPath
@@ -41,6 +44,14 @@ extension PetInfoViewController: UICollectionViewDelegate, UICollectionViewDataS
         cell.layer.shadowRadius = 7.5
         cell.backgroundColor = .white
         
+        cell.titleLabel.text = "Лея"
+        
+        cell.isSelected = false
+        
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
     }
 }
