@@ -8,7 +8,8 @@
 import UIKit
 
 protocol PetViewControllerDelegate: class {
-    func showAlertController()
+    func showAlertController(title: String, message: String)
+    func fetchData() -> String?
 }
 
 protocol PetViewCollectionDelegate: class {

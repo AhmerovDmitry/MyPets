@@ -8,6 +8,7 @@
 import UIKit
 
 class PetInfoViewController: UIViewController {
+    var petInfo: String?
     private let titleImage = UIImageView()
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -64,18 +65,27 @@ extension PetInfoViewController: GeneralSetupProtocol {
     func presentController() {}
 }
 
-extension PetInfoViewController: PetViewControllerDelegate {
-    func showAlertController() {
-        let alert = UIAlertController(title: "title", message: "nil", preferredStyle: .alert)
-        alert.addTextField { (textField) in
+extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate {
+    func showAlertController(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addTextField { textField in
             textField.textAlignment = .left
             textField.textColor = UIColor.CustomColor.dark
             textField.placeholder = "Введите информацию о питомце"
+            textField.addTarget(self, action: #selector(self.textFieldDidChangeSelection(_:)), for: .editingChanged)
         }
         let saveButton = UIAlertAction(title: "Сохранить", style: .default)
         let cancelButton = UIAlertAction(title: "Отменить", style: .cancel)
         alert.addAction(saveButton)
         alert.addAction(cancelButton)
         present(alert, animated: true, completion: nil)
+    }
+    
+    @objc func textFieldDidChangeSelection(_ textField: UITextField) {
+        petInfo = textField.text
+    }
+    
+    func fetchData() -> String? {
+        return petInfo
     }
 }

@@ -10,15 +10,15 @@ import UIKit
 class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
     weak var delegate: PetViewControllerDelegate?
     var models = [
-        PetTableViewModel(title: "Кличка", info: "Кошка-матрешка-макарошка"),
-        PetTableViewModel(title: "Вид", info: "Кошка"),
-        PetTableViewModel(title: "Порода", info: "Бенгальская кошка"),
-        PetTableViewModel(title: "Дата рождения", info: "13.02.2018"),
-        PetTableViewModel(title: "Вес, кг", info: "3"),
-        PetTableViewModel(title: "Стерилизация"),
-        PetTableViewModel(title: "Окрас", info: "Розетка на золоте"),
-        PetTableViewModel(title: "Шерсть", info: "Короткая"),
-        PetTableViewModel(title: "Номер чипа")
+        PetTableViewModel(title: "Кличка", info: nil),
+        PetTableViewModel(title: "Вид", info: nil),
+        PetTableViewModel(title: "Порода", info: nil),
+        PetTableViewModel(title: "Дата рождения", info: nil),
+        PetTableViewModel(title: "Вес, кг", info: nil),
+        PetTableViewModel(title: "Стерилизация", info: nil),
+        PetTableViewModel(title: "Окрас", info: nil),
+        PetTableViewModel(title: "Шерсть", info: nil),
+        PetTableViewModel(title: "Номер чипа", info: nil)
     ]
     let label = UILabel()
     let titleLabel = UILabel()
@@ -80,13 +80,19 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
         titleLabel.textColor = UIColor.CustomColor.dark
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.font = UIFont.boldSystemFont(ofSize: 25)
-        titleLabel.text = models[0].info 
+        titleLabel.text = models[0].info
     }
     
     func presentController() {}
     
     func showAlertControllerOnScreen() {
-        self.delegate?.showAlertController()
+        self.delegate?.showAlertController(title: "Укажите информацию о питомце",
+                                           message: "Если вы не располагаете данной информацией, можете оставить поле ввода пустым")
+    }
+    
+    func appendModelsInfo() {
+        models[0].info = self.delegate?.fetchData()
+        tableView.reloadData()
     }
 }
 
