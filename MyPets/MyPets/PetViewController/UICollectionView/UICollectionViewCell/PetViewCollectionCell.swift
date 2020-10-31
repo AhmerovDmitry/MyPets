@@ -60,7 +60,7 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
         label.rightAnchor.constraint(equalTo: contentView.rightAnchor,
                                      constant: -15).isActive = true
         
-        tableView.heightAnchor.constraint(lessThanOrEqualToConstant: 400).isActive = true
+        tableView.heightAnchor.constraint(lessThanOrEqualToConstant: 404).isActive = true
         tableView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,
