@@ -8,7 +8,7 @@
 import UIKit
 
 class PetViewTableCell: UITableViewCell, GeneralSetupProtocol {
-    var controller: PetInfoViewController?
+    weak var delegate: PetViewCollectionDelegate?
     var tableCellLable = UILabel()
     let tableCellPlaceholder = UILabel()
     
@@ -17,8 +17,6 @@ class PetViewTableCell: UITableViewCell, GeneralSetupProtocol {
         
         setupConstraint()
         setupViewsAndLabels()
-        
-        controller?.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -30,7 +28,7 @@ class PetViewTableCell: UITableViewCell, GeneralSetupProtocol {
         contentView.addSubview(tableCellPlaceholder)
         
         tableCellLable.leftAnchor.constraint(equalTo: contentView.leftAnchor,
-                                         constant: 15).isActive = true
+                                             constant: 15).isActive = true
         tableCellLable.rightAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         tableCellLable.heightAnchor.constraint(equalToConstant: 45).isActive = true
         
@@ -57,26 +55,7 @@ class PetViewTableCell: UITableViewCell, GeneralSetupProtocol {
     
     func presentController() {}
     
-}
-
-extension PetViewTableCell: PetViewControllerDelegate {
-    func presentAlertController() {
-        print("Hello!")
-        let alert = UIAlertController(title: "hello", message: nil, preferredStyle: .alert)
-        var text: String?
-        alert.addTextField { (textField) in
-            textField.textAlignment = .left
-            textField.textColor = UIColor.CustomColor.dark
-            textField.placeholder = "Введите информацию о питомце"
-        }
-        let saveButton = UIAlertAction(title: "Сохранить", style: .default)
-        let cancelButton = UIAlertAction(title: "Отменить", style: .cancel, handler: nil)
-        
-        alert.addAction(saveButton)
-        alert.addAction(cancelButton)
-        
-        self.present(alert, animated: true, completion: nil)
+    func showAlertControllerAtIndexPath() {
+        self.delegate?.functionTransfer()
     }
-    
-    
 }

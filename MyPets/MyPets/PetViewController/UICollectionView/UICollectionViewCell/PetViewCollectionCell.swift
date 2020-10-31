@@ -8,6 +8,7 @@
 import UIKit
 
 class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
+    weak var delegate: PetViewControllerDelegate?
     var models = [
         PetTableViewModel(title: "Кличка", info: "Кошка-матрешка-макарошка"),
         PetTableViewModel(title: "Вид", info: "Кошка"),
@@ -27,7 +28,7 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.register(PetViewTableCell.self, forCellReuseIdentifier: "tableCellPetId")
         tv.backgroundColor = .white
-
+        
         return tv
     }()
     
@@ -63,7 +64,7 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
         tableView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,
-                                           constant: -20).isActive = true
+                                          constant: -20).isActive = true
         titleLabel.bottomAnchor.constraint(equalTo: tableView.topAnchor).isActive = true
         titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor,
                                          constant: 15).isActive = true
@@ -74,7 +75,7 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
     func setupViewsAndLabels() {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .white
-                
+        
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.textColor = UIColor.CustomColor.dark
         titleLabel.adjustsFontSizeToFitWidth = true
@@ -83,4 +84,15 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
     }
     
     func presentController() {}
+    
+    func showAlertControllerOnScreen() {
+        self.delegate?.showAlertController()
+    }
+}
+
+extension PetViewCollectionCell: PetViewCollectionDelegate {
+    func functionTransfer() {
+        showAlertControllerOnScreen()
+    }
+    
 }

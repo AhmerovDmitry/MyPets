@@ -8,7 +8,6 @@
 import UIKit
 
 class PetInfoViewController: UIViewController {
-    var delegate: PetViewControllerDelegate?
     private let titleImage = UIImageView()
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -28,7 +27,7 @@ class PetInfoViewController: UIViewController {
         navigationController?.navigationBar.backgroundColor = .clear
         
         view.backgroundColor = .white
-        
+                
         setupConstraint()
         setupViewsAndLabels()
     }
@@ -63,4 +62,20 @@ extension PetInfoViewController: GeneralSetupProtocol {
     }
     
     func presentController() {}
+}
+
+extension PetInfoViewController: PetViewControllerDelegate {
+    func showAlertController() {
+        let alert = UIAlertController(title: "title", message: "nil", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.textAlignment = .left
+            textField.textColor = UIColor.CustomColor.dark
+            textField.placeholder = "Введите информацию о питомце"
+        }
+        let saveButton = UIAlertAction(title: "Сохранить", style: .default)
+        let cancelButton = UIAlertAction(title: "Отменить", style: .cancel)
+        alert.addAction(saveButton)
+        alert.addAction(cancelButton)
+        present(alert, animated: true, completion: nil)
+    }
 }

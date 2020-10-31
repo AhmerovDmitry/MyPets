@@ -21,15 +21,14 @@ extension PetViewCollectionCell: UITableViewDelegate, UITableViewDataSource {
         cell.tableCellLable.text = models[indexPath.row].title
         cell.tableCellPlaceholder.text = (models[indexPath.row].info ?? "Указать информацию") + " ❯"
         cell.backgroundColor = .white
-        cell.selectionStyle = .none
         
+        cell.delegate = self
+                
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.item)
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCellPetId") as! PetViewTableCell
-        cell.presentAlertController()
-        
+        tableView.deselectRow(at: indexPath, animated: true)
+        showAlertControllerOnScreen()
     }
 }

@@ -8,5 +8,9 @@
 import UIKit
 
 protocol PetViewControllerDelegate: class {
-    func presentAlertController()
+    func showAlertController()
+}
+
+protocol PetViewCollectionDelegate: class {
+    func functionTransfer()
 }
