@@ -18,7 +18,7 @@ extension LocationViewController: CLLocationManagerDelegate, YMKMapCameraListene
                 nativeLocationManager.startUpdatingLocation()
                 checkAuthorization()
             } else {
-                alertController.showAlert(title: "Выключена служба геолокации",
+                alertController.showAlertForMap(title: "Выключена служба геолокации",
                                           message: "Включить?",
                                           urlForSystemWay: "App-Prefs:root=LOCATION_SERVICES")
             }
@@ -31,7 +31,7 @@ extension LocationViewController: CLLocationManagerDelegate, YMKMapCameraListene
         case .authorizedWhenInUse:
             setupLocationManager()
         case .denied:
-            alertController.showAlert(title: "Вы запретили использование местоположения",
+            alertController.showAlertForMap(title: "Вы запретили использование местоположения",
                                       message: "Хотите это изменить?",
                                       urlForSystemWay: UIApplication.openSettingsURLString)
         case .restricted:

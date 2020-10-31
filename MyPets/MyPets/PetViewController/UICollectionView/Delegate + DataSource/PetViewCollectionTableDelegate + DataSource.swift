@@ -8,7 +8,6 @@
 import UIKit
 
 extension PetInfoViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         switch indexPath.item {
@@ -43,8 +42,6 @@ extension PetInfoViewController: UICollectionViewDelegate, UICollectionViewDataS
         cell.layer.shadowPath = shadowPath
         cell.layer.shadowRadius = 7.5
         cell.backgroundColor = .white
-        
-        cell.titleLabel.text = "Лея"
         
         cell.isSelected = false
         

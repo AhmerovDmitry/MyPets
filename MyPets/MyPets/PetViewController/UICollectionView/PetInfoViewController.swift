@@ -8,6 +8,7 @@
 import UIKit
 
 class PetInfoViewController: UIViewController {
+    var delegate: PetViewControllerDelegate?
     private let titleImage = UIImageView()
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -61,9 +62,5 @@ extension PetInfoViewController: GeneralSetupProtocol {
         titleImage.image = UIImage(named: "titleImage")
     }
     
-    func presentController() {
-        
-    }
-    
-    
+    func presentController() {}
 }
