@@ -8,6 +8,7 @@
 import UIKit
 
 class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
+    public static let shared = PetViewCollectionCell()
     weak var delegate: PetViewControllerDelegate?
     var models = [
         PetTableViewModel(title: "Кличка", info: nil),
@@ -89,16 +90,10 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
         self.delegate?.showAlertController(title: "Укажите информацию о питомце",
                                            message: "Если вы не располагаете данной информацией, можете оставить поле ввода пустым")
     }
-    
-    func appendModelsInfo() {
-        models[0].info = self.delegate?.fetchData()
-        tableView.reloadData()
-    }
 }
 
 extension PetViewCollectionCell: PetViewCollectionDelegate {
     func functionTransfer() {
         showAlertControllerOnScreen()
     }
-    
 }

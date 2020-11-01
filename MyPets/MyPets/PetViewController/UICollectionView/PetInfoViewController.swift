@@ -8,6 +8,7 @@
 import UIKit
 
 class PetInfoViewController: UIViewController {
+    var controller: PetViewCollectionCell?
     var petInfo: String?
     private let titleImage = UIImageView()
     private let collectionView: UICollectionView = {
@@ -74,7 +75,11 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
             textField.placeholder = "Введите информацию о питомце"
             textField.addTarget(self, action: #selector(self.textFieldDidChangeSelection(_:)), for: .editingChanged)
         }
-        let saveButton = UIAlertAction(title: "Сохранить", style: .default)
+        let saveButton = UIAlertAction(title: "Сохранить", style: .default) { _ in
+            self.controller?.models[0].info = self.petInfo
+            self.controller?.titleLabel.text = self.controller?.models[0].info
+            self.controller?.tableView.reloadData()
+        }
         let cancelButton = UIAlertAction(title: "Отменить", style: .cancel)
         alert.addAction(saveButton)
         alert.addAction(cancelButton)
