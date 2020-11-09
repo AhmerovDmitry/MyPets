@@ -42,9 +42,7 @@ extension PetInfoViewController: UICollectionViewDelegate, UICollectionViewDataS
         cell.layer.shadowPath = shadowPath
         cell.layer.shadowRadius = 7.5
         cell.backgroundColor = .white
-        
         cell.isSelected = false
-        
         cell.delegate = self
         
         return cell

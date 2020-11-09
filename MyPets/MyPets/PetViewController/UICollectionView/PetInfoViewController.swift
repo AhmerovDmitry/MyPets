@@ -8,7 +8,6 @@
 import UIKit
 
 class PetInfoViewController: UIViewController {
-    var controller: PetViewCollectionCell?
     var petInfo: String?
     private let titleImage = UIImageView()
     private let collectionView: UICollectionView = {
@@ -67,7 +66,9 @@ extension PetInfoViewController: GeneralSetupProtocol {
 }
 
 extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate {
-    func showAlertController(title: String, message: String) {
+    func showAlertController(title: String,
+                             message: String,
+                             tableView: UITableView) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addTextField { textField in
             textField.textAlignment = .left
@@ -76,9 +77,8 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
             textField.addTarget(self, action: #selector(self.textFieldDidChangeSelection(_:)), for: .editingChanged)
         }
         let saveButton = UIAlertAction(title: "Сохранить", style: .default) { _ in
-            self.controller?.models[0].info = self.petInfo
-            self.controller?.titleLabel.text = self.controller?.models[0].info
-            self.controller?.tableView.reloadData()
+            
+            tableView.reloadData()
         }
         let cancelButton = UIAlertAction(title: "Отменить", style: .cancel)
         alert.addAction(saveButton)
@@ -88,9 +88,5 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
     
     @objc func textFieldDidChangeSelection(_ textField: UITextField) {
         petInfo = textField.text
-    }
-    
-    func fetchData() -> String? {
-        return petInfo
     }
 }

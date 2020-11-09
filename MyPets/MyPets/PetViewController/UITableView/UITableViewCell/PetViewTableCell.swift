@@ -8,7 +8,6 @@
 import UIKit
 
 class PetViewTableCell: UITableViewCell, GeneralSetupProtocol {
-    weak var delegate: PetViewCollectionDelegate?
     var tableCellLable = UILabel()
     let tableCellPlaceholder = UILabel()
     
@@ -54,8 +53,4 @@ class PetViewTableCell: UITableViewCell, GeneralSetupProtocol {
     }
     
     func presentController() {}
-    
-    func showAlertControllerAtIndexPath() {
-        self.delegate?.functionTransfer()
-    }
 }

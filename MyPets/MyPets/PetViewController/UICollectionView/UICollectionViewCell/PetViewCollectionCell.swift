@@ -8,7 +8,6 @@
 import UIKit
 
 class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
-    public static let shared = PetViewCollectionCell()
     weak var delegate: PetViewControllerDelegate?
     var models = [
         PetTableViewModel(title: "Кличка", info: nil),
@@ -81,19 +80,7 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
         titleLabel.textColor = UIColor.CustomColor.dark
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.font = UIFont.boldSystemFont(ofSize: 25)
-        titleLabel.text = models[0].info
     }
     
     func presentController() {}
-    
-    func showAlertControllerOnScreen() {
-        self.delegate?.showAlertController(title: "Укажите информацию о питомце",
-                                           message: "Если вы не располагаете данной информацией, можете оставить поле ввода пустым")
-    }
-}
-
-extension PetViewCollectionCell: PetViewCollectionDelegate {
-    func functionTransfer() {
-        showAlertControllerOnScreen()
-    }
 }

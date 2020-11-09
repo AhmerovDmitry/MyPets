@@ -8,10 +8,7 @@
 import UIKit
 
 protocol PetViewControllerDelegate: class {
-    func showAlertController(title: String, message: String)
-    func fetchData() -> String?
-}
-
-protocol PetViewCollectionDelegate: class {
-    func functionTransfer()
+    func showAlertController(title: String,
+                             message: String,
+                             tableView: UITableView)
 }
