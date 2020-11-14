@@ -10,5 +10,8 @@ import UIKit
 protocol PetViewControllerDelegate: class {
     func showAlertController(title: String,
                              message: String,
-                             tableView: UITableView)
+                             tableView: UITableView,
+                             indexPath: IndexPath,
+                             updateInformation: @escaping (IndexPath) -> ())
+    func petInfoForModel() -> String?
 }

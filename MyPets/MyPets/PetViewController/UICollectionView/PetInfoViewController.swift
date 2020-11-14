@@ -66,9 +66,15 @@ extension PetInfoViewController: GeneralSetupProtocol {
 }
 
 extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate {
+    func petInfoForModel() -> String? {
+        return petInfo
+    }
+    
     func showAlertController(title: String,
                              message: String,
-                             tableView: UITableView) {
+                             tableView: UITableView,
+                             indexPath: IndexPath,
+                             updateInformation: @escaping (IndexPath) -> ()) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addTextField { textField in
             textField.textAlignment = .left
@@ -77,6 +83,7 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
             textField.addTarget(self, action: #selector(self.textFieldDidChangeSelection(_:)), for: .editingChanged)
         }
         let saveButton = UIAlertAction(title: "Сохранить", style: .default) { _ in
+            updateInformation(indexPath)
             tableView.reloadData()
         }
         let cancelButton = UIAlertAction(title: "Отменить", style: .cancel)

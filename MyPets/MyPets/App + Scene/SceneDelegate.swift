@@ -25,6 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let onboardVC = OnboardViewController() //For start app with first (onboard) controller
         //let onboardVC = AuthorizationViewController()
         window.rootViewController = onboardVC
+        window.overrideUserInterfaceStyle = .light
         window.makeKeyAndVisible()
     }
 

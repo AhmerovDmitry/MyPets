@@ -33,62 +33,62 @@ extension PetViewCollectionCell: UITableViewDelegate, UITableViewDataSource {
         case 0:
             delegate?.showAlertController(title: "Укажите кличку питомца",
                                           message: messageText,
-                                          tableView: tableView)
-            
-            updatePetInfo(indexPath: indexPath)
+                                          tableView: tableView,
+                                          indexPath: indexPath,
+                                          updateInformation: updatePetInfo(indexPath:))
         case 1:
             delegate?.showAlertController(title: "Укажите вид питомца",
                                           message: messageText,
-                                          tableView: tableView)
-            
-            updatePetInfo(indexPath: indexPath)
+                                          tableView: tableView,
+                                          indexPath: indexPath,
+                                          updateInformation: updatePetInfo(indexPath:))
         case 2:
             delegate?.showAlertController(title: "Укажите породу питомца",
                                           message: messageText,
-                                          tableView: tableView)
-            
-            updatePetInfo(indexPath: indexPath)
+                                          tableView: tableView,
+                                          indexPath: indexPath,
+                                          updateInformation: updatePetInfo(indexPath:))
         case 3:
             delegate?.showAlertController(title: "Укажите дату рождения питомца",
                                           message: messageText,
-                                          tableView: tableView)
-            
-            updatePetInfo(indexPath: indexPath)
+                                          tableView: tableView,
+                                          indexPath: indexPath,
+                                          updateInformation: updatePetInfo(indexPath:))
         case 4:
             delegate?.showAlertController(title: "Укажите вес питомца",
                                           message: messageText,
-                                          tableView: tableView)
-            
-            updatePetInfo(indexPath: indexPath)
+                                          tableView: tableView,
+                                          indexPath: indexPath,
+                                          updateInformation: updatePetInfo(indexPath:))
         case 5:
             delegate?.showAlertController(title: "Укажите стерилизован ли питомец",
                                           message: messageText,
-                                          tableView: tableView)
-            
-            updatePetInfo(indexPath: indexPath)
+                                          tableView: tableView,
+                                          indexPath: indexPath,
+                                          updateInformation: updatePetInfo(indexPath:))
         case 6:
             delegate?.showAlertController(title: "Укажите окрас питомца",
                                           message: messageText,
-                                          tableView: tableView)
-            
-            updatePetInfo(indexPath: indexPath)
+                                          tableView: tableView,
+                                          indexPath: indexPath,
+                                          updateInformation: updatePetInfo(indexPath:))
         case 7:
             delegate?.showAlertController(title: "Укажите шерсть питомца",
                                           message: messageText,
-                                          tableView: tableView)
-            
-            updatePetInfo(indexPath: indexPath)
+                                          tableView: tableView,
+                                          indexPath: indexPath,
+                                          updateInformation: updatePetInfo(indexPath:))
         case 8:
             delegate?.showAlertController(title: "Укажите номер чипа питомца",
                                           message: messageText,
-                                          tableView: tableView)
-            
-            updatePetInfo(indexPath: indexPath)
+                                          tableView: tableView,
+                                          indexPath: indexPath,
+                                          updateInformation: updatePetInfo(indexPath:))
         default: break
         }
     }
-    
     func updatePetInfo(indexPath: IndexPath) {
-        models[indexPath.row].info = "Index path - \(indexPath.row)"
+        let petInformation = delegate?.petInfoForModel()
+        models[indexPath.row].info = petInformation
     }
 }
