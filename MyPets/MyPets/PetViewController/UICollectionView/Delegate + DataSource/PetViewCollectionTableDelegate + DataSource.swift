@@ -22,6 +22,8 @@ extension PetInfoViewController: UICollectionViewDelegate, UICollectionViewDataS
         6
     }
     
+    
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCellPetId", for: indexPath) as! PetViewCollectionCell
         

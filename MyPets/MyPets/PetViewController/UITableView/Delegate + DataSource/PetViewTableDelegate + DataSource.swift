@@ -27,44 +27,68 @@ extension PetViewCollectionCell: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let messageText = "Если вы не располагаете данной информацией, можете оставить поле ввода пустым"
         switch indexPath.row {
         case 0:
             delegate?.showAlertController(title: "Укажите кличку питомца",
-                                          message: "Если вы не располагаете данной информацией, можете оставить поле ввода пустым",
+                                          message: messageText,
                                           tableView: tableView)
+            
+            updatePetInfo(indexPath: indexPath)
         case 1:
             delegate?.showAlertController(title: "Укажите вид питомца",
-                                          message: "Если вы не располагаете данной информацией, можете оставить поле ввода пустым",
+                                          message: messageText,
                                           tableView: tableView)
+            
+            updatePetInfo(indexPath: indexPath)
         case 2:
             delegate?.showAlertController(title: "Укажите породу питомца",
-                                          message: "Если вы не располагаете данной информацией, можете оставить поле ввода пустым",
+                                          message: messageText,
                                           tableView: tableView)
+            
+            updatePetInfo(indexPath: indexPath)
         case 3:
             delegate?.showAlertController(title: "Укажите дату рождения питомца",
-                                          message: "Если вы не располагаете данной информацией, можете оставить поле ввода пустым",
+                                          message: messageText,
                                           tableView: tableView)
+            
+            updatePetInfo(indexPath: indexPath)
         case 4:
             delegate?.showAlertController(title: "Укажите вес питомца",
-                                          message: "Если вы не располагаете данной информацией, можете оставить поле ввода пустым",
+                                          message: messageText,
                                           tableView: tableView)
+            
+            updatePetInfo(indexPath: indexPath)
         case 5:
             delegate?.showAlertController(title: "Укажите стерилизован ли питомец",
-                                          message: "Если вы не располагаете данной информацией, можете оставить поле ввода пустым",
+                                          message: messageText,
                                           tableView: tableView)
+            
+            updatePetInfo(indexPath: indexPath)
         case 6:
             delegate?.showAlertController(title: "Укажите окрас питомца",
-                                          message: "Если вы не располагаете данной информацией, можете оставить поле ввода пустым",
+                                          message: messageText,
                                           tableView: tableView)
+            
+            updatePetInfo(indexPath: indexPath)
         case 7:
             delegate?.showAlertController(title: "Укажите шерсть питомца",
-                                          message: "Если вы не располагаете данной информацией, можете оставить поле ввода пустым",
+                                          message: messageText,
                                           tableView: tableView)
+            
+            updatePetInfo(indexPath: indexPath)
         case 8:
             delegate?.showAlertController(title: "Укажите номер чипа питомца",
-                                          message: "Если вы не располагаете данной информацией, можете оставить поле ввода пустым",
+                                          message: messageText,
                                           tableView: tableView)
+            
+            updatePetInfo(indexPath: indexPath)
         default: break
         }
+    }
+    
+    func updatePetInfo(indexPath: IndexPath) {
+        models[indexPath.row].info = "Index path - \(indexPath.row)"
     }
 }

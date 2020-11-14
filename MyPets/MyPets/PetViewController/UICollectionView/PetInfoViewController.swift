@@ -77,7 +77,6 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
             textField.addTarget(self, action: #selector(self.textFieldDidChangeSelection(_:)), for: .editingChanged)
         }
         let saveButton = UIAlertAction(title: "Сохранить", style: .default) { _ in
-            
             tableView.reloadData()
         }
         let cancelButton = UIAlertAction(title: "Отменить", style: .cancel)
