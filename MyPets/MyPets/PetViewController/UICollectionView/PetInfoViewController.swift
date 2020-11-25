@@ -8,6 +8,46 @@
 import UIKit
 
 class PetInfoViewController: UIViewController {
+    let backgroundView: UIView = {
+        let bg = UIView()
+        bg.isHidden = true
+        bg.translatesAutoresizingMaskIntoConstraints = false
+        bg.backgroundColor = UIColor.CustomColor.darkGray
+        bg.alpha = 0
+        
+        return bg
+    }()
+    
+    let picker: UIDatePicker = {
+        let localeId = Locale.preferredLanguages.first
+        let picker = UIDatePicker()
+        picker.isHidden = true
+        picker.locale = Locale(identifier: localeId!)
+        picker.date = Date()
+        picker.datePickerMode = .date
+        picker.alpha = 0
+        picker.layer.cornerRadius = 20
+        picker.layer.masksToBounds = true
+        picker.backgroundColor = UIColor.CustomColor.lightGray
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        
+        return picker
+    }()
+    let savePetButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.layoutIfNeeded()
+        button.isHidden = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Сохранить", for: .normal)
+        button.backgroundColor = UIColor.CustomColor.purple
+        button.tintColor = UIColor.CustomColor.lightGray
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        button.alpha = 0
+        button.layer.cornerRadius = 20
+        button.addTarget(self, action: #selector(saveData), for: .touchUpInside)
+        
+        return button
+    }()
     var petInfo: String?
     private let titleImage = UIImageView()
     private let collectionView: UICollectionView = {
@@ -53,6 +93,21 @@ extension PetInfoViewController: GeneralSetupProtocol {
         collectionView.rightAnchor.constraint(equalTo: view.rightAnchor,
                                               constant: 0).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        [backgroundView, picker, savePetButton].forEach { view.addSubview($0) }
+        
+        backgroundView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        backgroundView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        backgroundView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        
+        picker.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        picker.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        savePetButton.widthAnchor.constraint(equalTo: picker.widthAnchor).isActive = true
+        savePetButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        savePetButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        savePetButton.topAnchor.constraint(equalTo: picker.bottomAnchor, constant: 8).isActive = true
     }
     
     func setupViewsAndLabels() {
@@ -66,73 +121,89 @@ extension PetInfoViewController: GeneralSetupProtocol {
 
 extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate {
     func showDatePicker() {
-        let backgroundView: UIView = {
-            let bg = UIView()
-            bg.translatesAutoresizingMaskIntoConstraints = false
-            bg.backgroundColor = UIColor.CustomColor.darkGray
-            bg.alpha = 0
-            
-            return bg
-        }()
-        
-        let picker: UIDatePicker = {
-            let localeId = Locale.preferredLanguages.first
-            let picker = UIDatePicker()
-            picker.locale = Locale(identifier: localeId!)
-            picker.date = Date()
-            picker.datePickerMode = .date
-            picker.alpha = 0
-            picker.layer.cornerRadius = 20
-            picker.layer.masksToBounds = true
-            picker.backgroundColor = UIColor.CustomColor.lightGray
-            picker.translatesAutoresizingMaskIntoConstraints = false
-            
-            return picker
-        }()
-        let savePetButton: UIButton = {
-            let button = UIButton(type: .system)
-            button.translatesAutoresizingMaskIntoConstraints = false
-            button.setTitle("Сохранить", for: .normal)
-            //button.backgroundColor = UIColor.CustomColor.purple
-            button.backgroundColor = .clear
-            button.tintColor = .white
-            button.layer.cornerRadius = button.frame.height / 2
-            button.titleLabel?.adjustsFontSizeToFitWidth = true
-            button.alpha = 0
-            button.addTarget(self, action: #selector(saveData), for: .touchUpInside)
-            
-            return button
-        }()
-        
-        [backgroundView, picker, savePetButton].forEach { view.addSubview($0) }
-        
-        backgroundView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        backgroundView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        backgroundView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        
-        picker.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        picker.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        
-        savePetButton.leftAnchor.constraint(equalTo: view.leftAnchor,
-                                        constant: 32).isActive = true
-        savePetButton.rightAnchor.constraint(equalTo: view.rightAnchor,
-                                         constant: -32).isActive = true
-        savePetButton.topAnchor.constraint(equalTo: picker.bottomAnchor, constant: 8).isActive = true
-        savePetButton.addConstraint(NSLayoutConstraint(item: savePetButton,
-                                                   attribute: .width,
-                                                   relatedBy: .equal,
-                                                   toItem: savePetButton,
-                                                   attribute: .height,
-                                                   multiplier: 6,
-                                                   constant: 0))
-        
+//        let backgroundView: UIView = {
+//            let bg = UIView()
+//            bg.translatesAutoresizingMaskIntoConstraints = false
+//            bg.backgroundColor = UIColor.CustomColor.darkGray
+//            bg.alpha = 0
+//
+//            return bg
+//        }()
+//
+//        let picker: UIDatePicker = {
+//            let localeId = Locale.preferredLanguages.first
+//            let picker = UIDatePicker()
+//            picker.locale = Locale(identifier: localeId!)
+//            picker.date = Date()
+//            picker.datePickerMode = .date
+//            picker.alpha = 0
+//            picker.layer.cornerRadius = 20
+//            picker.layer.masksToBounds = true
+//            picker.backgroundColor = UIColor.CustomColor.lightGray
+//            picker.translatesAutoresizingMaskIntoConstraints = false
+//
+//            return picker
+//        }()
+//        let savePetButton: UIButton = {
+//            let button = UIButton(type: .system)
+//            button.translatesAutoresizingMaskIntoConstraints = false
+//            button.setTitle("Сохранить", for: .normal)
+//            //button.backgroundColor = UIColor.CustomColor.purple
+//            button.backgroundColor = .clear
+//            button.tintColor = .white
+//            button.layer.cornerRadius = button.frame.height / 2
+//            button.titleLabel?.adjustsFontSizeToFitWidth = true
+//            button.alpha = 0
+//            button.addTarget(self, action: #selector(saveData), for: .touchUpInside)
+//
+//            return button
+//        }()
+//
+//        //savePetButton.addTarget(self, action: #selector(saveData), for: .touchUpInside)
+//
+//        [backgroundView, picker, savePetButton].forEach { view.addSubview($0) }
+//
+//        backgroundView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+//        backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+//        backgroundView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+//        backgroundView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+//
+//        picker.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//        picker.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+//
+//        savePetButton.leftAnchor.constraint(equalTo: view.leftAnchor,
+//                                        constant: 32).isActive = true
+//        savePetButton.rightAnchor.constraint(equalTo: view.rightAnchor,
+//                                         constant: -32).isActive = true
+//        savePetButton.topAnchor.constraint(equalTo: picker.bottomAnchor, constant: 8).isActive = true
+//        savePetButton.addConstraint(NSLayoutConstraint(item: savePetButton,
+//                                                   attribute: .width,
+//                                                   relatedBy: .equal,
+//                                                   toItem: savePetButton,
+//                                                   attribute: .height,
+//                                                   multiplier: 6,
+//                                                   constant: 0))
+//
         UIView.animate(withDuration: 0.5) {
-            picker.alpha = 1
-            backgroundView.alpha = 0.5
-            savePetButton.alpha = 1
+            self.picker.isHidden = false
+            self.backgroundView.isHidden = false
+            self.savePetButton.isHidden = false
+            self.picker.alpha = 1
+            self.backgroundView.alpha = 0.5
+            self.savePetButton.alpha = 1
         }
-        
+    }
+    @objc func saveData() {
+        UIView.animate(withDuration: 0.5) {
+            self.picker.alpha = 0
+            self.backgroundView.alpha = 0
+            self.savePetButton.alpha = 0
+        } completion: { _ in
+            self.picker.isHidden = true
+            self.backgroundView.isHidden = true
+            self.savePetButton.isHidden = true
+        }
+
     }
     
     func petInfoForModel() -> String? {

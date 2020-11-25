@@ -27,6 +27,7 @@
 		BC7073282534A9B600B2979F /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073272534A9B600B2979F /* Canvas.swift */; };
 		BC70732E2534AEC800B2979F /* PremiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70732D2534AEC800B2979F /* PremiumViewController.swift */; };
 		BC7073322534BA3800B2979F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073312534BA3800B2979F /* UIView.swift */; };
+		BC730026256EAF720010F161 /* CustomUIDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC730025256EAF720010F161 /* CustomUIDatePicker.swift */; };
 		BC73964A2542084D00A89858 /* LocationViewDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7396492542084D00A89858 /* LocationViewDelegate + DataSource.swift */; };
 		BC73964D25435F9900A89858 /* LocationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC73964C25435F9900A89858 /* LocationViewCell.swift */; };
 		BC9357F125335D3100C6C390 /* OnboardViewControllerDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9357F025335D3100C6C390 /* OnboardViewControllerDelegate + DataSource.swift */; };
@@ -75,6 +76,7 @@
 		BC7073272534A9B600B2979F /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
 		BC70732D2534AEC800B2979F /* PremiumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumViewController.swift; sourceTree = "<group>"; };
 		BC7073312534BA3800B2979F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		BC730025256EAF720010F161 /* CustomUIDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIDatePicker.swift; sourceTree = "<group>"; };
 		BC7396492542084D00A89858 /* LocationViewDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationViewDelegate + DataSource.swift"; sourceTree = "<group>"; };
 		BC73964C25435F9900A89858 /* LocationViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewCell.swift; sourceTree = "<group>"; };
 		BC9357F025335D3100C6C390 /* OnboardViewControllerDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardViewControllerDelegate + DataSource.swift"; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 			isa = PBXGroup;
 			children = (
 				BC99B0262549A77C00050854 /* PetInfoViewController.swift */,
+				BC730025256EAF720010F161 /* CustomUIDatePicker.swift */,
 				BC99B01D2549A51F00050854 /* UICollectionViewCell */,
 				BC99B0182549A4ED00050854 /* Delegate + DataSource */,
 				BC99B0212549A54500050854 /* Model */,
@@ -609,6 +612,7 @@
 				BC9357F425335DFA00C6C390 /* OnboardViewCell.swift in Sources */,
 				BCB404252532F5FE00993A5C /* @objc AuthorizationViewControllerExtension.swift in Sources */,
 				BC4851182534E4F100B874D4 /* PremiumViewControllerCell.swift in Sources */,
+				BC730026256EAF720010F161 /* CustomUIDatePicker.swift in Sources */,
 				BC4D76CD25442AAA0037EA8D /* LocationModel.swift in Sources */,
 				BC18E519254DAA6C0014B7DF /* PetViewControllerDelegate.swift in Sources */,
 				BC99B0232549A55E00050854 /* PetModel.swift in Sources */,
