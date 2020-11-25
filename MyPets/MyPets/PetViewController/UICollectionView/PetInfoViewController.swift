@@ -36,8 +36,7 @@ class PetInfoViewController: UIViewController {
 
 extension PetInfoViewController: GeneralSetupProtocol {
     func setupConstraint() {
-        view.addSubview(titleImage)
-        view.addSubview(collectionView)
+        [titleImage, collectionView].forEach { view.addSubview($0) }
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -62,10 +61,80 @@ extension PetInfoViewController: GeneralSetupProtocol {
         titleImage.image = UIImage(named: "titleImage")
     }
     
-    func presentController() {}
+    @objc func presentController() {}
 }
 
 extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate {
+    func showDatePicker() {
+        let backgroundView: UIView = {
+            let bg = UIView()
+            bg.translatesAutoresizingMaskIntoConstraints = false
+            bg.backgroundColor = UIColor.CustomColor.darkGray
+            bg.alpha = 0
+            
+            return bg
+        }()
+        
+        let picker: UIDatePicker = {
+            let localeId = Locale.preferredLanguages.first
+            let picker = UIDatePicker()
+            picker.locale = Locale(identifier: localeId!)
+            picker.date = Date()
+            picker.datePickerMode = .date
+            picker.alpha = 0
+            picker.layer.cornerRadius = 20
+            picker.layer.masksToBounds = true
+            picker.backgroundColor = UIColor.CustomColor.lightGray
+            picker.translatesAutoresizingMaskIntoConstraints = false
+            
+            return picker
+        }()
+        let savePetButton: UIButton = {
+            let button = UIButton(type: .system)
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.setTitle("Сохранить", for: .normal)
+            //button.backgroundColor = UIColor.CustomColor.purple
+            button.backgroundColor = .clear
+            button.tintColor = .white
+            button.layer.cornerRadius = button.frame.height / 2
+            button.titleLabel?.adjustsFontSizeToFitWidth = true
+            button.alpha = 0
+            button.addTarget(self, action: #selector(saveData), for: .touchUpInside)
+            
+            return button
+        }()
+        
+        [backgroundView, picker, savePetButton].forEach { view.addSubview($0) }
+        
+        backgroundView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        backgroundView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        backgroundView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        
+        picker.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        picker.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        savePetButton.leftAnchor.constraint(equalTo: view.leftAnchor,
+                                        constant: 32).isActive = true
+        savePetButton.rightAnchor.constraint(equalTo: view.rightAnchor,
+                                         constant: -32).isActive = true
+        savePetButton.topAnchor.constraint(equalTo: picker.bottomAnchor, constant: 8).isActive = true
+        savePetButton.addConstraint(NSLayoutConstraint(item: savePetButton,
+                                                   attribute: .width,
+                                                   relatedBy: .equal,
+                                                   toItem: savePetButton,
+                                                   attribute: .height,
+                                                   multiplier: 6,
+                                                   constant: 0))
+        
+        UIView.animate(withDuration: 0.5) {
+            picker.alpha = 1
+            backgroundView.alpha = 0.5
+            savePetButton.alpha = 1
+        }
+        
+    }
+    
     func petInfoForModel() -> String? {
         return petInfo
     }

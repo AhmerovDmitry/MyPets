@@ -49,11 +49,7 @@ extension PetViewCollectionCell: UITableViewDelegate, UITableViewDataSource {
                                           indexPath: indexPath,
                                           updateInformation: updatePetInfo(indexPath:))
         case 3:
-            delegate?.showAlertController(title: "Укажите дату рождения питомца",
-                                          message: messageText,
-                                          tableView: tableView,
-                                          indexPath: indexPath,
-                                          updateInformation: updatePetInfo(indexPath:))
+            delegate?.showDatePicker()
         case 4:
             delegate?.showAlertController(title: "Укажите вес питомца",
                                           message: messageText,

@@ -13,5 +13,6 @@ protocol PetViewControllerDelegate: class {
                              tableView: UITableView,
                              indexPath: IndexPath,
                              updateInformation: @escaping (IndexPath) -> ())
+    func showDatePicker()
     func petInfoForModel() -> String?
 }
