@@ -137,8 +137,6 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
     }
     func showAlertController(title: String,
                              message: String,
-                             tableView: UITableView,
-                             indexPath: IndexPath,
                              updateInformation: @escaping (IndexPath) -> ()) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addTextField { textField in
@@ -148,8 +146,8 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
             textField.addTarget(self, action: #selector(self.textFieldDidChangeSelection(_:)), for: .editingChanged)
         }
         let saveButton = UIAlertAction(title: "Сохранить", style: .default) { _ in
-            updateInformation(indexPath)
-            tableView.reloadData()
+            updateInformation(self.indexPath)
+            self.tableView.reloadData()
             self.petInfo = nil
         }
         let cancelButton = UIAlertAction(title: "Отменить", style: .cancel)

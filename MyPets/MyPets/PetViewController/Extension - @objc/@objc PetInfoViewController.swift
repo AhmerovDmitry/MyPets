@@ -12,6 +12,11 @@ extension PetInfoViewController {
     func presentController() {}
     
     func saveData() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        self.petInfo = dateFormatter.string(from: self.picker.date)
+        self.tableView.reloadData()
+        
         UIView.animate(withDuration: 0.5) {
             self.picker.alpha = 0
             self.backgroundView.alpha = 0
@@ -20,10 +25,6 @@ extension PetInfoViewController {
             self.picker.isHidden = true
             self.backgroundView.isHidden = true
             self.savePetButton.isHidden = true
-//            let dateFormatter = DateFormatter()
-//            dateFormatter.dateFormat = "dd MMM yyyy"
-//            self.petInfo = dateFormatter.string(from: self.picker.date)
-//            self.tableView.reloadData()
         }
     }
     

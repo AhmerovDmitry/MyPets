@@ -21,6 +21,7 @@ extension PetViewCollectionCell: UITableViewDelegate, UITableViewDataSource {
         cell.tableCellLable.text = models[indexPath.row].title
         cell.tableCellPlaceholder.text = (models[indexPath.row].info ?? "Указать информацию") + " ❯"
         cell.backgroundColor = .white
+        
         titleLabel.text = models[0].info
         
         return cell
@@ -36,52 +37,36 @@ extension PetViewCollectionCell: UITableViewDelegate, UITableViewDataSource {
         case 0:
             delegate?.showAlertController(title: "Укажите кличку питомца",
                                           message: messageText,
-                                          tableView: tableView,
-                                          indexPath: indexPath,
                                           updateInformation: updatePetInfo(indexPath:))
         case 1:
-            delegate?.showAlertController(title: "Укажите вид питомца",
+            delegate?.showAlertController(title: "Укажите кличку питомца",
                                           message: messageText,
-                                          tableView: tableView,
-                                          indexPath: indexPath,
                                           updateInformation: updatePetInfo(indexPath:))
         case 2:
-            delegate?.showAlertController(title: "Укажите породу питомца",
+            delegate?.showAlertController(title: "Укажите кличку питомца",
                                           message: messageText,
-                                          tableView: tableView,
-                                          indexPath: indexPath,
                                           updateInformation: updatePetInfo(indexPath:))
         case 3:
             delegate?.showDatePicker(updateInformation: updatePetInfo(indexPath:))
         case 4:
-            delegate?.showAlertController(title: "Укажите вес питомца",
+            delegate?.showAlertController(title: "Укажите кличку питомца",
                                           message: messageText,
-                                          tableView: tableView,
-                                          indexPath: indexPath,
                                           updateInformation: updatePetInfo(indexPath:))
         case 5:
-            delegate?.showAlertController(title: "Укажите стерилизован ли питомец",
+            delegate?.showAlertController(title: "Укажите кличку питомца",
                                           message: messageText,
-                                          tableView: tableView,
-                                          indexPath: indexPath,
                                           updateInformation: updatePetInfo(indexPath:))
         case 6:
-            delegate?.showAlertController(title: "Укажите окрас питомца",
+            delegate?.showAlertController(title: "Укажите кличку питомца",
                                           message: messageText,
-                                          tableView: tableView,
-                                          indexPath: indexPath,
                                           updateInformation: updatePetInfo(indexPath:))
         case 7:
-            delegate?.showAlertController(title: "Укажите шерсть питомца",
+            delegate?.showAlertController(title: "Укажите кличку питомца",
                                           message: messageText,
-                                          tableView: tableView,
-                                          indexPath: indexPath,
                                           updateInformation: updatePetInfo(indexPath:))
         case 8:
-            delegate?.showAlertController(title: "Укажите номер чипа питомца",
+            delegate?.showAlertController(title: "Укажите кличку питомца",
                                           message: messageText,
-                                          tableView: tableView,
-                                          indexPath: indexPath,
                                           updateInformation: updatePetInfo(indexPath:))
         default: break
         }
