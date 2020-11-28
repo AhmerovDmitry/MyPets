@@ -18,7 +18,8 @@ class PremiumViewControllerCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setup()
+        setupConstraint()
+        setupViewsAndLabels()
     }
     
     required init?(coder: NSCoder) {
@@ -27,11 +28,6 @@ class PremiumViewControllerCell: UITableViewCell {
 }
 
 extension PremiumViewControllerCell: GeneralSetupProtocol {
-    func setup() {
-        setupConstraint()
-        setupViewsAndLabels()
-    }
-    
     func setupConstraint() {
         contentView.addSubview(premiumText)
         

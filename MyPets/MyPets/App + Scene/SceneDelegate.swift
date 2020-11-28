@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import YandexMapsMobile
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -16,12 +17,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        
+        // Метод для работы YandexMapKit
+        //YMKMapKit.setApiKey("b2814e1b-8466-4535-a360-ebe9382b8632")
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         self.window = window
-        let onboardVC = OnboardViewController() //For start app with first (onboard) controller
-        //let onboardVC = AuthorizationViewController()
+        //let onboardVC = OnboardViewController() //For start app with first (onboard) controller
+        let onboardVC = AuthorizationViewController()
         window.rootViewController = onboardVC
+        window.overrideUserInterfaceStyle = .light
         window.makeKeyAndVisible()
     }
 

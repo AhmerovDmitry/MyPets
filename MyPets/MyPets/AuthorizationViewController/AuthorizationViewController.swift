@@ -27,16 +27,13 @@ class AuthorizationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        setup()
+        
+        setupConstraint()
+        setupViewsAndLabels()
     }
 }
 
 extension AuthorizationViewController: GeneralSetupProtocol {
-    func setup() {
-        setupConstraint()
-        setupViewsAndLabels()
-    }
-    
     func setupConstraint() {
         //MARK: - Logo Constraints
         view.addSubview(mainStackView)

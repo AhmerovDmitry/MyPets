@@ -36,20 +36,18 @@ class PremiumViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
         
         tableView.delegate = self
         tableView.dataSource = self
-    }
-}
-
-extension PremiumViewController: GeneralSetupProtocol {
-    func setup() {
+        
         setupConstraint()
         setupViewsAndLabels()
         gradientSetup()
     }
-    
+
+}
+
+extension PremiumViewController: GeneralSetupProtocol {
     func setupConstraint() {
         [mainStackView,
          closeButton].forEach({ view.addSubview($0) })

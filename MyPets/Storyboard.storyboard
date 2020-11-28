@@ -10,36 +10,29 @@
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="TJD-3u-X8Q">
+        <scene sceneID="lBa-7o-A9T">
             <objects>
-                <viewController id="Ezp-gC-SSN" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="N0W-Pd-WG6">
+                <viewController id="8Kn-97-k5j" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sXy-bS-7An">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboardImage_4" translatesAutoresizingMaskIntoConstraints="NO" id="EXu-0x-vAq">
-                                <rect key="frame" x="0.0" y="140" width="320" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="oro-uz-yQo"/>
-                                </constraints>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="titleImage" translatesAutoresizingMaskIntoConstraints="NO" id="5wi-IU-XOV">
+                                <rect key="frame" x="40" y="176" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="Yf1-DP-BxB"/>
+                        <viewLayoutGuide key="safeArea" id="NIl-rp-0c9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Yf1-DP-BxB" firstAttribute="trailing" secondItem="EXu-0x-vAq" secondAttribute="trailing" id="chX-ad-Qo9"/>
-                            <constraint firstItem="EXu-0x-vAq" firstAttribute="centerY" secondItem="N0W-Pd-WG6" secondAttribute="centerY" id="m1d-Oe-ARZ"/>
-                            <constraint firstItem="EXu-0x-vAq" firstAttribute="leading" secondItem="Yf1-DP-BxB" secondAttribute="leading" id="tZ3-56-uUC"/>
-                        </constraints>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="m3F-OZ-Evd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Rj-4a-OTb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3579.375" y="128.75"/>
+            <point key="canvasLocation" x="-447" y="-27"/>
         </scene>
     </scenes>
     <resources>
-        <image name="onboardImage_4" width="375" height="276"/>
+        <image name="titleImage" width="375" height="262"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

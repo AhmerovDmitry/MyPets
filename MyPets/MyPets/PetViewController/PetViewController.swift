@@ -12,20 +12,17 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
     private let mainImage = UIImageView()
     private let titleText = UILabel()
     private let descText = UILabel()
-    private let addButton = UIButton()
+    private let addButton = UIButton(type: .system)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.backgroundColor = .white
-        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor : UIColor.black]
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor : UIColor.CustomColor.dark]
         navigationItem.title = "Питомцы"
         
         view.backgroundColor = .white
-        setup()
-    }
-    
-    func setup() {
+        
         setupConstraint()
         setupViewsAndLabels()
     }
@@ -98,7 +95,7 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
         mainStackView.setCustomSpacing(8, after: titleText)
         mainStackView.setCustomSpacing(16, after: descText)
         
-        mainImage.image = UIImage(named: "onboardImage_1")
+        mainImage.image = UIImage(named: "IconPet")
         mainImage.contentMode = .scaleAspectFit
         
         titleText.text = "Добавьте питомца"
@@ -121,8 +118,6 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
         addButton.tintColor = .white
         addButton.layer.cornerRadius = addButton.frame.height / 2
         addButton.titleLabel?.adjustsFontSizeToFitWidth = true
-    }
-    
-    func presentController() {
+        addButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
     }
 }
