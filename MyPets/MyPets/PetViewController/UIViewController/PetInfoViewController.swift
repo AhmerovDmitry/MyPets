@@ -8,6 +8,9 @@
 import UIKit
 
 class PetInfoViewController: UIViewController {
+    var tableView = UITableView()
+    var indexPath = IndexPath()
+    
     let backgroundView = UIView()
     let picker = UIDatePicker()
     let localeId = Locale.preferredLanguages.first
@@ -112,7 +115,13 @@ extension PetInfoViewController: GeneralSetupProtocol {
 }
 //MARK: - Delegate methods
 extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate {
-    func showDatePicker() {
+    func fetchTableInfo(tableView: UITableView,
+                        indexPath: IndexPath) {
+        self.tableView = tableView
+        self.indexPath = indexPath
+    }
+    
+    func showDatePicker(updateInformation: @escaping (IndexPath) -> ()) {
         UIView.animate(withDuration: 0.5) {
             self.picker.isHidden = false
             self.backgroundView.isHidden = false
@@ -121,6 +130,7 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
             self.backgroundView.alpha = 0.5
             self.savePetButton.alpha = 1
         }
+        updateInformation(indexPath)
     }
     func petInfoForModel() -> String? {
         return petInfo
@@ -140,6 +150,7 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
         let saveButton = UIAlertAction(title: "Сохранить", style: .default) { _ in
             updateInformation(indexPath)
             tableView.reloadData()
+            self.petInfo = nil
         }
         let cancelButton = UIAlertAction(title: "Отменить", style: .cancel)
         alert.addAction(saveButton)

@@ -241,7 +241,7 @@
 			children = (
 				BC413CC9253893F7002CDD19 /* PetViewController.swift */,
 				BC99B02A2549A80700050854 /* @objc PetViewControllerExtension.swift */,
-				BC18E518254DAA6C0014B7DF /* PetViewControllerDelegate.swift */,
+				BC9C3B0925724EAE00D12C7B /* Delegate Methods */,
 				BC73002D25723F2A0010F161 /* UIViewController */,
 				BC73002C25723EF90010F161 /* Extension - @objc */,
 				BC73002F25723F9A0010F161 /* UICollectionView */,
@@ -387,6 +387,14 @@
 				BC99B0222549A55E00050854 /* PetModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		BC9C3B0925724EAE00D12C7B /* Delegate Methods */ = {
+			isa = PBXGroup;
+			children = (
+				BC18E518254DAA6C0014B7DF /* PetViewControllerDelegate.swift */,
+			);
+			path = "Delegate Methods";
 			sourceTree = "<group>";
 		};
 		BCB361132549DCB20021AF8B /* UITableView */ = {

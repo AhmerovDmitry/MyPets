@@ -20,6 +20,10 @@ extension PetInfoViewController {
             self.picker.isHidden = true
             self.backgroundView.isHidden = true
             self.savePetButton.isHidden = true
+//            let dateFormatter = DateFormatter()
+//            dateFormatter.dateFormat = "dd MMM yyyy"
+//            self.petInfo = dateFormatter.string(from: self.picker.date)
+//            self.tableView.reloadData()
         }
     }
     

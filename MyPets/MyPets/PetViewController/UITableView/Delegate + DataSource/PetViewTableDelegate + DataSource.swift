@@ -21,12 +21,15 @@ extension PetViewCollectionCell: UITableViewDelegate, UITableViewDataSource {
         cell.tableCellLable.text = models[indexPath.row].title
         cell.tableCellPlaceholder.text = (models[indexPath.row].info ?? "Указать информацию") + " ❯"
         cell.backgroundColor = .white
+        titleLabel.text = models[0].info
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        delegate?.fetchTableInfo(tableView: tableView, indexPath: indexPath)
         
         let messageText = "Если вы не располагаете данной информацией, можете оставить поле ввода пустым"
         switch indexPath.row {
@@ -49,7 +52,7 @@ extension PetViewCollectionCell: UITableViewDelegate, UITableViewDataSource {
                                           indexPath: indexPath,
                                           updateInformation: updatePetInfo(indexPath:))
         case 3:
-            delegate?.showDatePicker()
+            delegate?.showDatePicker(updateInformation: updatePetInfo(indexPath:))
         case 4:
             delegate?.showAlertController(title: "Укажите вес питомца",
                                           message: messageText,
@@ -85,6 +88,10 @@ extension PetViewCollectionCell: UITableViewDelegate, UITableViewDataSource {
     }
     func updatePetInfo(indexPath: IndexPath) {
         let petInformation = delegate?.petInfoForModel()
-        models[indexPath.row].info = petInformation
+        if petInformation == nil {
+            models[indexPath.row].info = " "
+        } else {
+            models[indexPath.row].info = petInformation
+        }
     }
 }
