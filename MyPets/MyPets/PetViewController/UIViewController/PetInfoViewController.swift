@@ -10,6 +10,7 @@ import UIKit
 class PetInfoViewController: UIViewController {
     var tableView = UITableView()
     var indexPath = IndexPath()
+    var updateInfo: ((IndexPath) -> ())?
     
     let backgroundView = UIView()
     let picker = UIDatePicker()
@@ -116,12 +117,16 @@ extension PetInfoViewController: GeneralSetupProtocol {
 //MARK: - Delegate methods
 extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate {
     func fetchTableInfo(tableView: UITableView,
-                        indexPath: IndexPath) {
+                        indexPath: IndexPath,
+                        updateInformation: @escaping (IndexPath) -> ()) {
         self.tableView = tableView
         self.indexPath = indexPath
+        self.updateInfo = updateInformation
     }
-    
-    func showDatePicker(updateInformation: @escaping (IndexPath) -> ()) {
+    func updatePetInfo(updateInformation: @escaping (IndexPath) -> ()) {
+        updateInformation(indexPath)
+    }
+    func showDatePicker() {
         UIView.animate(withDuration: 0.5) {
             self.picker.isHidden = false
             self.backgroundView.isHidden = false
@@ -130,14 +135,9 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
             self.backgroundView.alpha = 0.5
             self.savePetButton.alpha = 1
         }
-        updateInformation(indexPath)
-    }
-    func petInfoForModel() -> String? {
-        return petInfo
     }
     func showAlertController(title: String,
-                             message: String,
-                             updateInformation: @escaping (IndexPath) -> ()) {
+                             message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addTextField { textField in
             textField.textAlignment = .left
@@ -146,7 +146,7 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
             textField.addTarget(self, action: #selector(self.textFieldDidChangeSelection(_:)), for: .editingChanged)
         }
         let saveButton = UIAlertAction(title: "Сохранить", style: .default) { _ in
-            updateInformation(self.indexPath)
+            self.updatePetInfo(updateInformation: self.updateInfo!)
             self.tableView.reloadData()
             self.petInfo = nil
         }
@@ -154,5 +154,8 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
         alert.addAction(saveButton)
         alert.addAction(cancelButton)
         present(alert, animated: true, completion: nil)
+    }
+    func petInfoForModel() -> String? {
+        return petInfo
     }
 }

@@ -30,44 +30,38 @@ extension PetViewCollectionCell: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        delegate?.fetchTableInfo(tableView: tableView, indexPath: indexPath)
+        delegate?.fetchTableInfo(tableView: tableView,
+                                 indexPath: indexPath,
+                                 updateInformation: updatePetInfo(indexPath:))
         
         let messageText = "Если вы не располагаете данной информацией, можете оставить поле ввода пустым"
         switch indexPath.row {
         case 0:
             delegate?.showAlertController(title: "Укажите кличку питомца",
-                                          message: messageText,
-                                          updateInformation: updatePetInfo(indexPath:))
+                                          message: messageText)
         case 1:
             delegate?.showAlertController(title: "Укажите кличку питомца",
-                                          message: messageText,
-                                          updateInformation: updatePetInfo(indexPath:))
+                                          message: messageText)
         case 2:
             delegate?.showAlertController(title: "Укажите кличку питомца",
-                                          message: messageText,
-                                          updateInformation: updatePetInfo(indexPath:))
+                                          message: messageText)
         case 3:
-            delegate?.showDatePicker(updateInformation: updatePetInfo(indexPath:))
+            delegate?.showDatePicker()
         case 4:
             delegate?.showAlertController(title: "Укажите кличку питомца",
-                                          message: messageText,
-                                          updateInformation: updatePetInfo(indexPath:))
+                                          message: messageText)
         case 5:
             delegate?.showAlertController(title: "Укажите кличку питомца",
-                                          message: messageText,
-                                          updateInformation: updatePetInfo(indexPath:))
+                                          message: messageText)
         case 6:
             delegate?.showAlertController(title: "Укажите кличку питомца",
-                                          message: messageText,
-                                          updateInformation: updatePetInfo(indexPath:))
+                                          message: messageText)
         case 7:
             delegate?.showAlertController(title: "Укажите кличку питомца",
-                                          message: messageText,
-                                          updateInformation: updatePetInfo(indexPath:))
+                                          message: messageText)
         case 8:
             delegate?.showAlertController(title: "Укажите кличку питомца",
-                                          message: messageText,
-                                          updateInformation: updatePetInfo(indexPath:))
+                                          message: messageText)
         default: break
         }
     }
