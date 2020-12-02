@@ -17,7 +17,7 @@ class PetInfoViewController: UIViewController {
     let localeId = Locale.preferredLanguages.first
     let savePetButton = UIButton(type: .system)
     var petInfo: String?
-    private let titleImage = UIImageView()
+    var titleImage = UIImageView()
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical

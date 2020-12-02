@@ -9,7 +9,14 @@ import UIKit
 
 @objc
 extension PetInfoViewController {
-    func presentController() {}
+    func presentController() {
+        let photoGallery = UIImagePickerController()
+        photoGallery.allowsEditing = true
+        photoGallery.sourceType = .photoLibrary
+        photoGallery.delegate = self
+        
+        present(photoGallery, animated: true, completion: nil)
+    }
     
     func saveData() {
         let dateFormatter = DateFormatter()
