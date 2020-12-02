@@ -38,11 +38,11 @@ class OnboardViewController: UIViewController, GeneralSetupProtocol {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        setupConstraint()
-        setupViewsAndLabels()
+        setupConstraints()
+        setupElements()
     }
     
-    func setupConstraint() {
+    func setupConstraints() {
         view.addSubview(collectionView)
         view.addSubview(mainStackView)
         view.addSubview(closeButton)
@@ -80,7 +80,7 @@ class OnboardViewController: UIViewController, GeneralSetupProtocol {
                                            constant: -15).isActive = true
     }
     
-    func setupViewsAndLabels() {
+    func setupElements() {
         [mainStackView,
          pageControl,
          doneButton,

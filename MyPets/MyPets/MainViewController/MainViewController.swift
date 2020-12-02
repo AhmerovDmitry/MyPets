@@ -17,14 +17,14 @@ class MainViewController: UIViewController, GeneralSetupProtocol {
         
         view.backgroundColor = .white
         
-        setupConstraint()
-        setupViewsAndLabels()
+        setupConstraints()
+        setupElements()
     }
     
-    func setupConstraint() {
+    func setupConstraints() {
     }
     
-    func setupViewsAndLabels() {
+    func setupElements() {
     }
     
     func presentController() {

@@ -28,13 +28,13 @@ class AuthorizationViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        setupConstraint()
-        setupViewsAndLabels()
+        setupConstraints()
+        setupElements()
     }
 }
 
 extension AuthorizationViewController: GeneralSetupProtocol {
-    func setupConstraint() {
+    func setupConstraints() {
         //MARK: - Logo Constraints
         view.addSubview(mainStackView)
         
@@ -89,7 +89,7 @@ extension AuthorizationViewController: GeneralSetupProtocol {
                                              constant: -16).isActive = true
     }
     
-    func setupViewsAndLabels() {
+    func setupElements() {
         [mainStackView,
          logoLabel,
          textLabel,

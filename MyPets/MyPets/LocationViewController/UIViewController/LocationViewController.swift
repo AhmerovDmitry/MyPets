@@ -100,11 +100,11 @@ class LocationViewController: UIViewController {
 
 extension LocationViewController: GeneralSetupProtocol {
     func setup() {
-        setupConstraint()
-        setupViewsAndLabels()
+        setupConstraints()
+        setupElements()
     }
     
-    func setupConstraint() {
+    func setupConstraints() {
         view.addSubview(mapView)
         view.addSubview(backgroundView)
         
@@ -121,7 +121,7 @@ extension LocationViewController: GeneralSetupProtocol {
                                                constant: -(tabBarController?.tabBar.bounds.height)!).isActive = true
     }
     
-    func setupViewsAndLabels() {
+    func setupElements() {
         [collectionView,
          backgroundView,
          mapView].forEach({

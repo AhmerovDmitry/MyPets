@@ -8,8 +8,8 @@
 import UIKit
 
 protocol GeneralSetupProtocol {
-    func setupConstraint()
-    func setupViewsAndLabels()
+    func setupConstraints()
+    func setupElements()
     
     func presentController()
 }

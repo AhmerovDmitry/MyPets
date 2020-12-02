@@ -20,14 +20,14 @@ class ProfileViewController: UIViewController, GeneralSetupProtocol {
     }
     
     func setup() {
-        setupConstraint()
-        setupViewsAndLabels()
+        setupConstraints()
+        setupElements()
     }
     
-    func setupConstraint() {
+    func setupConstraints() {
     }
     
-    func setupViewsAndLabels() {
+    func setupElements() {
     }
     
     func presentController() {

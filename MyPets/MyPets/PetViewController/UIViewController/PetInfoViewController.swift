@@ -43,17 +43,21 @@ class PetInfoViewController: UIViewController {
         
         view.backgroundColor = .white
         
-        setupConstraint()
-        setupViewsAndLabels()
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        setupConstraints()
+        setupElements()
     }
 }
 
 extension PetInfoViewController: GeneralSetupProtocol {
-    func setupConstraint() {
-        [titleImage, collectionView].forEach { view.addSubview($0) }
-        
-        collectionView.delegate = self
-        collectionView.dataSource = self
+    func setupConstraints() {
+        [titleImage,
+         collectionView,
+         backgroundView,
+         picker,
+         savePetButton].forEach { view.addSubview($0) }
         
         titleImage.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         titleImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -68,8 +72,6 @@ extension PetInfoViewController: GeneralSetupProtocol {
                                               constant: 0).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
-        [backgroundView, picker, savePetButton].forEach { view.addSubview($0) }
-        
         backgroundView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         backgroundView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -81,16 +83,23 @@ extension PetInfoViewController: GeneralSetupProtocol {
         savePetButton.widthAnchor.constraint(equalTo: picker.widthAnchor).isActive = true
         savePetButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         savePetButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        savePetButton.topAnchor.constraint(equalTo: picker.bottomAnchor, constant: 8).isActive = true
+        savePetButton.topAnchor.constraint(equalTo: picker.bottomAnchor,
+                                           constant: 8).isActive = true
     }
     
-    func setupViewsAndLabels() {
-        titleImage.translatesAutoresizingMaskIntoConstraints = false
+    func setupElements() {
+        [titleImage,
+         backgroundView,
+         picker,
+         savePetButton].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+         }
+        
         titleImage.contentMode = .scaleAspectFill
-        titleImage.image = UIImage(named: "titleImage")
+        titleImage.backgroundColor = UIColor.CustomColor.lightGray
+        //titleImage.image = UIImage(named: "titleImage")
         
         backgroundView.isHidden = true
-        backgroundView.translatesAutoresizingMaskIntoConstraints = false
         backgroundView.backgroundColor = UIColor.CustomColor.darkGray
         backgroundView.alpha = 0
         
@@ -102,10 +111,8 @@ extension PetInfoViewController: GeneralSetupProtocol {
         picker.layer.cornerRadius = 20
         picker.layer.masksToBounds = true
         picker.backgroundColor = UIColor.CustomColor.lightGray
-        picker.translatesAutoresizingMaskIntoConstraints = false
         
         savePetButton.isHidden = true
-        savePetButton.translatesAutoresizingMaskIntoConstraints = false
         savePetButton.setTitle("Сохранить", for: .normal)
         savePetButton.backgroundColor = UIColor.CustomColor.purple
         savePetButton.tintColor = UIColor.CustomColor.lightGray

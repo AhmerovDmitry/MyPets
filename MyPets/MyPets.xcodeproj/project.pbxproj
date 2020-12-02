@@ -32,7 +32,6 @@
 		BC73964D25435F9900A89858 /* LocationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC73964C25435F9900A89858 /* LocationViewCell.swift */; };
 		BC9357F125335D3100C6C390 /* OnboardViewControllerDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9357F025335D3100C6C390 /* OnboardViewControllerDelegate + DataSource.swift */; };
 		BC9357F425335DFA00C6C390 /* OnboardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9357F325335DFA00C6C390 /* OnboardViewCell.swift */; };
-		BC9357F925336DDE00C6C390 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC9357F825336DDE00C6C390 /* Storyboard.storyboard */; };
 		BC935822253395F800C6C390 /* OnboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC935821253395F700C6C390 /* OnboardModel.swift */; };
 		BC99B01A2549A50D00050854 /* PetViewCollectionTableDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99B0192549A50D00050854 /* PetViewCollectionTableDelegate + DataSource.swift */; };
 		BC99B01F2549A53700050854 /* PetViewCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99B01E2549A53700050854 /* PetViewCollectionCell.swift */; };
@@ -82,7 +81,6 @@
 		BC73964C25435F9900A89858 /* LocationViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewCell.swift; sourceTree = "<group>"; };
 		BC9357F025335D3100C6C390 /* OnboardViewControllerDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardViewControllerDelegate + DataSource.swift"; sourceTree = "<group>"; };
 		BC9357F325335DFA00C6C390 /* OnboardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewCell.swift; sourceTree = "<group>"; };
-		BC9357F825336DDE00C6C390 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		BC935821253395F700C6C390 /* OnboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardModel.swift; sourceTree = "<group>"; };
 		BC99B0192549A50D00050854 /* PetViewCollectionTableDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PetViewCollectionTableDelegate + DataSource.swift"; sourceTree = "<group>"; };
 		BC99B01E2549A53700050854 /* PetViewCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetViewCollectionCell.swift; sourceTree = "<group>"; };
@@ -438,7 +436,6 @@
 			isa = PBXGroup;
 			children = (
 				BC7073272534A9B600B2979F /* Canvas.swift */,
-				BC9357F825336DDE00C6C390 /* Storyboard.storyboard */,
 				BC3DBC3F2530E0040007BDF2 /* Extension */,
 				BC2C33C72536D6BE0092D884 /* Protocol */,
 				BC413CD62538ABBB002CDD19 /* CustomTabBarController */,
@@ -570,7 +567,6 @@
 			files = (
 				BCB6100F2530C82700C4FD2F /* LaunchScreen.storyboard in Resources */,
 				BCB6100C2530C82700C4FD2F /* Assets.xcassets in Resources */,
-				BC9357F925336DDE00C6C390 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
