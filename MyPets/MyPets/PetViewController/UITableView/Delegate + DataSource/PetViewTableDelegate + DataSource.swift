@@ -40,27 +40,27 @@ extension PetViewCollectionCell: UITableViewDelegate, UITableViewDataSource {
             delegate?.showAlertController(title: "Укажите кличку питомца",
                                           message: messageText)
         case 1:
-            delegate?.showAlertController(title: "Укажите кличку питомца",
+            delegate?.showAlertController(title: "Укажите вид питомца",
                                           message: messageText)
         case 2:
-            delegate?.showAlertController(title: "Укажите кличку питомца",
+            delegate?.showAlertController(title: "Укажите породу питомца",
                                           message: messageText)
         case 3:
             delegate?.showDatePicker()
         case 4:
-            delegate?.showAlertController(title: "Укажите кличку питомца",
+            delegate?.showAlertController(title: "Укажите вес питомца",
                                           message: messageText)
         case 5:
-            delegate?.showAlertController(title: "Укажите кличку питомца",
+            delegate?.showAlertController(title: "Укажите стерилизован ли питомец",
                                           message: messageText)
         case 6:
-            delegate?.showAlertController(title: "Укажите кличку питомца",
+            delegate?.showAlertController(title: "Укажите окрас питомца",
                                           message: messageText)
         case 7:
-            delegate?.showAlertController(title: "Укажите кличку питомца",
+            delegate?.showAlertController(title: "Укажите шерсть питомца",
                                           message: messageText)
         case 8:
-            delegate?.showAlertController(title: "Укажите кличку питомца",
+            delegate?.showAlertController(title: "Укажите номер чипа питомца",
                                           message: messageText)
         default: break
         }

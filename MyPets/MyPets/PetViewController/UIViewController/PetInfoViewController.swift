@@ -27,6 +27,7 @@ class PetInfoViewController: UIViewController {
         cv.showsVerticalScrollIndicator = false
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.register(PetViewCollectionCell.self, forCellWithReuseIdentifier: "collectionCellPetId")
+        cv.allowsSelection = false
         
         return cv
     }()

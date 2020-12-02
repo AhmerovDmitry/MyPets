@@ -22,8 +22,6 @@ extension PetInfoViewController: UICollectionViewDelegate, UICollectionViewDataS
         6
     }
     
-    
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCellPetId", for: indexPath) as! PetViewCollectionCell
         
@@ -38,19 +36,14 @@ extension PetInfoViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         let shadowPath = UIBezierPath(rect: cell.bounds).cgPath
         cell.layer.shadowColor = UIColor.CustomColor.dark.cgColor
-        cell.layer.shadowOffset = CGSize(width: 0, height: 0)
+        cell.layer.shadowOffset = CGSize(width: 0, height: 10)
         cell.layer.shadowOpacity = 0.20
         cell.layer.masksToBounds = false
         cell.layer.shadowPath = shadowPath
-        cell.layer.shadowRadius = 7.5
+        cell.layer.shadowRadius = 7
         cell.backgroundColor = .white
-        cell.isSelected = false
         cell.delegate = self
         
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: true)
     }
 }
