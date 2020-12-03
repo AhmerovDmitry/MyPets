@@ -9,13 +9,11 @@ import UIKit
 
 protocol PetViewControllerDelegate: class {
     func showAlertController(title: String,
-                             message: String,
-                             updateInformation: @escaping (IndexPath) -> ())
-    
-    func showDatePicker(updateInformation: @escaping (IndexPath) -> ())
-    
+                             message: String)
+    func showDatePicker()
+    func updatePetInfo(updateInformation: @escaping (IndexPath) -> ())
     func petInfoForModel() -> String?
-    
     func fetchTableInfo(tableView: UITableView,
-                        indexPath: IndexPath)
+                        indexPath: IndexPath,
+                        updateInformation: @escaping (IndexPath) -> ())
 }

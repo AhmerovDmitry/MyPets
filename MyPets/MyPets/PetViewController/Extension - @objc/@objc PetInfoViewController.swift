@@ -9,13 +9,21 @@ import UIKit
 
 @objc
 extension PetInfoViewController {
-    func presentController() {}
+    func presentController() {
+        let photoGallery = UIImagePickerController()
+        photoGallery.allowsEditing = true
+        photoGallery.sourceType = .photoLibrary
+        photoGallery.delegate = self
+        
+        present(photoGallery, animated: true, completion: nil)
+    }
     
     func saveData() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMM yyyy"
-        self.petInfo = dateFormatter.string(from: self.picker.date)
-        self.tableView.reloadData()
+        petInfo = dateFormatter.string(from: self.picker.date)
+        updatePetInfo(updateInformation: updateInfo!)
+        tableView.reloadData()
         
         UIView.animate(withDuration: 0.5) {
             self.picker.alpha = 0
@@ -25,6 +33,7 @@ extension PetInfoViewController {
             self.picker.isHidden = true
             self.backgroundView.isHidden = true
             self.savePetButton.isHidden = true
+            self.petInfo = nil
         }
     }
     

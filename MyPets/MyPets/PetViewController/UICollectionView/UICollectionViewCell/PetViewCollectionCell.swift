@@ -35,8 +35,8 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setupConstraint()
-        setupViewsAndLabels()
+        setupConstraints()
+        setupElements()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -46,10 +46,8 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupConstraint() {
-        contentView.addSubview(label)
-        contentView.addSubview(tableView)
-        contentView.addSubview(titleLabel)
+    func setupConstraints() {
+        [label, tableView, titleLabel].forEach { contentView.addSubview($0) }
         
         label.topAnchor.constraint(equalTo: contentView.topAnchor,
                                    constant: 15).isActive = true
@@ -65,6 +63,7 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
         tableView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,
                                           constant: -20).isActive = true
+        
         titleLabel.bottomAnchor.constraint(equalTo: tableView.topAnchor).isActive = true
         titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor,
                                          constant: 15).isActive = true
@@ -72,11 +71,13 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
                                           constant: -15).isActive = true
     }
     
-    func setupViewsAndLabels() {
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .white
+    func setupElements() {
+        [label, titleLabel].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
         
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .white
+
         titleLabel.textColor = UIColor.CustomColor.dark
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.font = UIFont.boldSystemFont(ofSize: 25)

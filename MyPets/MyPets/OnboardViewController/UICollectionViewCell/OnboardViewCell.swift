@@ -31,11 +31,11 @@ class OnboardViewCell: UICollectionViewCell {
 
 extension OnboardViewCell: GeneralSetupProtocol {
     func setup() {
-        setupConstraint()
-        setupViewsAndLabels()
+        setupConstraints()
+        setupElements()
     }
     
-    func setupConstraint() {
+    func setupConstraints() {
         contentView.addSubview(mainStackView)
         [imageView,
          textLabel].forEach({ mainStackView.addArrangedSubview($0) })
@@ -66,7 +66,7 @@ extension OnboardViewCell: GeneralSetupProtocol {
                                                    constant: 0))
     }
     
-    func setupViewsAndLabels() {
+    func setupElements() {
         [mainStackView,
          imageView,
          textLabel].forEach({

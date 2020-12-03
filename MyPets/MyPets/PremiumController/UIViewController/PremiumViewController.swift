@@ -40,15 +40,15 @@ class PremiumViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        setupConstraint()
-        setupViewsAndLabels()
+        setupConstraints()
+        setupElements()
         gradientSetup()
     }
 
 }
 
 extension PremiumViewController: GeneralSetupProtocol {
-    func setupConstraint() {
+    func setupConstraints() {
         [mainStackView,
          closeButton].forEach({ view.addSubview($0) })
         [titleLogo,
@@ -141,7 +141,7 @@ extension PremiumViewController: GeneralSetupProtocol {
                                                    constant: 0))
     }
     
-    func setupViewsAndLabels() {
+    func setupElements() {
         [mainStackView,
          closeButton,
          titleStackView,

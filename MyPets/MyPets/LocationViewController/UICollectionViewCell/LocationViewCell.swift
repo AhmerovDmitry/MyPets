@@ -22,8 +22,8 @@ class LocationViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setupConstraint()
-        setupViewsAndLabels()
+        setupConstraints()
+        setupElements()
     }
     
     required init?(coder: NSCoder) {
@@ -34,7 +34,7 @@ class LocationViewCell: UICollectionViewCell {
 
 extension LocationViewCell: GeneralSetupProtocol {
 
-    func setupConstraint() {
+    func setupConstraints() {
         contentView.addSubview(valueButton)
         valueButton.topAnchor.constraint(equalTo: contentView.topAnchor,
                                          constant: 0).isActive = true
@@ -46,7 +46,7 @@ extension LocationViewCell: GeneralSetupProtocol {
                                            constant: 0).isActive = true
     }
     
-    func setupViewsAndLabels() {
+    func setupElements() {
         valueButton.translatesAutoresizingMaskIntoConstraints = false
         valueButton.clipsToBounds = true
         valueButton.layer.cornerRadius = 5

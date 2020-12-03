@@ -10,13 +10,14 @@ import UIKit
 class PetInfoViewController: UIViewController {
     var tableView = UITableView()
     var indexPath = IndexPath()
+    var updateInfo: ((IndexPath) -> ())?
     
     let backgroundView = UIView()
     let picker = UIDatePicker()
     let localeId = Locale.preferredLanguages.first
     let savePetButton = UIButton(type: .system)
     var petInfo: String?
-    private let titleImage = UIImageView()
+    var titleImage = UIImageView()
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -26,6 +27,7 @@ class PetInfoViewController: UIViewController {
         cv.showsVerticalScrollIndicator = false
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.register(PetViewCollectionCell.self, forCellWithReuseIdentifier: "collectionCellPetId")
+        cv.allowsSelection = false
         
         return cv
     }()
@@ -41,17 +43,21 @@ class PetInfoViewController: UIViewController {
         
         view.backgroundColor = .white
         
-        setupConstraint()
-        setupViewsAndLabels()
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        setupConstraints()
+        setupElements()
     }
 }
 
 extension PetInfoViewController: GeneralSetupProtocol {
-    func setupConstraint() {
-        [titleImage, collectionView].forEach { view.addSubview($0) }
-        
-        collectionView.delegate = self
-        collectionView.dataSource = self
+    func setupConstraints() {
+        [titleImage,
+         collectionView,
+         backgroundView,
+         picker,
+         savePetButton].forEach { view.addSubview($0) }
         
         titleImage.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         titleImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -66,8 +72,6 @@ extension PetInfoViewController: GeneralSetupProtocol {
                                               constant: 0).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
-        [backgroundView, picker, savePetButton].forEach { view.addSubview($0) }
-        
         backgroundView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         backgroundView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -79,16 +83,23 @@ extension PetInfoViewController: GeneralSetupProtocol {
         savePetButton.widthAnchor.constraint(equalTo: picker.widthAnchor).isActive = true
         savePetButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         savePetButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        savePetButton.topAnchor.constraint(equalTo: picker.bottomAnchor, constant: 8).isActive = true
+        savePetButton.topAnchor.constraint(equalTo: picker.bottomAnchor,
+                                           constant: 8).isActive = true
     }
     
-    func setupViewsAndLabels() {
-        titleImage.translatesAutoresizingMaskIntoConstraints = false
+    func setupElements() {
+        [titleImage,
+         backgroundView,
+         picker,
+         savePetButton].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+         }
+        
         titleImage.contentMode = .scaleAspectFill
-        titleImage.image = UIImage(named: "titleImage")
+        titleImage.backgroundColor = UIColor.CustomColor.lightGray
+        //titleImage.image = UIImage(named: "titleImage")
         
         backgroundView.isHidden = true
-        backgroundView.translatesAutoresizingMaskIntoConstraints = false
         backgroundView.backgroundColor = UIColor.CustomColor.darkGray
         backgroundView.alpha = 0
         
@@ -100,10 +111,8 @@ extension PetInfoViewController: GeneralSetupProtocol {
         picker.layer.cornerRadius = 20
         picker.layer.masksToBounds = true
         picker.backgroundColor = UIColor.CustomColor.lightGray
-        picker.translatesAutoresizingMaskIntoConstraints = false
         
         savePetButton.isHidden = true
-        savePetButton.translatesAutoresizingMaskIntoConstraints = false
         savePetButton.setTitle("Сохранить", for: .normal)
         savePetButton.backgroundColor = UIColor.CustomColor.purple
         savePetButton.tintColor = UIColor.CustomColor.lightGray
@@ -116,12 +125,16 @@ extension PetInfoViewController: GeneralSetupProtocol {
 //MARK: - Delegate methods
 extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate {
     func fetchTableInfo(tableView: UITableView,
-                        indexPath: IndexPath) {
+                        indexPath: IndexPath,
+                        updateInformation: @escaping (IndexPath) -> ()) {
         self.tableView = tableView
         self.indexPath = indexPath
+        self.updateInfo = updateInformation
     }
-    
-    func showDatePicker(updateInformation: @escaping (IndexPath) -> ()) {
+    func updatePetInfo(updateInformation: @escaping (IndexPath) -> ()) {
+        updateInformation(indexPath)
+    }
+    func showDatePicker() {
         UIView.animate(withDuration: 0.5) {
             self.picker.isHidden = false
             self.backgroundView.isHidden = false
@@ -130,14 +143,9 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
             self.backgroundView.alpha = 0.5
             self.savePetButton.alpha = 1
         }
-        updateInformation(indexPath)
-    }
-    func petInfoForModel() -> String? {
-        return petInfo
     }
     func showAlertController(title: String,
-                             message: String,
-                             updateInformation: @escaping (IndexPath) -> ()) {
+                             message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addTextField { textField in
             textField.textAlignment = .left
@@ -146,7 +154,7 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
             textField.addTarget(self, action: #selector(self.textFieldDidChangeSelection(_:)), for: .editingChanged)
         }
         let saveButton = UIAlertAction(title: "Сохранить", style: .default) { _ in
-            updateInformation(self.indexPath)
+            self.updatePetInfo(updateInformation: self.updateInfo!)
             self.tableView.reloadData()
             self.petInfo = nil
         }
@@ -154,5 +162,8 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
         alert.addAction(saveButton)
         alert.addAction(cancelButton)
         present(alert, animated: true, completion: nil)
+    }
+    func petInfoForModel() -> String? {
+        return petInfo
     }
 }

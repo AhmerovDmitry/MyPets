@@ -23,16 +23,16 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
         
         view.backgroundColor = .white
         
-        setupConstraint()
-        setupViewsAndLabels()
+        setupConstraints()
+        setupElements()
     }
     
-    func setupConstraint() {
+    func setupConstraints() {
         view.addSubview(mainStackView)
         [mainImage,
          titleText,
          descText,
-         addButton].forEach({ mainStackView.addArrangedSubview($0) })
+         addButton].forEach { mainStackView.addArrangedSubview($0) }
         
         mainStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor,
                                                constant: -10).isActive = true
@@ -45,49 +45,51 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
                                          constant: 0).isActive = true
         
         titleText.leftAnchor.constraint(equalTo: mainStackView.leftAnchor,
-                                         constant: 32).isActive = true
+                                        constant: 32).isActive = true
         titleText.rightAnchor.constraint(equalTo: mainStackView.rightAnchor,
-                                          constant: -32).isActive = true
+                                         constant: -32).isActive = true
         titleText.addConstraint(NSLayoutConstraint(item: titleText,
-                                                    attribute: .width,
-                                                    relatedBy: .equal,
-                                                    toItem: titleText,
-                                                    attribute: .height,
-                                                    multiplier: 7.6,
-                                                    constant: 0))
+                                                   attribute: .width,
+                                                   relatedBy: .equal,
+                                                   toItem: titleText,
+                                                   attribute: .height,
+                                                   multiplier: 7.6,
+                                                   constant: 0))
         
         descText.leftAnchor.constraint(equalTo: mainStackView.leftAnchor,
-                                         constant: 32).isActive = true
+                                       constant: 32).isActive = true
         descText.rightAnchor.constraint(equalTo: mainStackView.rightAnchor,
-                                          constant: -32).isActive = true
+                                        constant: -32).isActive = true
         descText.addConstraint(NSLayoutConstraint(item: descText,
-                                                    attribute: .width,
-                                                    relatedBy: .equal,
-                                                    toItem: descText,
-                                                    attribute: .height,
-                                                    multiplier: 6,
-                                                    constant: 0))
+                                                  attribute: .width,
+                                                  relatedBy: .equal,
+                                                  toItem: descText,
+                                                  attribute: .height,
+                                                  multiplier: 6,
+                                                  constant: 0))
         
         
         addButton.leftAnchor.constraint(equalTo: mainStackView.leftAnchor,
-                                         constant: 32).isActive = true
+                                        constant: 32).isActive = true
         addButton.rightAnchor.constraint(equalTo: mainStackView.rightAnchor,
-                                          constant: -32).isActive = true
+                                         constant: -32).isActive = true
         addButton.addConstraint(NSLayoutConstraint(item: addButton,
-                                                    attribute: .width,
-                                                    relatedBy: .equal,
-                                                    toItem: addButton,
-                                                    attribute: .height,
-                                                    multiplier: 6,
-                                                    constant: 0))
+                                                   attribute: .width,
+                                                   relatedBy: .equal,
+                                                   toItem: addButton,
+                                                   attribute: .height,
+                                                   multiplier: 6,
+                                                   constant: 0))
     }
     
-    func setupViewsAndLabels() {
+    func setupElements() {
         [mainStackView,
          mainImage,
          titleText,
          descText,
-         addButton].forEach({ $0.translatesAutoresizingMaskIntoConstraints = false })
+         addButton].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+         }
         
         mainStackView.alignment = .center
         mainStackView.axis = .vertical

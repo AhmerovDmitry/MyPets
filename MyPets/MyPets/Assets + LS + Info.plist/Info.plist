@@ -5,7 +5,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Для определения местоположения</string>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<string>russia</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>

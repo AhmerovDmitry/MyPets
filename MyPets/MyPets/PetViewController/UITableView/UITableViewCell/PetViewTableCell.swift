@@ -14,15 +14,15 @@ class PetViewTableCell: UITableViewCell, GeneralSetupProtocol {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        setupConstraint()
-        setupViewsAndLabels()
+        setupConstraints()
+        setupElements()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupConstraint() {
+    func setupConstraints() {
         contentView.addSubview(tableCellLable)
         contentView.addSubview(tableCellPlaceholder)
         
@@ -37,14 +37,16 @@ class PetViewTableCell: UITableViewCell, GeneralSetupProtocol {
         tableCellPlaceholder.heightAnchor.constraint(equalToConstant: 45).isActive = true
     }
     
-    func setupViewsAndLabels() {
-        tableCellLable.translatesAutoresizingMaskIntoConstraints = false
+    func setupElements() {
+        [tableCellLable, tableCellPlaceholder].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
+        
         tableCellLable.textAlignment = .left
         tableCellLable.textColor = UIColor.CustomColor.dark
         tableCellLable.font = UIFont.systemFont(ofSize: 15)
         tableCellLable.adjustsFontSizeToFitWidth = true
         
-        tableCellPlaceholder.translatesAutoresizingMaskIntoConstraints = false
         tableCellPlaceholder.textAlignment = .right
         tableCellPlaceholder.textColor = UIColor.CustomColor.gray
         tableCellPlaceholder.font = UIFont.systemFont(ofSize: 15)
