@@ -36,7 +36,7 @@ extension PetInfoViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         let shadowPath = UIBezierPath(rect: cell.bounds).cgPath
         cell.layer.shadowColor = UIColor.CustomColor.dark.cgColor
-        cell.layer.shadowOffset = CGSize(width: 0, height: 10)
+        cell.layer.shadowOffset = CGSize(width: 0, height: 0)
         cell.layer.shadowOpacity = 0.20
         cell.layer.masksToBounds = false
         cell.layer.shadowPath = shadowPath

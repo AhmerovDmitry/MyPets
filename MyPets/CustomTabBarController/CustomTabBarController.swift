@@ -10,9 +10,9 @@ import UIKit
 class CustomTabBarController: UITabBarController {
     let mainVC = UINavigationController(rootViewController: MainViewController())
     let petVC = UINavigationController(rootViewController: PetViewController())
-    let locationVC = LocationViewController()
+    //let locationVC = LocationViewController()
     //Для того чтобы убрать лишние сообщения из консоли!!!
-    //let locationVC = UINavigationController(rootViewController: ProfileViewController())
+    let locationVC = UINavigationController(rootViewController: ProfileViewController())
     let profileVC = UINavigationController(rootViewController: ProfileViewController())
     
     var controllers: [UIViewController]?
