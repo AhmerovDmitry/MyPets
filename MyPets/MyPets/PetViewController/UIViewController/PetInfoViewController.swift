@@ -99,6 +99,7 @@ extension PetInfoViewController: GeneralSetupProtocol {
         
         titleImage.contentMode = .scaleAspectFill
         titleImage.backgroundColor = UIColor.CustomColor.lightGray
+        titleImage.clipsToBounds = true
         
         backgroundView.isHidden = true
         backgroundView.backgroundColor = UIColor.CustomColor.darkGray

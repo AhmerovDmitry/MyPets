@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Storyboard.storyboard">
+   </FileRef>
+   <FileRef
       location = "group:MyPets.xcodeproj">
    </FileRef>
    <FileRef
