@@ -19,7 +19,8 @@ extension PetViewCollectionCell: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCellPetId") as! PetViewTableCell
         cell.tableCellLable.text = models[indexPath.row].title
-        cell.tableCellPlaceholder.text = (models[indexPath.row].info ?? "Указать информацию") + " ❯"
+        cell.tableCellPlaceholder.text = (models[indexPath.row].info ?? "Указать информацию")
+        cell.accessoryType = .disclosureIndicator
         cell.backgroundColor = .white
         
         titleLabel.text = models[0].info
@@ -35,36 +36,25 @@ extension PetViewCollectionCell: UITableViewDelegate, UITableViewDataSource {
                                  updateInformation: updatePetInfo(indexPath:))
         
         let messageText = "Если вы не располагаете данной информацией, можете оставить поле ввода пустым"
+        let titleText = ["Укажите кличку питомца",
+                         "Укажите вид питомца",
+                         "Укажите породу питомца",
+                         "",
+                         "Укажите вес питомца",
+                         "Укажите стерилизован ли питомец",
+                         "Укажите окрас питомца",
+                         "Укажите шерсть питомца",
+                         "Укажите номер чипа питомца"]
+        
         switch indexPath.row {
-        case 0:
-            delegate?.showAlertController(title: "Укажите кличку питомца",
-                                          message: messageText)
-        case 1:
-            delegate?.showAlertController(title: "Укажите вид питомца",
-                                          message: messageText)
-        case 2:
-            delegate?.showAlertController(title: "Укажите породу питомца",
-                                          message: messageText)
         case 3:
             delegate?.showDatePicker()
-        case 4:
-            delegate?.showAlertController(title: "Укажите вес питомца",
+        default:
+            delegate?.showAlertController(title: titleText[indexPath.row],
                                           message: messageText)
-        case 5:
-            delegate?.showAlertController(title: "Укажите стерилизован ли питомец",
-                                          message: messageText)
-        case 6:
-            delegate?.showAlertController(title: "Укажите окрас питомца",
-                                          message: messageText)
-        case 7:
-            delegate?.showAlertController(title: "Укажите шерсть питомца",
-                                          message: messageText)
-        case 8:
-            delegate?.showAlertController(title: "Укажите номер чипа питомца",
-                                          message: messageText)
-        default: break
         }
     }
+    
     func updatePetInfo(indexPath: IndexPath) {
         let petInformation = delegate?.petInfoForModel()
         if petInformation == nil {

@@ -28,6 +28,9 @@ class PetInfoViewController: UIViewController {
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.register(PetViewCollectionCell.self, forCellWithReuseIdentifier: "collectionCellPetId")
         cv.allowsSelection = false
+        cv.clipsToBounds = false
+        cv.layer.masksToBounds = false
+        cv.bounces = false
         
         return cv
     }()
@@ -62,10 +65,9 @@ extension PetInfoViewController: GeneralSetupProtocol {
         titleImage.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         titleImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         titleImage.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        titleImage.heightAnchor.constraint(lessThanOrEqualToConstant: 300).isActive = true
+        titleImage.heightAnchor.constraint(equalToConstant: view.bounds.height / 2.7).isActive = true
         
-        collectionView.topAnchor.constraint(equalTo: titleImage.bottomAnchor,
-                                            constant: -64).isActive = true
+        collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.bounds.height / 3.5).isActive = true
         collectionView.leftAnchor.constraint(equalTo: view.leftAnchor,
                                              constant: 0).isActive = true
         collectionView.rightAnchor.constraint(equalTo: view.rightAnchor,
@@ -97,7 +99,7 @@ extension PetInfoViewController: GeneralSetupProtocol {
         
         titleImage.contentMode = .scaleAspectFill
         titleImage.backgroundColor = UIColor.CustomColor.lightGray
-        //titleImage.image = UIImage(named: "titleImage")
+        titleImage.clipsToBounds = true
         
         backgroundView.isHidden = true
         backgroundView.backgroundColor = UIColor.CustomColor.darkGray

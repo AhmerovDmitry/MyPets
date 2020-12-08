@@ -23,7 +23,8 @@ class PremiumViewController: UIViewController {
     private let tableView: UITableView = {
         let tv = UITableView(frame: .zero, style: .plain)
         tv.isScrollEnabled = false
-        tv.register(PremiumViewControllerCell.self, forCellReuseIdentifier: "cellId")
+        tv.register(PremiumViewControllerCell.self,
+                    forCellReuseIdentifier: "cellId")
         tv.backgroundColor = .clear
         tv.separatorColor = .white
         tv.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
