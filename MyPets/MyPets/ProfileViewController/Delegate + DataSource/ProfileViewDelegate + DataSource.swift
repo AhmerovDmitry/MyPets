@@ -8,57 +8,69 @@
 import UIKit
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
-        func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//            let titles = ["",
-//                          "",
-//                          "УВЕДОМЛЕНИЯ",
-//                          "Неограниченное количество питомцев и множество дополнительных функций доступно в Premium",
-//                          "",
-//                          ""]
-            let titles = ["",
-                          "",
-                          "УВЕДОМЛЕНИЯ",
-                          "",
-                          "",
-                          ""]
-    
-            return titles[section]
-        }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        let titles = [nil,
+                      nil,
+                      "УВЕДОМЛЕНИЯ",
+                      nil,
+                      nil,
+                      nil]
+        
+        return titles[section]
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 6
+        return menuTitles.count
     }
     
-    func tableView(_ tableView: UITableView,
-                   numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return menuTitles[section].count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath)
+        let menuTitle = menuTitles[indexPath.section]
         
-        switch section {
-        case 0, 3, 5:
-            return 1
+        switch indexPath.section {
+        case 0:
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: "profileCell")
         default:
-            return 2
+            cell = UITableViewCell(style: .default, reuseIdentifier: "profileCell")
         }
-        
-    }
-    
-    func tableView(_ tableView: UITableView,
-                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath)
         
         if #available(iOS 14.0, *) {
             var content = cell.defaultContentConfiguration()
-            content.text = "Cell - \(indexPath.row)"
+            content.text = menuTitle[indexPath.row]
+            content.secondaryText = "Мои данные"
+            content.secondaryTextProperties.color = UIColor.CustomColor.gray
+            content.image = UIImage(named: "cameraIcon")
+            if indexPath.section != 0 {
+                content.secondaryText = nil
+                content.image = nil
+            }
+            if indexPath.section == menuTitles.endIndex - 1 {
+                content.textProperties.color = .red
+            }
             cell.contentConfiguration = content
         } else {
-            cell.textLabel?.text = "Cell - \(indexPath.row)"
+            cell.textLabel?.text = menuTitle[indexPath.row]
+            cell.detailTextLabel?.text = "Мои данные"
+            cell.detailTextLabel?.textColor = UIColor.CustomColor.gray
+            cell.imageView?.image = UIImage(named: "cameraIcon")
+            if indexPath.section != 0 {
+                cell.detailTextLabel?.text = nil
+                cell.imageView?.image = nil
+            }
+            if indexPath.section == menuTitles.endIndex - 1 {
+                cell.textLabel?.textColor = .red
+            }
         }
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView,
-                   didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        print(indexPath.row)
     }
 }

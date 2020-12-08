@@ -37,7 +37,7 @@ class PetInfoViewController: UIViewController {
     //MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
-        let addPhotoButton = UIBarButtonItem(image: UIImage(named: "addPetPhoto"), style: .done, target: self, action: #selector(presentController))
+        let addPhotoButton = UIBarButtonItem(image: UIImage(named: "cameraIcon"), style: .done, target: self, action: #selector(presentController))
         
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.tintColor = UIColor.CustomColor.dark

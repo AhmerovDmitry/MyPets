@@ -8,9 +8,19 @@
 import UIKit
 
 class ProfileViewController: UIViewController, GeneralSetupProtocol {
+    let menuTitles: [[String]] = [
+        ["Имя пользователя"],
+        ["Питомцы", "Архив"],
+        ["Подсказки и советы", "Напоминания"],
+        ["MyPets Premium"],
+        ["Поддержка", "О приложении"],
+        ["Выйти"]
+    ]
+    
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = .white
         tableView.register(UITableViewCell.self,
                            forCellReuseIdentifier: "profileCell")
         
