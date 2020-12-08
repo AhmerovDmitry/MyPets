@@ -30,6 +30,7 @@
 		BC73002A25723C460010F161 /* @objc PetInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC73002925723C460010F161 /* @objc PetInfoViewController.swift */; };
 		BC73964A2542084D00A89858 /* LocationViewDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7396492542084D00A89858 /* LocationViewDelegate + DataSource.swift */; };
 		BC73964D25435F9900A89858 /* LocationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC73964C25435F9900A89858 /* LocationViewCell.swift */; };
+		BC7E9B90257F8242006D75A1 /* ProfileViewDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7E9B8F257F8242006D75A1 /* ProfileViewDelegate + DataSource.swift */; };
 		BC9357F125335D3100C6C390 /* OnboardViewControllerDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9357F025335D3100C6C390 /* OnboardViewControllerDelegate + DataSource.swift */; };
 		BC9357F425335DFA00C6C390 /* OnboardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9357F325335DFA00C6C390 /* OnboardViewCell.swift */; };
 		BC935822253395F800C6C390 /* OnboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC935821253395F700C6C390 /* OnboardModel.swift */; };
@@ -79,6 +80,7 @@
 		BC73002925723C460010F161 /* @objc PetInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "@objc PetInfoViewController.swift"; sourceTree = "<group>"; };
 		BC7396492542084D00A89858 /* LocationViewDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationViewDelegate + DataSource.swift"; sourceTree = "<group>"; };
 		BC73964C25435F9900A89858 /* LocationViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewCell.swift; sourceTree = "<group>"; };
+		BC7E9B8F257F8242006D75A1 /* ProfileViewDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewDelegate + DataSource.swift"; sourceTree = "<group>"; };
 		BC9357F025335D3100C6C390 /* OnboardViewControllerDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardViewControllerDelegate + DataSource.swift"; sourceTree = "<group>"; };
 		BC9357F325335DFA00C6C390 /* OnboardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewCell.swift; sourceTree = "<group>"; };
 		BC935821253395F700C6C390 /* OnboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardModel.swift; sourceTree = "<group>"; };
@@ -265,7 +267,8 @@
 		BC413CC8253893D2002CDD19 /* ProfileViewController */ = {
 			isa = PBXGroup;
 			children = (
-				BC413CD0253894D1002CDD19 /* ProfileViewController.swift */,
+				BC7E9B8D257F8222006D75A1 /* UIViewController */,
+				BC7E9B8C257F8208006D75A1 /* Delegate + DataSource */,
 			);
 			path = ProfileViewController;
 			sourceTree = "<group>";
@@ -356,6 +359,22 @@
 				BC99B0212549A54500050854 /* Model */,
 			);
 			path = UICollectionView;
+			sourceTree = "<group>";
+		};
+		BC7E9B8C257F8208006D75A1 /* Delegate + DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				BC7E9B8F257F8242006D75A1 /* ProfileViewDelegate + DataSource.swift */,
+			);
+			path = "Delegate + DataSource";
+			sourceTree = "<group>";
+		};
+		BC7E9B8D257F8222006D75A1 /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BC413CD0253894D1002CDD19 /* ProfileViewController.swift */,
+			);
+			path = UIViewController;
 			sourceTree = "<group>";
 		};
 		BC9358242533961B00C6C390 /* Model */ = {
@@ -637,6 +656,7 @@
 				BCB404252532F5FE00993A5C /* @objc AuthorizationViewControllerExtension.swift in Sources */,
 				BC4851182534E4F100B874D4 /* PremiumViewControllerCell.swift in Sources */,
 				BC4D76CD25442AAA0037EA8D /* LocationModel.swift in Sources */,
+				BC7E9B90257F8242006D75A1 /* ProfileViewDelegate + DataSource.swift in Sources */,
 				BC18E519254DAA6C0014B7DF /* PetViewControllerDelegate.swift in Sources */,
 				BC99B0232549A55E00050854 /* PetModel.swift in Sources */,
 				BCA5B27B2533A29B00A7B15B /* @objc OnboardViewControllerExtension.swift in Sources */,
