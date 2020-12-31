@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		42313C2AE932AA1F3C362F85 /* Pods_MyPets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACE89FAC94E788505CF71B99 /* Pods_MyPets.framework */; };
+		BC0EE6A3259DE49500BE167D /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0EE6A2259DE49500BE167D /* UserProfileViewController.swift */; };
 		BC18E516254D5F030014B7DF /* PetTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC18E515254D5F030014B7DF /* PetTableViewModel.swift */; };
 		BC18E519254DAA6C0014B7DF /* PetViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC18E518254DAA6C0014B7DF /* PetViewControllerDelegate.swift */; };
 		BC2C33C92536D6E00092D884 /* GeneralSetupProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2C33C82536D6E00092D884 /* GeneralSetupProtocol.swift */; };
@@ -58,6 +59,7 @@
 		0FA619743EAD50CFE1F3C7E7 /* Pods-MyPets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyPets.debug.xcconfig"; path = "Target Support Files/Pods-MyPets/Pods-MyPets.debug.xcconfig"; sourceTree = "<group>"; };
 		7DA66DC244A02A730A398052 /* Pods-MyPets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyPets.release.xcconfig"; path = "Target Support Files/Pods-MyPets/Pods-MyPets.release.xcconfig"; sourceTree = "<group>"; };
 		ACE89FAC94E788505CF71B99 /* Pods_MyPets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyPets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC0EE6A2259DE49500BE167D /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		BC18E515254D5F030014B7DF /* PetTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetTableViewModel.swift; sourceTree = "<group>"; };
 		BC18E518254DAA6C0014B7DF /* PetViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetViewControllerDelegate.swift; sourceTree = "<group>"; };
 		BC2C33C82536D6E00092D884 /* GeneralSetupProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSetupProtocol.swift; sourceTree = "<group>"; };
@@ -133,6 +135,14 @@
 				ACE89FAC94E788505CF71B99 /* Pods_MyPets.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BC0EE6A1259DE47000BE167D /* UserProfileController */ = {
+			isa = PBXGroup;
+			children = (
+				BC0EE6A2259DE49500BE167D /* UserProfileViewController.swift */,
+			);
+			path = UserProfileController;
 			sourceTree = "<group>";
 		};
 		BC2C33C72536D6BE0092D884 /* Protocol */ = {
@@ -267,6 +277,7 @@
 		BC413CC8253893D2002CDD19 /* ProfileViewController */ = {
 			isa = PBXGroup;
 			children = (
+				BC0EE6A1259DE47000BE167D /* UserProfileController */,
 				BC7E9B8D257F8222006D75A1 /* UIViewController */,
 				BC7E9B8C257F8208006D75A1 /* Delegate + DataSource */,
 			);
@@ -653,6 +664,7 @@
 				BCDBF528253F887E00BCBBFB /* Map Settings.swift in Sources */,
 				BC3DBC3D2530DFFF0007BDF2 /* UIColor.swift in Sources */,
 				BC9357F425335DFA00C6C390 /* OnboardViewCell.swift in Sources */,
+				BC0EE6A3259DE49500BE167D /* UserProfileViewController.swift in Sources */,
 				BCB404252532F5FE00993A5C /* @objc AuthorizationViewControllerExtension.swift in Sources */,
 				BC4851182534E4F100B874D4 /* PremiumViewControllerCell.swift in Sources */,
 				BC4D76CD25442AAA0037EA8D /* LocationModel.swift in Sources */,

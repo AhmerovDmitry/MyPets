@@ -37,24 +37,26 @@ class PetInfoViewController: UIViewController {
     //MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
-        let addPhotoButton = UIBarButtonItem(image: UIImage(named: "cameraIcon"), style: .done, target: self, action: #selector(presentController))
-        
-        navigationController?.navigationBar.backgroundColor = .clear
-        navigationController?.navigationBar.tintColor = UIColor.CustomColor.dark
-        navigationItem.rightBarButtonItem = addPhotoButton
-        navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.dark
-        
         view.backgroundColor = .white
         
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        setupNavigationController()
         setupConstraints()
         setupElements()
     }
 }
 
 extension PetInfoViewController: GeneralSetupProtocol {
+    func setupNavigationController() {
+        let addPhotoButton = UIBarButtonItem(image: UIImage(named: "cameraIcon"), style: .done, target: self, action: #selector(presentController))
+        navigationController?.navigationBar.backgroundColor = .clear
+        navigationController?.navigationBar.tintColor = UIColor.CustomColor.dark
+        navigationItem.rightBarButtonItem = addPhotoButton
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.dark
+    }
+    
     func setupConstraints() {
         [titleImage,
          collectionView,
