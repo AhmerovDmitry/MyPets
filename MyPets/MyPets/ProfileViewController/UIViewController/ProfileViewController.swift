@@ -49,7 +49,7 @@ class ProfileViewController: UIViewController, GeneralSetupProtocol {
         
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor,
-                                           constant: (navigationController?.navigationBar.bounds.height)!),
+                                           constant: (navigationController?.navigationBar.bounds.height)! - 10),
             tableView.widthAnchor.constraint(equalTo: view.widthAnchor),
             tableView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor,
