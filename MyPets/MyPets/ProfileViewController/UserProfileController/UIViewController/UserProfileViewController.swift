@@ -8,13 +8,12 @@
 import UIKit
 
 class UserProfileViewController: UIViewController {
-
     var models = [
         PetTableViewModel(title: "Имя", info: "Указать информацию"),
         PetTableViewModel(title: "Город", info: "Указать информацию"),
         PetTableViewModel(title: "E-mail", info: "Указать информацию")
     ]
-    let profileView = UIImageView()
+    let profileView = UIButton(type: .system)
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -39,10 +38,6 @@ class UserProfileViewController: UIViewController {
     }
     
     func setupNavigationController() {
-        let backButton = UIBarButtonItem()
-        backButton.title = " "
-        
-        navigationController?.navigationItem.backBarButtonItem = backButton
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.tintColor = UIColor.CustomColor.dark
     }
@@ -70,16 +65,13 @@ extension UserProfileViewController: GeneralSetupProtocol {
     func setupElements() {
         profileView.translatesAutoresizingMaskIntoConstraints = false
         profileView.clipsToBounds = true
-        profileView.image = UIImage(named: "cameraIcon")
-        profileView.setImageColor(color: .white)
+        profileView.setImage(UIImage(named: "cameraIcon"), for: .normal)
+        profileView.tintColor = .white
         profileView.contentMode = .center
         profileView.backgroundColor = UIColor.CustomColor.gray
         profileView.layoutIfNeeded()
         profileView.layer.cornerRadius = profileView.bounds.height / 2
+        profileView.addTarget(self, action: #selector(presentController), for: .touchUpInside)
     }
-    
-    func presentController() {
-    }
-    
     
 }

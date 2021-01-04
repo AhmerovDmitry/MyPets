@@ -1,5 +1,5 @@
 //
-//  UIImagePickerControllerDelegate.swift
+//  UIImagePickerControllerDelegateForPetInfoView.swift
 //  MyPets
 //
 //  Created by Дмитрий Ахмеров on 02.12.2020.
