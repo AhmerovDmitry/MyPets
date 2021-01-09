@@ -8,6 +8,8 @@
 import UIKit
 
 class ProfileViewController: UIViewController, GeneralSetupProtocol {
+    var userImage: UIImage?
+    var userName: String?
     let menuTitles: [[String]] = [
         ["Имя пользователя"],
         ["Питомцы", "Архив"],

@@ -8,7 +8,7 @@
 import UIKit
 
 class PetViewTableCell: UITableViewCell, GeneralSetupProtocol {
-    var tableCellLable = UILabel()
+    var tableCellLabel = UILabel()
     let tableCellPlaceholder = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -23,13 +23,13 @@ class PetViewTableCell: UITableViewCell, GeneralSetupProtocol {
     }
     
     func setupConstraints() {
-        contentView.addSubview(tableCellLable)
+        contentView.addSubview(tableCellLabel)
         contentView.addSubview(tableCellPlaceholder)
         
-        tableCellLable.leftAnchor.constraint(equalTo: contentView.leftAnchor,
+        tableCellLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor,
                                              constant: 15).isActive = true
-        tableCellLable.rightAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        tableCellLable.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        tableCellLabel.rightAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        tableCellLabel.heightAnchor.constraint(equalToConstant: 45).isActive = true
         
         tableCellPlaceholder.leftAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         tableCellPlaceholder.rightAnchor.constraint(equalTo: contentView.rightAnchor,
@@ -38,14 +38,14 @@ class PetViewTableCell: UITableViewCell, GeneralSetupProtocol {
     }
     
     func setupElements() {
-        [tableCellLable, tableCellPlaceholder].forEach {
+        [tableCellLabel, tableCellPlaceholder].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        tableCellLable.textAlignment = .left
-        tableCellLable.textColor = UIColor.CustomColor.dark
-        tableCellLable.font = UIFont.systemFont(ofSize: 15)
-        tableCellLable.adjustsFontSizeToFitWidth = true
+        tableCellLabel.textAlignment = .left
+        tableCellLabel.textColor = UIColor.CustomColor.dark
+        tableCellLabel.font = UIFont.systemFont(ofSize: 15)
+        tableCellLabel.adjustsFontSizeToFitWidth = true
         
         tableCellPlaceholder.textAlignment = .right
         tableCellPlaceholder.textColor = UIColor.CustomColor.gray

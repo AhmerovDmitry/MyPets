@@ -8,6 +8,7 @@
 import UIKit
 
 class UserProfileViewController: UIViewController {
+    weak var delegate: ProfileViewControllerDelegate?
     var models = [
         PetTableViewModel(title: "Имя", info: "Указать информацию"),
         PetTableViewModel(title: "Город", info: "Указать информацию"),

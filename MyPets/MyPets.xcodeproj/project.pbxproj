@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		42313C2AE932AA1F3C362F85 /* Pods_MyPets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACE89FAC94E788505CF71B99 /* Pods_MyPets.framework */; };
+		BC03FE3A25A32F1C00C81BC5 /* ProfileViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC03FE3925A32F1C00C81BC5 /* ProfileViewControllerDelegate.swift */; };
 		BC0EE6A3259DE49500BE167D /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0EE6A2259DE49500BE167D /* UserProfileViewController.swift */; };
 		BC18E516254D5F030014B7DF /* PetTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC18E515254D5F030014B7DF /* PetTableViewModel.swift */; };
 		BC18E519254DAA6C0014B7DF /* PetViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC18E518254DAA6C0014B7DF /* PetViewControllerDelegate.swift */; };
@@ -20,6 +21,7 @@
 		BC413CCE25389494002CDD19 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC413CCD25389494002CDD19 /* LocationViewController.swift */; };
 		BC413CD1253894D1002CDD19 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC413CD0253894D1002CDD19 /* ProfileViewController.swift */; };
 		BC413CD42538A97F002CDD19 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC413CD32538A97F002CDD19 /* CustomTabBarController.swift */; };
+		BC469CA125AA4BCB00449E3C /* ProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC469CA025AA4BCB00449E3C /* ProfileViewCell.swift */; };
 		BC4851182534E4F100B874D4 /* PremiumViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4851172534E4F100B874D4 /* PremiumViewControllerCell.swift */; };
 		BC48511B2534E51500B874D4 /* PremiumViewControllerDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC48511A2534E51500B874D4 /* PremiumViewControllerDelegate + DataSource.swift */; };
 		BC4D76CD25442AAA0037EA8D /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4D76CC25442AAA0037EA8D /* LocationModel.swift */; };
@@ -64,6 +66,7 @@
 		0FA619743EAD50CFE1F3C7E7 /* Pods-MyPets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyPets.debug.xcconfig"; path = "Target Support Files/Pods-MyPets/Pods-MyPets.debug.xcconfig"; sourceTree = "<group>"; };
 		7DA66DC244A02A730A398052 /* Pods-MyPets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyPets.release.xcconfig"; path = "Target Support Files/Pods-MyPets/Pods-MyPets.release.xcconfig"; sourceTree = "<group>"; };
 		ACE89FAC94E788505CF71B99 /* Pods_MyPets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyPets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC03FE3925A32F1C00C81BC5 /* ProfileViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewControllerDelegate.swift; sourceTree = "<group>"; };
 		BC0EE6A2259DE49500BE167D /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		BC18E515254D5F030014B7DF /* PetTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetTableViewModel.swift; sourceTree = "<group>"; };
 		BC18E518254DAA6C0014B7DF /* PetViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetViewControllerDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +79,7 @@
 		BC413CCD25389494002CDD19 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		BC413CD0253894D1002CDD19 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BC413CD32538A97F002CDD19 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		BC469CA025AA4BCB00449E3C /* ProfileViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewCell.swift; sourceTree = "<group>"; };
 		BC4851172534E4F100B874D4 /* PremiumViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumViewControllerCell.swift; sourceTree = "<group>"; };
 		BC48511A2534E51500B874D4 /* PremiumViewControllerDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PremiumViewControllerDelegate + DataSource.swift"; sourceTree = "<group>"; };
 		BC4D76CC25442AAA0037EA8D /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
@@ -147,13 +151,29 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BC03FE3725A32C2B00C81BC5 /* Extension - @objc */ = {
+			isa = PBXGroup;
+			children = (
+				BC8E9F5325A324DE00403505 /* @objc UserProfileController.swift */,
+			);
+			path = "Extension - @objc";
+			sourceTree = "<group>";
+		};
+		BC03FE3825A32F0D00C81BC5 /* Delegate Methods */ = {
+			isa = PBXGroup;
+			children = (
+				BC03FE3925A32F1C00C81BC5 /* ProfileViewControllerDelegate.swift */,
+			);
+			path = "Delegate Methods";
+			sourceTree = "<group>";
+		};
 		BC0EE6A1259DE47000BE167D /* UserProfileController */ = {
 			isa = PBXGroup;
 			children = (
 				BC67E24625A05923008BDBBD /* UIViewController */,
+				BC03FE3725A32C2B00C81BC5 /* Extension - @objc */,
 				BC67E24525A05910008BDBBD /* Delegate + DataSource */,
 				BC97F2BE25A0650800267E34 /* Model */,
-				BC8E9F5325A324DE00403505 /* @objc UserProfileController.swift */,
 			);
 			path = UserProfileController;
 			sourceTree = "<group>";
@@ -291,6 +311,7 @@
 		BC413CC8253893D2002CDD19 /* ProfileViewController */ = {
 			isa = PBXGroup;
 			children = (
+				BC03FE3825A32F0D00C81BC5 /* Delegate Methods */,
 				BC67E24B25A05993008BDBBD /* ProfileViewController */,
 				BC0EE6A1259DE47000BE167D /* UserProfileController */,
 			);
@@ -303,6 +324,14 @@
 				BC413CD32538A97F002CDD19 /* CustomTabBarController.swift */,
 			);
 			path = CustomTabBarController;
+			sourceTree = "<group>";
+		};
+		BC469CA325AA4BE500449E3C /* UITableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				BC469CA025AA4BCB00449E3C /* ProfileViewCell.swift */,
+			);
+			path = UITableViewCell;
 			sourceTree = "<group>";
 		};
 		BC4D76C425442A250037EA8D /* UIViewController */ = {
@@ -368,6 +397,7 @@
 			children = (
 				BC7E9B8D257F8222006D75A1 /* UIViewController */,
 				BC7E9B8C257F8208006D75A1 /* Delegate + DataSource */,
+				BC469CA325AA4BE500449E3C /* UITableViewCell */,
 			);
 			path = ProfileViewController;
 			sourceTree = "<group>";
@@ -733,12 +763,14 @@
 				BC99B02B2549A80700050854 /* @objc PetViewControllerExtension.swift in Sources */,
 				BC2C33CF2536D83F0092D884 /* @objc PremiumViewControllerExtension.swift in Sources */,
 				BC413CCA253893F7002CDD19 /* PetViewController.swift in Sources */,
+				BC03FE3A25A32F1C00C81BC5 /* ProfileViewControllerDelegate.swift in Sources */,
 				BC413CD1253894D1002CDD19 /* ProfileViewController.swift in Sources */,
 				BC7073282534A9B600B2979F /* Canvas.swift in Sources */,
 				BCCEAF262577B78F000597CA /* UIImagePickerControllerDelegateForPetInfoView.swift in Sources */,
 				BC2C33E02536D98D0092D884 /* PremiumModel.swift in Sources */,
 				BCB610032530C82400C4FD2F /* AppDelegate.swift in Sources */,
 				BC9357F125335D3100C6C390 /* OnboardViewControllerDelegate + DataSource.swift in Sources */,
+				BC469CA125AA4BCB00449E3C /* ProfileViewCell.swift in Sources */,
 				BC99B01A2549A50D00050854 /* PetViewCollectionTableDelegate + DataSource.swift in Sources */,
 				BC935822253395F800C6C390 /* OnboardModel.swift in Sources */,
 				BCB3611A2549DD2D0021AF8B /* PetViewTableCell.swift in Sources */,

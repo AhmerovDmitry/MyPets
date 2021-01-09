@@ -11,7 +11,10 @@ extension UserProfileViewController: UIImagePickerControllerDelegate, UINavigati
     
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        profileView.setBackgroundImage(info[.editedImage] as? UIImage, for: .normal)
+        
+        let userPhoto = info[.editedImage] as? UIImage
+        profileView.setBackgroundImage(userPhoto, for: .normal)
+        delegate?.updateUser(image: userPhoto)
         
         dismiss(animated: true, completion: nil)
     }
