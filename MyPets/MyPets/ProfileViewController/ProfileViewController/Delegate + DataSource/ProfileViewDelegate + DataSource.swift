@@ -30,7 +30,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath)
-        //cell = UITableViewCell(style: .subtitle, reuseIdentifier: "profileCell")
         cell = ProfileViewCell(style: .subtitle, reuseIdentifier: "profileCell")
         
         let menuTitle = menuTitles[indexPath.section]
@@ -75,6 +74,22 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 }
                 cell.detailTextLabel?.text = "Мои данные"
                 cell.detailTextLabel?.textColor = UIColor.CustomColor.gray
+            } else if indexPath.section == 2 {
+                cell.textLabel?.text = menuTitle[indexPath.row]
+                switch indexPath.row {
+                case 0:
+                    cell.addSubview(tipsSwitch)
+                    tipsSwitch.centerYAnchor.constraint(equalTo: cell.centerYAnchor).isActive = true
+                    tipsSwitch.rightAnchor.constraint(equalTo: cell.rightAnchor,
+                                                      constant: -10).isActive = true
+                case 1:
+                    cell.addSubview(reminderSwitch)
+                    reminderSwitch.centerYAnchor.constraint(equalTo: cell.centerYAnchor).isActive = true
+                    reminderSwitch.rightAnchor.constraint(equalTo: cell.rightAnchor,
+                                                          constant: -10).isActive = true
+                default: break
+                }
+                
             } else if indexPath.section == 3 {
                 cell.textLabel?.text = menuTitle[indexPath.row]
                 cell.imageView?.image = UIImage(named: "crownIcon")
@@ -92,15 +107,15 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if indexPath.section == 0 {
+        switch indexPath.section {
+        case 0:
             let userProfileVC = UserProfileViewController()
             userProfileVC.delegate = self
             userProfileVC.profileView.setBackgroundImage(userImage, for: .normal)
             navigationController?.pushViewController(userProfileVC, animated: true)
-        }
-        
-        if indexPath.section == 3 {
-            tableView.reloadData()
+        case 3:
+            presentPremiumController(on: self.tabBarController!)
+        default: break
         }
         
     }

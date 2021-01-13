@@ -18,6 +18,8 @@ class ProfileViewController: UIViewController, GeneralSetupProtocol {
         ["Поддержка", "О приложении"],
         ["Выйти"]
     ]
+    let tipsSwitch = UISwitch()
+    let reminderSwitch = UISwitch()
     
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -61,8 +63,9 @@ class ProfileViewController: UIViewController, GeneralSetupProtocol {
     }
     
     func setupElements() {
-    }
-    
-    func presentController() {
+        [tipsSwitch, reminderSwitch].forEach { switchs in
+            switchs.translatesAutoresizingMaskIntoConstraints = false
+            switchs.isOn = true
+        }
     }
 }
