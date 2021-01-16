@@ -14,7 +14,6 @@ class PetInfoViewController: UIViewController {
     
     let backgroundView = UIView()
     let picker = UIDatePicker()
-    let localeId = Locale.preferredLanguages.first
     let savePetButton = UIButton(type: .system)
     var petInfo: String?
     var titleImage = UIImageView()
@@ -108,13 +107,17 @@ extension PetInfoViewController: GeneralSetupProtocol {
         backgroundView.alpha = 0
         
         picker.isHidden = true
-        picker.locale = Locale(identifier: localeId!)
         picker.date = Date()
         picker.datePickerMode = .date
         picker.alpha = 0
         picker.layer.cornerRadius = 20
         picker.layer.masksToBounds = true
-        picker.backgroundColor = UIColor.CustomColor.lightGray
+        if #available(iOS 13.4, *) {
+            picker.preferredDatePickerStyle = .wheels
+            picker.backgroundColor = UIColor.CustomColor.lightGray
+        } else {
+            picker.backgroundColor = UIColor.CustomColor.lightGray
+        }
         
         savePetButton.isHidden = true
         savePetButton.setTitle("Сохранить", for: .normal)
@@ -141,10 +144,10 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
     func showDatePicker() {
         UIView.animate(withDuration: 0.5) {
             self.picker.isHidden = false
-            self.backgroundView.isHidden = false
-            self.savePetButton.isHidden = false
             self.picker.alpha = 1
+            self.backgroundView.isHidden = false
             self.backgroundView.alpha = 0.5
+            self.savePetButton.isHidden = false
             self.savePetButton.alpha = 1
         }
     }
