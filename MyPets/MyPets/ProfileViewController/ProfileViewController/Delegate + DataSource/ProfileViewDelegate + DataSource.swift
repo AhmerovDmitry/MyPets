@@ -37,12 +37,11 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         if #available(iOS 14.0, *) {
             var content = cell.defaultContentConfiguration()
             if indexPath.section == 0 {
-                content.imageProperties.cornerRadius = 20
-                content.imageProperties.maximumSize = CGSize(width: 40,
-                                                             height: 40)
+                content.imageProperties.maximumSize = CGSize(width: 40, height: 40)
                 content.image = userImage
                 if userImage == nil {
                     content.image = UIImage(named: "cameraIcon")
+                    //content.imageProperties.cornerRadius = 20
                 }
                 content.text = userName
                 if userName == nil {
@@ -115,6 +114,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(userProfileVC, animated: true)
         case 3:
             presentPremiumController(on: self.tabBarController!)
+        case 4:
+            switch indexPath.row {
+            case 0: break
+            default:
+                let aboutAppController = AboutAppController()
+                navigationController?.pushViewController(aboutAppController, animated: true)
+            }
         default: break
         }
         
