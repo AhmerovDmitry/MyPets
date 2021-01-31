@@ -41,11 +41,11 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 content.image = userImage
                 if userImage == nil {
                     content.image = UIImage(named: "cameraIcon")
-                    //content.imageProperties.cornerRadius = 20
                 }
-                content.text = userName
-                if userName == nil {
+                if userInfo?.name == nil {
                     content.text = menuTitle[indexPath.row]
+                } else {
+                    content.text = userInfo?.name
                 }
                 content.secondaryText = "Мои данные"
                 content.secondaryTextProperties.color = UIColor.CustomColor.gray
@@ -63,10 +63,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 } else {
                     cell.imageView?.image = UIImage(named: "cameraIcon")
                 }
-                if userName != nil {
-                    cell.textLabel?.text = userName
-                } else {
+                if userInfo?.name == nil {
                     cell.textLabel?.text = menuTitle[indexPath.row]
+                } else {
+                    cell.textLabel?.text = userInfo?.name
                 }
                 cell.detailTextLabel?.text = "Мои данные"
                 cell.detailTextLabel?.textColor = UIColor.CustomColor.gray
@@ -105,6 +105,9 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             let userProfileVC = UserProfileViewController()
             userProfileVC.delegate = self
             userProfileVC.profileView.setBackgroundImage(userImage, for: .normal)
+            if userInfo != nil {
+                userProfileVC.userInfo = userInfo!
+            }
             navigationController?.pushViewController(userProfileVC, animated: true)
         case 3:
             presentPremiumController(on: self.tabBarController!)
@@ -125,6 +128,11 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension ProfileViewController: ProfileViewControllerDelegate {
+    func updateUser(profile: UserProfileModel) {
+        userInfo = profile
+        tableView.reloadData()
+    }
+    
     func updateUser(image: UIImage?) {
         userImage = image
         tableView.reloadData()

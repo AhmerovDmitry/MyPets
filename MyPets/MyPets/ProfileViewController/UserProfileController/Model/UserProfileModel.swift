@@ -8,5 +8,7 @@
 import UIKit
 
 struct UserProfileModel {
-    
+    var name: String?
+    var city: String?
+    var eMail: String?
 }

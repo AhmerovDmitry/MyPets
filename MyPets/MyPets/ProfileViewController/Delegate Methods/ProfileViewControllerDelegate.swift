@@ -9,4 +9,5 @@ import UIKit
 
 protocol ProfileViewControllerDelegate: class {
     func updateUser(image: UIImage?)
+    func updateUser(profile: UserProfileModel)
 }

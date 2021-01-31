@@ -8,6 +8,8 @@
 import UIKit
 
 class UserProfileViewController: UIViewController {
+    var userInfo = UserProfileModel(name: nil, city: nil, eMail: nil)
+    var indexPath = IndexPath()
     weak var delegate: ProfileViewControllerDelegate?
     var models = [
         PetTableViewModel(title: "Имя", info: "Указать информацию"),
@@ -73,6 +75,43 @@ extension UserProfileViewController: GeneralSetupProtocol {
         profileView.layoutIfNeeded()
         profileView.layer.cornerRadius = profileView.bounds.height / 2
         profileView.addTarget(self, action: #selector(presentController), for: .touchUpInside)
+    }
+    
+}
+
+extension UserProfileViewController: UITextFieldDelegate {
+    func alertForUserInformation(title: String,
+                                 message: String,
+                                 textFieldIndex: IndexPath) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        self.indexPath = textFieldIndex
+        alert.addTextField { textField in
+            textField.textAlignment = .left
+            textField.textColor = UIColor.CustomColor.dark
+            textField.placeholder = "Введите информацию о питомце"
+            textField.addTarget(self, action: #selector(self.textFieldDidChangeSelection(_:)), for: .editingChanged)
+        }
+        let saveButton = UIAlertAction(title: "Сохранить", style: .default) { _ in
+            switch self.indexPath.row {
+            case 0:
+                self.userInfo.name = self.models[self.indexPath.row].info
+            case 1:
+                self.userInfo.city = self.models[self.indexPath.row].info
+            case 2:
+                self.userInfo.eMail = self.models[self.indexPath.row].info
+            default: break
+            }
+            self.delegate?.updateUser(profile: self.userInfo)
+            self.tableView.reloadData()
+        }
+        let cancelButton = UIAlertAction(title: "Отменить", style: .cancel)
+        alert.addAction(saveButton)
+        alert.addAction(cancelButton)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        models[indexPath.row].info = textField.text
     }
     
 }
