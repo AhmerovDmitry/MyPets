@@ -55,9 +55,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             } else {
                 content.text = menuTitle[indexPath.row]
             }
-            if indexPath.section == menuTitles.endIndex - 1 {
-                content.textProperties.color = .red
-            }
             cell.contentConfiguration = content
         } else {
             if indexPath.section == 0 {
@@ -94,9 +91,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.imageView?.image = UIImage(named: "crownIcon")
             } else {
                 cell.textLabel?.text = menuTitle[indexPath.row]
-            }
-            if indexPath.section == menuTitles.endIndex - 1 {
-                cell.textLabel?.textColor = .red
             }
         }
         
