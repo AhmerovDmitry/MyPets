@@ -110,10 +110,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             presentPremiumController(on: self.tabBarController!)
         case 4:
             switch indexPath.row {
-            case 0: break
-            default:
+            case 0:
+                let supportController = SupportViewController()
+                navigationController?.pushViewController(supportController, animated: true)
+            case 1:
                 let aboutAppController = AboutAppController()
                 navigationController?.pushViewController(aboutAppController, animated: true)
+            default: break
             }
         default: break
         }

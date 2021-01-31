@@ -37,6 +37,9 @@
 		BC73964D25435F9900A89858 /* LocationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC73964C25435F9900A89858 /* LocationViewCell.swift */; };
 		BC7E9B90257F8242006D75A1 /* ProfileViewDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7E9B8F257F8242006D75A1 /* ProfileViewDelegate + DataSource.swift */; };
 		BC859AE125B383B000FDD33B /* AboutAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC859AE025B383B000FDD33B /* AboutAppController.swift */; };
+		BC8CDFFF25C6BB85005EEFEB /* SupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8CDFFE25C6BB85005EEFEB /* SupportViewController.swift */; };
+		BC8CE00625C6CBC2005EEFEB /* SupportVCDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8CE00525C6CBC2005EEFEB /* SupportVCDelegate + DataSource.swift */; };
+		BC8CE00925C6CBF6005EEFEB /* SupportVC - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8CE00825C6CBF6005EEFEB /* SupportVC - Extension.swift */; };
 		BC8E9F5425A324DE00403505 /* @objc UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8E9F5325A324DE00403505 /* @objc UserProfileController.swift */; };
 		BC8E9F5825A3261D00403505 /* UIImagePickerControllerDelegateForUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8E9F5725A3261D00403505 /* UIImagePickerControllerDelegateForUserProfile.swift */; };
 		BC9357F125335D3100C6C390 /* OnboardViewControllerDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9357F025335D3100C6C390 /* OnboardViewControllerDelegate + DataSource.swift */; };
@@ -98,6 +101,9 @@
 		BC73964C25435F9900A89858 /* LocationViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewCell.swift; sourceTree = "<group>"; };
 		BC7E9B8F257F8242006D75A1 /* ProfileViewDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewDelegate + DataSource.swift"; sourceTree = "<group>"; };
 		BC859AE025B383B000FDD33B /* AboutAppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppController.swift; sourceTree = "<group>"; };
+		BC8CDFFE25C6BB85005EEFEB /* SupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportViewController.swift; sourceTree = "<group>"; };
+		BC8CE00525C6CBC2005EEFEB /* SupportVCDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SupportVCDelegate + DataSource.swift"; sourceTree = "<group>"; };
+		BC8CE00825C6CBF6005EEFEB /* SupportVC - Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SupportVC - Extension.swift"; sourceTree = "<group>"; };
 		BC8E9F5325A324DE00403505 /* @objc UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "@objc UserProfileController.swift"; sourceTree = "<group>"; };
 		BC8E9F5725A3261D00403505 /* UIImagePickerControllerDelegateForUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImagePickerControllerDelegateForUserProfile.swift; sourceTree = "<group>"; };
 		BC9357F025335D3100C6C390 /* OnboardViewControllerDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardViewControllerDelegate + DataSource.swift"; sourceTree = "<group>"; };
@@ -321,6 +327,7 @@
 				BC03FE3825A32F0D00C81BC5 /* Delegate Methods */,
 				BC67E24B25A05993008BDBBD /* ProfileViewController */,
 				BC0EE6A1259DE47000BE167D /* UserProfileController */,
+				BC8CDFFD25C6BB5D005EEFEB /* SupportViewController */,
 				BC859ADF25B3838600FDD33B /* AboutAppController */,
 			);
 			path = ProfileViewController;
@@ -472,6 +479,40 @@
 				BC859AE025B383B000FDD33B /* AboutAppController.swift */,
 			);
 			path = AboutAppController;
+			sourceTree = "<group>";
+		};
+		BC8CDFFD25C6BB5D005EEFEB /* SupportViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BC8CE00225C6CB67005EEFEB /* UIViewController */,
+				BC8CE00325C6CB73005EEFEB /* Delegate + DataSource */,
+				BC8CE00425C6CB84005EEFEB /* Extension */,
+			);
+			path = SupportViewController;
+			sourceTree = "<group>";
+		};
+		BC8CE00225C6CB67005EEFEB /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BC8CDFFE25C6BB85005EEFEB /* SupportViewController.swift */,
+			);
+			path = UIViewController;
+			sourceTree = "<group>";
+		};
+		BC8CE00325C6CB73005EEFEB /* Delegate + DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				BC8CE00525C6CBC2005EEFEB /* SupportVCDelegate + DataSource.swift */,
+			);
+			path = "Delegate + DataSource";
+			sourceTree = "<group>";
+		};
+		BC8CE00425C6CB84005EEFEB /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				BC8CE00825C6CBF6005EEFEB /* SupportVC - Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		BC9358242533961B00C6C390 /* Model */ = {
@@ -757,6 +798,7 @@
 				BC413CD42538A97F002CDD19 /* CustomTabBarController.swift in Sources */,
 				BC73002A25723C460010F161 /* @objc PetInfoViewController.swift in Sources */,
 				BC63197425488B5A00D26454 /* Search Locations.swift in Sources */,
+				BC8CE00625C6CBC2005EEFEB /* SupportVCDelegate + DataSource.swift in Sources */,
 				BCB610072530C82400C4FD2F /* AuthorizationViewController.swift in Sources */,
 				BC18E516254D5F030014B7DF /* PetTableViewModel.swift in Sources */,
 				BC48511B2534E51500B874D4 /* PremiumViewControllerDelegate + DataSource.swift in Sources */,
@@ -765,12 +807,14 @@
 				BC413CCE25389494002CDD19 /* LocationViewController.swift in Sources */,
 				BC99B0272549A77C00050854 /* PetInfoViewController.swift in Sources */,
 				BCDBF528253F887E00BCBBFB /* Map Settings.swift in Sources */,
+				BC8CDFFF25C6BB85005EEFEB /* SupportViewController.swift in Sources */,
 				BC3DBC3D2530DFFF0007BDF2 /* UIColor.swift in Sources */,
 				BC9357F425335DFA00C6C390 /* OnboardViewCell.swift in Sources */,
 				BC0EE6A3259DE49500BE167D /* UserProfileViewController.swift in Sources */,
 				BCB404252532F5FE00993A5C /* @objc AuthorizationViewControllerExtension.swift in Sources */,
 				BC4851182534E4F100B874D4 /* PremiumViewControllerCell.swift in Sources */,
 				BC4D76CD25442AAA0037EA8D /* LocationModel.swift in Sources */,
+				BC8CE00925C6CBF6005EEFEB /* SupportVC - Extension.swift in Sources */,
 				BC8E9F5825A3261D00403505 /* UIImagePickerControllerDelegateForUserProfile.swift in Sources */,
 				BC7E9B90257F8242006D75A1 /* ProfileViewDelegate + DataSource.swift in Sources */,
 				BCB3AA4125AF791B00289B7A /* @objc ProfileViewController.swift in Sources */,
