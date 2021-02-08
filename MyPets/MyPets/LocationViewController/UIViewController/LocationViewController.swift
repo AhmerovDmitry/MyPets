@@ -7,7 +7,6 @@
 
 import UIKit
 import MapKit
-import YandexMapsMobile
 
 class LocationViewController: UIViewController {
     //MARK: - Model
@@ -48,31 +47,11 @@ class LocationViewController: UIViewController {
     let alertController = UIAlertController()
     
     //MARK: - Search locations properties
-    var searchResponseImage = UIImage()
     var searchResponseText = String()
-    var searchManager: YMKSearchManager?
-    var searchSession: YMKSearchSession?
     
     //MARK: - Locations preperties
-    var firstUserLocation = true
-    var firstShown = true
-    let nativeLocationManager = CLLocationManager()
-    var userLocationLayer: YMKUserLocationLayer!
-    let mapView = YMKMapView()
-    var locationManager: YMKLocationManager!
-    var userLocation: YMKPoint? {
-        didSet {
-            if firstShown {
-                firstShown = false
-                guard userLocation != nil && userLocation?.latitude != 0 && userLocation?.longitude != 0 else { return }
-                
-                mapView.mapWindow.map.move(
-                    with: YMKCameraPosition.init(target: userLocation!, zoom: 16, azimuth: 0, tilt: 0),
-                    animationType: YMKAnimation(type: YMKAnimationType.smooth, duration: 2.5),
-                    cameraCallback: nil)
-            }
-        }
-    }
+    let locationManager = CLLocationManager()
+    let mapView = MKMapView()
     
     //MARK: - viewDidLoad()
     override func viewDidLoad() {
@@ -81,20 +60,16 @@ class LocationViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-        backgroundView.addSubview(collectionView)
-        collectionView.topAnchor.constraint(equalTo: backgroundView.topAnchor).isActive = true
-        collectionView.leftAnchor.constraint(equalTo: backgroundView.leftAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor).isActive = true
-        collectionView.rightAnchor.constraint(equalTo: backgroundView.rightAnchor).isActive = true
+        locationManager.delegate = self
         
         setup()
+        fetchLocation()
     }
     
-    //MARK: - viewDidAppear
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        fetchLocation()
+        
+        //fetchLocation()
     }
 }
 
@@ -107,6 +82,12 @@ extension LocationViewController: GeneralSetupProtocol {
     func setupConstraints() {
         view.addSubview(mapView)
         view.addSubview(backgroundView)
+        backgroundView.addSubview(collectionView)
+        
+        collectionView.topAnchor.constraint(equalTo: backgroundView.topAnchor).isActive = true
+        collectionView.leftAnchor.constraint(equalTo: backgroundView.leftAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor).isActive = true
+        collectionView.rightAnchor.constraint(equalTo: backgroundView.rightAnchor).isActive = true
         
         mapView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         mapView.bottomAnchor.constraint(equalTo: backgroundView.topAnchor,
@@ -127,6 +108,9 @@ extension LocationViewController: GeneralSetupProtocol {
          mapView].forEach({
             $0.translatesAutoresizingMaskIntoConstraints = false
          })
+        
+        mapView.showsUserLocation = true
+        mapView.mapType = .standard
         
         backgroundView.backgroundColor = .white
         backgroundView.layer.cornerRadius = 10

@@ -59,33 +59,41 @@ extension LocationViewController: UICollectionViewDelegate, UICollectionViewData
     @objc func response0() {
         print("button 0 - \(searchResponseText)")
         searchResponseText = models[0].searchText
+        searchInMap(place: searchResponseText)
     }
     @objc func response1() {
         print("button 1 - \(searchResponseText)")
         searchResponseText = models[1].searchText
+        searchInMap(place: searchResponseText)
     }
     @objc func response2() {
         print("button 2 - \(searchResponseText)")
         searchResponseText = models[2].searchText
+        searchInMap(place: searchResponseText)
     }
     @objc func response3() {
         print("button 3 - \(searchResponseText)")
         searchResponseText = models[3].searchText
+        searchInMap(place: searchResponseText)
     }
     @objc func response4() {
         print("button 4 - \(searchResponseText)")
         searchResponseText = models[4].searchText
+        searchInMap(place: searchResponseText)
     }
     @objc func response5() {
         print("button 5 - \(searchResponseText)")
         searchResponseText = models[5].searchText
+        searchInMap(place: searchResponseText)
     }
     @objc func response6() {
         print("button 6 - \(searchResponseText)")
         searchResponseText = models[6].searchText
+        searchInMap(place: searchResponseText)
     }
     @objc func response7() {
         print("button 7 - \(searchResponseText)")
         searchResponseText = models[7].searchText
+        searchInMap(place: searchResponseText)
     }
 }

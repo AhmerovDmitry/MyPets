@@ -7,104 +7,76 @@
 
 import UIKit
 import MapKit
-import YandexMapsMobile
 
-extension LocationViewController: CLLocationManagerDelegate, YMKMapCameraListener {
+extension LocationViewController : CLLocationManagerDelegate {
     //MARK: - Fetch user location
     func fetchLocation() {
-            if CLLocationManager.locationServicesEnabled() {
-                nativeLocationManager.delegate = self
-                nativeLocationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-                nativeLocationManager.startUpdatingLocation()
-                checkAuthorization()
-            } else {
-                alertController.showAlertForMap(title: "Выключена служба геолокации",
-                                          message: "Включить?",
-                                          urlForSystemWay: "App-Prefs:root=LOCATION_SERVICES")
-            }
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.requestWhenInUseAuthorization()
+        } else {
+            alertController.showAlertForMap(title: "Выключена служба геолокации",
+                                            message: "Включить?",
+                                            urlForSystemWay: "App-Prefs:root=LOCATION_SERVICES")
+        }
     }
-    //MARK: - CLLocationManager authorization status
-    func checkAuthorization() {
-        switch CLLocationManager.authorizationStatus() {
-        case .authorizedAlways:
-            setupLocationManager()
-        case .authorizedWhenInUse:
-            setupLocationManager()
+    
+    func showUserLocation() {
+        if let userLocation = locationManager.location?.coordinate {
+            let viewRegion = MKCoordinateRegion(center: userLocation, latitudinalMeters: 1000, longitudinalMeters: 1000)
+            mapView.setRegion(viewRegion, animated: true)
+        }
+        DispatchQueue.main.async {
+            self.locationManager.startUpdatingLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            manager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            manager.requestLocation()
+            showUserLocation()
         case .denied:
             alertController.showAlertForMap(title: "Вы запретили использование местоположения",
-                                      message: "Хотите это изменить?",
-                                      urlForSystemWay: UIApplication.openSettingsURLString)
+                                            message: "Хотите это изменить?",
+                                            urlForSystemWay: UIApplication.openSettingsURLString)
         case .restricted:
             break
         case .notDetermined:
-            nativeLocationManager.requestWhenInUseAuthorization()
+            manager.requestWhenInUseAuthorization()
         default:
             print("Default status")
         }
     }
-    func setupLocationManager() {
-        if firstUserLocation {
-            firstUserLocation = false
-            
-            let mapKit = YMKMapKit.sharedInstance()
-            userLocationLayer = mapKit.createUserLocationLayer(with: mapView.mapWindow)
-            userLocationLayer.setVisibleWithOn(true)
-            userLocationLayer.isHeadingEnabled = false
-            
-            searchManager = YMKSearch.sharedInstance().createSearchManager(with: .combined)
-            
-            mapView.mapWindow.map.isRotateGesturesEnabled = false
-            mapView.mapWindow.map.addCameraListener(with: self)
-        }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("error:: \(error.localizedDescription)")
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        userLocation = YMKPoint(latitude: locations.last!.coordinate.latitude,
-                                longitude: locations.last!.coordinate.longitude)
     }
     
-    func onCameraPositionChanged(with map: YMKMap, cameraPosition: YMKCameraPosition, cameraUpdateReason: YMKCameraUpdateReason, finished: Bool) {
-        if finished {
-            userLocationLayer.resetAnchor()
-            let responseHandler = {(searchResponse: YMKSearchResponse?, error: Error?) -> Void in
-                if let response = searchResponse {
-                    self.onSearchResponse(response)
-                } else {
-                    self.onSearchError(error!)
-                }
+    func searchInMap(place: String) {
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = place
+        let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+        request.region = MKCoordinateRegion(center: locationManager.location!.coordinate, span: span)
+        let search = MKLocalSearch(request: request)
+        search.start(completionHandler: {(response, error) in
+            for item in response!.mapItems {
+                self.addPinToMapView(title: item.name, latitude: item.placemark.location!.coordinate.latitude, longitude: item.placemark.location!.coordinate.longitude)
             }
+        })
+    }
+    
+    func  addPinToMapView(title: String?, latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+        if let title = title {
+            let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = location
+            annotation.title = title
             
-            searchSession = searchManager!.submit(
-                withText: searchResponseText,
-                geometry: YMKVisibleRegionUtils.toPolygon(with: map.visibleRegion),
-                searchOptions: YMKSearchOptions(),
-                responseHandler: responseHandler)
+            mapView.addAnnotation(annotation)
         }
-    }
-    
-    func onSearchResponse(_ response: YMKSearchResponse) {
-        let mapObjects = mapView.mapWindow.map.mapObjects
-        mapObjects.clear()
-        for searchResult in response.collection.children {
-            if let point = searchResult.obj?.geometry.first?.point {
-                let placemark = mapObjects.addPlacemark(with: point)
-                placemark.setIconWith(UIImage(named: "petIcon")!)
-            }
-        }
-    }
-    
-    func onSearchError(_ error: Error) {
-        let searchError = (error as NSError).userInfo[YRTUnderlyingErrorKey] as! YRTError
-        var errorMessage = "Unknown error"
-        if searchError.isKind(of: YRTNetworkError.self) {
-            errorMessage = "Network error"
-        } else if searchError.isKind(of: YRTRemoteError.self) {
-            errorMessage = "Remote server error"
-        }
-        
-        let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        
-        present(alert, animated: true, completion: nil)
     }
 }
