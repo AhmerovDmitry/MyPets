@@ -12,22 +12,19 @@ class MainViewController: UIViewController, GeneralSetupProtocol {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.backgroundColor = .white
-        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor : UIColor.black]
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor : UIColor.CustomColor.dark]
         navigationItem.title = "Главная"
         
         view.backgroundColor = .white
-        setup()
+        
+        setupConstraints()
+        setupElements()
     }
     
-    func setup() {
-        setupConstraint()
-        setupViewsAndLabels()
+    func setupConstraints() {
     }
     
-    func setupConstraint() {
-    }
-    
-    func setupViewsAndLabels() {
+    func setupElements() {
     }
     
     func presentController() {

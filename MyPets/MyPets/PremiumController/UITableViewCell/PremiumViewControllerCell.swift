@@ -18,7 +18,8 @@ class PremiumViewControllerCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setup()
+        setupConstraints()
+        setupElements()
     }
     
     required init?(coder: NSCoder) {
@@ -27,12 +28,7 @@ class PremiumViewControllerCell: UITableViewCell {
 }
 
 extension PremiumViewControllerCell: GeneralSetupProtocol {
-    func setup() {
-        setupConstraint()
-        setupViewsAndLabels()
-    }
-    
-    func setupConstraint() {
+    func setupConstraints() {
         contentView.addSubview(premiumText)
         
         premiumText.leftAnchor.constraint(equalTo: contentView.leftAnchor,
@@ -45,7 +41,7 @@ extension PremiumViewControllerCell: GeneralSetupProtocol {
                                             constant: -10).isActive = true
     }
     
-    func setupViewsAndLabels() {
+    func setupElements() {
         premiumText.translatesAutoresizingMaskIntoConstraints = false
         premiumText.textAlignment = .center
         premiumText.textColor = .white

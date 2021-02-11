@@ -4,16 +4,18 @@
 target 'MyPets' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
+    # lite version provides only map and some core services
+    # full version provides the rest of maps API
+    # routing, panoramas, search and etc.
+    # pod 'YandexMapsMobile', '4.0.0-lite'
+    # pod 'YandexMapsMobile', '4.0.0-full'
 
   # Pods for MyPets
-use_frameworks!
   # Основная библиотека MapKit.
-  pod ‘YandexMapKit’, ’3.5’ 
-  # Дополнительные модули MapKit.
-  # Удалите зависимости если ваше приложение не использует их.
+  # pod ‘YandexMapKit’, ’3.5’ 
+  # pod ‘YandexMapKitSearch’, ’3.5’
   # pod ‘YandexMapKitDirections’, ’3.5’ 
-  # pod ‘YandexMapKitPlaces’, ’3.5’ 
-  # pod ‘YandexMapKitSearch’, ’3.5’ 
-  # pod ‘YandexMapKitTransport’, ’3.5’ 
+  # pod ‘YandexMapKitPlaces’, ’3.5’
+  # pod ‘YandexMapKitTransport’, ’3.5’
 
 end
