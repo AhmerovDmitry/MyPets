@@ -10,9 +10,18 @@ import UIKit
 @objc
 extension PremiumViewController {
     @objc func closeController() {
-        let authorizationVC = AuthorizationViewController()
-        authorizationVC.modalPresentationStyle = .fullScreen
-        present(authorizationVC, animated: true, completion: nil)
+        UIView.animate(withDuration: 0.5) {
+            let transition = CATransition()
+            transition.duration = 0.5
+            transition.type = CATransitionType.push
+            transition.subtype = CATransitionSubtype.fromLeft
+            transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+            self.view.window!.layer.add(transition, forKey: kCATransition)
+        } completion: { _ in
+            self.willMove(toParent: nil)
+            self.view.removeFromSuperview()
+            self.removeFromParent()
+        }
     }
     
     @objc func presentController() {

@@ -11,6 +11,7 @@ class CustomTabBarController: UITabBarController {
     let mainVC = UINavigationController(rootViewController: MainViewController())
     let petVC = UINavigationController(rootViewController: PetViewController())
     let locationVC = LocationViewController()
+    //let locationVC = UINavigationController(rootViewController: ProfileViewController()) //Для того чтобы убрать лишние сообщения из консоли!!!
     let profileVC = UINavigationController(rootViewController: ProfileViewController())
     
     var controllers: [UIViewController]?
@@ -24,6 +25,7 @@ class CustomTabBarController: UITabBarController {
         tabBar.backgroundColor = .white
         tabBar.backgroundImage = UIImage()
         tabBar.shadowImage = UIImage()
+        tabBar.unselectedItemTintColor = UIColor.CustomColor.gray
         tabBar.tintColor = UIColor.CustomColor.purple
         tabBar.unselectedItemTintColor = UIColor.CustomColor.gray
     }
