@@ -8,7 +8,7 @@ target 'MyPets' do
     # full version provides the rest of maps API
     # routing, panoramas, search and etc.
     # pod 'YandexMapsMobile', '4.0.0-lite'
-    pod 'YandexMapsMobile', '4.0.0-full'
+    # pod 'YandexMapsMobile', '4.0.0-full'
 
   # Pods for MyPets
   # Основная библиотека MapKit.

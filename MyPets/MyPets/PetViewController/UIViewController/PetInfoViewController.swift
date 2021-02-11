@@ -14,7 +14,6 @@ class PetInfoViewController: UIViewController {
     
     let backgroundView = UIView()
     let picker = UIDatePicker()
-    let localeId = Locale.preferredLanguages.first
     let savePetButton = UIButton(type: .system)
     var petInfo: String?
     var titleImage = UIImageView()
@@ -37,24 +36,26 @@ class PetInfoViewController: UIViewController {
     //MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
-        let addPhotoButton = UIBarButtonItem(image: UIImage(named: "addPetPhoto"), style: .done, target: self, action: #selector(presentController))
-        
-        navigationController?.navigationBar.backgroundColor = .clear
-        navigationController?.navigationBar.tintColor = UIColor.CustomColor.dark
-        navigationItem.rightBarButtonItem = addPhotoButton
-        navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.dark
-        
         view.backgroundColor = .white
         
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        setupNavigationController()
         setupConstraints()
         setupElements()
     }
 }
 
 extension PetInfoViewController: GeneralSetupProtocol {
+    func setupNavigationController() {
+        let addPhotoButton = UIBarButtonItem(image: UIImage(named: "cameraIcon"), style: .done, target: self, action: #selector(presentController))
+        navigationController?.navigationBar.backgroundColor = .clear
+        navigationController?.navigationBar.tintColor = UIColor.CustomColor.dark
+        navigationItem.rightBarButtonItem = addPhotoButton
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.dark
+    }
+    
     func setupConstraints() {
         [titleImage,
          collectionView,
@@ -106,13 +107,17 @@ extension PetInfoViewController: GeneralSetupProtocol {
         backgroundView.alpha = 0
         
         picker.isHidden = true
-        picker.locale = Locale(identifier: localeId!)
         picker.date = Date()
         picker.datePickerMode = .date
         picker.alpha = 0
         picker.layer.cornerRadius = 20
         picker.layer.masksToBounds = true
-        picker.backgroundColor = UIColor.CustomColor.lightGray
+        if #available(iOS 13.4, *) {
+            picker.preferredDatePickerStyle = .wheels
+            picker.backgroundColor = UIColor.CustomColor.lightGray
+        } else {
+            picker.backgroundColor = UIColor.CustomColor.lightGray
+        }
         
         savePetButton.isHidden = true
         savePetButton.setTitle("Сохранить", for: .normal)
@@ -139,10 +144,10 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
     func showDatePicker() {
         UIView.animate(withDuration: 0.5) {
             self.picker.isHidden = false
-            self.backgroundView.isHidden = false
-            self.savePetButton.isHidden = false
             self.picker.alpha = 1
+            self.backgroundView.isHidden = false
             self.backgroundView.alpha = 0.5
+            self.savePetButton.isHidden = false
             self.savePetButton.alpha = 1
         }
     }

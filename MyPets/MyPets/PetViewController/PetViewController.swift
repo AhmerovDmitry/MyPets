@@ -16,15 +16,18 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
+        
+        setupNavigationController()
+        setupConstraints()
+        setupElements()
+    }
+    
+    func setupNavigationController() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.backgroundColor = .white
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor : UIColor.CustomColor.dark]
         navigationItem.title = "Питомцы"
-        
-        view.backgroundColor = .white
-        
-        setupConstraints()
-        setupElements()
     }
     
     func setupConstraints() {

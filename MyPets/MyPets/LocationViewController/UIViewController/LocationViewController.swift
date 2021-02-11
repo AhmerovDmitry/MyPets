@@ -7,7 +7,6 @@
 
 import UIKit
 import MapKit
-import YandexMapsMobile
 
 class LocationViewController: UIViewController {
     //MARK: - Model
@@ -17,7 +16,7 @@ class LocationViewController: UIViewController {
         LocationModel(buttonTitle: "Зоомагазины",
                       searchText: "зоомагазин"),
         LocationModel(buttonTitle: "Клиники",
-                      searchText: "ветеринарная клиника"),
+                      searchText: "ветеринар"),
         LocationModel(buttonTitle: "Парки",
                       searchText: "парк"),
         LocationModel(buttonTitle: "Кафе и рестораны",
@@ -40,6 +39,8 @@ class LocationViewController: UIViewController {
         cv.backgroundColor = .white
         cv.showsHorizontalScrollIndicator = false
         cv.register(LocationViewCell.self, forCellWithReuseIdentifier: "cellFilterId")
+        cv.layer.cornerRadius = 10
+        cv.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         return cv
     }()
@@ -47,32 +48,10 @@ class LocationViewController: UIViewController {
     //MARK: - Alert controller
     let alertController = UIAlertController()
     
-    //MARK: - Search locations properties
-    var searchResponseImage = UIImage()
-    var searchResponseText = String()
-    var searchManager: YMKSearchManager?
-    var searchSession: YMKSearchSession?
-    
     //MARK: - Locations preperties
-    var firstUserLocation = true
-    var firstShown = true
-    let nativeLocationManager = CLLocationManager()
-    var userLocationLayer: YMKUserLocationLayer!
-    let mapView = YMKMapView()
-    var locationManager: YMKLocationManager!
-    var userLocation: YMKPoint? {
-        didSet {
-            if firstShown {
-                firstShown = false
-                guard userLocation != nil && userLocation?.latitude != 0 && userLocation?.longitude != 0 else { return }
-                
-                mapView.mapWindow.map.move(
-                    with: YMKCameraPosition.init(target: userLocation!, zoom: 16, azimuth: 0, tilt: 0),
-                    animationType: YMKAnimation(type: YMKAnimationType.smooth, duration: 2.5),
-                    cameraCallback: nil)
-            }
-        }
-    }
+    let locationManager = CLLocationManager()
+    let mapView = MKMapView()
+    var matchingItems = [MKMapItem]()
     
     //MARK: - viewDidLoad()
     override func viewDidLoad() {
@@ -81,20 +60,10 @@ class LocationViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-        backgroundView.addSubview(collectionView)
-        collectionView.topAnchor.constraint(equalTo: backgroundView.topAnchor).isActive = true
-        collectionView.leftAnchor.constraint(equalTo: backgroundView.leftAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor).isActive = true
-        collectionView.rightAnchor.constraint(equalTo: backgroundView.rightAnchor).isActive = true
+        locationManager.delegate = self
         
         setup()
-    }
-    
-    //MARK: - viewDidAppear
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        fetchLocation()
+        checkLocationAvailability()
     }
 }
 
@@ -107,6 +76,12 @@ extension LocationViewController: GeneralSetupProtocol {
     func setupConstraints() {
         view.addSubview(mapView)
         view.addSubview(backgroundView)
+        backgroundView.addSubview(collectionView)
+        
+        collectionView.topAnchor.constraint(equalTo: backgroundView.topAnchor).isActive = true
+        collectionView.leftAnchor.constraint(equalTo: backgroundView.leftAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor).isActive = true
+        collectionView.rightAnchor.constraint(equalTo: backgroundView.rightAnchor).isActive = true
         
         mapView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         mapView.bottomAnchor.constraint(equalTo: backgroundView.topAnchor,
@@ -128,9 +103,11 @@ extension LocationViewController: GeneralSetupProtocol {
             $0.translatesAutoresizingMaskIntoConstraints = false
          })
         
-        backgroundView.backgroundColor = .white
-        backgroundView.layer.cornerRadius = 10
-        backgroundView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        mapView.showsUserLocation = true
+        mapView.mapType = .mutedStandard
+        mapView.showsBuildings = true
+        
+        backgroundView.backgroundColor = .clear
         backgroundView.layer.shadowColor = UIColor.CustomColor.dark.cgColor
         backgroundView.layer.shadowOffset = CGSize(width: 0, height: 0)
         backgroundView.layer.shadowOpacity = 0.7

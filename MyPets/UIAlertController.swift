@@ -24,23 +24,11 @@ extension UIAlertController {
         present(alert, animated: true, completion: nil)
     }
     
-    func showAlertForMainView(title: String, infoFor label: UILabel, in controller: UIViewController) {
-        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-        var text: String?
-        alert.addTextField { (textField) in
-            textField.textAlignment = .left
-            textField.textColor = UIColor.CustomColor.dark
-            textField.placeholder = "Введите информацию о питомце"
-            text = textField.text
-        }
-        let saveButton = UIAlertAction(title: "Сохранить", style: .default) { (action) in
-            label.text = text
-        }
-        let cancelButton = UIAlertAction(title: "Отменить", style: .cancel, handler: nil)
+    func showGlobalWarning(title: String, message: String, buttonText: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let button = UIAlertAction(title: buttonText, style: .cancel, handler: nil)
+        alert.addAction(button)
         
-        alert.addAction(saveButton)
-        alert.addAction(cancelButton)
-        
-        controller.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
 }

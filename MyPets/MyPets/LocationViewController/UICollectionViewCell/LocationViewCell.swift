@@ -12,12 +12,9 @@ class LocationViewCell: UICollectionViewCell {
         didSet {
             guard let model = model else { return }
             valueButton.setTitle(model.buttonTitle, for: .normal)
-            
-            indexText = model.searchText
         }
     }
     let valueButton = UIButton(type: .custom)
-    var indexText = String()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

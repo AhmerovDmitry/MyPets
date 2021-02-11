@@ -25,15 +25,9 @@ extension OnboardViewController {
         }
     }
     @objc func presentController() {
-        let transition = CATransition()
-        transition.duration = 0.5
-        transition.type = CATransitionType.push
-        transition.subtype = CATransitionSubtype.fromRight
-        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
-        view.window!.layer.add(transition, forKey: kCATransition)
-        
-        let premiumVC = PremiumViewController()
-        premiumVC.modalPresentationStyle = .fullScreen
-        present(premiumVC, animated: false, completion: nil)
+        let authorizationVC = AuthorizationViewController()
+        authorizationVC.modalPresentationStyle = .fullScreen
+        present(authorizationVC, animated: false, completion: nil)
+        presentPremiumController(on: authorizationVC)
     }
 }
