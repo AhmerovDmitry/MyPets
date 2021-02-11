@@ -16,7 +16,7 @@ class LocationViewController: UIViewController {
         LocationModel(buttonTitle: "Зоомагазины",
                       searchText: "зоомагазин"),
         LocationModel(buttonTitle: "Клиники",
-                      searchText: "ветеринарная клиника"),
+                      searchText: "ветеринар"),
         LocationModel(buttonTitle: "Парки",
                       searchText: "парк"),
         LocationModel(buttonTitle: "Кафе и рестораны",
@@ -39,6 +39,8 @@ class LocationViewController: UIViewController {
         cv.backgroundColor = .white
         cv.showsHorizontalScrollIndicator = false
         cv.register(LocationViewCell.self, forCellWithReuseIdentifier: "cellFilterId")
+        cv.layer.cornerRadius = 10
+        cv.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         return cv
     }()
@@ -46,12 +48,10 @@ class LocationViewController: UIViewController {
     //MARK: - Alert controller
     let alertController = UIAlertController()
     
-    //MARK: - Search locations properties
-    var searchResponseText = String()
-    
     //MARK: - Locations preperties
     let locationManager = CLLocationManager()
     let mapView = MKMapView()
+    var matchingItems = [MKMapItem]()
     
     //MARK: - viewDidLoad()
     override func viewDidLoad() {
@@ -63,13 +63,7 @@ class LocationViewController: UIViewController {
         locationManager.delegate = self
         
         setup()
-        fetchLocation()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        //fetchLocation()
+        checkLocationAvailability()
     }
 }
 
@@ -110,11 +104,10 @@ extension LocationViewController: GeneralSetupProtocol {
          })
         
         mapView.showsUserLocation = true
-        mapView.mapType = .standard
+        mapView.mapType = .mutedStandard
+        mapView.showsBuildings = true
         
-        backgroundView.backgroundColor = .white
-        backgroundView.layer.cornerRadius = 10
-        backgroundView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        backgroundView.backgroundColor = .clear
         backgroundView.layer.shadowColor = UIColor.CustomColor.dark.cgColor
         backgroundView.layer.shadowOffset = CGSize(width: 0, height: 0)
         backgroundView.layer.shadowOpacity = 0.7

@@ -10,7 +10,7 @@ import MapKit
 
 extension LocationViewController : CLLocationManagerDelegate {
     //MARK: - Fetch user location
-    func fetchLocation() {
+    func checkLocationAvailability() {
         if CLLocationManager.locationServicesEnabled() {
             locationManager.requestWhenInUseAuthorization()
         } else {
@@ -19,17 +19,7 @@ extension LocationViewController : CLLocationManagerDelegate {
                                             urlForSystemWay: "App-Prefs:root=LOCATION_SERVICES")
         }
     }
-    
-    func showUserLocation() {
-        if let userLocation = locationManager.location?.coordinate {
-            let viewRegion = MKCoordinateRegion(center: userLocation, latitudinalMeters: 1000, longitudinalMeters: 1000)
-            mapView.setRegion(viewRegion, animated: true)
-        }
-        DispatchQueue.main.async {
-            self.locationManager.startUpdatingLocation()
-        }
-    }
-    
+    //MARK: - Check authorization status
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
@@ -48,35 +38,47 @@ extension LocationViewController : CLLocationManagerDelegate {
             print("Default status")
         }
     }
-    
+    //MARK: - error.localizedDescription
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("error:: \(error.localizedDescription)")
     }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    //MARK: - View user location
+    func showUserLocation() {
+        guard let userLocation = locationManager.location?.coordinate else { return }
+        let viewRegion = MKCoordinateRegion(center: userLocation,
+                                            latitudinalMeters: 1000,
+                                            longitudinalMeters: 1000)
+        mapView.setRegion(viewRegion, animated: true)
     }
-    
+    //MARK: - Did update user location
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+    }
+    //MARK: - Search annotation on map
     func searchInMap(place: String) {
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = place
-        let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-        request.region = MKCoordinateRegion(center: locationManager.location!.coordinate, span: span)
+        request.region = mapView.region
         let search = MKLocalSearch(request: request)
-        search.start(completionHandler: {(response, error) in
-            for item in response!.mapItems {
-                self.addPinToMapView(title: item.name, latitude: item.placemark.location!.coordinate.latitude, longitude: item.placemark.location!.coordinate.longitude)
-            }
+        search.start(completionHandler: { response, _ in
+            guard let response = response else { return }
+            self.matchingItems = response.mapItems
+            self.dropPinZoomIn(placemarks: self.matchingItems)
         })
     }
-    
-    func  addPinToMapView(title: String?, latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
-        if let title = title {
-            let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    //MARK: - Set pin and annotation settings
+    func dropPinZoomIn(placemarks: [MKMapItem]){
+        mapView.removeAnnotations(mapView.annotations)
+        var annotations = [MKPointAnnotation]()
+        for item in placemarks {
             let annotation = MKPointAnnotation()
-            annotation.coordinate = location
-            annotation.title = title
-            
-            mapView.addAnnotation(annotation)
+            annotation.coordinate = item.placemark.coordinate
+            annotation.title = item.name
+            if let title = item.placemark.title, let phone = item.phoneNumber {
+                annotation.subtitle = "\(title) \n\(phone)"
+            }
+            annotations.append(annotation)
         }
+        mapView.addAnnotations(annotations)
     }
 }
