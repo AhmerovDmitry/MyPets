@@ -43,9 +43,7 @@ class OnboardViewController: UIViewController, GeneralSetupProtocol {
     }
     
     func setupConstraints() {
-        view.addSubview(collectionView)
-        view.addSubview(mainStackView)
-        view.addSubview(closeButton)
+        [collectionView, mainStackView, closeButton].forEach({ view.addSubview($0) })
         
         collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         collectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -74,8 +72,8 @@ class OnboardViewController: UIViewController, GeneralSetupProtocol {
         
         closeButton.widthAnchor.constraint(lessThanOrEqualToConstant: 97).isActive = true
         closeButton.heightAnchor.constraint(lessThanOrEqualToConstant: 21).isActive = true
-        closeButton.topAnchor.constraint(lessThanOrEqualTo: view.topAnchor,
-                                         constant: 60).isActive = true
+        closeButton.topAnchor.constraint(equalTo: view.topAnchor,
+                                         constant: UIApplication.shared.statusBarFrame.height + 15).isActive = true
         closeButton.rightAnchor.constraint(lessThanOrEqualTo: view.rightAnchor,
                                            constant: -15).isActive = true
     }
