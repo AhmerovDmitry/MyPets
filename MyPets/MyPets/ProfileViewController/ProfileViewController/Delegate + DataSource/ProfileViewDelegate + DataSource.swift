@@ -31,22 +31,19 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath)
         cell = ProfileViewCell(style: .subtitle, reuseIdentifier: "profileCell")
+        //cell = UITableViewCell(style: .subtitle, reuseIdentifier: "profileCell")
         
         let menuTitle = menuTitles[indexPath.section]
-        
+                
         if #available(iOS 14.0, *) {
             var content = cell.defaultContentConfiguration()
             if indexPath.section == 0 {
-                content.imageProperties.maximumSize = CGSize(width: 40, height: 40)
-                content.image = userImage
-                if userImage == nil {
+                if let data = userInfo.image {
+                    content.image = UIImage(data: data)
+                } else {
                     content.image = UIImage(named: "cameraIcon")
                 }
-                if userInfo?.name == nil {
-                    content.text = menuTitle[indexPath.row]
-                } else {
-                    content.text = userInfo?.name
-                }
+                content.text = userInfo.name ?? menuTitle[indexPath.row]
                 content.secondaryText = "Мои данные"
                 content.secondaryTextProperties.color = UIColor.CustomColor.gray
             } else if indexPath.section == 3 {
@@ -58,16 +55,12 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             cell.contentConfiguration = content
         } else {
             if indexPath.section == 0 {
-                if userImage != nil {
-                    cell.imageView?.image = userImage
+                if let data = userInfo.image {
+                    cell.imageView?.image = UIImage(data: data)
                 } else {
                     cell.imageView?.image = UIImage(named: "cameraIcon")
                 }
-                if userInfo?.name == nil {
-                    cell.textLabel?.text = menuTitle[indexPath.row]
-                } else {
-                    cell.textLabel?.text = userInfo?.name
-                }
+                cell.textLabel?.text = userInfo.name ?? menuTitle[indexPath.row]
                 cell.detailTextLabel?.text = "Мои данные"
                 cell.detailTextLabel?.textColor = UIColor.CustomColor.gray
             } else if indexPath.section == 2 {
@@ -104,10 +97,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             let userProfileVC = UserProfileViewController()
             userProfileVC.delegate = self
-            userProfileVC.profileView.setBackgroundImage(userImage, for: .normal)
-            if userInfo != nil {
-                userProfileVC.userInfo = userInfo!
-            }
+            userProfileVC.userInfo = userInfo
             navigationController?.pushViewController(userProfileVC, animated: true)
         case 3:
             presentPremiumController(on: self.tabBarController!)
@@ -130,11 +120,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 extension ProfileViewController: ProfileViewControllerDelegate {
     func updateUser(profile: UserProfileModel) {
         userInfo = profile
-        tableView.reloadData()
-    }
-    
-    func updateUser(image: UIImage?) {
-        userImage = image
         tableView.reloadData()
     }
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 class UserProfileViewController: UIViewController {
-    var userInfo = UserProfileModel(name: nil, city: nil, eMail: nil)
+    var userInfo = UserProfileModel()
     var indexPath = IndexPath()
     weak var delegate: ProfileViewControllerDelegate?
     var models = [
@@ -75,6 +75,7 @@ extension UserProfileViewController: GeneralSetupProtocol {
         profileView.layoutIfNeeded()
         profileView.layer.cornerRadius = profileView.bounds.height / 2
         profileView.addTarget(self, action: #selector(presentController), for: .touchUpInside)
+        profileView.setBackgroundImage(UIImage(data: userInfo.image ?? Data()), for: .normal)
     }
     
 }

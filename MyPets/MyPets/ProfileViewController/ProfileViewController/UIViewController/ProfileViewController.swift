@@ -9,7 +9,7 @@ import UIKit
 
 class ProfileViewController: UIViewController, GeneralSetupProtocol {
     var userImage: UIImage?
-    var userInfo: UserProfileModel?
+    var userInfo = UserProfileModel()
     let menuTitles: [[String]] = [
         ["Имя пользователя"],
         ["Питомцы", "Архив"],
@@ -24,7 +24,7 @@ class ProfileViewController: UIViewController, GeneralSetupProtocol {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .white
-        tableView.register(UITableViewCell.self,
+        tableView.register(ProfileViewCell.self,
                            forCellReuseIdentifier: "profileCell")
         
         return tableView
