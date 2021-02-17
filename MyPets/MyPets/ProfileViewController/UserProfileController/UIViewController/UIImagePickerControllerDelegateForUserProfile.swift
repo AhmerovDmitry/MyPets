@@ -14,8 +14,11 @@ extension UserProfileViewController: UIImagePickerControllerDelegate, UINavigati
         
         let userPhoto = info[.editedImage] as? UIImage
         profileView.setBackgroundImage(userPhoto, for: .normal)
-        delegate?.updateUser(image: userPhoto)
+        userInfo.image = userPhoto?.pngData()
         
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: {
+            self.delegate?.updateUser(profile: self.userInfo)
+        })
     }
+    
 }

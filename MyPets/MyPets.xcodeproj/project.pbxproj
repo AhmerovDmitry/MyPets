@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -303,6 +303,7 @@
 				BC73002C25723EF90010F161 /* Extension - @objc */,
 				BC73002F25723F9A0010F161 /* UICollectionView */,
 				BCB361132549DCB20021AF8B /* UITableView */,
+				BCBFA50B25DBF27F0036C7ED /* PetModel */,
 			);
 			path = PetViewController;
 			sourceTree = "<group>";
@@ -449,7 +450,6 @@
 			children = (
 				BC99B01D2549A51F00050854 /* UICollectionViewCell */,
 				BC99B0182549A4ED00050854 /* Delegate + DataSource */,
-				BC99B0212549A54500050854 /* Model */,
 			);
 			path = UICollectionView;
 			sourceTree = "<group>";
@@ -542,14 +542,6 @@
 				BC99B01E2549A53700050854 /* PetViewCollectionCell.swift */,
 			);
 			path = UICollectionViewCell;
-			sourceTree = "<group>";
-		};
-		BC99B0212549A54500050854 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				BC99B0222549A55E00050854 /* PetModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		BC9C3B0925724EAE00D12C7B /* Delegate Methods */ = {
@@ -666,6 +658,14 @@
 				BCB404242532F5FE00993A5C /* @objc AuthorizationViewControllerExtension.swift */,
 			);
 			path = AuthorizationViewController;
+			sourceTree = "<group>";
+		};
+		BCBFA50B25DBF27F0036C7ED /* PetModel */ = {
+			isa = PBXGroup;
+			children = (
+				BC99B0222549A55E00050854 /* PetModel.swift */,
+			);
+			path = PetModel;
 			sourceTree = "<group>";
 		};
 		BCDD33312536F011008E6545 /* MainViewController */ = {
