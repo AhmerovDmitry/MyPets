@@ -20,4 +20,5 @@ extension UserProfileViewController: UIImagePickerControllerDelegate, UINavigati
             self.delegate?.updateUser(profile: self.userInfo)
         })
     }
+    
 }

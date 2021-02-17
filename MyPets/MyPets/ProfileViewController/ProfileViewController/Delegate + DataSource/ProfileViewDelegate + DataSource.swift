@@ -29,42 +29,41 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath)
-        cell = ProfileViewCell(style: .subtitle, reuseIdentifier: "profileCell")
-        //cell = UITableViewCell(style: .subtitle, reuseIdentifier: "profileCell")
-        
+        var cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath) as! ProfileViewCell
         let menuTitle = menuTitles[indexPath.section]
-                
+        if indexPath.section == 0 {
+            cell = ProfileViewCell(style: .subtitle, reuseIdentifier: "profileCell")
+            if let data = userInfo.image {
+                cell.userImageView.image = UIImage(data: data)
+            } else {
+                cell.userImageView.contentMode = .center
+                cell.userImageView.image = UIImage(named: "cameraIcon")
+            }
+            cell.nameLabel.text = userInfo.name ?? menuTitle[indexPath.row]
+            cell.descLabel.text = "Мои данные"
+            cell.descLabel.textColor = UIColor.CustomColor.gray
+        } else {
+            cell = ProfileViewCell(style: .default, reuseIdentifier: "profileCell")
+        }
+        
         if #available(iOS 14.0, *) {
             var content = cell.defaultContentConfiguration()
             if indexPath.section == 0 {
-                if let data = userInfo.image {
-                    content.image = UIImage(data: data)
-                } else {
-                    content.image = UIImage(named: "cameraIcon")
-                }
-                content.text = userInfo.name ?? menuTitle[indexPath.row]
-                content.secondaryText = "Мои данные"
-                content.secondaryTextProperties.color = UIColor.CustomColor.gray
-            } else if indexPath.section == 3 {
-                content.text = menuTitle[indexPath.row]
-                content.image = UIImage(named: "crownIcon")
+                content.text = nil
             } else {
                 content.text = menuTitle[indexPath.row]
+            }
+            if indexPath.section == 3 {
+                content.image = UIImage(named: "crownIcon")
             }
             cell.contentConfiguration = content
         } else {
             if indexPath.section == 0 {
-                if let data = userInfo.image {
-                    cell.imageView?.image = UIImage(data: data)
-                } else {
-                    cell.imageView?.image = UIImage(named: "cameraIcon")
-                }
-                cell.textLabel?.text = userInfo.name ?? menuTitle[indexPath.row]
-                cell.detailTextLabel?.text = "Мои данные"
-                cell.detailTextLabel?.textColor = UIColor.CustomColor.gray
-            } else if indexPath.section == 2 {
+                cell.textLabel?.text = nil
+            } else {
                 cell.textLabel?.text = menuTitle[indexPath.row]
+            }
+            if indexPath.section == 2 {
                 switch indexPath.row {
                 case 0:
                     cell.addSubview(tipsSwitch)
@@ -80,10 +79,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 }
                 
             } else if indexPath.section == 3 {
-                cell.textLabel?.text = menuTitle[indexPath.row]
                 cell.imageView?.image = UIImage(named: "crownIcon")
-            } else {
-                cell.textLabel?.text = menuTitle[indexPath.row]
             }
         }
         
