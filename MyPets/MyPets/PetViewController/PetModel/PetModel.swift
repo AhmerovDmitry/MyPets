@@ -18,3 +18,9 @@ struct PetModel {
     var wool: String
     var chipNumber: String
 }
+
+struct CollectionModel {
+    var image: UIImage?
+    var title: String
+    var description: String
+}

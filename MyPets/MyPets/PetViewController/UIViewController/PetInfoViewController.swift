@@ -8,6 +8,26 @@
 import UIKit
 
 class PetInfoViewController: UIViewController {
+    let collectionModel = [
+        CollectionModel(image: UIImage(),
+                        title: String(),
+                        description: String()),
+        CollectionModel(image: UIImage(named: "healthIcon"),
+                        title: "Здоровье",
+                        description: "Календарь прививок, лечение"),
+        CollectionModel(image: UIImage(named: "documentIcon"),
+                        title: "Документы",
+                        description: "Паспорт, метрика, родословная и т.д."),
+        CollectionModel(image: UIImage(named: "foodIcon"),
+                        title: "Питание",
+                        description: "Особенности рациона, кормление"),
+        CollectionModel(image: UIImage(named: "careIcon"),
+                        title: "Уход",
+                        description: "Купание, расчёсывание, грумминг и т.д."),
+        CollectionModel(image: UIImage(named: "funIcon"),
+                        title: "Развлечения",
+                        description: "Игры и развлечения питомца"),
+    ]
     var tableView = UITableView()
     var indexPath = IndexPath()
     var updateInfo: ((IndexPath) -> ())?

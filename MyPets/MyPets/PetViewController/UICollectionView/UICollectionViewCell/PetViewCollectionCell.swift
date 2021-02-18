@@ -31,6 +31,34 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
         
         return tv
     }()
+    let titleImage: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        
+        return image
+    }()
+    let containerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    let menuTitleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        
+        return label
+    }()
+    let descLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 13)
+        label.textColor = UIColor.CustomColor.gray
+        label.adjustsFontSizeToFitWidth = true
+        
+        return label
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -69,6 +97,38 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
                                          constant: 15).isActive = true
         titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor,
                                           constant: -15).isActive = true
+    }
+    
+    func setupMenuCell() {
+        self.addSubview(titleImage)
+        self.addSubview(containerView)
+        containerView.addSubview(menuTitleLabel)
+        containerView.addSubview(descLabel)
+        
+        NSLayoutConstraint.activate([
+            titleImage.heightAnchor.constraint(equalToConstant: self.bounds.height / 2),
+            titleImage.widthAnchor.constraint(equalTo: titleImage.heightAnchor),
+            titleImage.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            titleImage.leftAnchor.constraint(equalTo: self.leftAnchor,
+                                             constant: self.bounds.height / 6),
+            
+            containerView.heightAnchor.constraint(equalTo: titleImage.heightAnchor),
+            containerView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            containerView.leftAnchor.constraint(equalTo: titleImage.rightAnchor,
+                                                constant: self.bounds.height / 6),
+            containerView.rightAnchor.constraint(equalTo: self.rightAnchor,
+                                               constant: -self.bounds.height / 6),
+            
+            menuTitleLabel.leftAnchor.constraint(equalTo: containerView.leftAnchor),
+            menuTitleLabel.rightAnchor.constraint(equalTo: containerView.rightAnchor),
+            menuTitleLabel.topAnchor.constraint(equalTo: containerView.topAnchor),
+            menuTitleLabel.heightAnchor.constraint(equalToConstant: self.bounds.height / 4),
+            
+            descLabel.leftAnchor.constraint(equalTo: containerView.leftAnchor),
+            descLabel.rightAnchor.constraint(equalTo: containerView.rightAnchor),
+            descLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            descLabel.heightAnchor.constraint(equalToConstant: self.bounds.height / 4)
+        ])
     }
     
     func setupElements() {

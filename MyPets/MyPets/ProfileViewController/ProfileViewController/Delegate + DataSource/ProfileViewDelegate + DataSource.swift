@@ -37,7 +37,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         if #available(iOS 14.0, *) {
             var content = cell.defaultContentConfiguration()
             if indexPath.section == 0 {
-                content.imageProperties.maximumSize = CGSize(width: 40, height: 40)
                 content.image = userImage
                 if userImage == nil {
                     content.image = UIImage(named: "cameraIcon")

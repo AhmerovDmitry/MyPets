@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "careIcon.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
