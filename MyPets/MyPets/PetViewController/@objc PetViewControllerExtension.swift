@@ -16,6 +16,10 @@ extension PetViewController {
         
         let petInfoVC = PetInfoViewController()
         petInfoVC.hidesBottomBarWhenPushed = true
+        petInfoVC.petEntity = PetModel(image: nil, name: nil, kind: nil, breed: nil,
+                                       birthday: nil, weight: nil, sterile: nil, color: nil,
+                                       hair: nil, chipNumber: nil)
+        petInfoVC.delegate = self
         navigationController?.pushViewController(petInfoVC, animated: true)
     }
 }

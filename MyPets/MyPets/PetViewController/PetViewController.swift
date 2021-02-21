@@ -8,19 +8,59 @@
 import UIKit
 
 class PetViewController: UIViewController, GeneralSetupProtocol {
+    lazy var petEntitys = [PetModel]()
+    
     private let mainStackView = UIStackView()
     private let mainImage = UIImageView()
     private let titleText = UILabel()
     private let descText = UILabel()
     private let addButton = UIButton(type: .system)
+    let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 12
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.backgroundColor = .clear
+        cv.showsVerticalScrollIndicator = false
+        cv.translatesAutoresizingMaskIntoConstraints = false
+        cv.register(EntityCell.self, forCellWithReuseIdentifier: "entityCell")
+        
+        return cv
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
         setupNavigationController()
-        setupConstraints()
-        setupElements()
+//        setupConstraints()
+//        setupElements()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //TODO: - Check petEntitys.isEmpty
+        
+        if petEntitys.isEmpty {
+            setupConstraints()
+            setupElements()
+        } else {
+            mainStackView.isHidden = true
+            entityController()
+            let addButton = UIBarButtonItem(image: UIImage(systemName: "add"), style: .done, target: self, action: #selector(presentController))
+            navigationController?.navigationItem.rightBarButtonItem = addButton
+            navigationController?.navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.purple
+        }
+    }
+    
+    func entityController() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        setupCollectionViewConstraints()
+        let addButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(presentController))
+        navigationItem.rightBarButtonItem = addButton
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.purple
     }
     
     func setupNavigationController() {
@@ -124,5 +164,15 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
         addButton.layer.cornerRadius = addButton.frame.height / 2
         addButton.titleLabel?.adjustsFontSizeToFitWidth = true
         addButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
+    }
+}
+
+extension PetViewController: EntityTransfer {
+    func reloadEntitys() {
+        collectionView.reloadData()
+    }
+    
+    func entityTransfer(_ entity: PetModel) {
+        petEntitys.append(entity)
     }
 }

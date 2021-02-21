@@ -8,7 +8,8 @@
 import UIKit
 
 class PetInfoViewController: UIViewController {
-    let imageHeight = 0
+    lazy var petEntity = PetModel()
+    weak var delegate: EntityTransfer?
     let collectionModel = [
         CollectionModel(image: UIImage(),
                         title: String(),
@@ -62,6 +63,15 @@ class PetInfoViewController: UIViewController {
         setupConstraints()
         setupElements()
     }
+    
+    deinit {
+        //TODO: - delegate method for petEntitys
+        let nilEntity = PetModel(image: nil, name: nil, kind: nil, breed: nil, birthday: nil, weight: nil, sterile: nil, color: nil, hair: nil, chipNumber: nil)
+        if petEntity != nilEntity {
+            delegate?.reloadEntitys()
+            delegate?.entityTransfer(petEntity)
+        }
+    }
 }
 
 extension PetInfoViewController: GeneralSetupProtocol {
@@ -89,7 +99,7 @@ extension PetInfoViewController: GeneralSetupProtocol {
         collectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         collectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-                
+        
         backgroundView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         backgroundView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -114,7 +124,7 @@ extension PetInfoViewController: GeneralSetupProtocol {
          }
         
         titleImage.contentMode = .scaleAspectFill
-        titleImage.backgroundColor = UIColor.CustomColor.lightGray
+        titleImage.backgroundColor = .white
         titleImage.clipsToBounds = true
         
         backgroundView.isHidden = true
@@ -177,6 +187,14 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
         }
         let saveButton = UIAlertAction(title: "Сохранить", style: .default) { _ in
             self.updatePetInfo(updateInformation: self.updateInfo!)
+            
+            switch self.indexPath.row {
+            case 0:
+                self.petEntity.name = self.petInfo
+            case 2:
+                self.petEntity.breed = self.petInfo
+            default: break
+            }
             self.tableView.reloadData()
             self.petInfo = nil
         }
