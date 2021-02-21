@@ -61,6 +61,7 @@
 		BCB610072530C82400C4FD2F /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB610062530C82400C4FD2F /* AuthorizationViewController.swift */; };
 		BCB6100C2530C82700C4FD2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCB6100B2530C82700C4FD2F /* Assets.xcassets */; };
 		BCB6100F2530C82700C4FD2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCB6100D2530C82700C4FD2F /* LaunchScreen.storyboard */; };
+		BCBFA51225DEFEC90036C7ED /* MenuCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBFA51125DEFEC90036C7ED /* MenuCollectionCell.swift */; };
 		BCCEAF262577B78F000597CA /* UIImagePickerControllerDelegateForPetInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCEAF252577B78F000597CA /* UIImagePickerControllerDelegateForPetInfoView.swift */; };
 		BCDBF528253F887E00BCBBFB /* Map Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF527253F887E00BCBBFB /* Map Settings.swift */; };
 		BCDD33362536F03B008E6545 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDD33352536F03B008E6545 /* MainViewController.swift */; };
@@ -126,6 +127,7 @@
 		BCB6100B2530C82700C4FD2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BCB6100E2530C82700C4FD2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BCB610102530C82700C4FD2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "MyPets/Assets + LS + Info.plist/Info.plist"; sourceTree = SOURCE_ROOT; };
+		BCBFA51125DEFEC90036C7ED /* MenuCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionCell.swift; sourceTree = "<group>"; };
 		BCCEAF252577B78F000597CA /* UIImagePickerControllerDelegateForPetInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImagePickerControllerDelegateForPetInfoView.swift; sourceTree = "<group>"; };
 		BCDBF527253F887E00BCBBFB /* Map Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Map Settings.swift"; sourceTree = "<group>"; };
 		BCDD33352536F03B008E6545 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -540,6 +542,7 @@
 			isa = PBXGroup;
 			children = (
 				BC99B01E2549A53700050854 /* PetViewCollectionCell.swift */,
+				BCBFA51125DEFEC90036C7ED /* MenuCollectionCell.swift */,
 			);
 			path = UICollectionViewCell;
 			sourceTree = "<group>";
@@ -775,6 +778,7 @@
 				BC8E9F5425A324DE00403505 /* @objc UserProfileController.swift in Sources */,
 				BC7073322534BA3800B2979F /* UIView.swift in Sources */,
 				BC413CD42538A97F002CDD19 /* CustomTabBarController.swift in Sources */,
+				BCBFA51225DEFEC90036C7ED /* MenuCollectionCell.swift in Sources */,
 				BC73002A25723C460010F161 /* @objc PetInfoViewController.swift in Sources */,
 				BC8CE00625C6CBC2005EEFEB /* SupportVCDelegate + DataSource.swift in Sources */,
 				BCB610072530C82400C4FD2F /* AuthorizationViewController.swift in Sources */,

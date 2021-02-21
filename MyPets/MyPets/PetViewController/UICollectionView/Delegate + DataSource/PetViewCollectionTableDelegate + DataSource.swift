@@ -19,16 +19,22 @@ extension PetInfoViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        6
+        collectionModel.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCellPetId", for: indexPath) as! PetViewCollectionCell
+        cell.titleImage.image = collectionModel[indexPath.item].image
+        cell.menuTitleLabel.text = collectionModel[indexPath.item].title
+        cell.descLabel.text = collectionModel[indexPath.item].description
         
-        if indexPath.row == 0 {
+        if indexPath.item == 0 {
+            cell.titleImage.isHidden = true
+            cell.containerView.isHidden = true
             cell.layer.cornerRadius = 20
             cell.label.isHidden = true
         } else {
+            cell.setupMenuCell()
             cell.layer.cornerRadius = 10
             cell.tableView.isHidden = true
             cell.titleLabel.isHidden = true
@@ -45,5 +51,9 @@ extension PetInfoViewController: UICollectionViewDelegate, UICollectionViewDataS
         cell.delegate = self
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: titleImage.bounds.height / 2.7, left: 0, bottom: 0, right: 0)
     }
 }
