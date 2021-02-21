@@ -39,7 +39,11 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.userImageView.contentMode = .center
                 cell.userImageView.image = UIImage(named: "cameraIcon")
             }
-            cell.nameLabel.text = userInfo.name ?? menuTitle[indexPath.row]
+            if userInfo.name == "Указать информацию" {
+                cell.nameLabel.text = menuTitle[indexPath.row]
+            } else {
+                cell.nameLabel.text = userInfo.name
+            }
             cell.descLabel.text = "Мои данные"
             cell.descLabel.textColor = UIColor.CustomColor.gray
         } else {

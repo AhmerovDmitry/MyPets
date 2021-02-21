@@ -27,8 +27,8 @@ struct UserProfileModel {
         } set {
             let defaults = UserDefaults.standard
             
-            if let name = newValue {
-                defaults.set(name, forKey: "city")
+            if let city = newValue {
+                defaults.set(city, forKey: "city")
             } else {
                 defaults.removeObject(forKey: "city")
             }
@@ -40,8 +40,8 @@ struct UserProfileModel {
         } set {
             let defaults = UserDefaults.standard
             
-            if let name = newValue {
-                defaults.set(name, forKey: "eMail")
+            if let eMail = newValue {
+                defaults.set(eMail, forKey: "eMail")
             } else {
                 defaults.removeObject(forKey: "eMail")
             }
