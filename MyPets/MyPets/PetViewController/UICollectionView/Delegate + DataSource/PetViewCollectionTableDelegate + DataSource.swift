@@ -52,4 +52,8 @@ extension PetInfoViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: titleImage.bounds.height / 2.7, left: 0, bottom: 0, right: 0)
+    }
 }

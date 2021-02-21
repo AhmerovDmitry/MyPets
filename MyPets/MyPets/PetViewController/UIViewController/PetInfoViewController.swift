@@ -8,6 +8,7 @@
 import UIKit
 
 class PetInfoViewController: UIViewController {
+    let imageHeight = 0
     let collectionModel = [
         CollectionModel(image: UIImage(),
                         title: String(),
@@ -46,10 +47,6 @@ class PetInfoViewController: UIViewController {
         cv.showsVerticalScrollIndicator = false
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.register(PetViewCollectionCell.self, forCellWithReuseIdentifier: "collectionCellPetId")
-        cv.allowsSelection = false
-        cv.clipsToBounds = false
-        cv.layer.masksToBounds = false
-        cv.bounces = false
         
         return cv
     }()
@@ -88,13 +85,11 @@ extension PetInfoViewController: GeneralSetupProtocol {
         titleImage.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         titleImage.heightAnchor.constraint(equalToConstant: view.bounds.height / 2.7).isActive = true
         
-        collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.bounds.height / 3.5).isActive = true
-        collectionView.leftAnchor.constraint(equalTo: view.leftAnchor,
-                                             constant: 0).isActive = true
-        collectionView.rightAnchor.constraint(equalTo: view.rightAnchor,
-                                              constant: 0).isActive = true
+        collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        collectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        collectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        
+                
         backgroundView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         backgroundView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
