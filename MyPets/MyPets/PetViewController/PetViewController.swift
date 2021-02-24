@@ -170,7 +170,7 @@ extension PetViewController: EntityTransfer {
     }
     
     func entityTransfer(_ entity: PetModel) {
-        petEntitys.append(entity)
+        petEntitys.insert(entity, at: 0)
     }
     
     func reloadController() {

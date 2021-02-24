@@ -48,6 +48,10 @@ extension LocationViewController: UICollectionViewDelegate, UICollectionViewData
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+    }
+    
     @objc func response0() {
     }
     @objc func response1() {
