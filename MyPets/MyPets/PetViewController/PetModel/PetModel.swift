@@ -13,7 +13,7 @@ struct PetModel: Equatable {
     var kind: String?
     var breed: String?
     var birthday: Date?
-    var weight: Double?
+    var weight: String?
     var sterile: String?
     var color: String?
     var hair: String?

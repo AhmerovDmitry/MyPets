@@ -58,19 +58,20 @@ class PetInfoViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         setupNavigationController()
         setupConstraints()
         setupElements()
     }
     
-    deinit {
-        //TODO: - delegate method for petEntitys
-        let nilEntity = PetModel(image: nil, name: nil, kind: nil, breed: nil, birthday: nil, weight: nil, sterile: nil, color: nil, hair: nil, chipNumber: nil)
-        if petEntity != nilEntity {
-            delegate?.reloadEntitys()
-            delegate?.entityTransfer(petEntity)
-        }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        updateView()
     }
 }
 
@@ -191,8 +192,20 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
             switch self.indexPath.row {
             case 0:
                 self.petEntity.name = self.petInfo
+            case 1:
+                self.petEntity.kind = self.petInfo
             case 2:
                 self.petEntity.breed = self.petInfo
+            case 4:
+                self.petEntity.weight = self.petInfo
+            case 5:
+                self.petEntity.sterile = self.petInfo
+            case 6:
+                self.petEntity.color = self.petInfo
+            case 7:
+                self.petEntity.hair = self.petInfo
+            case 8:
+                self.petEntity.chipNumber = self.petInfo
             default: break
             }
             self.tableView.reloadData()
@@ -205,5 +218,13 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
     }
     func petInfoForModel() -> String? {
         return petInfo
+    }
+    func updateView() {
+        let nilEntity = PetModel(image: nil, name: nil, kind: nil, breed: nil, birthday: nil, weight: nil, sterile: nil, color: nil, hair: nil, chipNumber: nil)
+        if petEntity != nilEntity {
+            delegate?.reloadCollectionView()
+            delegate?.entityTransfer(petEntity)
+            delegate?.reloadController()
+        }
     }
 }

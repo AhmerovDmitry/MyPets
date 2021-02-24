@@ -9,7 +9,6 @@ import UIKit
 
 class PetViewController: UIViewController, GeneralSetupProtocol {
     lazy var petEntitys = [PetModel]()
-    
     private let mainStackView = UIStackView()
     private let mainImage = UIImageView()
     private let titleText = UILabel()
@@ -24,6 +23,7 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
         cv.showsVerticalScrollIndicator = false
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.register(EntityCell.self, forCellWithReuseIdentifier: "entityCell")
+        cv.isHidden = true
         
         return cv
     }()
@@ -32,45 +32,35 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        setupNavigationController()
-//        setupConstraints()
-//        setupElements()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        //TODO: - Check petEntitys.isEmpty
-        
-        if petEntitys.isEmpty {
-            setupConstraints()
-            setupElements()
-        } else {
-            mainStackView.isHidden = true
-            entityController()
-            let addButton = UIBarButtonItem(image: UIImage(systemName: "add"), style: .done, target: self, action: #selector(presentController))
-            navigationController?.navigationItem.rightBarButtonItem = addButton
-            navigationController?.navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.purple
-        }
-    }
-    
-    func entityController() {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        setupCollectionViewConstraints()
-        let addButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(presentController))
-        navigationItem.rightBarButtonItem = addButton
-        navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.purple
+        setupNavigationController()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupConstraints()
+        setupElements()
+        
+        if !petEntitys.isEmpty {
+            mainStackView.isHidden = true
+            collectionView.isHidden = false
+            let addButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector(presentController))
+            navigationItem.rightBarButtonItem = addButton
+            navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.purple
+        }
     }
     
     func setupNavigationController() {
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.backgroundColor = .white
+        navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor : UIColor.CustomColor.dark]
         navigationItem.title = "Питомцы"
     }
     
     func setupConstraints() {
+        view.addSubview(collectionView)
         view.addSubview(mainStackView)
         [mainImage,
          titleText,
@@ -123,6 +113,13 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
                                                    attribute: .height,
                                                    multiplier: 6,
                                                    constant: 0))
+        
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            collectionView.rightAnchor.constraint(equalTo: view.rightAnchor)
+        ])
     }
     
     func setupElements() {
@@ -168,11 +165,15 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
 }
 
 extension PetViewController: EntityTransfer {
-    func reloadEntitys() {
+    func reloadCollectionView() {
         collectionView.reloadData()
     }
     
     func entityTransfer(_ entity: PetModel) {
         petEntitys.append(entity)
+    }
+    
+    func reloadController() {
+        self.viewDidLoad()
     }
 }
