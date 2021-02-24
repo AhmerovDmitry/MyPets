@@ -8,7 +8,8 @@
 import UIKit
 
 class PetInfoViewController: UIViewController {
-    let imageHeight = 0
+    lazy var petEntity = PetModel()
+    weak var delegate: EntityTransfer?
     let collectionModel = [
         CollectionModel(image: UIImage(),
                         title: String(),
@@ -57,10 +58,20 @@ class PetInfoViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         setupNavigationController()
         setupConstraints()
         setupElements()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        updateView()
     }
 }
 
@@ -89,7 +100,7 @@ extension PetInfoViewController: GeneralSetupProtocol {
         collectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         collectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-                
+        
         backgroundView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         backgroundView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -114,7 +125,7 @@ extension PetInfoViewController: GeneralSetupProtocol {
          }
         
         titleImage.contentMode = .scaleAspectFill
-        titleImage.backgroundColor = UIColor.CustomColor.lightGray
+        titleImage.backgroundColor = .white
         titleImage.clipsToBounds = true
         
         backgroundView.isHidden = true
@@ -177,6 +188,26 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
         }
         let saveButton = UIAlertAction(title: "Сохранить", style: .default) { _ in
             self.updatePetInfo(updateInformation: self.updateInfo!)
+            
+            switch self.indexPath.row {
+            case 0:
+                self.petEntity.name = self.petInfo
+            case 1:
+                self.petEntity.kind = self.petInfo
+            case 2:
+                self.petEntity.breed = self.petInfo
+            case 4:
+                self.petEntity.weight = self.petInfo
+            case 5:
+                self.petEntity.sterile = self.petInfo
+            case 6:
+                self.petEntity.color = self.petInfo
+            case 7:
+                self.petEntity.hair = self.petInfo
+            case 8:
+                self.petEntity.chipNumber = self.petInfo
+            default: break
+            }
             self.tableView.reloadData()
             self.petInfo = nil
         }
@@ -187,5 +218,13 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
     }
     func petInfoForModel() -> String? {
         return petInfo
+    }
+    func updateView() {
+        let nilEntity = PetModel(image: nil, name: nil, kind: nil, breed: nil, birthday: nil, weight: nil, sterile: nil, color: nil, hair: nil, chipNumber: nil)
+        if petEntity != nilEntity {
+            delegate?.reloadCollectionView()
+            delegate?.entityTransfer(petEntity)
+            delegate?.reloadController()
+        }
     }
 }
