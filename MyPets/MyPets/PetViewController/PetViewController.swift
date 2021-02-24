@@ -8,29 +8,59 @@
 import UIKit
 
 class PetViewController: UIViewController, GeneralSetupProtocol {
+    lazy var petEntitys = [PetModel]()
     private let mainStackView = UIStackView()
     private let mainImage = UIImageView()
     private let titleText = UILabel()
     private let descText = UILabel()
     private let addButton = UIButton(type: .system)
+    let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 12
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.backgroundColor = .clear
+        cv.showsVerticalScrollIndicator = false
+        cv.translatesAutoresizingMaskIntoConstraints = false
+        cv.register(EntityCell.self, forCellWithReuseIdentifier: "entityCell")
+        cv.isHidden = true
+        
+        return cv
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
         setupNavigationController()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setupConstraints()
         setupElements()
+        
+        if !petEntitys.isEmpty {
+            mainStackView.isHidden = true
+            collectionView.isHidden = false
+            let addButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector(presentController))
+            navigationItem.rightBarButtonItem = addButton
+            navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.purple
+        }
     }
     
     func setupNavigationController() {
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.backgroundColor = .white
+        navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor : UIColor.CustomColor.dark]
         navigationItem.title = "Питомцы"
     }
     
     func setupConstraints() {
+        view.addSubview(collectionView)
         view.addSubview(mainStackView)
         [mainImage,
          titleText,
@@ -83,6 +113,13 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
                                                    attribute: .height,
                                                    multiplier: 6,
                                                    constant: 0))
+        
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            collectionView.rightAnchor.constraint(equalTo: view.rightAnchor)
+        ])
     }
     
     func setupElements() {
@@ -124,5 +161,19 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
         addButton.layer.cornerRadius = addButton.frame.height / 2
         addButton.titleLabel?.adjustsFontSizeToFitWidth = true
         addButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
+    }
+}
+
+extension PetViewController: EntityTransfer {
+    func reloadCollectionView() {
+        collectionView.reloadData()
+    }
+    
+    func entityTransfer(_ entity: PetModel) {
+        petEntitys.append(entity)
+    }
+    
+    func reloadController() {
+        self.viewDidLoad()
     }
 }

@@ -17,3 +17,9 @@ protocol PetViewControllerDelegate: class {
                         indexPath: IndexPath,
                         updateInformation: @escaping (IndexPath) -> ())
 }
+
+protocol EntityTransfer: class {
+    func reloadCollectionView()
+    func entityTransfer(_ entity: PetModel)
+    func reloadController()
+}

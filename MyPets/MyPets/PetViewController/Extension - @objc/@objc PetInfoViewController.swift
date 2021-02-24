@@ -22,6 +22,7 @@ extension PetInfoViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMM yyyy"
         petInfo = dateFormatter.string(from: self.picker.date)
+        petEntity.birthday = self.picker.date
         updatePetInfo(updateInformation: updateInfo!)
         tableView.reloadData()
         
