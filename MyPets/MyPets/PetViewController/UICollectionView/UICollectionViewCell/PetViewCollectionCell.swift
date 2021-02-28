@@ -9,17 +9,7 @@ import UIKit
 
 class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
     weak var delegate: PetViewControllerDelegate?
-    var models = [
-        PetTableViewModel(title: "Кличка", info: nil),
-        PetTableViewModel(title: "Вид", info: nil),
-        PetTableViewModel(title: "Порода", info: nil),
-        PetTableViewModel(title: "Дата рождения", info: nil),
-        PetTableViewModel(title: "Вес, кг", info: nil),
-        PetTableViewModel(title: "Стерилизация", info: nil),
-        PetTableViewModel(title: "Окрас", info: nil),
-        PetTableViewModel(title: "Шерсть", info: nil),
-        PetTableViewModel(title: "Номер чипа", info: nil)
-    ]
+    var models = [PetTableViewModel]()
     let label = UILabel()
     let titleLabel = UILabel()
     let tableView: UITableView = {

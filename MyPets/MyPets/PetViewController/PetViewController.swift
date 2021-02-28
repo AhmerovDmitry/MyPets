@@ -34,12 +34,12 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-        setupNavigationController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        setupNavigationController()
         setupConstraints()
         setupElements()
         
@@ -169,11 +169,16 @@ extension PetViewController: EntityTransfer {
         collectionView.reloadData()
     }
     
-    func entityTransfer(_ entity: PetModel) {
+    func createEntity(_ entity: PetModel) {
         petEntitys.insert(entity, at: 0)
     }
     
     func reloadController() {
         self.viewDidLoad()
+    }
+    
+    func updateEntity(_ entity: PetModel, at indexPath: Int) {
+        petEntitys.remove(at: indexPath)
+        petEntitys.insert(entity, at: indexPath)
     }
 }

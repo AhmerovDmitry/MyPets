@@ -20,6 +20,7 @@ protocol PetViewControllerDelegate: class {
 
 protocol EntityTransfer: class {
     func reloadCollectionView()
-    func entityTransfer(_ entity: PetModel)
+    func createEntity(_ entity: PetModel)
     func reloadController()
+    func updateEntity(_ entity: PetModel, at indexPath: Int)
 }

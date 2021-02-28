@@ -8,7 +8,10 @@
 import UIKit
 
 class PetInfoViewController: UIViewController {
-    lazy var petEntity = PetModel()
+    var createOrChange = Bool()
+    let nilEntity = PetModel()
+    var petEntity = PetModel()
+    var collectionItemIndex = 0
     weak var delegate: EntityTransfer?
     let collectionModel = [
         CollectionModel(image: UIImage(),
@@ -58,6 +61,12 @@ class PetInfoViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        if petEntity == nilEntity {
+            createOrChange = true
+        } else {
+            createOrChange = false
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,7 +80,14 @@ class PetInfoViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        updateView()
+        if petEntity != nilEntity {
+            switch createOrChange {
+            case true: delegate?.createEntity(petEntity)
+            case false: delegate?.updateEntity(petEntity, at: collectionItemIndex)
+            }
+        }
+        delegate?.reloadCollectionView()
+        delegate?.reloadController()
     }
 }
 
@@ -124,6 +140,7 @@ extension PetInfoViewController: GeneralSetupProtocol {
             $0.translatesAutoresizingMaskIntoConstraints = false
          }
         
+        titleImage.image = petEntity.image ?? UIImage()
         titleImage.contentMode = .scaleAspectFill
         titleImage.backgroundColor = .white
         titleImage.clipsToBounds = true
@@ -218,13 +235,5 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
     }
     func petInfoForModel() -> String? {
         return petInfo
-    }
-    func updateView() {
-        let nilEntity = PetModel(image: nil, name: nil, kind: nil, breed: nil, birthday: nil, weight: nil, sterile: nil, color: nil, hair: nil, chipNumber: nil)
-        if petEntity != nilEntity {
-            delegate?.reloadCollectionView()
-            delegate?.entityTransfer(petEntity)
-            delegate?.reloadController()
-        }
     }
 }

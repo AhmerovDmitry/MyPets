@@ -21,9 +21,9 @@ extension PetViewController: UICollectionViewDelegate, UICollectionViewDataSourc
         cell.backgroundColor = .white
         cell.layer.cornerRadius = 15
         cell.imageView.image = petEntitys[indexPath.item].image ?? UIImage(named: "unknownImage")
-        cell.nameLabel.text = petEntitys[indexPath.item].name ?? "Test_text"
-        cell.breedLabel.text = petEntitys[indexPath.item].breed ?? "Test_text"
-        cell.ageLabel.text = "Test_age"
+        cell.nameLabel.text = petEntitys[indexPath.item].name ?? "Кличка не указана"
+        cell.breedLabel.text = petEntitys[indexPath.item].breed ?? "Порода не указана"
+        cell.ageLabel.text = petEntitys[indexPath.item].birthday ?? "01 янв 1900"
         
         if cell.imageView.image == UIImage(named: "unknownImage") {
             cell.imageView.contentMode = .scaleAspectFit
@@ -44,7 +44,18 @@ extension PetViewController: UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.item)
+        let backItem = UIBarButtonItem()
+        backItem.title = " "
+        navigationItem.backBarButtonItem = backItem
+        
+        let petInfoVC = PetInfoViewController()
+        petInfoVC.hidesBottomBarWhenPushed = true
+        petInfoVC.delegate = self
+        petInfoVC.petEntity = petEntitys[indexPath.item]
+        if !petEntitys.isEmpty {
+            petInfoVC.collectionItemIndex = indexPath.item
+        }
+        navigationController?.pushViewController(petInfoVC, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
