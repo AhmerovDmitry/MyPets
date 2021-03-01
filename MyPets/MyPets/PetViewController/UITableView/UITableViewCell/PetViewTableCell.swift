@@ -44,12 +44,12 @@ class PetViewTableCell: UITableViewCell, GeneralSetupProtocol {
         
         tableCellLabel.textAlignment = .left
         tableCellLabel.textColor = UIColor.CustomColor.dark
-        tableCellLabel.font = UIFont.systemFont(ofSize: 15)
+        tableCellLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         tableCellLabel.adjustsFontSizeToFitWidth = true
         
         tableCellPlaceholder.textAlignment = .right
         tableCellPlaceholder.textColor = UIColor.CustomColor.gray
-        tableCellPlaceholder.font = UIFont.systemFont(ofSize: 15)
+        tableCellPlaceholder.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         tableCellPlaceholder.adjustsFontSizeToFitWidth = true
         
     }

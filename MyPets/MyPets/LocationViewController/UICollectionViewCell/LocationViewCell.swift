@@ -51,7 +51,7 @@ extension LocationViewCell: GeneralSetupProtocol {
         valueButton.setBackgroundColor(UIColor.CustomColor.lightGray, forState: .normal)
         valueButton.setTitleColor(.white, for: .highlighted)
         valueButton.setTitleColor(UIColor.CustomColor.dark, for: .normal)
-        valueButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        valueButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
     }
     
     func presentController() {}

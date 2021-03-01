@@ -15,16 +15,16 @@ extension SupportViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "supportCell", for: indexPath)
         cell.accessoryType = .disclosureIndicator
+        cell.textLabel?.adjustsFontSizeToFitWidth  = true
+        cell.textLabel?.textColor = UIColor.CustomColor.dark
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         switch indexPath.row {
         case 0:
             cell.textLabel?.text = "Вопрос о работе приложения"
-            cell.textLabel?.adjustsFontSizeToFitWidth  = true
         case 1:
             cell.textLabel?.text = "Связаться с дизайнером приложения"
-            cell.textLabel?.adjustsFontSizeToFitWidth  = true
         case 2:
             cell.textLabel?.text = "Связаться с разработчиком приложения"
-            cell.textLabel?.adjustsFontSizeToFitWidth  = true
         default: break
         }
         

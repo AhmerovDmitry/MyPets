@@ -36,15 +36,16 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
     let menuTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        label.textColor = UIColor.CustomColor.dark
         
         return label
     }()
     let descLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 13)
-        label.textColor = UIColor.CustomColor.gray
+        label.font = UIFont.systemFont(ofSize: 13, weight: .regular)
+        label.textColor = UIColor.CustomColor.dark.withAlphaComponent(0.8)
         label.adjustsFontSizeToFitWidth = true
         
         return label
@@ -132,7 +133,7 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
 
         titleLabel.textColor = UIColor.CustomColor.dark
         titleLabel.adjustsFontSizeToFitWidth = true
-        titleLabel.font = UIFont.systemFont(ofSize: 25, weight: .bold)
+        titleLabel.font = UIFont.systemFont(ofSize: 25, weight: .semibold)
         titleLabel.textAlignment = .left
         titleLabel.numberOfLines = 1
     }

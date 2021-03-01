@@ -20,6 +20,8 @@ class ProfileViewCell: UITableViewCell {
     let nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor.CustomColor.dark
+        label.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         
         return label
     }()
@@ -27,7 +29,9 @@ class ProfileViewCell: UITableViewCell {
     let descLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 13)
+        label.textColor = UIColor.CustomColor.gray
+        label.font = UIFont.systemFont(ofSize: 13, weight: .regular)
+        label.text = "Мои данные"
         
         return label
     }()

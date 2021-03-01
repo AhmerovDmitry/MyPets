@@ -44,14 +44,14 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             } else {
                 cell.nameLabel.text = userInfo.name
             }
-            cell.descLabel.text = "Мои данные"
-            cell.descLabel.textColor = UIColor.CustomColor.gray
         } else {
             cell = ProfileViewCell(style: .default, reuseIdentifier: "profileCell")
         }
         
         if #available(iOS 14.0, *) {
             var content = cell.defaultContentConfiguration()
+            content.textProperties.color = UIColor.CustomColor.dark
+            content.textProperties.font = UIFont.systemFont(ofSize: 15, weight: .regular)
             if indexPath.section == 0 {
                 content.text = nil
             } else {
@@ -62,6 +62,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             }
             cell.contentConfiguration = content
         } else {
+            cell.textLabel?.textColor = UIColor.CustomColor.dark
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 15, weight: .regular)
             if indexPath.section == 0 {
                 cell.textLabel?.text = nil
             } else {
@@ -95,6 +97,9 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch indexPath.section {
         case 0:
+            let backItem = UIBarButtonItem()
+            backItem.title = " "
+            navigationItem.backBarButtonItem = backItem
             let userProfileVC = UserProfileViewController()
             userProfileVC.delegate = self
             userProfileVC.userInfo = userInfo
@@ -104,9 +109,15 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         case 4:
             switch indexPath.row {
             case 0:
+                let backItem = UIBarButtonItem()
+                backItem.title = " "
+                navigationItem.backBarButtonItem = backItem
                 let supportController = SupportViewController()
                 navigationController?.pushViewController(supportController, animated: true)
             case 1:
+                let backItem = UIBarButtonItem()
+                backItem.title = " "
+                navigationItem.backBarButtonItem = backItem
                 let aboutAppController = AboutAppController()
                 navigationController?.pushViewController(aboutAppController, animated: true)
             default: break

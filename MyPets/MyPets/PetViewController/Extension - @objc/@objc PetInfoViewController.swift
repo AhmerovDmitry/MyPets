@@ -29,11 +29,11 @@ extension PetInfoViewController {
         UIView.animate(withDuration: 0.5) {
             self.picker.alpha = 0
             self.backgroundView.alpha = 0
-            self.savePetButton.alpha = 0
+            self.savePetBirthday.alpha = 0
         } completion: { _ in
             self.picker.isHidden = true
             self.backgroundView.isHidden = true
-            self.savePetButton.isHidden = true
+            self.savePetBirthday.isHidden = true
             self.petInfo = nil
         }
     }

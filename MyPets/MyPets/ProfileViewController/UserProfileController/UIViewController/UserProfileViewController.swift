@@ -41,8 +41,11 @@ class UserProfileViewController: UIViewController {
     }
     
     func setupNavigationController() {
-        navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.tintColor = UIColor.CustomColor.dark
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.backgroundColor = .clear
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor : UIColor.CustomColor.dark]
+        navigationItem.title = "Профиль"
     }
 }
 
@@ -54,8 +57,7 @@ extension UserProfileViewController: GeneralSetupProtocol {
         NSLayoutConstraint.activate([
             profileView.heightAnchor.constraint(equalToConstant: view.bounds.height / 10),
             profileView.widthAnchor.constraint(equalTo: profileView.heightAnchor),
-            profileView.topAnchor.constraint(equalTo: view.topAnchor,
-                                             constant: (navigationController?.navigationBar.bounds.height)!),
+            profileView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             profileView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             tableView.topAnchor.constraint(equalTo: profileView.bottomAnchor),

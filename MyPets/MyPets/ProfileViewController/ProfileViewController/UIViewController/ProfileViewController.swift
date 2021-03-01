@@ -46,7 +46,6 @@ class ProfileViewController: UIViewController, GeneralSetupProtocol {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.backgroundColor = .white
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor : UIColor.CustomColor.dark]
-        navigationItem.largeTitleDisplayMode = .always
         navigationItem.title = "Профиль"
     }
     
