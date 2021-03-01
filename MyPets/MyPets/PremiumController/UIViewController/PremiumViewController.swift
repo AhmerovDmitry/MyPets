@@ -129,23 +129,24 @@ extension PremiumViewController: GeneralSetupProtocol {
         titleText.text = "MyPets Premium"
         titleText.textColor = .white
         titleText.textAlignment = .center
-        titleText.font = UIFont.systemFont(ofSize: 26, weight: .bold)
+        titleText.font = UIFont.systemFont(ofSize: 26, weight: .semibold)
         
         priceLabel.text = "149 ₽"
         priceLabel.textColor = .white
         priceLabel.textAlignment = .center
-        priceLabel.font = UIFont.systemFont(ofSize: 48, weight: .bold)
+        priceLabel.font = UIFont.systemFont(ofSize: 48, weight: .semibold)
         
         priceDescLabel.text = "Навсегда и без ограничений"
         priceDescLabel.textColor = .white
         priceDescLabel.textAlignment = .center
-        priceDescLabel.font = UIFont.systemFont(ofSize: 14, weight: .light)
+        priceDescLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         
         buyButton.layoutIfNeeded()
         buyButton.setTitle("Получить Premium", for: .normal)
-        buyButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-        buyButton.setTitleColor(UIColor.CustomColor.purple, for: .normal)
         buyButton.backgroundColor = .white
+        buyButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        buyButton.setTitleColor(UIColor.CustomColor.purple, for: .normal)
+        buyButton.titleLabel?.adjustsFontSizeToFitWidth = true
         buyButton.layer.cornerRadius = buyButton.frame.height / 2
         buyButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
     }

@@ -21,6 +21,16 @@ class  SupportViewController: UIViewController {
         view = tableView
         
         view.backgroundColor = .white
+        
+        setupNavigationController()
+    }
+    
+    func setupNavigationController() {
+        navigationController?.navigationBar.tintColor = UIColor.CustomColor.dark
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.backgroundColor = .clear
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor : UIColor.CustomColor.dark]
+        navigationItem.title = "Поддержка"
     }
     
 }

@@ -8,6 +8,6 @@
 import UIKit
 
 struct PetTableViewModel {
-    var title: String
+    var title: String?
     var info: String?
 }

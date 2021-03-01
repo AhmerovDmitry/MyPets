@@ -8,7 +8,10 @@
 import UIKit
 
 class PetInfoViewController: UIViewController {
-    lazy var petEntity = PetModel()
+    var createOrChange = Bool()
+    let nilEntity = PetModel()
+    var petEntity = PetModel()
+    var collectionItemIndex = 0
     weak var delegate: EntityTransfer?
     let collectionModel = [
         CollectionModel(image: UIImage(),
@@ -36,7 +39,7 @@ class PetInfoViewController: UIViewController {
     
     let backgroundView = UIView()
     let picker = UIDatePicker()
-    let savePetButton = UIButton(type: .system)
+    let savePetBirthday = UIButton(type: .system)
     var petInfo: String?
     var titleImage = UIImageView()
     private let collectionView: UICollectionView = {
@@ -58,6 +61,12 @@ class PetInfoViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        if petEntity == nilEntity {
+            createOrChange = true
+        } else {
+            createOrChange = false
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,7 +80,14 @@ class PetInfoViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        updateView()
+        if petEntity != nilEntity {
+            switch createOrChange {
+            case true: delegate?.createEntity(petEntity)
+            case false: delegate?.updateEntity(petEntity, at: collectionItemIndex)
+            }
+        }
+        delegate?.reloadCollectionView()
+        delegate?.reloadController()
     }
 }
 
@@ -89,7 +105,7 @@ extension PetInfoViewController: GeneralSetupProtocol {
          collectionView,
          backgroundView,
          picker,
-         savePetButton].forEach { view.addSubview($0) }
+         savePetBirthday].forEach { view.addSubview($0) }
         
         titleImage.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         titleImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -109,21 +125,28 @@ extension PetInfoViewController: GeneralSetupProtocol {
         picker.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         picker.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
-        savePetButton.widthAnchor.constraint(equalTo: picker.widthAnchor).isActive = true
-        savePetButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        savePetButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        savePetButton.topAnchor.constraint(equalTo: picker.bottomAnchor,
+        savePetBirthday.widthAnchor.constraint(equalTo: picker.widthAnchor).isActive = true
+        savePetBirthday.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        savePetBirthday.topAnchor.constraint(equalTo: picker.bottomAnchor,
                                            constant: 8).isActive = true
+        savePetBirthday.addConstraint(NSLayoutConstraint(item: savePetBirthday,
+                                                    attribute: .width,
+                                                    relatedBy: .equal,
+                                                    toItem: savePetBirthday,
+                                                    attribute: .height,
+                                                    multiplier: 6,
+                                                    constant: 0))
     }
     
     func setupElements() {
         [titleImage,
          backgroundView,
          picker,
-         savePetButton].forEach {
+         savePetBirthday].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
          }
         
+        titleImage.image = petEntity.image ?? UIImage()
         titleImage.contentMode = .scaleAspectFill
         titleImage.backgroundColor = .white
         titleImage.clipsToBounds = true
@@ -145,14 +168,16 @@ extension PetInfoViewController: GeneralSetupProtocol {
             picker.backgroundColor = UIColor.CustomColor.lightGray
         }
         
-        savePetButton.isHidden = true
-        savePetButton.setTitle("Сохранить", for: .normal)
-        savePetButton.backgroundColor = UIColor.CustomColor.purple
-        savePetButton.tintColor = UIColor.CustomColor.lightGray
-        savePetButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        savePetButton.alpha = 0
-        savePetButton.layer.cornerRadius = 20
-        savePetButton.addTarget(self, action: #selector(saveData), for: .touchUpInside)
+        savePetBirthday.isHidden = true
+        savePetBirthday.layoutIfNeeded()
+        savePetBirthday.setTitle("Сохранить", for: .normal)
+        savePetBirthday.backgroundColor = UIColor.CustomColor.purple
+        savePetBirthday.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        savePetBirthday.setTitleColor(.white, for: .normal)
+        savePetBirthday.titleLabel?.adjustsFontSizeToFitWidth = true
+        savePetBirthday.alpha = 0
+        savePetBirthday.layer.cornerRadius = savePetBirthday.frame.height / 2
+        savePetBirthday.addTarget(self, action: #selector(saveData), for: .touchUpInside)
     }
 }
 //MARK: - Delegate methods
@@ -173,8 +198,8 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
             self.picker.alpha = 1
             self.backgroundView.isHidden = false
             self.backgroundView.alpha = 0.5
-            self.savePetButton.isHidden = false
-            self.savePetButton.alpha = 1
+            self.savePetBirthday.isHidden = false
+            self.savePetBirthday.alpha = 1
         }
     }
     func showAlertController(title: String,
@@ -218,13 +243,5 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
     }
     func petInfoForModel() -> String? {
         return petInfo
-    }
-    func updateView() {
-        let nilEntity = PetModel(image: nil, name: nil, kind: nil, breed: nil, birthday: nil, weight: nil, sterile: nil, color: nil, hair: nil, chipNumber: nil)
-        if petEntity != nilEntity {
-            delegate?.reloadCollectionView()
-            delegate?.entityTransfer(petEntity)
-            delegate?.reloadController()
-        }
     }
 }

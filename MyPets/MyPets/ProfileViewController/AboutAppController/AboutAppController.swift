@@ -13,6 +13,9 @@ class AboutAppController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Версия приложения: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String)"
         label.textAlignment = .center
+        label.textColor = UIColor.CustomColor.dark
+        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        label.adjustsFontSizeToFitWidth = true
         
         return label
     }()
@@ -21,6 +24,9 @@ class AboutAppController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Дизайнер: Екатерина Лемина"
         label.textAlignment = .center
+        label.textColor = UIColor.CustomColor.dark
+        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        label.adjustsFontSizeToFitWidth = true
         
         return label
     }()
@@ -29,12 +35,15 @@ class AboutAppController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Разработчик: Дмитрий Ахмеров"
         label.textAlignment = .center
+        label.textColor = UIColor.CustomColor.dark
+        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        label.adjustsFontSizeToFitWidth = true
         
         return label
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         view.backgroundColor = .white
         
         [appVersion, designerInfo, developerInfo].forEach { view.addSubview($0) }
@@ -52,6 +61,18 @@ class AboutAppController: UIViewController {
             developerInfo.leftAnchor.constraint(equalTo: view.leftAnchor),
             developerInfo.rightAnchor.constraint(equalTo: view.rightAnchor),
         ])
+        
+        print(developerInfo.bounds.height)
+        
+        setupNavigationController()
+    }
+    
+    func setupNavigationController() {
+        navigationController?.navigationBar.tintColor = UIColor.CustomColor.dark
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.backgroundColor = .clear
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor : UIColor.CustomColor.dark]
+        navigationItem.title = "О приложении"
     }
     
 }

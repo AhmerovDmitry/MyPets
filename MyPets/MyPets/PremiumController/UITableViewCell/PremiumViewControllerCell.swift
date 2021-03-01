@@ -46,7 +46,7 @@ extension PremiumViewControllerCell: GeneralSetupProtocol {
         premiumText.textAlignment = .center
         premiumText.textColor = .white
         premiumText.numberOfLines = 0
-        premiumText.font = UIFont.systemFont(ofSize: 15, weight: .light)
+        premiumText.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         premiumText.adjustsFontSizeToFitWidth = true
     }
     

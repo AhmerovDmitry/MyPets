@@ -9,17 +9,7 @@ import UIKit
 
 class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
     weak var delegate: PetViewControllerDelegate?
-    var models = [
-        PetTableViewModel(title: "Кличка", info: nil),
-        PetTableViewModel(title: "Вид", info: nil),
-        PetTableViewModel(title: "Порода", info: nil),
-        PetTableViewModel(title: "Дата рождения", info: nil),
-        PetTableViewModel(title: "Вес, кг", info: nil),
-        PetTableViewModel(title: "Стерилизация", info: nil),
-        PetTableViewModel(title: "Окрас", info: nil),
-        PetTableViewModel(title: "Шерсть", info: nil),
-        PetTableViewModel(title: "Номер чипа", info: nil)
-    ]
+    var models = [PetTableViewModel]()
     let label = UILabel()
     let titleLabel = UILabel()
     let tableView: UITableView = {
@@ -46,15 +36,16 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
     let menuTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        label.textColor = UIColor.CustomColor.dark
         
         return label
     }()
     let descLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 13)
-        label.textColor = UIColor.CustomColor.gray
+        label.font = UIFont.systemFont(ofSize: 13, weight: .regular)
+        label.textColor = UIColor.CustomColor.dark.withAlphaComponent(0.8)
         label.adjustsFontSizeToFitWidth = true
         
         return label
@@ -93,6 +84,8 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
                                           constant: -20).isActive = true
         
         titleLabel.bottomAnchor.constraint(equalTo: tableView.topAnchor).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor,
+                                        constant: 15).isActive = true
         titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor,
                                          constant: 15).isActive = true
         titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor,
@@ -140,7 +133,9 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
 
         titleLabel.textColor = UIColor.CustomColor.dark
         titleLabel.adjustsFontSizeToFitWidth = true
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 25)
+        titleLabel.font = UIFont.systemFont(ofSize: 25, weight: .semibold)
+        titleLabel.textAlignment = .left
+        titleLabel.numberOfLines = 1
     }
     
     func presentController() {}

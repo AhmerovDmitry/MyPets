@@ -12,9 +12,9 @@ extension PetInfoViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         switch indexPath.item {
         case 0:
-            return CGSize(width: collectionView.bounds.width - 32, height: 475)
+            return CGSize(width: collectionView.bounds.width / 1.1, height: 475)
         default:
-            return CGSize(width: collectionView.bounds.width - 32, height: 90)
+            return CGSize(width: collectionView.bounds.width / 1.1, height: 90)
         }
     }
     
@@ -27,6 +27,17 @@ extension PetInfoViewController: UICollectionViewDelegate, UICollectionViewDataS
         cell.titleImage.image = collectionModel[indexPath.item].image
         cell.menuTitleLabel.text = collectionModel[indexPath.item].title
         cell.descLabel.text = collectionModel[indexPath.item].description
+        cell.models = [
+            PetTableViewModel(title: "Кличка", info: petEntity.name),
+            PetTableViewModel(title: "Вид", info: petEntity.kind),
+            PetTableViewModel(title: "Порода", info: petEntity.breed),
+            PetTableViewModel(title: "Дата рождения", info: petEntity.birthday),
+            PetTableViewModel(title: "Вес, кг", info: petEntity.weight),
+            PetTableViewModel(title: "Стерилизация", info: petEntity.sterile),
+            PetTableViewModel(title: "Окрас", info: petEntity.color),
+            PetTableViewModel(title: "Шерсть", info: petEntity.hair),
+            PetTableViewModel(title: "Номер чипа", info: petEntity.chipNumber)
+        ]
         
         if indexPath.item == 0 {
             cell.titleImage.isHidden = true

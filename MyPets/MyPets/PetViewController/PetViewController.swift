@@ -34,12 +34,12 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-        setupNavigationController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        setupNavigationController()
         setupConstraints()
         setupElements()
         
@@ -142,24 +142,25 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
         
         titleText.text = "Добавьте питомца"
         titleText.textAlignment = .center
-        titleText.font = UIFont.boldSystemFont(ofSize: 16)
+        titleText.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         titleText.textColor = UIColor.CustomColor.dark
         titleText.numberOfLines = 0
         titleText.adjustsFontSizeToFitWidth = true
         
         descText.text = "Все данные вашего питомца будут всегда под рукой"
         descText.textAlignment = .center
-        descText.font = UIFont.systemFont(ofSize: 14)
+        descText.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         descText.textColor = UIColor.CustomColor.dark
         descText.numberOfLines = 0
         descText.adjustsFontSizeToFitWidth = true
         
         addButton.layoutIfNeeded()
-        addButton.backgroundColor = UIColor.CustomColor.purple
         addButton.setTitle("Добавить питомца", for: .normal)
-        addButton.tintColor = .white
-        addButton.layer.cornerRadius = addButton.frame.height / 2
+        addButton.backgroundColor = UIColor.CustomColor.purple
+        addButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        addButton.setTitleColor(.white, for: .normal)
         addButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        addButton.layer.cornerRadius = addButton.frame.height / 2
         addButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
     }
 }
@@ -169,11 +170,16 @@ extension PetViewController: EntityTransfer {
         collectionView.reloadData()
     }
     
-    func entityTransfer(_ entity: PetModel) {
+    func createEntity(_ entity: PetModel) {
         petEntitys.insert(entity, at: 0)
     }
     
     func reloadController() {
         self.viewDidLoad()
+    }
+    
+    func updateEntity(_ entity: PetModel, at indexPath: Int) {
+        petEntitys.remove(at: indexPath)
+        petEntitys.insert(entity, at: indexPath)
     }
 }

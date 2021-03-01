@@ -80,10 +80,9 @@ extension OnboardViewCell: GeneralSetupProtocol {
         imageView.contentMode = .scaleAspectFit
         
         textLabel.textAlignment = .center
-        textLabel.font = UIFont.systemFont(ofSize: 18)
+        textLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         textLabel.textColor = UIColor.CustomColor.dark
         textLabel.numberOfLines = 0
-        textLabel.text = "Вся информация о питомце всегда под рукой"
         textLabel.adjustsFontSizeToFitWidth = true
     }
     
