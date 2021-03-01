@@ -21,36 +21,35 @@ class EntityCell: UICollectionViewCell {
     let nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.contentMode = .scaleAspectFit
         label.clipsToBounds = true
         label.textColor = UIColor.CustomColor.dark
+        label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .left
         label.numberOfLines = 2
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         
         return label
     }()
     let breedLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.contentMode = .scaleAspectFit
         label.clipsToBounds = true
         label.textColor = UIColor.CustomColor.dark
+        label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .left
         label.numberOfLines = 1
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: 14, weight: .light)
         
         return label
     }()
     let ageLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.contentMode = .scaleAspectFit
         label.clipsToBounds = true
         label.textColor = UIColor.CustomColor.gray
         label.textAlignment = .right
         label.numberOfLines = 1
-        label.font = UIFont.boldSystemFont(ofSize: 10)
+        label.font = UIFont.systemFont(ofSize: 10, weight: .regular)
         
         return label
     }()

@@ -83,6 +83,8 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
                                           constant: -20).isActive = true
         
         titleLabel.bottomAnchor.constraint(equalTo: tableView.topAnchor).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor,
+                                        constant: 15).isActive = true
         titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor,
                                          constant: 15).isActive = true
         titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor,
@@ -130,7 +132,9 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
 
         titleLabel.textColor = UIColor.CustomColor.dark
         titleLabel.adjustsFontSizeToFitWidth = true
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 25)
+        titleLabel.font = UIFont.systemFont(ofSize: 25, weight: .bold)
+        titleLabel.textAlignment = .left
+        titleLabel.numberOfLines = 1
     }
     
     func presentController() {}

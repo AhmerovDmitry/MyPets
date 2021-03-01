@@ -103,7 +103,7 @@ class OnboardViewController: UIViewController, GeneralSetupProtocol {
         doneButton.layoutIfNeeded()
         doneButton.setTitle("Далее", for: .normal)
         doneButton.backgroundColor = .white
-        doneButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        doneButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         doneButton.setTitleColor(UIColor.CustomColor.purple, for: .normal)
         doneButton.layer.borderWidth = 1
         doneButton.layer.borderColor = UIColor.CustomColor.purple.cgColor
@@ -112,7 +112,7 @@ class OnboardViewController: UIViewController, GeneralSetupProtocol {
         doneButton.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
         
         closeButton.setTitle("Пропустить", for: .normal)
-        closeButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        closeButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         closeButton.setTitleColor(UIColor.CustomColor.purple, for: .normal)
         closeButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
     }

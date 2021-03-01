@@ -12,9 +12,9 @@ extension PetInfoViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         switch indexPath.item {
         case 0:
-            return CGSize(width: collectionView.bounds.width - 32, height: 475)
+            return CGSize(width: collectionView.bounds.width / 1.1, height: 475)
         default:
-            return CGSize(width: collectionView.bounds.width - 32, height: 90)
+            return CGSize(width: collectionView.bounds.width / 1.1, height: 90)
         }
     }
     
