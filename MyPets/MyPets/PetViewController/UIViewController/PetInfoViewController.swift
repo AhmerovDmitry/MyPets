@@ -155,6 +155,10 @@ extension PetInfoViewController: GeneralSetupProtocol {
         backgroundView.backgroundColor = UIColor.CustomColor.darkGray
         backgroundView.alpha = 0
         
+        let tappedView = UITapGestureRecognizer(target: self, action: #selector(self.hidePicker(_:)))
+        backgroundView.addGestureRecognizer(tappedView)
+        backgroundView.isUserInteractionEnabled = true
+        
         picker.isHidden = true
         picker.date = Date()
         picker.datePickerMode = .date

@@ -38,6 +38,19 @@ extension PetInfoViewController {
         }
     }
     
+    func hidePicker(_ sender: UITapGestureRecognizer) {
+        UIView.animate(withDuration: 0.5) {
+            self.picker.alpha = 0
+            self.backgroundView.alpha = 0
+            self.savePetBirthday.alpha = 0
+        } completion: { _ in
+            self.picker.isHidden = true
+            self.backgroundView.isHidden = true
+            self.savePetBirthday.isHidden = true
+        }
+        print("hello")
+    }
+    
     func textFieldDidChangeSelection(_ textField: UITextField) {
         petInfo = textField.text
     }
