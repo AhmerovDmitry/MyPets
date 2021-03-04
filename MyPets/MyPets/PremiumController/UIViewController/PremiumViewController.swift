@@ -43,7 +43,10 @@ class PremiumViewController: UIViewController {
         
         setupConstraints()
         setupElements()
-        gradientSetup()
+        
+        let colorOne = UIColor(red: 137/255, green: 46/255, blue: 223/255, alpha: 1)
+        let colorTwo = UIColor(red: 212/255, green: 165/255, blue: 255/255, alpha: 1)
+        view.gradientSetup(view: view, colorOne: colorOne, colorTwo: colorTwo)
     }
     
 }
@@ -149,12 +152,5 @@ extension PremiumViewController: GeneralSetupProtocol {
         buyButton.titleLabel?.adjustsFontSizeToFitWidth = true
         buyButton.layer.cornerRadius = buyButton.frame.height / 2
         buyButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
-    }
-    
-    func gradientSetup() {
-        let colorOne = UIColor(red: 137/255, green: 46/255, blue: 223/255, alpha: 1)
-        let colorTwo = UIColor(red: 212/255, green: 165/255, blue: 255/255, alpha: 1)
-        view.setGradientBackground(colorOne: colorOne, ColorTwo: colorTwo,
-                                   startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 1))
     }
 }

@@ -18,4 +18,9 @@ extension UIView {
         
         layer.insertSublayer(gradientLayer, at: 0)
     }
+    
+    func gradientSetup(view: UIView, colorOne: UIColor, colorTwo: UIColor) {
+        view.setGradientBackground(colorOne: colorOne, ColorTwo: colorTwo,
+                                   startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 1))
+    }
 }
