@@ -1,5 +1,5 @@
 //
-//  OnboardModel.swift
+//  BaseModel.swift
 //  MyPets
 //
 //  Created by Дмитрий Ахмеров on 11.10.2020.

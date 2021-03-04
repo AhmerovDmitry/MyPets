@@ -39,7 +39,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.userImageView.contentMode = .center
                 cell.userImageView.image = UIImage(named: "cameraIcon")
             }
-            if userInfo.name == "Указать информацию" {
+            if userInfo.name == "Указать информацию" || userInfo.name == nil {
                 cell.nameLabel.text = menuTitle[indexPath.row]
             } else {
                 cell.nameLabel.text = userInfo.name
@@ -52,9 +52,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             var content = cell.defaultContentConfiguration()
             content.textProperties.color = UIColor.CustomColor.dark
             content.textProperties.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-            if indexPath.section == 0 {
-                content.text = nil
-            } else {
+            if indexPath.section != 0 {
                 content.text = menuTitle[indexPath.row]
             }
             if indexPath.section == 3 {
