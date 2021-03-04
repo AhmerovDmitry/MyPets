@@ -8,10 +8,10 @@
 import UIKit
 
 class PremiumViewControllerCell: UITableViewCell {
-    var model: PremiumModel? {
+    var model: String? {
         didSet {
             guard let model = model else { return }
-            premiumText.text = model.text
+            premiumText.text = model
         }
     }
     let premiumText = UILabel()

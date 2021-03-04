@@ -9,10 +9,10 @@ import UIKit
 
 class OnboardViewController: UIViewController, GeneralSetupProtocol {
     let models = [
-        OnboardModel(image: "onboardImage_1", text: "Вся информация о питомце всегда под рукой"),
-        OnboardModel(image: "onboardImage_2", text: "Вы не забудете купить корм или сделать прививку"),
-        OnboardModel(image: "onboardImage_3", text: "Выбирайте, куда сходить с любимым питомцем"),
-        OnboardModel(image: "onboardImage_4", text: "Советы и рекомендации по уходу за питомцем")
+        BaseModel(firstProperties: "onboardImage_1", secondProperties: "Вся информация о питомце всегда под рукой"),
+        BaseModel(firstProperties: "onboardImage_2", secondProperties: "Вы не забудете купить корм или сделать прививку"),
+        BaseModel(firstProperties: "onboardImage_3", secondProperties: "Выбирайте, куда сходить с любимым питомцем"),
+        BaseModel(firstProperties: "onboardImage_4", secondProperties: "Советы и рекомендации по уходу за питомцем")
     ]
     private let mainStackView = UIStackView()
     let pageControl = UIPageControl()

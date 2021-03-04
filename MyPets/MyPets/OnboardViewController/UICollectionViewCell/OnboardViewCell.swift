@@ -8,11 +8,12 @@
 import UIKit
 
 class OnboardViewCell: UICollectionViewCell {
-    var model: OnboardModel? {
+    var model: BaseModel? {
         didSet {
-            guard let model = model else { return }
-            imageView.image = UIImage(named: model.image)
-            textLabel.text = model.text
+            guard let image = model?.firstProperties else { return }
+            guard let text = model?.secondProperties else { return }
+            imageView.image = UIImage(named: image)
+            textLabel.text = text
         }
     }
     private let mainStackView = UIStackView()

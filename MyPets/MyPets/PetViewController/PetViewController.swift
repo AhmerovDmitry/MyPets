@@ -13,7 +13,7 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
     private let mainImage = UIImageView()
     private let titleText = UILabel()
     private let descText = UILabel()
-    private let addButton = UIButton(type: .system)
+    private let addPetButton = UIButton(type: .system)
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -65,7 +65,7 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
         [mainImage,
          titleText,
          descText,
-         addButton].forEach { mainStackView.addArrangedSubview($0) }
+         addPetButton].forEach { mainStackView.addArrangedSubview($0) }
         
         mainStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor,
                                                constant: -10).isActive = true
@@ -102,14 +102,14 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
                                                   constant: 0))
         
         
-        addButton.leftAnchor.constraint(equalTo: mainStackView.leftAnchor,
+        addPetButton.leftAnchor.constraint(equalTo: mainStackView.leftAnchor,
                                         constant: 32).isActive = true
-        addButton.rightAnchor.constraint(equalTo: mainStackView.rightAnchor,
+        addPetButton.rightAnchor.constraint(equalTo: mainStackView.rightAnchor,
                                          constant: -32).isActive = true
-        addButton.addConstraint(NSLayoutConstraint(item: addButton,
+        addPetButton.addConstraint(NSLayoutConstraint(item: addPetButton,
                                                    attribute: .width,
                                                    relatedBy: .equal,
-                                                   toItem: addButton,
+                                                   toItem: addPetButton,
                                                    attribute: .height,
                                                    multiplier: 6,
                                                    constant: 0))
@@ -127,7 +127,7 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
          mainImage,
          titleText,
          descText,
-         addButton].forEach {
+         addPetButton].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
          }
         
@@ -154,14 +154,14 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
         descText.numberOfLines = 0
         descText.adjustsFontSizeToFitWidth = true
         
-        addButton.layoutIfNeeded()
-        addButton.setTitle("Добавить питомца", for: .normal)
-        addButton.backgroundColor = UIColor.CustomColor.purple
-        addButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)
-        addButton.setTitleColor(.white, for: .normal)
-        addButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        addButton.layer.cornerRadius = addButton.frame.height / 2
-        addButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
+        addPetButton.layoutIfNeeded()
+        addPetButton.setTitle("Добавить питомца", for: .normal)
+        addPetButton.backgroundColor = UIColor.CustomColor.purple
+        addPetButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        addPetButton.setTitleColor(.white, for: .normal)
+        addPetButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        addPetButton.layer.cornerRadius = addPetButton.frame.height / 2
+        addPetButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
     }
 }
 

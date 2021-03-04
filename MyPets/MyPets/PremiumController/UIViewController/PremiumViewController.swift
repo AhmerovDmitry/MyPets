@@ -9,11 +9,11 @@ import UIKit
 
 class PremiumViewController: UIViewController {
     let models = [
-        PremiumModel(text: "Неограниченное количество питомцев"),
-        PremiumModel(text: "Календарь прививок, лечение и профилактика болезней"),
-        PremiumModel(text: "Заболевания, назначения врача"),
-        PremiumModel(text: "Все документы питомца в одном месте"),
-        PremiumModel(text: "Рекомендации по уходу и питанию")
+        "Неограниченное количество питомцев",
+        "Календарь прививок, лечение и профилактика болезней",
+        "Заболевания, назначения врача",
+        "Все документы питомца в одном месте",
+        "Рекомендации по уходу и питанию"
     ]
     private let mainStackView = UIStackView()
     private let closeButton = UIButton(type: .custom)

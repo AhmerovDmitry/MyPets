@@ -55,7 +55,7 @@ extension LocationViewController : CLLocationManagerDelegate {
         
     }
     //MARK: - Search annotation on map
-    func searchInMap(place: String) {
+    func searchInMap(place: String?) {
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = place
         request.region = mapView.region

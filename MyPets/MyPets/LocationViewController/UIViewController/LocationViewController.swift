@@ -11,22 +11,22 @@ import MapKit
 class LocationViewController: UIViewController {
     //MARK: - Model
     let models = [
-        LocationModel(buttonTitle: "Bce",
-                      searchText: ""),
-        LocationModel(buttonTitle: "Зоомагазины",
-                      searchText: "зоомагазин"),
-        LocationModel(buttonTitle: "Клиники",
-                      searchText: "ветеринар"),
-        LocationModel(buttonTitle: "Парки",
-                      searchText: "парк"),
-        LocationModel(buttonTitle: "Кафе и рестораны",
-                      searchText: "кафе"),
-        LocationModel(buttonTitle: "Площадки для собак",
-                      searchText: "площадка для собак"),
-        LocationModel(buttonTitle: "Отели для животных",
-                      searchText: "гостиница для животных"),
-        LocationModel(buttonTitle: "Приюты",
-                      searchText: "приют для животных")
+        BaseModel(firstProperties: "Bce",
+                  secondProperties: ""),
+        BaseModel(firstProperties: "Зоомагазины",
+                  secondProperties: "зоомагазин"),
+        BaseModel(firstProperties: "Клиники",
+                  secondProperties: "ветеринар"),
+        BaseModel(firstProperties: "Парки",
+                  secondProperties: "парк"),
+        BaseModel(firstProperties: "Кафе и рестораны",
+                  secondProperties: "кафе"),
+        BaseModel(firstProperties: "Площадки для собак",
+                  secondProperties: "площадка для собак"),
+        BaseModel(firstProperties: "Отели для животных",
+                  secondProperties: "гостиница для животных"),
+        BaseModel(firstProperties: "Приюты",
+                  secondProperties: "приют для животных")
     ]
     
     //MARK: - All properties

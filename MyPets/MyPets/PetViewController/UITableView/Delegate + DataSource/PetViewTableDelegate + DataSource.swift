@@ -18,12 +18,12 @@ extension PetViewCollectionCell: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCellPetId") as! PetViewTableCell
-        cell.tableCellLabel.text = models[indexPath.row].title
-        cell.tableCellPlaceholder.text = (models[indexPath.row].info ?? "Указать информацию")
+        cell.tableCellLabel.text = models[indexPath.row].firstProperties
+        cell.tableCellPlaceholder.text = (models[indexPath.row].secondProperties ?? "Указать информацию")
         cell.accessoryType = .disclosureIndicator
         cell.backgroundColor = .white
         
-        titleLabel.text = models[0].info
+        titleLabel.text = models[0].secondProperties
         
         return cell
     }
@@ -58,9 +58,9 @@ extension PetViewCollectionCell: UITableViewDelegate, UITableViewDataSource {
     func updatePetInfo(indexPath: IndexPath) {
         let petInformation = delegate?.petInfoForModel()
         if petInformation == nil {
-            models[indexPath.row].info = " "
+            models[indexPath.row].secondProperties = " "
         } else {
-            models[indexPath.row].info = petInformation
+            models[indexPath.row].secondProperties = petInformation
         }
     }
 }

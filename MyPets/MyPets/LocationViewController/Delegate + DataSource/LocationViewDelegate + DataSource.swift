@@ -10,8 +10,11 @@ import UIKit
 extension LocationViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let item = models[indexPath.row]
-        let itemSize = item.buttonTitle.size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14)])
-
+        var itemSize = CGSize()
+        if let buttonText = item.secondProperties {
+            itemSize = buttonText.size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14)])
+        }
+        
         return CGSize(width: itemSize.width + 50, height: 50)
     }
     
@@ -23,7 +26,7 @@ extension LocationViewController: UICollectionViewDelegate, UICollectionViewData
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellFilterId", for: indexPath) as! LocationViewCell
         let data = models[indexPath.item]
         cell.model = data
-                
+        
         switch indexPath.item {
         case 0:
             cell.valueButton.addTarget(self, action: #selector(response0), for: .touchUpInside)
@@ -55,24 +58,24 @@ extension LocationViewController: UICollectionViewDelegate, UICollectionViewData
     @objc func response0() {
     }
     @objc func response1() {
-        searchInMap(place: models[1].searchText)
+        searchInMap(place: models[1].secondProperties)
     }
     @objc func response2() {
-        searchInMap(place: models[2].searchText)
+        searchInMap(place: models[2].secondProperties)
     }
     @objc func response3() {
-        searchInMap(place: models[3].searchText)
+        searchInMap(place: models[3].secondProperties)
     }
     @objc func response4() {
-        searchInMap(place: models[4].searchText)
+        searchInMap(place: models[4].secondProperties)
     }
     @objc func response5() {
-        searchInMap(place: models[5].searchText)
+        searchInMap(place: models[5].secondProperties)
     }
     @objc func response6() {
-        searchInMap(place: models[6].searchText)
+        searchInMap(place: models[6].secondProperties)
     }
     @objc func response7() {
-        searchInMap(place: models[7].searchText)
+        searchInMap(place: models[7].secondProperties)
     }
 }

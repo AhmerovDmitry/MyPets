@@ -18,17 +18,17 @@ extension UserProfileViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "userProfileCell", for: indexPath) as! PetViewTableCell
-        cell.tableCellLabel.text = models[indexPath.row].title
+        cell.tableCellLabel.text = models[indexPath.row].firstProperties
         cell.accessoryType = .disclosureIndicator
         cell.backgroundColor = .white
         
         switch indexPath.row {
         case 0:
-            cell.tableCellPlaceholder.text = userInfo.name ?? models[0].info
+            cell.tableCellPlaceholder.text = userInfo.name ?? models[0].secondProperties
         case 1:
-            cell.tableCellPlaceholder.text = userInfo.city ?? models[1].info
+            cell.tableCellPlaceholder.text = userInfo.city ?? models[1].secondProperties
         case 2:
-            cell.tableCellPlaceholder.text = userInfo.eMail ?? models[2].info
+            cell.tableCellPlaceholder.text = userInfo.eMail ?? models[2].secondProperties
         default: break
         }
         

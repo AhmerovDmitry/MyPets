@@ -12,9 +12,9 @@ class UserProfileViewController: UIViewController {
     var indexPath = IndexPath()
     weak var delegate: ProfileViewControllerDelegate?
     var models = [
-        PetTableViewModel(title: "Имя", info: "Указать информацию"),
-        PetTableViewModel(title: "Город", info: "Указать информацию"),
-        PetTableViewModel(title: "E-mail", info: "Указать информацию")
+        BaseModel(firstProperties: "Имя", secondProperties: "Указать информацию"),
+        BaseModel(firstProperties: "Город", secondProperties: "Указать информацию"),
+        BaseModel(firstProperties: "E-mail", secondProperties: "Указать информацию")
     ]
     let profileView = UIButton(type: .system)
     let tableView: UITableView = {
@@ -97,11 +97,11 @@ extension UserProfileViewController: UITextFieldDelegate {
         let saveButton = UIAlertAction(title: "Сохранить", style: .default) { _ in
             switch self.indexPath.row {
             case 0:
-                self.userInfo.name = self.models[self.indexPath.row].info
+                self.userInfo.name = self.models[self.indexPath.row].secondProperties
             case 1:
-                self.userInfo.city = self.models[self.indexPath.row].info
+                self.userInfo.city = self.models[self.indexPath.row].secondProperties
             case 2:
-                self.userInfo.eMail = self.models[self.indexPath.row].info
+                self.userInfo.eMail = self.models[self.indexPath.row].secondProperties
             default: break
             }
             self.delegate?.updateUser(profile: self.userInfo)
@@ -114,7 +114,7 @@ extension UserProfileViewController: UITextFieldDelegate {
     }
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        models[indexPath.row].info = textField.text
+        models[indexPath.row].secondProperties = textField.text
     }
     
 }

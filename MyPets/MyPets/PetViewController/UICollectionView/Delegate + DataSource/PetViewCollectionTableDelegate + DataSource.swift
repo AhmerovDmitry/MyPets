@@ -28,15 +28,15 @@ extension PetInfoViewController: UICollectionViewDelegate, UICollectionViewDataS
         cell.menuTitleLabel.text = collectionModel[indexPath.item].title
         cell.descLabel.text = collectionModel[indexPath.item].description
         cell.models = [
-            PetTableViewModel(title: "Кличка", info: petEntity.name),
-            PetTableViewModel(title: "Вид", info: petEntity.kind),
-            PetTableViewModel(title: "Порода", info: petEntity.breed),
-            PetTableViewModel(title: "Дата рождения", info: petEntity.birthday),
-            PetTableViewModel(title: "Вес, кг", info: petEntity.weight),
-            PetTableViewModel(title: "Стерилизация", info: petEntity.sterile),
-            PetTableViewModel(title: "Окрас", info: petEntity.color),
-            PetTableViewModel(title: "Шерсть", info: petEntity.hair),
-            PetTableViewModel(title: "Номер чипа", info: petEntity.chipNumber)
+            BaseModel(firstProperties: "Кличка", secondProperties: petEntity.name),
+            BaseModel(firstProperties: "Вид", secondProperties: petEntity.kind),
+            BaseModel(firstProperties: "Порода", secondProperties: petEntity.breed),
+            BaseModel(firstProperties: "Дата рождения", secondProperties: petEntity.birthday),
+            BaseModel(firstProperties: "Вес, кг", secondProperties: petEntity.weight),
+            BaseModel(firstProperties: "Стерилизация", secondProperties: petEntity.sterile),
+            BaseModel(firstProperties: "Окрас", secondProperties: petEntity.color),
+            BaseModel(firstProperties: "Шерсть", secondProperties: petEntity.hair),
+            BaseModel(firstProperties: "Номер чипа", secondProperties: petEntity.chipNumber)
         ]
         
         if indexPath.item == 0 {

@@ -8,10 +8,10 @@
 import UIKit
 
 class LocationViewCell: UICollectionViewCell {
-    var model: LocationModel? {
+    var model: BaseModel? {
         didSet {
             guard let model = model else { return }
-            valueButton.setTitle(model.buttonTitle, for: .normal)
+            valueButton.setTitle(model.firstProperties, for: .normal)
         }
     }
     let valueButton = UIButton(type: .custom)

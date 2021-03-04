@@ -9,7 +9,7 @@ import UIKit
 
 class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
     weak var delegate: PetViewControllerDelegate?
-    var models = [PetTableViewModel]()
+    var models = [BaseModel]()
     let label = UILabel()
     let titleLabel = UILabel()
     let tableView: UITableView = {

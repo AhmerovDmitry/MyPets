@@ -39,7 +39,7 @@ class PetInfoViewController: UIViewController {
     
     let backgroundView = UIView()
     let picker = UIDatePicker()
-    let savePetBirthday = UIButton(type: .system)
+    let saveDateButton = UIButton(type: .system)
     var petInfo: String?
     var titleImage = UIImageView()
     private let collectionView: UICollectionView = {
@@ -105,7 +105,7 @@ extension PetInfoViewController: GeneralSetupProtocol {
          collectionView,
          backgroundView,
          picker,
-         savePetBirthday].forEach { view.addSubview($0) }
+         saveDateButton].forEach { view.addSubview($0) }
         
         titleImage.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         titleImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -125,14 +125,14 @@ extension PetInfoViewController: GeneralSetupProtocol {
         picker.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         picker.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
-        savePetBirthday.widthAnchor.constraint(equalTo: picker.widthAnchor).isActive = true
-        savePetBirthday.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        savePetBirthday.topAnchor.constraint(equalTo: picker.bottomAnchor,
+        saveDateButton.widthAnchor.constraint(equalTo: picker.widthAnchor).isActive = true
+        saveDateButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        saveDateButton.topAnchor.constraint(equalTo: picker.bottomAnchor,
                                            constant: 8).isActive = true
-        savePetBirthday.addConstraint(NSLayoutConstraint(item: savePetBirthday,
+        saveDateButton.addConstraint(NSLayoutConstraint(item: saveDateButton,
                                                     attribute: .width,
                                                     relatedBy: .equal,
-                                                    toItem: savePetBirthday,
+                                                    toItem: saveDateButton,
                                                     attribute: .height,
                                                     multiplier: 6,
                                                     constant: 0))
@@ -142,7 +142,7 @@ extension PetInfoViewController: GeneralSetupProtocol {
         [titleImage,
          backgroundView,
          picker,
-         savePetBirthday].forEach {
+         saveDateButton].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
          }
         
@@ -155,7 +155,7 @@ extension PetInfoViewController: GeneralSetupProtocol {
         backgroundView.backgroundColor = UIColor.CustomColor.darkGray
         backgroundView.alpha = 0
         
-        let tappedView = UITapGestureRecognizer(target: self, action: #selector(self.hidePicker(_:)))
+        let tappedView = UITapGestureRecognizer(target: self, action: #selector(self.hideDatePicker(_:)))
         backgroundView.addGestureRecognizer(tappedView)
         backgroundView.isUserInteractionEnabled = true
         
@@ -172,16 +172,16 @@ extension PetInfoViewController: GeneralSetupProtocol {
             picker.backgroundColor = UIColor.CustomColor.lightGray
         }
         
-        savePetBirthday.isHidden = true
-        savePetBirthday.layoutIfNeeded()
-        savePetBirthday.setTitle("Сохранить", for: .normal)
-        savePetBirthday.backgroundColor = UIColor.CustomColor.purple
-        savePetBirthday.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)
-        savePetBirthday.setTitleColor(.white, for: .normal)
-        savePetBirthday.titleLabel?.adjustsFontSizeToFitWidth = true
-        savePetBirthday.alpha = 0
-        savePetBirthday.layer.cornerRadius = savePetBirthday.frame.height / 2
-        savePetBirthday.addTarget(self, action: #selector(saveData), for: .touchUpInside)
+        saveDateButton.isHidden = true
+        saveDateButton.layoutIfNeeded()
+        saveDateButton.setTitle("Сохранить", for: .normal)
+        saveDateButton.backgroundColor = UIColor.CustomColor.purple
+        saveDateButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        saveDateButton.setTitleColor(.white, for: .normal)
+        saveDateButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        saveDateButton.alpha = 0
+        saveDateButton.layer.cornerRadius = saveDateButton.frame.height / 2
+        saveDateButton.addTarget(self, action: #selector(savePetBirthday), for: .touchUpInside)
     }
 }
 //MARK: - Delegate methods
@@ -202,8 +202,8 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
             self.picker.alpha = 1
             self.backgroundView.isHidden = false
             self.backgroundView.alpha = 0.5
-            self.savePetBirthday.isHidden = false
-            self.savePetBirthday.alpha = 1
+            self.saveDateButton.isHidden = false
+            self.saveDateButton.alpha = 1
         }
     }
     func showAlertController(title: String,
