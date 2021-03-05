@@ -57,9 +57,7 @@ extension PetViewCollectionCell: UITableViewDelegate, UITableViewDataSource {
     
     func updatePetInfo(indexPath: IndexPath) {
         let petInformation = delegate?.petInfoForModel()
-        if petInformation == nil {
-            models[indexPath.row].secondProperties = " "
-        } else {
+        if petInformation != nil {
             models[indexPath.row].secondProperties = petInformation
         }
     }

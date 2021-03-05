@@ -216,7 +216,9 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
             textField.addTarget(self, action: #selector(self.textFieldDidChangeSelection(_:)), for: .editingChanged)
         }
         let saveButton = UIAlertAction(title: "Сохранить", style: .default) { _ in
-            self.updatePetInfo(updateInformation: self.updateInfo!)
+            if self.petInfo != nil {
+                self.updatePetInfo(updateInformation: self.updateInfo!)
+            }
             
             switch self.indexPath.row {
             case 0:
