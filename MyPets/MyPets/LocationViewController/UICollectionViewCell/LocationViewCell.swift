@@ -54,5 +54,6 @@ extension LocationViewCell: GeneralSetupProtocol {
         valueButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
     }
     
+    func setupNavigationController() {}
     func presentController() {}
 }

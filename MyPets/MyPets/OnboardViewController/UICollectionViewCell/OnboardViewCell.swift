@@ -87,6 +87,6 @@ extension OnboardViewCell: GeneralSetupProtocol {
         textLabel.adjustsFontSizeToFitWidth = true
     }
     
-    func presentController() {
-    }
+    func setupNavigationController() {}
+    func presentController() {}
 }

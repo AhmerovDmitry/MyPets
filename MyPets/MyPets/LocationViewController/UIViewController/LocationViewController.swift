@@ -114,6 +114,6 @@ extension LocationViewController: GeneralSetupProtocol {
         backgroundView.layer.shadowRadius = 5
     }
     
-    func presentController() {
-    }
+    func setupNavigationController() {}
+    func presentController() {}
 }

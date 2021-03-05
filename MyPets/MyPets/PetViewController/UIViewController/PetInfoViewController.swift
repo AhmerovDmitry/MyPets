@@ -29,7 +29,7 @@ class PetInfoViewController: UIViewController {
         CollectionModel(image: UIImage(named: "careIcon"),
                         title: "Уход",
                         description: "Купание, расчёсывание, грумминг и т.д."),
-        CollectionModel(image: UIImage(named: "funIcon"),
+        CollectionModel(image: UIImage(named: "entertainmentIcon"),
                         title: "Развлечения",
                         description: "Игры и развлечения питомца"),
     ]

@@ -54,5 +54,6 @@ class PetViewTableCell: UITableViewCell, GeneralSetupProtocol {
         
     }
     
+    func setupNavigationController() {}
     func presentController() {}
 }

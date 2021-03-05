@@ -50,6 +50,6 @@ extension PremiumViewControllerCell: GeneralSetupProtocol {
         premiumText.adjustsFontSizeToFitWidth = true
     }
     
-    func presentController() {
-    }
+    func setupNavigationController() {}
+    func presentController() {}
 }

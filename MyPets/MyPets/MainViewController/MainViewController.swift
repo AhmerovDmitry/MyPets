@@ -10,21 +10,24 @@ import UIKit
 class MainViewController: UIViewController, GeneralSetupProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.backgroundColor = .white
-        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor : UIColor.CustomColor.dark]
-        navigationItem.title = "Главная"
-        
         view.backgroundColor = .white
         
         setupConstraints()
         setupElements()
+        setupNavigationController()
     }
     
     func setupConstraints() {
     }
     
     func setupElements() {
+    }
+    
+    func setupNavigationController() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.backgroundColor = .white
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor : UIColor.CustomColor.dark]
+        navigationItem.title = "Главная"
     }
     
     func presentController() {

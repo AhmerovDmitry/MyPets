@@ -148,4 +148,6 @@ extension AuthorizationViewController: GeneralSetupProtocol {
         
         logInButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
     }
+    
+    func setupNavigationController() {}
 }

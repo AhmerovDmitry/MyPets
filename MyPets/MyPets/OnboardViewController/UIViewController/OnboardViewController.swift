@@ -116,4 +116,6 @@ class OnboardViewController: UIViewController, GeneralSetupProtocol {
         closeButton.setTitleColor(UIColor.CustomColor.purple, for: .normal)
         closeButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
     }
+    
+    func setupNavigationController() {}
 }

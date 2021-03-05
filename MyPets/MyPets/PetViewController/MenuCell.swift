@@ -1,26 +1,13 @@
 //
-//  PetViewCollectionCell.swift
+//  MenuCell.swift
 //  MyPets
 //
-//  Created by Дмитрий Ахмеров on 28.10.2020.
+//  Created by Дмитрий Ахмеров on 05.03.2021.
 //
 
 import UIKit
 
-class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
-    weak var delegate: PetViewControllerDelegate?
-    var models = [BaseModel]()
-    let label = UILabel()
-    let titleLabel = UILabel()
-    let tableView: UITableView = {
-        let tv = UITableView(frame: .zero, style: .plain)
-        tv.isScrollEnabled = false
-        tv.translatesAutoresizingMaskIntoConstraints = false
-        tv.register(PetViewTableCell.self, forCellReuseIdentifier: "tableCellPetId")
-        tv.backgroundColor = .white
-        
-        return tv
-    }()
+class MenuCell: UICollectionViewCell, GeneralSetupProtocol {
     let titleImage: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -56,9 +43,6 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
         
         setupConstraints()
         setupElements()
-        
-        tableView.delegate = self
-        tableView.dataSource = self
     }
     
     required init?(coder: NSCoder) {
@@ -66,33 +50,6 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
     }
     
     func setupConstraints() {
-        [label, tableView, titleLabel].forEach { contentView.addSubview($0) }
-        
-        label.topAnchor.constraint(equalTo: contentView.topAnchor,
-                                   constant: 15).isActive = true
-        label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,
-                                      constant: -15).isActive = true
-        label.leftAnchor.constraint(equalTo: contentView.leftAnchor,
-                                    constant: 15).isActive = true
-        label.rightAnchor.constraint(equalTo: contentView.rightAnchor,
-                                     constant: -15).isActive = true
-        
-        tableView.heightAnchor.constraint(lessThanOrEqualToConstant: 404).isActive = true
-        tableView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
-        tableView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,
-                                          constant: -20).isActive = true
-        
-        titleLabel.bottomAnchor.constraint(equalTo: tableView.topAnchor).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor,
-                                        constant: 15).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor,
-                                         constant: 15).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor,
-                                          constant: -15).isActive = true
-    }
-    
-    func setupMenuCell() {
         self.addSubview(titleImage)
         self.addSubview(containerView)
         containerView.addSubview(menuTitleLabel)
@@ -125,19 +82,17 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
     }
     
     func setupElements() {
-        [label, titleLabel].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-        }
-        
-        label.backgroundColor = .white
-
-        titleLabel.textColor = UIColor.CustomColor.dark
-        titleLabel.adjustsFontSizeToFitWidth = true
-        titleLabel.font = UIFont.systemFont(ofSize: 25, weight: .semibold)
-        titleLabel.textAlignment = .left
-        titleLabel.numberOfLines = 1
+        let shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        self.layer.shadowColor = UIColor.CustomColor.dark.cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)
+        self.layer.shadowOpacity = 0.20
+        self.layer.masksToBounds = false
+        self.layer.shadowPath = shadowPath
+        self.layer.shadowRadius = 7
+        self.layer.cornerRadius = 10
+        self.backgroundColor = .white
     }
-    
     func setupNavigationController() {}
     func presentController() {}
 }
+

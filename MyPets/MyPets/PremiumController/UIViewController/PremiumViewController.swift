@@ -153,4 +153,6 @@ extension PremiumViewController: GeneralSetupProtocol {
         buyButton.layer.cornerRadius = buyButton.frame.height / 2
         buyButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
     }
+    
+    func setupNavigationController() {}
 }

@@ -10,6 +10,6 @@ import UIKit
 protocol GeneralSetupProtocol {
     func setupConstraints()
     func setupElements()
-    
+    func setupNavigationController()
     func presentController()
 }
