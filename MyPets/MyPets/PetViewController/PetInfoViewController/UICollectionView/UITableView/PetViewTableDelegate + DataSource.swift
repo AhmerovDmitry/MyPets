@@ -20,8 +20,16 @@ extension PetViewCollectionCell: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCellPetId") as! PetViewTableCell
         cell.tableCellLabel.text = models[indexPath.row].firstProperties
         cell.tableCellPlaceholder.text = (models[indexPath.row].secondProperties ?? "Указать информацию")
-        cell.accessoryType = .disclosureIndicator
         cell.backgroundColor = .white
+        
+        if self.newPetEntity {
+            cell.accessoryType = .disclosureIndicator
+            cell.selectionStyle = .default
+        } else {
+            cell.accessoryType = .none
+            cell.selectionStyle = .none
+            cell.isUserInteractionEnabled = false
+        }
         
         titleLabel.text = models[0].secondProperties
         

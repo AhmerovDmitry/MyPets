@@ -45,3 +45,13 @@ extension PetInfoViewController {
         petInfo = textField.text
     }
 }
+
+extension PetInfoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        titleImage.image = info[.editedImage] as? UIImage
+        petEntity.image = titleImage.image
+        dismiss(animated: true, completion: nil)
+    }
+}

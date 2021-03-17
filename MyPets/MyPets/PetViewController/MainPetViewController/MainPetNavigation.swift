@@ -8,7 +8,7 @@
 import UIKit
 
 @objc
-extension PetViewController {
+extension MainPetViewController {
     func presentController() {
         let backItem = UIBarButtonItem()
         backItem.title = " "

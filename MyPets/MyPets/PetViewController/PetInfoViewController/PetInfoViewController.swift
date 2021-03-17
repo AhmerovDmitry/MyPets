@@ -8,6 +8,7 @@
 import UIKit
 
 class PetInfoViewController: UIViewController {
+    var rightBarButtonItem = UIBarButtonItem()
     var createOrChange = Bool()
     let nilEntity = PetModel()
     var petEntity = PetModel()
@@ -93,11 +94,27 @@ class PetInfoViewController: UIViewController {
 
 extension PetInfoViewController: GeneralSetupProtocol {
     func setupNavigationController() {
-        let addPhotoButton = UIBarButtonItem(image: UIImage(named: "cameraIcon"), style: .done, target: self, action: #selector(presentController))
+        switch createOrChange {
+        case true:
+            rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "cameraIcon"),
+                                                 style: .done,
+                                                 target: self,
+                                                 action: #selector(presentController))
+        case false:
+            rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"),
+                                                 style: .done,
+                                                 target: self,
+                                                 action: #selector(abcde))
+        }
+        
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.tintColor = UIColor.CustomColor.dark
-        navigationItem.rightBarButtonItem = addPhotoButton
         navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.dark
+        navigationItem.rightBarButtonItem = rightBarButtonItem
+    }
+    @objc func abcde() {
+        UIView.animate(withDuration: 0.5) {
+        }
     }
     
     func setupConstraints() {

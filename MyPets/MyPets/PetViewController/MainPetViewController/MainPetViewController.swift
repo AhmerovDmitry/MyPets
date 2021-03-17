@@ -1,5 +1,5 @@
 //
-//  PetViewController.swift
+//  MainPetViewController.swift
 //  MyPets
 //
 //  Created by Дмитрий Ахмеров on 15.10.2020.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PetViewController: UIViewController, GeneralSetupProtocol {
+class MainPetViewController: UIViewController, GeneralSetupProtocol {
     lazy var petEntitys = [PetModel]()
     private let mainStackView = UIStackView()
     private let mainImage = UIImageView()
@@ -60,8 +60,7 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
     }
     
     func setupConstraints() {
-        view.addSubview(collectionView)
-        view.addSubview(mainStackView)
+        [collectionView, mainStackView].forEach({ view.addSubview($0) })
         [mainImage,
          titleText,
          descText,
@@ -165,7 +164,7 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
     }
 }
 
-extension PetViewController: EntityTransfer {
+extension MainPetViewController: EntityTransfer {
     func reloadCollectionView() {
         collectionView.reloadData()
     }
