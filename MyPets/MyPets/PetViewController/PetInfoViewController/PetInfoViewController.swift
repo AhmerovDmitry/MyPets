@@ -8,6 +8,7 @@
 import UIKit
 
 class PetInfoViewController: UIViewController {
+    var rightBarButtonFrame = CGRect()
     var rightBarButtonItem = UIBarButtonItem()
     var createOrChange = Bool()
     let nilEntity = PetModel()
@@ -55,6 +56,25 @@ class PetInfoViewController: UIViewController {
         
         return cv
     }()
+    
+    let cameraButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "camera.circle"), for: .normal)
+        button.tintColor = UIColor.CustomColor.dark
+        button.alpha = 0
+        button.addTarget(self, action: #selector(presentController), for: .touchUpInside)
+        
+        return button
+    }()
+    let editedButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "pencil.circle"), for: .normal)
+        button.tintColor = UIColor.CustomColor.dark
+        button.alpha = 0
+        button.addTarget(self, action: #selector(presentController), for: .touchUpInside)
+        
+        return button
+    }()
     //MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,20 +121,21 @@ extension PetInfoViewController: GeneralSetupProtocol {
                                                  target: self,
                                                  action: #selector(presentController))
         case false:
-            rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"),
-                                                 style: .done,
-                                                 target: self,
-                                                 action: #selector(abcde))
+            let editedButton: UIButton = {
+                let button = UIButton(type: .system)
+                button.setImage(UIImage(systemName: "ellipsis.circle"), for: .normal)
+                button.tintColor = UIColor.CustomColor.dark
+                button.addTarget(self, action: #selector(showEditButtons), for: .touchUpInside)
+                
+                return button
+            }()
+            rightBarButtonItem.customView = editedButton
         }
         
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.tintColor = UIColor.CustomColor.dark
         navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.dark
         navigationItem.rightBarButtonItem = rightBarButtonItem
-    }
-    @objc func abcde() {
-        UIView.animate(withDuration: 0.5) {
-        }
     }
     
     func setupConstraints() {

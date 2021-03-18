@@ -18,6 +18,22 @@ extension PetInfoViewController {
         present(photoGallery, animated: true, completion: nil)
     }
     
+    func showEditButtons() {
+        setupEditButtons()
+        UIView.animate(withDuration: 0.5, animations: {
+//            self.view.layoutIfNeeded()
+            self.cameraButton.alpha = 1
+            self.editedButton.alpha = 1
+            self.cameraButton.frame.size = self.rightBarButtonFrame.size
+            self.cameraButton.frame.origin = CGPoint(x: self.rightBarButtonFrame.origin.x,
+                                                     y: self.rightBarButtonFrame.origin.y + self.rightBarButtonFrame.origin.y)
+
+            self.editedButton.frame.size = self.rightBarButtonFrame.size
+            self.editedButton.frame.origin = CGPoint(x: self.rightBarButtonFrame.origin.x,
+                                                     y: self.rightBarButtonFrame.origin.y + self.rightBarButtonFrame.origin.y * 2)
+        }, completion: nil)
+    }
+    
     func savePetBirthday() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMM yyyy"
@@ -53,5 +69,31 @@ extension PetInfoViewController: UIImagePickerControllerDelegate, UINavigationCo
         titleImage.image = info[.editedImage] as? UIImage
         petEntity.image = titleImage.image
         dismiss(animated: true, completion: nil)
+    }
+    
+    func setupEditButtons() {
+        rightBarButtonFrame = fetchRightBarButtonFrame()
+        cameraButton.frame.size = rightBarButtonFrame.size
+        cameraButton.frame.origin = CGPoint(x: rightBarButtonFrame.origin.x,
+                                            y: rightBarButtonFrame.origin.y)
+        
+        editedButton.frame.size = rightBarButtonFrame.size
+        editedButton.frame.origin = CGPoint(x: rightBarButtonFrame.origin.x,
+                                            y: rightBarButtonFrame.origin.y)
+        
+        view.addSubview(cameraButton)
+        view.addSubview(editedButton)
+    }
+    
+    func fetchRightBarButtonFrame() -> CGRect {
+        var frame = CGRect()
+        if let barView = navigationItem.rightBarButtonItem?.value(forKey: "view") as? UIView {
+            let barFrame = barView.frame
+            let rect = barView.convert(barFrame, to: view)
+
+            frame = rect
+        }
+        
+        return frame
     }
 }
