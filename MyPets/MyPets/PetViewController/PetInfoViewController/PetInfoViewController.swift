@@ -8,6 +8,32 @@
 import UIKit
 
 class PetInfoViewController: UIViewController {
+    var showEditedButtons = false {
+        didSet {
+            if showEditedButtons {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.cameraButton.alpha = 1
+                    self.editedButton.alpha = 1
+                    self.cameraButton.frame.origin = CGPoint(x: self.rightBarButtonFrame.origin.x,
+                                                             y: self.rightBarButtonFrame.origin.y + self.rightBarButtonFrame.origin.y)
+                    
+                    self.editedButton.frame.origin = CGPoint(x: self.rightBarButtonFrame.origin.x,
+                                                             y: self.rightBarButtonFrame.origin.y + self.rightBarButtonFrame.origin.y * 2)
+                })
+            } else {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.cameraButton.alpha = 0
+                    self.editedButton.alpha = 0
+                    self.cameraButton.frame.origin = CGPoint(x: self.rightBarButtonFrame.origin.x,
+                                                             y: self.rightBarButtonFrame.origin.y)
+                    
+                    self.editedButton.frame.origin = CGPoint(x: self.rightBarButtonFrame.origin.x,
+                                                             y: self.rightBarButtonFrame.origin.y)
+                })
+            }
+        }
+    }
+    var tappedEditedButton = false
     var rightBarButtonFrame = CGRect()
     var rightBarButtonItem = UIBarButtonItem()
     var createOrChange = Bool()
@@ -44,7 +70,7 @@ class PetInfoViewController: UIViewController {
     let saveDateButton = UIButton(type: .system)
     var petInfo: String?
     var titleImage = UIImageView()
-    private let collectionView: UICollectionView = {
+    let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 12
@@ -59,7 +85,7 @@ class PetInfoViewController: UIViewController {
     
     let cameraButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "camera.circle"), for: .normal)
+        button.setImage(UIImage(systemName: "camera"), for: .normal)
         button.tintColor = UIColor.CustomColor.dark
         button.alpha = 0
         button.addTarget(self, action: #selector(presentController), for: .touchUpInside)
@@ -68,10 +94,10 @@ class PetInfoViewController: UIViewController {
     }()
     let editedButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "pencil.circle"), for: .normal)
+        button.setImage(UIImage(systemName: "pencil"), for: .normal)
         button.tintColor = UIColor.CustomColor.dark
         button.alpha = 0
-        button.addTarget(self, action: #selector(presentController), for: .touchUpInside)
+        button.addTarget(self, action: #selector(editPetInfo), for: .touchUpInside)
         
         return button
     }()
@@ -96,6 +122,10 @@ class PetInfoViewController: UIViewController {
         setupNavigationController()
         setupConstraints()
         setupElements()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupEditButtons()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -123,7 +153,7 @@ extension PetInfoViewController: GeneralSetupProtocol {
         case false:
             let editedButton: UIButton = {
                 let button = UIButton(type: .system)
-                button.setImage(UIImage(systemName: "ellipsis.circle"), for: .normal)
+                button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
                 button.tintColor = UIColor.CustomColor.dark
                 button.addTarget(self, action: #selector(showEditButtons), for: .touchUpInside)
                 
@@ -132,7 +162,10 @@ extension PetInfoViewController: GeneralSetupProtocol {
             rightBarButtonItem.customView = editedButton
         }
         
-        navigationController?.navigationBar.backgroundColor = .clear
+        navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationBar.barTintColor = .clear
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.tintColor = UIColor.CustomColor.dark
         navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.dark
         navigationItem.rightBarButtonItem = rightBarButtonItem
@@ -166,14 +199,14 @@ extension PetInfoViewController: GeneralSetupProtocol {
         saveDateButton.widthAnchor.constraint(equalTo: picker.widthAnchor).isActive = true
         saveDateButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         saveDateButton.topAnchor.constraint(equalTo: picker.bottomAnchor,
-                                           constant: 8).isActive = true
+                                            constant: 8).isActive = true
         saveDateButton.addConstraint(NSLayoutConstraint(item: saveDateButton,
-                                                    attribute: .width,
-                                                    relatedBy: .equal,
-                                                    toItem: saveDateButton,
-                                                    attribute: .height,
-                                                    multiplier: 6,
-                                                    constant: 0))
+                                                        attribute: .width,
+                                                        relatedBy: .equal,
+                                                        toItem: saveDateButton,
+                                                        attribute: .height,
+                                                        multiplier: 6,
+                                                        constant: 0))
     }
     
     func setupElements() {
@@ -224,6 +257,7 @@ extension PetInfoViewController: GeneralSetupProtocol {
 }
 //MARK: - Delegate methods
 extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate {
+    
     func fetchTableInfo(tableView: UITableView,
                         indexPath: IndexPath,
                         updateInformation: @escaping (IndexPath) -> ()) {
@@ -231,9 +265,11 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
         self.indexPath = indexPath
         self.updateInfo = updateInformation
     }
+    
     func updatePetInfo(updateInformation: @escaping (IndexPath) -> ()) {
         updateInformation(indexPath)
     }
+    
     func showDatePicker() {
         UIView.animate(withDuration: 0.5) {
             self.picker.isHidden = false
@@ -244,6 +280,7 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
             self.saveDateButton.alpha = 1
         }
     }
+    
     func showAlertController(title: String,
                              message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -251,7 +288,9 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
             textField.textAlignment = .left
             textField.textColor = UIColor.CustomColor.dark
             textField.placeholder = "Введите информацию о питомце"
-            textField.addTarget(self, action: #selector(self.textFieldDidChangeSelection(_:)), for: .editingChanged)
+            textField.addTarget(self,
+                                action: #selector(self.textFieldDidChangeSelection(_:)),
+                                for: .editingChanged)
         }
         let saveButton = UIAlertAction(title: "Сохранить", style: .default) { _ in
             if self.petInfo != nil {
@@ -283,9 +322,13 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
         let cancelButton = UIAlertAction(title: "Отменить", style: .cancel)
         alert.addAction(saveButton)
         alert.addAction(cancelButton)
+        
         present(alert, animated: true, completion: nil)
     }
+    
     func petInfoForModel() -> String? {
+        
         return petInfo
     }
+    
 }

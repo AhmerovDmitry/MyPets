@@ -25,6 +25,7 @@ extension PetInfoViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCellPetId", for: indexPath) as! PetViewCollectionCell
         cell.newPetEntity = self.createOrChange
+        cell.tappedEditedButton = self.tappedEditedButton
         cell.titleImage.image = collectionModel[indexPath.item].image
         cell.menuTitleLabel.text = collectionModel[indexPath.item].title
         cell.descLabel.text = collectionModel[indexPath.item].description

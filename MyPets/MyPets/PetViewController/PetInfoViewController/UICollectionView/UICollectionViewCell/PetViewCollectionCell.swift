@@ -9,6 +9,7 @@ import UIKit
 
 class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
     var newPetEntity = Bool()
+    var tappedEditedButton = Bool()
     weak var delegate: PetViewControllerDelegate?
     var models = [BaseModel]()
     let label = UILabel()

@@ -23,4 +23,18 @@ extension UIView {
         view.setGradientBackground(colorOne: colorOne, ColorTwo: colorTwo,
                                    startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 1))
     }
+    
+    func startShakeAnimation(){
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = 0.1
+        animation.repeatCount = .infinity
+        animation.autoreverses = true
+        animation.fromValue = NSValue(cgPoint: CGPoint(x: self.center.x - 5, y: self.center.y))
+        animation.toValue = NSValue(cgPoint: CGPoint(x: self.center.x + 5, y: self.center.y))
+        self.layer.add(animation, forKey: "position")
+    }
+    
+    func stopShakeAnimation() {
+        self.layer.removeAnimation(forKey: "position")
+    }
 }
