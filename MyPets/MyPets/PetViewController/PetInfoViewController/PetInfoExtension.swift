@@ -28,6 +28,7 @@ extension PetInfoViewController {
     
     func deletePet() {
         print("Delete")
+        navigationController?.popToRootViewController(animated: true)
     }
     
     func savePetBirthday() {
