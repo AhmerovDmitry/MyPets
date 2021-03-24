@@ -14,21 +14,22 @@ class PetInfoViewController: UIViewController {
                 UIView.animate(withDuration: 0.5, animations: {
                     self.cameraButton.alpha = 1
                     self.editedButton.alpha = 1
+                    self.deleteButton.alpha = 1
                     self.cameraButton.frame.origin = CGPoint(x: self.rightBarButtonFrame.origin.x,
-                                                             y: self.rightBarButtonFrame.origin.y + self.rightBarButtonFrame.origin.y)
-                    
+                                                             y: self.rightBarButtonFrame.origin.y + self.rightBarButtonFrame.height * 2)
                     self.editedButton.frame.origin = CGPoint(x: self.rightBarButtonFrame.origin.x,
-                                                             y: self.rightBarButtonFrame.origin.y + self.rightBarButtonFrame.origin.y * 2)
+                                                             y: self.cameraButton.frame.origin.y + self.rightBarButtonFrame.height * 2)
+                    self.deleteButton.frame.origin = CGPoint(x: self.rightBarButtonFrame.origin.x,
+                                                             y: self.editedButton.frame.origin.y + self.rightBarButtonFrame.height * 2)
                 })
             } else {
                 UIView.animate(withDuration: 0.5, animations: {
-                    self.cameraButton.alpha = 0
-                    self.editedButton.alpha = 0
-                    self.cameraButton.frame.origin = CGPoint(x: self.rightBarButtonFrame.origin.x,
-                                                             y: self.rightBarButtonFrame.origin.y)
-                    
-                    self.editedButton.frame.origin = CGPoint(x: self.rightBarButtonFrame.origin.x,
-                                                             y: self.rightBarButtonFrame.origin.y)
+                    [self.cameraButton, self.editedButton, self.deleteButton].forEach({
+                        $0.frame.origin = CGPoint(x: self.rightBarButtonFrame.origin.x,
+                                                  y: self.rightBarButtonFrame.origin.y)
+                        
+                        $0.alpha = 0
+                    })
                 })
             }
         }
@@ -89,6 +90,7 @@ class PetInfoViewController: UIViewController {
         button.tintColor = UIColor.CustomColor.dark
         button.alpha = 0
         button.addTarget(self, action: #selector(presentController), for: .touchUpInside)
+        button.imageView?.contentMode = .scaleAspectFit
         
         return button
     }()
@@ -98,6 +100,17 @@ class PetInfoViewController: UIViewController {
         button.tintColor = UIColor.CustomColor.dark
         button.alpha = 0
         button.addTarget(self, action: #selector(editPetInfo), for: .touchUpInside)
+        button.imageView?.contentMode = .scaleAspectFit
+        
+        return button
+    }()
+    let deleteButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "trash"), for: .normal)
+        button.tintColor = UIColor.CustomColor.dark
+        button.alpha = 0
+        button.addTarget(self, action: #selector(deletePet), for: .touchUpInside)
+        button.imageView?.contentMode = .scaleAspectFit
         
         return button
     }()

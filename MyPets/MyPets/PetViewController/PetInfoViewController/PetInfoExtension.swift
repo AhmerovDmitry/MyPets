@@ -24,7 +24,10 @@ extension PetInfoViewController {
     
     func editPetInfo() {
         tappedEditedButton = !tappedEditedButton
-        collectionView.reloadItems(at: [IndexPath(item: 0, section: 0)])
+    }
+    
+    func deletePet() {
+        print("Delete")
     }
     
     func savePetBirthday() {
@@ -65,7 +68,7 @@ extension PetInfoViewController: UIImagePickerControllerDelegate, UINavigationCo
     
     func setupEditButtons() {
         rightBarButtonFrame = fetchRightBarButtonFrame()
-        [cameraButton, editedButton].forEach({
+        [cameraButton, editedButton, deleteButton].forEach({
             $0.frame.size = rightBarButtonFrame.size
             $0.frame.origin = CGPoint(x: rightBarButtonFrame.origin.x,
                                       y: rightBarButtonFrame.origin.y)
