@@ -21,7 +21,7 @@ extension MainPetViewController: UICollectionViewDelegate, UICollectionViewDataS
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "entityCell", for: indexPath) as! EntityCell
         cell.backgroundColor = .white
         cell.layer.cornerRadius = 15
-        cell.imageView.image = petEntitys[indexPath.item].image ?? UIImage(named: "unknownImage")
+        cell.imageView.image = petEntitys[indexPath.item].image?.toImage() ?? UIImage(named: "unknownImage")
         cell.nameLabel.text = petEntitys[indexPath.item].name ?? "Кличка не указана"
         cell.breedLabel.text = petEntitys[indexPath.item].breed ?? "Порода не указана"
         cell.ageLabel.text = petEntitys[indexPath.item].birthday ?? "01 янв 1900"
@@ -52,10 +52,18 @@ extension MainPetViewController: UICollectionViewDelegate, UICollectionViewDataS
         let petInfoVC = PetInfoViewController()
         petInfoVC.hidesBottomBarWhenPushed = true
         petInfoVC.delegate = self
-        petInfoVC.petEntity = petEntitys[indexPath.item]
-        if !petEntitys.isEmpty {
-            petInfoVC.collectionItemIndex = indexPath.item
-        }
+        petInfoVC.petEntity.image = petEntitys[indexPath.item].image?.toImage()
+        petInfoVC.petEntity.name = petEntitys[indexPath.item].name
+        petInfoVC.petEntity.kind = petEntitys[indexPath.item].kind
+        petInfoVC.petEntity.breed = petEntitys[indexPath.item].breed
+        petInfoVC.petEntity.birthday = petEntitys[indexPath.item].birthday
+        petInfoVC.petEntity.weight = petEntitys[indexPath.item].weight
+        petInfoVC.petEntity.sterile = petEntitys[indexPath.item].sterile
+        petInfoVC.petEntity.color = petEntitys[indexPath.item].color
+        petInfoVC.petEntity.hair = petEntitys[indexPath.item].hair
+        petInfoVC.petEntity.chipNumber = petEntitys[indexPath.item].chipNumber
+        petInfoVC.collectionItemIndex = indexPath.item
+        
         navigationController?.pushViewController(petInfoVC, animated: true)
     }
 

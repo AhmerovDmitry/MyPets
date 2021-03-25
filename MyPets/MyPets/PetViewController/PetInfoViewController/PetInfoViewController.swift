@@ -37,10 +37,9 @@ class PetInfoViewController: UIViewController {
     var tappedEditedButton = false
     var rightBarButtonFrame = CGRect()
     var rightBarButtonItem = UIBarButtonItem()
-    var createOrChange = Bool()
     let nilEntity = PetModel()
     var petEntity = PetModel()
-    var collectionItemIndex = 0
+    var collectionItemIndex: Int?
     weak var delegate: EntityTransfer?
     let collectionModel = [
         CollectionModel(image: UIImage(),
@@ -121,12 +120,6 @@ class PetInfoViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-        if petEntity == nilEntity {
-            createOrChange = true
-        } else {
-            createOrChange = false
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -143,11 +136,11 @@ class PetInfoViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
         if petEntity != nilEntity {
-            switch createOrChange {
-            case true: delegate?.createEntity(petEntity)
-            case false: delegate?.updateEntity(petEntity, at: collectionItemIndex)
+            if collectionItemIndex == nil {
+                delegate?.createEntity(petEntity)
+            } else {
+                delegate?.updateEntity(petEntity, at: collectionItemIndex!)
             }
         }
         delegate?.reloadCollectionView()
@@ -157,13 +150,12 @@ class PetInfoViewController: UIViewController {
 
 extension PetInfoViewController: GeneralSetupProtocol {
     func setupNavigationController() {
-        switch createOrChange {
-        case true:
+        if petEntity == nilEntity {
             rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "cameraIcon"),
                                                  style: .done,
                                                  target: self,
                                                  action: #selector(presentController))
-        case false:
+        } else {
             let editedButton: UIButton = {
                 let button = UIButton(type: .system)
                 button.setImage(UIImage(systemName: "ellipsis"), for: .normal)

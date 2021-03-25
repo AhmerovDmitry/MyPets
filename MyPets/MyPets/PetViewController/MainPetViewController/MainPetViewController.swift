@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import CoreData
 
 class MainPetViewController: UIViewController, GeneralSetupProtocol {
-    lazy var petEntitys = [PetModel]()
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    lazy var petEntitys = [PetEntity]()
     private let mainStackView = UIStackView()
     private let mainImage = UIImageView()
     private let titleText = UILabel()
@@ -34,6 +36,7 @@ class MainPetViewController: UIViewController, GeneralSetupProtocol {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        loadPets()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,8 +50,24 @@ class MainPetViewController: UIViewController, GeneralSetupProtocol {
             mainStackView.isHidden = true
             collectionView.isHidden = false
             let addButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector(presentController))
-            navigationItem.rightBarButtonItem = addButton
+            let removePets = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .done, target: self, action: #selector(removeAllPets))
+            navigationItem.rightBarButtonItems = [addButton, removePets]
             navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.purple
+        }
+    }
+    
+    @objc func removeAllPets() {
+        if !petEntitys.isEmpty {
+            context.delete(petEntitys[0])
+            
+            do {
+                try context.save()
+                petEntitys.remove(at: 0)
+                collectionView.reloadData()
+            } catch let error {
+                context.rollback()
+                print(error.localizedDescription)
+            }
         }
     }
     
@@ -102,16 +121,16 @@ class MainPetViewController: UIViewController, GeneralSetupProtocol {
         
         
         addPetButton.leftAnchor.constraint(equalTo: mainStackView.leftAnchor,
-                                        constant: 32).isActive = true
+                                           constant: 32).isActive = true
         addPetButton.rightAnchor.constraint(equalTo: mainStackView.rightAnchor,
-                                         constant: -32).isActive = true
+                                            constant: -32).isActive = true
         addPetButton.addConstraint(NSLayoutConstraint(item: addPetButton,
-                                                   attribute: .width,
-                                                   relatedBy: .equal,
-                                                   toItem: addPetButton,
-                                                   attribute: .height,
-                                                   multiplier: 6,
-                                                   constant: 0))
+                                                      attribute: .width,
+                                                      relatedBy: .equal,
+                                                      toItem: addPetButton,
+                                                      attribute: .height,
+                                                      multiplier: 6,
+                                                      constant: 0))
         
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -169,8 +188,37 @@ extension MainPetViewController: EntityTransfer {
         collectionView.reloadData()
     }
     
+    func loadPets() {
+        let fetchRequest: NSFetchRequest<PetEntity> = PetEntity.fetchRequest()
+        
+        do {
+            petEntitys = try context.fetch(fetchRequest).reversed()
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
     func createEntity(_ entity: PetModel) {
-        petEntitys.insert(entity, at: 0)
+        guard let petEnt = NSEntityDescription.entity(forEntityName: "PetEntity", in: context) else { return }
+        let pet = PetEntity(entity: petEnt, insertInto: context)
+        pet.image = entity.image?.toString()
+        pet.name = entity.name
+        pet.kind = entity.kind
+        pet.breed = entity.breed
+        pet.birthday = entity.birthday
+        pet.weight = entity.weight
+        pet.sterile = entity.sterile
+        pet.color = entity.color
+        pet.hair = entity.hair
+        pet.chipNumber = entity.chipNumber
+        
+        do {
+            petEntitys.insert(pet, at: 0)
+            try context.save()
+        } catch let error {
+            context.rollback()
+            print(error.localizedDescription)
+        }
     }
     
     func reloadController() {
@@ -178,7 +226,9 @@ extension MainPetViewController: EntityTransfer {
     }
     
     func updateEntity(_ entity: PetModel, at indexPath: Int) {
-        petEntitys.remove(at: indexPath)
-        petEntitys.insert(entity, at: indexPath)
+//        petEntitys.remove(at: indexPath)
+//        petEntitys.insert(entity, at: indexPath)
+//        petEntitysModel.remove(at: indexPath)
+//        petEntitysModel.insert(entity, at: indexPath)
     }
 }
