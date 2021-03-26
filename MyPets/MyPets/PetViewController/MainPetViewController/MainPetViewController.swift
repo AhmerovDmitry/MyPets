@@ -226,9 +226,27 @@ extension MainPetViewController: EntityTransfer {
     }
     
     func updateEntity(_ entity: PetModel, at indexPath: Int) {
-//        petEntitys.remove(at: indexPath)
-//        petEntitys.insert(entity, at: indexPath)
-//        petEntitysModel.remove(at: indexPath)
-//        petEntitysModel.insert(entity, at: indexPath)
+        guard let petEnt = NSEntityDescription.entity(forEntityName: "PetEntity", in: context) else { return }
+        let pet = PetEntity(entity: petEnt, insertInto: context)
+        pet.image = entity.image?.toString()
+        pet.name = entity.name
+        pet.kind = entity.kind
+        pet.breed = entity.breed
+        pet.birthday = entity.birthday
+        pet.weight = entity.weight
+        pet.sterile = entity.sterile
+        pet.color = entity.color
+        pet.hair = entity.hair
+        pet.chipNumber = entity.chipNumber
+        
+        context.delete(petEntitys[indexPath])
+        do {
+            try context.save()
+            petEntitys.remove(at: indexPath)
+            petEntitys.insert(pet, at: indexPath)
+        } catch let error {
+            context.rollback()
+            print(error.localizedDescription)
+        }
     }
 }
