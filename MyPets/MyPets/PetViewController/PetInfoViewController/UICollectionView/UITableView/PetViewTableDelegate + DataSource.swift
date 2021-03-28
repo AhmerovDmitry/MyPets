@@ -22,21 +22,19 @@ extension PetViewCollectionCell: UITableViewDelegate, UITableViewDataSource {
         cell.tableCellPlaceholder.text = (models[indexPath.row].secondProperties ?? "Указать информацию")
         cell.backgroundColor = .white
         
-        cell.accessoryType = .disclosureIndicator
-        cell.selectionStyle = .default
-//        if newPetEntity {
-//            cell.accessoryType = .disclosureIndicator
-//            cell.selectionStyle = .default
-//        } else {
-//            if tappedEditedButton {
-//                cell.accessoryType = .disclosureIndicator
-//                cell.selectionStyle = .default
-//            } else {
-//                cell.accessoryType = .none
-//                cell.selectionStyle = .none
-//                cell.isUserInteractionEnabled = false
-//            }
-//        }
+        if newPetEntity {
+            cell.accessoryType = .disclosureIndicator
+            cell.selectionStyle = .default
+        } else {
+            if tappedEditedButton {
+                cell.accessoryType = .disclosureIndicator
+                cell.selectionStyle = .default
+            } else {
+                cell.accessoryType = .none
+                cell.selectionStyle = .none
+                cell.isUserInteractionEnabled = false
+            }
+        }
         
         titleLabel.text = models[0].secondProperties
         

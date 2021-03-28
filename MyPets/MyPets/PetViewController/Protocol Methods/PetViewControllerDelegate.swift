@@ -24,4 +24,5 @@ protocol EntityTransfer: class {
     func reloadController()
     func updateEntity(_ entity: PetModel, at indexPath: Int)
     func loadPets()
+    func deleteEntity(at index: Int)
 }

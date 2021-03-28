@@ -140,9 +140,14 @@ class PetInfoViewController: UIViewController {
             if collectionItemIndex == nil {
                 delegate?.createEntity(petEntity)
             } else {
-                delegate?.updateEntity(petEntity, at: collectionItemIndex!)
+                if MainPetViewController.shared.tappedDeleteButton {
+                    delegate?.deleteEntity(at: collectionItemIndex!)
+                } else {
+                    delegate?.updateEntity(petEntity, at: collectionItemIndex!)
+                }
             }
         }
+        MainPetViewController.shared.tappedDeleteButton = false
         delegate?.reloadCollectionView()
         delegate?.reloadController()
     }

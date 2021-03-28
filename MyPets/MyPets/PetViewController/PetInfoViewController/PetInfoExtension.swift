@@ -24,10 +24,11 @@ extension PetInfoViewController {
     
     func editPetInfo() {
         tappedEditedButton = !tappedEditedButton
+        PetViewCollectionCell.shared.tableView.reloadData()
     }
     
     func deletePet() {
-        print("Delete")
+        MainPetViewController.shared.tappedDeleteButton = true
         navigationController?.popToRootViewController(animated: true)
     }
     

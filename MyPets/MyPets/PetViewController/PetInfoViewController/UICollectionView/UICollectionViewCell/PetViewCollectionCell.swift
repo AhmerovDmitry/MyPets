@@ -8,6 +8,7 @@
 import UIKit
 
 class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
+    static let shared = PetViewCollectionCell()
     var newPetEntity = Bool()
     var tappedEditedButton = Bool()
     weak var delegate: PetViewControllerDelegate?

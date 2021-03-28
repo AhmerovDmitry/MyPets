@@ -6,12 +6,13 @@
 //
 
 import UIKit
-import CoreData
 
 class MainPetViewController: UIViewController, GeneralSetupProtocol {
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    static let shared = MainPetViewController()
+    var tappedDeleteButton = false
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     lazy var petEntitys = [PetEntity]()
-    private let mainStackView = UIStackView()
+    let mainStackView = UIStackView()
     private let mainImage = UIImageView()
     private let titleText = UILabel()
     private let descText = UILabel()
@@ -46,28 +47,9 @@ class MainPetViewController: UIViewController, GeneralSetupProtocol {
         setupConstraints()
         setupElements()
         
-        if !petEntitys.isEmpty {
-            mainStackView.isHidden = true
-            collectionView.isHidden = false
-            let addButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector(presentController))
-            let removePets = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .done, target: self, action: #selector(removeAllPets))
-            navigationItem.rightBarButtonItems = [addButton, removePets]
-            navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.purple
-        }
-    }
-    
-    @objc func removeAllPets() {
-        if !petEntitys.isEmpty {
-            context.delete(petEntitys[0])
-            
-            do {
-                try context.save()
-                petEntitys.remove(at: 0)
-                collectionView.reloadData()
-            } catch let error {
-                context.rollback()
-                print(error.localizedDescription)
-            }
+        switch petEntitys.isEmpty {
+        case true: baseViewElements()
+        case false: entityViewElements()
         }
     }
     
@@ -180,73 +162,5 @@ class MainPetViewController: UIViewController, GeneralSetupProtocol {
         addPetButton.titleLabel?.adjustsFontSizeToFitWidth = true
         addPetButton.layer.cornerRadius = addPetButton.frame.height / 2
         addPetButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
-    }
-}
-
-extension MainPetViewController: EntityTransfer {
-    func reloadCollectionView() {
-        collectionView.reloadData()
-    }
-    
-    func loadPets() {
-        let fetchRequest: NSFetchRequest<PetEntity> = PetEntity.fetchRequest()
-        
-        do {
-            petEntitys = try context.fetch(fetchRequest).reversed()
-        } catch let error {
-            print(error.localizedDescription)
-        }
-    }
-    
-    func createEntity(_ entity: PetModel) {
-        guard let petEnt = NSEntityDescription.entity(forEntityName: "PetEntity", in: context) else { return }
-        let pet = PetEntity(entity: petEnt, insertInto: context)
-        pet.image = entity.image?.toString()
-        pet.name = entity.name
-        pet.kind = entity.kind
-        pet.breed = entity.breed
-        pet.birthday = entity.birthday
-        pet.weight = entity.weight
-        pet.sterile = entity.sterile
-        pet.color = entity.color
-        pet.hair = entity.hair
-        pet.chipNumber = entity.chipNumber
-        
-        do {
-            petEntitys.insert(pet, at: 0)
-            try context.save()
-        } catch let error {
-            context.rollback()
-            print(error.localizedDescription)
-        }
-    }
-    
-    func reloadController() {
-        self.viewDidLoad()
-    }
-    
-    func updateEntity(_ entity: PetModel, at indexPath: Int) {
-        guard let petEnt = NSEntityDescription.entity(forEntityName: "PetEntity", in: context) else { return }
-        let pet = PetEntity(entity: petEnt, insertInto: context)
-        pet.image = entity.image?.toString()
-        pet.name = entity.name
-        pet.kind = entity.kind
-        pet.breed = entity.breed
-        pet.birthday = entity.birthday
-        pet.weight = entity.weight
-        pet.sterile = entity.sterile
-        pet.color = entity.color
-        pet.hair = entity.hair
-        pet.chipNumber = entity.chipNumber
-        
-        context.delete(petEntitys[indexPath])
-        do {
-            try context.save()
-            petEntitys.remove(at: indexPath)
-            petEntitys.insert(pet, at: indexPath)
-        } catch let error {
-            context.rollback()
-            print(error.localizedDescription)
-        }
     }
 }

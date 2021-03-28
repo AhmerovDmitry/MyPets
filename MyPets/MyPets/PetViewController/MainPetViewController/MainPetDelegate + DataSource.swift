@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 extension MainPetViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
@@ -71,4 +72,102 @@ extension MainPetViewController: UICollectionViewDelegate, UICollectionViewDataS
         return UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
     }
 
+}
+
+//MARK: - Delegate & CoreData methods
+extension MainPetViewController: EntityTransfer {
+    func reloadCollectionView() {
+        collectionView.reloadData()
+    }
+    
+    func reloadController() {
+        self.viewDidLoad()
+    }
+    
+    func loadPets() {
+        let fetchRequest: NSFetchRequest<PetEntity> = PetEntity.fetchRequest()
+        
+        do {
+            petEntitys = try context.fetch(fetchRequest).reversed()
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func createEntity(_ entity: PetModel) {
+        guard let petEnt = NSEntityDescription.entity(forEntityName: "PetEntity", in: context) else { return }
+        let pet = PetEntity(entity: petEnt, insertInto: context)
+        pet.image = entity.image?.toString()
+        pet.name = entity.name
+        pet.kind = entity.kind
+        pet.breed = entity.breed
+        pet.birthday = entity.birthday
+        pet.weight = entity.weight
+        pet.sterile = entity.sterile
+        pet.color = entity.color
+        pet.hair = entity.hair
+        pet.chipNumber = entity.chipNumber
+        
+        do {
+            petEntitys.insert(pet, at: 0)
+            try context.save()
+        } catch let error {
+            context.rollback()
+            print(error.localizedDescription)
+        }
+    }
+    
+    func updateEntity(_ entity: PetModel, at indexPath: Int) {
+        guard let petEnt = NSEntityDescription.entity(forEntityName: "PetEntity", in: context) else { return }
+        let pet = PetEntity(entity: petEnt, insertInto: context)
+        pet.image = entity.image?.toString()
+        pet.name = entity.name
+        pet.kind = entity.kind
+        pet.breed = entity.breed
+        pet.birthday = entity.birthday
+        pet.weight = entity.weight
+        pet.sterile = entity.sterile
+        pet.color = entity.color
+        pet.hair = entity.hair
+        pet.chipNumber = entity.chipNumber
+        
+        context.delete(petEntitys[indexPath])
+        do {
+            petEntitys.remove(at: indexPath)
+            petEntitys.insert(pet, at: indexPath)
+            try context.save()
+        } catch let error {
+            context.rollback()
+            print(error.localizedDescription)
+        }
+    }
+    
+    func deleteEntity(at index: Int) {
+        context.delete(petEntitys[index])
+        do {
+            try context.save()
+            petEntitys.remove(at: index)
+            collectionView.reloadData()
+        } catch let error {
+            context.rollback()
+            print(error.localizedDescription)
+        }
+    }
+}
+
+//MARK: - View settings
+extension MainPetViewController {
+    func baseViewElements() {
+        mainStackView.isHidden = false
+        collectionView.isHidden = true
+    }
+    
+    func entityViewElements() {
+        mainStackView.isHidden = true
+        collectionView.isHidden = false
+        
+        let addButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector(presentController))
+        navigationItem.rightBarButtonItem = addButton
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.purple
+    }
 }
