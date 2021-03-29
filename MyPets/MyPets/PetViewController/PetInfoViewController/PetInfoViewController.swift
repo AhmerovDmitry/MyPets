@@ -34,7 +34,6 @@ class PetInfoViewController: UIViewController {
             }
         }
     }
-    var tappedEditedButton = false
     var rightBarButtonFrame = CGRect()
     var rightBarButtonItem = UIBarButtonItem()
     var leftBarButtonItem = UIBarButtonItem()
@@ -311,6 +310,25 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
                              message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addTextField { textField in
+            switch self.indexPath.row {
+            case 0:
+                textField.text = self.petEntity.name ?? ""
+            case 1:
+                textField.text = self.petEntity.kind ?? ""
+            case 2:
+                textField.text = self.petEntity.breed ?? ""
+            case 4:
+                textField.text = self.petEntity.weight ?? ""
+            case 5:
+                textField.text = self.petEntity.sterile ?? ""
+            case 6:
+                textField.text = self.petEntity.color ?? ""
+            case 7:
+                textField.text = self.petEntity.hair ?? ""
+            case 8:
+                textField.text = self.petEntity.chipNumber ?? ""
+            default: break
+            }
             textField.textAlignment = .left
             textField.textColor = UIColor.CustomColor.dark
             textField.placeholder = "Введите информацию о питомце"
