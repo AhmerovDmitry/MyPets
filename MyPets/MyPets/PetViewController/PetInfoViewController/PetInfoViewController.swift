@@ -16,11 +16,11 @@ class PetInfoViewController: UIViewController {
                     self.editedButton.alpha = 1
                     self.deleteButton.alpha = 1
                     self.cameraButton.frame.origin = CGPoint(x: self.rightBarButtonFrame.origin.x,
-                                                             y: self.rightBarButtonFrame.origin.y + self.rightBarButtonFrame.height * 2)
+                                                             y: self.rightBarButtonFrame.origin.y + self.rightBarButtonFrame.height * 1.25)
                     self.editedButton.frame.origin = CGPoint(x: self.rightBarButtonFrame.origin.x,
-                                                             y: self.cameraButton.frame.origin.y + self.rightBarButtonFrame.height * 2)
+                                                             y: self.cameraButton.frame.origin.y + self.rightBarButtonFrame.height * 1.25)
                     self.deleteButton.frame.origin = CGPoint(x: self.rightBarButtonFrame.origin.x,
-                                                             y: self.editedButton.frame.origin.y + self.rightBarButtonFrame.height * 2)
+                                                             y: self.editedButton.frame.origin.y + self.rightBarButtonFrame.height * 1.25)
                 })
             } else {
                 UIView.animate(withDuration: 0.5, animations: {
@@ -37,6 +37,7 @@ class PetInfoViewController: UIViewController {
     var tappedEditedButton = false
     var rightBarButtonFrame = CGRect()
     var rightBarButtonItem = UIBarButtonItem()
+    var leftBarButtonItem = UIBarButtonItem()
     let nilEntity = PetModel()
     var petEntity = PetModel()
     var collectionItemIndex: Int?
@@ -86,30 +87,21 @@ class PetInfoViewController: UIViewController {
     let cameraButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "camera"), for: .normal)
-        button.tintColor = UIColor.CustomColor.dark
-        button.alpha = 0
         button.addTarget(self, action: #selector(presentController), for: .touchUpInside)
-        button.imageView?.contentMode = .scaleAspectFit
         
         return button
     }()
     let editedButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "pencil"), for: .normal)
-        button.tintColor = UIColor.CustomColor.dark
-        button.alpha = 0
         button.addTarget(self, action: #selector(editPetInfo), for: .touchUpInside)
-        button.imageView?.contentMode = .scaleAspectFit
         
         return button
     }()
     let deleteButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "trash"), for: .normal)
-        button.tintColor = UIColor.CustomColor.dark
-        button.alpha = 0
         button.addTarget(self, action: #selector(deletePet), for: .touchUpInside)
-        button.imageView?.contentMode = .scaleAspectFit
         
         return button
     }()
@@ -129,8 +121,11 @@ class PetInfoViewController: UIViewController {
         setupConstraints()
         setupElements()
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        rightBarButtonFrame = fetchRightBarButtonFrame()
         setupEditButtons()
     }
     
@@ -155,22 +150,42 @@ class PetInfoViewController: UIViewController {
 
 extension PetInfoViewController: GeneralSetupProtocol {
     func setupNavigationController() {
+        let baseCameraButton: UIButton = {
+            let button = UIButton(type: .system)
+            button.setImage(UIImage(named: "cameraIcon"), for: .normal)
+            button.addTarget(self, action: #selector(presentController), for: .touchUpInside)
+            button.backgroundColor = UIColor.CustomColor.lightGray
+            button.setFrame()
+
+            return button
+        }()
+        let baseEditedButton: UIButton = {
+            let button = UIButton(type: .system)
+            button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
+            button.addTarget(self, action: #selector(showEditButtons), for: .touchUpInside)
+            button.backgroundColor = UIColor.CustomColor.lightGray
+            button.setFrame()
+            
+            return button
+        }()
+        let popToRootButton: UIButton = {
+            let button = UIButton(type: .system)
+            button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+            button.addTarget(self, action: #selector(popToRootController), for: .touchUpInside)
+            button.backgroundColor = UIColor.CustomColor.lightGray
+            button.frame = baseCameraButton.frame
+            button.layer.cornerRadius = button.frame.width / 2
+            
+            return button
+        }()
+        
         if petEntity == nilEntity {
-            rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "cameraIcon"),
-                                                 style: .done,
-                                                 target: self,
-                                                 action: #selector(presentController))
+            rightBarButtonItem.customView = baseCameraButton
         } else {
-            let editedButton: UIButton = {
-                let button = UIButton(type: .system)
-                button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
-                button.tintColor = UIColor.CustomColor.dark
-                button.addTarget(self, action: #selector(showEditButtons), for: .touchUpInside)
-                
-                return button
-            }()
-            rightBarButtonItem.customView = editedButton
+            rightBarButtonItem.customView = baseEditedButton
         }
+        
+        leftBarButtonItem.customView = popToRootButton
         
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.barTintColor = .clear
@@ -179,6 +194,7 @@ extension PetInfoViewController: GeneralSetupProtocol {
         navigationController?.navigationBar.tintColor = UIColor.CustomColor.dark
         navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.dark
         navigationItem.rightBarButtonItem = rightBarButtonItem
+        navigationItem.leftBarButtonItem = leftBarButtonItem
     }
     
     func setupConstraints() {

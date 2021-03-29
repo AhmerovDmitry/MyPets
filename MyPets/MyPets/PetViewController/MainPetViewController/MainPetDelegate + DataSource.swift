@@ -160,6 +160,8 @@ extension MainPetViewController {
     func baseViewElements() {
         mainStackView.isHidden = false
         collectionView.isHidden = true
+        
+        navigationItem.rightBarButtonItem = .none
     }
     
     func entityViewElements() {

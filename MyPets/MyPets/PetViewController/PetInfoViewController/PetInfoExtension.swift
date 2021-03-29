@@ -58,6 +58,10 @@ extension PetInfoViewController {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         petInfo = textField.text
     }
+    
+    func popToRootController() {
+        navigationController?.popToRootViewController(animated: true)
+    }
 }
 
 extension PetInfoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -69,11 +73,22 @@ extension PetInfoViewController: UIImagePickerControllerDelegate, UINavigationCo
     }
     
     func setupEditButtons() {
-        rightBarButtonFrame = fetchRightBarButtonFrame()
         [cameraButton, editedButton, deleteButton].forEach({
-            $0.frame.size = rightBarButtonFrame.size
+            $0.frame.size = CGSize(width: rightBarButtonFrame.size.width,
+                                   height: rightBarButtonFrame.size.width)
             $0.frame.origin = CGPoint(x: rightBarButtonFrame.origin.x,
                                       y: rightBarButtonFrame.origin.y)
+            $0.imageEdgeInsets = UIEdgeInsets(top: rightBarButtonFrame.size.width / 6,
+                                              left: rightBarButtonFrame.size.width / 6,
+                                              bottom: rightBarButtonFrame.size.width / 6,
+                                              right: rightBarButtonFrame.size.width / 6)
+            
+            $0.backgroundColor = UIColor.CustomColor.lightGray
+            $0.tintColor = UIColor.CustomColor.dark
+            $0.alpha = 0
+            $0.imageView?.contentMode = .scaleAspectFit
+            $0.layer.cornerRadius = $0.frame.height / 2
+            
             view.addSubview($0)
         })
     }
