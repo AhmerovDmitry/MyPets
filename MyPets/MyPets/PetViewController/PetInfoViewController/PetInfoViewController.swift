@@ -89,7 +89,6 @@ class PetInfoViewController: UIViewController {
         button.backgroundColor = UIColor.CustomColor.lightGray
         button.setFrame()
         button.layer.cornerRadius = button.frame.height / 2
-//        button.addTarget(self, action: #selector(popToRootController), for: .touchUpInside)
         
         return button
     }()
