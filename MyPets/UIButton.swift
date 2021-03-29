@@ -18,8 +18,8 @@ extension UIButton {
     
     func setFrame() {
         let buttonSize = self.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
-        self.frame.size = CGSize(width: buttonSize.width * 1.5,
-                                 height: buttonSize.width * 1.5)
-        self.layer.cornerRadius = self.frame.width / 2
+        self.frame.size = CGSize(width: buttonSize.height * 1.5,
+                                 height: buttonSize.height * 1.5)
+        self.layer.cornerRadius = self.frame.height / 2
     }
 }

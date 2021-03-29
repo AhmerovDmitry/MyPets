@@ -71,14 +71,13 @@ extension PetInfoViewController: UIImagePickerControllerDelegate, UINavigationCo
     
     func setupEditButtons() {
         [cameraButton, editedButton, deleteButton].forEach({
-            $0.frame.size = CGSize(width: rightBarButtonFrame.size.width,
-                                   height: rightBarButtonFrame.size.width)
+            $0.frame = popToRootButton.frame
             $0.frame.origin = CGPoint(x: rightBarButtonFrame.origin.x,
                                       y: rightBarButtonFrame.origin.y)
-            $0.imageEdgeInsets = UIEdgeInsets(top: rightBarButtonFrame.size.width / 6,
-                                              left: rightBarButtonFrame.size.width / 6,
-                                              bottom: rightBarButtonFrame.size.width / 6,
-                                              right: rightBarButtonFrame.size.width / 6)
+            $0.imageEdgeInsets = UIEdgeInsets(top: popToRootButton.frame.height / 6,
+                                              left: popToRootButton.frame.height / 6,
+                                              bottom: popToRootButton.frame.height / 6,
+                                              right: popToRootButton.frame.height / 6)
             
             $0.backgroundColor = UIColor.CustomColor.lightGray
             $0.tintColor = UIColor.CustomColor.dark

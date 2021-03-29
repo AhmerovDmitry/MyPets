@@ -83,6 +83,17 @@ class PetInfoViewController: UIViewController {
         return cv
     }()
     
+    let popToRootButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        button.backgroundColor = UIColor.CustomColor.lightGray
+        button.setFrame()
+        button.layer.cornerRadius = button.frame.height / 2
+//        button.addTarget(self, action: #selector(popToRootController), for: .touchUpInside)
+        
+        return button
+    }()
+    
     let cameraButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "camera"), for: .normal)
@@ -154,7 +165,8 @@ extension PetInfoViewController: GeneralSetupProtocol {
             button.setImage(UIImage(named: "cameraIcon"), for: .normal)
             button.addTarget(self, action: #selector(presentController), for: .touchUpInside)
             button.backgroundColor = UIColor.CustomColor.lightGray
-            button.setFrame()
+            button.frame = popToRootButton.frame
+            button.layer.cornerRadius = button.frame.height / 2
 
             return button
         }()
@@ -163,17 +175,8 @@ extension PetInfoViewController: GeneralSetupProtocol {
             button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
             button.addTarget(self, action: #selector(showEditButtons), for: .touchUpInside)
             button.backgroundColor = UIColor.CustomColor.lightGray
-            button.setFrame()
-            
-            return button
-        }()
-        let popToRootButton: UIButton = {
-            let button = UIButton(type: .system)
-            button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-            button.addTarget(self, action: #selector(popToRootController), for: .touchUpInside)
-            button.backgroundColor = UIColor.CustomColor.lightGray
-            button.frame = baseCameraButton.frame
-            button.layer.cornerRadius = button.frame.width / 2
+            button.frame = popToRootButton.frame
+            button.layer.cornerRadius = button.frame.height / 2
             
             return button
         }()
@@ -184,8 +187,9 @@ extension PetInfoViewController: GeneralSetupProtocol {
             rightBarButtonItem.customView = baseEditedButton
         }
         
-        leftBarButtonItem.customView = popToRootButton
+        popToRootButton.addTarget(self, action: #selector(popToRootController), for: .touchUpInside)
         
+        leftBarButtonItem.customView = popToRootButton
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.barTintColor = .clear
         navigationController?.navigationBar.shadowImage = UIImage()
