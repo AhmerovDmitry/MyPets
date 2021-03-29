@@ -8,9 +8,6 @@
 import UIKit
 
 class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
-    static let shared = PetViewCollectionCell()
-    var newPetEntity = Bool()
-    var tappedEditedButton = Bool()
     weak var delegate: PetViewControllerDelegate?
     var models = [BaseModel]()
     let label = UILabel()
@@ -20,7 +17,6 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
         tv.isScrollEnabled = false
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.register(PetViewTableCell.self, forCellReuseIdentifier: "tableCellPetId")
-        tv.backgroundColor = .white
         
         return tv
     }()
