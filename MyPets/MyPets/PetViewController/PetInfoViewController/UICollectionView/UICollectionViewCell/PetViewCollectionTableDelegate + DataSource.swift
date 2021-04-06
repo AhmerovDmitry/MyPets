@@ -39,6 +39,8 @@ extension PetInfoViewController: UICollectionViewDelegate, UICollectionViewDataS
             BaseModel(firstProperties: "Номер чипа", secondProperties: petEntity.chipNumber)
         ]
         
+        cell.tableViewDelegate = self
+        
         if indexPath.item == 0 {
             cell.titleImage.isHidden = true
             cell.containerView.isHidden = true
