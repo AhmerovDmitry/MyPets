@@ -52,7 +52,11 @@ extension PetInfoViewController {
         }
     }
     
-    func textFieldDidChangeSelection(_ textField: UITextField) {
+//    func textFieldDidChangeSelection(_ textField: UITextField) {
+//        petInfo = textField.text
+//    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         petInfo = textField.text
     }
     
@@ -133,56 +137,54 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
         alert.addTextField { textField in
             switch self.indexPath.row {
             case 0:
-                textField.text = self.petEntity.name ?? ""
+                textField.text = self.petEntity.name
             case 1:
-                textField.text = self.petEntity.kind ?? ""
+                textField.text = self.petEntity.kind
             case 2:
-                textField.text = self.petEntity.breed ?? ""
+                textField.text = self.petEntity.breed
             case 4:
-                textField.text = self.petEntity.weight ?? ""
+                textField.text = self.petEntity.weight
             case 5:
-                textField.text = self.petEntity.sterile ?? ""
+                textField.text = self.petEntity.sterile
             case 6:
-                textField.text = self.petEntity.color ?? ""
+                textField.text = self.petEntity.color
             case 7:
-                textField.text = self.petEntity.hair ?? ""
+                textField.text = self.petEntity.hair
             case 8:
-                textField.text = self.petEntity.chipNumber ?? ""
+                textField.text = self.petEntity.chipNumber
             default: break
             }
             textField.textAlignment = .left
             textField.textColor = UIColor.CustomColor.dark
             textField.placeholder = "Введите информацию о питомце"
-            textField.addTarget(self,
-                                action: #selector(self.textFieldDidChangeSelection(_:)),
-                                for: .editingChanged)
+            textField.addTarget(self, action: #selector(self.textFieldDidBeginEditing(_:)), for: .allEvents)
         }
         let saveButton = UIAlertAction(title: "Сохранить", style: .default) { _ in
-            print(text)
-            if self.petInfo != nil {
+            if self.petInfo != "" {
                 self.updatePetInfo(updateInformation: self.updateInfo!)
+                
+                switch self.indexPath.row {
+                case 0:
+                    self.petEntity.name = self.petInfo
+                case 1:
+                    self.petEntity.kind = self.petInfo
+                case 2:
+                    self.petEntity.breed = self.petInfo
+                case 4:
+                    self.petEntity.weight = self.petInfo
+                case 5:
+                    self.petEntity.sterile = self.petInfo
+                case 6:
+                    self.petEntity.color = self.petInfo
+                case 7:
+                    self.petEntity.hair = self.petInfo
+                case 8:
+                    self.petEntity.chipNumber = self.petInfo
+                default: break
+                }
+                self.tableView.reloadData()
+                self.petInfo = nil
             }
-            switch self.indexPath.row {
-            case 0:
-                self.petEntity.name = self.petInfo
-            case 1:
-                self.petEntity.kind = self.petInfo
-            case 2:
-                self.petEntity.breed = self.petInfo
-            case 4:
-                self.petEntity.weight = self.petInfo
-            case 5:
-                self.petEntity.sterile = self.petInfo
-            case 6:
-                self.petEntity.color = self.petInfo
-            case 7:
-                self.petEntity.hair = self.petInfo
-            case 8:
-                self.petEntity.chipNumber = self.petInfo
-            default: break
-            }
-            self.tableView.reloadData()
-            self.petInfo = nil
         }
         let cancelButton = UIAlertAction(title: "Отменить", style: .cancel)
         alert.addAction(saveButton)
