@@ -63,12 +63,12 @@ class PetInfoViewController: UIViewController {
     ]
     var tableView = UITableView()
     var indexPath = IndexPath()
-//    var updateInfo: ((IndexPath) -> ())?
+    var updateInfo: ((IndexPath) -> ())?
     
     let backgroundView = UIView()
     let picker = UIDatePicker()
     let saveDateButton = UIButton(type: .system)
-    var petInfo: String? = nil
+    var petInfo: String?
     var titleImage = UIImageView()
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()

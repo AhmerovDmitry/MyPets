@@ -7,22 +7,15 @@
 
 import UIKit
 
-protocol PetTableViewDelegate: class {
-    func reloadTableView(_ tableView: UITableView)
-    func fetchCellIndexPath(_ indexPath: IndexPath)
-}
-
 protocol PetViewControllerDelegate: class {
     func showAlertController(title: String,
                              message: String)
     func showDatePicker()
-//    func updatePetInfo(updateInformation: @escaping (IndexPath) -> ())
-//    func petInfoForModel() -> String?
-//    func fetchTableInfo(tableView: UITableView,
-//                        indexPath: IndexPath,
-//                        updateInformation: @escaping (IndexPath) -> ())
-    func fetchIndexPath(_ indexPath: IndexPath)
-    func fetchTableView(_ tableView: UITableView)
+    func updatePetInfo(updateInformation: @escaping (IndexPath) -> ())
+    func petInfoForModel() -> String?
+    func fetchTableInfo(tableView: UITableView,
+                        indexPath: IndexPath,
+                        updateInformation: @escaping (IndexPath) -> ())
 }
 
 protocol EntityTransfer: class {

@@ -8,7 +8,6 @@
 import UIKit
 
 class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
-    weak var tableViewDelegate: PetTableViewDelegate?
     weak var delegate: PetViewControllerDelegate?
     var models = [BaseModel]()
     let label = UILabel()
@@ -59,9 +58,6 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
         
         tableView.delegate = self
         tableView.dataSource = self
-        
-        tableViewDelegate?.reloadTableView(tableView)
-        delegate?.fetchTableView(tableView)
     }
     
     required init?(coder: NSCoder) {
