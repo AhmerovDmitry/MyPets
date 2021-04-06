@@ -107,14 +107,15 @@ extension PetInfoViewController: UIImagePickerControllerDelegate, UINavigationCo
 
 //MARK: - Delegate methods
 extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate {
-    
-    func fetchTableInfo(tableView: UITableView,
-                        indexPath: IndexPath,
-                        updateInformation: @escaping (IndexPath) -> ()) {
+    func getTableView(_ tableView: UITableView) {
         self.tableView = tableView
+    }
+    
+    func getCellInfo(indexPath: IndexPath, updateInformation: @escaping (IndexPath) -> ()) {
         self.indexPath = indexPath
         self.updateInfo = updateInformation
     }
+    
     
     func updatePetInfo(updateInformation: @escaping (IndexPath) -> ()) {
         updateInformation(indexPath)
@@ -162,7 +163,6 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
                                     for: .editingDidEnd)
             }
             let saveButton = UIAlertAction(title: "Сохранить", style: .default) { _ in
-                print(self.petInfo)
                 self.updatePetInfo(updateInformation: self.updateInfo!)
                 
                 switch self.indexPath.row {

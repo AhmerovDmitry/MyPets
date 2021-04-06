@@ -13,9 +13,11 @@ protocol PetViewControllerDelegate: class {
     func showDatePicker()
     func updatePetInfo(updateInformation: @escaping (IndexPath) -> ())
     func petInfoForModel() -> String?
-    func fetchTableInfo(tableView: UITableView,
-                        indexPath: IndexPath,
-                        updateInformation: @escaping (IndexPath) -> ())
+    func getTableView(_ tableView: UITableView)
+    func getCellInfo(indexPath: IndexPath, updateInformation: @escaping (IndexPath) -> ())
+//    func fetchTableInfo(tableView: UITableView,
+//                        indexPath: IndexPath,
+//                        updateInformation: @escaping (IndexPath) -> ())
 }
 
 protocol EntityTransfer: class {

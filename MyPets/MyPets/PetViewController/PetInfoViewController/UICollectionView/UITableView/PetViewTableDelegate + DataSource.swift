@@ -24,6 +24,7 @@ extension PetViewCollectionCell: UITableViewDelegate, UITableViewDataSource {
         cell.accessoryType = .disclosureIndicator
         cell.selectionStyle = .default
         
+        delegate?.getTableView(tableView)
         titleLabel.text = models[0].secondProperties
         
         return cell
@@ -32,9 +33,7 @@ extension PetViewCollectionCell: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        delegate?.fetchTableInfo(tableView: tableView,
-                                 indexPath: indexPath,
-                                 updateInformation: updatePetInfo(indexPath:))
+        delegate?.getCellInfo(indexPath: indexPath, updateInformation: updatePetInfo(indexPath:))
         
         let messageText = "Если вы не располагаете данной информацией, можете оставить поле ввода пустым"
         let titleText = ["Укажите кличку питомца",
@@ -57,9 +56,6 @@ extension PetViewCollectionCell: UITableViewDelegate, UITableViewDataSource {
     }
     
     func updatePetInfo(indexPath: IndexPath) {
-        let petInformation = delegate?.petInfoForModel()
-        if petInformation != nil {
-            models[indexPath.row].secondProperties = petInformation
-        }
+        models[indexPath.row].secondProperties = delegate?.petInfoForModel()
     }
 }
