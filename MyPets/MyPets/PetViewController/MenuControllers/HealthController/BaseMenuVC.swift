@@ -9,6 +9,7 @@ import UIKit
 
 class BaseMenuVC: UIViewController {
     
+    var indexPath = Int()
     var models = [BaseModel()]
     let closeButton: UIButton = {
         let btn = UIButton(type: .system)

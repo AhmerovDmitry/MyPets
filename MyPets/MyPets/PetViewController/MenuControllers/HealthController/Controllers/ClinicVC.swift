@@ -7,19 +7,96 @@
 
 import UIKit
 
-class ClinicVC: BaseMenuVC {
+class ClinicVC: BaseMenuVC, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.models = [
-            BaseModel(firstProperties: "Телефон", secondProperties: "Указать информацию"),
-            BaseModel(firstProperties: "Адрес", secondProperties: "Указать информацию"),
-            BaseModel(firstProperties: "Сайт", secondProperties: "Указать информацию"),
-            BaseModel(firstProperties: "Врач", secondProperties: "Указать информацию"),
-            BaseModel(firstProperties: "Отображать на главной", secondProperties: "Указать информацию")
+            BaseModel(firstProperties: "Телефон", secondProperties: nil),
+            BaseModel(firstProperties: "Адрес", secondProperties: nil),
+            BaseModel(firstProperties: "Сайт", secondProperties: nil),
+            BaseModel(firstProperties: "Врач", secondProperties: nil),
+            BaseModel(firstProperties: "Отображать на главной", secondProperties: "")
         ]
         self.titleLabel.text = "Моя ветклиника"
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "baseMenuCell", for: indexPath) as! BaseMenuCell
+        cell.tableCellLabel.text = models[indexPath.row].firstProperties
+        cell.tableCellPlaceholder.text = (models[indexPath.row].secondProperties ?? "Указать информацию")
+        cell.accessoryType = .disclosureIndicator
+        cell.selectionStyle = .default
+        
+        if indexPath.row == models.count - 1 {
+            cell.accessoryType = .none
+            cell.selectionStyle = .none
+            let displaySwitch: UISwitch = {
+                let element = UISwitch()
+                element.translatesAutoresizingMaskIntoConstraints = false
+                element.isOn = true
+                
+                return element
+            }()
+            cell.addSubview(displaySwitch)
+            
+            NSLayoutConstraint.activate([
+                displaySwitch.centerYAnchor.constraint(equalTo: cell.centerYAnchor),
+                displaySwitch.rightAnchor.constraint(equalTo: cell.tableCellPlaceholder.rightAnchor)
+            ])
+        }
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        self.indexPath = indexPath.row
+        let messageText = "Если вы не располагаете данной информацией, можете оставить поле ввода пустым"
+        let titleText = ["Укажите телефон ветклиники",
+                         "Укажите адрес ветклиники",
+                         "Укажите сайт ветклиники",
+                         "Укажите лечащего врача"]
+        alertToInputInformation(title: titleText[indexPath.row], message: messageText, self)
+    }
+    
+    func alertToInputInformation(title: String,
+                                 message: String,
+                                 _ controller: UIViewController) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addTextField { textField in
+            textField.textAlignment = .left
+            textField.textColor = UIColor.CustomColor.dark
+            textField.placeholder = "Введите информацию"
+            textField.addTarget(self,
+                                action: #selector(self.textFieldDidEndEditing(_:)),
+                                for: .editingDidEnd)
+//            switch self.indexPath {
+//            case 0:
+//                textField.text = PetInfoViewController.shared.petEntity.clinicPhone
+//            case 1:
+//                textField.text = PetInfoViewController.shared.petEntity.clinicAdress
+//            case 2:
+//                textField.text = PetInfoViewController.shared.petEntity.clinicSite
+//            case 3:
+//                textField.text = PetInfoViewController.shared.petEntity.clinicDoctor
+//            default: break
+//            }
+        }
+        let saveButton = UIAlertAction(title: "Сохранить", style: .default) { _ in
+            
+        }
+        let cancelButton = UIAlertAction(title: "Отменить", style: .cancel)
+        alert.addAction(saveButton)
+        alert.addAction(cancelButton)
+        
+        controller.present(alert, animated: true, completion: nil)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
     }
     
 }
