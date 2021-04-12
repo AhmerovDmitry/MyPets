@@ -74,7 +74,6 @@
 		BCD83D3325F2A7C900F04EF3 /* CareDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD83D3225F2A7C900F04EF3 /* CareDelegate + DataSource.swift */; };
 		BCD83D3625F2A8C000F04EF3 /* EntertainmentDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD83D3525F2A8C000F04EF3 /* EntertainmentDelegate + DataSource.swift */; };
 		BCDBF528253F887E00BCBBFB /* Map Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF527253F887E00BCBBFB /* Map Settings.swift */; };
-		BCDD33362536F03B008E6545 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDD33352536F03B008E6545 /* MainViewController.swift */; };
 		BCE5115525461A23002FB62E /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE5115425461A23002FB62E /* UIAlertController.swift */; };
 /* End PBXBuildFile section */
 
@@ -150,7 +149,6 @@
 		BCD83D3225F2A7C900F04EF3 /* CareDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CareDelegate + DataSource.swift"; sourceTree = "<group>"; };
 		BCD83D3525F2A8C000F04EF3 /* EntertainmentDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntertainmentDelegate + DataSource.swift"; sourceTree = "<group>"; };
 		BCDBF527253F887E00BCBBFB /* Map Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Map Settings.swift"; sourceTree = "<group>"; };
-		BCDD33352536F03B008E6545 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BCE5115425461A23002FB62E /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -598,7 +596,6 @@
 				BC70732C2534AE9400B2979F /* PremiumController */,
 				BC3C7C752532F54700209C51 /* OnboardViewController */,
 				BCB6101D2530CB3800C4FD2F /* AuthorizationViewController */,
-				BCDD33312536F011008E6545 /* MainViewController */,
 				BC413CC6253893B1002CDD19 /* PetViewController */,
 				BC413CC7253893C3002CDD19 /* LocationViewController */,
 				BC413CC8253893D2002CDD19 /* ProfileViewController */,
@@ -691,14 +688,6 @@
 				BCD83D1C25F28F9B00F04EF3 /* EntertainmentController */,
 			);
 			path = MenuControllers;
-			sourceTree = "<group>";
-		};
-		BCDD33312536F011008E6545 /* MainViewController */ = {
-			isa = PBXGroup;
-			children = (
-				BCDD33352536F03B008E6545 /* MainViewController.swift */,
-			);
-			path = MainViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -860,7 +849,6 @@
 				BCD83D2025F2900B00F04EF3 /* DocumentController.swift in Sources */,
 				BCB3611A2549DD2D0021AF8B /* PetViewTableCell.swift in Sources */,
 				BCB610052530C82400C4FD2F /* SceneDelegate.swift in Sources */,
-				BCDD33362536F03B008E6545 /* MainViewController.swift in Sources */,
 				BCD83D3325F2A7C900F04EF3 /* CareDelegate + DataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
