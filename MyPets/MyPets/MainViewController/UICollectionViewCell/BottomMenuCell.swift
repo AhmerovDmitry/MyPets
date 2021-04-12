@@ -8,6 +8,7 @@
 import UIKit
 
 class BottomMenuCell: UICollectionViewCell {
+    
     let models = [
         ["title": "MyPets Premium",
          "description": "Подарите своему питомцу максимум любви и заботы",
@@ -80,4 +81,5 @@ class BottomMenuCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }
