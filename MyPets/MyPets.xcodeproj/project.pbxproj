@@ -77,6 +77,7 @@
 		BCE775DC2622DC5E00343297 /* BottomMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE775DB2622DC5E00343297 /* BottomMenuCell.swift */; };
 		BCE775DF2622DC9E00343297 /* MainCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE775DE2622DC9E00343297 /* MainCollectionCell.swift */; };
 		BCE775E32622E13F00343297 /* MainVC - Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE775E22622E13F00343297 /* MainVC - Extensions.swift */; };
+		BCE775E82624284800343297 /* MainCell - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE775E72624284800343297 /* MainCell - Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -154,6 +155,7 @@
 		BCE775DB2622DC5E00343297 /* BottomMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuCell.swift; sourceTree = "<group>"; };
 		BCE775DE2622DC9E00343297 /* MainCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionCell.swift; sourceTree = "<group>"; };
 		BCE775E22622E13F00343297 /* MainVC - Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainVC - Extensions.swift"; sourceTree = "<group>"; };
+		BCE775E72624284800343297 /* MainCell - Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainCell - Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -740,6 +742,7 @@
 			isa = PBXGroup;
 			children = (
 				BCE775E22622E13F00343297 /* MainVC - Extensions.swift */,
+				BCE775E72624284800343297 /* MainCell - Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -839,6 +842,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCE775E82624284800343297 /* MainCell - Extension.swift in Sources */,
 				BC2C33C92536D6E00092D884 /* GeneralSetupProtocol.swift in Sources */,
 				BCBFA53D25E2DD140036C7ED /* EntityCell.swift in Sources */,
 				BC8E9F5425A324DE00403505 /* @objc UserProfileController.swift in Sources */,
