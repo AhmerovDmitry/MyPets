@@ -74,6 +74,10 @@
 		BCDBF528253F887E00BCBBFB /* Map Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF527253F887E00BCBBFB /* Map Settings.swift */; };
 		BCDD33362536F03B008E6545 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDD33352536F03B008E6545 /* MainViewController.swift */; };
 		BCE5115525461A23002FB62E /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE5115425461A23002FB62E /* UIAlertController.swift */; };
+		BCE775DC2622DC5E00343297 /* BottomMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE775DB2622DC5E00343297 /* BottomMenuCell.swift */; };
+		BCE775DF2622DC9E00343297 /* MainCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE775DE2622DC9E00343297 /* MainCollectionCell.swift */; };
+		BCE775E32622E13F00343297 /* MainVC - Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE775E22622E13F00343297 /* MainVC - Extensions.swift */; };
+		BCE775E82624284800343297 /* MainCell - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE775E72624284800343297 /* MainCell - Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -148,6 +152,10 @@
 		BCDBF527253F887E00BCBBFB /* Map Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Map Settings.swift"; sourceTree = "<group>"; };
 		BCDD33352536F03B008E6545 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BCE5115425461A23002FB62E /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
+		BCE775DB2622DC5E00343297 /* BottomMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuCell.swift; sourceTree = "<group>"; };
+		BCE775DE2622DC9E00343297 /* MainCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionCell.swift; sourceTree = "<group>"; };
+		BCE775E22622E13F00343297 /* MainVC - Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainVC - Extensions.swift"; sourceTree = "<group>"; };
+		BCE775E72624284800343297 /* MainCell - Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainCell - Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -706,9 +714,37 @@
 		BCDD33312536F011008E6545 /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
-				BCDD33352536F03B008E6545 /* MainViewController.swift */,
+				BCE775D72622D84900343297 /* UIViewController */,
+				BCE775DA2622DC3100343297 /* UICollectionViewCell */,
+				BCE775E12622E12100343297 /* Extensions */,
 			);
 			path = MainViewController;
+			sourceTree = "<group>";
+		};
+		BCE775D72622D84900343297 /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BCDD33352536F03B008E6545 /* MainViewController.swift */,
+			);
+			path = UIViewController;
+			sourceTree = "<group>";
+		};
+		BCE775DA2622DC3100343297 /* UICollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				BCE775DE2622DC9E00343297 /* MainCollectionCell.swift */,
+				BCE775DB2622DC5E00343297 /* BottomMenuCell.swift */,
+			);
+			path = UICollectionViewCell;
+			sourceTree = "<group>";
+		};
+		BCE775E12622E12100343297 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BCE775E22622E13F00343297 /* MainVC - Extensions.swift */,
+				BCE775E72624284800343297 /* MainCell - Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -806,6 +842,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCE775E82624284800343297 /* MainCell - Extension.swift in Sources */,
 				BC2C33C92536D6E00092D884 /* GeneralSetupProtocol.swift in Sources */,
 				BCBFA53D25E2DD140036C7ED /* EntityCell.swift in Sources */,
 				BC8E9F5425A324DE00403505 /* @objc UserProfileController.swift in Sources */,
@@ -824,10 +861,12 @@
 				BC8CDFFF25C6BB85005EEFEB /* SupportViewController.swift in Sources */,
 				BC3DBC3D2530DFFF0007BDF2 /* UIColor.swift in Sources */,
 				BC9357F425335DFA00C6C390 /* OnboardViewCell.swift in Sources */,
+				BCE775E32622E13F00343297 /* MainVC - Extensions.swift in Sources */,
 				BCD83D3625F2A8C000F04EF3 /* EntertainmentDelegate + DataSource.swift in Sources */,
 				BC0EE6A3259DE49500BE167D /* UserProfileViewController.swift in Sources */,
 				BCB404252532F5FE00993A5C /* @objc AuthorizationViewControllerExtension.swift in Sources */,
 				BC4851182534E4F100B874D4 /* PremiumViewControllerCell.swift in Sources */,
+				BCE775DF2622DC9E00343297 /* MainCollectionCell.swift in Sources */,
 				BC8CE00925C6CBF6005EEFEB /* SupportVC - Extension.swift in Sources */,
 				BC8E9F5825A3261D00403505 /* UIImagePickerControllerDelegateForUserProfile.swift in Sources */,
 				BC7E9B90257F8242006D75A1 /* ProfileViewDelegate + DataSource.swift in Sources */,
@@ -845,6 +884,7 @@
 				BCD83D2625F2906600F04EF3 /* CareController.swift in Sources */,
 				BC70732E2534AEC800B2979F /* PremiumViewController.swift in Sources */,
 				BC67E24325A057F1008BDBBD /* UIImageView.swift in Sources */,
+				BCE775DC2622DC5E00343297 /* BottomMenuCell.swift in Sources */,
 				BC3C7C772532F56B00209C51 /* OnboardViewController.swift in Sources */,
 				BCD83D2325F2903600F04EF3 /* FoodController.swift in Sources */,
 				BC99B02B2549A80700050854 /* @objc PetViewControllerExtension.swift in Sources */,
