@@ -29,11 +29,13 @@ class PetViewTableCell: UITableViewCell, GeneralSetupProtocol {
         tableCellLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor,
                                              constant: 15).isActive = true
         tableCellLabel.rightAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        tableCellLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         tableCellLabel.heightAnchor.constraint(equalToConstant: 45).isActive = true
         
         tableCellPlaceholder.leftAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         tableCellPlaceholder.rightAnchor.constraint(equalTo: contentView.rightAnchor,
                                                     constant: -15).isActive = true
+        tableCellPlaceholder.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         tableCellPlaceholder.heightAnchor.constraint(equalToConstant: 45).isActive = true
     }
     

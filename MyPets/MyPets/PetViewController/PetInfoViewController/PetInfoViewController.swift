@@ -8,10 +8,38 @@
 import UIKit
 
 class PetInfoViewController: UIViewController {
-    var createOrChange = Bool()
+    var showEditedButtons = false {
+        didSet {
+            if showEditedButtons {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.cameraButton.alpha = 1
+                    self.editedButton.alpha = 1
+                    self.deleteButton.alpha = 1
+                    self.cameraButton.frame.origin = CGPoint(x: self.rightBarButtonFrame.origin.x,
+                                                             y: self.rightBarButtonFrame.origin.y + self.rightBarButtonFrame.height * 1.25)
+                    self.editedButton.frame.origin = CGPoint(x: self.rightBarButtonFrame.origin.x,
+                                                             y: self.cameraButton.frame.origin.y + self.rightBarButtonFrame.height * 1.25)
+                    self.deleteButton.frame.origin = CGPoint(x: self.rightBarButtonFrame.origin.x,
+                                                             y: self.editedButton.frame.origin.y + self.rightBarButtonFrame.height * 1.25)
+                })
+            } else {
+                UIView.animate(withDuration: 0.5, animations: {
+                    [self.cameraButton, self.editedButton, self.deleteButton].forEach({
+                        $0.frame.origin = CGPoint(x: self.rightBarButtonFrame.origin.x,
+                                                  y: self.rightBarButtonFrame.origin.y)
+                        
+                        $0.alpha = 0
+                    })
+                })
+            }
+        }
+    }
+    var rightBarButtonFrame = CGRect()
+    var rightBarButtonItem = UIBarButtonItem()
+    var leftBarButtonItem = UIBarButtonItem()
     let nilEntity = PetModel()
     var petEntity = PetModel()
-    var collectionItemIndex = 0
+    var collectionItemIndex: Int?
     weak var delegate: EntityTransfer?
     let collectionModel = [
         CollectionModel(image: UIImage(),
@@ -42,7 +70,7 @@ class PetInfoViewController: UIViewController {
     let saveDateButton = UIButton(type: .system)
     var petInfo: String?
     var titleImage = UIImageView()
-    private let collectionView: UICollectionView = {
+    let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 12
@@ -54,6 +82,38 @@ class PetInfoViewController: UIViewController {
         
         return cv
     }()
+    
+    let popToRootButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        button.backgroundColor = UIColor.CustomColor.lightGray
+        button.setFrame()
+        button.layer.cornerRadius = button.frame.height / 2
+        
+        return button
+    }()
+    
+    let cameraButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "camera"), for: .normal)
+        button.addTarget(self, action: #selector(presentController), for: .touchUpInside)
+        
+        return button
+    }()
+    let editedButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "pencil"), for: .normal)
+        button.addTarget(self, action: #selector(editPetInfo), for: .touchUpInside)
+        
+        return button
+    }()
+    let deleteButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "trash"), for: .normal)
+        button.addTarget(self, action: #selector(deletePet), for: .touchUpInside)
+        
+        return button
+    }()
     //MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,12 +121,6 @@ class PetInfoViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-        if petEntity == nilEntity {
-            createOrChange = true
-        } else {
-            createOrChange = false
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,15 +131,27 @@ class PetInfoViewController: UIViewController {
         setupElements()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        rightBarButtonFrame = fetchRightBarButtonFrame()
+        setupEditButtons()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
         if petEntity != nilEntity {
-            switch createOrChange {
-            case true: delegate?.createEntity(petEntity)
-            case false: delegate?.updateEntity(petEntity, at: collectionItemIndex)
+            if collectionItemIndex == nil {
+                delegate?.createEntity(petEntity)
+            } else {
+                if MainPetViewController.shared.tappedDeleteButton {
+                    delegate?.deleteEntity(at: collectionItemIndex!)
+                } else {
+                    delegate?.updateEntity(petEntity, at: collectionItemIndex!)
+                }
             }
         }
+        MainPetViewController.shared.tappedDeleteButton = false
         delegate?.reloadCollectionView()
         delegate?.reloadController()
     }
@@ -93,11 +159,44 @@ class PetInfoViewController: UIViewController {
 
 extension PetInfoViewController: GeneralSetupProtocol {
     func setupNavigationController() {
-        let addPhotoButton = UIBarButtonItem(image: UIImage(named: "cameraIcon"), style: .done, target: self, action: #selector(presentController))
-        navigationController?.navigationBar.backgroundColor = .clear
+        let baseCameraButton: UIButton = {
+            let button = UIButton(type: .system)
+            button.setImage(UIImage(named: "cameraIcon"), for: .normal)
+            button.addTarget(self, action: #selector(presentController), for: .touchUpInside)
+            button.backgroundColor = UIColor.CustomColor.lightGray
+            button.frame = popToRootButton.frame
+            button.layer.cornerRadius = button.frame.height / 2
+
+            return button
+        }()
+        let baseEditedButton: UIButton = {
+            let button = UIButton(type: .system)
+            button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
+            button.addTarget(self, action: #selector(showEditButtons), for: .touchUpInside)
+            button.backgroundColor = UIColor.CustomColor.lightGray
+            button.frame = popToRootButton.frame
+            button.layer.cornerRadius = button.frame.height / 2
+            
+            return button
+        }()
+        
+        if petEntity == nilEntity {
+            rightBarButtonItem.customView = baseCameraButton
+        } else {
+            rightBarButtonItem.customView = baseEditedButton
+        }
+        
+        popToRootButton.addTarget(self, action: #selector(popToRootController), for: .touchUpInside)
+        
+        leftBarButtonItem.customView = popToRootButton
+        navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationBar.barTintColor = .clear
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.tintColor = UIColor.CustomColor.dark
-        navigationItem.rightBarButtonItem = addPhotoButton
         navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.dark
+        navigationItem.rightBarButtonItem = rightBarButtonItem
+        navigationItem.leftBarButtonItem = leftBarButtonItem
     }
     
     func setupConstraints() {
@@ -128,14 +227,14 @@ extension PetInfoViewController: GeneralSetupProtocol {
         saveDateButton.widthAnchor.constraint(equalTo: picker.widthAnchor).isActive = true
         saveDateButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         saveDateButton.topAnchor.constraint(equalTo: picker.bottomAnchor,
-                                           constant: 8).isActive = true
+                                            constant: 8).isActive = true
         saveDateButton.addConstraint(NSLayoutConstraint(item: saveDateButton,
-                                                    attribute: .width,
-                                                    relatedBy: .equal,
-                                                    toItem: saveDateButton,
-                                                    attribute: .height,
-                                                    multiplier: 6,
-                                                    constant: 0))
+                                                        attribute: .width,
+                                                        relatedBy: .equal,
+                                                        toItem: saveDateButton,
+                                                        attribute: .height,
+                                                        multiplier: 6,
+                                                        constant: 0))
     }
     
     func setupElements() {
@@ -182,70 +281,5 @@ extension PetInfoViewController: GeneralSetupProtocol {
         saveDateButton.alpha = 0
         saveDateButton.layer.cornerRadius = saveDateButton.frame.height / 2
         saveDateButton.addTarget(self, action: #selector(savePetBirthday), for: .touchUpInside)
-    }
-}
-//MARK: - Delegate methods
-extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate {
-    func fetchTableInfo(tableView: UITableView,
-                        indexPath: IndexPath,
-                        updateInformation: @escaping (IndexPath) -> ()) {
-        self.tableView = tableView
-        self.indexPath = indexPath
-        self.updateInfo = updateInformation
-    }
-    func updatePetInfo(updateInformation: @escaping (IndexPath) -> ()) {
-        updateInformation(indexPath)
-    }
-    func showDatePicker() {
-        UIView.animate(withDuration: 0.5) {
-            self.picker.isHidden = false
-            self.picker.alpha = 1
-            self.backgroundView.isHidden = false
-            self.backgroundView.alpha = 0.5
-            self.saveDateButton.isHidden = false
-            self.saveDateButton.alpha = 1
-        }
-    }
-    func showAlertController(title: String,
-                             message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addTextField { textField in
-            textField.textAlignment = .left
-            textField.textColor = UIColor.CustomColor.dark
-            textField.placeholder = "Введите информацию о питомце"
-            textField.addTarget(self, action: #selector(self.textFieldDidChangeSelection(_:)), for: .editingChanged)
-        }
-        let saveButton = UIAlertAction(title: "Сохранить", style: .default) { _ in
-            self.updatePetInfo(updateInformation: self.updateInfo!)
-            
-            switch self.indexPath.row {
-            case 0:
-                self.petEntity.name = self.petInfo
-            case 1:
-                self.petEntity.kind = self.petInfo
-            case 2:
-                self.petEntity.breed = self.petInfo
-            case 4:
-                self.petEntity.weight = self.petInfo
-            case 5:
-                self.petEntity.sterile = self.petInfo
-            case 6:
-                self.petEntity.color = self.petInfo
-            case 7:
-                self.petEntity.hair = self.petInfo
-            case 8:
-                self.petEntity.chipNumber = self.petInfo
-            default: break
-            }
-            self.tableView.reloadData()
-            self.petInfo = nil
-        }
-        let cancelButton = UIAlertAction(title: "Отменить", style: .cancel)
-        alert.addAction(saveButton)
-        alert.addAction(cancelButton)
-        present(alert, animated: true, completion: nil)
-    }
-    func petInfoForModel() -> String? {
-        return petInfo
     }
 }

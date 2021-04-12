@@ -1,5 +1,5 @@
 //
-//  PetViewController.swift
+//  MainPetViewController.swift
 //  MyPets
 //
 //  Created by Дмитрий Ахмеров on 15.10.2020.
@@ -7,9 +7,12 @@
 
 import UIKit
 
-class PetViewController: UIViewController, GeneralSetupProtocol {
-    lazy var petEntitys = [PetModel]()
-    private let mainStackView = UIStackView()
+class MainPetViewController: UIViewController, GeneralSetupProtocol {
+    static let shared = MainPetViewController()
+    var tappedDeleteButton = false
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    lazy var petEntitys = [PetEntity]()
+    let mainStackView = UIStackView()
     private let mainImage = UIImageView()
     private let titleText = UILabel()
     private let descText = UILabel()
@@ -34,6 +37,7 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        loadPets()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,12 +47,9 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
         setupConstraints()
         setupElements()
         
-        if !petEntitys.isEmpty {
-            mainStackView.isHidden = true
-            collectionView.isHidden = false
-            let addButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector(presentController))
-            navigationItem.rightBarButtonItem = addButton
-            navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.purple
+        switch petEntitys.isEmpty {
+        case true: baseViewElements()
+        case false: entityViewElements()
         }
     }
     
@@ -60,8 +61,7 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
     }
     
     func setupConstraints() {
-        view.addSubview(collectionView)
-        view.addSubview(mainStackView)
+        [collectionView, mainStackView].forEach({ view.addSubview($0) })
         [mainImage,
          titleText,
          descText,
@@ -103,16 +103,16 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
         
         
         addPetButton.leftAnchor.constraint(equalTo: mainStackView.leftAnchor,
-                                        constant: 32).isActive = true
+                                           constant: 32).isActive = true
         addPetButton.rightAnchor.constraint(equalTo: mainStackView.rightAnchor,
-                                         constant: -32).isActive = true
+                                            constant: -32).isActive = true
         addPetButton.addConstraint(NSLayoutConstraint(item: addPetButton,
-                                                   attribute: .width,
-                                                   relatedBy: .equal,
-                                                   toItem: addPetButton,
-                                                   attribute: .height,
-                                                   multiplier: 6,
-                                                   constant: 0))
+                                                      attribute: .width,
+                                                      relatedBy: .equal,
+                                                      toItem: addPetButton,
+                                                      attribute: .height,
+                                                      multiplier: 6,
+                                                      constant: 0))
         
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -162,24 +162,5 @@ class PetViewController: UIViewController, GeneralSetupProtocol {
         addPetButton.titleLabel?.adjustsFontSizeToFitWidth = true
         addPetButton.layer.cornerRadius = addPetButton.frame.height / 2
         addPetButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
-    }
-}
-
-extension PetViewController: EntityTransfer {
-    func reloadCollectionView() {
-        collectionView.reloadData()
-    }
-    
-    func createEntity(_ entity: PetModel) {
-        petEntitys.insert(entity, at: 0)
-    }
-    
-    func reloadController() {
-        self.viewDidLoad()
-    }
-    
-    func updateEntity(_ entity: PetModel, at indexPath: Int) {
-        petEntitys.remove(at: indexPath)
-        petEntitys.insert(entity, at: indexPath)
     }
 }

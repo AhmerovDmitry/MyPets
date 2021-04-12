@@ -8,12 +8,8 @@
 import UIKit
 
 @objc
-extension PetViewController {
+extension MainPetViewController {
     func presentController() {
-        let backItem = UIBarButtonItem()
-        backItem.title = " "
-        navigationItem.backBarButtonItem = backItem
-        
         let petInfoVC = PetInfoViewController()
         petInfoVC.hidesBottomBarWhenPushed = true
         petInfoVC.delegate = self

@@ -17,7 +17,6 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
         tv.isScrollEnabled = false
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.register(PetViewTableCell.self, forCellReuseIdentifier: "tableCellPetId")
-        tv.backgroundColor = .white
         
         return tv
     }()
