@@ -49,6 +49,12 @@
 		BC9357F425335DFA00C6C390 /* OnboardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9357F325335DFA00C6C390 /* OnboardViewCell.swift */; };
 		BC935822253395F800C6C390 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC935821253395F700C6C390 /* BaseModel.swift */; };
 		BC97F2C025A0652900267E34 /* UserProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97F2BF25A0652900267E34 /* UserProfileModel.swift */; };
+		BC9959BE26244ABD006CE6E1 /* ClinicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9959BD26244ABD006CE6E1 /* ClinicVC.swift */; };
+		BC9959C226244AF6006CE6E1 /* DewormingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9959C126244AF6006CE6E1 /* DewormingVC.swift */; };
+		BC9959C526244B48006CE6E1 /* TreatmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9959C426244B48006CE6E1 /* TreatmentVC.swift */; };
+		BC9959C926244B76006CE6E1 /* VaccinationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9959C826244B76006CE6E1 /* VaccinationVC.swift */; };
+		BC9959CC26244BA2006CE6E1 /* DiseasesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9959CB26244BA2006CE6E1 /* DiseasesVC.swift */; };
+		BC9959E626247049006CE6E1 /* BaseMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9959E526247049006CE6E1 /* BaseMenuVC.swift */; };
 		BC99B01A2549A50D00050854 /* PetViewCollectionTableDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99B0192549A50D00050854 /* PetViewCollectionTableDelegate + DataSource.swift */; };
 		BC99B01F2549A53700050854 /* PetViewCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99B01E2549A53700050854 /* PetViewCollectionCell.swift */; };
 		BC99B0232549A55E00050854 /* PetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99B0222549A55E00050854 /* PetModel.swift */; };
@@ -124,6 +130,12 @@
 		BC9357F325335DFA00C6C390 /* OnboardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewCell.swift; sourceTree = "<group>"; };
 		BC935821253395F700C6C390 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		BC97F2BF25A0652900267E34 /* UserProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileModel.swift; sourceTree = "<group>"; };
+		BC9959BD26244ABD006CE6E1 /* ClinicVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicVC.swift; sourceTree = "<group>"; };
+		BC9959C126244AF6006CE6E1 /* DewormingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DewormingVC.swift; sourceTree = "<group>"; };
+		BC9959C426244B48006CE6E1 /* TreatmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreatmentVC.swift; sourceTree = "<group>"; };
+		BC9959C826244B76006CE6E1 /* VaccinationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinationVC.swift; sourceTree = "<group>"; };
+		BC9959CB26244BA2006CE6E1 /* DiseasesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseasesVC.swift; sourceTree = "<group>"; };
+		BC9959E526247049006CE6E1 /* BaseMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMenuVC.swift; sourceTree = "<group>"; };
 		BC99B0192549A50D00050854 /* PetViewCollectionTableDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PetViewCollectionTableDelegate + DataSource.swift"; sourceTree = "<group>"; };
 		BC99B01E2549A53700050854 /* PetViewCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetViewCollectionCell.swift; sourceTree = "<group>"; };
 		BC99B0222549A55E00050854 /* PetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetModel.swift; sourceTree = "<group>"; };
@@ -546,6 +558,18 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		BC9959BC26244A97006CE6E1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BC9959BD26244ABD006CE6E1 /* ClinicVC.swift */,
+				BC9959C126244AF6006CE6E1 /* DewormingVC.swift */,
+				BC9959C426244B48006CE6E1 /* TreatmentVC.swift */,
+				BC9959C826244B76006CE6E1 /* VaccinationVC.swift */,
+				BC9959CB26244BA2006CE6E1 /* DiseasesVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		BC99B01D2549A51F00050854 /* UICollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -661,6 +685,8 @@
 			children = (
 				BCD83D1025F20C1300F04EF3 /* HealthController.swift */,
 				BCD83D1325F20E7E00F04EF3 /* HealthDelegate + DataSource.swift */,
+				BC9959E526247049006CE6E1 /* BaseMenuVC.swift */,
+				BC9959BC26244A97006CE6E1 /* Controllers */,
 			);
 			path = HealthController;
 			sourceTree = "<group>";
@@ -793,6 +819,7 @@
 				BCBFA54125E6B8D00036C7ED /* MainPetDelegate + DataSource.swift in Sources */,
 				BC48511B2534E51500B874D4 /* PremiumViewControllerDelegate + DataSource.swift in Sources */,
 				BCB3611F2549DD830021AF8B /* PetViewTableDelegate + DataSource.swift in Sources */,
+				BC9959C526244B48006CE6E1 /* TreatmentVC.swift in Sources */,
 				BC83CB06260CFA160066A32C /* UIImage.swift in Sources */,
 				BC83CB09260CFA3F0066A32C /* String.swift in Sources */,
 				BC7073252534A6F600B2979F /* UIButton.swift in Sources */,
@@ -810,7 +837,9 @@
 				BC4851182534E4F100B874D4 /* PremiumViewControllerCell.swift in Sources */,
 				BC8CE00925C6CBF6005EEFEB /* SupportVC - Extension.swift in Sources */,
 				BC8E9F5825A3261D00403505 /* UIImagePickerControllerDelegateForUserProfile.swift in Sources */,
+				BC9959BE26244ABD006CE6E1 /* ClinicVC.swift in Sources */,
 				BC7E9B90257F8242006D75A1 /* ProfileViewDelegate + DataSource.swift in Sources */,
+				BC9959C226244AF6006CE6E1 /* DewormingVC.swift in Sources */,
 				BCB3AA4125AF791B00289B7A /* @objc ProfileViewController.swift in Sources */,
 				BCD83D3025F2A72B00F04EF3 /* FoodDelegate + DataSource.swift in Sources */,
 				BC4CA47E262436EF00C2033C /* MainVC - Extensions.swift in Sources */,
@@ -823,6 +852,7 @@
 				BC73964A2542084D00A89858 /* LocationViewDelegate + DataSource.swift in Sources */,
 				BCE5115525461A23002FB62E /* UIAlertController.swift in Sources */,
 				BC97F2C025A0652900267E34 /* UserProfileModel.swift in Sources */,
+				BC9959C926244B76006CE6E1 /* VaccinationVC.swift in Sources */,
 				BCD83D2625F2906600F04EF3 /* CareController.swift in Sources */,
 				BC4CA47D262436EF00C2033C /* BottomMenuCell.swift in Sources */,
 				BC70732E2534AEC800B2979F /* PremiumViewController.swift in Sources */,
@@ -836,6 +866,7 @@
 				BC03FE3A25A32F1C00C81BC5 /* ProfileViewControllerDelegate.swift in Sources */,
 				BCD83D1425F20E7E00F04EF3 /* HealthDelegate + DataSource.swift in Sources */,
 				BC859AE125B383B000FDD33B /* AboutAppController.swift in Sources */,
+				BC9959CC26244BA2006CE6E1 /* DiseasesVC.swift in Sources */,
 				BC413CD1253894D1002CDD19 /* ProfileViewController.swift in Sources */,
 				BCD83D1725F2121E00F04EF3 /* MenuCell.swift in Sources */,
 				BC7073282534A9B600B2979F /* Canvas.swift in Sources */,
@@ -845,6 +876,7 @@
 				BC469CA125AA4BCB00449E3C /* ProfileViewCell.swift in Sources */,
 				BC4CA47F262436EF00C2033C /* MainCell - Extension.swift in Sources */,
 				BCB3AA4425AF8CD000289B7A /* UIViewController.swift in Sources */,
+				BC9959E626247049006CE6E1 /* BaseMenuVC.swift in Sources */,
 				BC99B01A2549A50D00050854 /* PetViewCollectionTableDelegate + DataSource.swift in Sources */,
 				BC935822253395F800C6C390 /* BaseModel.swift in Sources */,
 				BCD83D1125F20C1300F04EF3 /* HealthController.swift in Sources */,
