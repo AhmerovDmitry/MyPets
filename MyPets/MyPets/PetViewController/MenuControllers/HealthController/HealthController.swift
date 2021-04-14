@@ -8,6 +8,7 @@
 import UIKit
 
 class HealthController: UIViewController, GeneralSetupProtocol {
+    
     let models = [
         BaseModel(firstProperties: "Моя ветклиника", secondProperties: "Адрес, телефон, график работы"),
         BaseModel(firstProperties: "Дегельминтизация", secondProperties: "Лекарственные препараты, календарь"),
@@ -48,7 +49,9 @@ class HealthController: UIViewController, GeneralSetupProtocol {
         collectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
+    
     func setupElements() {}
     func setupNavigationController() {}
     func presentController() {}
+    
 }

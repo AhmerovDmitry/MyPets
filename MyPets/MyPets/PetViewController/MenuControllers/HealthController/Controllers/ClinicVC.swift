@@ -8,7 +8,9 @@
 import UIKit
 
 class ClinicVC: BaseMenuVC, UITextFieldDelegate {
-        
+    
+    var clinic = ClinicModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,10 +22,6 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
             BaseModel(firstProperties: "Отображать на главной", secondProperties: " ")
         ]
         self.titleLabel.text = "Моя ветклиника"
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -80,7 +78,7 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
             textField.addTarget(self,
                                 action: #selector(self.textFieldDidEndEditing(_:)),
                                 for: .editingDidEnd)
-            textField.text = self.baseText
+            textField.text = self.models[self.indexPath].secondProperties
             
             if self.indexPath == 0 {
                 textField.keyboardType = .numberPad
@@ -89,12 +87,24 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
         }
         let saveButton = UIAlertAction(title: "Сохранить", style: .default) { _ in
             
+            switch self.indexPath {
+            case 0: self.clinic.phone = self.baseText
+            case 1: self.clinic.address = self.baseText
+            case 2: self.clinic.site = self.baseText
+            case 3: self.clinic.doctor = self.baseText
+            default: break
+            }
+            
             self.models[self.indexPath].secondProperties = self.baseText
             self.baseText = nil
             self.tableView.reloadData()
             
         }
         let cancelButton = UIAlertAction(title: "Отменить", style: .cancel)
+        let test = UIAlertAction(title: "test", style: .default) { _ in
+            
+        }
+        alert.addAction(test)
         alert.addAction(saveButton)
         alert.addAction(cancelButton)
         
