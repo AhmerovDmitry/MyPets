@@ -17,7 +17,7 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
             BaseModel(firstProperties: "Адрес", secondProperties: nil),
             BaseModel(firstProperties: "Сайт", secondProperties: nil),
             BaseModel(firstProperties: "Врач", secondProperties: nil),
-            BaseModel(firstProperties: "Отображать на главной", secondProperties: "")
+            BaseModel(firstProperties: "Отображать на главной", secondProperties: " ")
         ]
         self.titleLabel.text = "Моя ветклиника"
     }
@@ -35,7 +35,7 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
             let displaySwitch: UISwitch = {
                 let element = UISwitch()
                 element.translatesAutoresizingMaskIntoConstraints = false
-                element.isOn = true
+                element.isOn = false
                 
                 return element
             }()
@@ -59,7 +59,9 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
                          "Укажите адрес ветклиники",
                          "Укажите сайт ветклиники",
                          "Укажите лечащего врача"]
-        alertToInputInformation(title: titleText[indexPath.row], message: messageText, self)
+        if indexPath.row != models.count - 1 {
+            alertToInputInformation(title: titleText[indexPath.row], message: messageText, self)
+        }
     }
     
     func alertToInputInformation(title: String,
@@ -73,20 +75,33 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
             textField.addTarget(self,
                                 action: #selector(self.textFieldDidEndEditing(_:)),
                                 for: .editingDidEnd)
-//            switch self.indexPath {
-//            case 0:
-//                textField.text = PetInfoViewController.shared.petEntity.clinicPhone
-//            case 1:
-//                textField.text = PetInfoViewController.shared.petEntity.clinicAdress
-//            case 2:
-//                textField.text = PetInfoViewController.shared.petEntity.clinicSite
-//            case 3:
-//                textField.text = PetInfoViewController.shared.petEntity.clinicDoctor
-//            default: break
-//            }
+            switch self.indexPath {
+            case 0:
+                textField.keyboardType = .numberPad
+                textField.text = self.baseText
+            case 1:
+                textField.text = self.baseText
+            case 2:
+                textField.text = self.baseText
+            case 3:
+                textField.text = self.baseText
+            default: break
+            }
         }
         let saveButton = UIAlertAction(title: "Сохранить", style: .default) { _ in
-            
+            switch self.indexPath {
+            case 0:
+                self.models[0].secondProperties = self.baseText
+            case 1:
+                self.models[1].secondProperties = self.baseText
+            case 2:
+                self.models[2].secondProperties = self.baseText
+            case 3:
+                self.models[3].secondProperties = self.baseText
+            default: break
+            }
+            self.baseText = nil
+            self.tableView.reloadData()
         }
         let cancelButton = UIAlertAction(title: "Отменить", style: .cancel)
         alert.addAction(saveButton)
@@ -96,7 +111,11 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        
+        if textField.text == "" {
+            baseText = nil
+        } else {
+            baseText = textField.text
+        }
     }
     
 }

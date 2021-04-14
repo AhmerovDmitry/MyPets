@@ -55,6 +55,7 @@
 		BC9959C926244B76006CE6E1 /* VaccinationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9959C826244B76006CE6E1 /* VaccinationVC.swift */; };
 		BC9959CC26244BA2006CE6E1 /* DiseasesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9959CB26244BA2006CE6E1 /* DiseasesVC.swift */; };
 		BC9959E626247049006CE6E1 /* BaseMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9959E526247049006CE6E1 /* BaseMenuVC.swift */; };
+		BC9959EC26258FE9006CE6E1 /* ClinicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9959EB26258FE9006CE6E1 /* ClinicModel.swift */; };
 		BC99B01A2549A50D00050854 /* PetViewCollectionTableDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99B0192549A50D00050854 /* PetViewCollectionTableDelegate + DataSource.swift */; };
 		BC99B01F2549A53700050854 /* PetViewCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99B01E2549A53700050854 /* PetViewCollectionCell.swift */; };
 		BC99B0232549A55E00050854 /* PetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99B0222549A55E00050854 /* PetModel.swift */; };
@@ -136,6 +137,7 @@
 		BC9959C826244B76006CE6E1 /* VaccinationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinationVC.swift; sourceTree = "<group>"; };
 		BC9959CB26244BA2006CE6E1 /* DiseasesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseasesVC.swift; sourceTree = "<group>"; };
 		BC9959E526247049006CE6E1 /* BaseMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMenuVC.swift; sourceTree = "<group>"; };
+		BC9959EB26258FE9006CE6E1 /* ClinicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicModel.swift; sourceTree = "<group>"; };
 		BC99B0192549A50D00050854 /* PetViewCollectionTableDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PetViewCollectionTableDelegate + DataSource.swift"; sourceTree = "<group>"; };
 		BC99B01E2549A53700050854 /* PetViewCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetViewCollectionCell.swift; sourceTree = "<group>"; };
 		BC99B0222549A55E00050854 /* PetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetModel.swift; sourceTree = "<group>"; };
@@ -592,6 +594,7 @@
 			children = (
 				BC935821253395F700C6C390 /* BaseModel.swift */,
 				BC99B0222549A55E00050854 /* PetModel.swift */,
+				BC9959EB26258FE9006CE6E1 /* ClinicModel.swift */,
 				BC97F2BF25A0652900267E34 /* UserProfileModel.swift */,
 			);
 			path = Models;
@@ -851,6 +854,7 @@
 				BC99B01F2549A53700050854 /* PetViewCollectionCell.swift in Sources */,
 				BC73964A2542084D00A89858 /* LocationViewDelegate + DataSource.swift in Sources */,
 				BCE5115525461A23002FB62E /* UIAlertController.swift in Sources */,
+				BC9959EC26258FE9006CE6E1 /* ClinicModel.swift in Sources */,
 				BC97F2C025A0652900267E34 /* UserProfileModel.swift in Sources */,
 				BC9959C926244B76006CE6E1 /* VaccinationVC.swift in Sources */,
 				BCD83D2625F2906600F04EF3 /* CareController.swift in Sources */,
