@@ -45,6 +45,10 @@
 		BC8CE00925C6CBF6005EEFEB /* SupportVC - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8CE00825C6CBF6005EEFEB /* SupportVC - Extension.swift */; };
 		BC8E9F5425A324DE00403505 /* @objc UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8E9F5325A324DE00403505 /* @objc UserProfileController.swift */; };
 		BC8E9F5825A3261D00403505 /* UIImagePickerControllerDelegateForUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8E9F5725A3261D00403505 /* UIImagePickerControllerDelegateForUserProfile.swift */; };
+		BC91F2E826271707006CCE3B /* PetClinic+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91F2E426271707006CCE3B /* PetClinic+CoreDataClass.swift */; };
+		BC91F2E926271707006CCE3B /* PetClinic+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91F2E526271707006CCE3B /* PetClinic+CoreDataProperties.swift */; };
+		BC91F2EA26271707006CCE3B /* PetEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91F2E626271707006CCE3B /* PetEntity+CoreDataClass.swift */; };
+		BC91F2EB26271707006CCE3B /* PetEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91F2E726271707006CCE3B /* PetEntity+CoreDataProperties.swift */; };
 		BC9357F125335D3100C6C390 /* OnboardViewControllerDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9357F025335D3100C6C390 /* OnboardViewControllerDelegate + DataSource.swift */; };
 		BC9357F425335DFA00C6C390 /* OnboardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9357F325335DFA00C6C390 /* OnboardViewCell.swift */; };
 		BC935822253395F800C6C390 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC935821253395F700C6C390 /* BaseModel.swift */; };
@@ -127,6 +131,10 @@
 		BC8CE00825C6CBF6005EEFEB /* SupportVC - Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SupportVC - Extension.swift"; sourceTree = "<group>"; };
 		BC8E9F5325A324DE00403505 /* @objc UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "@objc UserProfileController.swift"; sourceTree = "<group>"; };
 		BC8E9F5725A3261D00403505 /* UIImagePickerControllerDelegateForUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImagePickerControllerDelegateForUserProfile.swift; sourceTree = "<group>"; };
+		BC91F2E426271707006CCE3B /* PetClinic+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PetClinic+CoreDataClass.swift"; sourceTree = "<group>"; };
+		BC91F2E526271707006CCE3B /* PetClinic+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PetClinic+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BC91F2E626271707006CCE3B /* PetEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PetEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		BC91F2E726271707006CCE3B /* PetEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PetEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BC9357F025335D3100C6C390 /* OnboardViewControllerDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardViewControllerDelegate + DataSource.swift"; sourceTree = "<group>"; };
 		BC9357F325335DFA00C6C390 /* OnboardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewCell.swift; sourceTree = "<group>"; };
 		BC935821253395F700C6C390 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
@@ -514,6 +522,10 @@
 			isa = PBXGroup;
 			children = (
 				BC83CB00260B565F0066A32C /* PetCoreDataEntity.xcdatamodeld */,
+				BC91F2E626271707006CCE3B /* PetEntity+CoreDataClass.swift */,
+				BC91F2E426271707006CCE3B /* PetClinic+CoreDataClass.swift */,
+				BC91F2E726271707006CCE3B /* PetEntity+CoreDataProperties.swift */,
+				BC91F2E526271707006CCE3B /* PetClinic+CoreDataProperties.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -812,6 +824,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC2C33C92536D6E00092D884 /* GeneralSetupProtocol.swift in Sources */,
+				BC91F2EB26271707006CCE3B /* PetEntity+CoreDataProperties.swift in Sources */,
 				BCBFA53D25E2DD140036C7ED /* EntityCell.swift in Sources */,
 				BC8E9F5425A324DE00403505 /* @objc UserProfileController.swift in Sources */,
 				BC7073322534BA3800B2979F /* UIView.swift in Sources */,
@@ -833,6 +846,7 @@
 				BC3DBC3D2530DFFF0007BDF2 /* UIColor.swift in Sources */,
 				BC9357F425335DFA00C6C390 /* OnboardViewCell.swift in Sources */,
 				BC83CB02260B565F0066A32C /* PetCoreDataEntity.xcdatamodeld in Sources */,
+				BC91F2E926271707006CCE3B /* PetClinic+CoreDataProperties.swift in Sources */,
 				BCD83D3625F2A8C000F04EF3 /* EntertainmentDelegate + DataSource.swift in Sources */,
 				BC4CA47C262436EF00C2033C /* MainCollectionCell.swift in Sources */,
 				BC0EE6A3259DE49500BE167D /* UserProfileViewController.swift in Sources */,
@@ -860,12 +874,14 @@
 				BCD83D2625F2906600F04EF3 /* CareController.swift in Sources */,
 				BC4CA47D262436EF00C2033C /* BottomMenuCell.swift in Sources */,
 				BC70732E2534AEC800B2979F /* PremiumViewController.swift in Sources */,
+				BC91F2EA26271707006CCE3B /* PetEntity+CoreDataClass.swift in Sources */,
 				BC67E24325A057F1008BDBBD /* UIImageView.swift in Sources */,
 				BC3C7C772532F56B00209C51 /* OnboardViewController.swift in Sources */,
 				BCD83D2325F2903600F04EF3 /* FoodController.swift in Sources */,
 				BC99B02B2549A80700050854 /* MainPetNavigation.swift in Sources */,
 				BC2C33CF2536D83F0092D884 /* @objc PremiumViewControllerExtension.swift in Sources */,
 				BC4CA480262436EF00C2033C /* MainViewController.swift in Sources */,
+				BC91F2E826271707006CCE3B /* PetClinic+CoreDataClass.swift in Sources */,
 				BC413CCA253893F7002CDD19 /* MainPetViewController.swift in Sources */,
 				BC03FE3A25A32F1C00C81BC5 /* ProfileViewControllerDelegate.swift in Sources */,
 				BCD83D1425F20E7E00F04EF3 /* HealthDelegate + DataSource.swift in Sources */,
