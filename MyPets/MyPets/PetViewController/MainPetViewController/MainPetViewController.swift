@@ -8,6 +8,7 @@
 import UIKit
 
 class MainPetViewController: UIViewController, GeneralSetupProtocol {
+    
     static let shared = MainPetViewController()
     var tappedDeleteButton = false
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -163,4 +164,5 @@ class MainPetViewController: UIViewController, GeneralSetupProtocol {
         addPetButton.layer.cornerRadius = addPetButton.frame.height / 2
         addPetButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
     }
+    
 }

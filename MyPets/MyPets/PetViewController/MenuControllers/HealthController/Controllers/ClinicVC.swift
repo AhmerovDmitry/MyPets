@@ -8,7 +8,7 @@
 import UIKit
 
 class ClinicVC: BaseMenuVC, UITextFieldDelegate {
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,6 +20,10 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
             BaseModel(firstProperties: "Отображать на главной", secondProperties: " ")
         ]
         self.titleLabel.text = "Моя ветклиника"
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -69,39 +73,26 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
                                  _ controller: UIViewController) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addTextField { textField in
+            
             textField.textAlignment = .left
             textField.textColor = UIColor.CustomColor.dark
             textField.placeholder = "Введите информацию"
             textField.addTarget(self,
                                 action: #selector(self.textFieldDidEndEditing(_:)),
                                 for: .editingDidEnd)
-            switch self.indexPath {
-            case 0:
+            textField.text = self.baseText
+            
+            if self.indexPath == 0 {
                 textField.keyboardType = .numberPad
-                textField.text = self.baseText
-            case 1:
-                textField.text = self.baseText
-            case 2:
-                textField.text = self.baseText
-            case 3:
-                textField.text = self.baseText
-            default: break
             }
+            
         }
         let saveButton = UIAlertAction(title: "Сохранить", style: .default) { _ in
-            switch self.indexPath {
-            case 0:
-                self.models[0].secondProperties = self.baseText
-            case 1:
-                self.models[1].secondProperties = self.baseText
-            case 2:
-                self.models[2].secondProperties = self.baseText
-            case 3:
-                self.models[3].secondProperties = self.baseText
-            default: break
-            }
+            
+            self.models[self.indexPath].secondProperties = self.baseText
             self.baseText = nil
             self.tableView.reloadData()
+            
         }
         let cancelButton = UIAlertAction(title: "Отменить", style: .cancel)
         alert.addAction(saveButton)

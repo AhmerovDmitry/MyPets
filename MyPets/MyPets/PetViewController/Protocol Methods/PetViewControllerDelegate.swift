@@ -15,9 +15,6 @@ protocol PetViewControllerDelegate: class {
     func petInfoForModel() -> String?
     func getTableView(_ tableView: UITableView)
     func getCellInfo(indexPath: IndexPath, updateInformation: @escaping (IndexPath) -> ())
-//    func fetchTableInfo(tableView: UITableView,
-//                        indexPath: IndexPath,
-//                        updateInformation: @escaping (IndexPath) -> ())
 }
 
 protocol EntityTransfer: class {

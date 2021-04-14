@@ -8,6 +8,7 @@
 import UIKit
 
 class PetInfoViewController: UIViewController {
+    
     var showEditedButtons = false {
         didSet {
             if showEditedButtons {
@@ -37,10 +38,13 @@ class PetInfoViewController: UIViewController {
     var rightBarButtonFrame = CGRect()
     var rightBarButtonItem = UIBarButtonItem()
     var leftBarButtonItem = UIBarButtonItem()
+    
     let nilEntity = PetModel()
     var petEntity = PetModel()
-    var collectionItemIndex: Int?
+    
     weak var delegate: EntityTransfer?
+    
+    var collectionItemIndex: Int?
     let collectionModel = [
         CollectionModel(image: UIImage(),
                         title: String(),
