@@ -9,6 +9,7 @@ import UIKit
 
 @objc
 extension OnboardViewController {
+    
     func handleNext() {
         let nextIndex = min(pageControl.currentPage + 1, models.count - 1)
         let indexPath = IndexPath(item: nextIndex, section: 0)
@@ -24,10 +25,12 @@ extension OnboardViewController {
             closeButton.isHidden = true
         }
     }
+    
     @objc func presentController() {
-        let authorizationVC = AuthorizationViewController()
-        authorizationVC.modalPresentationStyle = .fullScreen
-        present(authorizationVC, animated: false, completion: nil)
-        presentPremiumController(on: authorizationVC)
+        let tabBarController = CustomTabBarController()
+        tabBarController.viewControllers = tabBarController.controllers
+        tabBarController.modalPresentationStyle = .fullScreen
+        present(tabBarController, animated: true, completion: nil)
     }
+    
 }

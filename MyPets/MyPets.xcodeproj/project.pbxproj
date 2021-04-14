@@ -49,6 +49,7 @@
 		BC91F2E926271707006CCE3B /* PetClinic+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91F2E526271707006CCE3B /* PetClinic+CoreDataProperties.swift */; };
 		BC91F2EA26271707006CCE3B /* PetEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91F2E626271707006CCE3B /* PetEntity+CoreDataClass.swift */; };
 		BC91F2EB26271707006CCE3B /* PetEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91F2E726271707006CCE3B /* PetEntity+CoreDataProperties.swift */; };
+		BC91F2F42627423D006CCE3B /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91F2F32627423D006CCE3B /* UserDefaults.swift */; };
 		BC9357F125335D3100C6C390 /* OnboardViewControllerDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9357F025335D3100C6C390 /* OnboardViewControllerDelegate + DataSource.swift */; };
 		BC9357F425335DFA00C6C390 /* OnboardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9357F325335DFA00C6C390 /* OnboardViewCell.swift */; };
 		BC935822253395F800C6C390 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC935821253395F700C6C390 /* BaseModel.swift */; };
@@ -135,6 +136,7 @@
 		BC91F2E526271707006CCE3B /* PetClinic+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PetClinic+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BC91F2E626271707006CCE3B /* PetEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PetEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		BC91F2E726271707006CCE3B /* PetEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PetEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BC91F2F32627423D006CCE3B /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		BC9357F025335D3100C6C390 /* OnboardViewControllerDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardViewControllerDelegate + DataSource.swift"; sourceTree = "<group>"; };
 		BC9357F325335DFA00C6C390 /* OnboardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewCell.swift; sourceTree = "<group>"; };
 		BC935821253395F700C6C390 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 				BCB3AA4325AF8CD000289B7A /* UIViewController.swift */,
 				BC83CB05260CFA160066A32C /* UIImage.swift */,
 				BC83CB08260CFA3F0066A32C /* String.swift */,
+				BC91F2F32627423D006CCE3B /* UserDefaults.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -572,6 +575,14 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		BC91F2EF2627364E006CCE3B /* FIXIT */ = {
+			isa = PBXGroup;
+			children = (
+				BCB6101D2530CB3800C4FD2F /* AuthorizationViewController */,
+			);
+			path = FIXIT;
+			sourceTree = "<group>";
+		};
 		BC9959BC26244A97006CE6E1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -638,6 +649,7 @@
 				BC3DBC3F2530E0040007BDF2 /* Extension */,
 				BC2C33C72536D6BE0092D884 /* Protocol */,
 				BC413CD62538ABBB002CDD19 /* CustomTabBarController */,
+				BC91F2EF2627364E006CCE3B /* FIXIT */,
 				BCB610012530C82400C4FD2F /* MyPets */,
 				BCB610002530C82400C4FD2F /* Products */,
 			);
@@ -654,9 +666,8 @@
 		BCB610012530C82400C4FD2F /* MyPets */ = {
 			isa = PBXGroup;
 			children = (
-				BC70732C2534AE9400B2979F /* PremiumController */,
 				BC3C7C752532F54700209C51 /* OnboardViewController */,
-				BCB6101D2530CB3800C4FD2F /* AuthorizationViewController */,
+				BC70732C2534AE9400B2979F /* PremiumController */,
 				BC4CA473262436EF00C2033C /* MainViewController */,
 				BC413CC6253893B1002CDD19 /* PetViewController */,
 				BC413CC7253893C3002CDD19 /* LocationViewController */,
@@ -849,6 +860,7 @@
 				BC91F2E926271707006CCE3B /* PetClinic+CoreDataProperties.swift in Sources */,
 				BCD83D3625F2A8C000F04EF3 /* EntertainmentDelegate + DataSource.swift in Sources */,
 				BC4CA47C262436EF00C2033C /* MainCollectionCell.swift in Sources */,
+				BC91F2F42627423D006CCE3B /* UserDefaults.swift in Sources */,
 				BC0EE6A3259DE49500BE167D /* UserProfileViewController.swift in Sources */,
 				BCB404252532F5FE00993A5C /* @objc AuthorizationViewControllerExtension.swift in Sources */,
 				BC4851182534E4F100B874D4 /* PremiumViewControllerCell.swift in Sources */,

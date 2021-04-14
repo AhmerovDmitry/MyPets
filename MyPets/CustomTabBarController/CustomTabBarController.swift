@@ -8,10 +8,11 @@
 import UIKit
 
 class CustomTabBarController: UITabBarController {
+    
     let mainVC = UINavigationController(rootViewController: MainViewController())
     let petVC = UINavigationController(rootViewController: MainPetViewController())
-//    let locationVC = LocationViewController()
-    let locationVC = UINavigationController(rootViewController: ProfileViewController()) //Для того чтобы убрать лишние сообщения из консоли!!!
+    let locationVC = LocationViewController()
+//    let locationVC = UINavigationController(rootViewController: ProfileViewController()) //Для того чтобы убрать лишние сообщения из консоли!!!
     let profileVC = UINavigationController(rootViewController: ProfileViewController())
     
     var controllers: [UIViewController]?
@@ -27,7 +28,8 @@ class CustomTabBarController: UITabBarController {
         tabBar.shadowImage = UIImage()
         tabBar.unselectedItemTintColor = UIColor.CustomColor.gray
         tabBar.tintColor = UIColor.CustomColor.purple
-        tabBar.unselectedItemTintColor = UIColor.CustomColor.gray
+        
+        presentPremium(withFlag: true)
     }
     
     func setupItems() {
@@ -43,4 +45,17 @@ class CustomTabBarController: UITabBarController {
         profileVC.tabBarItem.title = "Профиль"
         profileVC.tabBarItem.image = UIImage(named: "profileIcon")
     }
+    
+    // Else app version is free, show PremiumVC
+    func presentPremium(withFlag flag: Bool) {
+        if flag {
+            DispatchQueue.global().async {
+                sleep(1)
+                DispatchQueue.main.async {
+                    self.presentPremiumController(on: self)
+                }
+            }
+        }
+    }
+    
 }

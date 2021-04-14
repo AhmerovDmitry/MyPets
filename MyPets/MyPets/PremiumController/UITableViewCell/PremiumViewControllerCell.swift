@@ -8,6 +8,7 @@
 import UIKit
 
 class PremiumViewControllerCell: UITableViewCell {
+    
     var model: String? {
         didSet {
             guard let model = model else { return }
@@ -52,4 +53,5 @@ extension PremiumViewControllerCell: GeneralSetupProtocol {
     
     func setupNavigationController() {}
     func presentController() {}
+    
 }

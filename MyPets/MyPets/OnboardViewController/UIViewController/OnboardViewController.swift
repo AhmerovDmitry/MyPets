@@ -8,6 +8,7 @@
 import UIKit
 
 class OnboardViewController: UIViewController, GeneralSetupProtocol {
+    
     let models = [
         BaseModel(firstProperties: "onboardImage_1", secondProperties: "Вся информация о питомце всегда под рукой"),
         BaseModel(firstProperties: "onboardImage_2", secondProperties: "Вы не забудете купить корм или сделать прививку"),
@@ -72,8 +73,8 @@ class OnboardViewController: UIViewController, GeneralSetupProtocol {
         
         closeButton.widthAnchor.constraint(lessThanOrEqualToConstant: 97).isActive = true
         closeButton.heightAnchor.constraint(lessThanOrEqualToConstant: 21).isActive = true
-        closeButton.topAnchor.constraint(equalTo: view.topAnchor,
-                                         constant: UIApplication.shared.statusBarFrame.height + 15).isActive = true
+        closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
+                                         constant: 15).isActive = true
         closeButton.rightAnchor.constraint(lessThanOrEqualTo: view.rightAnchor,
                                            constant: -15).isActive = true
     }
@@ -118,4 +119,5 @@ class OnboardViewController: UIViewController, GeneralSetupProtocol {
     }
     
     func setupNavigationController() {}
+    
 }
