@@ -118,6 +118,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 navigationItem.backBarButtonItem = backItem
                 let aboutAppController = AboutAppController()
                 navigationController?.pushViewController(aboutAppController, animated: true)
+            case 2:
+                UserDefaults.standard.set(false, forKey: "hasBeenLaunchedBeforeFlag")
             default: break
             }
         default: break

@@ -8,6 +8,7 @@
 import UIKit
 
 extension PremiumViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models.count
     }
@@ -26,4 +27,5 @@ extension PremiumViewController: UITableViewDelegate, UITableViewDataSource {
         let cellHeight = tableView.frame.size.height / CGFloat(models.count)
         return cellHeight
     }
+    
 }

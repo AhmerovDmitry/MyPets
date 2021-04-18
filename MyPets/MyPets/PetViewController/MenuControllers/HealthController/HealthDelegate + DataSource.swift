@@ -26,5 +26,11 @@ extension HealthController: UICollectionViewDelegate, UICollectionViewDataSource
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controllers = [ClinicVC(), DewormingVC(), TreatmentVC(), VaccinationVC(), DiseasesVC()]
+        controllers[indexPath.item].modalPresentationStyle = .fullScreen
+        
+        present(controllers[indexPath.item], animated: true, completion: nil)
+    }
     
 }

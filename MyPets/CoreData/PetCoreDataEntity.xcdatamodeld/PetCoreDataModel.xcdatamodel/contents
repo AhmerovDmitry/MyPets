@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D80" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="PetEntity" representedClassName="PetEntity" syncable="YES" codeGenerationType="class">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D91" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="PetClinic" representedClassName="PetClinic" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String"/>
+        <attribute name="doctor" optional="YES" attributeType="String"/>
+        <attribute name="phone" optional="YES" attributeType="String"/>
+        <attribute name="site" optional="YES" attributeType="String"/>
+        <relationship name="pet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PetEntity" inverseName="clinic" inverseEntity="PetEntity"/>
+    </entity>
+    <entity name="PetEntity" representedClassName="PetEntity" syncable="YES">
+        <attribute name="attribute" optional="YES" attributeType="String"/>
         <attribute name="birthday" optional="YES" attributeType="String"/>
         <attribute name="breed" optional="YES" attributeType="String"/>
         <attribute name="chipNumber" optional="YES" attributeType="String"/>
@@ -11,8 +19,10 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="sterile" optional="YES" attributeType="String"/>
         <attribute name="weight" optional="YES" attributeType="String"/>
+        <relationship name="clinic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PetClinic" inverseName="pet" inverseEntity="PetClinic"/>
     </entity>
     <elements>
-        <element name="PetEntity" positionX="-63" positionY="-18" width="128" height="179"/>
+        <element name="PetClinic" positionX="-198.1483764648438" positionY="34.40316772460938" width="128" height="118"/>
+        <element name="PetEntity" positionX="-197.7507934570312" positionY="-230.8056640625" width="128" height="223"/>
     </elements>
 </model>

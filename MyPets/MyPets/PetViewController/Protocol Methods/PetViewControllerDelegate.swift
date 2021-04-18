@@ -15,16 +15,13 @@ protocol PetViewControllerDelegate: class {
     func petInfoForModel() -> String?
     func getTableView(_ tableView: UITableView)
     func getCellInfo(indexPath: IndexPath, updateInformation: @escaping (IndexPath) -> ())
-//    func fetchTableInfo(tableView: UITableView,
-//                        indexPath: IndexPath,
-//                        updateInformation: @escaping (IndexPath) -> ())
 }
 
 protocol EntityTransfer: class {
     func reloadCollectionView()
-    func createEntity(_ entity: PetModel)
     func reloadController()
-    func updateEntity(_ entity: PetModel, at indexPath: Int)
     func loadPets()
+    func createEntity(_ entity: Pet)
+    func updateEntity(_ entity: Pet, at index: Int)
     func deleteEntity(at index: Int)
 }

@@ -8,6 +8,7 @@
 import UIKit
 
 class PremiumViewController: UIViewController {
+    
     let models = [
         "Неограниченное количество питомцев",
         "Календарь прививок, лечение и профилактика болезней",
@@ -69,8 +70,7 @@ extension PremiumViewController: GeneralSetupProtocol {
         NSLayoutConstraint.activate([
             closeButton.widthAnchor.constraint(equalToConstant: 14),
             closeButton.heightAnchor.constraint(equalToConstant: 14),
-            closeButton.topAnchor.constraint(equalTo: view.topAnchor,
-                                             constant: UIApplication.shared.statusBarFrame.height + 15),
+            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
             closeButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15),
             
             mainStackView.widthAnchor.constraint(equalToConstant: view.bounds.width / 1.2),
@@ -155,4 +155,5 @@ extension PremiumViewController: GeneralSetupProtocol {
     }
     
     func setupNavigationController() {}
+    
 }

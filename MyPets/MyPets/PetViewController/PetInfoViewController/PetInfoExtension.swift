@@ -69,7 +69,7 @@ extension PetInfoViewController: UIImagePickerControllerDelegate, UINavigationCo
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         titleImage.image = info[.editedImage] as? UIImage
-        petEntity.image = titleImage.image
+        petEntity.image = titleImage.image?.toString()
         dismiss(animated: true, completion: nil)
     }
     
@@ -164,7 +164,7 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
             }
             let saveButton = UIAlertAction(title: "Сохранить", style: .default) { _ in
                 self.updatePetInfo(updateInformation: self.updateInfo!)
-                
+
                 switch self.indexPath.row {
                 case 0:
                     self.petEntity.name = self.petInfo

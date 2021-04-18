@@ -8,6 +8,7 @@
 import UIKit
 
 class OnboardViewCell: UICollectionViewCell {
+    
     var model: BaseModel? {
         didSet {
             guard let image = model?.firstProperties else { return }
@@ -89,4 +90,5 @@ extension OnboardViewCell: GeneralSetupProtocol {
     
     func setupNavigationController() {}
     func presentController() {}
+    
 }

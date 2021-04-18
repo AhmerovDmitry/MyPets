@@ -34,13 +34,17 @@ class PetInfoViewController: UIViewController {
             }
         }
     }
+    
     var rightBarButtonFrame = CGRect()
     var rightBarButtonItem = UIBarButtonItem()
     var leftBarButtonItem = UIBarButtonItem()
-    let nilEntity = PetModel()
-    var petEntity = PetModel()
-    var collectionItemIndex: Int?
+    
+    let nilEntity = Pet()
+    var petEntity = Pet()
+    
     weak var delegate: EntityTransfer?
+    
+    var collectionItemIndex: Int?
     let collectionModel = [
         CollectionModel(image: UIImage(),
                         title: String(),
@@ -140,7 +144,7 @@ class PetInfoViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if petEntity != nilEntity {
+        if !(petEntity == nilEntity) {
             if collectionItemIndex == nil {
                 delegate?.createEntity(petEntity)
             } else {
@@ -179,7 +183,7 @@ extension PetInfoViewController: GeneralSetupProtocol {
             
             return button
         }()
-        
+                
         if petEntity == nilEntity {
             rightBarButtonItem.customView = baseCameraButton
         } else {
@@ -245,7 +249,7 @@ extension PetInfoViewController: GeneralSetupProtocol {
             $0.translatesAutoresizingMaskIntoConstraints = false
          }
         
-        titleImage.image = petEntity.image ?? UIImage()
+        titleImage.image = petEntity.image?.toImage() ?? UIImage()
         titleImage.contentMode = .scaleAspectFill
         titleImage.backgroundColor = .white
         titleImage.clipsToBounds = true
