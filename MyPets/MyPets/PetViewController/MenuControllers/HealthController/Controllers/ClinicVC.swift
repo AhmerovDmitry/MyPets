@@ -9,7 +9,15 @@ import UIKit
 
 class ClinicVC: BaseMenuVC, UITextFieldDelegate {
     
-    var clinic = ClinicModel()
+    var clinic = Clinic()
+    
+    let displaySwitch: UISwitch = {
+        let element = UISwitch()
+        element.translatesAutoresizingMaskIntoConstraints = false
+        element.isOn = false
+        
+        return element
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +32,11 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
         self.titleLabel.text = "Моя ветклиника"
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "baseMenuCell", for: indexPath) as! BaseMenuCell
         cell.tableCellLabel.text = models[indexPath.row].firstProperties
@@ -34,13 +47,6 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
         if indexPath.row == models.count - 1 {
             cell.accessoryType = .none
             cell.selectionStyle = .none
-            let displaySwitch: UISwitch = {
-                let element = UISwitch()
-                element.translatesAutoresizingMaskIntoConstraints = false
-                element.isOn = false
-                
-                return element
-            }()
             cell.addSubview(displaySwitch)
             
             NSLayoutConstraint.activate([
