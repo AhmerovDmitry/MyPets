@@ -214,11 +214,3 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
         return petInfo
     }
 }
-
-extension PetInfoViewController: TransferInfo {
-    func transferPetInformation(_ info: Any) {
-        ClinicVC.shared.delegate = self
-        
-        petEntity.clinic = info as? Clinic
-    }
-}

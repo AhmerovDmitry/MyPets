@@ -38,16 +38,8 @@ class MainPetViewController: UIViewController, GeneralSetupProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
 //TODO: - Realm path
 //        print(Realm.Configuration.defaultConfiguration.fileURL!)
->>>>>>> Stashed changes
-=======
-//TODO: - Realm path
-//        print(Realm.Configuration.defaultConfiguration.fileURL!)
->>>>>>> Stashed changes
         view.backgroundColor = .white
         
         collectionView.delegate = self

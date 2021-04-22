@@ -8,11 +8,6 @@
 import UIKit
 
 class ClinicVC: BaseMenuVC, UITextFieldDelegate {
-    
-    static var shared = ClinicVC()
-    
-    weak var delegate: TransferInfo?
-    
     var clinic = Clinic()
     
     let displaySwitch: UISwitch = {
@@ -34,15 +29,6 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
             BaseModel(firstProperties: "Отображать на главной", secondProperties: " ")
         ]
         self.titleLabel.text = "Моя ветклиника"
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        print(clinic)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -130,8 +116,6 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
     
     override func closeController() {
         self.dismiss(animated: true, completion: nil)
-        
-        delegate?.transferPetInformation(clinic)
     }
     
 }
