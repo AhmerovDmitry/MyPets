@@ -25,3 +25,7 @@ protocol EntityTransfer: class {
     func updateEntity(_ entity: Pet, at index: Int)
     func deleteEntity(at index: Int)
 }
+
+protocol TransferInfo: class {
+    func transferPetInformation(_ info: Any)
+}

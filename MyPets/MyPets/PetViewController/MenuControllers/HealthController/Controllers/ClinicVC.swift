@@ -9,6 +9,10 @@ import UIKit
 
 class ClinicVC: BaseMenuVC, UITextFieldDelegate {
     
+    static var shared = ClinicVC()
+    
+    weak var delegate: TransferInfo?
+    
     var clinic = Clinic()
     
     let displaySwitch: UISwitch = {
@@ -34,7 +38,11 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print(clinic)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -92,7 +100,6 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
             
         }
         let saveButton = UIAlertAction(title: "Сохранить", style: .default) { _ in
-            
             switch self.indexPath {
             case 0: self.clinic.phone = self.baseText
             case 1: self.clinic.address = self.baseText
@@ -100,17 +107,13 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
             case 3: self.clinic.doctor = self.baseText
             default: break
             }
-            
             self.models[self.indexPath].secondProperties = self.baseText
             self.baseText = nil
             self.tableView.reloadData()
             
         }
         let cancelButton = UIAlertAction(title: "Отменить", style: .cancel)
-        let test = UIAlertAction(title: "test", style: .default) { _ in
-            
-        }
-        alert.addAction(test)
+
         alert.addAction(saveButton)
         alert.addAction(cancelButton)
         
@@ -123,6 +126,12 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
         } else {
             baseText = textField.text
         }
+    }
+    
+    override func closeController() {
+        self.dismiss(animated: true, completion: nil)
+        
+        delegate?.transferPetInformation(clinic)
     }
     
 }

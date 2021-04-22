@@ -141,24 +141,6 @@ class PetInfoViewController: UIViewController {
         rightBarButtonFrame = fetchRightBarButtonFrame()
         setupEditButtons()
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if !(petEntity == nilEntity) {
-            if collectionItemIndex == nil {
-                delegate?.createEntity(petEntity)
-            } else {
-                if MainPetViewController.shared.tappedDeleteButton {
-                    delegate?.deleteEntity(at: collectionItemIndex!)
-                } else {
-                    delegate?.updateEntity(petEntity, at: collectionItemIndex!)
-                }
-            }
-        }
-        MainPetViewController.shared.tappedDeleteButton = false
-        delegate?.reloadCollectionView()
-        delegate?.reloadController()
-    }
 }
 
 extension PetInfoViewController: GeneralSetupProtocol {
