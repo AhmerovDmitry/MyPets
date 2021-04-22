@@ -61,6 +61,12 @@ extension MainPetViewController: UICollectionViewDelegate, UICollectionViewDataS
         petInfoVC.petEntity.color = pets[indexPath.item].color
         petInfoVC.petEntity.hair = pets[indexPath.item].hair
         petInfoVC.petEntity.chipNumber = pets[indexPath.item].chipNumber
+        
+        petInfoVC.petEntity.clinic?.phone = pets[indexPath.item].clinic?.phone
+        petInfoVC.petEntity.clinic?.address = pets[indexPath.item].clinic?.address
+        petInfoVC.petEntity.clinic?.site = pets[indexPath.item].clinic?.site
+        petInfoVC.petEntity.clinic?.doctor = pets[indexPath.item].clinic?.doctor
+        
         petInfoVC.collectionItemIndex = indexPath.item
         
         navigationController?.pushViewController(petInfoVC, animated: true)
