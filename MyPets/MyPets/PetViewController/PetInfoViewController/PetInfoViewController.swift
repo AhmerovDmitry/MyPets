@@ -118,6 +118,7 @@ class PetInfoViewController: UIViewController {
         
         return button
     }()
+    
     //MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
