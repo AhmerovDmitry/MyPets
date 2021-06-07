@@ -148,9 +148,9 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
     }
     
     func showAlertController(title: String,
-                                 message: String) {
-            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            alert.addTextField { textField in
+                             message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addTextField { textField in
                 switch self.indexPath.row {
                 case 0:
                     textField.text = self.petEntity.name
