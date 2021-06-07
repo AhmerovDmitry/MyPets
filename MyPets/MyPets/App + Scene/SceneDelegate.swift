@@ -10,6 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
+    let isFirstLaunch = UserDefaults.isFirstLaunch()
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -21,8 +22,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         let onboardVC = OnboardViewController() // Если приложение запускается впервые
         let tabBar = CustomTabBarController() // Если приложение ранее запускалось (запуск без OnboardVC)
-        
-        let isFirstLaunch = UserDefaults.isFirstLaunch()
         
         if isFirstLaunch {
             window.rootViewController = onboardVC

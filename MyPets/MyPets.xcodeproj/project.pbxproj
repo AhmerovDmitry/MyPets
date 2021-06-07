@@ -386,9 +386,9 @@
 		BC4CA473262436EF00C2033C /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
+				BC4CA47A262436EF00C2033C /* UIViewController */,
 				BC4CA474262436EF00C2033C /* UICollectionViewCell */,
 				BC4CA477262436EF00C2033C /* Extensions */,
-				BC4CA47A262436EF00C2033C /* UIViewController */,
 			);
 			path = MainViewController;
 			sourceTree = "<group>";

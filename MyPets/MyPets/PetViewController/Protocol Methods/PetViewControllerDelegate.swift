@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol PetViewControllerDelegate: class {
+protocol PetViewControllerDelegate: AnyObject {
     func showAlertController(title: String,
                              message: String)
     func showDatePicker()
@@ -17,7 +17,7 @@ protocol PetViewControllerDelegate: class {
     func getCellInfo(indexPath: IndexPath, updateInformation: @escaping (IndexPath) -> ())
 }
 
-protocol EntityTransfer: class {
+protocol EntityTransfer: AnyObject {
     func reloadCollectionView()
     func reloadController()
     func loadPets()

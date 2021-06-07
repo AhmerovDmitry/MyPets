@@ -8,7 +8,6 @@
 import UIKit
 
 class MainViewController: UIViewController, GeneralSetupProtocol {
-    
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -56,5 +55,4 @@ class MainViewController: UIViewController, GeneralSetupProtocol {
     
     func presentController() {
     }
-    
 }
