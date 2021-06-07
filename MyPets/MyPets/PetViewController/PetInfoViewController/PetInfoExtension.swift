@@ -62,6 +62,21 @@ extension PetInfoViewController {
     
     func popToRootController() {
         navigationController?.popToRootViewController(animated: true)
+        
+        if !(petEntity == nilEntity) {
+            if collectionItemIndex == nil {
+                delegate?.createEntity(petEntity)
+            } else {
+                if MainPetViewController.shared.tappedDeleteButton {
+                    delegate?.deleteEntity(at: collectionItemIndex!)
+                } else {
+                    delegate?.updateEntity(petEntity, at: collectionItemIndex!)
+                }
+            }
+        }
+        MainPetViewController.shared.tappedDeleteButton = false
+        delegate?.reloadCollectionView()
+        delegate?.reloadController()
     }
 }
 
@@ -133,9 +148,9 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
     }
     
     func showAlertController(title: String,
-                                 message: String) {
-            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            alert.addTextField { textField in
+                             message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addTextField { textField in
                 switch self.indexPath.row {
                 case 0:
                     textField.text = self.petEntity.name
@@ -198,5 +213,4 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
         
         return petInfo
     }
-    
 }
