@@ -12,7 +12,6 @@ class CustomTabBarController: UITabBarController {
     let mainVC = UINavigationController(rootViewController: MainViewController())
     let petVC = UINavigationController(rootViewController: MainPetViewController())
     let locationVC = LocationViewController()
-//    let locationVC = UINavigationController(rootViewController: ProfileViewController()) //Для того чтобы убрать лишние сообщения из консоли!!!
     let profileVC = UINavigationController(rootViewController: ProfileViewController())
     
     var controllers: [UIViewController]?
@@ -46,7 +45,6 @@ class CustomTabBarController: UITabBarController {
         profileVC.tabBarItem.image = UIImage(named: "profileIcon")
     }
     
-    // Else app version is free, show PremiumVC
     func presentPremium(withFlag flag: Bool) {
         if flag {
             DispatchQueue.global().async {

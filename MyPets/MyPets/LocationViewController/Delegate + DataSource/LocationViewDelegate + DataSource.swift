@@ -11,11 +11,11 @@ extension LocationViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let item = models[indexPath.row]
         var itemSize = CGSize()
-        if let buttonText = item.secondProperties {
+        if let buttonText = item.firstProperties {
             itemSize = buttonText.size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14)])
         }
-        
-        return CGSize(width: itemSize.width + 50, height: 50)
+
+        return CGSize(width: itemSize.width + 50, height: collectionView.frame.height / 2)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
