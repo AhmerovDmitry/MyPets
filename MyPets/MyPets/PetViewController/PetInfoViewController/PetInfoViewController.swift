@@ -37,11 +37,18 @@ class PetInfoViewController: UIViewController {
     
     var rightBarButtonFrame = CGRect()
     var rightBarButtonItem = UIBarButtonItem()
+<<<<<<< HEAD
     var leftBarButtonItem = UIBarButtonItem()
     
     let nilEntity = Pet()
     var petEntity = Pet()
     
+=======
+    var createOrChange = Bool()
+    let nilEntity = PetModel()
+    var petEntity = PetModel()
+    var collectionItemIndex = 0
+>>>>>>> parent of 3faaba6 (CoreData update)
     weak var delegate: EntityTransfer?
     
     var collectionItemIndex: Int?
@@ -126,6 +133,12 @@ class PetInfoViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        if petEntity == nilEntity {
+            createOrChange = true
+        } else {
+            createOrChange = false
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -142,10 +155,27 @@ class PetInfoViewController: UIViewController {
         rightBarButtonFrame = fetchRightBarButtonFrame()
         setupEditButtons()
     }
+<<<<<<< HEAD
+=======
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if petEntity != nilEntity {
+            switch createOrChange {
+            case true: delegate?.createEntity(petEntity)
+            case false: delegate?.updateEntity(petEntity, at: collectionItemIndex)
+            }
+        }
+        delegate?.reloadCollectionView()
+        delegate?.reloadController()
+    }
+>>>>>>> parent of 3faaba6 (CoreData update)
 }
 
 extension PetInfoViewController: GeneralSetupProtocol {
     func setupNavigationController() {
+<<<<<<< HEAD
         let baseCameraButton: UIButton = {
             let button = UIButton(type: .system)
             button.setImage(UIImage(named: "cameraIcon"), for: .normal)
@@ -171,6 +201,24 @@ extension PetInfoViewController: GeneralSetupProtocol {
             rightBarButtonItem.customView = baseCameraButton
         } else {
             rightBarButtonItem.customView = baseEditedButton
+=======
+        switch createOrChange {
+        case true:
+            rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "cameraIcon"),
+                                                 style: .done,
+                                                 target: self,
+                                                 action: #selector(presentController))
+        case false:
+            let editedButton: UIButton = {
+                let button = UIButton(type: .system)
+                button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
+                button.tintColor = UIColor.CustomColor.dark
+                button.addTarget(self, action: #selector(showEditButtons), for: .touchUpInside)
+                
+                return button
+            }()
+            rightBarButtonItem.customView = editedButton
+>>>>>>> parent of 3faaba6 (CoreData update)
         }
         
         popToRootButton.addTarget(self, action: #selector(popToRootController), for: .touchUpInside)

@@ -24,6 +24,11 @@ extension PetInfoViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCellPetId", for: indexPath) as! PetViewCollectionCell
+<<<<<<< HEAD:MyPets/MyPets/PetViewController/PetInfoViewController/PetInfoViewDelegate + DataSource.swift
+=======
+        cell.newPetEntity = self.createOrChange
+        cell.tappedEditedButton = self.tappedEditedButton
+>>>>>>> parent of 3faaba6 (CoreData update):MyPets/MyPets/PetViewController/PetInfoViewController/UICollectionView/UICollectionViewCell/PetViewCollectionTableDelegate + DataSource.swift
         cell.titleImage.image = collectionModel[indexPath.item].image
         cell.menuTitleLabel.text = collectionModel[indexPath.item].title
         cell.descLabel.text = collectionModel[indexPath.item].description

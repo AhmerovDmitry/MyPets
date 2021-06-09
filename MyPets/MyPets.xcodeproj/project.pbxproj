@@ -37,8 +37,11 @@
 		BC73964A2542084D00A89858 /* LocationViewDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7396492542084D00A89858 /* LocationViewDelegate + DataSource.swift */; };
 		BC73964D25435F9900A89858 /* LocationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC73964C25435F9900A89858 /* LocationViewCell.swift */; };
 		BC7E9B90257F8242006D75A1 /* ProfileViewDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7E9B8F257F8242006D75A1 /* ProfileViewDelegate + DataSource.swift */; };
+<<<<<<< HEAD
 		BC83CB06260CFA160066A32C /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83CB05260CFA160066A32C /* UIImage.swift */; };
 		BC83CB09260CFA3F0066A32C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83CB08260CFA3F0066A32C /* String.swift */; };
+=======
+>>>>>>> parent of 3faaba6 (CoreData update)
 		BC859AE125B383B000FDD33B /* AboutAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC859AE025B383B000FDD33B /* AboutAppController.swift */; };
 		BC8CDFFF25C6BB85005EEFEB /* SupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8CDFFE25C6BB85005EEFEB /* SupportViewController.swift */; };
 		BC8CE00625C6CBC2005EEFEB /* SupportVCDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8CE00525C6CBC2005EEFEB /* SupportVCDelegate + DataSource.swift */; };
@@ -135,8 +138,11 @@
 		BC7396492542084D00A89858 /* LocationViewDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationViewDelegate + DataSource.swift"; sourceTree = "<group>"; };
 		BC73964C25435F9900A89858 /* LocationViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewCell.swift; sourceTree = "<group>"; };
 		BC7E9B8F257F8242006D75A1 /* ProfileViewDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewDelegate + DataSource.swift"; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		BC83CB05260CFA160066A32C /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		BC83CB08260CFA3F0066A32C /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+=======
+>>>>>>> parent of 3faaba6 (CoreData update)
 		BC859AE025B383B000FDD33B /* AboutAppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppController.swift; sourceTree = "<group>"; };
 		BC8CDFFE25C6BB85005EEFEB /* SupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportViewController.swift; sourceTree = "<group>"; };
 		BC8CE00525C6CBC2005EEFEB /* SupportVCDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SupportVCDelegate + DataSource.swift"; sourceTree = "<group>"; };
@@ -318,9 +324,12 @@
 				BC7073242534A6F600B2979F /* UIButton.swift */,
 				BCE5115425461A23002FB62E /* UIAlertController.swift */,
 				BCB3AA4325AF8CD000289B7A /* UIViewController.swift */,
+<<<<<<< HEAD
 				BC83CB05260CFA160066A32C /* UIImage.swift */,
 				BC83CB08260CFA3F0066A32C /* String.swift */,
 				BC91F2F32627423D006CCE3B /* UserDefaults.swift */,
+=======
+>>>>>>> parent of 3faaba6 (CoreData update)
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -649,6 +658,10 @@
 		BCB60FF62530C82400C4FD2F = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
+=======
+				BC7073272534A9B600B2979F /* Canvas.swift */,
+>>>>>>> parent of 3faaba6 (CoreData update)
 				BCA935C225F0B26500F0A339 /* Models */,
 				BC3DBC3F2530E0040007BDF2 /* Extension */,
 				BC2C33C72536D6BE0092D884 /* Protocol */,
@@ -876,9 +889,12 @@
 				BCBFA54125E6B8D00036C7ED /* MainPetDelegate + DataSource.swift in Sources */,
 				BC48511B2534E51500B874D4 /* PremiumViewControllerDelegate + DataSource.swift in Sources */,
 				BCB3611F2549DD830021AF8B /* PetViewTableDelegate + DataSource.swift in Sources */,
+<<<<<<< HEAD
 				BC9959C526244B48006CE6E1 /* TreatmentVC.swift in Sources */,
 				BC83CB06260CFA160066A32C /* UIImage.swift in Sources */,
 				BC83CB09260CFA3F0066A32C /* String.swift in Sources */,
+=======
+>>>>>>> parent of 3faaba6 (CoreData update)
 				BC7073252534A6F600B2979F /* UIButton.swift in Sources */,
 				BC413CCE25389494002CDD19 /* LocationViewController.swift in Sources */,
 				BC99B0272549A77C00050854 /* PetInfoViewController.swift in Sources */,
@@ -1148,6 +1164,7 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+<<<<<<< HEAD
 
 /* Begin XCVersionGroup section */
 		BC20B1A3267111E200ECFD10 /* PetModel.xcdatamodeld */ = {
@@ -1161,6 +1178,8 @@
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */
+=======
+>>>>>>> parent of 3faaba6 (CoreData update)
 	};
 	rootObject = BCB60FF72530C82400C4FD2F /* Project object */;
 }
