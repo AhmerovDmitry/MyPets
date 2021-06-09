@@ -8,6 +8,7 @@
 import UIKit
 
 class ClinicVC: BaseMenuVC, UITextFieldDelegate {
+<<<<<<< HEAD
     var clinic = Clinic()
     
     let displaySwitch: UISwitch = {
@@ -17,6 +18,10 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
         
         return element
     }()
+=======
+    
+    var clinic = ClinicModel()
+>>>>>>> parent of c7810e9 (Import Realm in Project!!!)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +46,13 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
         if indexPath.row == models.count - 1 {
             cell.accessoryType = .none
             cell.selectionStyle = .none
+            let displaySwitch: UISwitch = {
+                let element = UISwitch()
+                element.translatesAutoresizingMaskIntoConstraints = false
+                element.isOn = false
+                
+                return element
+            }()
             cell.addSubview(displaySwitch)
             
             NSLayoutConstraint.activate([

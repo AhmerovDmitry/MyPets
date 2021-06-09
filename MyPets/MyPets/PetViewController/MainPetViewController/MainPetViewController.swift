@@ -6,22 +6,18 @@
 //
 
 import UIKit
-import RealmSwift
 
 class MainPetViewController: UIViewController, GeneralSetupProtocol {
-    static let shared = MainPetViewController()
     
+    static let shared = MainPetViewController()
     var tappedDeleteButton = false
-
-    let realm = try! Realm()
-    lazy var pets = realm.objects(Pet.self)
-        
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    lazy var petEntitys = [PetEntity]()
     let mainStackView = UIStackView()
     private let mainImage = UIImageView()
     private let titleText = UILabel()
     private let descText = UILabel()
     private let addPetButton = UIButton(type: .system)
-    
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -54,9 +50,9 @@ class MainPetViewController: UIViewController, GeneralSetupProtocol {
         setupConstraints()
         setupElements()
         
-        switch pets.isEmpty {
-        case true: viewWithoutPet()
-        case false: viewWithPet()
+        switch petEntitys.isEmpty {
+        case true: baseViewElements()
+        case false: entityViewElements()
         }
     }
     
@@ -170,4 +166,5 @@ class MainPetViewController: UIViewController, GeneralSetupProtocol {
         addPetButton.layer.cornerRadius = addPetButton.frame.height / 2
         addPetButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
     }
+    
 }
