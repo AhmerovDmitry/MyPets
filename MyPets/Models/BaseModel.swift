@@ -9,3 +9,4 @@ struct BaseModel {
     var firstProperties: String?
     var secondProperties: String?
 }
+//
