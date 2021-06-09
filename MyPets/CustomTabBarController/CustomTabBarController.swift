@@ -8,12 +8,10 @@
 import UIKit
 
 class CustomTabBarController: UITabBarController {
-    
     let mainVC = UINavigationController(rootViewController: MainViewController())
     let petVC = UINavigationController(rootViewController: MainPetViewController())
     let locationVC = LocationViewController()
     let profileVC = UINavigationController(rootViewController: ProfileViewController())
-    
     var controllers: [UIViewController]?
     
     override func viewDidLoad() {
@@ -55,5 +53,4 @@ class CustomTabBarController: UITabBarController {
             }
         }
     }
-    
 }
