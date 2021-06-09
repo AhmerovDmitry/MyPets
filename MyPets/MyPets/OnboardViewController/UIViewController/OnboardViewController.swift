@@ -8,7 +8,6 @@
 import UIKit
 
 class OnboardViewController: UIViewController, GeneralSetupProtocol {
-    
     let models = [
         BaseModel(firstProperties: "onboardImage_1", secondProperties: "Вся информация о питомце всегда под рукой"),
         BaseModel(firstProperties: "onboardImage_2", secondProperties: "Вы не забудете купить корм или сделать прививку"),
@@ -119,5 +118,4 @@ class OnboardViewController: UIViewController, GeneralSetupProtocol {
     }
     
     func setupNavigationController() {}
-    
 }
