@@ -26,11 +26,14 @@
 		BC4CA47E262436EF00C2033C /* MainVC - Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA478262436EF00C2033C /* MainVC - Extensions.swift */; };
 		BC4CA47F262436EF00C2033C /* MainCell - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA479262436EF00C2033C /* MainCell - Extension.swift */; };
 		BC4CA480262436EF00C2033C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA47B262436EF00C2033C /* MainViewController.swift */; };
+<<<<<<< HEAD
 		BC526ADA262AF3EE00B976F8 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC526AD8262AF3EE00B976F8 /* RealmSwift.framework */; };
 		BC526ADB262AF3EE00B976F8 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC526AD8262AF3EE00B976F8 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BC526ADC262AF3EE00B976F8 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC526AD9262AF3EE00B976F8 /* Realm.framework */; };
 		BC526ADD262AF3EE00B976F8 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC526AD9262AF3EE00B976F8 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BC526AE1262CAE9000B976F8 /* CollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC526AE0262CAE9000B976F8 /* CollectionModel.swift */; };
+=======
+>>>>>>> parent of 982fd88 (Install Realm with Carthage)
 		BC67E24325A057F1008BDBBD /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC67E24225A057F1008BDBBD /* UIImageView.swift */; };
 		BC67E24825A0593D008BDBBD /* UserProfileDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC67E24725A0593D008BDBBD /* UserProfileDelegate + DataSource.swift */; };
 		BC7073252534A6F600B2979F /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073242534A6F600B2979F /* UIButton.swift */; };
@@ -92,21 +95,6 @@
 		BCE5115525461A23002FB62E /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE5115425461A23002FB62E /* UIAlertController.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		BC526ADE262AF3EE00B976F8 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				BC526ADD262AF3EE00B976F8 /* Realm.framework in Embed Frameworks */,
-				BC526ADB262AF3EE00B976F8 /* RealmSwift.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		BC03FE3925A32F1C00C81BC5 /* ProfileViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewControllerDelegate.swift; sourceTree = "<group>"; };
 		BC0EE6A2259DE49500BE167D /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
@@ -127,9 +115,12 @@
 		BC4CA478262436EF00C2033C /* MainVC - Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainVC - Extensions.swift"; sourceTree = "<group>"; };
 		BC4CA479262436EF00C2033C /* MainCell - Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainCell - Extension.swift"; sourceTree = "<group>"; };
 		BC4CA47B262436EF00C2033C /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		BC526AD8262AF3EE00B976F8 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		BC526AD9262AF3EE00B976F8 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		BC526AE0262CAE9000B976F8 /* CollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionModel.swift; sourceTree = "<group>"; };
+=======
+>>>>>>> parent of 982fd88 (Install Realm with Carthage)
 		BC67E24225A057F1008BDBBD /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		BC67E24725A0593D008BDBBD /* UserProfileDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfileDelegate + DataSource.swift"; sourceTree = "<group>"; };
 		BC7073242534A6F600B2979F /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
@@ -198,8 +189,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC526ADC262AF3EE00B976F8 /* Realm.framework in Frameworks */,
-				BC526ADA262AF3EE00B976F8 /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,15 +438,6 @@
 			path = "Map Settings";
 			sourceTree = "<group>";
 		};
-		BC526AD7262AF3EE00B976F8 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				BC526AD9262AF3EE00B976F8 /* Realm.framework */,
-				BC526AD8262AF3EE00B976F8 /* RealmSwift.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		BC67E24525A05910008BDBBD /* Delegate + DataSource */ = {
 			isa = PBXGroup;
 			children = (
@@ -661,7 +641,6 @@
 				BC91F2EF2627364E006CCE3B /* FIXIT */,
 				BCB610012530C82400C4FD2F /* MyPets */,
 				BCB610002530C82400C4FD2F /* Products */,
-				BC526AD7262AF3EE00B976F8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -785,8 +764,6 @@
 				BCB60FFB2530C82400C4FD2F /* Sources */,
 				BCB60FFC2530C82400C4FD2F /* Frameworks */,
 				BCB60FFD2530C82400C4FD2F /* Resources */,
-				BC526ADE262AF3EE00B976F8 /* Embed Frameworks */,
-				BC526ADF262AF41000B976F8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -841,6 +818,7 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+<<<<<<< HEAD
 /* Begin PBXShellScriptBuildPhase section */
 		BC526ADF262AF41000B976F8 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -864,6 +842,8 @@
 		};
 /* End PBXShellScriptBuildPhase section */
 
+=======
+>>>>>>> parent of 982fd88 (Install Realm with Carthage)
 /* Begin PBXSourcesBuildPhase section */
 		BCB60FFB2530C82400C4FD2F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1086,10 +1066,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7JDNVBEZLP;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = "MyPets/Assets + LS + Info.plist/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1111,10 +1087,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7JDNVBEZLP;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = "MyPets/Assets + LS + Info.plist/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
