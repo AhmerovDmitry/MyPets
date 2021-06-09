@@ -8,7 +8,6 @@
 import UIKit
 
 extension UIViewController {
-    /// Present premium view controller for pay full app version
     func presentPremiumController(on controller: UIViewController) {
 //        let transition = CATransition()
 //        transition.duration = 0.5

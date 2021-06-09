@@ -8,7 +8,6 @@
 import UIKit
 
 extension UIAlertController {
-    //MARK: - Settings for UIAlertController
     func showAlertForMap(title: String, message: String?, urlForSystemWay url: String?) {
         guard let url = url else { return }
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
