@@ -21,19 +21,11 @@ extension MainPetViewController: UICollectionViewDelegate, UICollectionViewDataS
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "entityCell", for: indexPath) as! EntityCell
         cell.backgroundColor = .white
         cell.layer.cornerRadius = 15
-<<<<<<< HEAD
         cell.imageView.image = pets[indexPath.item].image?.toImage() ?? UIImage(named: "unknownImage")
         cell.nameLabel.text = pets[indexPath.item].name ?? "Кличка не указана"
         cell.breedLabel.text = pets[indexPath.item].breed ?? "Порода не указана"
         cell.ageLabel.text = pets[indexPath.item].birthday ?? "01 янв 1900"
         
-=======
-        cell.imageView.image = petEntitys[indexPath.item].image ?? UIImage(named: "unknownImage")
-        cell.nameLabel.text = petEntitys[indexPath.item].name ?? "Кличка не указана"
-        cell.breedLabel.text = petEntitys[indexPath.item].breed ?? "Порода не указана"
-        cell.ageLabel.text = petEntitys[indexPath.item].birthday ?? "01 янв 1900"
-
->>>>>>> parent of 3faaba6 (CoreData update)
         if cell.imageView.image == UIImage(named: "unknownImage") {
             cell.imageView.contentMode = .scaleAspectFit
         } else {
@@ -59,7 +51,6 @@ extension MainPetViewController: UICollectionViewDelegate, UICollectionViewDataS
         let petInfoVC = PetInfoViewController()
         petInfoVC.hidesBottomBarWhenPushed = true
         petInfoVC.delegate = self
-<<<<<<< HEAD
         petInfoVC.petEntity.image = pets[indexPath.item].image
         petInfoVC.petEntity.name = pets[indexPath.item].name
         petInfoVC.petEntity.kind = pets[indexPath.item].kind
@@ -78,12 +69,6 @@ extension MainPetViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         petInfoVC.collectionItemIndex = indexPath.item
         
-=======
-        petInfoVC.petEntity = petEntitys[indexPath.item]
-        if !petEntitys.isEmpty {
-            petInfoVC.collectionItemIndex = indexPath.item
-        }
->>>>>>> parent of 3faaba6 (CoreData update)
         navigationController?.pushViewController(petInfoVC, animated: true)
     }
     

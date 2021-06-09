@@ -20,12 +20,8 @@ protocol PetViewControllerDelegate: AnyObject {
 protocol EntityTransfer: AnyObject {
     func reloadCollectionView()
     func reloadController()
-<<<<<<< HEAD
     func loadPets()
     func createEntity(_ entity: Pet)
     func updateEntity(_ entity: Pet, at index: Int)
     func deleteEntity(at index: Int)
-=======
-    func updateEntity(_ entity: PetModel, at indexPath: Int)
->>>>>>> parent of 3faaba6 (CoreData update)
 }
