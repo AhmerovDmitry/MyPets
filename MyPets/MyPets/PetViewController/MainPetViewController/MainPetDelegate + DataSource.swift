@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 extension MainPetViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -88,36 +89,71 @@ extension MainPetViewController: EntityTransfer {
     }
     
     func loadPets() {
-        let _ = pets.realm?.objects(Pet.self)
-    }
-    
-    func createEntity(_ entity: Pet) {
+        let fetchRequest: NSFetchRequest<Pet> = PetEntity.fetchRequest()
+        
         do {
-            try realm.write {
-                realm.add(entity)
-            }
+            pets = try context.fetch(fetchRequest).reversed()
         } catch let error {
             print(error.localizedDescription)
         }
     }
     
-    func updateEntity(_ entity: Pet, at index: Int) {
+    func createEntity(_ entity: PetModel) {
+        guard let petEnt = NSEntityDescription.entity(forEntityName: "Pet", in: context) else { return }
+        let pet = PetEntity(entity: petEnt, insertInto: context)
+        pet.image = entity.image?.toString()
+        pet.name = entity.name
+        pet.kind = entity.kind
+        pet.breed = entity.breed
+        pet.birthday = entity.birthday
+        pet.weight = entity.weight
+        pet.sterile = entity.sterile
+        pet.color = entity.color
+        pet.hair = entity.hair
+        pet.chipNumber = entity.chipNumber
+        
         do {
-            try realm.write {
-                realm.delete(pets[index])
-                realm.add(entity)
-            }
+            pets.insert(pet, at: 0)
+            try context.save()
         } catch let error {
+            context.rollback()
+            print(error.localizedDescription)
+        }
+    }
+    
+    func updateEntity(_ entity: PetModel, at indexPath: Int) {
+            guard let petEnt = NSEntityDescription.entity(forEntityName: "Pet", in: context) else { return }
+            let pet = Pet(entity: petEnt, insertInto: context)
+            pet.image = entity.image?.toString()
+            pet.name = entity.name
+            pet.kind = entity.kind
+            pet.breed = entity.breed
+            pet.birthday = entity.birthday
+            pet.weight = entity.weight
+            pet.sterile = entity.sterile
+            pet.color = entity.color
+            pet.hair = entity.hair
+            pet.chipNumber = entity.chipNumber
+            
+            context.delete(pet[indexPath])
+            do {
+                pet.remove(at: indexPath)
+                pet.insert(pet, at: indexPath)
+                try context.save()
+            } catch let error {
+                context.rollback()
             print(error.localizedDescription)
         }
     }
     
     func deleteEntity(at index: Int) {
+        context.delete(pet[index])
         do {
-            try realm.write {
-                realm.delete(pets[index])
-            }
+            try context.save()
+            pet.remove(at: index)
+            collectionView.reloadData()
         } catch let error {
+            context.rollback()
             print(error.localizedDescription)
         }
     }

@@ -5,38 +5,26 @@
 //  Created by Дмитрий Ахмеров on 13.04.2021.
 //
 
-//import UIKit
-//
-//class Clinic: Object {
-//    @objc dynamic var phone: String?
-//    @objc dynamic var address: String?
-//    @objc dynamic var site: String?
-//    @objc dynamic var doctor: String?
-//    @objc dynamic var pet: Pet?
-//}
-
 import Foundation
 import CoreData
 
-@objc(PetClinic)
-public class PetClinic: NSManagedObject {
-
-}
-
-extension PetClinic {
-
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<PetClinic> {
-        return NSFetchRequest<PetClinic>(entityName: "PetClinic")
+struct Clinic: Equatable {
+    var phone: String?
+    var address: String?
+    var site: String?
+    var doctor: String?
+    
+    init(phone: String?, address: String?, site: String?, doctor: String?) {
+        self.phone = phone
+        self.address = address
+        self.site = site
+        self.doctor = doctor
     }
-
-    @NSManaged public var address: String?
-    @NSManaged public var doctor: String?
-    @NSManaged public var phone: String?
-    @NSManaged public var site: String?
-    @NSManaged public var pet: Pet?
-
-}
-
-extension PetClinic : Identifiable {
-
+    
+    init() {
+        phone = nil
+        address = nil
+        site = nil
+        doctor = nil
+    }
 }
