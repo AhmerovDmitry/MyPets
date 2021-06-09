@@ -26,10 +26,6 @@
 		BC4CA47E262436EF00C2033C /* MainVC - Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA478262436EF00C2033C /* MainVC - Extensions.swift */; };
 		BC4CA47F262436EF00C2033C /* MainCell - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA479262436EF00C2033C /* MainCell - Extension.swift */; };
 		BC4CA480262436EF00C2033C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA47B262436EF00C2033C /* MainViewController.swift */; };
-		BC526ADA262AF3EE00B976F8 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC526AD8262AF3EE00B976F8 /* RealmSwift.framework */; };
-		BC526ADB262AF3EE00B976F8 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC526AD8262AF3EE00B976F8 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BC526ADC262AF3EE00B976F8 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC526AD9262AF3EE00B976F8 /* Realm.framework */; };
-		BC526ADD262AF3EE00B976F8 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC526AD9262AF3EE00B976F8 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BC526AE1262CAE9000B976F8 /* CollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC526AE0262CAE9000B976F8 /* CollectionModel.swift */; };
 		BC67E24325A057F1008BDBBD /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC67E24225A057F1008BDBBD /* UIImageView.swift */; };
 		BC67E24825A0593D008BDBBD /* UserProfileDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC67E24725A0593D008BDBBD /* UserProfileDelegate + DataSource.swift */; };
@@ -99,8 +95,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				BC526ADD262AF3EE00B976F8 /* Realm.framework in Embed Frameworks */,
-				BC526ADB262AF3EE00B976F8 /* RealmSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,8 +192,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC526ADC262AF3EE00B976F8 /* Realm.framework in Frameworks */,
-				BC526ADA262AF3EE00B976F8 /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -860,7 +852,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+			shellScript = "
+";
 		};
 /* End PBXShellScriptBuildPhase section */
 

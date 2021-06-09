@@ -6,15 +6,11 @@
 //
 
 import UIKit
-import RealmSwift
 
 class MainPetViewController: UIViewController, GeneralSetupProtocol {
     static let shared = MainPetViewController()
     
     var tappedDeleteButton = false
-
-    let realm = try! Realm()
-    lazy var pets = realm.objects(Pet.self)
         
     let mainStackView = UIStackView()
     private let mainImage = UIImageView()
