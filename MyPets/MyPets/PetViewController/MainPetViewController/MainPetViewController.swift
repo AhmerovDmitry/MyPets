@@ -34,8 +34,12 @@ class MainPetViewController: UIViewController, GeneralSetupProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+<<<<<<< HEAD
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
+=======
 //TODO: - Realm path
 //        print(Realm.Configuration.defaultConfiguration.fileURL!)
+>>>>>>> Demo
         view.backgroundColor = .white
         
         collectionView.delegate = self
