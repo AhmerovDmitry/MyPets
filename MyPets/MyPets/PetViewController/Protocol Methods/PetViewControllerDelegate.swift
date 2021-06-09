@@ -19,9 +19,9 @@ protocol PetViewControllerDelegate: AnyObject {
 
 protocol EntityTransfer: AnyObject {
     func reloadCollectionView()
-    func createEntity(_ entity: PetModel)
     func reloadController()
-    func updateEntity(_ entity: PetModel, at indexPath: Int)
     func loadPets()
+    func createEntity(_ entity: Pet)
+    func updateEntity(_ entity: Pet, at index: Int)
     func deleteEntity(at index: Int)
 }

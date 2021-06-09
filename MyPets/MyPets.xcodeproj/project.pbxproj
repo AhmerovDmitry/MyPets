@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -26,14 +26,7 @@
 		BC4CA47E262436EF00C2033C /* MainVC - Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA478262436EF00C2033C /* MainVC - Extensions.swift */; };
 		BC4CA47F262436EF00C2033C /* MainCell - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA479262436EF00C2033C /* MainCell - Extension.swift */; };
 		BC4CA480262436EF00C2033C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA47B262436EF00C2033C /* MainViewController.swift */; };
-<<<<<<< HEAD
 		BC526AE1262CAE9000B976F8 /* CollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC526AE0262CAE9000B976F8 /* CollectionModel.swift */; };
-=======
-		BC526ADA262AF3EE00B976F8 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC526AD8262AF3EE00B976F8 /* RealmSwift.framework */; };
-		BC526ADB262AF3EE00B976F8 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC526AD8262AF3EE00B976F8 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BC526ADC262AF3EE00B976F8 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC526AD9262AF3EE00B976F8 /* Realm.framework */; };
-		BC526ADD262AF3EE00B976F8 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC526AD9262AF3EE00B976F8 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
->>>>>>> parent of c7810e9 (Import Realm in Project!!!)
 		BC67E24325A057F1008BDBBD /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC67E24225A057F1008BDBBD /* UIImageView.swift */; };
 		BC67E24825A0593D008BDBBD /* UserProfileDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC67E24725A0593D008BDBBD /* UserProfileDelegate + DataSource.swift */; };
 		BC7073252534A6F600B2979F /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073242534A6F600B2979F /* UIButton.swift */; };
@@ -43,7 +36,6 @@
 		BC73964A2542084D00A89858 /* LocationViewDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7396492542084D00A89858 /* LocationViewDelegate + DataSource.swift */; };
 		BC73964D25435F9900A89858 /* LocationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC73964C25435F9900A89858 /* LocationViewCell.swift */; };
 		BC7E9B90257F8242006D75A1 /* ProfileViewDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7E9B8F257F8242006D75A1 /* ProfileViewDelegate + DataSource.swift */; };
-		BC83CB02260B565F0066A32C /* PetCoreDataEntity.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BC83CB00260B565F0066A32C /* PetCoreDataEntity.xcdatamodeld */; };
 		BC83CB06260CFA160066A32C /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83CB05260CFA160066A32C /* UIImage.swift */; };
 		BC83CB09260CFA3F0066A32C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC83CB08260CFA3F0066A32C /* String.swift */; };
 		BC859AE125B383B000FDD33B /* AboutAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC859AE025B383B000FDD33B /* AboutAppController.swift */; };
@@ -52,10 +44,6 @@
 		BC8CE00925C6CBF6005EEFEB /* SupportVC - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8CE00825C6CBF6005EEFEB /* SupportVC - Extension.swift */; };
 		BC8E9F5425A324DE00403505 /* @objc UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8E9F5325A324DE00403505 /* @objc UserProfileController.swift */; };
 		BC8E9F5825A3261D00403505 /* UIImagePickerControllerDelegateForUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8E9F5725A3261D00403505 /* UIImagePickerControllerDelegateForUserProfile.swift */; };
-		BC91F2E826271707006CCE3B /* PetClinic+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91F2E426271707006CCE3B /* PetClinic+CoreDataClass.swift */; };
-		BC91F2E926271707006CCE3B /* PetClinic+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91F2E526271707006CCE3B /* PetClinic+CoreDataProperties.swift */; };
-		BC91F2EA26271707006CCE3B /* PetEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91F2E626271707006CCE3B /* PetEntity+CoreDataClass.swift */; };
-		BC91F2EB26271707006CCE3B /* PetEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91F2E726271707006CCE3B /* PetEntity+CoreDataProperties.swift */; };
 		BC91F2F42627423D006CCE3B /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91F2F32627423D006CCE3B /* UserDefaults.swift */; };
 		BC9357F125335D3100C6C390 /* OnboardViewControllerDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9357F025335D3100C6C390 /* OnboardViewControllerDelegate + DataSource.swift */; };
 		BC9357F425335DFA00C6C390 /* OnboardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9357F325335DFA00C6C390 /* OnboardViewCell.swift */; };
@@ -67,10 +55,10 @@
 		BC9959C926244B76006CE6E1 /* VaccinationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9959C826244B76006CE6E1 /* VaccinationVC.swift */; };
 		BC9959CC26244BA2006CE6E1 /* DiseasesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9959CB26244BA2006CE6E1 /* DiseasesVC.swift */; };
 		BC9959E626247049006CE6E1 /* BaseMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9959E526247049006CE6E1 /* BaseMenuVC.swift */; };
-		BC9959EC26258FE9006CE6E1 /* ClinicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9959EB26258FE9006CE6E1 /* ClinicModel.swift */; };
-		BC99B01A2549A50D00050854 /* PetViewCollectionTableDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99B0192549A50D00050854 /* PetViewCollectionTableDelegate + DataSource.swift */; };
+		BC9959EC26258FE9006CE6E1 /* Clinic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9959EB26258FE9006CE6E1 /* Clinic.swift */; };
+		BC99B01A2549A50D00050854 /* PetInfoViewDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99B0192549A50D00050854 /* PetInfoViewDelegate + DataSource.swift */; };
 		BC99B01F2549A53700050854 /* PetViewCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99B01E2549A53700050854 /* PetViewCollectionCell.swift */; };
-		BC99B0232549A55E00050854 /* PetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99B0222549A55E00050854 /* PetModel.swift */; };
+		BC99B0232549A55E00050854 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99B0222549A55E00050854 /* Pet.swift */; };
 		BC99B0272549A77C00050854 /* PetInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99B0262549A77C00050854 /* PetInfoViewController.swift */; };
 		BC99B02B2549A80700050854 /* MainPetNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99B02A2549A80700050854 /* MainPetNavigation.swift */; };
 		BCA5B27B2533A29B00A7B15B /* @objc OnboardViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA5B27A2533A29B00A7B15B /* @objc OnboardViewControllerExtension.swift */; };
@@ -135,6 +123,7 @@
 		BC4CA47B262436EF00C2033C /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BC526AD8262AF3EE00B976F8 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		BC526AD9262AF3EE00B976F8 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		BC526AE0262CAE9000B976F8 /* CollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionModel.swift; sourceTree = "<group>"; };
 		BC67E24225A057F1008BDBBD /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		BC67E24725A0593D008BDBBD /* UserProfileDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfileDelegate + DataSource.swift"; sourceTree = "<group>"; };
 		BC7073242534A6F600B2979F /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
@@ -144,7 +133,6 @@
 		BC7396492542084D00A89858 /* LocationViewDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationViewDelegate + DataSource.swift"; sourceTree = "<group>"; };
 		BC73964C25435F9900A89858 /* LocationViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewCell.swift; sourceTree = "<group>"; };
 		BC7E9B8F257F8242006D75A1 /* ProfileViewDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewDelegate + DataSource.swift"; sourceTree = "<group>"; };
-		BC83CB01260B565F0066A32C /* PetCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PetCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		BC83CB05260CFA160066A32C /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		BC83CB08260CFA3F0066A32C /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		BC859AE025B383B000FDD33B /* AboutAppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppController.swift; sourceTree = "<group>"; };
@@ -153,10 +141,6 @@
 		BC8CE00825C6CBF6005EEFEB /* SupportVC - Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SupportVC - Extension.swift"; sourceTree = "<group>"; };
 		BC8E9F5325A324DE00403505 /* @objc UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "@objc UserProfileController.swift"; sourceTree = "<group>"; };
 		BC8E9F5725A3261D00403505 /* UIImagePickerControllerDelegateForUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImagePickerControllerDelegateForUserProfile.swift; sourceTree = "<group>"; };
-		BC91F2E426271707006CCE3B /* PetClinic+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PetClinic+CoreDataClass.swift"; sourceTree = "<group>"; };
-		BC91F2E526271707006CCE3B /* PetClinic+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PetClinic+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		BC91F2E626271707006CCE3B /* PetEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PetEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
-		BC91F2E726271707006CCE3B /* PetEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PetEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BC91F2F32627423D006CCE3B /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		BC9357F025335D3100C6C390 /* OnboardViewControllerDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardViewControllerDelegate + DataSource.swift"; sourceTree = "<group>"; };
 		BC9357F325335DFA00C6C390 /* OnboardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewCell.swift; sourceTree = "<group>"; };
@@ -168,10 +152,10 @@
 		BC9959C826244B76006CE6E1 /* VaccinationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinationVC.swift; sourceTree = "<group>"; };
 		BC9959CB26244BA2006CE6E1 /* DiseasesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseasesVC.swift; sourceTree = "<group>"; };
 		BC9959E526247049006CE6E1 /* BaseMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMenuVC.swift; sourceTree = "<group>"; };
-		BC9959EB26258FE9006CE6E1 /* ClinicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicModel.swift; sourceTree = "<group>"; };
-		BC99B0192549A50D00050854 /* PetViewCollectionTableDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PetViewCollectionTableDelegate + DataSource.swift"; sourceTree = "<group>"; };
+		BC9959EB26258FE9006CE6E1 /* Clinic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clinic.swift; sourceTree = "<group>"; };
+		BC99B0192549A50D00050854 /* PetInfoViewDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PetInfoViewDelegate + DataSource.swift"; sourceTree = "<group>"; };
 		BC99B01E2549A53700050854 /* PetViewCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetViewCollectionCell.swift; sourceTree = "<group>"; };
-		BC99B0222549A55E00050854 /* PetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetModel.swift; sourceTree = "<group>"; };
+		BC99B0222549A55E00050854 /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
 		BC99B0262549A77C00050854 /* PetInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoViewController.swift; sourceTree = "<group>"; };
 		BC99B02A2549A80700050854 /* MainPetNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPetNavigation.swift; sourceTree = "<group>"; };
 		BCA5B27A2533A29B00A7B15B /* @objc OnboardViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "@objc OnboardViewControllerExtension.swift"; sourceTree = "<group>"; };
@@ -521,6 +505,7 @@
 			children = (
 				BC99B0262549A77C00050854 /* PetInfoViewController.swift */,
 				BC73002925723C460010F161 /* PetInfoExtension.swift */,
+				BC99B0192549A50D00050854 /* PetInfoViewDelegate + DataSource.swift */,
 				BC73002F25723F9A0010F161 /* UICollectionView */,
 			);
 			path = PetInfoViewController;
@@ -549,18 +534,6 @@
 				BC413CD0253894D1002CDD19 /* ProfileViewController.swift */,
 			);
 			path = UIViewController;
-			sourceTree = "<group>";
-		};
-		BC83CAFF260B56310066A32C /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				BC83CB00260B565F0066A32C /* PetCoreDataEntity.xcdatamodeld */,
-				BC91F2E626271707006CCE3B /* PetEntity+CoreDataClass.swift */,
-				BC91F2E426271707006CCE3B /* PetClinic+CoreDataClass.swift */,
-				BC91F2E726271707006CCE3B /* PetEntity+CoreDataProperties.swift */,
-				BC91F2E526271707006CCE3B /* PetClinic+CoreDataProperties.swift */,
-			);
-			path = CoreData;
 			sourceTree = "<group>";
 		};
 		BC859ADF25B3838600FDD33B /* AboutAppController */ = {
@@ -628,7 +601,6 @@
 		BC99B01D2549A51F00050854 /* UICollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				BC99B0192549A50D00050854 /* PetViewCollectionTableDelegate + DataSource.swift */,
 				BC99B01E2549A53700050854 /* PetViewCollectionCell.swift */,
 			);
 			path = UICollectionViewCell;
@@ -646,8 +618,9 @@
 			isa = PBXGroup;
 			children = (
 				BC935821253395F700C6C390 /* BaseModel.swift */,
-				BC99B0222549A55E00050854 /* PetModel.swift */,
-				BC9959EB26258FE9006CE6E1 /* ClinicModel.swift */,
+				BC526AE0262CAE9000B976F8 /* CollectionModel.swift */,
+				BC99B0222549A55E00050854 /* Pet.swift */,
+				BC9959EB26258FE9006CE6E1 /* Clinic.swift */,
 				BC97F2BF25A0652900267E34 /* UserProfileModel.swift */,
 			);
 			path = Models;
@@ -673,11 +646,6 @@
 		BCB60FF62530C82400C4FD2F = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-=======
-				BC7073272534A9B600B2979F /* Canvas.swift */,
-				BC83CAFF260B56310066A32C /* CoreData */,
->>>>>>> parent of c7810e9 (Import Realm in Project!!!)
 				BCA935C225F0B26500F0A339 /* Models */,
 				BC3DBC3F2530E0040007BDF2 /* Extension */,
 				BC2C33C72536D6BE0092D884 /* Protocol */,
@@ -868,20 +836,21 @@
 /* Begin PBXShellScriptBuildPhase section */
 		BC526ADF262AF41000B976F8 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			alwaysOutOfDate = 1;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework\n",
-				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework\n\n",
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework\n",
 			);
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "
 ";
@@ -894,7 +863,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC2C33C92536D6E00092D884 /* GeneralSetupProtocol.swift in Sources */,
-				BC91F2EB26271707006CCE3B /* PetEntity+CoreDataProperties.swift in Sources */,
 				BCBFA53D25E2DD140036C7ED /* EntityCell.swift in Sources */,
 				BC8E9F5425A324DE00403505 /* @objc UserProfileController.swift in Sources */,
 				BC7073322534BA3800B2979F /* UIView.swift in Sources */,
@@ -915,8 +883,6 @@
 				BC8CDFFF25C6BB85005EEFEB /* SupportViewController.swift in Sources */,
 				BC3DBC3D2530DFFF0007BDF2 /* UIColor.swift in Sources */,
 				BC9357F425335DFA00C6C390 /* OnboardViewCell.swift in Sources */,
-				BC83CB02260B565F0066A32C /* PetCoreDataEntity.xcdatamodeld in Sources */,
-				BC91F2E926271707006CCE3B /* PetClinic+CoreDataProperties.swift in Sources */,
 				BCD83D3625F2A8C000F04EF3 /* EntertainmentDelegate + DataSource.swift in Sources */,
 				BC4CA47C262436EF00C2033C /* MainCollectionCell.swift in Sources */,
 				BC91F2F42627423D006CCE3B /* UserDefaults.swift in Sources */,
@@ -931,28 +897,27 @@
 				BCB3AA4125AF791B00289B7A /* @objc ProfileViewController.swift in Sources */,
 				BCD83D3025F2A72B00F04EF3 /* FoodDelegate + DataSource.swift in Sources */,
 				BC4CA47E262436EF00C2033C /* MainVC - Extensions.swift in Sources */,
+				BC526AE1262CAE9000B976F8 /* CollectionModel.swift in Sources */,
 				BC67E24825A0593D008BDBBD /* UserProfileDelegate + DataSource.swift in Sources */,
 				BC18E519254DAA6C0014B7DF /* PetViewControllerDelegate.swift in Sources */,
-				BC99B0232549A55E00050854 /* PetModel.swift in Sources */,
+				BC99B0232549A55E00050854 /* Pet.swift in Sources */,
 				BCA5B27B2533A29B00A7B15B /* @objc OnboardViewControllerExtension.swift in Sources */,
 				BC73964D25435F9900A89858 /* LocationViewCell.swift in Sources */,
 				BC99B01F2549A53700050854 /* PetViewCollectionCell.swift in Sources */,
 				BC73964A2542084D00A89858 /* LocationViewDelegate + DataSource.swift in Sources */,
 				BCE5115525461A23002FB62E /* UIAlertController.swift in Sources */,
-				BC9959EC26258FE9006CE6E1 /* ClinicModel.swift in Sources */,
+				BC9959EC26258FE9006CE6E1 /* Clinic.swift in Sources */,
 				BC97F2C025A0652900267E34 /* UserProfileModel.swift in Sources */,
 				BC9959C926244B76006CE6E1 /* VaccinationVC.swift in Sources */,
 				BCD83D2625F2906600F04EF3 /* CareController.swift in Sources */,
 				BC4CA47D262436EF00C2033C /* BottomMenuCell.swift in Sources */,
 				BC70732E2534AEC800B2979F /* PremiumViewController.swift in Sources */,
-				BC91F2EA26271707006CCE3B /* PetEntity+CoreDataClass.swift in Sources */,
 				BC67E24325A057F1008BDBBD /* UIImageView.swift in Sources */,
 				BC3C7C772532F56B00209C51 /* OnboardViewController.swift in Sources */,
 				BCD83D2325F2903600F04EF3 /* FoodController.swift in Sources */,
 				BC99B02B2549A80700050854 /* MainPetNavigation.swift in Sources */,
 				BC2C33CF2536D83F0092D884 /* @objc PremiumViewControllerExtension.swift in Sources */,
 				BC4CA480262436EF00C2033C /* MainViewController.swift in Sources */,
-				BC91F2E826271707006CCE3B /* PetClinic+CoreDataClass.swift in Sources */,
 				BC413CCA253893F7002CDD19 /* MainPetViewController.swift in Sources */,
 				BC03FE3A25A32F1C00C81BC5 /* ProfileViewControllerDelegate.swift in Sources */,
 				BCD83D1425F20E7E00F04EF3 /* HealthDelegate + DataSource.swift in Sources */,
@@ -967,7 +932,7 @@
 				BC4CA47F262436EF00C2033C /* MainCell - Extension.swift in Sources */,
 				BCB3AA4425AF8CD000289B7A /* UIViewController.swift in Sources */,
 				BC9959E626247049006CE6E1 /* BaseMenuVC.swift in Sources */,
-				BC99B01A2549A50D00050854 /* PetViewCollectionTableDelegate + DataSource.swift in Sources */,
+				BC99B01A2549A50D00050854 /* PetInfoViewDelegate + DataSource.swift in Sources */,
 				BC935822253395F800C6C390 /* BaseModel.swift in Sources */,
 				BCD83D1125F20C1300F04EF3 /* HealthController.swift in Sources */,
 				BCD83D2025F2900B00F04EF3 /* DocumentController.swift in Sources */,
@@ -1128,6 +1093,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_WORKSPACE = NO;
 			};
 			name = Debug;
 		};
@@ -1152,6 +1118,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_WORKSPACE = NO;
 			};
 			name = Release;
 		};
@@ -1177,19 +1144,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		BC83CB00260B565F0066A32C /* PetCoreDataEntity.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				BC83CB01260B565F0066A32C /* PetCoreDataModel.xcdatamodel */,
-			);
-			currentVersion = BC83CB01260B565F0066A32C /* PetCoreDataModel.xcdatamodel */;
-			path = PetCoreDataEntity.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = BCB60FF72530C82400C4FD2F /* Project object */;
 }
