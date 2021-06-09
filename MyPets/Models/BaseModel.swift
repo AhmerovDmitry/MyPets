@@ -9,4 +9,3 @@ struct BaseModel {
     var firstProperties: String?
     var secondProperties: String?
 }
-// это коммент для теста
