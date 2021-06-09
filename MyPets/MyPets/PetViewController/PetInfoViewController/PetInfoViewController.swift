@@ -8,6 +8,7 @@
 import UIKit
 
 class PetInfoViewController: UIViewController {
+    
     var showEditedButtons = false {
         didSet {
             if showEditedButtons {
@@ -34,13 +35,12 @@ class PetInfoViewController: UIViewController {
             }
         }
     }
-    
     var rightBarButtonFrame = CGRect()
     var rightBarButtonItem = UIBarButtonItem()
     var leftBarButtonItem = UIBarButtonItem()
     
-    let nilEntity = Pet()
-    var petEntity = Pet()
+    let nilEntity = PetModel()
+    var petEntity = PetModel()
     
     weak var delegate: EntityTransfer?
     
@@ -142,6 +142,27 @@ class PetInfoViewController: UIViewController {
         rightBarButtonFrame = fetchRightBarButtonFrame()
         setupEditButtons()
     }
+<<<<<<< HEAD
+=======
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if petEntity != nilEntity {
+            if collectionItemIndex == nil {
+                delegate?.createEntity(petEntity)
+            } else {
+                if MainPetViewController.shared.tappedDeleteButton {
+                    delegate?.deleteEntity(at: collectionItemIndex!)
+                } else {
+                    delegate?.updateEntity(petEntity, at: collectionItemIndex!)
+                }
+            }
+        }
+        MainPetViewController.shared.tappedDeleteButton = false
+        delegate?.reloadCollectionView()
+        delegate?.reloadController()
+    }
+>>>>>>> parent of c7810e9 (Import Realm in Project!!!)
 }
 
 extension PetInfoViewController: GeneralSetupProtocol {
@@ -166,7 +187,7 @@ extension PetInfoViewController: GeneralSetupProtocol {
             
             return button
         }()
-                
+        
         if petEntity == nilEntity {
             rightBarButtonItem.customView = baseCameraButton
         } else {
@@ -232,7 +253,7 @@ extension PetInfoViewController: GeneralSetupProtocol {
             $0.translatesAutoresizingMaskIntoConstraints = false
          }
         
-        titleImage.image = petEntity.image?.toImage() ?? UIImage()
+        titleImage.image = petEntity.image ?? UIImage()
         titleImage.contentMode = .scaleAspectFill
         titleImage.backgroundColor = .white
         titleImage.clipsToBounds = true
