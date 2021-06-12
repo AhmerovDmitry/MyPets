@@ -6,15 +6,14 @@
 //
 
 import UIKit
-import RealmSwift
 
 class MainPetViewController: UIViewController, GeneralSetupProtocol {
     static let shared = MainPetViewController()
     
     var tappedDeleteButton = false
-
-    let realm = try! Realm()
-    lazy var pets = realm.objects(Pet.self)
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    lazy var pets = [Pet]()
         
     let mainStackView = UIStackView()
     private let mainImage = UIImageView()
@@ -38,8 +37,6 @@ class MainPetViewController: UIViewController, GeneralSetupProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//TODO: - Realm path
-//        print(Realm.Configuration.defaultConfiguration.fileURL!)
         view.backgroundColor = .white
         
         collectionView.delegate = self

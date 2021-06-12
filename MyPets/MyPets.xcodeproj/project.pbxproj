@@ -10,6 +10,7 @@
 		BC03FE3A25A32F1C00C81BC5 /* ProfileViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC03FE3925A32F1C00C81BC5 /* ProfileViewControllerDelegate.swift */; };
 		BC0EE6A3259DE49500BE167D /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0EE6A2259DE49500BE167D /* UserProfileViewController.swift */; };
 		BC18E519254DAA6C0014B7DF /* PetViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC18E518254DAA6C0014B7DF /* PetViewControllerDelegate.swift */; };
+		BC20B1A5267111E200ECFD10 /* PetModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BC20B1A3267111E200ECFD10 /* PetModel.xcdatamodeld */; };
 		BC2C33C92536D6E00092D884 /* GeneralSetupProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2C33C82536D6E00092D884 /* GeneralSetupProtocol.swift */; };
 		BC2C33CF2536D83F0092D884 /* @objc PremiumViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2C33CE2536D83F0092D884 /* @objc PremiumViewControllerExtension.swift */; };
 		BC3C7C772532F56B00209C51 /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3C7C762532F56B00209C51 /* OnboardViewController.swift */; };
@@ -26,10 +27,6 @@
 		BC4CA47E262436EF00C2033C /* MainVC - Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA478262436EF00C2033C /* MainVC - Extensions.swift */; };
 		BC4CA47F262436EF00C2033C /* MainCell - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA479262436EF00C2033C /* MainCell - Extension.swift */; };
 		BC4CA480262436EF00C2033C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA47B262436EF00C2033C /* MainViewController.swift */; };
-		BC526ADA262AF3EE00B976F8 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC526AD8262AF3EE00B976F8 /* RealmSwift.framework */; };
-		BC526ADB262AF3EE00B976F8 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC526AD8262AF3EE00B976F8 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BC526ADC262AF3EE00B976F8 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC526AD9262AF3EE00B976F8 /* Realm.framework */; };
-		BC526ADD262AF3EE00B976F8 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC526AD9262AF3EE00B976F8 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BC526AE1262CAE9000B976F8 /* CollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC526AE0262CAE9000B976F8 /* CollectionModel.swift */; };
 		BC67E24325A057F1008BDBBD /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC67E24225A057F1008BDBBD /* UIImageView.swift */; };
 		BC67E24825A0593D008BDBBD /* UserProfileDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC67E24725A0593D008BDBBD /* UserProfileDelegate + DataSource.swift */; };
@@ -99,8 +96,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				BC526ADD262AF3EE00B976F8 /* Realm.framework in Embed Frameworks */,
-				BC526ADB262AF3EE00B976F8 /* RealmSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -111,6 +106,7 @@
 		BC03FE3925A32F1C00C81BC5 /* ProfileViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewControllerDelegate.swift; sourceTree = "<group>"; };
 		BC0EE6A2259DE49500BE167D /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		BC18E518254DAA6C0014B7DF /* PetViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetViewControllerDelegate.swift; sourceTree = "<group>"; };
+		BC20B1A4267111E200ECFD10 /* PetModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PetModel.xcdatamodel; sourceTree = "<group>"; };
 		BC2C33C82536D6E00092D884 /* GeneralSetupProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSetupProtocol.swift; sourceTree = "<group>"; };
 		BC2C33CE2536D83F0092D884 /* @objc PremiumViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "@objc PremiumViewControllerExtension.swift"; sourceTree = "<group>"; };
 		BC3C7C762532F56B00209C51 /* OnboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
@@ -198,8 +194,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC526ADC262AF3EE00B976F8 /* Realm.framework in Frameworks */,
-				BC526ADA262AF3EE00B976F8 /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,6 +624,7 @@
 				BC99B0222549A55E00050854 /* Pet.swift */,
 				BC9959EB26258FE9006CE6E1 /* Clinic.swift */,
 				BC97F2BF25A0652900267E34 /* UserProfileModel.swift */,
+				BC20B1A3267111E200ECFD10 /* PetModel.xcdatamodeld */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -860,7 +855,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+			shellScript = "
+";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -936,6 +932,7 @@
 				BCB610032530C82400C4FD2F /* AppDelegate.swift in Sources */,
 				BC9357F125335D3100C6C390 /* OnboardViewControllerDelegate + DataSource.swift in Sources */,
 				BC469CA125AA4BCB00449E3C /* ProfileViewCell.swift in Sources */,
+				BC20B1A5267111E200ECFD10 /* PetModel.xcdatamodeld in Sources */,
 				BC4CA47F262436EF00C2033C /* MainCell - Extension.swift in Sources */,
 				BCB3AA4425AF8CD000289B7A /* UIViewController.swift in Sources */,
 				BC9959E626247049006CE6E1 /* BaseMenuVC.swift in Sources */,
@@ -1151,6 +1148,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BC20B1A3267111E200ECFD10 /* PetModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BC20B1A4267111E200ECFD10 /* PetModel.xcdatamodel */,
+			);
+			currentVersion = BC20B1A4267111E200ECFD10 /* PetModel.xcdatamodel */;
+			path = PetModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BCB60FF72530C82400C4FD2F /* Project object */;
 }
