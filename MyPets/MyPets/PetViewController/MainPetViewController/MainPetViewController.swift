@@ -13,7 +13,7 @@ class MainPetViewController: UIViewController, GeneralSetupProtocol {
     var tappedDeleteButton = false
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    lazy var pets = [Pet]()
+    lazy var pets = [PetEntity]()
         
     let mainStackView = UIStackView()
     private let mainImage = UIImageView()
