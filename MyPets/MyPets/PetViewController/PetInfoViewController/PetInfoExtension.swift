@@ -25,7 +25,7 @@ extension PetInfoViewController {
     func editPetInfo() {}
     
     func deletePet() {
-        MainPetViewController.shared.tappedDeleteButton = true
+        delegate?.deleteEntity(at: collectionItemIndex!)
         navigationController?.popToRootViewController(animated: true)
     }
     
@@ -67,14 +67,15 @@ extension PetInfoViewController {
             if collectionItemIndex == nil {
                 delegate?.createEntity(petEntity)
             } else {
-                if MainPetViewController.shared.tappedDeleteButton {
-                    delegate?.deleteEntity(at: collectionItemIndex!)
-                } else {
+                if !(petEntity == nilEntity) {
                     delegate?.updateEntity(petEntity, at: collectionItemIndex!)
                 }
             }
+        } else {
+            if collectionItemIndex != nil {
+                delegate?.deleteEntity(at: collectionItemIndex!)
+            }
         }
-        MainPetViewController.shared.tappedDeleteButton = false
         delegate?.reloadCollectionView()
         delegate?.reloadController()
     }
@@ -115,7 +116,6 @@ extension PetInfoViewController: UIImagePickerControllerDelegate, UINavigationCo
             let rect = barView.convert(barFrame, to: view)
             frame = rect
         }
-        
         return frame
     }
 }
@@ -210,7 +210,6 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
         }
     
     func petInfoForModel() -> String? {
-        
         return petInfo
     }
 }

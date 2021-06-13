@@ -10,8 +10,6 @@ import UIKit
 class MainPetViewController: UIViewController, GeneralSetupProtocol {
     static let shared = MainPetViewController()
     
-    var tappedDeleteButton = false
-    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     lazy var pets = [PetEntity]()
         
