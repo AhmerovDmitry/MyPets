@@ -99,7 +99,7 @@ extension MainPetViewController: EntityTransfer {
     }
     
     func createEntity(_ entity: Pet) {
-        guard let petEnt = NSEntityDescription.entity(forEntityName: "Pet", in: context) else { return }
+        guard let petEnt = NSEntityDescription.entity(forEntityName: "PetEntity", in: context) else { return }
         let pet = PetEntity(entity: petEnt, insertInto: context)
         pet.image = entity.image?.toString()
         pet.name = entity.name
@@ -122,7 +122,7 @@ extension MainPetViewController: EntityTransfer {
     }
     
     func updateEntity(_ entity: Pet, at indexPath: Int) {
-            guard let petEnt = NSEntityDescription.entity(forEntityName: "Pet", in: context) else { return }
+            guard let petEnt = NSEntityDescription.entity(forEntityName: "PetEntity", in: context) else { return }
             let pet = PetEntity(entity: petEnt, insertInto: context)
             pet.image = entity.image?.toString()
             pet.name = entity.name
