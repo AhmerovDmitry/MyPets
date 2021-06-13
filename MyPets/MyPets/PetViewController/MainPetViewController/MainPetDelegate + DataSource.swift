@@ -51,7 +51,7 @@ extension MainPetViewController: UICollectionViewDelegate, UICollectionViewDataS
         let petInfoVC = PetInfoViewController()
         petInfoVC.hidesBottomBarWhenPushed = true
         petInfoVC.delegate = self
-        petInfoVC.petEntity.image = pets[indexPath.item].image
+        petInfoVC.petEntity.image = pets[indexPath.item].image?.toImage()
         petInfoVC.petEntity.name = pets[indexPath.item].name
         petInfoVC.petEntity.kind = pets[indexPath.item].kind
         petInfoVC.petEntity.breed = pets[indexPath.item].breed
@@ -62,10 +62,10 @@ extension MainPetViewController: UICollectionViewDelegate, UICollectionViewDataS
         petInfoVC.petEntity.hair = pets[indexPath.item].hair
         petInfoVC.petEntity.chipNumber = pets[indexPath.item].chipNumber
         
-        petInfoVC.petEntity.clinic?.phone = pets[indexPath.item].clinic?.phone
-        petInfoVC.petEntity.clinic?.address = pets[indexPath.item].clinic?.address
-        petInfoVC.petEntity.clinic?.site = pets[indexPath.item].clinic?.site
-        petInfoVC.petEntity.clinic?.doctor = pets[indexPath.item].clinic?.doctor
+//        petInfoVC.petEntity.clinic?.phone = pets[indexPath.item].clinic?.phone
+//        petInfoVC.petEntity.clinic?.address = pets[indexPath.item].clinic?.address
+//        petInfoVC.petEntity.clinic?.site = pets[indexPath.item].clinic?.site
+//        petInfoVC.petEntity.clinic?.doctor = pets[indexPath.item].clinic?.doctor
         
         petInfoVC.collectionItemIndex = indexPath.item
         
@@ -89,7 +89,7 @@ extension MainPetViewController: EntityTransfer {
     }
     
     func loadPets() {
-        let fetchRequest: NSFetchRequest<Pet> = PetEntity.fetchRequest()
+        let fetchRequest: NSFetchRequest<PetEntity> = PetEntity.fetchRequest()
         
         do {
             pets = try context.fetch(fetchRequest).reversed()
@@ -98,7 +98,7 @@ extension MainPetViewController: EntityTransfer {
         }
     }
     
-    func createEntity(_ entity: PetModel) {
+    func createEntity(_ entity: Pet) {
         guard let petEnt = NSEntityDescription.entity(forEntityName: "Pet", in: context) else { return }
         let pet = PetEntity(entity: petEnt, insertInto: context)
         pet.image = entity.image?.toString()
@@ -121,9 +121,9 @@ extension MainPetViewController: EntityTransfer {
         }
     }
     
-    func updateEntity(_ entity: PetModel, at indexPath: Int) {
+    func updateEntity(_ entity: Pet, at indexPath: Int) {
             guard let petEnt = NSEntityDescription.entity(forEntityName: "Pet", in: context) else { return }
-            let pet = Pet(entity: petEnt, insertInto: context)
+            let pet = PetEntity(entity: petEnt, insertInto: context)
             pet.image = entity.image?.toString()
             pet.name = entity.name
             pet.kind = entity.kind
@@ -135,10 +135,10 @@ extension MainPetViewController: EntityTransfer {
             pet.hair = entity.hair
             pet.chipNumber = entity.chipNumber
             
-            context.delete(pet[indexPath])
+            context.delete(pets[indexPath])
             do {
-                pet.remove(at: indexPath)
-                pet.insert(pet, at: indexPath)
+                pets.remove(at: indexPath)
+                pets.insert(pet, at: indexPath)
                 try context.save()
             } catch let error {
                 context.rollback()
@@ -147,10 +147,10 @@ extension MainPetViewController: EntityTransfer {
     }
     
     func deleteEntity(at index: Int) {
-        context.delete(pet[index])
+        context.delete(pets[index])
         do {
             try context.save()
-            pet.remove(at: index)
+            pets.remove(at: index)
             collectionView.reloadData()
         } catch let error {
             context.rollback()

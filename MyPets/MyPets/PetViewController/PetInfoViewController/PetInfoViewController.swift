@@ -232,7 +232,7 @@ extension PetInfoViewController: GeneralSetupProtocol {
             $0.translatesAutoresizingMaskIntoConstraints = false
          }
         
-        titleImage.image = petEntity.image?.toImage() ?? UIImage()
+        titleImage.image = petEntity.image
         titleImage.contentMode = .scaleAspectFill
         titleImage.backgroundColor = .white
         titleImage.clipsToBounds = true
