@@ -716,7 +716,6 @@
 			children = (
 				BCD83D1025F20C1300F04EF3 /* HealthController.swift */,
 				BCD83D1325F20E7E00F04EF3 /* HealthDelegate + DataSource.swift */,
-				BC9959E526247049006CE6E1 /* BaseMenuVC.swift */,
 				BC9959BC26244A97006CE6E1 /* Controllers */,
 			);
 			path = HealthController;
@@ -761,6 +760,7 @@
 			isa = PBXGroup;
 			children = (
 				BCD83D1625F2121E00F04EF3 /* MenuCell.swift */,
+				BC9959E526247049006CE6E1 /* BaseMenuVC.swift */,
 				BCD83D0F25F20BFB00F04EF3 /* HealthController */,
 				BCD83D1925F28F8300F04EF3 /* DocumentController */,
 				BCD83D1A25F28F8C00F04EF3 /* FoodController */,
@@ -1081,10 +1081,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7JDNVBEZLP;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = "MyPets/Assets + LS + Info.plist/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1106,10 +1102,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7JDNVBEZLP;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = "MyPets/Assets + LS + Info.plist/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

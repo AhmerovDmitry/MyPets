@@ -21,7 +21,7 @@ protocol EntityTransfer: AnyObject {
     func reloadCollectionView()
     func reloadController()
     func loadPets()
-    func createEntity(_ entity: Pet)
-    func updateEntity(_ entity: Pet, at index: Int)
+    func createEntity(_ entity: Any)
+    func updateEntity(_ entity: Any, at index: Int)
     func deleteEntity(at index: Int)
 }

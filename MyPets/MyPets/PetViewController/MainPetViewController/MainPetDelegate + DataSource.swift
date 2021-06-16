@@ -98,9 +98,10 @@ extension MainPetViewController: EntityTransfer {
         }
     }
     
-    func createEntity(_ entity: Pet) {
+    func createEntity(_ entity: Any) {
         guard let petEnt = NSEntityDescription.entity(forEntityName: "PetEntity", in: context) else { return }
         let pet = PetEntity(entity: petEnt, insertInto: context)
+        let entity = entity as! Pet
         pet.image = entity.image?.toString()
         pet.name = entity.name
         pet.kind = entity.kind
@@ -121,9 +122,10 @@ extension MainPetViewController: EntityTransfer {
         }
     }
     
-    func updateEntity(_ entity: Pet, at indexPath: Int) {
+    func updateEntity(_ entity: Any, at indexPath: Int) {
         guard let petEnt = NSEntityDescription.entity(forEntityName: "PetEntity", in: context) else { return }
         let pet = PetEntity(entity: petEnt, insertInto: context)
+        let entity = entity as! Pet
         pet.image = entity.image?.toString()
         pet.name = entity.name
         pet.kind = entity.kind

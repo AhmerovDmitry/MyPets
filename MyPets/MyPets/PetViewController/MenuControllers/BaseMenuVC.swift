@@ -8,6 +8,7 @@
 import UIKit
 
 class BaseMenuVC: UIViewController {
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var baseText: String?
     var indexPath = Int()
     var models = [BaseModel()]
@@ -170,6 +171,6 @@ extension BaseMenuVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     @objc func closeController() {
+        self.dismiss(animated: true, completion: nil)
     }
-
 }

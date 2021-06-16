@@ -8,7 +8,6 @@
 import UIKit
 
 class HealthController: UIViewController, GeneralSetupProtocol {
-    
     let models = [
         BaseModel(firstProperties: "Моя ветклиника", secondProperties: "Адрес, телефон, график работы"),
         BaseModel(firstProperties: "Дегельминтизация", secondProperties: "Лекарственные препараты, календарь"),
@@ -53,5 +52,4 @@ class HealthController: UIViewController, GeneralSetupProtocol {
     func setupElements() {}
     func setupNavigationController() {}
     func presentController() {}
-    
 }
