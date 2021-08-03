@@ -123,8 +123,6 @@
 		BC4CA478262436EF00C2033C /* MainVC - Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainVC - Extensions.swift"; sourceTree = "<group>"; };
 		BC4CA479262436EF00C2033C /* MainCell - Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainCell - Extension.swift"; sourceTree = "<group>"; };
 		BC4CA47B262436EF00C2033C /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		BC526AD8262AF3EE00B976F8 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
-		BC526AD9262AF3EE00B976F8 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		BC526AE0262CAE9000B976F8 /* CollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionModel.swift; sourceTree = "<group>"; };
 		BC67E24225A057F1008BDBBD /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		BC67E24725A0593D008BDBBD /* UserProfileDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfileDelegate + DataSource.swift"; sourceTree = "<group>"; };
@@ -443,15 +441,6 @@
 			path = "Map Settings";
 			sourceTree = "<group>";
 		};
-		BC526AD7262AF3EE00B976F8 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				BC526AD9262AF3EE00B976F8 /* Realm.framework */,
-				BC526AD8262AF3EE00B976F8 /* RealmSwift.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		BC67E24525A05910008BDBBD /* Delegate + DataSource */ = {
 			isa = PBXGroup;
 			children = (
@@ -656,7 +645,6 @@
 				BC91F2EF2627364E006CCE3B /* FIXIT */,
 				BCB610012530C82400C4FD2F /* MyPets */,
 				BCB610002530C82400C4FD2F /* Products */,
-				BC526AD7262AF3EE00B976F8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
