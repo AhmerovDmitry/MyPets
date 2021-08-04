@@ -20,15 +20,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         self.window = window
-        let onboardVC = OnboardViewController() // Если приложение запускается впервые
+        let onboardVC = OnboardController() // Если приложение запускается впервые
         let tabBar = CustomTabBarController() // Если приложение ранее запускалось (запуск без OnboardVC)
         
-        if isFirstLaunch {
-            window.rootViewController = onboardVC
-        } else {
-            tabBar.viewControllers = tabBar.controllers
-            window.rootViewController = tabBar
-        }
+//        if isFirstLaunch {
+//            window.rootViewController = onboardVC
+//        } else {
+//            tabBar.viewControllers = tabBar.controllers
+//            window.rootViewController = tabBar
+//        }
+        
+        window.rootViewController = onboardVC
         
         window.overrideUserInterfaceStyle = .light
         window.makeKeyAndVisible()
