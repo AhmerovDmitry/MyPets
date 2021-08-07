@@ -8,13 +8,11 @@
 import UIKit
 
 final class OnboardCollectionCell: UICollectionViewCell {
-    
     // MARK: - Initialization & Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -25,7 +23,6 @@ final class OnboardCollectionCell: UICollectionViewCell {
         image.contentMode = .scaleAspectFit
         return image
     }()
-    
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -35,17 +32,14 @@ final class OnboardCollectionCell: UICollectionViewCell {
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
-    
 }
 
 // MARK: - Setup UI
 extension OnboardCollectionCell {
-    
     private func setupUI() {
         setDescriptionLabelConstraints()
         setOnboardViewConstraints()
     }
-    
     private func setDescriptionLabelConstraints() {
         self.addSubview(descriptionLabel)
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -57,7 +51,6 @@ extension OnboardCollectionCell {
             descriptionLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
     }
-    
     private func setOnboardViewConstraints() {
         self.addSubview(onboardView)
         onboardView.translatesAutoresizingMaskIntoConstraints = false
@@ -69,15 +62,12 @@ extension OnboardCollectionCell {
             onboardView.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor)
         ])
     }
-    
 }
 
 // MARK: - Public Methods
 extension OnboardCollectionCell {
-    
     public func configureCell(image: String, description: String) {
         onboardView.image = UIImage(named: image)
         descriptionLabel.text = description
     }
-    
 }

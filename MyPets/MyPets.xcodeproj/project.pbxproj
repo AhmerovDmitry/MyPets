@@ -71,7 +71,6 @@
 		BCB3AA4425AF8CD000289B7A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB3AA4325AF8CD000289B7A /* UIViewController.swift */; };
 		BCB404252532F5FE00993A5C /* @objc AuthorizationViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB404242532F5FE00993A5C /* @objc AuthorizationViewControllerExtension.swift */; };
 		BCB610032530C82400C4FD2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB610022530C82400C4FD2F /* AppDelegate.swift */; };
-		BCB610052530C82400C4FD2F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB610042530C82400C4FD2F /* SceneDelegate.swift */; };
 		BCB610072530C82400C4FD2F /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB610062530C82400C4FD2F /* AuthorizationViewController.swift */; };
 		BCB6100C2530C82700C4FD2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCB6100B2530C82700C4FD2F /* Assets.xcassets */; };
 		BCB6100F2530C82700C4FD2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCB6100D2530C82700C4FD2F /* LaunchScreen.storyboard */; };
@@ -174,7 +173,6 @@
 		BCB404242532F5FE00993A5C /* @objc AuthorizationViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "@objc AuthorizationViewControllerExtension.swift"; sourceTree = "<group>"; };
 		BCB60FFF2530C82400C4FD2F /* MyPets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCB610022530C82400C4FD2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BCB610042530C82400C4FD2F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BCB610062530C82400C4FD2F /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		BCB6100B2530C82700C4FD2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BCB6100E2530C82700C4FD2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -296,10 +294,9 @@
 		BC3C7C752532F54700209C51 /* OnboardViewController */ = {
 			isa = PBXGroup;
 			children = (
-				BC13029A26B978A000CFD87E /* OnboardModel.swift */,
-				BC13029626B9785F00CFD87E /* OnboardView.swift */,
-				BC13029C26B9878B00CFD87E /* OnboardCollectionCell.swift */,
-				BC13029826B9787D00CFD87E /* OnboardController.swift */,
+				BC7464B026BF0B7600B7B83B /* Model */,
+				BC7464B126BF0B7C00B7B83B /* View */,
+				BC7464B226BF0B8600B7B83B /* Controller */,
 			);
 			path = OnboardViewController;
 			sourceTree = "<group>";
@@ -492,6 +489,31 @@
 			path = UICollectionView;
 			sourceTree = "<group>";
 		};
+		BC7464B026BF0B7600B7B83B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BC13029A26B978A000CFD87E /* OnboardModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BC7464B126BF0B7C00B7B83B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BC13029626B9785F00CFD87E /* OnboardView.swift */,
+				BC13029C26B9878B00CFD87E /* OnboardCollectionCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BC7464B226BF0B8600B7B83B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BC13029826B9787D00CFD87E /* OnboardController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		BC7E9B8C257F8208006D75A1 /* Delegate + DataSource */ = {
 			isa = PBXGroup;
 			children = (
@@ -667,11 +689,11 @@
 		BCB610012530C82400C4FD2F /* MyPets */ = {
 			isa = PBXGroup;
 			children = (
+				BC3C7C752532F54700209C51 /* OnboardViewController */,
 				BCA935C225F0B26500F0A339 /* Models */,
 				BC9F269026BBCC7E000B854F /* Extension */,
 				BC2C33C72536D6BE0092D884 /* Protocol */,
 				BC413CD62538ABBB002CDD19 /* CustomTabBarController */,
-				BC3C7C752532F54700209C51 /* OnboardViewController */,
 				BC70732C2534AE9400B2979F /* PremiumController */,
 				BC4CA473262436EF00C2033C /* MainViewController */,
 				BC413CC6253893B1002CDD19 /* PetViewController */,
@@ -695,7 +717,6 @@
 			isa = PBXGroup;
 			children = (
 				BCB610022530C82400C4FD2F /* AppDelegate.swift */,
-				BCB610042530C82400C4FD2F /* SceneDelegate.swift */,
 			);
 			path = "App + Scene";
 			sourceTree = "<group>";
@@ -1027,7 +1048,6 @@
 				BCD83D1125F20C1300F04EF3 /* HealthController.swift in Sources */,
 				BCD83D2025F2900B00F04EF3 /* DocumentController.swift in Sources */,
 				BCB3611A2549DD2D0021AF8B /* PetViewTableCell.swift in Sources */,
-				BCB610052530C82400C4FD2F /* SceneDelegate.swift in Sources */,
 				BCD83D3325F2A7C900F04EF3 /* CareDelegate + DataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

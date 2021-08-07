@@ -8,10 +8,10 @@
 import UIKit
 
 extension UIView {
-    func setGradientBackground(colorOne: UIColor, ColorTwo: UIColor, startPoint: CGPoint, endPoint: CGPoint) {
+    func setGradientBackground(colorOne: UIColor, colorTwo: UIColor, startPoint: CGPoint, endPoint: CGPoint) {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
-        gradientLayer.colors = [colorOne.cgColor, ColorTwo.cgColor]
+        gradientLayer.colors = [colorOne.cgColor, colorTwo.cgColor]
         gradientLayer.locations = [0.0, 1.0]
         gradientLayer.startPoint = startPoint
         gradientLayer.endPoint = endPoint
@@ -20,7 +20,7 @@ extension UIView {
     }
     
     func gradientSetup(view: UIView, colorOne: UIColor, colorTwo: UIColor) {
-        view.setGradientBackground(colorOne: colorOne, ColorTwo: colorTwo,
+        view.setGradientBackground(colorOne: colorOne, colorTwo: colorTwo,
                                    startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 1))
     }
     

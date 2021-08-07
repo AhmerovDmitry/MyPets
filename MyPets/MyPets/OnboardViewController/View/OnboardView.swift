@@ -8,18 +8,15 @@
 import UIKit
 
 final class OnboardView: UIView {
-    
     // MARK: - Initialization & Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
         setupUI()
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         doneButton.layer.cornerRadius = doneButton.bounds.height / 2
@@ -28,9 +25,7 @@ final class OnboardView: UIView {
     // MARK: - Properties
     private var onboardImage: [String]?
     private var onboardDescription: [String]?
-    
     private let cellID = "OnboardCellId"
-    
     private let pageControl: UIPageControl = {
         let pageControl = UIPageControl()
         pageControl.currentPage = 0
@@ -41,7 +36,6 @@ final class OnboardView: UIView {
         }
         return pageControl
     }()
-    
     private let doneButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Далее", for: .normal)
@@ -55,7 +49,6 @@ final class OnboardView: UIView {
         button.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
         return button
     }()
-    
     private let skipButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Пропустить", for: .normal)
@@ -64,7 +57,6 @@ final class OnboardView: UIView {
         button.addTarget(self, action: #selector(presentController), for: .touchUpInside)
         return button
     }()
-    
     private lazy var onboardCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -81,19 +73,16 @@ final class OnboardView: UIView {
         collectionView.register(OnboardCollectionCell.self, forCellWithReuseIdentifier: cellID)
         return collectionView
     }()
-    
 }
 
 // MARK: - Setup UI
 extension OnboardView {
-    
     private func setupUI() {
         setOnboardCollectionViewConstraints()
         setPageControlConstraints()
         setDoneButtonConstraints()
         setCloseButtonConstraints()
     }
-    
     private func setOnboardCollectionViewConstraints() {
         self.addSubview(onboardCollectionView)
         onboardCollectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -105,7 +94,6 @@ extension OnboardView {
             onboardCollectionView.rightAnchor.constraint(equalTo: self.rightAnchor)
         ])
     }
-    
     private func setPageControlConstraints() {
         self.addSubview(pageControl)
         pageControl.translatesAutoresizingMaskIntoConstraints = false
@@ -114,11 +102,9 @@ extension OnboardView {
             pageControl.heightAnchor.constraint(equalToConstant: 10),
             pageControl.widthAnchor.constraint(equalTo: self.widthAnchor),
             pageControl.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            pageControl.centerYAnchor.constraint(equalTo: self.centerYAnchor,
-                                                 constant: self.bounds.height * 0.06 + 16)
+            pageControl.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: self.bounds.height * 0.06 + 16)
         ])
     }
-    
     private func setDoneButtonConstraints() {
         self.addSubview(doneButton)
         doneButton.translatesAutoresizingMaskIntoConstraints = false
@@ -130,7 +116,6 @@ extension OnboardView {
             doneButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
     }
-    
     private func setCloseButtonConstraints() {
         self.addSubview(skipButton)
         skipButton.translatesAutoresizingMaskIntoConstraints = false
@@ -140,12 +125,10 @@ extension OnboardView {
             skipButton.rightAnchor.constraint(lessThanOrEqualTo: self.rightAnchor, constant: -32)
         ])
     }
-    
 }
 
 // MARK: - Actions
 extension OnboardView {
-    
     @objc func handleNext() {
         let nextIndex = pageControl.currentPage + 1
         let indexPath = IndexPath(item: nextIndex, section: 0)
@@ -157,46 +140,41 @@ extension OnboardView {
             doneButton.backgroundColor = UIColor.CustomColor.purple
             doneButton.setTitleColor(.white, for: .normal)
             doneButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
-            
             skipButton.isHidden = true
         }
     }
-    
     @objc func presentController() {
 //        let tabBarController = CustomTabBarController()
 //        tabBarController.viewControllers = tabBarController.controllers
 //        tabBarController.modalPresentationStyle = .fullScreen
 //        present(tabBarController, animated: true, completion: nil)
     }
-    
 }
 
-
-// MARK: - Delegate And DataSource
+// MARK: - Delegate & DataSource
 extension OnboardView: UICollectionViewDelegate, UICollectionViewDataSource {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return pageControl.numberOfPages
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? OnboardCollectionCell else { return UICollectionViewCell() }
-        cell.configureCell(image: onboardImage?[indexPath.item] ?? "",
-                           description: onboardDescription?[indexPath.item] ?? "")
-        
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: cellID,
+            for: indexPath
+        ) as? OnboardCollectionCell else { return UICollectionViewCell() }
+        cell.configureCell(
+            image: onboardImage?[indexPath.item] ?? "",
+            description: onboardDescription?[indexPath.item] ?? ""
+        )
         return cell
     }
-    
 }
 
 // MARK: - Public Methods
 extension OnboardView {
-    
     public func getOnboardContent(_ content: Any) {
         guard let content = content as? OnboardModel else { return }
         pageControl.numberOfPages = content.description.count
         onboardImage = content.imagesName
         onboardDescription = content.description
     }
-    
 }
