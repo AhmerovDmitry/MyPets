@@ -7,29 +7,34 @@
 
 import UIKit
 
-class CustomTabBarController: UITabBarController {
-    let mainVC = UINavigationController(rootViewController: MainViewController())
-    let petVC = UINavigationController(rootViewController: MainPetViewController())
-    let locationVC = LocationViewController()
-    let profileVC = UINavigationController(rootViewController: ProfileViewController())
-    var controllers: [UIViewController]?
+final class CustomTabBarController: UITabBarController {
+    public var controllers: [UIViewController]?
+    
+    private let mainVC = UINavigationController(rootViewController: MainViewController())
+    private let petVC = UINavigationController(rootViewController: MainPetViewController())
+    private let locationVC = LocationViewController()
+    private let profileVC = UINavigationController(rootViewController: ProfileViewController())
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupItems()
+        setTabBarUI()
+        setBarItems()
         
         controllers = [mainVC, petVC, locationVC, profileVC]
-        
+        presentPremium()
+    }
+}
+
+// MARK: - Setup UI
+extension CustomTabBarController {
+    private func setTabBarUI() {
         tabBar.backgroundColor = .white
         tabBar.backgroundImage = UIImage()
         tabBar.shadowImage = UIImage()
         tabBar.unselectedItemTintColor = UIColor.CustomColor.gray
         tabBar.tintColor = UIColor.CustomColor.purple
-        
-        presentPremium(withFlag: true)
     }
-    
-    func setupItems() {
+    private func setBarItems() {
         mainVC.tabBarItem.title = "Главная"
         mainVC.tabBarItem.image = UIImage(named: "generalIcon")
         
@@ -42,15 +47,18 @@ class CustomTabBarController: UITabBarController {
         profileVC.tabBarItem.title = "Профиль"
         profileVC.tabBarItem.image = UIImage(named: "profileIcon")
     }
-    
-    func presentPremium(withFlag flag: Bool) {
-        if flag {
-            DispatchQueue.global().async {
+    private func presentPremium() {
+        if !UserDefaults.appPaidStatus() {
+            DispatchQueue.global().async { [weak self] in
                 sleep(1)
                 DispatchQueue.main.async {
-                    self.presentPremiumController(on: self)
+                    self?.presentPremiumController(parent: self)
                 }
             }
         }
+//        if !UserDefaults.appPaidStatus() {
+//            sleep(1)
+//            presentPremiumController(parent: self)
+//        }
     }
 }
