@@ -8,28 +8,19 @@
 import UIKit
 
 extension UIViewController {
-    func presentPremiumController(on controller: UIViewController) {
-//        let transition = CATransition()
-//        transition.duration = 0.5
-//        transition.type = CATransitionType.push
-//        transition.subtype = CATransitionSubtype.fromRight
-//        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
-//        view.window?.layer.add(transition, forKey: kCATransition)
-        
-//        controller.view.addSubview(premiumVC.view)
-//        controller.addChild(premiumVC)
-//        premiumVC.didMove(toParent: controller)
-        
-        let premiumVC = PremiumViewController()
+    func presentPremiumController(parent controller: UIViewController?) {
+        let premiumVC = PremiumController()
         premiumVC.modalPresentationStyle = .fullScreen
-        controller.present(premiumVC, animated: true, completion: nil)
+        controller?.present(premiumVC, animated: true, completion: nil)
     }
     
     func pushView(controller: UIViewController, withTitle: String) {
         controller.navigationController?.navigationBar.tintColor = UIColor.CustomColor.dark
         controller.navigationController?.navigationBar.prefersLargeTitles = true
         controller.navigationController?.navigationBar.backgroundColor = .clear
-        controller.navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor : UIColor.CustomColor.dark]
+        controller.navigationController?.navigationBar.largeTitleTextAttributes = [
+            .foregroundColor: UIColor.CustomColor.dark
+        ]
         controller.navigationItem.title = withTitle
         self.navigationController?.pushViewController(controller, animated: true)
     }
