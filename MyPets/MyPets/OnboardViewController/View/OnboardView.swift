@@ -11,7 +11,6 @@ final class OnboardView: UIView {
     // MARK: - Initialization & Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .white
         setupUI()
     }
     required init?(coder: NSCoder) {
@@ -23,6 +22,7 @@ final class OnboardView: UIView {
     }
     
     // MARK: - Properties
+    public var presentControllerCallBack: (() -> Void)?
     private var onboardImage: [String]?
     private var onboardDescription: [String]?
     private let cellID = "OnboardCellId"
@@ -45,8 +45,7 @@ final class OnboardView: UIView {
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.CustomColor.purple.cgColor
-        button.layer.cornerRadius = button.frame.height / 2
-        button.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
+        button.addTarget(self, action: #selector(nextDescriptionView), for: .touchUpInside)
         return button
     }()
     private let skipButton: UIButton = {
@@ -78,6 +77,7 @@ final class OnboardView: UIView {
 // MARK: - Setup UI
 extension OnboardView {
     private func setupUI() {
+        self.backgroundColor = .white
         setOnboardCollectionViewConstraints()
         setPageControlConstraints()
         setDoneButtonConstraints()
@@ -129,7 +129,7 @@ extension OnboardView {
 
 // MARK: - Actions
 extension OnboardView {
-    @objc func handleNext() {
+    @objc private func nextDescriptionView() {
         let nextIndex = pageControl.currentPage + 1
         let indexPath = IndexPath(item: nextIndex, section: 0)
         pageControl.currentPage = nextIndex
@@ -143,11 +143,8 @@ extension OnboardView {
             skipButton.isHidden = true
         }
     }
-    @objc func presentController() {
-//        let tabBarController = CustomTabBarController()
-//        tabBarController.viewControllers = tabBarController.controllers
-//        tabBarController.modalPresentationStyle = .fullScreen
-//        present(tabBarController, animated: true, completion: nil)
+    @objc private func presentController(_ parent: UIViewController) {
+        presentControllerCallBack?()
     }
 }
 
