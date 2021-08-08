@@ -50,7 +50,6 @@ struct UserProfileModel {
     var image: Data? {
         get {
             return UserDefaults.standard.data(forKey: "image")
-            
         } set {
             let defaults = UserDefaults.standard
             
