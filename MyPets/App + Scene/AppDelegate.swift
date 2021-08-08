@@ -11,21 +11,19 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    let isFirstLaunch = UserDefaults.isFirstLaunch()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        window = UIWindow(frame: UIScreen.main.bounds)
         let onboardVC = OnboardController() // Если приложение запускается впервые
-//        let tabBar = CustomTabBarController() // Если приложение ранее запускалось (запуск без OnboardVC)
-//        if isFirstLaunch {
-//            window?.rootViewController = onboardVC
-//        } else {
-//            tabBar.viewControllers = tabBar.controllers
-//            window?.rootViewController = tabBar
-//        }
-        window?.rootViewController = onboardVC
+        let tabBar = CustomTabBarController() // Если приложение ранее запускалось (запуск без OnboardVC)
+        window = UIWindow(frame: UIScreen.main.bounds)
         window?.overrideUserInterfaceStyle = .light
         window?.makeKeyAndVisible()
+        if !UserDefaults.isFirstLaunch() {
+            window?.rootViewController = onboardVC
+        } else {
+            tabBar.viewControllers = tabBar.controllers
+            window?.rootViewController = tabBar
+        }
         return true
     }
     
