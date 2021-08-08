@@ -103,7 +103,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             userProfileVC.userInfo = userInfo
             navigationController?.pushViewController(userProfileVC, animated: true)
         case 3:
-            presentPremiumController(on: self.tabBarController!)
+            presentPremiumController(parent: self.tabBarController)
         case 4:
             switch indexPath.row {
             case 0:
@@ -119,12 +119,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 let aboutAppController = AboutAppController()
                 navigationController?.pushViewController(aboutAppController, animated: true)
             case 2:
-                UserDefaults.standard.set(false, forKey: "hasBeenLaunchedBeforeFlag")
+                UserDefaults.standard.set(false, forKey: "isFirstLaunch")
+            case 3:
+                UserDefaults.standard.set(false, forKey: "paidStatus")
             default: break
             }
         default: break
         }
-        
     }
 }
 
