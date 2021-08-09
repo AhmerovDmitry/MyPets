@@ -49,16 +49,10 @@ extension CustomTabBarController {
     }
     private func presentPremium() {
         if !UserDefaults.appPaidStatus() {
-            DispatchQueue.global().async { [weak self] in
+            DispatchQueue.main.async { [self] in
                 sleep(1)
-                DispatchQueue.main.async {
-                    self?.presentPremiumController(parent: self)
-                }
+                presentPremiumController(parent: self)
             }
         }
-//        if !UserDefaults.appPaidStatus() {
-//            sleep(1)
-//            presentPremiumController(parent: self)
-//        }
     }
 }
