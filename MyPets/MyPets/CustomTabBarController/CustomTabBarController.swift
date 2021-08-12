@@ -10,7 +10,7 @@ import UIKit
 final class CustomTabBarController: UITabBarController {
     public var controllers: [UIViewController]?
     
-    private let mainVC = UINavigationController(rootViewController: MainViewController())
+    private let mainVC = UINavigationController(rootViewController: MainMenuController())
     private let petVC = UINavigationController(rootViewController: MainPetViewController())
     private let locationVC = LocationViewController()
     private let profileVC = UINavigationController(rootViewController: ProfileViewController())

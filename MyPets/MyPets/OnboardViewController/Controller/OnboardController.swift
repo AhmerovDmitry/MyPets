@@ -17,7 +17,7 @@ final class OnboardController: UIViewController {
         super.viewDidLoad()
         
         updateViewContent()
-        addSubview()
+        addOnboardViewInHierarchy()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -34,7 +34,7 @@ final class OnboardController: UIViewController {
     private func updateViewContent() {
         onboardView.getOnboardContent(onboardContent)
     }
-    private func addSubview() {
+    private func addOnboardViewInHierarchy() {
         view.addSubview(onboardView)
     }
 }
