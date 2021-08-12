@@ -38,16 +38,16 @@ class MainCollectionCell: UICollectionViewCell {
     let bottomCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.register(BottomMenuCell.self, forCellWithReuseIdentifier: "bottomCell")
-        cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.backgroundColor = .white
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.register(BottomMenuCell.self, forCellWithReuseIdentifier: "bottomCell")
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .white
 
-        return cv
+        return collectionView
     }()
     
     func setupConstraints() {
-        [bottomCollectionView, imageView, titleLabel, descriptionLabel].forEach({ contentView.addSubview($0) })
+        [bottomCollectionView, imageView, titleLabel, descriptionLabel].forEach { contentView.addSubview($0) }
 
         NSLayoutConstraint.activate([
             titleLabel.widthAnchor.constraint(equalToConstant: contentView.bounds.width / 3 * 2),
@@ -82,5 +82,4 @@ class MainCollectionCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }

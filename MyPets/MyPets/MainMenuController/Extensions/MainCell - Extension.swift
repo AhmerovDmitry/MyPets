@@ -18,7 +18,10 @@ extension MainCollectionCell: UICollectionViewDelegate, UICollectionViewDataSour
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "bottomCell", for: indexPath) as! BottomMenuCell
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "bottomCell",
+            for: indexPath
+        ) as? BottomMenuCell else { return UICollectionViewCell() }
         let image = cell.models[indexPath.item]["image"]
         cell.layer.cornerRadius = 12
         cell.backgroundColor = cell.cellColor[indexPath.item]
@@ -26,7 +29,9 @@ extension MainCollectionCell: UICollectionViewDelegate, UICollectionViewDataSour
 
         cell.titleLabel.text = cell.models[indexPath.item]["title"]
         cell.descriptionLabel.text = cell.models[indexPath.item]["description"]
-        cell.imageView.image = UIImage(named: image!)
+        if let image = image {
+            cell.imageView.image = UIImage(named: image)
+        }
 
         if indexPath.item == 0 {
             cell.titleLabel.textColor = .white
@@ -35,5 +40,4 @@ extension MainCollectionCell: UICollectionViewDelegate, UICollectionViewDataSour
 
         return cell
     }
-
 }
