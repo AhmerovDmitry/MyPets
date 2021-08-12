@@ -164,14 +164,14 @@ extension MainPetViewController: EntityTransfer {
 //MARK: - View settings
 extension MainPetViewController {
     func viewWithoutPet() {
-        mainStackView.isHidden = false
+//        mainStackView.isHidden = false
         collectionView.isHidden = true
         
         navigationItem.rightBarButtonItem = .none
     }
     
     func viewWithPet() {
-        mainStackView.isHidden = true
+//        mainStackView.isHidden = true
         collectionView.isHidden = false
         
         let addButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector(presentController))

@@ -17,6 +17,8 @@
 		BC18E519254DAA6C0014B7DF /* PetViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC18E518254DAA6C0014B7DF /* PetViewControllerDelegate.swift */; };
 		BC20B1A5267111E200ECFD10 /* PetModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BC20B1A3267111E200ECFD10 /* PetModel.xcdatamodeld */; };
 		BC2C33C92536D6E00092D884 /* GeneralSetupProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2C33C82536D6E00092D884 /* GeneralSetupProtocol.swift */; };
+		BC38543B26C5AB4700C2F14E /* PetMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC38543A26C5AB4700C2F14E /* PetMenuController.swift */; };
+		BC38543D26C5ABCF00C2F14E /* PetMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC38543C26C5ABCF00C2F14E /* PetMenuView.swift */; };
 		BC413CCA253893F7002CDD19 /* MainPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC413CC9253893F7002CDD19 /* MainPetViewController.swift */; };
 		BC413CCE25389494002CDD19 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC413CCD25389494002CDD19 /* LocationViewController.swift */; };
 		BC413CD1253894D1002CDD19 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC413CD0253894D1002CDD19 /* ProfileViewController.swift */; };
@@ -117,6 +119,8 @@
 		BC18E518254DAA6C0014B7DF /* PetViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetViewControllerDelegate.swift; sourceTree = "<group>"; };
 		BC20B1A4267111E200ECFD10 /* PetModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PetModel.xcdatamodel; sourceTree = "<group>"; };
 		BC2C33C82536D6E00092D884 /* GeneralSetupProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSetupProtocol.swift; sourceTree = "<group>"; };
+		BC38543A26C5AB4700C2F14E /* PetMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetMenuController.swift; sourceTree = "<group>"; };
+		BC38543C26C5ABCF00C2F14E /* PetMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetMenuView.swift; sourceTree = "<group>"; };
 		BC413CC9253893F7002CDD19 /* MainPetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPetViewController.swift; sourceTree = "<group>"; };
 		BC413CCD25389494002CDD19 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		BC413CD0253894D1002CDD19 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -259,6 +263,39 @@
 				BC2C33C82536D6E00092D884 /* GeneralSetupProtocol.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		BC38543626C5AAF000C2F14E /* PetMenuController */ = {
+			isa = PBXGroup;
+			children = (
+				BC38543926C5AB1700C2F14E /* Model */,
+				BC38543826C5AB1100C2F14E /* View */,
+				BC38543726C5AB0B00C2F14E /* Controller */,
+			);
+			path = PetMenuController;
+			sourceTree = "<group>";
+		};
+		BC38543726C5AB0B00C2F14E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BC38543A26C5AB4700C2F14E /* PetMenuController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BC38543826C5AB1100C2F14E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BC38543C26C5ABCF00C2F14E /* PetMenuView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BC38543926C5AB1700C2F14E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		BC3C7C752532F54700209C51 /* OnboardViewController */ = {
@@ -679,6 +716,7 @@
 				BC70732C2534AE9400B2979F /* PremiumController */,
 				BC413CD62538ABBB002CDD19 /* CustomTabBarController */,
 				BC4CA473262436EF00C2033C /* MainMenuController */,
+				BC38543626C5AAF000C2F14E /* PetMenuController */,
 				BCA935C225F0B26500F0A339 /* Models */,
 				BC9F269026BBCC7E000B854F /* Extension */,
 				BC2C33C72536D6BE0092D884 /* Protocol */,
@@ -1004,7 +1042,9 @@
 				BCDBF528253F887E00BCBBFB /* Map Settings.swift in Sources */,
 				BC8CDFFF25C6BB85005EEFEB /* SupportViewController.swift in Sources */,
 				BC13029D26B9878B00CFD87E /* OnboardCollectionCell.swift in Sources */,
+				BC38543D26C5ABCF00C2F14E /* PetMenuView.swift in Sources */,
 				BCD83D3625F2A8C000F04EF3 /* EntertainmentDelegate + DataSource.swift in Sources */,
+				BC38543B26C5AB4700C2F14E /* PetMenuController.swift in Sources */,
 				BC4CA47C262436EF00C2033C /* MainCollectionCell.swift in Sources */,
 				BC13029726B9786000CFD87E /* OnboardView.swift in Sources */,
 				BC91F2F42627423D006CCE3B /* UserDefaults.swift in Sources */,
