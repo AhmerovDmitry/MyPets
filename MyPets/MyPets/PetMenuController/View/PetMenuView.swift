@@ -107,5 +107,5 @@ extension PetMenuView {
 
 // MARK: - Actions
 extension PetMenuView {
-    @objc func presentController() {}
+    @objc private func presentController() {}
 }

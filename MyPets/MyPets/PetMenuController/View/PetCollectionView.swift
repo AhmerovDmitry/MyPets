@@ -58,7 +58,7 @@ extension PetCollectionView {
 
 // MARK: - Actions
 extension PetCollectionView {
-    @objc func presentController() {}
+    @objc private func presentController() {}
 }
 
 // MARK: - Delegate & DataSource
@@ -74,6 +74,12 @@ extension PetCollectionView: UICollectionViewDelegate, UICollectionViewDataSourc
             withReuseIdentifier: cellID,
             for: indexPath
         ) as? PetCollectionCell else { return UICollectionViewCell() }
+        cell.configureCell(
+            image: UIImage(),
+            name: "Name",
+            breed: "Breed",
+            age: "Age"
+        )
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -83,6 +89,6 @@ extension PetCollectionView: UICollectionViewDelegate, UICollectionViewDataSourc
 
 // MARK: - Public Methods
 extension PetCollectionView {
-    public func getOnboardContent(_ content: Any) {
+    public func getPetCollectionContent(_ content: Any) {
     }
 }

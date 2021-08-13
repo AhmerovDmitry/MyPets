@@ -27,7 +27,7 @@ final class PetCollectionCell: UICollectionViewCell {
         image.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         return image
     }()
-    let petName: UILabel = {
+    private let petName: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.CustomColor.dark
         label.adjustsFontSizeToFitWidth = true
@@ -123,6 +123,9 @@ extension PetCollectionCell {
 
 // MARK: - Public Methods
 extension PetCollectionCell {
-    public func configureCell() {
+    public func configureCell(image: UIImage, name: String, breed: String, age: String) {
+        petName.text = name
+        petBreed.text = breed
+        petAge.text = age
     }
 }

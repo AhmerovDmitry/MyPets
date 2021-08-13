@@ -34,7 +34,7 @@ final class PetMenuController: UIViewController {
         view.addSubview(petCollectionView)
 //        view.addSubview(petMenuView)
     }
-    @objc func presentController() {
+    @objc private func presentController() {
         let petInfoVC = PetInfoViewController()
         petInfoVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(petInfoVC, animated: true)
