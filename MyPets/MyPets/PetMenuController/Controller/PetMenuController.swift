@@ -25,9 +25,8 @@ final class PetMenuController: UIViewController {
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.CustomColor.dark]
         navigationItem.title = "Питомцы"
         
-        let addButton = UIBarButtonItem(
-            image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector(presentController)
-        )
+        guard let image = UIImage(systemName: "plus") else { return }
+        let addButton = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(presentController))
         navigationItem.rightBarButtonItem = addButton
         navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.purple
     }
@@ -35,5 +34,9 @@ final class PetMenuController: UIViewController {
         view.addSubview(petCollectionView)
 //        view.addSubview(petMenuView)
     }
-    @objc func presentController() {}
+    @objc func presentController() {
+        let petInfoVC = PetInfoViewController()
+        petInfoVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(petInfoVC, animated: true)
+    }
 }

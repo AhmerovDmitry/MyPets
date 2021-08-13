@@ -63,7 +63,6 @@
 		BC99B01F2549A53700050854 /* PetViewCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99B01E2549A53700050854 /* PetViewCollectionCell.swift */; };
 		BC99B0232549A55E00050854 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99B0222549A55E00050854 /* Pet.swift */; };
 		BC99B0272549A77C00050854 /* PetInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99B0262549A77C00050854 /* PetInfoViewController.swift */; };
-		BC99B02B2549A80700050854 /* MainPetNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99B02A2549A80700050854 /* MainPetNavigation.swift */; };
 		BC9F268F26BBCC5D000B854F /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9F268E26BBCC5D000B854F /* UIColor.swift */; };
 		BC9F269826BBCD59000B854F /* MyPetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9F269726BBCD59000B854F /* MyPetsTests.swift */; };
 		BCB3611A2549DD2D0021AF8B /* PetViewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB361192549DD2D0021AF8B /* PetViewTableCell.swift */; };
@@ -166,7 +165,6 @@
 		BC99B01E2549A53700050854 /* PetViewCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetViewCollectionCell.swift; sourceTree = "<group>"; };
 		BC99B0222549A55E00050854 /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
 		BC99B0262549A77C00050854 /* PetInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoViewController.swift; sourceTree = "<group>"; };
-		BC99B02A2549A80700050854 /* MainPetNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPetNavigation.swift; sourceTree = "<group>"; };
 		BC9F268E26BBCC5D000B854F /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		BC9F269526BBCD59000B854F /* MyPetsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyPetsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC9F269726BBCD59000B854F /* MyPetsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPetsTests.swift; sourceTree = "<group>"; };
@@ -466,7 +464,6 @@
 			children = (
 				BC413CC9253893F7002CDD19 /* MainPetViewController.swift */,
 				BCBFA54025E6B8CF0036C7ED /* MainPetDelegate + DataSource.swift */,
-				BC99B02A2549A80700050854 /* MainPetNavigation.swift */,
 			);
 			path = MainPetViewController;
 			sourceTree = "<group>";
@@ -1079,7 +1076,6 @@
 				BC4CA47D262436EF00C2033C /* BottomMenuCell.swift in Sources */,
 				BC67E24325A057F1008BDBBD /* UIImageView.swift in Sources */,
 				BCD83D2325F2903600F04EF3 /* FoodController.swift in Sources */,
-				BC99B02B2549A80700050854 /* MainPetNavigation.swift in Sources */,
 				BC413CCA253893F7002CDD19 /* MainPetViewController.swift in Sources */,
 				BC03FE3A25A32F1C00C81BC5 /* ProfileViewControllerDelegate.swift in Sources */,
 				BC13029926B9787D00CFD87E /* OnboardController.swift in Sources */,
