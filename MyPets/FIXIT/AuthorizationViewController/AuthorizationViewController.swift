@@ -35,28 +35,30 @@ class AuthorizationViewController: UIViewController {
 
 extension AuthorizationViewController: GeneralSetupProtocol {
     func setupConstraints() {
-        //MARK: - Logo Constraints
+        // MARK: - Logo Constraints
         view.addSubview(mainStackView)
-        
-        mainStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor,
-                                               constant: -1.5).isActive = true
+        mainStackView.centerYAnchor.constraint(
+            equalTo: view.centerYAnchor, constant: -1.5
+        ).isActive = true
         mainStackView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         mainStackView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        
-        [logoLabel,
-         textLabel,
-         logInButton,
-         socialNetworkStackView,
-         socialIconsStackView].forEach({ mainStackView.addArrangedSubview($0) })
-        
-        [facebookButton,
-         okButton,
-         vkButton].forEach({ icon in
-            socialIconsStackView.addArrangedSubview(icon)
+        [
+            logoLabel,
+            textLabel,
+            logInButton,
+            socialNetworkStackView,
+            socialIconsStackView
+        ].forEach { mainStackView.addArrangedSubview($0) }
+        [
+            facebookButton,
+            okButton,
+            vkButton
+        ].forEach {
+            socialIconsStackView.addArrangedSubview($0)
             
-            icon.widthAnchor.constraint(equalToConstant: 44).isActive = true
-            icon.heightAnchor.constraint(equalToConstant: 44).isActive = true
-         })
+            $0.widthAnchor.constraint(equalToConstant: 44).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        }
         
         [leftTextLine,
          socialNetworksLabel,

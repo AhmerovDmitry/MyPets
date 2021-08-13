@@ -15,7 +15,7 @@ extension SupportViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "supportCell", for: indexPath)
         cell.accessoryType = .disclosureIndicator
-        cell.textLabel?.adjustsFontSizeToFitWidth  = true
+        cell.textLabel?.adjustsFontSizeToFitWidth = true
         cell.textLabel?.textColor = UIColor.CustomColor.dark
         cell.textLabel?.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         switch indexPath.row {

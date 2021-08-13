@@ -15,7 +15,7 @@ class ProfileViewController: UIViewController, GeneralSetupProtocol {
         ["Питомцы", "Архив"],
         ["Подсказки и советы", "Напоминания"],
         ["MyPets Premium"],
-        ["Поддержка", "О приложении", "Skip_launch_status"]
+        ["Поддержка", "О приложении", "Skip_launch_status", "Skip_paid_status"]
     ]
     let tipsSwitch = UISwitch()
     let reminderSwitch = UISwitch()
