@@ -36,18 +36,9 @@ final class OnboardView: UIView {
         }
         return pageControl
     }()
-    private let doneButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Далее", for: .normal)
-        button.backgroundColor = .white
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)
-        button.setTitleColor(UIColor.CustomColor.purple, for: .normal)
-        button.titleLabel?.adjustsFontSizeToFitWidth = true
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.CustomColor.purple.cgColor
-        button.addTarget(self, action: #selector(nextDescriptionView), for: .touchUpInside)
-        return button
-    }()
+    private let doneButton = UIButton.createStandartButton(
+        title: "Далее", backgroundColor: .white, action: #selector(nextDescriptionView), target: self
+    )
     private let skipButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Пропустить", for: .normal)

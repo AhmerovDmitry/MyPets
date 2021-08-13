@@ -55,16 +55,12 @@ final class PetMenuView: UIView {
         label.numberOfLines = 2
         return label
     }()
-    private let addPetButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Добавить питомца", for: .normal)
-        button.backgroundColor = UIColor.CustomColor.purple
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.adjustsFontSizeToFitWidth = true
-        button.addTarget(self, action: #selector(presentController), for: .touchUpInside)
-        return button
-    }()
+    private let addPetButton = UIButton.createStandartButton(
+        title: "Добавить питомца",
+        backgroundColor: UIColor.CustomColor.purple,
+        action: #selector(presentController),
+        target: self
+    )
 }
 
 // MARK: - Setup UI

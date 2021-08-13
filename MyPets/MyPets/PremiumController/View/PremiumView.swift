@@ -100,16 +100,9 @@ final class PremiumView: UIView {
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
-    private let buyButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Получить Premium", for: .normal)
-        button.backgroundColor = .white
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)
-        button.setTitleColor(UIColor.CustomColor.purple, for: .normal)
-        button.titleLabel?.adjustsFontSizeToFitWidth = true
-        button.addTarget(self, action: #selector(closeControllerWithPurchase), for: .touchUpInside)
-        return button
-    }()
+    private let buyButton = UIButton.createStandartButton(
+        title: "Получить Premium", backgroundColor: .white, action: #selector(closeControllerWithPurchase), target: self
+    )
 }
 
 // MARK: - Setup UI
