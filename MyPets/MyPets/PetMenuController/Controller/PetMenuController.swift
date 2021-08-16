@@ -9,6 +9,7 @@ import UIKit
 
 final class PetMenuController: UIViewController {
     // MARK: - Properties
+    private let petBadgeModel = PetBadge()
     private let petMenuView = PetMenuView(frame: UIScreen.main.bounds)
     private let petCollectionView = PetCollectionView(frame: UIScreen.main.bounds)
     
@@ -16,8 +17,23 @@ final class PetMenuController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        petCollectionView.getPetCollectionContent(petBadgeModel)
+        
+        setCallBacksTransfers()
         setupNavigationController()
         addSubview()
+    }
+}
+    
+// MARK: - Methods
+extension PetMenuController {
+    private func setCallBacksTransfers() {
+        petMenuView.presentControllerCallBack = { [weak self] in
+            self?.presentController()
+        }
+        petCollectionView.presentControllerCallBack = { [weak self] indexPath in
+            self?.presentController()
+        }
     }
     private func setupNavigationController() {
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -34,9 +50,11 @@ final class PetMenuController: UIViewController {
         view.addSubview(petCollectionView)
 //        view.addSubview(petMenuView)
     }
+}
+    
+// MARK: - Actions
+extension PetMenuController {
     @objc private func presentController() {
-        let petInfoVC = PetInfoViewController()
-        petInfoVC.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(petInfoVC, animated: true)
+        self.openControllerWithoutBackBarItemTitle(PetInfoController())
     }
 }
