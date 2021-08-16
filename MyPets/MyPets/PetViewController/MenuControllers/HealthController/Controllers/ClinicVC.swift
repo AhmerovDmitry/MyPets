@@ -9,8 +9,8 @@ import UIKit
 import CoreData
 
 class ClinicVC: BaseMenuVC, UITextFieldDelegate {
-    var clinicEntity = Clinic()
-    var clinic = [ClinicEntity]()
+//    var clinicEntity = Clinic()
+//    var clinic = [ClinicEntity]()
     
     let displaySwitch: UISwitch = {
         let element = UISwitch()
@@ -93,10 +93,10 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
         }
         let saveButton = UIAlertAction(title: "Сохранить", style: .default) { _ in
             switch self.indexPath {
-            case 0: self.clinicEntity.phone = self.baseText
-            case 1: self.clinicEntity.address = self.baseText
-            case 2: self.clinicEntity.site = self.baseText
-            case 3: self.clinicEntity.doctor = self.baseText
+//            case 0: self.clinicEntity.phone = self.baseText
+//            case 1: self.clinicEntity.address = self.baseText
+//            case 2: self.clinicEntity.site = self.baseText
+//            case 3: self.clinicEntity.doctor = self.baseText
             default: break
             }
             self.models[self.indexPath].secondProperties = self.baseText
@@ -121,41 +121,41 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
     }
 }
 
-extension ClinicVC {
-    func loadClinicInfo() {
-        let fetchRequest: NSFetchRequest<ClinicEntity> = ClinicEntity.fetchRequest()
-        
-        do {
-            clinic = try context.fetch(fetchRequest)
-        } catch let error {
-            print(error.localizedDescription)
-        }
-    }
-    
-    func createClinicInfo(_ entity: Any) {
-        guard let clinicEnt = NSEntityDescription.entity(forEntityName: "ClinicEntity", in: self.context) else { return }
-        let clinic = ClinicEntity(entity: clinicEnt, insertInto: context)
-        let entity = entity as! Clinic
-        
-        clinicEntity.address = entity.phone
-        clinicEntity.doctor = entity.phone
-        clinicEntity.phone = entity.phone
-        clinicEntity.site = entity.phone
-        
-        do {
-            self.clinic.insert(clinic, at: 0)
-            try context.save()
-        } catch let error {
-            context.rollback()
-            print(error.localizedDescription)
-        }
-    }
-    
-    func updateClinicInfo(_ entity: Any, at index: Int) {
-        
-    }
-    
-    func deleteClinicInfo(at index: Int) {
-        
-    }
-}
+//extension ClinicVC {
+//    func loadClinicInfo() {
+//        let fetchRequest: NSFetchRequest<ClinicEntity> = ClinicEntity.fetchRequest()
+//
+//        do {
+//            clinic = try context.fetch(fetchRequest)
+//        } catch let error {
+//            print(error.localizedDescription)
+//        }
+//    }
+//
+//    func createClinicInfo(_ entity: Any) {
+//        guard let clinicEnt = NSEntityDescription.entity(forEntityName: "ClinicEntity", in: self.context) else { return }
+//        let clinic = ClinicEntity(entity: clinicEnt, insertInto: context)
+//        let entity = entity as! Clinic
+//
+//        clinicEntity.address = entity.phone
+//        clinicEntity.doctor = entity.phone
+//        clinicEntity.phone = entity.phone
+//        clinicEntity.site = entity.phone
+//
+//        do {
+//            self.clinic.insert(clinic, at: 0)
+//            try context.save()
+//        } catch let error {
+//            context.rollback()
+//            print(error.localizedDescription)
+//        }
+//    }
+//
+//    func updateClinicInfo(_ entity: Any, at index: Int) {
+//
+//    }
+//
+//    func deleteClinicInfo(at index: Int) {
+//
+//    }
+//}

@@ -47,8 +47,8 @@ extension LocationViewCell: GeneralSetupProtocol {
         valueButton.translatesAutoresizingMaskIntoConstraints = false
         valueButton.clipsToBounds = true
         valueButton.layer.cornerRadius = 5
-        valueButton.setBackgroundColor(UIColor.CustomColor.dark, forState: .highlighted)
-        valueButton.setBackgroundColor(UIColor.CustomColor.lightGray, forState: .normal)
+//        valueButton.setBackgroundColor(UIColor.CustomColor.dark, forState: .highlighted)
+//        valueButton.setBackgroundColor(UIColor.CustomColor.lightGray, forState: .normal)
         valueButton.setTitleColor(.white, for: .highlighted)
         valueButton.setTitleColor(UIColor.CustomColor.dark, for: .normal)
         valueButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)

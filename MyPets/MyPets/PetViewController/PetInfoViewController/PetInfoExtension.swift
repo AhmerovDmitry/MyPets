@@ -33,7 +33,7 @@ extension PetInfoViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMM yyyy"
         petInfo = dateFormatter.string(from: self.picker.date)
-        petEntity.birthday = petInfo
+//        petEntity.birthday = petInfo
         updatePetInfo(updateInformation: updateInfo!)
         tableView.reloadData()
         hideDatePicker(nil)
@@ -63,19 +63,19 @@ extension PetInfoViewController {
     func popToRootController() {
         navigationController?.popToRootViewController(animated: true)
         
-        if !(petEntity == nilEntity) {
-            if collectionItemIndex == nil {
-                delegate?.createEntity(petEntity)
-            } else {
-                if !(petEntity == nilEntity) {
-                    delegate?.updateEntity(petEntity, at: collectionItemIndex!)
-                }
-            }
-        } else {
-            if collectionItemIndex != nil {
-                delegate?.deleteEntity(at: collectionItemIndex!)
-            }
-        }
+//        if !(petEntity == nilEntity) {
+//            if collectionItemIndex == nil {
+//                delegate?.createEntity(petEntity)
+//            } else {
+//                if !(petEntity == nilEntity) {
+//                    delegate?.updateEntity(petEntity, at: collectionItemIndex!)
+//                }
+//            }
+//        } else {
+//            if collectionItemIndex != nil {
+//                delegate?.deleteEntity(at: collectionItemIndex!)
+//            }
+//        }
         delegate?.reloadCollectionView()
         delegate?.reloadController()
     }
@@ -85,7 +85,7 @@ extension PetInfoViewController: UIImagePickerControllerDelegate, UINavigationCo
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         titleImage.image = info[.editedImage] as? UIImage
-        petEntity.image = titleImage.image
+//        petEntity.image = titleImage.image
         dismiss(animated: true, completion: nil)
     }
     
@@ -151,25 +151,25 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
                              message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addTextField { textField in
-                switch self.indexPath.row {
-                case 0:
-                    textField.text = self.petEntity.name
-                case 1:
-                    textField.text = self.petEntity.kind
-                case 2:
-                    textField.text = self.petEntity.breed
-                case 4:
-                    textField.text = self.petEntity.weight
-                case 5:
-                    textField.text = self.petEntity.sterile
-                case 6:
-                    textField.text = self.petEntity.color
-                case 7:
-                    textField.text = self.petEntity.hair
-                case 8:
-                    textField.text = self.petEntity.chipNumber
-                default: break
-                }
+//                switch self.indexPath.row {
+//                case 0:
+//                    textField.text = self.petEntity.name
+//                case 1:
+//                    textField.text = self.petEntity.kind
+//                case 2:
+//                    textField.text = self.petEntity.breed
+//                case 4:
+//                    textField.text = self.petEntity.weight
+//                case 5:
+//                    textField.text = self.petEntity.sterile
+//                case 6:
+//                    textField.text = self.petEntity.color
+//                case 7:
+//                    textField.text = self.petEntity.hair
+//                case 8:
+//                    textField.text = self.petEntity.chipNumber
+//                default: break
+//                }
                 textField.textAlignment = .left
                 textField.textColor = UIColor.CustomColor.dark
                 textField.placeholder = "Введите информацию о питомце"
@@ -180,25 +180,25 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
             let saveButton = UIAlertAction(title: "Сохранить", style: .default) { _ in
                 self.updatePetInfo(updateInformation: self.updateInfo!)
 
-                switch self.indexPath.row {
-                case 0:
-                    self.petEntity.name = self.petInfo
-                case 1:
-                    self.petEntity.kind = self.petInfo
-                case 2:
-                    self.petEntity.breed = self.petInfo
-                case 4:
-                    self.petEntity.weight = self.petInfo
-                case 5:
-                    self.petEntity.sterile = self.petInfo
-                case 6:
-                    self.petEntity.color = self.petInfo
-                case 7:
-                    self.petEntity.hair = self.petInfo
-                case 8:
-                    self.petEntity.chipNumber = self.petInfo
-                default: break
-                }
+//                switch self.indexPath.row {
+//                case 0:
+//                    self.petEntity.name = self.petInfo
+//                case 1:
+//                    self.petEntity.kind = self.petInfo
+//                case 2:
+//                    self.petEntity.breed = self.petInfo
+//                case 4:
+//                    self.petEntity.weight = self.petInfo
+//                case 5:
+//                    self.petEntity.sterile = self.petInfo
+//                case 6:
+//                    self.petEntity.color = self.petInfo
+//                case 7:
+//                    self.petEntity.hair = self.petInfo
+//                case 8:
+//                    self.petEntity.chipNumber = self.petInfo
+//                default: break
+//                }
                 self.tableView.reloadData()
                 self.petInfo = nil
             }

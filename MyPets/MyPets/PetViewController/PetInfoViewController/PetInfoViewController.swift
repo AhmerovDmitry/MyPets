@@ -39,32 +39,29 @@ class PetInfoViewController: UIViewController {
     var rightBarButtonItem = UIBarButtonItem()
     var leftBarButtonItem = UIBarButtonItem()
     
-    let nilEntity = Pet()
-    var petEntity = Pet()
-    
     weak var delegate: EntityTransfer?
     
     var collectionItemIndex: Int?
-    let collectionModel = [
-        CollectionModel(image: UIImage(),
-                        title: String(),
-                        description: String()),
-        CollectionModel(image: UIImage(named: "healthIcon"),
-                        title: "Здоровье",
-                        description: "Календарь прививок, лечение"),
-        CollectionModel(image: UIImage(named: "documentIcon"),
-                        title: "Документы",
-                        description: "Паспорт, метрика, родословная и т.д."),
-        CollectionModel(image: UIImage(named: "foodIcon"),
-                        title: "Питание",
-                        description: "Особенности рациона, кормление"),
-        CollectionModel(image: UIImage(named: "careIcon"),
-                        title: "Уход",
-                        description: "Купание, расчёсывание, грумминг и т.д."),
-        CollectionModel(image: UIImage(named: "entertainmentIcon"),
-                        title: "Развлечения",
-                        description: "Игры и развлечения питомца"),
-    ]
+//    let collectionModel = [
+//        CollectionModel(image: UIImage(),
+//                        title: String(),
+//                        description: String()),
+//        CollectionModel(image: UIImage(named: "healthIcon"),
+//                        title: "Здоровье",
+//                        description: "Календарь прививок, лечение"),
+//        CollectionModel(image: UIImage(named: "documentIcon"),
+//                        title: "Документы",
+//                        description: "Паспорт, метрика, родословная и т.д."),
+//        CollectionModel(image: UIImage(named: "foodIcon"),
+//                        title: "Питание",
+//                        description: "Особенности рациона, кормление"),
+//        CollectionModel(image: UIImage(named: "careIcon"),
+//                        title: "Уход",
+//                        description: "Купание, расчёсывание, грумминг и т.д."),
+//        CollectionModel(image: UIImage(named: "entertainmentIcon"),
+//                        title: "Развлечения",
+//                        description: "Игры и развлечения питомца"),
+//    ]
     var tableView = UITableView()
     var indexPath = IndexPath()
     var updateInfo: ((IndexPath) -> ())?
@@ -91,7 +88,7 @@ class PetInfoViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
         button.backgroundColor = UIColor.CustomColor.lightGray
-        button.setFrame()
+//        button.setFrame()
         button.layer.cornerRadius = button.frame.height / 2
         
         return button
@@ -167,11 +164,11 @@ extension PetInfoViewController: GeneralSetupProtocol {
             return button
         }()
                 
-        if petEntity == nilEntity {
-            rightBarButtonItem.customView = baseCameraButton
-        } else {
-            rightBarButtonItem.customView = baseEditedButton
-        }
+//        if petEntity == nilEntity {
+//            rightBarButtonItem.customView = baseCameraButton
+//        } else {
+//            rightBarButtonItem.customView = baseEditedButton
+//        }
         
         popToRootButton.addTarget(self, action: #selector(popToRootController), for: .touchUpInside)
         
@@ -232,7 +229,7 @@ extension PetInfoViewController: GeneralSetupProtocol {
             $0.translatesAutoresizingMaskIntoConstraints = false
          }
         
-        titleImage.image = petEntity.image
+//        titleImage.image = petEntity.image
         titleImage.contentMode = .scaleAspectFill
         titleImage.backgroundColor = .white
         titleImage.clipsToBounds = true

@@ -19,25 +19,26 @@ extension PetInfoViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        collectionModel.count
+//        collectionModel.count
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCellPetId", for: indexPath) as! PetViewCollectionCell
-        cell.titleImage.image = collectionModel[indexPath.item].image
-        cell.menuTitleLabel.text = collectionModel[indexPath.item].title
-        cell.descLabel.text = collectionModel[indexPath.item].description
-        cell.models = [
-            BaseModel(firstProperties: "Кличка", secondProperties: petEntity.name),
-            BaseModel(firstProperties: "Вид", secondProperties: petEntity.kind),
-            BaseModel(firstProperties: "Порода", secondProperties: petEntity.breed),
-            BaseModel(firstProperties: "Дата рождения", secondProperties: petEntity.birthday),
-            BaseModel(firstProperties: "Вес, кг", secondProperties: petEntity.weight),
-            BaseModel(firstProperties: "Стерилизация", secondProperties: petEntity.sterile),
-            BaseModel(firstProperties: "Окрас", secondProperties: petEntity.color),
-            BaseModel(firstProperties: "Шерсть", secondProperties: petEntity.hair),
-            BaseModel(firstProperties: "Номер чипа", secondProperties: petEntity.chipNumber)
-        ]
+//        cell.titleImage.image = collectionModel[indexPath.item].image
+//        cell.menuTitleLabel.text = collectionModel[indexPath.item].title
+//        cell.descLabel.text = collectionModel[indexPath.item].description
+//        cell.models = [
+//            BaseModel(firstProperties: "Кличка", secondProperties: petEntity.name),
+//            BaseModel(firstProperties: "Вид", secondProperties: petEntity.kind),
+//            BaseModel(firstProperties: "Порода", secondProperties: petEntity.breed),
+//            BaseModel(firstProperties: "Дата рождения", secondProperties: petEntity.birthday),
+//            BaseModel(firstProperties: "Вес, кг", secondProperties: petEntity.weight),
+//            BaseModel(firstProperties: "Стерилизация", secondProperties: petEntity.sterile),
+//            BaseModel(firstProperties: "Окрас", secondProperties: petEntity.color),
+//            BaseModel(firstProperties: "Шерсть", secondProperties: petEntity.hair),
+//            BaseModel(firstProperties: "Номер чипа", secondProperties: petEntity.chipNumber)
+//        ]
         
         if indexPath.item == 0 {
             cell.titleImage.isHidden = true
@@ -73,7 +74,7 @@ extension PetInfoViewController: UICollectionViewDelegate, UICollectionViewDataS
         let titles = ["Здоровье", "Документы", "Питание", "Уход", "Развлечения"]
         
         if indexPath.item != 0 {
-            self.setupBackBarItem()
+//            self.setupBackBarItem()
             self.pushView(controller: controllers[indexPath.item - 1], withTitle: titles[indexPath.item - 1])
         }
     }
