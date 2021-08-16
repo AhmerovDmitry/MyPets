@@ -36,22 +36,25 @@ extension PetViewCollectionCell: UITableViewDelegate, UITableViewDataSource {
         delegate?.getCellInfo(indexPath: indexPath, updateInformation: updatePetInfo(indexPath:))
         
         let messageText = "Если вы не располагаете данной информацией, можете оставить поле ввода пустым"
-        let titleText = ["Укажите кличку питомца",
-                         "Укажите вид питомца",
-                         "Укажите породу питомца",
-                         "",
-                         "Укажите вес питомца",
-                         "Укажите стерилизован ли питомец",
-                         "Укажите окрас питомца",
-                         "Укажите шерсть питомца",
-                         "Укажите номер чипа питомца"]
+        let titleText = [
+            "Укажите кличку питомца",
+            "Укажите вид питомца",
+            "Укажите породу питомца",
+            "",
+            "Укажите вес питомца",
+            "Укажите стерилизован ли питомец",
+            "Укажите окрас питомца",
+            "Укажите шерсть питомца",
+            "Укажите номер чипа питомца"
+        ]
         
         switch indexPath.row {
         case 3:
             delegate?.showDatePicker()
         default:
-            delegate?.showAlertController(title: titleText[indexPath.row],
-                                          message: messageText)
+            delegate?.showAlertController(
+                title: titleText[indexPath.row], message: messageText
+            )
         }
     }
     
