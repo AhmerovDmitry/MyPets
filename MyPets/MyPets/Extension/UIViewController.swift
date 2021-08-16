@@ -8,12 +8,18 @@
 import UIKit
 
 extension UIViewController {
-    func presentPremiumController(parent controller: UIViewController?) {
+    /// Метод показывает контроллер с возможностью купить премиум версию приложения
+    public func presentPremiumController(parent controller: UIViewController?) {
         let premiumVC = PremiumController()
         premiumVC.modalPresentationStyle = .fullScreen
         controller?.present(premiumVC, animated: true, completion: nil)
     }
-    
+    /// Метод открывающий (push) следующий контроллер без заголовка в кнопке возврата
+    public func openControllerWithoutBackBarItemTitle(_ controller: UIViewController) {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: nil, action: nil)
+        navigationItem.backBarButtonItem?.tintColor = UIColor.CustomColor.dark
+        navigationController?.pushViewController(controller, animated: true)
+    }
     func pushView(controller: UIViewController, withTitle: String) {
         controller.navigationController?.navigationBar.tintColor = UIColor.CustomColor.dark
         controller.navigationController?.navigationBar.prefersLargeTitles = true
@@ -23,11 +29,5 @@ extension UIViewController {
         ]
         controller.navigationItem.title = withTitle
         self.navigationController?.pushViewController(controller, animated: true)
-    }
-    
-    func setupBackBarItem() {
-        let backItem = UIBarButtonItem()
-        backItem.title = " "
-        self.navigationItem.backBarButtonItem = backItem
     }
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIView {
-    func setGradientBackground(colorOne: UIColor, colorTwo: UIColor, startPoint: CGPoint, endPoint: CGPoint) {
+    private func setGradientBackground(colorOne: UIColor, colorTwo: UIColor, startPoint: CGPoint, endPoint: CGPoint) {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
         gradientLayer.colors = [colorOne.cgColor, colorTwo.cgColor]
@@ -18,13 +18,30 @@ extension UIView {
         
         layer.insertSublayer(gradientLayer, at: 0)
     }
-    
-    func gradientSetup(view: UIView, colorOne: UIColor, colorTwo: UIColor) {
-        view.setGradientBackground(colorOne: colorOne, colorTwo: colorTwo,
-                                   startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 1))
+    /// Метод добавляет стандартную тень во все стороны от вью
+    public func setDefaultShadow() {
+        let shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        self.layer.shadowColor = UIColor.CustomColor.dark.cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)
+        self.layer.shadowOpacity = 0.2
+        self.layer.masksToBounds = false
+        self.layer.shadowPath = shadowPath
+        self.layer.shadowRadius = 7
+        self.layer.cornerRadius = 16
     }
-    
-    func startShakeAnimation(){
+    /// Метод добавляет эффект размытия для вью
+    public func setBlurEffect(_ view: UIView, frame: CGRect) {
+        let blurEffect = UIBlurEffect(style: .dark)
+        let effectView = UIVisualEffectView(effect: blurEffect)
+        effectView.frame = frame
+        view.insertSubview(effectView, at: 0)
+    }
+    func gradientSetup(view: UIView, colorOne: UIColor, colorTwo: UIColor) {
+        view.setGradientBackground(
+            colorOne: colorOne, colorTwo: colorTwo, startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 1)
+        )
+    }
+    func startShakeAnimation() {
         let animation = CABasicAnimation(keyPath: "position")
         animation.duration = 0.1
         animation.repeatCount = .infinity
@@ -33,7 +50,6 @@ extension UIView {
         animation.toValue = NSValue(cgPoint: CGPoint(x: self.center.x + 5, y: self.center.y))
         self.layer.add(animation, forKey: "position")
     }
-    
     func stopShakeAnimation() {
         self.layer.removeAnimation(forKey: "position")
     }
