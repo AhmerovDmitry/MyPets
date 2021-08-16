@@ -9,33 +9,38 @@ import UIKit
 
 final class InputInfoController: UIViewController {
     // MARK: - Properties
-    let backgroundView: UIView = {
+    private let backgroundView: UIView = {
         let view = UIView()
         view.setBlurEffect(view, frame: UIScreen.main.bounds)
         return view
     }()
-    let textFieldBackgroundView: UIView = {
+    private let textFieldBackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         view.clipsToBounds = true
         view.layer.cornerRadius = UIScreen.main.bounds.height * 0.06 / 2
         return view
     }()
-    let textField: UITextField = {
+    private let textField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .clear
         textField.autocorrectionType = .no
         textField.returnKeyType = .done
         return textField
     }()
+    private let catOutline = UIImageView(image: UIImage(named: "catOutline"))
+    private let dogOutline = UIImageView(image: UIImage(named: "dogOutline"))
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
+        textField.delegate = self
         setBackgroundViewConstraints()
         setTextFieldBackgroundViewConstraints()
         setTextFieldConstraints()
+        setCatOutlineConstraints()
+        setDogOutlineConstraints()
     }
 }
     
@@ -74,7 +79,37 @@ extension InputInfoController {
             textField.rightAnchor.constraint(equalTo: textFieldBackgroundView.rightAnchor, constant: -15)
         ])
     }
+    private func setCatOutlineConstraints() {
+        view.addSubview(catOutline)
+        catOutline.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            catOutline.widthAnchor.constraint(equalTo: textField.widthAnchor, multiplier: 0.2),
+            catOutline.heightAnchor.constraint(equalTo: catOutline.widthAnchor),
+            catOutline.bottomAnchor.constraint(equalTo: textFieldBackgroundView.topAnchor),
+            catOutline.leftAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+    }
+    private func setDogOutlineConstraints() {
+        view.addSubview(dogOutline)
+        dogOutline.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            dogOutline.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.3),
+            dogOutline.heightAnchor.constraint(equalTo: dogOutline.widthAnchor),
+            dogOutline.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            dogOutline.leftAnchor.constraint(equalTo: view.leftAnchor)
+        ])
+    }
 }
 
 // MARK: - Actions
-extension InputInfoController {}
+extension InputInfoController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [ weak self ] in
+            self?.dismiss(animated: true, completion: nil)
+        }
+        return true
+    }
+}
