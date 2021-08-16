@@ -30,7 +30,10 @@ final class OnboardController: UIViewController {
             UserDefaults.standard.set(true, forKey: "isFirstLaunch")
         }
     }
+}
     
+// MARK: - Methods
+extension OnboardController {
     private func updateViewContent() {
         onboardView.getOnboardContent(onboardContent)
     }

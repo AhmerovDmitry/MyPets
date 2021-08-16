@@ -83,7 +83,7 @@ extension MainMenuView: UICollectionViewDelegate, UICollectionViewDataSource, UI
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
-        cell.backgroundColor = .red
+        cell.backgroundColor = .lightGray
         cell.layer.cornerRadius = 16
         return cell
     }

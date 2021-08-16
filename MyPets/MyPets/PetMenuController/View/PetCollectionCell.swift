@@ -58,22 +58,12 @@ final class PetCollectionCell: UICollectionViewCell {
 // MARK: - Setup UI
 extension PetCollectionCell {
     private func setupUI() {
-        setSelfCellSettings()
+        self.backgroundColor = .white
+        self.setDefaultShadow()
         setPetPhotoConstraints()
         setPetNameConstraints()
         setPetBreedConstraints()
         setPetAgeConstraints()
-    }
-    private func setSelfCellSettings() {
-        let shadowPath = UIBezierPath(rect: self.bounds).cgPath
-        self.layer.shadowColor = UIColor.CustomColor.dark.cgColor
-        self.layer.shadowOffset = CGSize(width: 0, height: 0)
-        self.layer.shadowOpacity = 0.20
-        self.layer.masksToBounds = false
-        self.layer.shadowPath = shadowPath
-        self.layer.shadowRadius = 7
-        self.layer.cornerRadius = 16
-        self.backgroundColor = .white
     }
     private func setPetPhotoConstraints() {
         self.addSubview(petPhoto)

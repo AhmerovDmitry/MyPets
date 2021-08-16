@@ -10,11 +10,13 @@ import UIKit
 final class CustomTabBarController: UITabBarController {
     public var controllers: [UIViewController]?
     
+    // MARK: - Controllers
     private let mainVC = UINavigationController(rootViewController: MainMenuController())
     private let petVC = UINavigationController(rootViewController: PetMenuController())
     private let locationVC = LocationViewController()
     private let profileVC = UINavigationController(rootViewController: ProfileViewController())
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setTabBarUI()
@@ -47,6 +49,14 @@ extension CustomTabBarController {
         profileVC.tabBarItem.title = "Профиль"
         profileVC.tabBarItem.image = UIImage(named: "profileIcon")
     }
+}
+
+// MARK: - Methods
+extension CustomTabBarController {
+    /// Метод показывающий преимум контроллер
+    /// если покупка не совершена
+    /// возможно отключение показа нажатием на кнопку-заглушку "Купить Premium"
+    /// так как реальная покупка пока не реализованна
     private func presentPremium() {
         if !UserDefaults.appPaidStatus() {
             DispatchQueue.main.async { [self] in

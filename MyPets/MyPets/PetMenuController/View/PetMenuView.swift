@@ -22,6 +22,7 @@ final class PetMenuView: UIView {
     }
     
     // MARK: - Properties
+    public var presentControllerCallBack: (() -> Void)?
     private lazy var mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.alignment = .center
@@ -107,5 +108,7 @@ extension PetMenuView {
 
 // MARK: - Actions
 extension PetMenuView {
-    @objc private func presentController() {}
+    @objc private func presentController() {
+        presentControllerCallBack?()
+    }
 }

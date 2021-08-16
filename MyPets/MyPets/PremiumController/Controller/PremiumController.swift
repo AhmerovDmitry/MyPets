@@ -29,7 +29,10 @@ final class PremiumController: UIViewController {
             self?.dismiss(animated: true, completion: nil)
         }
     }
+}
     
+// MARK: - Methods
+extension PremiumController {
     private func updateViewContent() {
         premiumView.getOnboardContent(premiumContent)
     }

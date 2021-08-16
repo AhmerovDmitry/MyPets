@@ -21,7 +21,9 @@ final class PetCollectionView: UIView {
     }
     
     // MARK: - Properties
+    public var presentControllerCallBack: ((_ indexPath: Int) -> Void)?
     private let cellID = "PetCollectionCell"
+    private var badgeContent: [PetBadge]?
     private lazy var petCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -48,7 +50,7 @@ extension PetCollectionView {
         petCollection.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            petCollection.topAnchor.constraint(equalTo: self.topAnchor),
+            petCollection.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
             petCollection.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             petCollection.leftAnchor.constraint(equalTo: self.leftAnchor),
             petCollection.rightAnchor.constraint(equalTo: self.rightAnchor)
@@ -76,11 +78,14 @@ extension PetCollectionView: UICollectionViewDelegate, UICollectionViewDataSourc
         ) as? PetCollectionCell else { return UICollectionViewCell() }
         cell.configureCell(
             image: UIImage(),
-            name: "Name",
-            breed: "Breed",
-            age: "Age"
+            name: badgeContent?[indexPath.row].name ?? "Default",
+            breed: badgeContent?[indexPath.row].breed ?? "Default",
+            age: badgeContent?[indexPath.row].birdthday ?? "Default"
         )
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presentControllerCallBack?(indexPath.item)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
@@ -90,5 +95,7 @@ extension PetCollectionView: UICollectionViewDelegate, UICollectionViewDataSourc
 // MARK: - Public Methods
 extension PetCollectionView {
     public func getPetCollectionContent(_ content: Any) {
+        guard let content = content as? PetBadge else { return }
+        badgeContent?.append(content)
     }
 }
