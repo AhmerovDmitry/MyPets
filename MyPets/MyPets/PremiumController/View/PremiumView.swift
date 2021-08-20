@@ -48,6 +48,7 @@ final class PremiumView: UIView {
     }()
     private let closeButton: UIButton = {
         let button = UIButton(type: .system)
+        button.alpha = 0.7
         button.setImage(UIImage(named: "closeButton"), for: .normal)
         button.tintColor = .white
         button.contentHorizontalAlignment = .fill
@@ -121,10 +122,12 @@ extension PremiumView {
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            closeButton.widthAnchor.constraint(equalToConstant: 15),
-            closeButton.heightAnchor.constraint(equalToConstant: 15),
-            closeButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 32),
-            closeButton.rightAnchor.constraint(lessThanOrEqualTo: self.rightAnchor, constant: -32)
+            closeButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.04),
+            closeButton.heightAnchor.constraint(equalTo: closeButton.widthAnchor),
+            closeButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -UIScreen.main.bounds.width / 25),
+            closeButton.topAnchor.constraint(
+                equalTo: self.safeAreaLayoutGuide.topAnchor, constant: UIScreen.main.bounds.width / 25
+            )
         ])
     }
     private func setMainStackViewConstraints() {
