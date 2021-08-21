@@ -85,8 +85,10 @@
 ```
 - [X] - Swiftlint
 * Swiftlint имеет смешанные настройки из разных источников и переписаные под свой кодстайл
-[Официальный репозиторий Swiftlint](https://github.com/realm/SwiftLint/)
-[Paul Hudson](https://github.com/twostraws/Unwrap)
+
+    * [Официальный репозиторий Swiftlint](https://github.com/realm/SwiftLint/)
+
+    * [Paul Hudson](https://github.com/twostraws/Unwrap)
 ```
 Описание в процессе добавления
 ```
