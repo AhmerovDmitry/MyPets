@@ -20,8 +20,8 @@ class UserProfileViewController: UIViewController {
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(PetViewTableCell.self,
-                           forCellReuseIdentifier: "userProfileCell")
+//        tableView.register(PetViewTableCell.self,
+//                           forCellReuseIdentifier: "userProfileCell")
         tableView.backgroundColor = .white
         tableView.isScrollEnabled = false
         

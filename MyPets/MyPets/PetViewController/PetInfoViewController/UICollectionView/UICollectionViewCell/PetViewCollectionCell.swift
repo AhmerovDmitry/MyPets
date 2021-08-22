@@ -12,14 +12,6 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
     var models = [BaseModel]()
     let label = UILabel()
     let titleLabel = UILabel()
-    let tableView: UITableView = {
-        let tv = UITableView(frame: .zero, style: .plain)
-        tv.isScrollEnabled = false
-        tv.translatesAutoresizingMaskIntoConstraints = false
-        tv.register(PetViewTableCell.self, forCellReuseIdentifier: "tableCellPetId")
-        
-        return tv
-    }()
     let titleImage: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -55,9 +47,6 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
         
         setupConstraints()
         setupElements()
-        
-        tableView.delegate = self
-        tableView.dataSource = self
     }
     
     required init?(coder: NSCoder) {
@@ -65,7 +54,7 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
     }
     
     func setupConstraints() {
-        [label, tableView, titleLabel].forEach { contentView.addSubview($0) }
+//        [label, tableView, titleLabel].forEach { contentView.addSubview($0) }
         
         label.topAnchor.constraint(equalTo: contentView.topAnchor,
                                    constant: 15).isActive = true
@@ -76,13 +65,13 @@ class PetViewCollectionCell: UICollectionViewCell, GeneralSetupProtocol {
         label.rightAnchor.constraint(equalTo: contentView.rightAnchor,
                                      constant: -15).isActive = true
         
-        tableView.heightAnchor.constraint(lessThanOrEqualToConstant: 404).isActive = true
-        tableView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
-        tableView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,
-                                          constant: -20).isActive = true
+//        tableView.heightAnchor.constraint(lessThanOrEqualToConstant: 404).isActive = true
+//        tableView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+//        tableView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+//        tableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,
+//                                          constant: -20).isActive = true
         
-        titleLabel.bottomAnchor.constraint(equalTo: tableView.topAnchor).isActive = true
+//        titleLabel.bottomAnchor.constraint(equalTo: tableView.topAnchor).isActive = true
         titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor,
                                         constant: 15).isActive = true
         titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor,

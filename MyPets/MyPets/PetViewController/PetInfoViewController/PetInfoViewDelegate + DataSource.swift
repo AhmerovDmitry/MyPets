@@ -48,7 +48,7 @@ extension PetInfoViewController: UICollectionViewDelegate, UICollectionViewDataS
         } else {
             cell.setupMenuCell()
             cell.layer.cornerRadius = 10
-            cell.tableView.isHidden = true
+//            cell.tableView.isHidden = true
             cell.titleLabel.isHidden = true
         }
         
