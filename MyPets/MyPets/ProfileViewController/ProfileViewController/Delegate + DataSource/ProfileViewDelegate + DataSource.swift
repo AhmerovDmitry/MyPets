@@ -29,7 +29,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath) as! ProfileViewCell
+        guard var cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath) as? ProfileViewCell else { return UITableViewCell() }
         let menuTitle = menuTitles[indexPath.section]
         if indexPath.section == 0 {
             cell = ProfileViewCell(style: .subtitle, reuseIdentifier: "profileCell")

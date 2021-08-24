@@ -7,26 +7,30 @@
 
 import UIKit
 
-extension LocationViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+extension LocationViewController: UICollectionViewDelegateFlowLayout,
+                                  UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         let item = models[indexPath.row]
         var itemSize = CGSize()
         if let buttonText = item.firstProperties {
-            itemSize = buttonText.size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14)])
+            itemSize = buttonText.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)])
         }
 
         return CGSize(width: itemSize.width + 50, height: collectionView.frame.height / 2)
     }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return models.count
     }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellFilterId", for: indexPath) as! LocationViewCell
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "cellFilterId",
+            for: indexPath
+        ) as? LocationViewCell else { return UICollectionViewCell() }
         let data = models[indexPath.item]
         cell.model = data
-        
         switch indexPath.item {
         case 0:
             cell.valueButton.addTarget(self, action: #selector(response0), for: .touchUpInside)
@@ -47,14 +51,13 @@ extension LocationViewController: UICollectionViewDelegate, UICollectionViewData
         default:
             break
         }
-        
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
     }
-    
     @objc func response0() {
     }
     @objc func response1() {

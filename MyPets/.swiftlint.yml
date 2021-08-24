@@ -1,104 +1,104 @@
-excluded:
-  - ${PWD}/Carthage
-  - ${PWD}/Pods
-  - ${PWD}/DerivedData
-  - ${PWD}/MyPetsTests
-
 disabled_rules:
-  - discarded_notification_center_observer
-  - notification_center_detachment
-  - orphaned_doc_comment
+  - vertical_parameter_alignment_on_call
+  - weak_delegate
+  - vertical_parameter_alignment
+  - closure_parameter_position
   - todo
-  - unused_capture_list
+  - superfluous_disable_command
 
 opt_in_rules:
-  - array_init
-  - attributes
-  - closure_end_indentation
-  - closure_spacing
-  - collection_alignment
-  - colon # promote to error
-  - convenience_type
-  - discouraged_object_literal
-  - empty_collection_literal
+  - static_operator
   - empty_count
-  - empty_string
-  - enum_case_associated_values_count
-  - fatal_error_message
-  - first_where
-  - force_unwrapping
-  - implicitly_unwrapped_optional
-  - last_where
-  - legacy_random
-  - literal_expression_end_indentation
-  - multiline_arguments
-  - multiline_function_chains
-  - multiline_literal_brackets
-  - multiline_parameters
-  - multiline_parameters_brackets
-  - operator_usage_whitespace
+  - explicit_init
+  - closure_spacing
   - overridden_super_call
-  - pattern_matching_keywords
-  - prefer_self_type_over_type_of_self
   - redundant_nil_coalescing
-  - redundant_type_annotation
-  - strict_fileprivate
-  - toggle_bool
-  - trailing_closure
+  - private_outlet
+  - nimble_operator
+  - operator_usage_whitespace
+  - closure_end_indentation
+  - first_where
+  # - number_separator (100000  =>  100_000)
+  - prohibited_super_call
+  - fatal_error_message
   - unneeded_parentheses_in_closure_argument
-  - unused_import
-  - vertical_whitespace_closing_braces
-  - vertical_whitespace_opening_braces
-  - yoda_condition
+  - pattern_matching_keywords
+  - array_init
+  - literal_expression_end_indentation
+  - joined_default_parameter
+  - contains_over_first_not_nil
+  - override_in_extension
+  - private_action
+  - quick_discouraged_call
+  - quick_discouraged_focused_test
+  - quick_discouraged_pending_test
+  - single_test_class
+  - sorted_first_last
+
+line_length: 120
+
+type_body_length:
+  - 300 # warning
+  - 300 # error (должно быть 300)
+
+file_length:
+  warning: 400 # warning
+  error: 400 # error (должно быть 400)
+  ignore_comment_only_lines: true
+
+identifier_name:
+  min_length:
+    error: 2
+  max_length:
+    error: 50
+  excluded:
+    - id
+
+nesting:
+  type_level: 3
+
+cyclomatic_complexity:
+  ignores_case_statements: true
+
+excluded:
+  - Carthage
+  - Pods
+  - Sberbank/Notification Content Extension
+  - Documents
+  - build-scripts
+  - DerivedData
+
+  - Dangerfile.swift
+  - Sberbank/Sberthage/Checkouts/CreditRating
+  - Sberbank/Sberthage/Checkouts/MessengerKit
+
+  # Build Artifacts on Jenkins
+  - buildUniversalDerivedData
+  - buildSim
+  - buildDir
+  - buildDevice
+  - tempFatBinaries
+  - buildLogs
 
 
 custom_rules:
-  array_constructor:
-    name: "Array/Dictionary initializer"
-    regex: '[let,var] .+ = (\[.+\]\(\))'
-    capture_group: 1
-    message: "Use explicit type annotation when initializing empty arrays and dictionaries"
+  operator_overload:
+    included: ".*\\.swift"
+    excluded: ".*Tests\\.swift"
+    name: "Operator Overload"
+    regex: "\\s*func\\s+(\\/|-|\\+|!|\\*|%|&|\\||\\^|~|\\?)"
+    message: "Перегрузка операторов запрещена"
+    severity: error
+  operator_declaration:
+    included: ".*\\.swift"
+    name: "Operator Declaration"
+    regex: "(infix|postfix|prefix)\\s+operator"
+    message: "Объявление оператора запрещено вне MPFoundation.framework"
+    severity: error
+  disable_print:
+    included: ".*\\.swift"
+    excluded: ".*Tests\\.swift"
+    name: "print usage"
+    regex: "(^| |Swift.)(?<!func )(print|debugPrint)\\("
+    message: "Необходимо использовать log() из DebugHelper.framework"
     severity: warning
-
-
-attributes:
-  always_on_same_line:
-    - "@IBSegueAction"
-    - "@IBAction"
-    - "@NSManaged"
-    - "@objc"
-
-force_cast: warning
-force_try: warning
-function_body_length:
-    warning: 60
-
-legacy_hashing: error
-
-identifier_name:
-  excluded:
-    - i
-    - id
-    - x
-    - y
-    - z
-
-line_length:
-  warning: 120
-  ignores_urls: true
-  ignores_function_declarations: true
-  ignores_comments: true
-
-multiline_arguments:
-  first_argument_location: next_line
-  only_enforce_after_first_closure_on_first_line: true
-  
-private_over_fileprivate:
-  validate_extensions: true
-
-trailing_whitespace:
-  ignores_empty_lines: true
-  ignores_comments: true
-
-vertical_whitespace:
-  max_empty_lines: 2

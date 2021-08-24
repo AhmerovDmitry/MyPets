@@ -11,7 +11,7 @@ class AboutAppController: UIViewController {
     let appVersion: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Версия приложения: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String)"
+        label.text = "Версия приложения: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String)"
         label.textAlignment = .center
         label.textColor = UIColor.CustomColor.dark
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)

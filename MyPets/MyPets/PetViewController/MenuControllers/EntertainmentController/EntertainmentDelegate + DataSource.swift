@@ -18,7 +18,7 @@ extension EntertainmentController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "entertainmentCellId", for: indexPath) as! MenuCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "entertainmentCellId", for: indexPath) as? MenuCell else { return UICollectionViewCell() }
         cell.titleImage.image = UIImage(named: "entertainmentIcon")
         cell.menuTitleLabel.text = models[indexPath.item].firstProperties
         cell.descLabel.text = models[indexPath.item].secondProperties

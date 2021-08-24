@@ -38,7 +38,7 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "baseMenuCell", for: indexPath) as! BaseMenuCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "baseMenuCell", for: indexPath) as? BaseMenuCell else { return UITableViewCell() }
         cell.tableCellLabel.text = models[indexPath.row].firstProperties
         cell.tableCellPlaceholder.text = (models[indexPath.row].secondProperties ?? "Указать информацию")
         cell.accessoryType = .disclosureIndicator

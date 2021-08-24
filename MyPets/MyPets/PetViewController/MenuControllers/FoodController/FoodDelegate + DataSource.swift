@@ -18,7 +18,7 @@ extension FoodController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "foodCellId", for: indexPath) as! MenuCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "foodCellId", for: indexPath) as? MenuCell else { return UICollectionViewCell() }
         cell.titleImage.image = UIImage(named: "foodIcon")
         cell.menuTitleLabel.text = models[indexPath.item].firstProperties
         cell.descLabel.text = models[indexPath.item].secondProperties

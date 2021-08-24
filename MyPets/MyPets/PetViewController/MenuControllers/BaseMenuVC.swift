@@ -8,7 +8,7 @@
 import UIKit
 
 class BaseMenuVC: UIViewController {
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
     var baseText: String?
     var indexPath = Int()
     var models = [BaseModel()]
@@ -161,7 +161,7 @@ extension BaseMenuVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "baseMenuCell") as! BaseMenuCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "baseMenuCell") as? BaseMenuCell else { return UITableViewCell() }
         cell.tableCellLabel.text = models[indexPath.row].firstProperties
         cell.tableCellPlaceholder.text = (models[indexPath.row].secondProperties ?? "Указать информацию")
         cell.accessoryType = .disclosureIndicator
