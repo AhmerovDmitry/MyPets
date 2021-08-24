@@ -95,10 +95,10 @@ custom_rules:
     regex: "(infix|postfix|prefix)\\s+operator"
     message: "Объявление оператора запрещено вне MPFoundation.framework"
     severity: error
-  disable_print:
-    included: ".*\\.swift"
-    excluded: ".*Tests\\.swift"
-    name: "print usage"
-    regex: "(^| |Swift.)(?<!func )(print|debugPrint)\\("
-    message: "Необходимо использовать log() из DebugHelper.framework"
-    severity: warning
+#  disable_print:
+#    included: ".*\\.swift"
+#    excluded: ".*Tests\\.swift"
+#    name: "print usage"
+#    regex: "(^| |Swift.)(?<!func )(print|debugPrint)\\("
+#    message: "Необходимо использовать log() из DebugHelper.framework"
+#    severity: warning
