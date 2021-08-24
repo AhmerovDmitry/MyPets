@@ -38,11 +38,25 @@ final class PetInfoController: UIViewController {
 // MARK: - Methods
 extension PetInfoController {
     private func setupNavigationController() {
+        navigationItem.hidesBackButton = true
         navigationController?.navigationBar.backgroundColor = .clear
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: "camera"), style: .done, target: nil, action: nil
+            image: UIImage(systemName: "camera"),
+            style: .done,
+            target: self,
+            action: nil
         )
         navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.dark
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "arrow.uturn.left"),
+            style: .done,
+            target: self,
+            action: #selector(popViewController)
+        )
+        navigationItem.leftBarButtonItem?.tintColor = UIColor.CustomColor.dark
+    }
+    private func saveEntityInCoreData() {
+        CoreDataManager.shared.createEntity(petModel.defaultPet)
     }
     private func addSubview() {
         view.addSubview(petInfoView)
@@ -62,8 +76,9 @@ extension PetInfoController {
 
 // MARK: - Actions
 extension PetInfoController {
-    @objc private func dismissController() {
-        dismiss(animated: true, completion: nil)
+    @objc private func popViewController() {
+        saveEntityInCoreData()
+        navigationController?.popViewController(animated: true)
     }
 }
 
