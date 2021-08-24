@@ -51,6 +51,7 @@ extension PetInfoController {
         petInfoView.presentControllerCallBack = { [weak self] index in
             self?.cellIndex = index
             let controller = InputInfoController()
+            controller.checkTextField(self?.petModel.petInformation[index])
             controller.delegate = self
             controller.modalPresentationStyle = .overFullScreen
             controller.modalTransitionStyle = .crossDissolve

@@ -223,4 +223,7 @@ extension InputInfoView {
             $0.frame.origin.y += dogOutline.frame.height
         }
     }
+    public func textFieldValue(_ text: String) {
+        textField.text = text
+    }
 }

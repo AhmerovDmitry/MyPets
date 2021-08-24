@@ -15,17 +15,20 @@ final class InputInfoController: UIViewController {
     // MARK: - Delegate Properties
     public weak var delegate: TransferPetInformationDelegate?
     // MARK: - Lifecycle
-    override func loadView() {
-        view.addSubview(inputInfoView)
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        addSubview()
         observerMethods()
         inputInfoView.setTextFieldDelegate(self)
         callBacksMethods()
     }
 }
-
+// MARK: - Methods
+extension InputInfoController {
+    private func addSubview() {
+        view.addSubview(inputInfoView)
+    }
+}
 // MARK: - CallBack Methods
 extension InputInfoController {
     private func callBacksMethods() {
@@ -37,7 +40,6 @@ extension InputInfoController {
         }
     }
 }
-
 // MARK: - Keyboard Methods
 extension InputInfoController {
     private func observerMethods() {
@@ -65,10 +67,7 @@ extension InputInfoController {
         view.endEditing(true)
     }
 }
-
 // MARK: - Delegate
-
-/// КОГДА НАЖИМАКЕШЬ СОХРАНИТЬ НЕ ОТРАБАТЫВАЮТ МЕТОДЫ ПОКА КЛАВИАТУРА ВИДНА!!!
 extension InputInfoController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -78,7 +77,6 @@ extension InputInfoController: UITextFieldDelegate {
         petInformation = textField.text
     }
 }
-
 // MARK: - Actions
 @objc
 extension InputInfoController {
@@ -90,5 +88,12 @@ extension InputInfoController {
             delegate?.transferPetInformation(petInformation)
         }
         dismissController()
+    }
+}
+// MARK: - Public Methods
+extension InputInfoController {
+    public func checkTextField(_ text: String?) {
+        guard let text = text else { return }
+        inputInfoView.textFieldValue(text)
     }
 }
