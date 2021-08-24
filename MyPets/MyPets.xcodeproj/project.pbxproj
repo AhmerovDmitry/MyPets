@@ -30,6 +30,7 @@
 		BC7073252534A6F600B2979F /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073242534A6F600B2979F /* UIButton.swift */; };
 		BC7073322534BA3800B2979F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073312534BA3800B2979F /* UIView.swift */; };
 		BC73002A25723C460010F161 /* PetInfoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC73002925723C460010F161 /* PetInfoExtension.swift */; };
+		BC7318B926D51D8A006F4C60 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7318B826D51D8A006F4C60 /* CoreDataManager.swift */; };
 		BC73964A2542084D00A89858 /* LocationViewDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7396492542084D00A89858 /* LocationViewDelegate + DataSource.swift */; };
 		BC73964D25435F9900A89858 /* LocationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC73964C25435F9900A89858 /* LocationViewCell.swift */; };
 		BC7E9B90257F8242006D75A1 /* ProfileViewDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7E9B8F257F8242006D75A1 /* ProfileViewDelegate + DataSource.swift */; };
@@ -138,6 +139,7 @@
 		BC7073242534A6F600B2979F /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		BC7073312534BA3800B2979F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		BC73002925723C460010F161 /* PetInfoExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoExtension.swift; sourceTree = "<group>"; };
+		BC7318B826D51D8A006F4C60 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		BC7396492542084D00A89858 /* LocationViewDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationViewDelegate + DataSource.swift"; sourceTree = "<group>"; };
 		BC73964C25435F9900A89858 /* LocationViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewCell.swift; sourceTree = "<group>"; };
 		BC7E9B8F257F8242006D75A1 /* ProfileViewDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewDelegate + DataSource.swift"; sourceTree = "<group>"; };
@@ -648,6 +650,7 @@
 				BC9402F026CA63ED0028E5AC /* OMPetInformation+CoreDataClass.swift */,
 				BC9402EF26CA63ED0028E5AC /* OMPetInformation+CoreDataProperties.swift */,
 				BC9402E726CA62840028E5AC /* PetInformation.xcdatamodeld */,
+				BC7318B826D51D8A006F4C60 /* CoreDataManager.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -1157,6 +1160,7 @@
 				BC7EB65726C668F000BE80AE /* PetCollectionCell.swift in Sources */,
 				BCC259EB26C4173700FCAC54 /* MainMenuCollectionCell.swift in Sources */,
 				BCE5115525461A23002FB62E /* UIAlertController.swift in Sources */,
+				BC7318B926D51D8A006F4C60 /* CoreDataManager.swift in Sources */,
 				BC97F2C025A0652900267E34 /* UserProfileModel.swift in Sources */,
 				BC9959C926244B76006CE6E1 /* VaccinationVC.swift in Sources */,
 				BCD83D2625F2906600F04EF3 /* CareController.swift in Sources */,
