@@ -23,7 +23,6 @@ final class PetInfoController: UIViewController {
         let view = PetInfoView(frame: view.frame)
         return view
     }()
-        
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +35,6 @@ final class PetInfoController: UIViewController {
         petInfoView.configureCell(petModel)
     }
 }
-    
 // MARK: - Methods
 extension PetInfoController {
     private func setupNavigationController() {
@@ -81,7 +79,9 @@ extension PetInfoController: TransferPetInformationDelegate {
 }
 
 extension PetInfoController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.item {
         case 0: return CGSize(width: view.bounds.width / 1.1, height: view.bounds.height / 1.7)
         default: return CGSize(width: view.bounds.width / 1.1, height: view.bounds.height / 9)
@@ -90,7 +90,8 @@ extension PetInfoController: UICollectionViewDelegate, UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         5
     }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: petInfoView.cellID,
             for: indexPath
@@ -98,7 +99,9 @@ extension PetInfoController: UICollectionViewDelegate, UICollectionViewDataSourc
         indexPath.row == 0 ? petInfoView.setPetInfoCollectionInCell(cell) : nil
         return cell
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: view.bounds.height / 9, left: 0, bottom: 15, right: 0)
     }
 }

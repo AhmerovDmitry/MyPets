@@ -16,7 +16,6 @@ final class MainMenuCollectionCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     // MARK: - Properties
     private let onboardView: UIImageView = {
         let image = UIImageView()
@@ -43,7 +42,6 @@ extension MainMenuCollectionCell {
     private func setDescriptionLabelConstraints() {
         self.addSubview(descriptionLabel)
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             descriptionLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.7),
             descriptionLabel.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.06),
@@ -54,7 +52,6 @@ extension MainMenuCollectionCell {
     private func setOnboardViewConstraints() {
         self.addSubview(onboardView)
         onboardView.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             onboardView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
             onboardView.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),

@@ -9,19 +9,16 @@ import UIKit
 
 final class CustomTabBarController: UITabBarController {
     public var controllers: [UIViewController]?
-    
     // MARK: - Controllers
     private let mainVC = UINavigationController(rootViewController: MainMenuController())
     private let petVC = UINavigationController(rootViewController: PetMenuController())
     private let locationVC = LocationViewController()
     private let profileVC = UINavigationController(rootViewController: ProfileViewController())
-    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setTabBarUI()
         setBarItems()
-        
         controllers = [mainVC, petVC, locationVC, profileVC]
         presentPremium()
     }
@@ -39,13 +36,10 @@ extension CustomTabBarController {
     private func setBarItems() {
         mainVC.tabBarItem.title = "Главная"
         mainVC.tabBarItem.image = UIImage(named: "generalIcon")
-        
         petVC.tabBarItem.title = "Питомцы"
         petVC.tabBarItem.image = UIImage(named: "petIcon")
-        
         locationVC.tabBarItem.title = "Места"
         locationVC.tabBarItem.image = UIImage(named: "locationIcon")
-        
         profileVC.tabBarItem.title = "Профиль"
         profileVC.tabBarItem.image = UIImage(named: "profileIcon")
     }

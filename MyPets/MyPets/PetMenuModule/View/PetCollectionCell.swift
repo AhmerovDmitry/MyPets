@@ -16,7 +16,6 @@ final class PetCollectionCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     // MARK: - Properties
     private let petPhoto: UIImageView = {
         let image = UIImageView()
@@ -68,7 +67,6 @@ extension PetCollectionCell {
     private func setPetPhotoConstraints() {
         self.addSubview(petPhoto)
         petPhoto.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             petPhoto.widthAnchor.constraint(equalTo: self.widthAnchor),
             petPhoto.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.66),
@@ -79,7 +77,6 @@ extension PetCollectionCell {
     private func setPetNameConstraints() {
         self.addSubview(petName)
         petName.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             petName.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5),
             petName.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.165),
@@ -90,7 +87,6 @@ extension PetCollectionCell {
     private func setPetBreedConstraints() {
         self.addSubview(petBreed)
         petBreed.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             petBreed.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5),
             petBreed.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.165),
@@ -101,7 +97,6 @@ extension PetCollectionCell {
     private func setPetAgeConstraints() {
         self.addSubview(petAge)
         petAge.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             petAge.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5),
             petAge.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.165),

@@ -16,7 +16,6 @@ final class PetInfoTableCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     // MARK: - Properties
     private let cellLabel: UILabel = {
         let label = UILabel()
@@ -46,7 +45,6 @@ extension PetInfoTableCell {
     private func setCellLabelConstraints() {
         self.addSubview(cellLabel)
         cellLabel.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             cellLabel.topAnchor.constraint(equalTo: self.topAnchor),
             cellLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
@@ -57,7 +55,6 @@ extension PetInfoTableCell {
     private func setCellPlaceholderConstraints() {
         self.addSubview(cellPlaceholder)
         cellPlaceholder.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             cellPlaceholder.topAnchor.constraint(equalTo: self.topAnchor),
             cellPlaceholder.bottomAnchor.constraint(equalTo: self.bottomAnchor),

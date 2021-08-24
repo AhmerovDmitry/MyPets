@@ -11,11 +11,9 @@ final class PremiumController: UIViewController {
     // MARK: - Properties
     private let premiumContent = PremiumModel()
     private let premiumView = PremiumView(frame: UIScreen.main.bounds)
-    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         updateViewContent()
         addSubview()
     }
@@ -30,7 +28,6 @@ final class PremiumController: UIViewController {
         }
     }
 }
-    
 // MARK: - Methods
 extension PremiumController {
     private func updateViewContent() {

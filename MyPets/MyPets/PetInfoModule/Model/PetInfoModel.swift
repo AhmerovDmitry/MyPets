@@ -10,7 +10,6 @@ import UIKit
 struct PetInfoModel {
     // MARK: - Properties
     weak var controller: PetInfoController?
-    
     public let menuTitles = [
         "Кличка",
         "Вид",
@@ -27,7 +26,6 @@ struct PetInfoModel {
             controller?.reloadTableViewData(self)
         }
     }
-    
     // MARK: - Methods
     public mutating func updateInformation(_ info: String, index: Int) {
         petInformation[index] = info

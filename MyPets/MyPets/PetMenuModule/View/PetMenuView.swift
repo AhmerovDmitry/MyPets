@@ -20,7 +20,6 @@ final class PetMenuView: UIView {
         super.layoutSubviews()
         addPetButton.layer.cornerRadius = addPetButton.bounds.height / 2
     }
-    
     // MARK: - Properties
     public var presentControllerCallBack: (() -> Void)?
     private lazy var mainStackView: UIStackView = {
@@ -75,7 +74,6 @@ extension PetMenuView {
     private func setMainStackViewConstraints() {
         self.addSubview(mainStackView)
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             mainStackView.bottomAnchor.constraint(equalTo: self.centerYAnchor),
             mainStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
@@ -87,7 +85,6 @@ extension PetMenuView {
             $0.translatesAutoresizingMaskIntoConstraints = false
             mainStackView.addArrangedSubview($0)
         }
-        
         NSLayoutConstraint.activate([
             titleText.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
             descriptionText.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8)
@@ -96,7 +93,6 @@ extension PetMenuView {
     private func setAddPetButtonConstraints() {
         self.addSubview(addPetButton)
         addPetButton.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             addPetButton.topAnchor.constraint(equalTo: self.centerYAnchor, constant: 64),
             addPetButton.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.06),

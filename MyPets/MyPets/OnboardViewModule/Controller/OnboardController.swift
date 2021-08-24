@@ -11,11 +11,9 @@ final class OnboardController: UIViewController {
     // MARK: - Properties
     private let onboardContent = OnboardModel()
     private let onboardView = OnboardView(frame: UIScreen.main.bounds)
-    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         updateViewContent()
         addOnboardViewInHierarchy()
     }
@@ -26,12 +24,10 @@ final class OnboardController: UIViewController {
             tabBarController.viewControllers = tabBarController.controllers
             tabBarController.modalPresentationStyle = .fullScreen
             self?.present(tabBarController, animated: true, completion: nil)
-            
             UserDefaults.standard.set(true, forKey: "isFirstLaunch")
         }
     }
 }
-    
 // MARK: - Methods
 extension OnboardController {
     private func updateViewContent() {

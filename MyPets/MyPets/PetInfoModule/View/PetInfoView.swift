@@ -20,7 +20,6 @@ final class PetInfoView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
     }
-    
     // MARK: - Properties
     public var presentControllerCallBack: ((Int) -> Void)?
     public let cellID = "PetInfoCell"
@@ -36,7 +35,6 @@ final class PetInfoView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 12
-        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
@@ -56,7 +54,6 @@ extension PetInfoView {
     private func setPetImageConstraints() {
         self.addSubview(petImage)
         petImage.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             petImage.widthAnchor.constraint(equalTo: self.widthAnchor),
             petImage.centerXAnchor.constraint(equalTo: self.centerXAnchor),
@@ -67,7 +64,6 @@ extension PetInfoView {
     private func setPetInfoCollectionViewConstraints() {
         self.addSubview(petInfoCollectionView)
         petInfoCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             petInfoCollectionView.topAnchor.constraint(equalTo: self.topAnchor),
             petInfoCollectionView.leftAnchor.constraint(equalTo: self.leftAnchor),
@@ -92,7 +88,6 @@ extension PetInfoView {
     public func setPetInfoCollectionInCell(_ cell: UICollectionViewCell) {
         cell.addSubview(petInfoCell)
         petInfoCell.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             petInfoCell.topAnchor.constraint(equalTo: cell.topAnchor),
             petInfoCell.bottomAnchor.constraint(equalTo: cell.bottomAnchor),

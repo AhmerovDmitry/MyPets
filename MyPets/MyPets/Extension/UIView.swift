@@ -15,7 +15,6 @@ extension UIView {
         gradientLayer.locations = [0.0, 1.0]
         gradientLayer.startPoint = startPoint
         gradientLayer.endPoint = endPoint
-        
         layer.insertSublayer(gradientLayer, at: 0)
     }
     /// Метод добавляет стандартную тень во все стороны от вью

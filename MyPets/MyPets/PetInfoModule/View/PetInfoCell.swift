@@ -19,7 +19,6 @@ final class PetInfoCell: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
     }
-    
     // MARK: - Properties
     public var presentControllerCallBack: ((Int) -> Void)?
     private var petMenuModel = PetInfoModel()
@@ -57,7 +56,6 @@ extension PetInfoCell {
     private func setPetNameLabelConstraints() {
         self.addSubview(petNameLabel)
         petNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             petNameLabel.topAnchor.constraint(equalTo: self.topAnchor),
             petNameLabel.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.1),
@@ -68,7 +66,6 @@ extension PetInfoCell {
     private func setPetInfoTableConstraints() {
         self.addSubview(petInfoTable)
         petInfoTable.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             petInfoTable.topAnchor.constraint(equalTo: petNameLabel.bottomAnchor),
             petInfoTable.bottomAnchor.constraint(equalTo: self.bottomAnchor),

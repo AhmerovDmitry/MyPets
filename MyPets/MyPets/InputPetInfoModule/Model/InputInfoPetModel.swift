@@ -24,20 +24,17 @@ struct Pet {
 final class CoreDataManager {
     let shared = CoreDataManager()
     private init() {}
-    
     let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
 }
-    
 extension CoreDataManager {
     public func loadPets() {
-        let fetchRequest: NSFetchRequest<OMPetInformation> = OMPetInformation.fetchRequest()
-        
-        do {
-            try context?.fetch(fetchRequest).reversed()
-        } catch let error {
-            context?.rollback()
-            print(error.localizedDescription)
-        }
+//        let fetchRequest: NSFetchRequest<OMPetInformation> = OMPetInformation.fetchRequest()
+//        do {
+//            try context?.fetch(fetchRequest).reversed()
+//        } catch let error {
+//            context?.rollback()
+//            print(error.localizedDescription)
+//        }
     }
     public func createEntity(_ entity: Any) {
         guard let context = context else { return }

@@ -19,7 +19,6 @@ final class TitleMenuView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
     }
-    
     // MARK: - Properties
     private let backgroundImageView = UIImageView(image: UIImage(named: "mainMenuTitleViewImage"))
     private let titleLabel: UILabel = {
@@ -53,7 +52,6 @@ extension TitleMenuView {
     private func setBackgroundImageViewConstraints() {
         self.addSubview(backgroundImageView)
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             backgroundImageView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5),
             backgroundImageView.widthAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5),
@@ -64,7 +62,6 @@ extension TitleMenuView {
     private func setTitleLabelConstraints() {
         self.addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             titleLabel.bottomAnchor.constraint(equalTo: self.centerYAnchor, constant: -4),
             titleLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
@@ -74,7 +71,6 @@ extension TitleMenuView {
     private func setDescriptionLabelConstraints() {
         self.addSubview(descriptionLabel)
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             descriptionLabel.topAnchor.constraint(equalTo: self.centerYAnchor, constant: 4),
             descriptionLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),

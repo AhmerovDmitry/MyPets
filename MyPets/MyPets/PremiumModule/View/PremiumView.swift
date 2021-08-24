@@ -12,7 +12,6 @@ final class PremiumView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
-        
         let colorOne = UIColor(red: 137 / 255, green: 46 / 255, blue: 223 / 255, alpha: 1)
         let colorTwo = UIColor(red: 212 / 255, green: 165 / 255, blue: 255 / 255, alpha: 1)
         self.gradientSetup(view: self, colorOne: colorOne, colorTwo: colorTwo)
@@ -24,7 +23,6 @@ final class PremiumView: UIView {
         super.layoutSubviews()
         buyButton.layer.cornerRadius = buyButton.bounds.height / 2
     }
-    
     // MARK: - Properties
     public var presentControllerCallBack: (() -> Void)?
     public var dismissControllerCallBack: (() -> Void)?
@@ -120,7 +118,6 @@ extension PremiumView {
     private func setCloseButtonConstraints() {
         self.addSubview(closeButton)
         closeButton.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             closeButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.04),
             closeButton.heightAnchor.constraint(equalTo: closeButton.widthAnchor),
@@ -133,7 +130,6 @@ extension PremiumView {
     private func setMainStackViewConstraints() {
         self.addSubview(mainStackView)
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             mainStackView.widthAnchor.constraint(equalToConstant: self.bounds.width / 1.2),
             mainStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -32),
@@ -148,7 +144,6 @@ extension PremiumView {
     private func setPremiumTableViewConstraints() {
         mainStackView.addArrangedSubview(premiumTableView)
         premiumTableView.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             premiumTableView.leftAnchor.constraint(equalTo: mainStackView.leftAnchor),
             premiumTableView.rightAnchor.constraint(equalTo: mainStackView.rightAnchor),
@@ -164,7 +159,6 @@ extension PremiumView {
     private func setBuyButtonConstraints() {
         self.addSubview(buyButton)
         buyButton.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             buyButton.topAnchor.constraint(equalTo: mainStackView.bottomAnchor, constant: 32),
             buyButton.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.06),
@@ -199,7 +193,6 @@ extension PremiumView: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         cell.textLabel?.adjustsFontSizeToFitWidth = true
         cell.textLabel?.text = premiumText?[indexPath.row].description
-        
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

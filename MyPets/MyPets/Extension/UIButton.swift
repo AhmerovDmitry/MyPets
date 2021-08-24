@@ -8,7 +8,10 @@
 import UIKit
 
 extension UIButton {
-    static func createStandartButton(title: String, backgroundColor: UIColor, action: Selector, target: Any?) -> UIButton {
+    static func createStandartButton(title: String,
+                                     backgroundColor: UIColor,
+                                     action: Selector,
+                                     target: Any?) -> UIButton {
         let button = UIButton(type: .system)
         button.setTitle(title, for: .normal)
         button.backgroundColor = backgroundColor

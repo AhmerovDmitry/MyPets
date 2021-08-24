@@ -12,26 +12,22 @@ final class PetMenuController: UIViewController {
     private let petBadgeModel = PetBadge()
     private let petMenuView = PetMenuView(frame: UIScreen.main.bounds)
     private let petCollectionView = PetCollectionView(frame: UIScreen.main.bounds)
-    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         petCollectionView.getPetCollectionContent(petBadgeModel)
-        
         setCallBacksTransfers()
         setupNavigationController()
         addSubview()
     }
 }
-    
 // MARK: - Methods
 extension PetMenuController {
     private func setCallBacksTransfers() {
         petMenuView.presentControllerCallBack = { [weak self] in
             self?.presentController()
         }
-        petCollectionView.presentControllerCallBack = { [weak self] indexPath in
+        petCollectionView.presentControllerCallBack = { [weak self] _ in
             self?.presentController()
         }
     }
@@ -40,7 +36,6 @@ extension PetMenuController {
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.CustomColor.dark]
         navigationItem.title = "Питомцы"
-        
         guard let image = UIImage(systemName: "plus") else { return }
         let addButton = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(presentController))
         navigationItem.rightBarButtonItem = addButton
@@ -51,7 +46,6 @@ extension PetMenuController {
 //        view.addSubview(petMenuView)
     }
 }
-    
 // MARK: - Actions
 extension PetMenuController {
     @objc private func presentController() {

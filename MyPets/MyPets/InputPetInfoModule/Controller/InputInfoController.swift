@@ -12,13 +12,10 @@ final class InputInfoController: UIViewController {
     private var petInformation: String?
     private var keyboardHeight: CGFloat?
     private let inputInfoView = InputInfoView(frame: UIScreen.main.bounds)
-    
     // MARK: - Delegate Properties
     public weak var delegate: TransferPetInformationDelegate?
-    
     // MARK: - Lifecycle
     override func loadView() {
-        super.loadView()
         view.addSubview(inputInfoView)
     }
     override func viewDidLoad() {

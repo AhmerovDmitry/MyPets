@@ -19,7 +19,6 @@ final class InputInfoView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
     }
-    
     // MARK: - Properties
     public var saveInformationCallBack: (() -> Void)?
     public var dismissControllerCallBack: (() -> Void)?
@@ -108,7 +107,6 @@ extension InputInfoView {
     private func setBackgroundViewConstraints() {
         self.addSubview(backgroundView)
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             backgroundView.topAnchor.constraint(equalTo: self.topAnchor),
             backgroundView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
@@ -119,7 +117,6 @@ extension InputInfoView {
     private func setTitleLableConstraints() {
         self.addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             titleLabel.bottomAnchor.constraint(equalTo: catOutline.topAnchor),
             titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
@@ -129,7 +126,6 @@ extension InputInfoView {
     private func setTextFieldBackgroundViewConstraints() {
         self.addSubview(textFieldBackgroundView)
         textFieldBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             textFieldBackgroundView.topAnchor.constraint(equalTo: self.centerYAnchor),
             textFieldBackgroundView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.06),
@@ -140,7 +136,6 @@ extension InputInfoView {
     private func setTextFieldConstraints() {
         textFieldBackgroundView.addSubview(textField)
         textField.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             textField.topAnchor.constraint(equalTo: textFieldBackgroundView.topAnchor),
             textField.bottomAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor),
@@ -151,7 +146,6 @@ extension InputInfoView {
     private func setHandOutlineConstraints() {
         self.addSubview(handOutline)
         handOutline.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             handOutline.heightAnchor.constraint(equalTo: textFieldBackgroundView.heightAnchor, multiplier: 0.5),
             handOutline.widthAnchor.constraint(equalTo: handOutline.heightAnchor),
@@ -162,7 +156,6 @@ extension InputInfoView {
     private func setCatOutlineConstraints() {
         self.addSubview(catOutline)
         catOutline.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             catOutline.widthAnchor.constraint(equalTo: textFieldBackgroundView.widthAnchor, multiplier: 0.2),
             catOutline.heightAnchor.constraint(equalTo: catOutline.widthAnchor),
@@ -173,7 +166,6 @@ extension InputInfoView {
     private func setDogOutlineConstraints() {
         self.addSubview(dogOutline)
         dogOutline.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             dogOutline.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.3),
             dogOutline.heightAnchor.constraint(equalTo: dogOutline.widthAnchor),
@@ -184,7 +176,6 @@ extension InputInfoView {
     private func setSaveButtonConstraints() {
         self.addSubview(saveButton)
         saveButton.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             saveButton.topAnchor.constraint(equalTo: handOutline.bottomAnchor),
             saveButton.leftAnchor.constraint(equalTo: textFieldBackgroundView.leftAnchor)
@@ -193,7 +184,6 @@ extension InputInfoView {
     private func setCancelButtonConstraints() {
         self.addSubview(cancelButton)
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             cancelButton.topAnchor.constraint(equalTo: handOutline.bottomAnchor),
             cancelButton.rightAnchor.constraint(equalTo: textFieldBackgroundView.rightAnchor)

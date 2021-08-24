@@ -20,7 +20,6 @@ final class OnboardView: UIView {
         super.layoutSubviews()
         doneButton.layer.cornerRadius = doneButton.bounds.height / 2
     }
-    
     // MARK: - Properties
     public var presentControllerCallBack: (() -> Void)?
     private var onboardImage: [String]?
@@ -52,7 +51,6 @@ final class OnboardView: UIView {
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0
         layout.itemSize = CGSize(width: self.bounds.width, height: self.bounds.height)
-        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.isScrollEnabled = false
         collectionView.isPagingEnabled = true
@@ -77,7 +75,6 @@ extension OnboardView {
     private func setOnboardCollectionViewConstraints() {
         self.addSubview(onboardCollectionView)
         onboardCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             onboardCollectionView.topAnchor.constraint(equalTo: self.topAnchor),
             onboardCollectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
@@ -88,7 +85,6 @@ extension OnboardView {
     private func setPageControlConstraints() {
         self.addSubview(pageControl)
         pageControl.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             pageControl.heightAnchor.constraint(equalToConstant: 10),
             pageControl.widthAnchor.constraint(equalTo: self.widthAnchor),
@@ -99,7 +95,6 @@ extension OnboardView {
     private func setDoneButtonConstraints() {
         self.addSubview(doneButton)
         doneButton.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             doneButton.topAnchor.constraint(equalTo: pageControl.bottomAnchor, constant: 32),
             doneButton.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.06),
@@ -110,7 +105,6 @@ extension OnboardView {
     private func setCloseButtonConstraints() {
         self.addSubview(skipButton)
         skipButton.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             skipButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 32),
             skipButton.rightAnchor.constraint(lessThanOrEqualTo: self.rightAnchor, constant: -32)
@@ -144,7 +138,8 @@ extension OnboardView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return pageControl.numberOfPages
     }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: cellID,
             for: indexPath
