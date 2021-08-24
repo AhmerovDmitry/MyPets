@@ -14,7 +14,6 @@ extension UserProfileViewController {
         photoGallery.allowsEditing = true
         photoGallery.sourceType = .photoLibrary
         photoGallery.delegate = self
-        
         present(photoGallery, animated: true, completion: nil)
     }
 }

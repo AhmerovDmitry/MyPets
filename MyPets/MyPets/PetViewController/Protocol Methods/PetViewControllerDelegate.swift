@@ -11,10 +11,10 @@ protocol PetViewControllerDelegate: AnyObject {
     func showAlertController(title: String,
                              message: String)
     func showDatePicker()
-    func updatePetInfo(updateInformation: @escaping (IndexPath) -> ())
+    func updatePetInfo(updateInformation: @escaping (IndexPath) -> Void)
     func petInfoForModel() -> String?
     func getTableView(_ tableView: UITableView)
-    func getCellInfo(indexPath: IndexPath, updateInformation: @escaping (IndexPath) -> ())
+    func getCellInfo(indexPath: IndexPath, updateInformation: @escaping (IndexPath) -> Void)
 }
 
 protocol EntityTransfer: AnyObject {

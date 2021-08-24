@@ -14,21 +14,16 @@ extension PetInfoViewController {
         photoGallery.allowsEditing = true
         photoGallery.sourceType = .photoLibrary
         photoGallery.delegate = self
-        
         present(photoGallery, animated: true, completion: nil)
     }
-    
     func showEditButtons() {
         showEditedButtons = !showEditedButtons
     }
-    
     func editPetInfo() {}
-    
     func deletePet() {
         delegate?.deleteEntity(at: collectionItemIndex!)
         navigationController?.popToRootViewController(animated: true)
     }
-    
     func savePetBirthday() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMM yyyy"
@@ -38,7 +33,6 @@ extension PetInfoViewController {
         tableView.reloadData()
         hideDatePicker(nil)
     }
-    
     func hideDatePicker(_ sender: UITapGestureRecognizer?) {
         UIView.animate(withDuration: 0.5) {
             self.picker.alpha = 0
@@ -51,7 +45,6 @@ extension PetInfoViewController {
             self.petInfo = nil
         }
     }
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField.text == "" {
             petInfo = nil
@@ -59,10 +52,8 @@ extension PetInfoViewController {
             petInfo = textField.text
         }
     }
-    
     func popToRootController() {
         navigationController?.popToRootViewController(animated: true)
-        
 //        if !(petEntity == nilEntity) {
 //            if collectionItemIndex == nil {
 //                delegate?.createEntity(petEntity)
@@ -83,12 +74,11 @@ extension PetInfoViewController {
 
 extension PetInfoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         titleImage.image = info[.editedImage] as? UIImage
 //        petEntity.image = titleImage.image
         dismiss(animated: true, completion: nil)
     }
-    
     func setupEditButtons() {
         [cameraButton, editedButton, deleteButton].forEach({
             $0.frame = popToRootButton.frame
@@ -98,17 +88,14 @@ extension PetInfoViewController: UIImagePickerControllerDelegate, UINavigationCo
                                               left: popToRootButton.frame.height / 6,
                                               bottom: popToRootButton.frame.height / 6,
                                               right: popToRootButton.frame.height / 6)
-            
             $0.backgroundColor = UIColor.CustomColor.lightGray
             $0.tintColor = UIColor.CustomColor.dark
             $0.alpha = 0
             $0.imageView?.contentMode = .scaleAspectFit
             $0.layer.cornerRadius = $0.frame.height / 2
-            
             view.addSubview($0)
         })
     }
-    
     func fetchRightBarButtonFrame() -> CGRect {
         var frame = CGRect()
         if let barView = navigationItem.rightBarButtonItem?.value(forKey: "view") as? UIView {
@@ -120,22 +107,18 @@ extension PetInfoViewController: UIImagePickerControllerDelegate, UINavigationCo
     }
 }
 
-//MARK: - Delegate methods
+// MARK: - Delegate methods
 extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate {
     func getTableView(_ tableView: UITableView) {
         self.tableView = tableView
     }
-    
-    func getCellInfo(indexPath: IndexPath, updateInformation: @escaping (IndexPath) -> ()) {
+    func getCellInfo(indexPath: IndexPath, updateInformation: @escaping (IndexPath) -> Void) {
         self.indexPath = indexPath
         self.updateInfo = updateInformation
     }
-    
-    
-    func updatePetInfo(updateInformation: @escaping (IndexPath) -> ()) {
+    func updatePetInfo(updateInformation: @escaping (IndexPath) -> Void) {
         updateInformation(indexPath)
     }
-    
     func showDatePicker() {
         UIView.animate(withDuration: 0.5) {
             self.picker.isHidden = false
@@ -146,7 +129,6 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
             self.saveDateButton.alpha = 1
         }
     }
-    
     func showAlertController(title: String,
                              message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -176,7 +158,7 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
                 textField.addTarget(self,
                                     action: #selector(self.textFieldDidEndEditing(_:)),
                                     for: .editingDidEnd)
-            }
+        }
             let saveButton = UIAlertAction(title: "Сохранить", style: .default) { _ in
                 self.updatePetInfo(updateInformation: self.updateInfo!)
 
@@ -208,7 +190,6 @@ extension PetInfoViewController: PetViewControllerDelegate, UITextFieldDelegate 
 
             present(alert, animated: true, completion: nil)
         }
-    
     func petInfoForModel() -> String? {
         return petInfo
     }

@@ -8,8 +8,8 @@
 import UIKit
 import MapKit
 
-extension LocationViewController : CLLocationManagerDelegate {
-    //MARK: - Fetch user location
+extension LocationViewController: CLLocationManagerDelegate {
+    // MARK: - Fetch user location
     func checkLocationAvailability() {
         if CLLocationManager.locationServicesEnabled() {
             locationManager.requestWhenInUseAuthorization()
@@ -19,7 +19,7 @@ extension LocationViewController : CLLocationManagerDelegate {
                                             urlForSystemWay: "App-Prefs:root=LOCATION_SERVICES")
         }
     }
-    //MARK: - Check authorization status
+    // MARK: - Check authorization status
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
@@ -38,11 +38,11 @@ extension LocationViewController : CLLocationManagerDelegate {
             print("Default status")
         }
     }
-    //MARK: - error.localizedDescription
+    // MARK: - error.localizedDescription
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("error:: \(error.localizedDescription)")
     }
-    //MARK: - View user location
+    // MARK: - View user location
     func showUserLocation() {
         guard let userLocation = locationManager.location?.coordinate else { return }
         let viewRegion = MKCoordinateRegion(center: userLocation,
@@ -50,11 +50,10 @@ extension LocationViewController : CLLocationManagerDelegate {
                                             longitudinalMeters: 1000)
         mapView.setRegion(viewRegion, animated: true)
     }
-    //MARK: - Did update user location
+    // MARK: - Did update user location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
     }
-    //MARK: - Search annotation on map
+    // MARK: - Search annotation on map
     func searchInMap(place: String?) {
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = place
@@ -66,8 +65,8 @@ extension LocationViewController : CLLocationManagerDelegate {
             self.dropPinZoomIn(placemarks: self.matchingItems)
         })
     }
-    //MARK: - Set pin and annotation settings
-    func dropPinZoomIn(placemarks: [MKMapItem]){
+    // MARK: - Set pin and annotation settings
+    func dropPinZoomIn(placemarks: [MKMapItem]) {
         mapView.removeAnnotations(mapView.annotations)
         var annotations = [MKPointAnnotation]()
         for item in placemarks {

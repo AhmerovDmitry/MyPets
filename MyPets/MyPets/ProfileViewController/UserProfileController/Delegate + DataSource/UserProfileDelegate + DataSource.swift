@@ -11,13 +11,14 @@ extension UserProfileViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 45
     }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         models.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "userProfileCell", for: indexPath) as! UITableViewController
+//        let cell = tableView.dequeueReusableCell(
+//            withIdentifier: "userProfileCell",
+//            for: indexPath
+//        ) as! UITableViewController
 //        cell.tableCellLabel.text = models[indexPath.row].firstProperties
 //        cell.accessoryType = .disclosureIndicator
 //        cell.backgroundColor = .white
@@ -35,10 +36,8 @@ extension UserProfileViewController: UITableViewDelegate, UITableViewDataSource 
 //        return cell
         return UITableViewCell()
     }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
         switch indexPath.row {
         case 0:
             alertForUserInformation(title: "Укажите ваше имя", message: "test message", textFieldIndex: indexPath)

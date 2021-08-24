@@ -8,10 +8,8 @@
 import UIKit
 
 class DewormingVC: BaseMenuVC {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.models = [
             BaseModel(firstProperties: "Препарат", secondProperties: "Указать информацию"),
             BaseModel(firstProperties: "Последний приём", secondProperties: "Указать информацию"),
@@ -20,5 +18,4 @@ class DewormingVC: BaseMenuVC {
         ]
         self.titleLabel.text = "Дегельминтизация"
     }
-    
 }

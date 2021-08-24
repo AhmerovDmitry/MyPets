@@ -8,10 +8,8 @@
 import UIKit
 
 class DiseasesVC: BaseMenuVC {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.models = [
             BaseModel(firstProperties: "Телефон", secondProperties: "Указать информацию"),
             BaseModel(firstProperties: "Адрес", secondProperties: "Указать информацию"),
@@ -21,5 +19,4 @@ class DiseasesVC: BaseMenuVC {
         ]
         self.titleLabel.text = "Моя ветклиника"
     }
-    
 }

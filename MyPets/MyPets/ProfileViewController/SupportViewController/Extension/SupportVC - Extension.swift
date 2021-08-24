@@ -18,12 +18,12 @@ extension SupportViewController: MFMailComposeViewControllerDelegate {
             composeVC.setToRecipients([toMail])
             composeVC.setSubject("MyPets request")
             composeVC.setMessageBody("Опишите ситуацию как можно подробнее:", isHTML: false)
-             
             self.present(composeVC, animated: true, completion: nil)
         }
     }
-    
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+    func mailComposeController(_ controller: MFMailComposeViewController,
+                               didFinishWith result: MFMailComposeResult,
+                               error: Error?) {
         controller.dismiss(animated: true, completion: nil)
     }
 }

@@ -11,18 +11,14 @@ import CoreData
 class ClinicVC: BaseMenuVC, UITextFieldDelegate {
 //    var clinicEntity = Clinic()
 //    var clinic = [ClinicEntity]()
-    
     let displaySwitch: UISwitch = {
         let element = UISwitch()
         element.translatesAutoresizingMaskIntoConstraints = false
         element.isOn = false
-        
         return element
     }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.models = [
             BaseModel(firstProperties: "Телефон", secondProperties: nil),
             BaseModel(firstProperties: "Адрес", secondProperties: nil),
@@ -32,35 +28,31 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
         ]
         self.titleLabel.text = "Моя ветклиника"
     }
-    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
     }
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "baseMenuCell", for: indexPath) as? BaseMenuCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: "baseMenuCell",
+                for: indexPath
+        ) as? BaseMenuCell else { return UITableViewCell() }
         cell.tableCellLabel.text = models[indexPath.row].firstProperties
         cell.tableCellPlaceholder.text = (models[indexPath.row].secondProperties ?? "Указать информацию")
         cell.accessoryType = .disclosureIndicator
         cell.selectionStyle = .default
-        
         if indexPath.row == models.count - 1 {
             cell.accessoryType = .none
             cell.selectionStyle = .none
             cell.addSubview(displaySwitch)
-            
             NSLayoutConstraint.activate([
                 displaySwitch.centerYAnchor.constraint(equalTo: cell.centerYAnchor),
                 displaySwitch.rightAnchor.constraint(equalTo: cell.tableCellPlaceholder.rightAnchor)
             ])
         }
-        
         return cell
     }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
         self.indexPath = indexPath.row
         let messageText = "Если вы не располагаете данной информацией, можете оставить поле ввода пустым"
         let titleText = ["Укажите телефон ветклиники",
@@ -71,13 +63,11 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
             alertToInputInformation(title: titleText[indexPath.row], message: messageText, self)
         }
     }
-    
     func alertToInputInformation(title: String,
                                  message: String,
                                  _ controller: UIViewController) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addTextField { textField in
-            
             textField.textAlignment = .left
             textField.textColor = UIColor.CustomColor.dark
             textField.placeholder = "Введите информацию"
@@ -85,11 +75,9 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
                                 action: #selector(self.textFieldDidEndEditing(_:)),
                                 for: .editingDidEnd)
             textField.text = self.models[self.indexPath].secondProperties
-            
             if self.indexPath == 0 {
                 textField.keyboardType = .numberPad
             }
-            
         }
         let saveButton = UIAlertAction(title: "Сохранить", style: .default) { _ in
             switch self.indexPath {
@@ -102,16 +90,13 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
             self.models[self.indexPath].secondProperties = self.baseText
             self.baseText = nil
             self.tableView.reloadData()
-            
         }
         let cancelButton = UIAlertAction(title: "Отменить", style: .cancel)
 
         alert.addAction(saveButton)
         alert.addAction(cancelButton)
-        
         controller.present(alert, animated: true, completion: nil)
     }
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField.text == "" {
             baseText = nil
@@ -121,7 +106,7 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
     }
 }
 
-//extension ClinicVC {
+// extension ClinicVC {
 //    func loadClinicInfo() {
 //        let fetchRequest: NSFetchRequest<ClinicEntity> = ClinicEntity.fetchRequest()
 //
@@ -133,7 +118,8 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
 //    }
 //
 //    func createClinicInfo(_ entity: Any) {
-//        guard let clinicEnt = NSEntityDescription.entity(forEntityName: "ClinicEntity", in: self.context) else { return }
+//        guard let clinicEnt = NSEntityDescription.entity(forEntityName: "ClinicEntity",
+//                                                         in: self.context) else { return }
 //        let clinic = ClinicEntity(entity: clinicEnt, insertInto: context)
 //        let entity = entity as! Clinic
 //
@@ -158,4 +144,4 @@ class ClinicVC: BaseMenuVC, UITextFieldDelegate {
 //    func deleteClinicInfo(at index: Int) {
 //
 //    }
-//}
+// }

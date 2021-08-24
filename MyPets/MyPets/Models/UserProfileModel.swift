@@ -13,7 +13,6 @@ struct UserProfileModel {
             return UserDefaults.standard.string(forKey: "name")
         } set {
             let defaults = UserDefaults.standard
-            
             if let name = newValue {
                 defaults.set(name, forKey: "name")
             } else {
@@ -26,7 +25,6 @@ struct UserProfileModel {
             return UserDefaults.standard.string(forKey: "city")
         } set {
             let defaults = UserDefaults.standard
-            
             if let city = newValue {
                 defaults.set(city, forKey: "city")
             } else {
@@ -39,7 +37,6 @@ struct UserProfileModel {
             return UserDefaults.standard.string(forKey: "eMail")
         } set {
             let defaults = UserDefaults.standard
-            
             if let eMail = newValue {
                 defaults.set(eMail, forKey: "eMail")
             } else {
@@ -52,7 +49,6 @@ struct UserProfileModel {
             return UserDefaults.standard.data(forKey: "image")
         } set {
             let defaults = UserDefaults.standard
-            
             if let name = newValue {
                 defaults.set(name, forKey: "image")
             } else {

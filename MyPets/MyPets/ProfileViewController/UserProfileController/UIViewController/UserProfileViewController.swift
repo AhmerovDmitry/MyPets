@@ -24,27 +24,22 @@ class UserProfileViewController: UIViewController {
 //                           forCellReuseIdentifier: "userProfileCell")
         tableView.backgroundColor = .white
         tableView.isScrollEnabled = false
-        
         return tableView
     }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
         tableView.delegate = self
         tableView.dataSource = self
-        
         setupNavigationController()
         setupConstraints()
         setupElements()
     }
-    
     func setupNavigationController() {
         navigationController?.navigationBar.tintColor = UIColor.CustomColor.dark
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.backgroundColor = .clear
-        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor : UIColor.CustomColor.dark]
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.CustomColor.dark]
         navigationItem.title = "Профиль"
     }
 }
@@ -53,20 +48,17 @@ extension UserProfileViewController: GeneralSetupProtocol {
     func setupConstraints() {
         view.addSubview(profileView)
         view.addSubview(tableView)
-        
         NSLayoutConstraint.activate([
             profileView.heightAnchor.constraint(equalToConstant: view.bounds.height / 10),
             profileView.widthAnchor.constraint(equalTo: profileView.heightAnchor),
             profileView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             profileView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
             tableView.topAnchor.constraint(equalTo: profileView.bottomAnchor),
             tableView.widthAnchor.constraint(equalTo: view.widthAnchor),
             tableView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             tableView.heightAnchor.constraint(equalTo: view.widthAnchor)
         ])
     }
-    
     func setupElements() {
         profileView.translatesAutoresizingMaskIntoConstraints = false
         profileView.clipsToBounds = true
@@ -79,7 +71,6 @@ extension UserProfileViewController: GeneralSetupProtocol {
         profileView.addTarget(self, action: #selector(presentController), for: .touchUpInside)
         profileView.setBackgroundImage(UIImage(data: userInfo.image ?? Data()), for: .normal)
     }
-    
 }
 
 extension UserProfileViewController: UITextFieldDelegate {
@@ -112,9 +103,7 @@ extension UserProfileViewController: UITextFieldDelegate {
         alert.addAction(cancelButton)
         present(alert, animated: true, completion: nil)
     }
-    
     func textFieldDidChangeSelection(_ textField: UITextField) {
         models[indexPath.row].secondProperties = textField.text
     }
-    
 }

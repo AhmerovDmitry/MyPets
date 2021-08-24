@@ -8,13 +8,17 @@
 import UIKit
 import CoreData
 
-extension MainPetViewController: UICollectionViewDelegate, UICollectionViewDataSource  {
+extension MainPetViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 //        return pets.count
         return 0
     }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "entityCell", for: indexPath) as! EntityCell
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(
+//            withReuseIdentifier: "entityCell",
+//            for: indexPath
+//        ) as! EntityCell
 //        cell.backgroundColor = .white
 //        cell.layer.cornerRadius = 15
 //        cell.imageView.image = pets[indexPath.item].image?.toImage() ?? UIImage(named: "unknownImage")
@@ -33,7 +37,6 @@ extension MainPetViewController: UICollectionViewDelegate, UICollectionViewDataS
         let backItem = UIBarButtonItem()
         backItem.title = " "
         navigationItem.backBarButtonItem = backItem
-        
         let petInfoVC = PetInfoViewController()
         petInfoVC.hidesBottomBarWhenPushed = true
 //        petInfoVC.delegate = self
@@ -53,7 +56,7 @@ extension MainPetViewController: UICollectionViewDelegate, UICollectionViewDataS
 }
 
 // MARK: - Delegate & CoreData methods
-//extension MainPetViewController: EntityTransfer {
+// extension MainPetViewController: EntityTransfer {
 //    func reloadCollectionView() {
 //        collectionView.reloadData()
 //    }
@@ -127,10 +130,10 @@ extension MainPetViewController: UICollectionViewDelegate, UICollectionViewDataS
 //        do {
 //            try context.save()
 //            pets.remove(at: index)
-////            collectionView.reloadData()
+//            collectionView.reloadData()
 //        } catch let error {
 //            context.rollback()
 //            print(error.localizedDescription)
 //        }
 //    }
-//}
+// }

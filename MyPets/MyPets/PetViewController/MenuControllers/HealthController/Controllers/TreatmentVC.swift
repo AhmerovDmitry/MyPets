@@ -8,10 +8,8 @@
 import UIKit
 
 class TreatmentVC: BaseMenuVC {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.models = [
             BaseModel(firstProperties: "Препарат", secondProperties: "Указать информацию"),
             BaseModel(firstProperties: "Последняя обработка", secondProperties: "Указать информацию"),
@@ -20,5 +18,4 @@ class TreatmentVC: BaseMenuVC {
         ]
         self.titleLabel.text = "Обработка от блох и клещей"
     }
-    
 }

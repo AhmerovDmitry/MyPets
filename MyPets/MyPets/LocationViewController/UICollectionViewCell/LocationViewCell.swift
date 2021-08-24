@@ -15,18 +15,14 @@ class LocationViewCell: UICollectionViewCell {
         }
     }
     let valueButton = UIButton(type: .custom)
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setupConstraints()
         setupElements()
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
 
 extension LocationViewCell: GeneralSetupProtocol {
@@ -42,7 +38,6 @@ extension LocationViewCell: GeneralSetupProtocol {
         valueButton.rightAnchor.constraint(equalTo: contentView.rightAnchor,
                                            constant: 0).isActive = true
     }
-    
     func setupElements() {
         valueButton.translatesAutoresizingMaskIntoConstraints = false
         valueButton.clipsToBounds = true
@@ -53,7 +48,6 @@ extension LocationViewCell: GeneralSetupProtocol {
         valueButton.setTitleColor(UIColor.CustomColor.dark, for: .normal)
         valueButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
     }
-    
     func setupNavigationController() {}
     func presentController() {}
 }
