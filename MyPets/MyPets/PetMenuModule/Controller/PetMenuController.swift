@@ -41,14 +41,16 @@ extension PetMenuController {
         navigationItem.rightBarButtonItem = addButton
         navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.purple
     }
+    /// Если в CoreData нет питомцев тогда грузится экран с кнопкой "Добавить питомца"
+    /// в обратном случае грузится экран с коллекцией (списком питомцев)
     private func addSubview() {
-        view.addSubview(petCollectionView)
-//        view.addSubview(petMenuView)
+        CoreDataManager.shared.pets.isEmpty ? view.addSubview(petMenuView) : view.addSubview(petCollectionView)
     }
 }
 // MARK: - Actions
 extension PetMenuController {
     @objc private func presentController() {
-        self.openControllerWithoutBackBarItemTitle(PetInfoController())
+        let controller = PetInfoController()
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
