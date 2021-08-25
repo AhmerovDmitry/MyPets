@@ -16,13 +16,7 @@ final class PetInfoCell: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
     // MARK: - Properties
-    public var presentControllerCallBack: ((Int) -> Void)?
-    private var petMenuModel = PetInfoModel()
-    private let cellID = "petTableCell"
     private let petNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.CustomColor.dark
@@ -32,18 +26,14 @@ final class PetInfoCell: UIView {
         label.numberOfLines = 1
         return label
     }()
-    private lazy var petInfoTable: UITableView = {
+    private let petInfoTable: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.isScrollEnabled = false
-        tableView.register(PetInfoTableCell.self, forCellReuseIdentifier: cellID)
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 1))
-        tableView.delegate = self
-        tableView.dataSource = self
         return tableView
     }()
 }
-
 // MARK: - Setup UI
 extension PetInfoCell {
     private func setupUI() {
@@ -74,43 +64,21 @@ extension PetInfoCell {
         ])
     }
 }
-
-// MARK: - Delegate & DataSource
-extension PetInfoCell: UITableViewDelegate, UITableViewDataSource {
+// MARK: - Public Methods
+extension PetInfoCell {
+    /// Методы делегата и дата сорса, которые передаются в контроллер для работы с ними
     public func tableViewDelegate<T: UITableViewDelegate>(_ target: T) {
         petInfoTable.delegate = target
     }
     public func tableViewDataSource<T: UITableViewDataSource>(_ target: T) {
         petInfoTable.dataSource = target
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let count = petMenuModel.menuTitles.count
-        return tableView.bounds.height / CGFloat(count)
+    /// Регистрация ячейки с использованием идентификатора
+    public func setTableViewID(_ id: String) {
+        petInfoTable.register(PetInfoTableCell.self, forCellReuseIdentifier: id)
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return petMenuModel.menuTitles.count
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: cellID,
-            for: indexPath
-        ) as? PetInfoTableCell else { return UITableViewCell() }
-        cell.configureTitle(petMenuModel.menuTitles[indexPath.row])
-        cell.configurePlaceholder(petMenuModel.petInformation[indexPath.row])
-        return cell
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presentControllerCallBack?(indexPath.row)
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-}
-
-// MARK: - Public Methods
-extension PetInfoCell {
-    public func configureCell(_ data: Any?) {
-        guard let model = data as? PetInfoModel else { return }
-        petMenuModel = model
-        petNameLabel.text = model.petInformation[0] ?? ""
-        petInfoTable.reloadData()
+    /// Перезагрузка одной ячейки после изменения значения в ней
+    public func reloadTableViewCell(at indexPath: IndexPath) {
+        petInfoTable.reloadRows(at: [indexPath], with: .none)
     }
 }

@@ -34,7 +34,6 @@ final class PetInfoTableCell: UITableViewCell {
         return label
     }()
 }
-
 // MARK: - Setup UI
 extension PetInfoTableCell {
     private func setupUI() {
@@ -63,8 +62,11 @@ extension PetInfoTableCell {
         ])
     }
 }
-
 // MARK: - Public Methods
+/// Методы настройки ячейки
+/// Тайтл задается данными по умолчанию
+/// А плейсхолдер проверяет, что если значений нет, тогда используется имя по умолчанию, а если есть
+/// тогда устанавлвается заданная ранее информация
 extension PetInfoTableCell {
     public func configureTitle(_ value: String?) {
         cellLabel.text = value

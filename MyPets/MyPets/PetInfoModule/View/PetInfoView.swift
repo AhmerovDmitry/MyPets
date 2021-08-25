@@ -12,17 +12,15 @@ final class PetInfoView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
-        presentInputInfoController()
+        petInfoCell.setTableViewID(tableCellID)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
     // MARK: - Properties
-    public var presentControllerCallBack: ((Int) -> Void)?
-    public let cellID = "PetInfoCell"
+    public let tableCellID = "PetTableCell"
+    public let collectionCellID = "PetCollectionCell"
+    private let petInfoCell = PetInfoCell()
     private let petImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "unknownImage")
@@ -38,12 +36,10 @@ final class PetInfoView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
-        collectionView.register(PetInfoCollectionCell.self, forCellWithReuseIdentifier: cellID)
+        collectionView.register(PetInfoCollectionCell.self, forCellWithReuseIdentifier: collectionCellID)
         return collectionView
     }()
-    private let petInfoCell = PetInfoCell()
 }
-
 // MARK: - Setup UI
 extension PetInfoView {
     private func setupUI() {
@@ -72,19 +68,10 @@ extension PetInfoView {
         ])
     }
 }
-
-// MARK: - Actions
-extension PetInfoView {
-    @objc private func presentController() {}
-}
-
 // MARK: - Public Methods
 extension PetInfoView {
-    public func presentInputInfoController() {
-        petInfoCell.presentControllerCallBack = { [weak self] index in
-            self?.presentControllerCallBack?(index)
-        }
-    }
+    /// Метод задает первоя ячейке в коллекции кастомную ячейку в виде таблицы с информацией
+    /// которую должен заполнять пользователь
     public func setPetInfoCollectionInCell(_ cell: UICollectionViewCell) {
         cell.addSubview(petInfoCell)
         petInfoCell.translatesAutoresizingMaskIntoConstraints = false
@@ -95,13 +82,20 @@ extension PetInfoView {
             petInfoCell.rightAnchor.constraint(equalTo: cell.rightAnchor)
         ])
     }
-    public func configureCell(_ data: Any?) {
-        petInfoCell.configureCell(data)
-    }
+    /// Методы делегата и дата сорса, которые передаются в контроллер для работы с ними
     public func collectionViewDelegate<T: UICollectionViewDelegate>(_ target: T) {
         petInfoCollectionView.delegate = target
     }
     public func collectionViewDataSource<T: UICollectionViewDataSource>(_ target: T) {
         petInfoCollectionView.dataSource = target
+    }
+    /// Методы делегата и дата сорса, которые передаются в контроллер для работы с ними
+    public func tableViewDelegateAndDataSource<T>(_ target: T) where T: UITableViewDelegate, T: UITableViewDataSource {
+        petInfoCell.tableViewDelegate(target)
+        petInfoCell.tableViewDataSource(target)
+    }
+    /// Перезагрузка одной ячейки после изменения значения в ней
+    public func reloadTableViewCell(at indexPath: IndexPath) {
+        petInfoCell.reloadTableViewCell(at: indexPath)
     }
 }

@@ -7,15 +7,20 @@
 
 import UIKit
 
+protocol PetMenuControllerDelegate: AnyObject {
+    func reloadController()
+}
+
 final class PetMenuController: UIViewController {
     // MARK: - Properties
-    private let petBadgeModel = PetBadge()
-    private let petMenuView = PetMenuView(frame: UIScreen.main.bounds)
-    private let petCollectionView = PetCollectionView(frame: UIScreen.main.bounds)
+    private var tappedCellIndex: Int?
+    private lazy var petMenuView = PetMenuView(frame: view.bounds)
+    private lazy var petCollectionView = PetCollectionView(frame: view.bounds)
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        petCollectionView.getPetCollectionContent(petBadgeModel)
+        petCollectionView.collectionViewDelegate(self)
+        petCollectionView.collectionViewDataSource(self)
         setCallBacksTransfers()
         setupNavigationController()
         addSubview()
@@ -25,9 +30,6 @@ final class PetMenuController: UIViewController {
 extension PetMenuController {
     private func setCallBacksTransfers() {
         petMenuView.presentControllerCallBack = { [weak self] in
-            self?.presentController()
-        }
-        petCollectionView.presentControllerCallBack = { [weak self] _ in
             self?.presentController()
         }
     }
@@ -51,6 +53,53 @@ extension PetMenuController {
 extension PetMenuController {
     @objc private func presentController() {
         let controller = PetInfoController()
+        controller.delegate = self
+        controller.getCellIndex(tappedCellIndex)
+        /// Сбрасываю индекс чтобы он не сохранялся при повторном открытии экрана без использования ячеек,
+        /// открытие окна с помощью кнопки "+"
+        tappedCellIndex = nil
         navigationController?.pushViewController(controller, animated: true)
+    }
+}
+
+// MARK: - Delegate & DataSource
+extension PetMenuController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.bounds.width / 1.1, height: view.bounds.height / 3.5)
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return CoreDataManager.shared.pets.count
+    }
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: petCollectionView.cellID,
+            for: indexPath
+        ) as? PetCollectionCell else { return UICollectionViewCell() }
+        cell.configureCell(
+            image: UIImage(),
+            name: CoreDataManager.shared.pets[indexPath.row].name ?? "Кличка не указана",
+            breed: CoreDataManager.shared.pets[indexPath.row].breed ?? "Порода не указана",
+            age: CoreDataManager.shared.pets[indexPath.row].birthday ?? "01.01.1001"
+        )
+        return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        tappedCellIndex = indexPath.row
+        presentController()
+    }
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
+    }
+}
+
+extension PetMenuController: PetMenuControllerDelegate {
+    func reloadController() {
+        self.petCollectionView.reloadCollectionView()
+        self.addSubview()
     }
 }

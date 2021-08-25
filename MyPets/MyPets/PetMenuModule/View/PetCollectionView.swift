@@ -16,13 +16,8 @@ final class PetCollectionView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
     // MARK: - Properties
-    public var presentControllerCallBack: ((_ indexPath: Int) -> Void)?
-    private let cellID = "PetCollectionCell"
-    private var badgeContent: [PetBadge]?
+    public let cellID = "PetCollectionCell"
     private lazy var petCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -30,8 +25,6 @@ final class PetCollectionView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
-        collectionView.delegate = self
-        collectionView.dataSource = self
         collectionView.register(PetCollectionCell.self, forCellWithReuseIdentifier: cellID)
         return collectionView
     }()
@@ -55,49 +48,15 @@ extension PetCollectionView {
     }
 }
 
-// MARK: - Actions
-extension PetCollectionView {
-    @objc private func presentController() {}
-}
-
-// MARK: - Delegate & DataSource
-extension PetCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.bounds.width / 1.1, height: self.bounds.height / 3.5)
-    }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
-    }
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: cellID,
-            for: indexPath
-        ) as? PetCollectionCell else { return UICollectionViewCell() }
-        cell.configureCell(
-            image: UIImage(),
-            name: badgeContent?[indexPath.row].name ?? "Default",
-            breed: badgeContent?[indexPath.row].breed ?? "Default",
-            age: badgeContent?[indexPath.row].birdthday ?? "Default"
-        )
-        return cell
-    }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presentControllerCallBack?(indexPath.item)
-    }
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
-    }
-}
-
 // MARK: - Public Methods
 extension PetCollectionView {
-    public func getPetCollectionContent(_ content: Any) {
-        guard let content = content as? PetBadge else { return }
-        badgeContent?.append(content)
+    public func collectionViewDelegate<T: UICollectionViewDelegate>(_ target: T) {
+        petCollection.delegate = target
+    }
+    public func collectionViewDataSource<T: UICollectionViewDataSource>(_ target: T) {
+        petCollection.dataSource = target
+    }
+    public func reloadCollectionView() {
+        self.petCollection.reloadData()
     }
 }
