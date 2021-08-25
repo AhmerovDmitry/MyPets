@@ -9,7 +9,7 @@ import UIKit
 
 struct PetInfoModel {
     // MARK: - Properties
-    weak var controller: PetInfoController?
+    /// Массив со стройками которые заполняют тайтл ячейки таблицы
     public let menuTitles = [
         "Кличка",
         "Вид",
@@ -21,50 +21,51 @@ struct PetInfoModel {
         "Шерсть",
         "Номер чипа"
     ]
-    private(set) var petInformation: [String?] = [nil,
-                                                  nil,
-                                                  nil,
-                                                  nil,
-                                                  nil,
-                                                  nil,
-                                                  nil,
-                                                  nil,
-                                                  nil] {
-        didSet {
-            print("RELOAD_TABLEVIEW")
-            controller?.reloadTableViewData(self)
-        }
-    }
-    private(set) var defaultPet = Pet(image: nil,
-                                      name: nil,
-                                      kind: nil,
-                                      breed: nil,
-                                      birthday: nil,
-                                      weight: nil,
-                                      sterile: nil,
-                                      color: nil,
-                                      hair: nil,
-                                      chipNumber: nil) {
-        didSet {
-            print("RELOAD_TABLEVIEW")
-            controller?.reloadTableViewData(self)
-        }
-    }
+    /// Массив параметров который заполняется по мере заполнения информации
+    /// Создан для удобства
+    /// чтобы тут же в файле модели можно было его разобрать по индексам
+    /// в объект класса Pet и не делать это в контроллере
+    private(set) var petInformation: [String?] = [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil]
+    private(set) var defaultEntity = Pet()
     // MARK: - Methods
+    /// Функция которая заполняет массив информации об объекте
     public mutating func updateInformation(_ info: String, index: Int) {
         petInformation[index] = info
-        switch index {
-        case 0: defaultPet.name = info
-        case 1: defaultPet.kind = info
-        case 2: defaultPet.breed = info
-        case 3: defaultPet.birthday = info
-        case 4: defaultPet.weight = info
-        case 5: defaultPet.sterile = info
-        case 6: defaultPet.color = info
-        case 7: defaultPet.hair = info
-        case 8: defaultPet.chipNumber = info
-        default:
-            defaultPet.image = info
-        }
+    }
+    /// Подготовка модели данных к сохранению
+    private mutating func prepareObjectForSave() {
+        defaultEntity.name = petInformation[0]
+        defaultEntity.kind = petInformation[1]
+        defaultEntity.breed = petInformation[2]
+        defaultEntity.birthday = petInformation[3]
+        defaultEntity.weight = petInformation[4]
+        defaultEntity.sterile = petInformation[5]
+        defaultEntity.color = petInformation[6]
+        defaultEntity.hair = petInformation[7]
+        defaultEntity.chipNumber = petInformation[8]
+        defaultEntity.image = petInformation[9]
+    }
+    /// Сохранение модели в CoreData
+    public mutating func saveEntityInCoreData() {
+        prepareObjectForSave()
+        CoreDataManager.shared.createEntity(defaultEntity)
+    }
+    /// Удаление модели из CoreData
+    public func removeEntityFromCoreData(at index: Int) {
+        CoreDataManager.shared.deleteEntity(at: index)
+    }
+    /// Заполнение массива информации при открытии существующего питомца
+    public mutating func loadEntity(at index: Int) {
+        let entity = CoreDataManager.shared.pets[index]
+        petInformation[0] = entity.name
+        petInformation[1] = entity.kind
+        petInformation[2] = entity.breed
+        petInformation[3] = entity.birthday
+        petInformation[4] = entity.weight
+        petInformation[5] = entity.sterile
+        petInformation[6] = entity.color
+        petInformation[7] = entity.hair
+        petInformation[8] = entity.chipNumber
+        petInformation[9] = entity.image
     }
 }

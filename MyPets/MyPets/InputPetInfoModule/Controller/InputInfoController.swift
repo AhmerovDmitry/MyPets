@@ -19,8 +19,8 @@ final class InputInfoController: UIViewController {
         super.viewDidLoad()
         addSubview()
         observerMethods()
-        inputInfoView.setTextFieldDelegate(self)
         callBacksMethods()
+        inputInfoView.setTextFieldDelegate(self)
     }
 }
 // MARK: - Methods
@@ -67,7 +67,7 @@ extension InputInfoController {
         view.endEditing(true)
     }
 }
-// MARK: - Delegate
+// MARK: - UITextField Delegate
 extension InputInfoController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

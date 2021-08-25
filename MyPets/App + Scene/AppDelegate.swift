@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         /// Сразу пробуем загрузить массив питомцев из CoreData
-        CoreDataManager.shared.loadPets()
+        CoreDataManager.shared.loadEntitys()
         /// Настройка рутового контроллера
         let onboardVC = OnboardController()         /// Если приложение запускается впервые
         let tabBar = CustomTabBarController()       /// Если приложение ранее запускалось (запуск без OnboardVC)
