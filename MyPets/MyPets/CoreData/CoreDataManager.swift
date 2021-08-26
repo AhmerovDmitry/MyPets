@@ -21,7 +21,7 @@ struct Pet: Equatable {
     var image: String?
 }
 /// Протокол описывающий базовое поведение модели,
-/// сохранение и удаление
+/// сохранение, удаление и загрузка
 protocol CoreDataManagerProtocol {
     func createEntity(_ entity: Pet)
     func deleteEntity(at index: Int)
