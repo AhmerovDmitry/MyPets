@@ -24,6 +24,7 @@ final class PetInfoCell: UIView {
         label.font = UIFont.systemFont(ofSize: 25, weight: .semibold)
         label.textAlignment = .left
         label.numberOfLines = 1
+        label.text = "Карточка питомца"
         return label
     }()
     private let petInfoTable: UITableView = {
