@@ -608,7 +608,7 @@
 			path = FIXIT;
 			sourceTree = "<group>";
 		};
-		BC9402EA26CA628A0028E5AC /* CoreData */ = {
+		BC9402EA26CA628A0028E5AC /* CoreDataManager + Model */ = {
 			isa = PBXGroup;
 			children = (
 				BC9402F026CA63ED0028E5AC /* OMPetInformation+CoreDataClass.swift */,
@@ -616,7 +616,7 @@
 				BC9402E726CA62840028E5AC /* PetInformation.xcdatamodeld */,
 				BC7318B826D51D8A006F4C60 /* CoreDataManager.swift */,
 			);
-			path = CoreData;
+			path = "CoreDataManager + Model";
 			sourceTree = "<group>";
 		};
 		BC9402FA26CA79920028E5AC /* PetInfoModule */ = {
@@ -726,7 +726,7 @@
 				BC413CC6253893B1002CDD19 /* PetViewController */,
 				BC413CC7253893C3002CDD19 /* LocationViewController */,
 				BC413CC8253893D2002CDD19 /* ProfileViewController */,
-				BC9402EA26CA628A0028E5AC /* CoreData */,
+				BC9402EA26CA628A0028E5AC /* CoreDataManager + Model */,
 			);
 			path = MyPets;
 			sourceTree = "<group>";
