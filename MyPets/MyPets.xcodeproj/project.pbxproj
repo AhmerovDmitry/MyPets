@@ -70,7 +70,6 @@
 		BC99B01F2549A53700050854 /* PetViewCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99B01E2549A53700050854 /* PetViewCollectionCell.swift */; };
 		BC99B0272549A77C00050854 /* PetInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99B0262549A77C00050854 /* PetInfoViewController.swift */; };
 		BC9F268F26BBCC5D000B854F /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9F268E26BBCC5D000B854F /* UIColor.swift */; };
-		BC9F269826BBCD59000B854F /* MyPetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9F269726BBCD59000B854F /* MyPetsTests.swift */; };
 		BCB3AA4125AF791B00289B7A /* @objc ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB3AA4025AF791B00289B7A /* @objc ProfileViewController.swift */; };
 		BCB3AA4425AF8CD000289B7A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB3AA4325AF8CD000289B7A /* UIViewController.swift */; };
 		BCB404252532F5FE00993A5C /* @objc AuthorizationViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB404242532F5FE00993A5C /* @objc AuthorizationViewControllerExtension.swift */; };
@@ -96,18 +95,7 @@
 		BCDAEB6E26CFBD990099CF13 /* InputInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDAEB6D26CFBD990099CF13 /* InputInfoView.swift */; };
 		BCDBF528253F887E00BCBBFB /* Map Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF527253F887E00BCBBFB /* Map Settings.swift */; };
 		BCE5115525461A23002FB62E /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE5115425461A23002FB62E /* UIAlertController.swift */; };
-		EAF5D493A0A179E21C71624D /* Pods_MyPetsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB93CA32E178D69E15038B7 /* Pods_MyPetsTests.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		BC9F269A26BBCD59000B854F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BCB60FF72530C82400C4FD2F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BCB60FFE2530C82400C4FD2F;
-			remoteInfo = MyPets;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1AB93CA32E178D69E15038B7 /* Pods_MyPetsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyPetsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,9 +165,6 @@
 		BC99B01E2549A53700050854 /* PetViewCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetViewCollectionCell.swift; sourceTree = "<group>"; };
 		BC99B0262549A77C00050854 /* PetInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoViewController.swift; sourceTree = "<group>"; };
 		BC9F268E26BBCC5D000B854F /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		BC9F269526BBCD59000B854F /* MyPetsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyPetsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC9F269726BBCD59000B854F /* MyPetsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPetsTests.swift; sourceTree = "<group>"; };
-		BC9F269926BBCD59000B854F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCB3AA4025AF791B00289B7A /* @objc ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "@objc ProfileViewController.swift"; sourceTree = "<group>"; };
 		BCB3AA4325AF8CD000289B7A /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		BCB404242532F5FE00993A5C /* @objc AuthorizationViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "@objc AuthorizationViewControllerExtension.swift"; sourceTree = "<group>"; };
@@ -211,14 +196,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		BC9F269226BBCD59000B854F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EAF5D493A0A179E21C71624D /* Pods_MyPetsTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BCB60FFC2530C82400C4FD2F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -695,15 +672,6 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		BC9F269626BBCD59000B854F /* MyPetsTests */ = {
-			isa = PBXGroup;
-			children = (
-				BC9F269726BBCD59000B854F /* MyPetsTests.swift */,
-				BC9F269926BBCD59000B854F /* Info.plist */,
-			);
-			path = MyPetsTests;
-			sourceTree = "<group>";
-		};
 		BCA935C225F0B26500F0A339 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -728,7 +696,6 @@
 				BCB610012530C82400C4FD2F /* MyPets */,
 				BCB6101A2530C97600C4FD2F /* App + Scene */,
 				BCB610182530C87800C4FD2F /* Assets + LS + Info.plist */,
-				BC9F269626BBCD59000B854F /* MyPetsTests */,
 				BCB610002530C82400C4FD2F /* Products */,
 				33E45E13DC41BD96A81E77B9 /* Pods */,
 				E8A45DEE1B1C12FB397D3B33 /* Frameworks */,
@@ -739,7 +706,6 @@
 			isa = PBXGroup;
 			children = (
 				BCB60FFF2530C82400C4FD2F /* MyPets.app */,
-				BC9F269526BBCD59000B854F /* MyPetsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -913,25 +879,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BC9F269426BBCD59000B854F /* MyPetsTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BC9F269C26BBCD59000B854F /* Build configuration list for PBXNativeTarget "MyPetsTests" */;
-			buildPhases = (
-				4C22D919C2D4F73FD57C33B0 /* [CP] Check Pods Manifest.lock */,
-				BC9F269126BBCD59000B854F /* Sources */,
-				BC9F269226BBCD59000B854F /* Frameworks */,
-				BC9F269326BBCD59000B854F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BC9F269B26BBCD59000B854F /* PBXTargetDependency */,
-			);
-			name = MyPetsTests;
-			productName = MyPetsTests;
-			productReference = BC9F269526BBCD59000B854F /* MyPetsTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		BCB60FFE2530C82400C4FD2F /* MyPets */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BCB610132530C82700C4FD2F /* Build configuration list for PBXNativeTarget "MyPets" */;
@@ -960,10 +907,6 @@
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
-					BC9F269426BBCD59000B854F = {
-						CreatedOnToolsVersion = 12.5;
-						TestTargetID = BCB60FFE2530C82400C4FD2F;
-					};
 					BCB60FFE2530C82400C4FD2F = {
 						CreatedOnToolsVersion = 12.0;
 					};
@@ -983,19 +926,11 @@
 			projectRoot = "";
 			targets = (
 				BCB60FFE2530C82400C4FD2F /* MyPets */,
-				BC9F269426BBCD59000B854F /* MyPetsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		BC9F269326BBCD59000B854F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BCB60FFD2530C82400C4FD2F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1008,28 +943,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4C22D919C2D4F73FD57C33B0 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MyPetsTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		BC3763F326BF07390061056B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1072,14 +985,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		BC9F269126BBCD59000B854F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BC9F269826BBCD59000B854F /* MyPetsTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BCB60FFB2530C82400C4FD2F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1174,14 +1079,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		BC9F269B26BBCD59000B854F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BCB60FFE2530C82400C4FD2F /* MyPets */;
-			targetProxy = BC9F269A26BBCD59000B854F /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
 		BCB6100D2530C82700C4FD2F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -1194,48 +1091,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		BC9F269D26BBCD59000B854F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5EAF5AB78B0FDF623B0D120E /* Pods-MyPetsTests.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7JDNVBEZLP;
-				INFOPLIST_FILE = MyPetsTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ahmerovdmitry.MyPetsTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyPets.app/MyPets";
-			};
-			name = Debug;
-		};
-		BC9F269E26BBCD59000B854F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D0CD38EC24314E7417FBFCAC /* Pods-MyPetsTests.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7JDNVBEZLP;
-				INFOPLIST_FILE = MyPetsTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ahmerovdmitry.MyPetsTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyPets.app/MyPets";
-			};
-			name = Release;
-		};
 		BCB610112530C82700C4FD2F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1399,15 +1254,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BC9F269C26BBCD59000B854F /* Build configuration list for PBXNativeTarget "MyPetsTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BC9F269D26BBCD59000B854F /* Debug */,
-				BC9F269E26BBCD59000B854F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		BCB60FFA2530C82400C4FD2F /* Build configuration list for PBXProject "MyPets" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
