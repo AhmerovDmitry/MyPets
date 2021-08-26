@@ -20,9 +20,22 @@ struct Pet: Equatable {
     var chipNumber: String?
     var image: String?
 }
+/// Протокол описывающий базовое поведение модели,
+/// сохранение и удаление
+protocol CoreDataManagerProtocol {
+    func createEntity(_ entity: Pet)
+    func deleteEntity(at index: Int)
+    func loadEntitys()
+}
+/// Приватный протокол для методов которые не должны быть доступны из вне
+/// только для внутреннего использования
+private protocol PrivateCoreDataManagerProtocol {
+    func saveContext(_ context: NSManagedObjectContext)
+}
 
-final class CoreDataManager {
+final class CoreDataManager: CoreDataManagerProtocol, PrivateCoreDataManagerProtocol {
     /// Синглтон для удобного обращения к методам (загрузка/создание/удаление/редактирование) сущностей
+    /// в рамках одного единственного объекта класса
     static let shared = CoreDataManager()
     private init() {}
     private let appDelegate = UIApplication.shared.delegate as? AppDelegate
@@ -31,7 +44,8 @@ final class CoreDataManager {
     /// перезаписывается при сохранении/удалении/редактировании объектов
     private(set) var pets = [OMPetInformation]()
     // MARK: - Загрузка объектов
-    public func loadEntitys() {
+    /// Публичный метод для загрузки объектов сразу после запуска приложения
+    func loadEntitys() {
         guard let context = context else { return }
         let fetchRequest: NSFetchRequest<OMPetInformation> = OMPetInformation.fetchRequest()
         do {
@@ -42,53 +56,42 @@ final class CoreDataManager {
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
     }
-    // MARK: - Создание объекта
-    /// При создании сущность заполняется основываясь на данные которые ввел пользователь
-    /// Если сущность сщщтветствует nilEntity(сущность с пустыми полями), тогда она не будет создаваться
-    /// Для создания сущности требуется казать хотя бы 1 поле из всего списка
-    public func createEntity(_ entity: Pet) {
-        let nilEntity = Pet()
-        if entity != nilEntity {
-            guard let context = context else { return }
-            let petModel = OMPetInformation(context: context)
-//            pet.image = entity.image?.toString()
-            petModel.name = entity.name
-            petModel.kind = entity.kind
-            petModel.breed = entity.breed
-            petModel.birthday = entity.birthday
-            petModel.weight = entity.weight
-            petModel.sterile = entity.sterile
-            petModel.color = entity.color
-            petModel.hair = entity.hair
-            petModel.chipNumber = entity.chipNumber
-            if context.hasChanges {
-                do {
-                    try context.save()
-                } catch {
-                    context.rollback()
-                    let nserror = error as NSError
-                    fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-                }
-            }
-            /// Происходит перезагрузка объектов из CoreData для повторного заполнения массива с измененными данными
-            loadEntitys()
-        }
-    }
-    // MARK: - Удаление объекта по индексу нажатой ячейки
-    public func deleteEntity(at index: Int) {
-        if pets.count - 1 >= index {
-            guard let context = context else { return }
-            context.delete(pets[index])
+    // MARK: - Сохранение контекста
+    fileprivate func saveContext(_ context: NSManagedObjectContext) {
+        if context.hasChanges {
             do {
                 try context.save()
-                pets.remove(at: index)
-            } catch let error {
+            } catch {
                 context.rollback()
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
-            /// Происходит перезагрузка объектов из CoreData для повторного заполнения массива с измененными данными
-            loadEntitys()
         }
+    }
+    // MARK: - Создание объекта
+    public func createEntity(_ entity: Pet) {
+        guard let context = context else { return }
+        let entityModel = OMPetInformation(context: context)
+//        entityModel.image = entity.image?.toString()
+        entityModel.name = entity.name
+        entityModel.kind = entity.kind
+        entityModel.breed = entity.breed
+        entityModel.birthday = entity.birthday
+        entityModel.weight = entity.weight
+        entityModel.sterile = entity.sterile
+        entityModel.color = entity.color
+        entityModel.hair = entity.hair
+        entityModel.chipNumber = entity.chipNumber
+        /// Сохранение контекста и перезагрузка объектов
+        saveContext(context)
+        loadEntitys()
+    }
+    // MARK: - Удаление объекта по индексу нажатой ячейки
+    public func deleteEntity(at index: Int) {
+        guard let context = context else { return }
+        context.delete(pets[index])
+        /// Сохранение контекста и перезагрузка объектов
+        saveContext(context)
+        loadEntitys()
     }
 }

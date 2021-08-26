@@ -27,13 +27,17 @@ struct PetInfoModel {
     /// в объект класса Pet и не делать это в контроллере
     private(set) var petInformation: [String?] = [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil]
     private(set) var defaultEntity = Pet()
+    private let nilEntity = Pet()
     // MARK: - Methods
     /// Функция которая заполняет массив информации об объекте
     public mutating func updateInformation(_ info: String, index: Int) {
         petInformation[index] = info
+        if info.isEmpty {
+            petInformation[index] = nil
+        }
     }
     /// Подготовка модели данных к сохранению
-    private mutating func prepareObjectForSave() {
+    public mutating func prepareObjectForSave() {
         defaultEntity.name = petInformation[0]
         defaultEntity.kind = petInformation[1]
         defaultEntity.breed = petInformation[2]
@@ -48,11 +52,23 @@ struct PetInfoModel {
     /// Сохранение модели в CoreData
     public mutating func saveEntityInCoreData() {
         prepareObjectForSave()
-        CoreDataManager.shared.createEntity(defaultEntity)
+        if defaultEntity != nilEntity {
+            CoreDataManager.shared.createEntity(defaultEntity)
+        }
     }
     /// Удаление модели из CoreData
     public func removeEntityFromCoreData(at index: Int) {
         CoreDataManager.shared.deleteEntity(at: index)
+    }
+    /// Редактирование модели
+    public mutating func editingEntity(at index: Int) {
+        prepareObjectForSave()
+        if defaultEntity != nilEntity {
+            CoreDataManager.shared.deleteEntity(at: index)
+            CoreDataManager.shared.createEntity(defaultEntity)
+        } else {
+            CoreDataManager.shared.deleteEntity(at: index)
+        }
     }
     /// Заполнение массива информации при открытии существующего питомца
     public mutating func loadEntity(at index: Int) {

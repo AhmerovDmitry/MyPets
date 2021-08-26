@@ -85,7 +85,11 @@ extension PetInfoController {
 extension PetInfoController {
     /// Переходим на предыдущий контроллер сохраняя модель в CoreData
     @objc private func popToViewControllerAndSaveEntity() {
-        petModel.saveEntityInCoreData()
+        if let index = collectionCellIndex {
+            petModel.editingEntity(at: index)
+        } else {
+            petModel.saveEntityInCoreData()
+        }
         delegate?.reloadController()
         navigationController?.popViewController(animated: true)
     }
