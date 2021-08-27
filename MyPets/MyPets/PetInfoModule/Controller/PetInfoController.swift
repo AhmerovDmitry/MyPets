@@ -120,8 +120,8 @@ extension PetInfoController: UICollectionViewDelegate, UICollectionViewDataSourc
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.item {
-        case 0: return CGSize(width: view.bounds.width / 1.1, height: view.bounds.height / 1.7)
-        default: return CGSize(width: view.bounds.width / 1.1, height: view.bounds.height / 9)
+        case 0: return CGSize(width: view.bounds.width / 1.11111, height: view.bounds.height / 1.7)
+        default: return CGSize(width: view.bounds.width / 1.11111, height: view.bounds.height / 9)
         }
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

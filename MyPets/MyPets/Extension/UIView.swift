@@ -19,14 +19,11 @@ extension UIView {
     }
     /// Метод добавляет стандартную тень во все стороны от вью
     public func setDefaultShadow() {
-        let shadowPath = UIBezierPath(rect: self.bounds).cgPath
-        self.layer.shadowColor = UIColor.CustomColor.dark.cgColor
-        self.layer.shadowOffset = CGSize(width: 0, height: 0)
-        self.layer.shadowOpacity = 0.2
-        self.layer.masksToBounds = false
-        self.layer.shadowPath = shadowPath
-        self.layer.shadowRadius = 7
-        self.layer.cornerRadius = 16
+        layer.shadowColor = UIColor.CustomColor.dark.cgColor
+        layer.shadowOpacity = 0.2
+        layer.shadowOffset = CGSize(width: 0, height: 0)
+        layer.shadowRadius = 7
+        layer.cornerRadius = 16
     }
     /// Метод добавляет эффект размытия для вью
     public func setBlurEffect(_ view: UIView, frame: CGRect) {

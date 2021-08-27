@@ -16,9 +16,6 @@ final class MainMenuView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
     // MARK: - Properties
     private let cellID = "MainMenuCell"
     private let titleMenuView = TitleMenuView()
@@ -46,7 +43,7 @@ extension MainMenuView {
         self.addSubview(titleMenuView)
         titleMenuView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            titleMenuView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            titleMenuView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 12),
             titleMenuView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             titleMenuView.heightAnchor.constraint(equalToConstant: self.bounds.height / 6),
             titleMenuView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9)
@@ -76,7 +73,7 @@ extension MainMenuView: UICollectionViewDelegate, UICollectionViewDataSource, UI
         return CGSize(width: collectionView.bounds.width, height: self.bounds.height / 6)
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 1
     }
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

@@ -67,7 +67,7 @@ extension PetMenuController: UICollectionViewDelegate, UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.bounds.width / 1.1, height: view.bounds.height / 3.5)
+        return CGSize(width: view.bounds.width / 1.11111, height: view.bounds.height / 3.5)
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return CoreDataManager.shared.pets.count
@@ -93,7 +93,7 @@ extension PetMenuController: UICollectionViewDelegate, UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
+        return UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 0)
     }
 }
 

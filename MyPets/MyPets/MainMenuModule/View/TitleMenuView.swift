@@ -16,9 +16,6 @@ final class TitleMenuView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
     // MARK: - Properties
     private let backgroundImageView = UIImageView(image: UIImage(named: "mainMenuTitleViewImage"))
     private let titleLabel: UILabel = {
@@ -46,7 +43,8 @@ extension TitleMenuView {
         setDescriptionLabelConstraints()
     }
     private func setSelfViewUI() {
-        self.backgroundColor = UIColor(red: 230 / 255, green: 230 / 255, blue: 240 / 255, alpha: 1)
+        self.setDefaultShadow()
+        self.backgroundColor = UIColor.CustomColor.lightGray
         self.layer.cornerRadius = 16
     }
     private func setBackgroundImageViewConstraints() {

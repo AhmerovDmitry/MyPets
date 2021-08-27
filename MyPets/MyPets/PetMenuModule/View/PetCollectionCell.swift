@@ -19,7 +19,6 @@ final class PetCollectionCell: UICollectionViewCell {
     // MARK: - Properties
     private let petPhoto: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "unknownImage")
         image.backgroundColor = UIColor.CustomColor.lightGray
         image.contentMode = .scaleAspectFit
         image.layer.cornerRadius = 15
