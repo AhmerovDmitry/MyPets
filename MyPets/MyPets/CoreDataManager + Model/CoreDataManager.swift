@@ -23,9 +23,9 @@ struct Pet: Equatable {
 /// Протокол описывающий базовое поведение модели,
 /// сохранение, удаление и загрузка
 protocol CoreDataManagerProtocol {
+    func loadEntitys()
     func createEntity(_ entity: Pet)
     func deleteEntity(at index: Int)
-    func loadEntitys()
 }
 /// Приватный протокол для методов которые не должны быть доступны из вне
 /// только для внутреннего использования
