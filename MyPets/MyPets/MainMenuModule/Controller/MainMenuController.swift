@@ -9,7 +9,6 @@ import UIKit
 
 final class MainMenuController: UIViewController {
     // MARK: - Properties
-//    private let premiumContent = PremiumModel()
     private let mainMenuView = MainMenuView(frame: UIScreen.main.bounds)
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -25,5 +24,6 @@ final class MainMenuController: UIViewController {
     }
     private func addSubview() {
         view.addSubview(mainMenuView)
+        mainMenuView.setDefaultShadow()
     }
 }
