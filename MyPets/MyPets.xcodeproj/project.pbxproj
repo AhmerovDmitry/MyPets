@@ -23,10 +23,12 @@
 		BC413CD1253894D1002CDD19 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC413CD0253894D1002CDD19 /* ProfileViewController.swift */; };
 		BC413CD42538A97F002CDD19 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC413CD32538A97F002CDD19 /* CustomTabBarController.swift */; };
 		BC469CA125AA4BCB00449E3C /* ProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC469CA025AA4BCB00449E3C /* ProfileViewCell.swift */; };
-		BC4CA47C262436EF00C2033C /* MainCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA475262436EF00C2033C /* MainCollectionCell.swift */; };
 		BC4CA47D262436EF00C2033C /* BottomMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA476262436EF00C2033C /* BottomMenuCell.swift */; };
-		BC4CA47F262436EF00C2033C /* MainCell - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA479262436EF00C2033C /* MainCell - Extension.swift */; };
+		BC52FFA026D91B9D00A694CB /* WeatherMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC52FF9F26D91B9D00A694CB /* WeatherMenuView.swift */; };
+		BC52FFA226D91EDA00A694CB /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC52FFA126D91EDA00A694CB /* WeatherModel.swift */; };
+		BC52FFA426D91EF400A694CB /* WeatherImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC52FFA326D91EF400A694CB /* WeatherImageModel.swift */; };
 		BC67E24825A0593D008BDBBD /* UserProfileDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC67E24725A0593D008BDBBD /* UserProfileDelegate + DataSource.swift */; };
+		BC6DBF5326D7EB220058024B /* NetwokingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6DBF5226D7EB220058024B /* NetwokingManager.swift */; };
 		BC7073252534A6F600B2979F /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073242534A6F600B2979F /* UIButton.swift */; };
 		BC7073322534BA3800B2979F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073312534BA3800B2979F /* UIView.swift */; };
 		BC73002A25723C460010F161 /* PetInfoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC73002925723C460010F161 /* PetInfoExtension.swift */; };
@@ -95,7 +97,18 @@
 		BCDAEB6E26CFBD990099CF13 /* InputInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDAEB6D26CFBD990099CF13 /* InputInfoView.swift */; };
 		BCDBF528253F887E00BCBBFB /* Map Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF527253F887E00BCBBFB /* Map Settings.swift */; };
 		BCE5115525461A23002FB62E /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE5115425461A23002FB62E /* UIAlertController.swift */; };
+		BCF2FC8426D968F70087A4D1 /* MyPetsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF2FC8326D968F70087A4D1 /* MyPetsUITests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BCF2FC8626D968F70087A4D1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCB60FF72530C82400C4FD2F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BCB60FFE2530C82400C4FD2F;
+			remoteInfo = MyPets;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1AB93CA32E178D69E15038B7 /* Pods_MyPetsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyPetsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,10 +131,12 @@
 		BC413CD0253894D1002CDD19 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BC413CD32538A97F002CDD19 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		BC469CA025AA4BCB00449E3C /* ProfileViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewCell.swift; sourceTree = "<group>"; };
-		BC4CA475262436EF00C2033C /* MainCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionCell.swift; sourceTree = "<group>"; };
 		BC4CA476262436EF00C2033C /* BottomMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomMenuCell.swift; sourceTree = "<group>"; };
-		BC4CA479262436EF00C2033C /* MainCell - Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainCell - Extension.swift"; sourceTree = "<group>"; };
+		BC52FF9F26D91B9D00A694CB /* WeatherMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMenuView.swift; sourceTree = "<group>"; };
+		BC52FFA126D91EDA00A694CB /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		BC52FFA326D91EF400A694CB /* WeatherImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherImageModel.swift; sourceTree = "<group>"; };
 		BC67E24725A0593D008BDBBD /* UserProfileDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfileDelegate + DataSource.swift"; sourceTree = "<group>"; };
+		BC6DBF5226D7EB220058024B /* NetwokingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetwokingManager.swift; sourceTree = "<group>"; };
 		BC7073242534A6F600B2979F /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		BC7073312534BA3800B2979F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		BC73002925723C460010F161 /* PetInfoExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoExtension.swift; sourceTree = "<group>"; };
@@ -192,6 +207,9 @@
 		BCDAEB6D26CFBD990099CF13 /* InputInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputInfoView.swift; sourceTree = "<group>"; };
 		BCDBF527253F887E00BCBBFB /* Map Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Map Settings.swift"; sourceTree = "<group>"; };
 		BCE5115425461A23002FB62E /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
+		BCF2FC8126D968F70087A4D1 /* MyPetsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyPetsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCF2FC8326D968F70087A4D1 /* MyPetsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPetsUITests.swift; sourceTree = "<group>"; };
+		BCF2FC8526D968F70087A4D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0CD38EC24314E7417FBFCAC /* Pods-MyPetsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyPetsTests.release.xcconfig"; path = "Target Support Files/Pods-MyPetsTests/Pods-MyPetsTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -201,6 +219,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				95131C78DA1EB474B96446DB /* Pods_MyPets.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCF2FC7E26D968F70087A4D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,7 +371,6 @@
 				BCC259E426C40C9500FCAC54 /* View */,
 				BCC259E526C40C9A00FCAC54 /* Controller */,
 				BC4CA474262436EF00C2033C /* UICollectionViewCell */,
-				BC4CA477262436EF00C2033C /* Extensions */,
 			);
 			path = MainMenuModule;
 			sourceTree = "<group>";
@@ -354,18 +378,9 @@
 		BC4CA474262436EF00C2033C /* UICollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				BC4CA475262436EF00C2033C /* MainCollectionCell.swift */,
 				BC4CA476262436EF00C2033C /* BottomMenuCell.swift */,
 			);
 			path = UICollectionViewCell;
-			sourceTree = "<group>";
-		};
-		BC4CA477262436EF00C2033C /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				BC4CA479262436EF00C2033C /* MainCell - Extension.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		BC4D76C425442A250037EA8D /* UIViewController */ = {
@@ -426,6 +441,14 @@
 				BC469CA325AA4BE500449E3C /* UITableViewCell */,
 			);
 			path = ProfileViewController;
+			sourceTree = "<group>";
+		};
+		BC6DBF5126D7EAF60058024B /* NetworkingManager */ = {
+			isa = PBXGroup;
+			children = (
+				BC6DBF5226D7EB220058024B /* NetwokingManager.swift */,
+			);
+			path = NetworkingManager;
 			sourceTree = "<group>";
 		};
 		BC70732C2534AE9400B2979F /* PremiumModule */ = {
@@ -696,6 +719,7 @@
 				BCB610012530C82400C4FD2F /* MyPets */,
 				BCB6101A2530C97600C4FD2F /* App + Scene */,
 				BCB610182530C87800C4FD2F /* Assets + LS + Info.plist */,
+				BCF2FC8226D968F70087A4D1 /* MyPetsUITests */,
 				BCB610002530C82400C4FD2F /* Products */,
 				33E45E13DC41BD96A81E77B9 /* Pods */,
 				E8A45DEE1B1C12FB397D3B33 /* Frameworks */,
@@ -706,6 +730,7 @@
 			isa = PBXGroup;
 			children = (
 				BCB60FFF2530C82400C4FD2F /* MyPets.app */,
+				BCF2FC8126D968F70087A4D1 /* MyPetsUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -726,6 +751,7 @@
 				BC413CC6253893B1002CDD19 /* PetViewController */,
 				BC413CC7253893C3002CDD19 /* LocationViewController */,
 				BC413CC8253893D2002CDD19 /* ProfileViewController */,
+				BC6DBF5126D7EAF60058024B /* NetworkingManager */,
 				BC9402EA26CA628A0028E5AC /* CoreDataManager + Model */,
 			);
 			path = MyPets;
@@ -761,6 +787,8 @@
 		BCC259E326C40C8E00FCAC54 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BC52FFA126D91EDA00A694CB /* WeatherModel.swift */,
+				BC52FFA326D91EF400A694CB /* WeatherImageModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -771,6 +799,7 @@
 				BCC259E626C40D3E00FCAC54 /* MainMenuView.swift */,
 				BCC259EC26C41FEA00FCAC54 /* TitleMenuView.swift */,
 				BCC259EA26C4173700FCAC54 /* MainMenuCollectionCell.swift */,
+				BC52FF9F26D91B9D00A694CB /* WeatherMenuView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -867,6 +896,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		BCF2FC8226D968F70087A4D1 /* MyPetsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BCF2FC8326D968F70087A4D1 /* MyPetsUITests.swift */,
+				BCF2FC8526D968F70087A4D1 /* Info.plist */,
+			);
+			path = MyPetsUITests;
+			sourceTree = "<group>";
+		};
 		E8A45DEE1B1C12FB397D3B33 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -898,6 +936,24 @@
 			productReference = BCB60FFF2530C82400C4FD2F /* MyPets.app */;
 			productType = "com.apple.product-type.application";
 		};
+		BCF2FC8026D968F70087A4D1 /* MyPetsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCF2FC8A26D968F70087A4D1 /* Build configuration list for PBXNativeTarget "MyPetsUITests" */;
+			buildPhases = (
+				BCF2FC7D26D968F70087A4D1 /* Sources */,
+				BCF2FC7E26D968F70087A4D1 /* Frameworks */,
+				BCF2FC7F26D968F70087A4D1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BCF2FC8726D968F70087A4D1 /* PBXTargetDependency */,
+			);
+			name = MyPetsUITests;
+			productName = MyPetsUITests;
+			productReference = BCF2FC8126D968F70087A4D1 /* MyPetsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -909,6 +965,10 @@
 				TargetAttributes = {
 					BCB60FFE2530C82400C4FD2F = {
 						CreatedOnToolsVersion = 12.0;
+					};
+					BCF2FC8026D968F70087A4D1 = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = BCB60FFE2530C82400C4FD2F;
 					};
 				};
 			};
@@ -926,6 +986,7 @@
 			projectRoot = "";
 			targets = (
 				BCB60FFE2530C82400C4FD2F /* MyPets */,
+				BCF2FC8026D968F70087A4D1 /* MyPetsUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -937,6 +998,13 @@
 			files = (
 				BCB6100F2530C82700C4FD2F /* LaunchScreen.storyboard in Resources */,
 				BCB6100C2530C82700C4FD2F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCF2FC7F26D968F70087A4D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1005,6 +1073,8 @@
 				BCBFA54125E6B8D00036C7ED /* MainPetDelegate + DataSource.swift in Sources */,
 				BC9959C526244B48006CE6E1 /* TreatmentVC.swift in Sources */,
 				BC83CB06260CFA160066A32C /* UIImage.swift in Sources */,
+				BC6DBF5326D7EB220058024B /* NetwokingManager.swift in Sources */,
+				BC52FFA426D91EF400A694CB /* WeatherImageModel.swift in Sources */,
 				BC83CB09260CFA3F0066A32C /* String.swift in Sources */,
 				BC7073252534A6F600B2979F /* UIButton.swift in Sources */,
 				BC7EB65D26C688F500BE80AE /* PetInfoController.swift in Sources */,
@@ -1018,11 +1088,11 @@
 				BC38543D26C5ABCF00C2F14E /* PetMenuView.swift in Sources */,
 				BCD83D3625F2A8C000F04EF3 /* EntertainmentDelegate + DataSource.swift in Sources */,
 				BC38543B26C5AB4700C2F14E /* PetMenuController.swift in Sources */,
-				BC4CA47C262436EF00C2033C /* MainCollectionCell.swift in Sources */,
 				BC9402F726CA69AC0028E5AC /* BaseModel.swift in Sources */,
 				BC7EB65F26C699CD00BE80AE /* PetInfoView.swift in Sources */,
 				BC13029726B9786000CFD87E /* OnboardView.swift in Sources */,
 				BC91F2F42627423D006CCE3B /* UserDefaults.swift in Sources */,
+				BC52FFA026D91B9D00A694CB /* WeatherMenuView.swift in Sources */,
 				BC0EE6A3259DE49500BE167D /* UserProfileViewController.swift in Sources */,
 				BCB404252532F5FE00993A5C /* @objc AuthorizationViewControllerExtension.swift in Sources */,
 				BC8CE00925C6CBF6005EEFEB /* SupportVC - Extension.swift in Sources */,
@@ -1044,6 +1114,7 @@
 				BCC259EB26C4173700FCAC54 /* MainMenuCollectionCell.swift in Sources */,
 				BCE5115525461A23002FB62E /* UIAlertController.swift in Sources */,
 				BC7318B926D51D8A006F4C60 /* CoreDataManager.swift in Sources */,
+				BC52FFA226D91EDA00A694CB /* WeatherModel.swift in Sources */,
 				BC97F2C025A0652900267E34 /* UserProfileModel.swift in Sources */,
 				BC9959C926244B76006CE6E1 /* VaccinationVC.swift in Sources */,
 				BCD83D2625F2906600F04EF3 /* CareController.swift in Sources */,
@@ -1065,7 +1136,6 @@
 				BCD83D2925F2908700F04EF3 /* EntertainmentController.swift in Sources */,
 				BCB610032530C82400C4FD2F /* AppDelegate.swift in Sources */,
 				BC469CA125AA4BCB00449E3C /* ProfileViewCell.swift in Sources */,
-				BC4CA47F262436EF00C2033C /* MainCell - Extension.swift in Sources */,
 				BCB3AA4425AF8CD000289B7A /* UIViewController.swift in Sources */,
 				BC9959E626247049006CE6E1 /* BaseMenuVC.swift in Sources */,
 				BC99B01A2549A50D00050854 /* PetInfoViewDelegate + DataSource.swift in Sources */,
@@ -1077,7 +1147,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BCF2FC7D26D968F70087A4D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCF2FC8426D968F70087A4D1 /* MyPetsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BCF2FC8726D968F70087A4D1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BCB60FFE2530C82400C4FD2F /* MyPets */;
+			targetProxy = BCF2FC8626D968F70087A4D1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BCB6100D2530C82700C4FD2F /* LaunchScreen.storyboard */ = {
@@ -1251,6 +1337,46 @@
 			};
 			name = Release;
 		};
+		BCF2FC8826D968F70087A4D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7JDNVBEZLP;
+				INFOPLIST_FILE = MyPetsUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ahmerovdmitry.MyPetsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MyPets;
+			};
+			name = Debug;
+		};
+		BCF2FC8926D968F70087A4D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7JDNVBEZLP;
+				INFOPLIST_FILE = MyPetsUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ahmerovdmitry.MyPetsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MyPets;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1268,6 +1394,15 @@
 			buildConfigurations = (
 				BCB610142530C82700C4FD2F /* Debug */,
 				BCB610152530C82700C4FD2F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BCF2FC8A26D968F70087A4D1 /* Build configuration list for PBXNativeTarget "MyPetsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCF2FC8826D968F70087A4D1 /* Debug */,
+				BCF2FC8926D968F70087A4D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
