@@ -101,7 +101,6 @@ extension PetInfoController {
         navigationController?.popViewController(animated: true)
     }
 }
-
 // MARK: - Delegate & DataSource
 extension PetInfoController: TransferPetInformationDelegate {
     /// Метод получающий текст который вводит пользователь на экране ввода информации,
@@ -164,7 +163,6 @@ extension PetInfoController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
-
 // MARK: - Public Methods
 extension PetInfoController {
     /// Метод принимающий нажатую ячейку для получения нужной модели (удаление / загрузка)
