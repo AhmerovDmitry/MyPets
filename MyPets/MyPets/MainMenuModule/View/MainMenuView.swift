@@ -96,10 +96,6 @@ extension MainMenuView {
         ])
     }
 }
-
-// MARK: - Actions
-extension MainMenuView {
-}
 // MARK: - Delegate & DataSource
 extension MainMenuView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
@@ -122,5 +118,23 @@ extension MainMenuView: UICollectionViewDelegate, UICollectionViewDataSource, UI
         cell.backgroundColor = UIColor.CustomColor.lightGray
         cell.layer.cornerRadius = 16
         return cell
+    }
+}
+// MARK: - Public Methods
+extension MainMenuView {
+    public func setupTemperatureLabel(value: Int) {
+        weatherMenuView.setupTemperatureLabel(value: value)
+    }
+    public func setupBackgroundImage(_ image: UIImage) {
+        weatherMenuView.setupBackgroundImage(image)
+    }
+    public func setupMainImage(_ image: UIImage) {
+        weatherMenuView.setupMainImage(image)
+    }
+    public func stopAnimation() {
+        weatherMenuView.stopAnimation()
+    }
+    public func presentWeatherElements() {
+        weatherMenuView.presentWeatherElements()
     }
 }

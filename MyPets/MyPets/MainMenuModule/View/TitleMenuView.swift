@@ -33,7 +33,6 @@ final class TitleMenuView: UIView {
         return label
     }()
 }
-
 // MARK: - Setup UI
 extension TitleMenuView {
     private func setupUI() {

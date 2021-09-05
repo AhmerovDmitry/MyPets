@@ -60,7 +60,6 @@ extension MainMenuCollectionCell {
         ])
     }
 }
-
 // MARK: - Public Methods
 extension MainMenuCollectionCell {
     public func configureCell(image: String, description: String) {
