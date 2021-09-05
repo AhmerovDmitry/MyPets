@@ -7,5 +7,8 @@
 
 import Foundation
 
-struct WeatherImageModel {
+struct WeatherImages: Codable {
+    let homeImages: [String]
+    let strollImages: [String]
+    let backgroundImage: String
 }
