@@ -61,7 +61,6 @@ extension PetMenuController {
         navigationController?.pushViewController(controller, animated: true)
     }
 }
-
 // MARK: - Delegate & DataSource
 extension PetMenuController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
@@ -96,7 +95,6 @@ extension PetMenuController: UICollectionViewDelegate, UICollectionViewDataSourc
         return UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 0)
     }
 }
-
 extension PetMenuController: PetMenuControllerDelegate {
     func reloadController() {
         self.petCollectionView.reloadCollectionView()
