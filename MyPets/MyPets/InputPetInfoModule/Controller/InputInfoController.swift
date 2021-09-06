@@ -22,6 +22,10 @@ final class InputInfoController: UIViewController {
         callBacksMethods()
         inputInfoView.setTextFieldDelegate(self)
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        inputInfoView.textFieldFirstResponder()
+    }
 }
 // MARK: - Methods
 extension InputInfoController {

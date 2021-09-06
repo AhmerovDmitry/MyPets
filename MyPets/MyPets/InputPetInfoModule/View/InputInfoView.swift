@@ -226,4 +226,7 @@ extension InputInfoView {
     public func textFieldValue(_ text: String) {
         textField.text = text
     }
+    public func textFieldFirstResponder() {
+        textField.becomeFirstResponder()
+    }
 }
