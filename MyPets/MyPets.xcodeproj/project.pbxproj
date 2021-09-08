@@ -26,10 +26,8 @@
 		BC469CA125AA4BCB00449E3C /* ProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC469CA025AA4BCB00449E3C /* ProfileViewCell.swift */; };
 		BC4CA47D262436EF00C2033C /* BottomMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA476262436EF00C2033C /* BottomMenuCell.swift */; };
 		BC52FFA026D91B9D00A694CB /* WeatherMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC52FF9F26D91B9D00A694CB /* WeatherMenuView.swift */; };
-		BC52FFA226D91EDA00A694CB /* GeneralWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC52FFA126D91EDA00A694CB /* GeneralWeather.swift */; };
-		BC52FFA426D91EF400A694CB /* WeatherImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC52FFA326D91EF400A694CB /* WeatherImages.swift */; };
+		BC52FFA226D91EDA00A694CB /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC52FFA126D91EDA00A694CB /* Weather.swift */; };
 		BC67E24825A0593D008BDBBD /* UserProfileDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC67E24725A0593D008BDBBD /* UserProfileDelegate + DataSource.swift */; };
-		BC6DBF5326D7EB220058024B /* NetwokingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6DBF5226D7EB220058024B /* NetwokingManager.swift */; };
 		BC7073252534A6F600B2979F /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073242534A6F600B2979F /* UIButton.swift */; };
 		BC7073322534BA3800B2979F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073312534BA3800B2979F /* UIView.swift */; };
 		BC73002A25723C460010F161 /* PetInfoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC73002925723C460010F161 /* PetInfoExtension.swift */; };
@@ -53,9 +51,10 @@
 		BC8CDFFF25C6BB85005EEFEB /* SupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8CDFFE25C6BB85005EEFEB /* SupportViewController.swift */; };
 		BC8CE00625C6CBC2005EEFEB /* SupportVCDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8CE00525C6CBC2005EEFEB /* SupportVCDelegate + DataSource.swift */; };
 		BC8CE00925C6CBF6005EEFEB /* SupportVC - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8CE00825C6CBF6005EEFEB /* SupportVC - Extension.swift */; };
+		BC8E373E26E6B0FB00F3B6A9 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8E373D26E6B0FA00F3B6A9 /* NetworkService.swift */; };
 		BC8E9F5425A324DE00403505 /* @objc UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8E9F5325A324DE00403505 /* @objc UserProfileController.swift */; };
 		BC8E9F5825A3261D00403505 /* UIImagePickerControllerDelegateForUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8E9F5725A3261D00403505 /* UIImagePickerControllerDelegateForUserProfile.swift */; };
-		BC91F2F42627423D006CCE3B /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91F2F32627423D006CCE3B /* UserDefaults.swift */; };
+		BC91F2F42627423D006CCE3B /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91F2F32627423D006CCE3B /* UserDefaultsService.swift */; };
 		BC9402E926CA62840028E5AC /* PetInformation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BC9402E726CA62840028E5AC /* PetInformation.xcdatamodeld */; };
 		BC9402F126CA63ED0028E5AC /* OMPetInformation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9402EF26CA63ED0028E5AC /* OMPetInformation+CoreDataProperties.swift */; };
 		BC9402F226CA63ED0028E5AC /* OMPetInformation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9402F026CA63ED0028E5AC /* OMPetInformation+CoreDataClass.swift */; };
@@ -135,10 +134,8 @@
 		BC469CA025AA4BCB00449E3C /* ProfileViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewCell.swift; sourceTree = "<group>"; };
 		BC4CA476262436EF00C2033C /* BottomMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomMenuCell.swift; sourceTree = "<group>"; };
 		BC52FF9F26D91B9D00A694CB /* WeatherMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMenuView.swift; sourceTree = "<group>"; };
-		BC52FFA126D91EDA00A694CB /* GeneralWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralWeather.swift; sourceTree = "<group>"; };
-		BC52FFA326D91EF400A694CB /* WeatherImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherImages.swift; sourceTree = "<group>"; };
+		BC52FFA126D91EDA00A694CB /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		BC67E24725A0593D008BDBBD /* UserProfileDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfileDelegate + DataSource.swift"; sourceTree = "<group>"; };
-		BC6DBF5226D7EB220058024B /* NetwokingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetwokingManager.swift; sourceTree = "<group>"; };
 		BC7073242534A6F600B2979F /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		BC7073312534BA3800B2979F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		BC73002925723C460010F161 /* PetInfoExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoExtension.swift; sourceTree = "<group>"; };
@@ -162,9 +159,10 @@
 		BC8CDFFE25C6BB85005EEFEB /* SupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportViewController.swift; sourceTree = "<group>"; };
 		BC8CE00525C6CBC2005EEFEB /* SupportVCDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SupportVCDelegate + DataSource.swift"; sourceTree = "<group>"; };
 		BC8CE00825C6CBF6005EEFEB /* SupportVC - Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SupportVC - Extension.swift"; sourceTree = "<group>"; };
+		BC8E373D26E6B0FA00F3B6A9 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		BC8E9F5325A324DE00403505 /* @objc UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "@objc UserProfileController.swift"; sourceTree = "<group>"; };
 		BC8E9F5725A3261D00403505 /* UIImagePickerControllerDelegateForUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImagePickerControllerDelegateForUserProfile.swift; sourceTree = "<group>"; };
-		BC91F2F32627423D006CCE3B /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		BC91F2F32627423D006CCE3B /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		BC9402E826CA62840028E5AC /* PetInformation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PetInformation.xcdatamodel; sourceTree = "<group>"; };
 		BC9402EF26CA63ED0028E5AC /* OMPetInformation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OMPetInformation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BC9402F026CA63ED0028E5AC /* OMPetInformation+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OMPetInformation+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -445,14 +443,6 @@
 			path = ProfileViewController;
 			sourceTree = "<group>";
 		};
-		BC6DBF5126D7EAF60058024B /* NetworkingManager */ = {
-			isa = PBXGroup;
-			children = (
-				BC6DBF5226D7EB220058024B /* NetwokingManager.swift */,
-			);
-			path = NetworkingManager;
-			sourceTree = "<group>";
-		};
 		BC70732C2534AE9400B2979F /* PremiumModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -625,6 +615,16 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		BC8E373C26E6B0CD00F3B6A9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				BC8E373D26E6B0FA00F3B6A9 /* NetworkService.swift */,
+				BC91F2F32627423D006CCE3B /* UserDefaultsService.swift */,
+				BC9402EA26CA628A0028E5AC /* CoreDataManager + Model */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		BC91F2EF2627364E006CCE3B /* FIXIT */ = {
 			isa = PBXGroup;
 			children = (
@@ -692,7 +692,6 @@
 				BCB3AA4325AF8CD000289B7A /* UIViewController.swift */,
 				BC83CB05260CFA160066A32C /* UIImage.swift */,
 				BC83CB08260CFA3F0066A32C /* String.swift */,
-				BC91F2F32627423D006CCE3B /* UserDefaults.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -740,6 +739,7 @@
 		BCB610012530C82400C4FD2F /* MyPets */ = {
 			isa = PBXGroup;
 			children = (
+				BC8E373C26E6B0CD00F3B6A9 /* Services */,
 				BC3C7C752532F54700209C51 /* OnboardViewModule */,
 				BC70732C2534AE9400B2979F /* PremiumModule */,
 				BC413CD62538ABBB002CDD19 /* CustomTabBarController */,
@@ -753,8 +753,6 @@
 				BC413CC6253893B1002CDD19 /* PetViewController */,
 				BC413CC7253893C3002CDD19 /* LocationViewController */,
 				BC413CC8253893D2002CDD19 /* ProfileViewController */,
-				BC6DBF5126D7EAF60058024B /* NetworkingManager */,
-				BC9402EA26CA628A0028E5AC /* CoreDataManager + Model */,
 			);
 			path = MyPets;
 			sourceTree = "<group>";
@@ -789,8 +787,7 @@
 		BCC259E326C40C8E00FCAC54 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BC52FFA126D91EDA00A694CB /* GeneralWeather.swift */,
-				BC52FFA326D91EF400A694CB /* WeatherImages.swift */,
+				BC52FFA126D91EDA00A694CB /* Weather.swift */,
 				BC0132CE26E15DFE0065F1B7 /* MainWeatherModel.swift */,
 			);
 			path = Model;
@@ -1076,8 +1073,6 @@
 				BCBFA54125E6B8D00036C7ED /* MainPetDelegate + DataSource.swift in Sources */,
 				BC9959C526244B48006CE6E1 /* TreatmentVC.swift in Sources */,
 				BC83CB06260CFA160066A32C /* UIImage.swift in Sources */,
-				BC6DBF5326D7EB220058024B /* NetwokingManager.swift in Sources */,
-				BC52FFA426D91EF400A694CB /* WeatherImages.swift in Sources */,
 				BC83CB09260CFA3F0066A32C /* String.swift in Sources */,
 				BC7073252534A6F600B2979F /* UIButton.swift in Sources */,
 				BC7EB65D26C688F500BE80AE /* PetInfoController.swift in Sources */,
@@ -1094,7 +1089,7 @@
 				BC9402F726CA69AC0028E5AC /* BaseModel.swift in Sources */,
 				BC7EB65F26C699CD00BE80AE /* PetInfoView.swift in Sources */,
 				BC13029726B9786000CFD87E /* OnboardView.swift in Sources */,
-				BC91F2F42627423D006CCE3B /* UserDefaults.swift in Sources */,
+				BC91F2F42627423D006CCE3B /* UserDefaultsService.swift in Sources */,
 				BC52FFA026D91B9D00A694CB /* WeatherMenuView.swift in Sources */,
 				BC0EE6A3259DE49500BE167D /* UserProfileViewController.swift in Sources */,
 				BCB404252532F5FE00993A5C /* @objc AuthorizationViewControllerExtension.swift in Sources */,
@@ -1118,7 +1113,7 @@
 				BCC259EB26C4173700FCAC54 /* MainMenuCollectionCell.swift in Sources */,
 				BCE5115525461A23002FB62E /* UIAlertController.swift in Sources */,
 				BC7318B926D51D8A006F4C60 /* CoreDataManager.swift in Sources */,
-				BC52FFA226D91EDA00A694CB /* GeneralWeather.swift in Sources */,
+				BC52FFA226D91EDA00A694CB /* Weather.swift in Sources */,
 				BC97F2C025A0652900267E34 /* UserProfileModel.swift in Sources */,
 				BC9959C926244B76006CE6E1 /* VaccinationVC.swift in Sources */,
 				BCD83D2625F2906600F04EF3 /* CareController.swift in Sources */,
@@ -1137,6 +1132,7 @@
 				BC9F268F26BBCC5D000B854F /* UIColor.swift in Sources */,
 				BC413CD1253894D1002CDD19 /* ProfileViewController.swift in Sources */,
 				BCD83D1725F2121E00F04EF3 /* MenuCell.swift in Sources */,
+				BC8E373E26E6B0FB00F3B6A9 /* NetworkService.swift in Sources */,
 				BCD83D2925F2908700F04EF3 /* EntertainmentController.swift in Sources */,
 				BCB610032530C82400C4FD2F /* AppDelegate.swift in Sources */,
 				BC469CA125AA4BCB00449E3C /* ProfileViewCell.swift in Sources */,
