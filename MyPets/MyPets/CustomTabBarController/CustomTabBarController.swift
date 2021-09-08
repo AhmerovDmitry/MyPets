@@ -8,54 +8,53 @@
 import UIKit
 
 final class CustomTabBarController: UITabBarController {
-    public var controllers: [UIViewController]?
-    // MARK: - Controllers
-    private let mainVC = UINavigationController(rootViewController: MainMenuController())
-    private let petVC = UINavigationController(rootViewController: PetMenuController())
-    private let locationVC = LocationViewController()
-    private let profileVC = UINavigationController(rootViewController: ProfileViewController())
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTabBarUI()
-        setBarItems()
-        controllers = [mainVC, petVC, locationVC, profileVC]
+        setupControllers()
         presentPremium()
     }
 }
 
 // MARK: - Setup UI
 extension CustomTabBarController {
-    private func setTabBarUI() {
+    private func setupControllers() {
+        let networkService = NetworkService()
+
+        let mainVC = UINavigationController(rootViewController: MainMenuController(networkService: networkService))
+        mainVC.tabBarItem.title = "Главная"
+        mainVC.tabBarItem.image = UIImage(named: "generalIcon")
+
+        let petVC = UINavigationController(rootViewController: PetMenuController())
+        petVC.tabBarItem.title = "Питомцы"
+        petVC.tabBarItem.image = UIImage(named: "petIcon")
+
+        let locationVC = LocationViewController()
+        locationVC.tabBarItem.title = "Места"
+        locationVC.tabBarItem.image = UIImage(named: "locationIcon")
+
+        let profileVC = UINavigationController(rootViewController: ProfileViewController())
+        profileVC.tabBarItem.title = "Профиль"
+        profileVC.tabBarItem.image = UIImage(named: "profileIcon")
+
         tabBar.backgroundColor = .white
         tabBar.backgroundImage = UIImage()
         tabBar.shadowImage = UIImage()
         tabBar.unselectedItemTintColor = UIColor.CustomColor.gray
         tabBar.tintColor = UIColor.CustomColor.purple
-    }
-    private func setBarItems() {
-        mainVC.tabBarItem.title = "Главная"
-        mainVC.tabBarItem.image = UIImage(named: "generalIcon")
-        petVC.tabBarItem.title = "Питомцы"
-        petVC.tabBarItem.image = UIImage(named: "petIcon")
-        locationVC.tabBarItem.title = "Места"
-        locationVC.tabBarItem.image = UIImage(named: "locationIcon")
-        profileVC.tabBarItem.title = "Профиль"
-        profileVC.tabBarItem.image = UIImage(named: "profileIcon")
+
+        viewControllers = [mainVC, petVC, locationVC, profileVC]
     }
 }
 
 // MARK: - Methods
 extension CustomTabBarController {
-    /// Метод показывающий преимум контроллер
-    /// если покупка не совершена
-    /// возможно отключение показа нажатием на кнопку-заглушку "Купить Premium"
-    /// так как реальная покупка пока не реализованна
+    /// Метод показывающий преимум контроллер если покупка не совершена
+    /// Возможно отключение показа контроллера нажатием на кнопку-заглушку "Купить Premium"
     private func presentPremium() {
         if !UserDefaults.appPaidStatus() {
-            DispatchQueue.main.async { [self] in
-                sleep(1)
-                presentPremiumController(parent: self)
+            DispatchQueue.main.asyncAfter(wallDeadline: .now() + 1) { [weak self] in
+                self?.presentPremiumController(parent: self)
             }
         }
     }

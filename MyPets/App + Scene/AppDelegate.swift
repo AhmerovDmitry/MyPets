@@ -17,15 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         CoreDataManager.shared.loadEntitys()
         /// Настройка рутового контроллера
         let onboardVC = OnboardController()         /// Если приложение запускается впервые
-        let tabBar = CustomTabBarController()       /// Если приложение ранее запускалось (запуск без OnboardVC)
+        let tabBarC = CustomTabBarController()       /// Если приложение ранее запускалось (запуск без OnboardVC)
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.overrideUserInterfaceStyle = .light
         window?.makeKeyAndVisible()
         if !UserDefaults.isFirstLaunch() {
             window?.rootViewController = onboardVC
         } else {
-            tabBar.viewControllers = tabBar.controllers
-            window?.rootViewController = tabBar
+            window?.rootViewController = tabBarC
         }
         return true
     }

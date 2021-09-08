@@ -21,7 +21,6 @@ final class OnboardController: UIViewController {
         super.viewDidAppear(animated)
         onboardView.presentControllerCallBack = { [weak self] in
             let tabBarController = CustomTabBarController()
-            tabBarController.viewControllers = tabBarController.controllers
             tabBarController.modalPresentationStyle = .fullScreen
             self?.present(tabBarController, animated: true, completion: nil)
             UserDefaults.standard.set(true, forKey: "isFirstLaunch")
