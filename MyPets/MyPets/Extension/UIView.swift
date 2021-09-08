@@ -18,7 +18,7 @@ extension UIView {
         layer.insertSublayer(gradientLayer, at: 0)
     }
     /// Метод добавляет стандартную тень во все стороны от вью
-    public func setDefaultShadow() {
+    func setDefaultShadow() {
         layer.shadowColor = UIColor.CustomColor.dark.cgColor
         layer.shadowOpacity = 0.2
         layer.shadowOffset = CGSize(width: 0, height: 0)
@@ -26,7 +26,7 @@ extension UIView {
         layer.cornerRadius = 16
     }
     /// Метод добавляет эффект размытия для вью
-    public func setBlurEffect(_ view: UIView, frame: CGRect) {
+    func setBlurEffect(_ view: UIView, frame: CGRect) {
         let blurEffect = UIBlurEffect(style: .dark)
         let effectView = UIVisualEffectView(effect: blurEffect)
         effectView.frame = frame

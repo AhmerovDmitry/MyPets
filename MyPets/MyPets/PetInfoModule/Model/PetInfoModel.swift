@@ -10,7 +10,7 @@ import UIKit
 struct PetInfoModel {
     // MARK: - Properties
     /// Массив со стройками которые заполняют тайтл ячейки таблицы
-    public let menuTitles = [
+    let menuTitles = [
         "Кличка",
         "Вид",
         "Порода",
@@ -30,14 +30,14 @@ struct PetInfoModel {
     private let nilEntity = Pet()
     // MARK: - Methods
     /// Функция которая заполняет массив информации об объекте
-    public mutating func updateInformation(_ info: String, index: Int) {
+    mutating func updateInformation(_ info: String, index: Int) {
         petInformation[index] = info
         if info.isEmpty {
             petInformation[index] = nil
         }
     }
     /// Подготовка модели данных к сохранению
-    public mutating func prepareObjectForSave() {
+    mutating func prepareObjectForSave() {
         defaultEntity.name = petInformation[0]
         defaultEntity.kind = petInformation[1]
         defaultEntity.breed = petInformation[2]
@@ -50,18 +50,18 @@ struct PetInfoModel {
         defaultEntity.image = petInformation[9]
     }
     /// Сохранение модели в CoreData
-    public mutating func saveEntityInCoreData() {
+    mutating func saveEntityInCoreData() {
         prepareObjectForSave()
         if defaultEntity != nilEntity {
             CoreDataManager.shared.createEntity(defaultEntity)
         }
     }
     /// Удаление модели из CoreData
-    public func removeEntityFromCoreData(at index: Int) {
+    func removeEntityFromCoreData(at index: Int) {
         CoreDataManager.shared.deleteEntity(at: index)
     }
     /// Редактирование модели
-    public mutating func editingEntity(at index: Int) {
+    mutating func editingEntity(at index: Int) {
         prepareObjectForSave()
         if defaultEntity != nilEntity {
             CoreDataManager.shared.deleteEntity(at: index)
@@ -71,7 +71,7 @@ struct PetInfoModel {
         }
     }
     /// Заполнение массива информации при открытии существующего питомца
-    public mutating func loadEntity(at index: Int) {
+    mutating func loadEntity(at index: Int) {
         let entity = CoreDataManager.shared.pets[index]
         petInformation[0] = entity.name
         petInformation[1] = entity.kind

@@ -106,7 +106,7 @@ extension PetInfoController: TransferPetInformationDelegate {
     /// Метод получающий текст который вводит пользователь на экране ввода информации,
     /// после этого введенный текст передается в модель
     /// и ячейка таблицы перезагружается для обновления текста
-    public func transferPetInformation(_ information: String) {
+    func transferPetInformation(_ information: String) {
         if let cellIndex = cellIndex {
             petModel.updateInformation(information, index: cellIndex.row)
             reloadTableViewCell()
@@ -166,7 +166,7 @@ extension PetInfoController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - Public Methods
 extension PetInfoController {
     /// Метод принимающий нажатую ячейку для получения нужной модели (удаление / загрузка)
-    public func getCellIndex(_ index: Int?) {
+    func getCellIndex(_ index: Int?) {
         collectionCellIndex = index
     }
 }

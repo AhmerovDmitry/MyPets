@@ -63,7 +63,7 @@ extension OnboardCollectionCell {
 
 // MARK: - Public Methods
 extension OnboardCollectionCell {
-    public func configureCell(image: String, description: String) {
+    func configureCell(image: String, description: String) {
         onboardView.image = UIImage(named: image)
         descriptionLabel.text = description
     }

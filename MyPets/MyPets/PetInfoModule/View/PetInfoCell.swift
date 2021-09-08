@@ -68,18 +68,18 @@ extension PetInfoCell {
 // MARK: - Public Methods
 extension PetInfoCell {
     /// Методы делегата и дата сорса, которые передаются в контроллер для работы с ними
-    public func tableViewDelegate<T: UITableViewDelegate>(_ target: T) {
+    func tableViewDelegate<T: UITableViewDelegate>(_ target: T) {
         petInfoTable.delegate = target
     }
-    public func tableViewDataSource<T: UITableViewDataSource>(_ target: T) {
+    func tableViewDataSource<T: UITableViewDataSource>(_ target: T) {
         petInfoTable.dataSource = target
     }
     /// Регистрация ячейки с использованием идентификатора
-    public func setTableViewID(_ id: String) {
+    func setTableViewID(_ id: String) {
         petInfoTable.register(PetInfoTableCell.self, forCellReuseIdentifier: id)
     }
     /// Перезагрузка одной ячейки после изменения значения в ней
-    public func reloadTableViewCell(at indexPath: IndexPath) {
+    func reloadTableViewCell(at indexPath: IndexPath) {
         petInfoTable.reloadRows(at: [indexPath], with: .none)
     }
 }

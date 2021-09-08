@@ -69,7 +69,7 @@ final class CoreDataManager: CoreDataManagerProtocol, PrivateCoreDataManagerProt
         }
     }
     // MARK: - Создание объекта
-    public func createEntity(_ entity: Pet) {
+    func createEntity(_ entity: Pet) {
         guard let context = context else { return }
         let entityModel = OMPetInformation(context: context)
 //        entityModel.image = entity.image?.toString()
@@ -87,7 +87,7 @@ final class CoreDataManager: CoreDataManagerProtocol, PrivateCoreDataManagerProt
         loadEntitys()
     }
     // MARK: - Удаление объекта по индексу нажатой ячейки
-    public func deleteEntity(at index: Int) {
+    func deleteEntity(at index: Int) {
         guard let context = context else { return }
         context.delete(pets[index])
         /// Сохранение контекста и перезагрузка объектов

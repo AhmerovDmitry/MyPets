@@ -18,8 +18,8 @@ final class PetInfoView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     // MARK: - Properties
-    public let tableCellID = "PetTableCell"
-    public let collectionCellID = "PetCollectionCell"
+    let tableCellID = "PetTableCell"
+    let collectionCellID = "PetCollectionCell"
     private let petInfoCell = PetInfoCell()
     private let petImage: UIImageView = {
         let image = UIImageView()
@@ -72,7 +72,7 @@ extension PetInfoView {
 extension PetInfoView {
     /// Метод задает первоя ячейке в коллекции кастомную ячейку в виде таблицы с информацией
     /// которую должен заполнять пользователь
-    public func setPetInfoCollectionInCell(_ cell: UICollectionViewCell) {
+    func setPetInfoCollectionInCell(_ cell: UICollectionViewCell) {
         cell.addSubview(petInfoCell)
         petInfoCell.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -83,19 +83,19 @@ extension PetInfoView {
         ])
     }
     /// Методы делегата и дата сорса, которые передаются в контроллер для работы с ними
-    public func collectionViewDelegate<T: UICollectionViewDelegate>(_ target: T) {
+    func collectionViewDelegate<T: UICollectionViewDelegate>(_ target: T) {
         petInfoCollectionView.delegate = target
     }
-    public func collectionViewDataSource<T: UICollectionViewDataSource>(_ target: T) {
+    func collectionViewDataSource<T: UICollectionViewDataSource>(_ target: T) {
         petInfoCollectionView.dataSource = target
     }
     /// Методы делегата и дата сорса, которые передаются в контроллер для работы с ними
-    public func tableViewDelegateAndDataSource<T>(_ target: T) where T: UITableViewDelegate, T: UITableViewDataSource {
+    func tableViewDelegateAndDataSource<T>(_ target: T) where T: UITableViewDelegate, T: UITableViewDataSource {
         petInfoCell.tableViewDelegate(target)
         petInfoCell.tableViewDataSource(target)
     }
     /// Перезагрузка одной ячейки после изменения значения в ней
-    public func reloadTableViewCell(at indexPath: IndexPath) {
+    func reloadTableViewCell(at indexPath: IndexPath) {
         petInfoCell.reloadTableViewCell(at: indexPath)
     }
 }

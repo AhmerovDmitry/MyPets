@@ -21,7 +21,7 @@ final class PetMenuView: UIView {
         addPetButton.layer.cornerRadius = addPetButton.bounds.height / 2
     }
     // MARK: - Properties
-    public var presentControllerCallBack: (() -> Void)?
+    var presentControllerCallBack: (() -> Void)?
     private lazy var mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.alignment = .center

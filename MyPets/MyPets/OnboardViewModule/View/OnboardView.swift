@@ -21,7 +21,7 @@ final class OnboardView: UIView {
         doneButton.layer.cornerRadius = doneButton.bounds.height / 2
     }
     // MARK: - Properties
-    public var presentControllerCallBack: (() -> Void)?
+    var presentControllerCallBack: (() -> Void)?
     private var onboardImage: [String]?
     private var onboardDescription: [String]?
     private let cellID = "OnboardCellId"
@@ -154,7 +154,7 @@ extension OnboardView: UICollectionViewDelegate, UICollectionViewDataSource {
 
 // MARK: - Public Methods
 extension OnboardView {
-    public func getOnboardContent(_ content: Any) {
+    func getOnboardContent(_ content: Any) {
         guard let content = content as? OnboardModel else { return }
         pageControl.numberOfPages = content.description.count
         onboardImage = content.imagesName

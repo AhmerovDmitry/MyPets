@@ -24,8 +24,8 @@ final class PremiumView: UIView {
         buyButton.layer.cornerRadius = buyButton.bounds.height / 2
     }
     // MARK: - Properties
-    public var presentControllerCallBack: (() -> Void)?
-    public var dismissControllerCallBack: (() -> Void)?
+    var presentControllerCallBack: (() -> Void)?
+    var dismissControllerCallBack: (() -> Void)?
     private var premiumText: [String]?
     private let cellID = "PremiumCellId"
     private lazy var mainStackView: UIStackView = {
@@ -203,7 +203,7 @@ extension PremiumView: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - Public Methods
 extension PremiumView {
-    public func getOnboardContent(_ content: Any) {
+    func getOnboardContent(_ content: Any) {
         guard let content = content as? PremiumModel else { return }
         premiumText = content.description
     }

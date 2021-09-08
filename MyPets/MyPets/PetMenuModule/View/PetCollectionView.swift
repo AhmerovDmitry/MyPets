@@ -17,7 +17,7 @@ final class PetCollectionView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     // MARK: - Properties
-    public let cellID = "PetCollectionCell"
+    let cellID = "PetCollectionCell"
     private lazy var petCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -50,13 +50,13 @@ extension PetCollectionView {
 
 // MARK: - Public Methods
 extension PetCollectionView {
-    public func collectionViewDelegate<T: UICollectionViewDelegate>(_ target: T) {
+    func collectionViewDelegate<T: UICollectionViewDelegate>(_ target: T) {
         petCollection.delegate = target
     }
-    public func collectionViewDataSource<T: UICollectionViewDataSource>(_ target: T) {
+    func collectionViewDataSource<T: UICollectionViewDataSource>(_ target: T) {
         petCollection.dataSource = target
     }
-    public func reloadCollectionView() {
+    func reloadCollectionView() {
         self.petCollection.reloadData()
     }
 }

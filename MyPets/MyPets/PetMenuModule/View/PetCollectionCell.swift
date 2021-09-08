@@ -107,7 +107,7 @@ extension PetCollectionCell {
 
 // MARK: - Public Methods
 extension PetCollectionCell {
-    public func configureCell(image: UIImage, name: String, breed: String, age: String) {
+    func configureCell(image: UIImage, name: String, breed: String, age: String) {
         petName.text = name
         petBreed.text = breed
         petAge.text = age

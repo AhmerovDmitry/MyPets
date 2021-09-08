@@ -68,10 +68,10 @@ extension PetInfoTableCell {
 /// А плейсхолдер проверяет, что если значений нет, тогда используется имя по умолчанию, а если есть
 /// тогда устанавлвается заданная ранее информация
 extension PetInfoTableCell {
-    public func configureTitle(_ value: String?) {
+    func configureTitle(_ value: String?) {
         cellLabel.text = value
     }
-    public func configurePlaceholder(_ value: String?) {
+    func configurePlaceholder(_ value: String?) {
         guard let value = value else {
             cellPlaceholder.text = "Укажите информацию"
             return
