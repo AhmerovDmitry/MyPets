@@ -13,7 +13,7 @@ final class InputInfoController: UIViewController {
     private var keyboardHeight: CGFloat?
     private let inputInfoView = InputInfoView(frame: UIScreen.main.bounds)
     // MARK: - Delegate Properties
-    public weak var delegate: TransferPetInformationDelegate?
+    weak var delegate: TransferPetInformationDelegate?
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,7 +96,7 @@ extension InputInfoController {
 }
 // MARK: - Public Methods
 extension InputInfoController {
-    public func checkTextField(_ text: String?) {
+    func checkTextField(_ text: String?) {
         guard let text = text else { return }
         inputInfoView.textFieldValue(text)
     }

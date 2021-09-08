@@ -20,8 +20,8 @@ final class InputInfoView: UIView {
         super.layoutSubviews()
     }
     // MARK: - Properties
-    public var saveInformationCallBack: (() -> Void)?
-    public var dismissControllerCallBack: (() -> Void)?
+    var saveInformationCallBack: (() -> Void)?
+    var dismissControllerCallBack: (() -> Void)?
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.adjustsFontSizeToFitWidth = true
@@ -84,10 +84,6 @@ final class InputInfoView: UIView {
         button.addTarget(self, action: #selector(dismissController), for: .touchUpInside)
         return button
     }()
-    /// Клавиатура при открытии вызывает метод keyboardWillShow
-    /// когда начинаешь что-то писать в UITextField метод срабатывает повторно
-    /// для этого завел фантомную вью, которая будет как дополнительное условие анимации
-    private lazy var viewForKeyboardFix = UIView(frame: self.frame)
 }
 
 // MARK: - Setup UI
@@ -164,13 +160,13 @@ extension InputInfoView {
         ])
     }
     private func setDogOutlineConstraints() {
-        self.addSubview(dogOutline)
+        backgroundView.addSubview(dogOutline)
         dogOutline.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            dogOutline.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.3),
+            dogOutline.widthAnchor.constraint(equalTo: backgroundView.widthAnchor, multiplier: 0.3),
             dogOutline.heightAnchor.constraint(equalTo: dogOutline.widthAnchor),
-            dogOutline.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            dogOutline.leftAnchor.constraint(equalTo: self.leftAnchor)
+            dogOutline.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor),
+            dogOutline.leftAnchor.constraint(equalTo: backgroundView.leftAnchor)
         ])
     }
     private func setSaveButtonConstraints() {
@@ -204,29 +200,27 @@ extension InputInfoView {
 
 // MARK: - Public Methods
 extension InputInfoView {
-    public func setTextFieldDelegate<T: UITextFieldDelegate>(_ target: T) {
+    func setTextFieldDelegate<T: UITextFieldDelegate>(_ target: T) {
         textField.delegate = target
     }
-    public func moveUp(_ point: CGFloat) {
-        if viewForKeyboardFix.frame.origin.y == 0 {
-            viewForKeyboardFix.frame.origin.y += 1
-            dogOutline.frame.origin.y -= point
+    func moveUp(_ point: CGFloat) {
+        if backgroundView.frame.origin.y == 0 {
+            backgroundView.frame.origin.y -= point
             [titleLabel, catOutline, textFieldBackgroundView, handOutline, saveButton, cancelButton].forEach {
                 $0.frame.origin.y -= dogOutline.frame.height
             }
         }
     }
-    public func moveDown(_ point: CGFloat) {
-        viewForKeyboardFix.frame.origin.y = 0
-        dogOutline.frame.origin.y += point
+    func moveDown(_ point: CGFloat) {
+        backgroundView.frame.origin.y = 0
         [titleLabel, catOutline, textFieldBackgroundView, handOutline, saveButton, cancelButton].forEach {
             $0.frame.origin.y += dogOutline.frame.height
         }
     }
-    public func textFieldValue(_ text: String) {
+    func textFieldValue(_ text: String) {
         textField.text = text
     }
-    public func textFieldFirstResponder() {
+    func textFieldFirstResponder() {
         textField.becomeFirstResponder()
     }
 }
