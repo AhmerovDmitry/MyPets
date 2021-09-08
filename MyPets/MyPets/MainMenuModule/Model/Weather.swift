@@ -8,7 +8,7 @@
 import UIKit
 
 /// Модель для погодного API
-struct GeneralWeather: Codable {
+struct WeatherDescription: Codable {
     let weather: [WeatherDescription]
     let main: Temperature
 

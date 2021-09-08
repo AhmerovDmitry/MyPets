@@ -122,19 +122,16 @@ extension MainMenuView: UICollectionViewDelegate, UICollectionViewDataSource, UI
 }
 // MARK: - Public Methods
 extension MainMenuView {
-    public func setupTemperatureLabel(value: Int) {
+    func setupTemperatureLabel(value: Int) {
         weatherMenuView.setupTemperatureLabel(value: value)
     }
-    public func setupBackgroundImage(_ image: UIImage) {
+    func setupBackgroundImage(_ image: UIImage) {
         weatherMenuView.setupBackgroundImage(image)
     }
-    public func setupMainImage(_ image: UIImage) {
+    func setupMainImage(_ image: UIImage) {
         weatherMenuView.setupMainImage(image)
     }
-    public func stopAnimation() {
-        weatherMenuView.stopAnimation()
-    }
-    public func presentWeatherElements() {
-        weatherMenuView.presentWeatherElements()
+    func setWeatherViewDelegate<T>(_ controller: T) where T: MainMenuControllerDelegate {
+        weatherMenuView.delegate = controller
     }
 }
