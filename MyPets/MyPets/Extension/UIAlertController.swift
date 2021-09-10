@@ -8,8 +8,15 @@
 import UIKit
 
 extension UIAlertController {
-    func showAlertForMap(title: String, message: String?, urlForSystemWay url: String?) {
-        guard let url = url else { return }
+
+    /// Алерт для отображения проблем с геолокацией
+    /// - Parameters:
+    ///   - target: Контроллер на котором показывается алерт
+    ///   - title: Заголовок алерт контроллера
+    ///   - message: Сообщение алерт контроллера
+    ///   - systemWayUrl: Путь к системным настройкам для удобства включения каких-то функций
+    static func locationRequest(_ target: UIViewController, title: String, message: String?, systemWayUrl: String?) {
+        guard let url = systemWayUrl else { return }
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let settingsAction = UIAlertAction(title: "Настройки", style: .default) { _ in
             if let url = URL(string: url) {
@@ -19,12 +26,19 @@ extension UIAlertController {
         let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
         alert.addAction(cancelAction)
         alert.addAction(settingsAction)
-        present(alert, animated: true, completion: nil)
+        target.present(alert, animated: true, completion: nil)
     }
-    func showGlobalWarning(title: String, message: String, buttonText: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let button = UIAlertAction(title: buttonText, style: .cancel, handler: nil)
-        alert.addAction(button)
-        present(alert, animated: true, completion: nil)
+
+    /// Алерт для отображения сетевой ошибки
+    /// - Parameters:
+    ///   - target: Контроллер на котором показывается алерт
+    ///   - error: Ошибка сетевого запроса
+    ///   - completion: Комплишн хендлер если нужно что-то сделать после закрытия алерта
+    static func presentAlertWithRequestError(_ target: UIViewController, error: Error?, completion: (() -> Void)?) {
+        let alert = UIAlertController(title: "Упс, что-то пошло не по плану!",
+                                      message: error?.localizedDescription,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Продолжить", style: .cancel, handler: nil))
+        target.present(alert, animated: true, completion: completion)
     }
 }
