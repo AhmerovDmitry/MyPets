@@ -56,7 +56,6 @@ class LocationViewController: UIViewController {
         collectionView.dataSource = self
         locationManager.delegate = self
         setup()
-        checkLocationAvailability()
     }
 }
 

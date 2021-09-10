@@ -9,39 +9,6 @@ import UIKit
 import MapKit
 
 extension LocationViewController: CLLocationManagerDelegate {
-    // MARK: - Fetch user location
-    func checkLocationAvailability() {
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.requestWhenInUseAuthorization()
-        } else {
-            alertController.showAlertForMap(title: "Выключена служба геолокации",
-                                            message: "Включить?",
-                                            urlForSystemWay: "App-Prefs:root=LOCATION_SERVICES")
-        }
-    }
-    // MARK: - Check authorization status
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
-        case .authorizedAlways, .authorizedWhenInUse:
-            manager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            manager.requestLocation()
-            showUserLocation()
-        case .denied:
-            alertController.showAlertForMap(title: "Вы запретили использование местоположения",
-                                            message: "Хотите это изменить?",
-                                            urlForSystemWay: UIApplication.openSettingsURLString)
-        case .restricted:
-            break
-        case .notDetermined:
-            manager.requestWhenInUseAuthorization()
-        default:
-            print("Default status")
-        }
-    }
-    // MARK: - error.localizedDescription
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("error:: \(error.localizedDescription)")
-    }
     // MARK: - View user location
     func showUserLocation() {
         guard let userLocation = locationManager.location?.coordinate else { return }
