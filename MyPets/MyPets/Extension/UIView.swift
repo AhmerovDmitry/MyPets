@@ -8,35 +8,51 @@
 import UIKit
 
 extension UIView {
-    private func setGradientBackground(colorOne: UIColor, colorTwo: UIColor, startPoint: CGPoint, endPoint: CGPoint) {
+    /// Эффект градиента для вью
+    /// Направление вью задается startPoint и endPoint
+    /// - Parameters:
+    ///   - view: Вью на которую накладывается градиент
+    ///   - colorOne: Первый цвет градиента
+    ///   - colorTwo: Второй цвет градиента
+    ///   - startPoint: Стартовая точка откуда пойдет градиент
+    ///   - endPoint: Конечная точка где закончится градиент
+    func setGradientEffect(_ view: UIView,
+                           colorOne: UIColor, colorTwo: UIColor,
+                           startPoint: CGPoint, endPoint: CGPoint) {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
         gradientLayer.colors = [colorOne.cgColor, colorTwo.cgColor]
         gradientLayer.locations = [0.0, 1.0]
         gradientLayer.startPoint = startPoint
         gradientLayer.endPoint = endPoint
-        layer.insertSublayer(gradientLayer, at: 0)
+        view.layer.insertSublayer(gradientLayer, at: 0)
     }
-    /// Метод добавляет стандартную тень во все стороны от вью
+
+    /// Метод добавляет тень во все стороны от вью
     func setDefaultShadow() {
         layer.shadowColor = UIColor.CustomColor.dark.cgColor
         layer.shadowOpacity = 0.2
         layer.shadowOffset = CGSize(width: 0, height: 0)
         layer.shadowRadius = 7
         layer.cornerRadius = 16
+        layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        layer.shouldRasterize = true
+        layer.rasterizationScale = UIScreen.main.scale
     }
-    /// Метод добавляет эффект размытия для вью
+
+    /// Добавление эффекта размытия на вью
+    /// - Parameters:
+    ///   - view: Вью на которую накладывается размытие
+    ///   - frame: Размер этой вью для сопоставления эффекта размытия со вью
     func setBlurEffect(_ view: UIView, frame: CGRect) {
         let blurEffect = UIBlurEffect(style: .dark)
         let effectView = UIVisualEffectView(effect: blurEffect)
         effectView.frame = frame
         view.insertSubview(effectView, at: 0)
     }
-    func gradientSetup(view: UIView, colorOne: UIColor, colorTwo: UIColor) {
-        view.setGradientBackground(
-            colorOne: colorOne, colorTwo: colorTwo, startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 1)
-        )
-    }
+
+    /*
+    /// Анимация тряски вью, возможно не понадобится и прийдется удалить
     func startShakeAnimation() {
         let animation = CABasicAnimation(keyPath: "position")
         animation.duration = 0.1
@@ -49,4 +65,5 @@ extension UIView {
     func stopShakeAnimation() {
         self.layer.removeAnimation(forKey: "position")
     }
+    */
 }
