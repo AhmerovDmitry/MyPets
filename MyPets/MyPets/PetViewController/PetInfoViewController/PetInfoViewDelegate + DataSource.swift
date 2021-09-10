@@ -71,15 +71,15 @@ extension PetInfoViewController: UICollectionViewDelegateFlowLayout,
         return UIEdgeInsets(top: titleImage.bounds.height / 2.7, left: 0, bottom: 0, right: 0)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let controllers = [HealthController(),
-                           DocumentController(),
-                           FoodController(),
-                           CareController(),
-                           EntertainmentController()]
-        let titles = ["Здоровье", "Документы", "Питание", "Уход", "Развлечения"]
-        if indexPath.item != 0 {
+//        let controllers = [HealthController(),
+//                           DocumentController(),
+//                           FoodController(),
+//                           CareController(),
+//                           EntertainmentController()]
+//        let titles = ["Здоровье", "Документы", "Питание", "Уход", "Развлечения"]
+//        if indexPath.item != 0 {
 //            self.setupBackBarItem()
-            self.pushView(controller: controllers[indexPath.item - 1], withTitle: titles[indexPath.item - 1])
-        }
+//            self.pushView(controller: controllers[indexPath.item - 1], withTitle: titles[indexPath.item - 1])
+//        }
     }
 }
