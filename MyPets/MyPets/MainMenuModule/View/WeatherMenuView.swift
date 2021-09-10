@@ -8,23 +8,20 @@
 import UIKit
 
 final class WeatherMenuView: UIView {
-    // MARK: - Initialization & Lifecycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+
+    // MARK: - LayoutSubviews
+    override func layoutSubviews() {
+        super.layoutSubviews()
         setupUI()
-        showLoadingAnimation()
     }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+
     // MARK: - Properties
-    weak var delegate: MainMenuControllerDelegate?
-
-    private var temperatureValue: NSAttributedString?
-    private var weatherBackground: UIImage?
-    private var weatherMainImage: UIImage?
-    private var requestCounter = 0
-
+    private let reloadWeatherButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "goforward"), for: .normal)
+        button.tintColor = UIColor.CustomColor.darkGray
+        return button
+    }()
     private let backgroundWeatherImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
@@ -48,12 +45,6 @@ final class WeatherMenuView: UIView {
         label.layer.opacity = 0
         return label
     }()
-    private let maskedView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .clear
-        view.clipsToBounds = true
-        return view
-    }()
     private let animationImage: UIImageView = {
         let image = UIImageView()
         image.backgroundColor = .clear
@@ -70,11 +61,10 @@ final class WeatherMenuView: UIView {
         image.animationImages = imagesArray
         image.animationDuration = 1
         image.animationRepeatCount = .max
-        image.startAnimating()
         return image
     }()
-    private var rightAnimationViewConstraint = NSLayoutConstraint()
 }
+
 // MARK: - Setup UI
 extension WeatherMenuView {
     private func setupUI() {
@@ -82,8 +72,8 @@ extension WeatherMenuView {
         setBackgroundImageConstraints()
         setMainImageConstraints()
         setTemperatureLabelConstraints()
-        setMaskViewConstraints()
         setLoadingAnimationConstraints()
+        setReloadWeatherButtonConstraints()
     }
     private func setSelfViewUI() {
         self.setDefaultShadow()
@@ -120,33 +110,33 @@ extension WeatherMenuView {
             temperatureLabel.leftAnchor.constraint(equalTo: self.leftAnchor)
         ])
     }
-    private func setMaskViewConstraints() {
-        self.addSubview(maskedView)
-        maskedView.translatesAutoresizingMaskIntoConstraints = false
+    private func setLoadingAnimationConstraints() {
+        self.addSubview(animationImage)
+        animationImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            maskedView.heightAnchor.constraint(equalTo: self.heightAnchor),
-            maskedView.widthAnchor.constraint(equalTo: self.widthAnchor),
-            maskedView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            maskedView.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+            animationImage.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.7),
+            animationImage.widthAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.7),
+            animationImage.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            animationImage.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
     }
-    private func setLoadingAnimationConstraints() {
-        maskedView.addSubview(animationImage)
-        animationImage.translatesAutoresizingMaskIntoConstraints = false
-
+    private func setReloadWeatherButtonConstraints() {
+        self.addSubview(reloadWeatherButton)
+        reloadWeatherButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            animationImage.heightAnchor.constraint(equalTo: maskedView.heightAnchor, multiplier: 0.7),
-            animationImage.widthAnchor.constraint(equalTo: maskedView.heightAnchor, multiplier: 0.7),
-            animationImage.centerYAnchor.constraint(equalTo: maskedView.centerYAnchor),
-            animationImage.centerXAnchor.constraint(equalTo: maskedView.centerXAnchor)
+            reloadWeatherButton.topAnchor.constraint(equalTo: self.topAnchor),
+            reloadWeatherButton.rightAnchor.constraint(equalTo: self.rightAnchor),
+            reloadWeatherButton.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.2),
+            reloadWeatherButton.widthAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.2)
         ])
     }
 }
+
 // MARK: - Methods
 extension WeatherMenuView {
     /// Метод обрабатывающий показания погоды,
     /// добавляет визальный эффект тексту, цифры погоды имеют атрибут bold, а знак градусов ultraLight,
-    /// возможна замена символа градусов с "°" на "℃"
+    /// возможна замена символа градусов "°" - "℃"
     private func changeTextAttribute(_ text: String) -> NSAttributedString {
         let degreeSymbol = NSMutableAttributedString(string: "℃")
         let attrString = NSMutableAttributedString(string: text)
@@ -158,14 +148,38 @@ extension WeatherMenuView {
         resultString.append(degreeSymbol)
         return resultString
     }
-    /// Метод останавливает анимацию после загрузки данных из сети
-    private func stopAnimation() {
-        animationImage.stopAnimating()
-        animationImage.removeFromSuperview()
-        maskedView.removeFromSuperview()
+}
+// MARK: - Public Methods
+extension WeatherMenuView {
+    func setupTemperatureLabel(value: String) {
+        temperatureLabel.attributedText = changeTextAttribute(value)
     }
-    /// Плавное появление обновленных элементов
-    private func presentWeatherElements() {
+    func setupMainImage(_ image: UIImage) {
+        mainWeatherImage.image = image
+    }
+    func setupBackgroundImage(_ image: UIImage) {
+        backgroundWeatherImage.image = image
+    }
+    func setupDefaultElements() {
+        guard let mainImage = UIImage(named: "networkError") else { return }
+        setupTemperatureLabel(value: "--")
+        setupMainImage(mainImage)
+        presentWeatherElements()
+    }
+    func removeDefaultElements() {
+        backgroundWeatherImage.isHidden = true
+        mainWeatherImage.isHidden = true
+        temperatureLabel.isHidden = true
+    }
+    func startAnimation() {
+        animationImage.startAnimating()
+        animationImage.isHidden = false
+    }
+    func stopAnimation() {
+        animationImage.stopAnimating()
+        animationImage.isHidden = true
+    }
+    func presentWeatherElements() {
         backgroundWeatherImage.isHidden = false
         mainWeatherImage.isHidden = false
         temperatureLabel.isHidden = false
@@ -175,44 +189,12 @@ extension WeatherMenuView {
             self?.temperatureLabel.layer.opacity = 1
         }
     }
-    /// Анимация персонажа на вью во время загрузки данных из сети
-    private func showLoadingAnimation() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
-            guard let self = self else { return }
-
-            if self.temperatureValue != nil && self.weatherBackground != nil && self.weatherMainImage != nil {
-                self.temperatureLabel.attributedText = self.temperatureValue
-                self.backgroundWeatherImage.image = self.weatherBackground
-                self.mainWeatherImage.image = self.weatherMainImage
-
-                self.stopAnimation()
-                self.presentWeatherElements()
-            } else if self.temperatureValue == nil ||
-                        self.weatherBackground == nil ||
-                        self.weatherMainImage == nil {
-                if self.requestCounter <= 5 {
-                    self.requestCounter += 1
-                    self.showLoadingAnimation()
-                } else {
-                    self.delegate?.presentAlertWithRequestError()
-                    self.requestCounter = 0
-                    self.stopAnimation()
-                }
-            }
-        }
+    func removeElements() {
+        temperatureLabel.attributedText = nil
+        mainWeatherImage.image = nil
+        backgroundWeatherImage.image = nil
     }
-}
-// MARK: - Public Methods
-extension WeatherMenuView {
-    /// Методы обрабатывающие данные из сети и
-    /// присваивающие эти данные промежуточным переменным
-    func setupTemperatureLabel(value: Int) {
-        temperatureValue = changeTextAttribute("\(value)")
-    }
-    func setupBackgroundImage(_ image: UIImage) {
-        weatherBackground = image
-    }
-    func setupMainImage(_ image: UIImage) {
-        weatherMainImage = image
+    func reloadWeatherButtonAction(_ target: UIViewController, _ action: Selector) {
+        reloadWeatherButton.addTarget(target, action: action, for: .touchUpInside)
     }
 }
