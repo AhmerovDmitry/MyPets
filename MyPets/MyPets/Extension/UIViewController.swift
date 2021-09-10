@@ -8,13 +8,18 @@
 import UIKit
 
 extension UIViewController {
+
     /// Метод показывает контроллер с возможностью купить премиум версию приложения
-    func presentPremiumController(parent controller: UIViewController?) {
+    /// - Parameter target: Контроллер по верх которого показывается PremiumController
+    func presentPremiumController(_ target: UIViewController?) {
         let premiumVC = PremiumController()
         premiumVC.modalPresentationStyle = .fullScreen
-        controller?.present(premiumVC, animated: true, completion: nil)
+        target?.present(premiumVC, animated: true, completion: nil)
     }
+
+    /*
     /// Метод открывающий (push) следующий контроллер без заголовка в кнопке возврата
+    /// Удалить из-за ненадобности
     func openControllerWithoutBackBarItemTitle(_ controller: UIViewController) {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: nil, action: nil)
         navigationItem.backBarButtonItem?.tintColor = UIColor.CustomColor.dark
@@ -30,4 +35,5 @@ extension UIViewController {
         controller.navigationItem.title = withTitle
         self.navigationController?.pushViewController(controller, animated: true)
     }
+    */
 }
