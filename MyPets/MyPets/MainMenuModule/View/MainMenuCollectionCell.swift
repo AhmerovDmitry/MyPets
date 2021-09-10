@@ -8,6 +8,7 @@
 import UIKit
 
 final class MainMenuCollectionCell: UICollectionViewCell {
+
     // MARK: - Initialization & Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -16,6 +17,7 @@ final class MainMenuCollectionCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     // MARK: - Properties
     private let onboardView: UIImageView = {
         let image = UIImageView()
@@ -36,6 +38,7 @@ final class MainMenuCollectionCell: UICollectionViewCell {
 // MARK: - Setup UI
 extension MainMenuCollectionCell {
     private func setupUI() {
+        self.setDefaultShadow()
         setDescriptionLabelConstraints()
         setOnboardViewConstraints()
     }
@@ -60,6 +63,7 @@ extension MainMenuCollectionCell {
         ])
     }
 }
+
 // MARK: - Public Methods
 extension MainMenuCollectionCell {
     func configureCell(image: String, description: String) {

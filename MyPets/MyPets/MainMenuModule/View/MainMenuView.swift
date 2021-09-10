@@ -8,18 +8,17 @@
 import UIKit
 
 final class MainMenuView: UIView {
-    // MARK: - Initialization & Lifecycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+
+    // MARK: - LayoutSubviews
+    override func layoutSubviews() {
+        super.layoutSubviews()
         setupUI()
     }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+
     // MARK: - Properties
-    private let cellID = "MainMenuCell"
+    let weatherMenuView = WeatherMenuView()
     private let titleMenuView = TitleMenuView()
-    private let weatherMenuView = WeatherMenuView()
+    private let cellID = "MainMenuCell"
     private lazy var generalMenuCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -31,7 +30,6 @@ final class MainMenuView: UIView {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
-        collectionView.setDefaultShadow()
         return collectionView
     }()
     private let pageControl: UIPageControl = {
@@ -46,6 +44,7 @@ final class MainMenuView: UIView {
         return pageControl
     }()
 }
+
 // MARK: - Setup UI
 extension MainMenuView {
     private func setupUI() {
@@ -96,6 +95,7 @@ extension MainMenuView {
         ])
     }
 }
+
 // MARK: - Delegate & DataSource
 extension MainMenuView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
@@ -115,23 +115,9 @@ extension MainMenuView: UICollectionViewDelegate, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
+        cell.setDefaultShadow()
         cell.backgroundColor = UIColor.CustomColor.lightGray
         cell.layer.cornerRadius = 16
         return cell
-    }
-}
-// MARK: - Public Methods
-extension MainMenuView {
-    func setupTemperatureLabel(value: Int) {
-        weatherMenuView.setupTemperatureLabel(value: value)
-    }
-    func setupBackgroundImage(_ image: UIImage) {
-        weatherMenuView.setupBackgroundImage(image)
-    }
-    func setupMainImage(_ image: UIImage) {
-        weatherMenuView.setupMainImage(image)
-    }
-    func setWeatherViewDelegate<T>(_ controller: T) where T: MainMenuControllerDelegate {
-        weatherMenuView.delegate = controller
     }
 }

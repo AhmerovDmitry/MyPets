@@ -82,7 +82,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             userProfileVC.userInfo = userInfo
             navigationController?.pushViewController(userProfileVC, animated: true)
         case 3:
-            presentPremiumController(parent: self.tabBarController)
+            presentPremiumController(self.tabBarController)
         case 4:
             switch indexPath.row {
             case 0:

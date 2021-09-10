@@ -8,9 +8,11 @@
 import UIKit
 
 final class OnboardController: UIViewController {
+
     // MARK: - Properties
     private let onboardContent = OnboardModel()
     private let onboardView = OnboardView(frame: UIScreen.main.bounds)
+
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +29,7 @@ final class OnboardController: UIViewController {
         }
     }
 }
+
 // MARK: - Methods
 extension OnboardController {
     private func updateViewContent() {

@@ -8,18 +8,13 @@
 import UIKit
 
 final class OnboardView: UIView {
-    // MARK: - Initialization & Lifecycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupUI()
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+
+    // MARK: - LayoutSubviews
     override func layoutSubviews() {
         super.layoutSubviews()
-        doneButton.layer.cornerRadius = doneButton.bounds.height / 2
+        setupUI()
     }
+
     // MARK: - Properties
     var presentControllerCallBack: (() -> Void)?
     private var onboardImage: [String]?

@@ -8,6 +8,7 @@
 import UIKit
 
 final class OnboardCollectionCell: UICollectionViewCell {
+
     // MARK: - Initialization & Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -16,6 +17,7 @@ final class OnboardCollectionCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     // MARK: - Properties
     private let onboardView: UIImageView = {
         let image = UIImageView()

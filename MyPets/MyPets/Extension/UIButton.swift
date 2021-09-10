@@ -13,6 +13,7 @@ extension UIButton {
                                      action: Selector,
                                      target: Any?) -> UIButton {
         let button = UIButton(type: .system)
+        button.layer.cornerRadius = button.bounds.height / 2
         button.setTitle(title, for: .normal)
         button.backgroundColor = backgroundColor
         button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)

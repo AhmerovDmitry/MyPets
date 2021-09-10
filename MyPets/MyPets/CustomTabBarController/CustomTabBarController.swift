@@ -54,7 +54,7 @@ extension CustomTabBarController {
     private func presentPremium() {
         if !UserDefaults.appPaidStatus() {
             DispatchQueue.main.asyncAfter(wallDeadline: .now() + 1) { [weak self] in
-                self?.presentPremiumController(parent: self)
+                self?.presentPremiumController(self)
             }
         }
     }

@@ -8,14 +8,13 @@
 import UIKit
 
 final class TitleMenuView: UIView {
-    // MARK: - Initialization & Lifecycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+
+    // MARK: - LayoutSubviews
+    override func layoutSubviews() {
+        super.layoutSubviews()
         setupUI()
     }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+
     // MARK: - Properties
     private let backgroundImageView = UIImageView(image: UIImage(named: "mainMenuTitleViewImage"))
     private let titleLabel: UILabel = {
@@ -33,6 +32,7 @@ final class TitleMenuView: UIView {
         return label
     }()
 }
+
 // MARK: - Setup UI
 extension TitleMenuView {
     private func setupUI() {
