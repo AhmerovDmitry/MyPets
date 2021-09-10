@@ -33,6 +33,9 @@ extension NetworkService: NetworkServiceProtocol {
                     if let data = try self?.decoder.decode(T.self, from: data) {
                         completion(.success(data))
                     }
+                    if let error = error {
+                        completion(.failure(error))
+                    }
                 }
             } catch {
                 completion(.failure(error))
