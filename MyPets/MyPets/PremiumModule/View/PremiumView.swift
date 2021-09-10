@@ -8,22 +8,20 @@
 import UIKit
 
 final class PremiumView: UIView {
-    // MARK: - Initialization & Lifecycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupUI()
-        let colorOne = UIColor(red: 137 / 255, green: 46 / 255, blue: 223 / 255, alpha: 1)
-        let colorTwo = UIColor(red: 212 / 255, green: 165 / 255, blue: 255 / 255, alpha: 1)
-        self.gradientSetup(view: self, colorOne: colorOne, colorTwo: colorTwo)
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+
+    // MARK: - LayoutSubviews
     override func layoutSubviews() {
         super.layoutSubviews()
-        buyButton.layer.cornerRadius = buyButton.bounds.height / 2
+        setupUI()
+        self.setGradientEffect(self,
+                               colorOne: colorOne, colorTwo: colorTwo,
+                               startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 1))
     }
+
     // MARK: - Properties
+    private let colorOne = UIColor(red: 137 / 255, green: 46 / 255, blue: 223 / 255, alpha: 1)
+    private let colorTwo = UIColor(red: 212 / 255, green: 165 / 255, blue: 255 / 255, alpha: 1)
+
     var presentControllerCallBack: (() -> Void)?
     var dismissControllerCallBack: (() -> Void)?
     private var premiumText: [String]?
