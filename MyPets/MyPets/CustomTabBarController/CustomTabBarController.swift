@@ -8,9 +8,15 @@
 import UIKit
 
 final class CustomTabBarController: UITabBarController {
+
+    // MARK: - Services
+    let networkService = NetworkService()
+    let storageService = StorageService()
+
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        storageService.loadEntitys()
         setupControllers()
         presentPremium()
     }
@@ -19,13 +25,12 @@ final class CustomTabBarController: UITabBarController {
 // MARK: - Setup UI
 extension CustomTabBarController {
     private func setupControllers() {
-        let networkService = NetworkService()
 
         let mainVC = UINavigationController(rootViewController: MainMenuController(networkService: networkService))
         mainVC.tabBarItem.title = "Главная"
         mainVC.tabBarItem.image = UIImage(named: "generalIcon")
 
-        let petVC = UINavigationController(rootViewController: PetMenuController())
+        let petVC = UINavigationController(rootViewController: PetMenuController(storageService: storageService))
         petVC.tabBarItem.title = "Питомцы"
         petVC.tabBarItem.image = UIImage(named: "petIcon")
 
@@ -53,7 +58,7 @@ extension CustomTabBarController {
     /// Возможно отключение показа контроллера нажатием на кнопку-заглушку "Купить Premium"
     private func presentPremium() {
         if !UserDefaults.appPaidStatus() {
-            DispatchQueue.main.asyncAfter(wallDeadline: .now() + 1) { [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
                 self?.presentPremiumController(self)
             }
         }
