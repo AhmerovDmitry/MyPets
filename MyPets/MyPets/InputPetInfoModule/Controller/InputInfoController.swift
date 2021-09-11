@@ -9,7 +9,6 @@ import UIKit
 
 final class InputInfoController: UIViewController {
     // MARK: - Properties
-    private var petInformation: String?
     private var keyboardHeight: CGFloat?
     private let inputInfoView = InputInfoView(frame: UIScreen.main.bounds)
     // MARK: - Delegate Properties
@@ -37,13 +36,17 @@ extension InputInfoController {
 extension InputInfoController {
     private func callBacksMethods() {
         inputInfoView.dismissControllerCallBack = { [weak self] in
-            self?.dismissController()
+            self?.dismiss(animated: true, completion: nil)
         }
-        inputInfoView.saveInformationCallBack = { [weak self] in
-            self?.saveInformation()
+        inputInfoView.saveInformationCallBack = { [weak self] textField in
+            if let text = textField.text {
+                self?.delegate?.transferPetInformation(text)
+            }
+            self?.dismiss(animated: true, completion: nil)
         }
     }
 }
+
 // MARK: - Keyboard Methods
 extension InputInfoController {
     private func observerMethods() {
@@ -71,29 +74,15 @@ extension InputInfoController {
         view.endEditing(true)
     }
 }
+
 // MARK: - UITextField Delegate
 extension InputInfoController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        petInformation = textField.text
-    }
 }
-// MARK: - Actions
-@objc
-extension InputInfoController {
-    private func dismissController() {
-        dismiss(animated: true, completion: nil)
-    }
-    private func saveInformation() {
-        if let petInformation = petInformation {
-            delegate?.transferPetInformation(petInformation)
-        }
-        dismissController()
-    }
-}
+
 // MARK: - Public Methods
 extension InputInfoController {
     func checkTextField(_ text: String?) {

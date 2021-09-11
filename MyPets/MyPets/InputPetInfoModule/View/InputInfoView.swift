@@ -20,7 +20,7 @@ final class InputInfoView: UIView {
         super.layoutSubviews()
     }
     // MARK: - Properties
-    var saveInformationCallBack: (() -> Void)?
+    var saveInformationCallBack: ((_ textField: UITextField) -> Void)?
     var dismissControllerCallBack: (() -> Void)?
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -191,7 +191,7 @@ extension InputInfoView {
 @objc
 extension InputInfoView {
     private func saveInformation() {
-        saveInformationCallBack?()
+        saveInformationCallBack?(textField)
     }
     private func dismissController() {
         dismissControllerCallBack?()
