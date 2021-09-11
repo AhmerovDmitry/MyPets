@@ -10,7 +10,7 @@ import UIKit
 final class PetInfoModel {
 
     private let storageService: StorageServiceProtocol
-    private(set) lazy var objectForFilling = PetDTO(identifier: self.storageService.createIdentifier())
+    private(set) var objectForFilling: PetDTO
 
     /// Массив со стройками которые заполняют тайтл ячейки таблицы
     let menuTitles = [
@@ -29,6 +29,8 @@ final class PetInfoModel {
         self.storageService = storageService
 
         if let index = cellIndex {
+            self.objectForFilling = PetDTO(identifier: storageService.objects[index].identifier)
+
             self.objectForFilling.name = storageService.objects[index].name
             self.objectForFilling.kind = storageService.objects[index].kind
             self.objectForFilling.breed = storageService.objects[index].breed
@@ -38,10 +40,20 @@ final class PetInfoModel {
             self.objectForFilling.color = storageService.objects[index].color
             self.objectForFilling.hair = storageService.objects[index].hair
             self.objectForFilling.chipNumber = storageService.objects[index].chipNumber
-            // Загрузка идентификатора
-            self.objectForFilling.identifier = storageService.objects[index].identifier
-            // Загрузка фото с помощью идентификатора
-            self.objectForFilling.photo = storageService.loadPhoto(photoID: storageService.objects[index].identifier)
+            self.objectForFilling.photo = storageService.loadPhoto(photoID: self.objectForFilling.identifier)
+        } else {
+            self.objectForFilling = PetDTO(identifier: storageService.createIdentifier())
+
+            self.objectForFilling.name = nil
+            self.objectForFilling.kind = nil
+            self.objectForFilling.breed = nil
+            self.objectForFilling.birthday = nil
+            self.objectForFilling.weight = nil
+            self.objectForFilling.sterile = nil
+            self.objectForFilling.color = nil
+            self.objectForFilling.hair = nil
+            self.objectForFilling.chipNumber = nil
+            self.objectForFilling.photo = nil
         }
     }
 }
