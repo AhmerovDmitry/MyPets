@@ -5,6 +5,7 @@
         <attribute name="breed" optional="YES" attributeType="String"/>
         <attribute name="chipNumber" optional="YES" attributeType="String"/>
         <attribute name="color" optional="YES" attributeType="String"/>
+        <attribute name="createDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="hair" optional="YES" attributeType="String"/>
         <attribute name="identifier" attributeType="String"/>
         <attribute name="kind" optional="YES" attributeType="String"/>
@@ -13,6 +14,6 @@
         <attribute name="weight" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="OMPetInformation" positionX="-63" positionY="-18" width="128" height="179"/>
+        <element name="OMPetInformation" positionX="-63" positionY="-18" width="128" height="194"/>
     </elements>
 </model>

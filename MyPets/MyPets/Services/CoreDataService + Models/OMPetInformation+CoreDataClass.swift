@@ -12,6 +12,10 @@ import CoreData
 @objc(OMPetInformation)
 public class OMPetInformation: NSManagedObject {
 
+    public override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertInto: context)
+    }
+
 }
 
 extension OMPetInformation {

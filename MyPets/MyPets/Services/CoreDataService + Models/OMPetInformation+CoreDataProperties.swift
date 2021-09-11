@@ -26,6 +26,7 @@ extension OMPetInformation {
     @NSManaged public var sterile: String?
     @NSManaged public var weight: String?
     @NSManaged public var identifier: String
+    @NSManaged public var createDate: Date
 
 }
 

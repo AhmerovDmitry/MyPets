@@ -59,7 +59,7 @@ extension StorageService: FileManagerServiceProtocol {
     func savePhoto(photoID: String, photo: UIImage) {
         guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory,
                                                                 in: .userDomainMask).first else { return }
-        let fileName = "ObjectPhotoUUID_" + photoID
+        let fileName = photoID
         let fileURL = documentsDirectory.appendingPathComponent(fileName)
         guard let data = photo.jpegData(compressionQuality: 1) else { return }
         if FileManager.default.fileExists(atPath: fileURL.path) {
@@ -87,7 +87,7 @@ extension StorageService: FileManagerServiceProtocol {
         let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
         let paths = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)
         if let dirPath = paths.first {
-            let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent("ObjectPhotoUUID_" + photoID)
+            let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent(photoID)
             let image = UIImage(contentsOfFile: imageUrl.path)
             return image
         }
@@ -100,7 +100,7 @@ extension StorageService: FileManagerServiceProtocol {
     func removePhoto(photoID: String) {
         guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory,
                                                                 in: .userDomainMask).first else { return }
-        let fileName = "ObjectPhotoUUID_" + photoID
+        let fileName = photoID
         let fileURL = documentsDirectory.appendingPathComponent(fileName)
         if FileManager.default.fileExists(atPath: fileURL.path) {
             do {
@@ -122,7 +122,7 @@ extension StorageService {
         guard let context = context else { return }
         let fetchRequest: NSFetchRequest<OMPetInformation> = OMPetInformation.fetchRequest()
         do {
-            objects = try context.fetch(fetchRequest).reversed()
+            objects = try context.fetch(fetchRequest).sorted(by: { $0.createDate > $1.createDate })
         } catch {
             context.rollback()
             let nserror = error as NSError
@@ -139,6 +139,7 @@ extension StorageService: CoreDataSavingServiceProtocol {
     func saveEntity(_ entity: PetDTO) {
         guard let context = context else { return }
         let entityModel = OMPetInformation(context: context)
+        entityModel.createDate = Date()
         entityModel.update(usingModel: entity)
         saveContext(context)
         loadEntitys()
@@ -153,8 +154,10 @@ extension StorageService: CoreDataEditingServiceProtocol {
     ///   - entity: Редактируемый объект
     ///   - index: Индекс по которому редактируется объект
     func editingEntity(_ entity: PetDTO, at index: Int) {
-        removeEntity(at: index)
-        saveEntity(entity)
+        guard let context = context else { return }
+        objects[index].update(usingModel: entity)
+        saveContext(context)
+        loadEntitys()
     }
 
     /// Удаление объекта по индексу
