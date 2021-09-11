@@ -14,17 +14,16 @@ protocol TransferPetInformationDelegate: AnyObject {
 final class PetInfoController: UIViewController {
 
     // MARK: - Properties
-    private var petModel = PetInfoModel()
-    private var objectForFilling = PetObject()
-    private lazy var petInfoView = PetInfoView(frame: view.frame)
-    private(set) var storageService: StorageServiceProtocol
     weak var delegate: PetMenuControllerDelegate?
+    private var petModel: PetInfoModel
+    private var petInfoView: PetInfoView
     private var collectionCellIndex: Int?
     private var selectedTableCell: IndexPath?
 
     // MARK: - Initialization
     init(storageService: StorageServiceProtocol, collectionCellIndex: Int?) {
-        self.storageService = storageService
+        self.petModel = PetInfoModel(storageService: storageService, cellIndex: collectionCellIndex)
+        self.petInfoView = PetInfoView(frame: UIScreen.main.bounds)
         self.collectionCellIndex = collectionCellIndex
         super.init(nibName: nil, bundle: nil)
     }
@@ -49,13 +48,14 @@ extension PetInfoController {
     private func setupNavigationController() {
         navigationItem.hidesBackButton = true
         navigationController?.navigationBar.backgroundColor = .clear
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: "camera"),
-            style: .done,
-            target: self,
-            action: #selector(changePetPhoto)
-        )
-        navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.dark
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(
+//            image: UIImage(systemName: "camera"),
+//            style: .done,
+//            target: self,
+//            action: #selector(changePetPhoto)
+//        )
+//        navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.dark
+
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "arrow.uturn.left"),
             style: .done,
@@ -63,43 +63,59 @@ extension PetInfoController {
             action: #selector(popToViewControllerAndSaveEntity)
         )
         navigationItem.leftBarButtonItem?.tintColor = UIColor.CustomColor.dark
+///
+        // УДАЛИТЬ ПОСЛЕ ТЕСТИРОВАНИЯ!
+        guard let cameraImage = UIImage(systemName: "camera") else { return }
+        let cameraButton = UIBarButtonItem(image: cameraImage, style: .done,
+                                           target: self, action: #selector(changePetPhoto))
+        guard let trashImage = UIImage(systemName: "trash") else { return }
+        let removeButton = UIBarButtonItem(image: trashImage, style: .done,
+                                                target: self, action: #selector(removeFirstObject))
+        navigationItem.rightBarButtonItems = [removeButton, cameraButton]
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.dark
     }
+    @objc func removeFirstObject() {
+        if let index = collectionCellIndex {
+            petModel.removeObject(at: index)
+        }
+        navigationController?.popViewController(animated: true)
+    }
+///
     /// Метод конфигурирования ячейки
     /// задается тайтл и плейсхолдер (все берется из модели)
     private func configureCell(_ cell: PetInfoTableCell, index: Int) {
         cell.configureTitle(petModel.menuTitles[index])
         switch index {
-        case 0: cell.configurePlaceholder(objectForFilling.name)
-        case 1: cell.configurePlaceholder(objectForFilling.kind)
-        case 2: cell.configurePlaceholder(objectForFilling.breed)
-        case 3: cell.configurePlaceholder(objectForFilling.birthday)
-        case 4: cell.configurePlaceholder(objectForFilling.weight)
-        case 5: cell.configurePlaceholder(objectForFilling.sterile)
-        case 6: cell.configurePlaceholder(objectForFilling.color)
-        case 7: cell.configurePlaceholder(objectForFilling.hair)
-        case 8: cell.configurePlaceholder(objectForFilling.chipNumber)
+        case 0: cell.configurePlaceholder(petModel.objectForFilling.name)
+        case 1: cell.configurePlaceholder(petModel.objectForFilling.kind)
+        case 2: cell.configurePlaceholder(petModel.objectForFilling.breed)
+        case 3: cell.configurePlaceholder(petModel.objectForFilling.birthday)
+        case 4: cell.configurePlaceholder(petModel.objectForFilling.weight)
+        case 5: cell.configurePlaceholder(petModel.objectForFilling.sterile)
+        case 6: cell.configurePlaceholder(petModel.objectForFilling.color)
+        case 7: cell.configurePlaceholder(petModel.objectForFilling.hair)
+        case 8: cell.configurePlaceholder(petModel.objectForFilling.chipNumber)
         default: break
         }
-        if let photo = storageService.loadPhoto(photoId: collectionCellIndex ?? 0) {
-            petInfoView.setPetPhoto(photo)
-        }
+        petInfoView.setPetPhoto(petModel.loadPhoto())
     }
+
     /// Метод открытия контроллера ввода информации
     /// в него передается информация которую пользователь вводил или nil
     private func presentInputInfoController(index: Int) {
         let controller = InputInfoController()
-//        switch index {
-//        case 0: controller.checkTextField(objectForFilling.name)
-//        case 1: controller.checkTextField(objectForFilling.kind)
-//        case 2: controller.checkTextField(objectForFilling.breed)
-//        case 3: controller.checkTextField(objectForFilling.birthday)
-//        case 4: controller.checkTextField(objectForFilling.weight)
-//        case 5: controller.checkTextField(objectForFilling.sterile)
-//        case 6: controller.checkTextField(objectForFilling.color)
-//        case 7: controller.checkTextField(objectForFilling.hair)
-//        case 8: controller.checkTextField(objectForFilling.chipNumber)
-//        default: break
-//        }
+        switch index {
+        case 0: controller.checkTextField(petModel.objectForFilling.name)
+        case 1: controller.checkTextField(petModel.objectForFilling.kind)
+        case 2: controller.checkTextField(petModel.objectForFilling.breed)
+        case 3: controller.checkTextField(petModel.objectForFilling.birthday)
+        case 4: controller.checkTextField(petModel.objectForFilling.weight)
+        case 5: controller.checkTextField(petModel.objectForFilling.sterile)
+        case 6: controller.checkTextField(petModel.objectForFilling.color)
+        case 7: controller.checkTextField(petModel.objectForFilling.hair)
+        case 8: controller.checkTextField(petModel.objectForFilling.chipNumber)
+        default: break
+        }
         controller.delegate = self
         controller.modalPresentationStyle = .overFullScreen
         controller.modalTransitionStyle = .crossDissolve
@@ -113,14 +129,14 @@ extension PetInfoController {
 
     /// Переходим на предыдущий контроллер сохраняя модель в CoreData
     @objc private func popToViewControllerAndSaveEntity() {
-        if let index = collectionCellIndex {
-            petModel.prepareObject(forAction: .editedObject, entity: objectForFilling,
-                                   entityIndex: index, storageService: storageService)
-        } else {
-            petModel.prepareObject(forAction: .saveObject, entity: objectForFilling,
-                                   storageService: storageService)
+        if !petModel.isObjectNil() {
+            if let index = collectionCellIndex {
+                petModel.editedObject(at: index)
+            } else {
+                petModel.saveObject()
+            }
+            delegate?.reloadController()
         }
-        delegate?.reloadController()
         navigationController?.popViewController(animated: true)
     }
 
@@ -141,19 +157,8 @@ extension PetInfoController: TransferPetInformationDelegate {
     /// и ячейка таблицы перезагружается для обновления текста
     /// - Parameter information: Данные, которые вводит пользователь
     func transferPetInformation(_ information: String?) {
-        if let indexCell = selectedTableCell {
-            switch indexCell.row {
-            case 0: objectForFilling.name = information
-            case 1: objectForFilling.kind = information
-            case 2: objectForFilling.breed = information
-            case 3: objectForFilling.birthday = information
-            case 4: objectForFilling.weight = information
-            case 5: objectForFilling.sterile = information
-            case 6: objectForFilling.color = information
-            case 7: objectForFilling.hair = information
-            case 8: objectForFilling.chipNumber = information
-            default: break
-            }
+        if let indexCell = selectedTableCell  {
+            petModel.changeObjectInformation(at: indexCell.row, information)
             petInfoView.reloadTableViewCell(at: indexCell)
             selectedTableCell = nil
         }
@@ -166,8 +171,10 @@ extension PetInfoController: UICollectionViewDelegate, UICollectionViewDataSourc
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.item {
-        case 0: return CGSize(width: view.bounds.width / 1.11111, height: view.bounds.height / 1.7)
-        default: return CGSize(width: view.bounds.width / 1.11111, height: view.bounds.height / 9)
+        case 0: return CGSize(width: view.bounds.width / UIView.ninePartsScreenMultiplier,
+                              height: view.bounds.height / 1.7)
+        default: return CGSize(width: view.bounds.width / UIView.ninePartsScreenMultiplier,
+                               height: view.bounds.height / 9)
         }
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -218,7 +225,7 @@ extension PetInfoController: UIImagePickerControllerDelegate, UINavigationContro
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let image = info[.editedImage] as? UIImage else { return }
         petInfoView.setPetPhoto(image)
-        objectForFilling.photoUrl = storageService.savePhoto(photoId: collectionCellIndex ?? 0, photo: image)
+        petModel.changeObjectPhoto(image)
         dismiss(animated: true, completion: nil)
     }
 }

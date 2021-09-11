@@ -38,7 +38,7 @@ final class PetInfoCell: UIView {
 // MARK: - Setup UI
 extension PetInfoCell {
     private func setupUI() {
-        self.layer.cornerRadius = 16
+        self.layer.cornerRadius = UIView.basicCornerRadius
         self.clipsToBounds = true
         self.backgroundColor = .white
         setPetNameLabelConstraints()
