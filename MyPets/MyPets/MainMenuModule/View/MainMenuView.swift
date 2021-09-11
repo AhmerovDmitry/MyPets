@@ -22,7 +22,7 @@ final class MainMenuView: UIView {
     private lazy var generalMenuCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = self.bounds.width - (self.bounds.width / UIView.ninePartsScreenMultiplier)
+        layout.minimumLineSpacing = self.bounds.width - UIView.ninePartsScreenMultiplier
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.isPagingEnabled = true
         collectionView.backgroundColor = .clear
@@ -61,7 +61,7 @@ extension MainMenuView {
             titleMenuView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 12),
             titleMenuView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             titleMenuView.heightAnchor.constraint(equalToConstant: self.bounds.height / 6),
-            titleMenuView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9)
+            titleMenuView.widthAnchor.constraint(equalToConstant: UIView.ninePartsScreenMultiplier)
         ])
     }
     private func setWeatherMenuViewConstraints() {
@@ -71,7 +71,7 @@ extension MainMenuView {
             weatherMenuView.topAnchor.constraint(equalTo: titleMenuView.bottomAnchor, constant: 12),
             weatherMenuView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             weatherMenuView.heightAnchor.constraint(equalToConstant: self.bounds.height / 6),
-            weatherMenuView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9)
+            weatherMenuView.widthAnchor.constraint(equalToConstant: UIView.ninePartsScreenMultiplier)
         ])
     }
     private func setGeneralMenuCollectionViewConstraints() {
@@ -102,9 +102,9 @@ extension MainMenuView: UICollectionViewDelegate, UICollectionViewDataSource, UI
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0,
-                            left: (self.bounds.width - (self.bounds.width / UIView.ninePartsScreenMultiplier)) / 2,
+                            left: (self.bounds.width - (UIView.ninePartsScreenMultiplier)) / 2,
                             bottom: 0,
-                            right: (self.bounds.width - (self.bounds.width / UIView.ninePartsScreenMultiplier)) / 2)
+                            right: (self.bounds.width - (UIView.ninePartsScreenMultiplier)) / 2)
     }
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
