@@ -171,9 +171,9 @@ extension PetInfoController: UICollectionViewDelegate, UICollectionViewDataSourc
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.item {
-        case 0: return CGSize(width: view.bounds.width / UIView.ninePartsScreenMultiplier,
+        case 0: return CGSize(width: UIView.ninePartsScreenMultiplier,
                               height: view.bounds.height / 1.7)
-        default: return CGSize(width: view.bounds.width / UIView.ninePartsScreenMultiplier,
+        default: return CGSize(width: UIView.ninePartsScreenMultiplier,
                                height: view.bounds.height / 9)
         }
     }
