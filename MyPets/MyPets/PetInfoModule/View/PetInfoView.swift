@@ -98,4 +98,8 @@ extension PetInfoView {
     func reloadTableViewCell(at indexPath: IndexPath) {
         petInfoCell.reloadTableViewCell(at: indexPath)
     }
+    func setPetPhoto(_ photo: UIImage) {
+        petImage.contentMode = .scaleAspectFill
+        petImage.image = photo
+    }
 }
