@@ -721,7 +721,6 @@
 			children = (
 				BC91F2EF2627364E006CCE3B /* FIXIT */,
 				BCB610012530C82400C4FD2F /* MyPets */,
-				BCB6101A2530C97600C4FD2F /* App + Scene */,
 				BCB610182530C87800C4FD2F /* Assets + LS + Info.plist */,
 				BCF2FC8226D968F70087A4D1 /* MyPetsUITests */,
 				BCB610002530C82400C4FD2F /* Products */,
@@ -742,6 +741,7 @@
 		BCB610012530C82400C4FD2F /* MyPets */ = {
 			isa = PBXGroup;
 			children = (
+				BCB610022530C82400C4FD2F /* AppDelegate.swift */,
 				BC8E373C26E6B0CD00F3B6A9 /* Services */,
 				BC3C7C752532F54700209C51 /* OnboardViewModule */,
 				BC70732C2534AE9400B2979F /* PremiumModule */,
@@ -768,14 +768,6 @@
 				BCB610102530C82700C4FD2F /* Info.plist */,
 			);
 			path = "Assets + LS + Info.plist";
-			sourceTree = "<group>";
-		};
-		BCB6101A2530C97600C4FD2F /* App + Scene */ = {
-			isa = PBXGroup;
-			children = (
-				BCB610022530C82400C4FD2F /* AppDelegate.swift */,
-			);
-			path = "App + Scene";
 			sourceTree = "<group>";
 		};
 		BCB6101D2530CB3800C4FD2F /* AuthorizationViewController */ = {
