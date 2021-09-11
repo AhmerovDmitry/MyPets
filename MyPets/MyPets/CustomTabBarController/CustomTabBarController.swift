@@ -16,7 +16,9 @@ final class CustomTabBarController: UITabBarController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Тут начинается загрузка данных из CoreData для ускорения обработки данных
         storageService.loadEntitys()
+
         setupControllers()
         presentPremium()
     }
