@@ -11,11 +11,11 @@ extension UIViewController {
 
     /// Метод показывает контроллер с возможностью купить премиум версию приложения
     /// - Parameter target: Контроллер по верх которого показывается PremiumController
-    func presentPremiumController(_ target: UIViewController?) {
-        let premiumVC = PremiumController()
-        premiumVC.modalPresentationStyle = .fullScreen
-        target?.present(premiumVC, animated: true, completion: nil)
-    }
+//    func presentPremiumController(_ target: UIViewController?) {
+//        let premiumVC = PremiumController(userDefaultsService: )
+//        premiumVC.modalPresentationStyle = .fullScreen
+//        target?.present(premiumVC, animated: true, completion: nil)
+//    }
 
     /*
     /// Метод открывающий (push) следующий контроллер без заголовка в кнопке возврата

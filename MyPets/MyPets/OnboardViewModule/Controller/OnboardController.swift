@@ -10,10 +10,21 @@ import UIKit
 final class OnboardController: UIViewController {
 
     // MARK: - Properties
+    let userDefaultsService: UserDefaultsServiceProtocol
+
     private let onboardContent = OnboardModel()
     private let onboardView = OnboardView(frame: UIScreen.main.bounds)
 
     // MARK: - Lifecycle
+    init(userDefaultsService: UserDefaultsServiceProtocol) {
+        self.userDefaultsService = userDefaultsService
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViewContent()
@@ -22,10 +33,11 @@ final class OnboardController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         onboardView.presentControllerCallBack = { [weak self] in
-            let tabBarController = CustomTabBarController()
+            guard let self = self else { return }
+            let tabBarController = CustomTabBarController(userDefaultsService: self.userDefaultsService)
             tabBarController.modalPresentationStyle = .fullScreen
-            self?.present(tabBarController, animated: true, completion: nil)
-            UserDefaults.standard.set(true, forKey: "isFirstLaunch")
+            self.present(tabBarController, animated: true, completion: nil)
+            self.userDefaultsService.setValue(true, forKey: "isNotFirstLaunch")
         }
     }
 }

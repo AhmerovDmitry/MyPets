@@ -18,6 +18,13 @@ final class NetworkService {
 }
 
 extension NetworkService: NetworkServiceProtocol {
+
+    /// Метод запроса данных из сети
+    /// - Parameters:
+    ///   - url: URL запроса
+    ///   - httpAdditionalHeaders: Хеддер, если он отсутствует, то будет выполнена дефолтная реализация
+    ///   - decodeModel: Дженерик модель в которую будут декодированы данные
+    ///   - completion: Комплишн хендлер выполнения
     func loadJSONData<T: Codable>(from url: URL, httpAdditionalHeaders: [AnyHashable: Any]?, decodeModel: T.Type,
                          completion: @escaping (Result<T, Error>) -> Void) {
 

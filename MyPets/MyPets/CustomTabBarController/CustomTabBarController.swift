@@ -8,12 +8,20 @@
 import UIKit
 
 final class CustomTabBarController: UITabBarController {
-
     // MARK: - Services
-    let networkService = NetworkService()
     let storageService = StorageService()
+    let userDefaultsService: UserDefaultsServiceProtocol
 
     // MARK: - Lifecycle
+    init(userDefaultsService: UserDefaultsServiceProtocol) {
+        self.userDefaultsService = userDefaultsService
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Тут начинается загрузка данных из CoreData для ускорения обработки данных
@@ -28,11 +36,14 @@ final class CustomTabBarController: UITabBarController {
 extension CustomTabBarController {
     private func setupControllers() {
 
-        let mainVC = UINavigationController(rootViewController: MainMenuController(networkService: networkService))
+        let mainVC = UINavigationController(rootViewController: MainMenuController())
         mainVC.tabBarItem.title = "Главная"
         mainVC.tabBarItem.image = UIImage(named: "generalIcon")
 
-        let petVC = UINavigationController(rootViewController: PetMenuController(storageService: storageService))
+        let petVC = UINavigationController(
+            rootViewController: PetMenuController(storageService: storageService,
+                                                  userDefaultsService: userDefaultsService)
+        )
         petVC.tabBarItem.title = "Питомцы"
         petVC.tabBarItem.image = UIImage(named: "petIcon")
 
@@ -56,12 +67,16 @@ extension CustomTabBarController {
 
 // MARK: - Methods
 extension CustomTabBarController {
+    
     /// Метод показывающий преимум контроллер если покупка не совершена
     /// Возможно отключение показа контроллера нажатием на кнопку-заглушку "Купить Premium"
     private func presentPremium() {
-        if !UserDefaults.appPaidStatus() {
+        if !userDefaultsService.value(forKey: "isAppPurchased") {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-                self?.presentPremiumController(self)
+                guard let self = self else { return }
+                let premiumController = PremiumController(userDefaultsService: self.userDefaultsService)
+                premiumController.modalPresentationStyle = .fullScreen
+                self.present(premiumController, animated: true, completion: nil)
             }
         }
     }

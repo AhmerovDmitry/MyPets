@@ -18,6 +18,7 @@ public class OMPetInformation: NSManagedObject {
 
 }
 
+/// Метод трансформирующий объект DTO в NSManagedObject
 extension OMPetInformation {
     func update(usingModel model: PetDTO) {
         self.name = model.name

@@ -11,7 +11,7 @@ import MapKit
 final class MainMenuController: UIViewController {
 
     // MARK: - Properties
-    private let networkService: NetworkServiceProtocol
+    private let networkService = NetworkService()
     private let locationManager = CLLocationManager()
     private var state: String?
     private var requestCount = 0
@@ -23,16 +23,6 @@ final class MainMenuController: UIViewController {
     // MARK: - View & Model
     private var mainWeatherModel = MainWeatherModel()
     private let mainMenuView = MainMenuView(frame: UIScreen.main.bounds)
-
-    // MARK: - Initialization
-    init(networkService: NetworkServiceProtocol) {
-        self.networkService = networkService
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 
     // MARK: - Lifecycle
     override func viewDidLoad() {

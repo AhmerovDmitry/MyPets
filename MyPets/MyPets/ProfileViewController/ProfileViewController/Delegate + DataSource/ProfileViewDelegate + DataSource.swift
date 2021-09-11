@@ -82,7 +82,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             userProfileVC.userInfo = userInfo
             navigationController?.pushViewController(userProfileVC, animated: true)
         case 3:
-            presentPremiumController(self.tabBarController)
+            break
+//            presentPremiumController(self.tabBarController)
         case 4:
             switch indexPath.row {
             case 0:
@@ -98,9 +99,9 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 let aboutAppController = AboutAppController()
                 navigationController?.pushViewController(aboutAppController, animated: true)
             case 2:
-                UserDefaults.standard.set(false, forKey: "isFirstLaunch")
+                UserDefaults.standard.set(false, forKey: "isNotFirstLaunch")
             case 3:
-                UserDefaults.standard.set(false, forKey: "paidStatus")
+                UserDefaults.standard.set(false, forKey: "isAppPurchased")
 //            case 4:
 //                if !CoreDataManager.shared.pets.isEmpty {
 //                    CoreDataManager.shared.deleteEntity(at: CoreDataManager.shared.pets.count - 1)

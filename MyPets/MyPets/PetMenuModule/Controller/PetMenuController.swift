@@ -15,6 +15,7 @@ final class PetMenuController: UIViewController {
 
     // MARK: - Properties
     private let storageService: StorageServiceProtocol
+    private let userDefaultsService: UserDefaultsServiceProtocol
 
     private let petMenuModel = PetMenuModel()
     private lazy var petMenuView = PetMenuView(frame: view.bounds)
@@ -23,8 +24,9 @@ final class PetMenuController: UIViewController {
     private var tappedCellIndex: Int?
 
     // MARK: - Initialization
-    init(storageService: StorageServiceProtocol) {
+    init(storageService: StorageServiceProtocol, userDefaultsService: UserDefaultsServiceProtocol) {
         self.storageService = storageService
+        self.userDefaultsService = userDefaultsService
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -54,7 +56,7 @@ extension PetMenuController {
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.CustomColor.dark]
         navigationItem.title = petMenuModel.controllerTitle
-        if UserDefaults.appPaidStatus() {
+        if userDefaultsService.value(forKey: "isAppPurchased") {
             guard let image = UIImage(systemName: "plus") else { return }
             let addButton = UIBarButtonItem(image: image, style: .done,
                                             target: self, action: #selector(presentController))

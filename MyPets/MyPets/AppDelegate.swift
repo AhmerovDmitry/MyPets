@@ -15,18 +15,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Если приложение запускается впервые
-        let onboardVC = OnboardController()
-        // Если приложение ранее запускалось (запуск без OnboardVC)
-        let tabBarC = CustomTabBarController()
+
+        // MARK: - Services
+        let userDefaultsService = UserDefaultsService()
+
+        /// Если приложение запускается впервые
+        let onboardVC = OnboardController(userDefaultsService: userDefaultsService)
+        /// Если приложение ранее запускалось (запуск без OnboardVC)
+        let tabBarC = CustomTabBarController(userDefaultsService: userDefaultsService)
+
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.overrideUserInterfaceStyle = .light
         window?.makeKeyAndVisible()
-        if !UserDefaults.isFirstLaunch() {
-            window?.rootViewController = onboardVC
-        } else {
+
+        /// Проверка ключа из UserDefaults на то, запускается приложение первый раз или нет
+        if userDefaultsService.value(forKey: "isNotFirstLaunch") {
             window?.rootViewController = tabBarC
+        } else {
+            window?.rootViewController = onboardVC
         }
+
         return true
     }
 
