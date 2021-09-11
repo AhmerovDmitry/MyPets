@@ -16,11 +16,14 @@ final class PetCollectionCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    // MARK: - Prepare For Reuse
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        petPhoto.image = nil
+    }
     // MARK: - Properties
     private let petPhoto: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "unknownImage")
-        image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
         image.backgroundColor = UIColor.CustomColor.lightGray
         image.layer.cornerRadius = UIView.basicCornerRadius
@@ -110,6 +113,8 @@ extension PetCollectionCell {
 // MARK: - Public Methods
 extension PetCollectionCell {
     func configureCell(photo: UIImage?, name: String, breed: String, age: String) {
+        petPhoto.contentMode = .scaleAspectFit
+        petPhoto.image = UIImage(named: "unknownImage")
         if let photo = photo {
             petPhoto.contentMode = .scaleAspectFill
             petPhoto.image = photo
