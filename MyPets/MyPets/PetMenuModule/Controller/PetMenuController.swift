@@ -54,11 +54,13 @@ extension PetMenuController {
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.CustomColor.dark]
         navigationItem.title = petMenuModel.controllerTitle
-        guard let image = UIImage(systemName: "plus") else { return }
-        let addButton = UIBarButtonItem(image: image, style: .done,
-                                        target: self, action: #selector(presentController))
-        navigationItem.rightBarButtonItem = addButton
-        navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.purple
+        if UserDefaults.appPaidStatus() {
+            guard let image = UIImage(systemName: "plus") else { return }
+            let addButton = UIBarButtonItem(image: image, style: .done,
+                                            target: self, action: #selector(presentController))
+            navigationItem.rightBarButtonItem = addButton
+            navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.purple
+        }
     }
     /// Если в CoreData нет объектов тогда грузится экран с кнопкой "Добавить питомца"
     /// в обратном случае грузится экран с коллекцией (списком объектов)
