@@ -17,26 +17,30 @@ protocol CoreDataLoadingServiceProtocol {
 }
 
 protocol CoreDataSavingServiceProtocol {
-    func saveEntity(_ entity: OMPetInformation)
+    func saveEntity(_ entity: PetDTO)
 }
 
 protocol CoreDataEditingServiceProtocol {
-    func editingEntity(_ entity: OMPetInformation, at index: Int)
+    func editingEntity(_ entity: PetDTO, at index: Int)
     func removeEntity(at index: Int)
 }
 
 protocol FileManagerServiceProtocol {
-    var photoName: String { get }
-    func savePhoto(photoId: Int, photo: UIImage) -> String?
-    func loadPhoto(photoId: Int) -> UIImage?
+    func savePhoto(photoID: String, photo: UIImage)
+    func loadPhoto(photoID: String) -> UIImage?
+    func removePhoto(photoID: String)
 }
 
 private protocol SaveContextProtocol {
     func saveContext(_ context: NSManagedObjectContext)
 }
 
+protocol ObjectIdentifierProtocol {
+    func createIdentifier() -> String
+}
+
 typealias StorageServiceProtocol = CoreDataLoadingServiceProtocol & CoreDataSavingServiceProtocol &
-    CoreDataEditingServiceProtocol & FileManagerServiceProtocol
+    CoreDataEditingServiceProtocol & FileManagerServiceProtocol & ObjectIdentifierProtocol
 
 final class StorageService: CoreDataLoadingServiceProtocol {
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
@@ -47,22 +51,17 @@ final class StorageService: CoreDataLoadingServiceProtocol {
 // MARK: - Сохранение / загрузка фотографии
 extension StorageService: FileManagerServiceProtocol {
 
-    /// Идентификатор сохранения изображений к которому добавляется номер ячейки для уникальности
-    var photoName: String {
-        return "ObjectPhotoNumberInLibrary_"
-    }
-
     /// Метод сохраняющий фотографию на устройстве
     /// - Parameters:
-    ///   - photoName: Имя фотографии на устройстве
+    ///   - photoID: Индекс сохраняемой фотографии
     ///   - photo: Файл фотографии
     /// - Returns: Путь по которому расположенно изображение
-    func savePhoto(photoId: Int, photo: UIImage) -> String? {
+    func savePhoto(photoID: String, photo: UIImage) {
         guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory,
-                                                                in: .userDomainMask).first else { return nil }
-        let fileName = photoName + "\(photoId)"
+                                                                in: .userDomainMask).first else { return }
+        let fileName = "ObjectPhotoUUID_" + photoID
         let fileURL = documentsDirectory.appendingPathComponent(fileName)
-        guard let data = photo.jpegData(compressionQuality: 1) else { return nil }
+        guard let data = photo.jpegData(compressionQuality: 1) else { return }
         if FileManager.default.fileExists(atPath: fileURL.path) {
             do {
                 try FileManager.default.removeItem(atPath: fileURL.path)
@@ -74,26 +73,43 @@ extension StorageService: FileManagerServiceProtocol {
         do {
             try data.write(to: fileURL)
             print("Photo saved!")
-            return fileURL.path
+            print(fileURL)
         } catch let error {
             print("error saving file with error", error)
         }
-        return nil
     }
 
     /// Метод загружающий фотографию из директории устройства
-    /// - Parameter photoName: Имя загружаемой фотографии
+    /// - Parameter photoID: Индекс загружаемой фотографии
     /// - Returns: Загружаемая фотография или nil
-    func loadPhoto(photoId: Int) -> UIImage? {
+    func loadPhoto(photoID: String) -> UIImage? {
         let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
         let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
         let paths = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)
         if let dirPath = paths.first {
-            let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent(photoName + "\(photoId)")
+            let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent("ObjectPhotoUUID_" + photoID)
             let image = UIImage(contentsOfFile: imageUrl.path)
             return image
         }
         return nil
+    }
+
+
+    /// Метод удаляющий фотографию из директории устройства по индексу
+    /// - Parameter photoID: Индекс удаляемой фотографии
+    func removePhoto(photoID: String) {
+        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory,
+                                                                in: .userDomainMask).first else { return }
+        let fileName = "ObjectPhotoUUID_" + photoID
+        let fileURL = documentsDirectory.appendingPathComponent(fileName)
+        if FileManager.default.fileExists(atPath: fileURL.path) {
+            do {
+                try FileManager.default.removeItem(atPath: fileURL.path)
+                print("Removed old image")
+            } catch let removeError {
+                print("couldn't remove file at path", removeError)
+            }
+        }
     }
 }
 
@@ -120,19 +136,10 @@ extension StorageService: CoreDataSavingServiceProtocol {
 
     /// Сохранение объекта в CoreData
     /// - Parameter entity: Сохраняемый объект
-    func saveEntity(_ entity: OMPetInformation) {
+    func saveEntity(_ entity: PetDTO) {
         guard let context = context else { return }
         let entityModel = OMPetInformation(context: context)
-        entityModel.name = entity.name
-        entityModel.kind = entity.kind
-        entityModel.breed = entity.breed
-        entityModel.birthday = entity.birthday
-        entityModel.weight = entity.weight
-        entityModel.sterile = entity.sterile
-        entityModel.color = entity.color
-        entityModel.hair = entity.hair
-        entityModel.chipNumber = entity.chipNumber
-        entityModel.image = entity.image
+        entityModel.update(usingModel: entity)
         saveContext(context)
         loadEntitys()
     }
@@ -145,7 +152,7 @@ extension StorageService: CoreDataEditingServiceProtocol {
     /// - Parameters:
     ///   - entity: Редактируемый объект
     ///   - index: Индекс по которому редактируется объект
-    func editingEntity(_ entity: OMPetInformation, at index: Int) {
+    func editingEntity(_ entity: PetDTO, at index: Int) {
         removeEntity(at: index)
         saveEntity(entity)
     }
@@ -175,5 +182,12 @@ extension StorageService: SaveContextProtocol {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+    }
+}
+
+// MARK: - Создание уникального идентификатора
+extension StorageService: ObjectIdentifierProtocol {
+    func createIdentifier() -> String {
+        return UUID().uuidString
     }
 }
