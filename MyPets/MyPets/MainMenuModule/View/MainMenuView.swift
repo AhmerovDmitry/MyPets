@@ -22,7 +22,7 @@ final class MainMenuView: UIView {
     private lazy var generalMenuCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = self.bounds.width - (self.bounds.width / 1.11111)
+        layout.minimumLineSpacing = self.bounds.width - (self.bounds.width / UIView.ninePartsScreenMultiplier)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.isPagingEnabled = true
         collectionView.backgroundColor = .clear
@@ -101,8 +101,10 @@ extension MainMenuView: UICollectionViewDelegate, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: (self.bounds.width - (self.bounds.width / 1.11111)) / 2,
-                            bottom: 0, right: (self.bounds.width - (self.bounds.width / 1.11111)) / 2)
+        return UIEdgeInsets(top: 0,
+                            left: (self.bounds.width - (self.bounds.width / UIView.ninePartsScreenMultiplier)) / 2,
+                            bottom: 0,
+                            right: (self.bounds.width - (self.bounds.width / UIView.ninePartsScreenMultiplier)) / 2)
     }
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -117,7 +119,7 @@ extension MainMenuView: UICollectionViewDelegate, UICollectionViewDataSource, UI
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
         cell.setDefaultShadow()
         cell.backgroundColor = UIColor.CustomColor.lightGray
-        cell.layer.cornerRadius = 16
+        cell.layer.cornerRadius = UIView.basicCornerRadius
         return cell
     }
 }

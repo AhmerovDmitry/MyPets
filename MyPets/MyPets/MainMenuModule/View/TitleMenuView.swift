@@ -44,7 +44,7 @@ extension TitleMenuView {
     private func setSelfViewUI() {
         self.setDefaultShadow()
         self.backgroundColor = UIColor.CustomColor.lightGray
-        self.layer.cornerRadius = 16
+        self.layer.cornerRadius = UIView.basicCornerRadius
     }
     private func setBackgroundImageViewConstraints() {
         self.addSubview(backgroundImageView)

@@ -8,6 +8,7 @@
 import UIKit
 
 final class InputInfoView: UIView {
+
     // MARK: - Initialization & Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -16,12 +17,11 @@ final class InputInfoView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
+
     // MARK: - Properties
     var saveInformationCallBack: ((_ textField: UITextField) -> Void)?
     var dismissControllerCallBack: (() -> Void)?
+
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.adjustsFontSizeToFitWidth = true
