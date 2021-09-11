@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 
+/*
 struct Pet: Equatable {
     var name: String?
     var kind: String?
@@ -46,52 +47,53 @@ final class CoreDataManager: CoreDataManagerProtocol, PrivateCoreDataManagerProt
     // MARK: - Загрузка объектов
     /// Публичный метод для загрузки объектов сразу после запуска приложения
     func loadEntitys() {
-        guard let context = context else { return }
-        let fetchRequest: NSFetchRequest<OMPetInformation> = OMPetInformation.fetchRequest()
-        do {
-            pets = try context.fetch(fetchRequest).reversed()
-        } catch {
-            context.rollback()
-            let nserror = error as NSError
-            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-        }
+//        guard let context = context else { return }
+//        let fetchRequest: NSFetchRequest<OMPetInformation> = OMPetInformation.fetchRequest()
+//        do {
+//            pets = try context.fetch(fetchRequest).reversed()
+//        } catch {
+//            context.rollback()
+//            let nserror = error as NSError
+//            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+//        }
     }
     // MARK: - Сохранение контекста
     fileprivate func saveContext(_ context: NSManagedObjectContext) {
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                context.rollback()
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
+//        if context.hasChanges {
+//            do {
+//                try context.save()
+//            } catch {
+//                context.rollback()
+//                let nserror = error as NSError
+//                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+//            }
+//        }
     }
     // MARK: - Создание объекта
     func createEntity(_ entity: Pet) {
-        guard let context = context else { return }
-        let entityModel = OMPetInformation(context: context)
-//        entityModel.image = entity.image?.toString()
-        entityModel.name = entity.name
-        entityModel.kind = entity.kind
-        entityModel.breed = entity.breed
-        entityModel.birthday = entity.birthday
-        entityModel.weight = entity.weight
-        entityModel.sterile = entity.sterile
-        entityModel.color = entity.color
-        entityModel.hair = entity.hair
-        entityModel.chipNumber = entity.chipNumber
-        /// Сохранение контекста и перезагрузка объектов
-        saveContext(context)
-        loadEntitys()
+//        guard let context = context else { return }
+//        let entityModel = OMPetInformation(context: context)
+////        entityModel.image = entity.image?.toString()
+//        entityModel.name = entity.name
+//        entityModel.kind = entity.kind
+//        entityModel.breed = entity.breed
+//        entityModel.birthday = entity.birthday
+//        entityModel.weight = entity.weight
+//        entityModel.sterile = entity.sterile
+//        entityModel.color = entity.color
+//        entityModel.hair = entity.hair
+//        entityModel.chipNumber = entity.chipNumber
+//        /// Сохранение контекста и перезагрузка объектов
+//        saveContext(context)
+//        loadEntitys()
     }
     // MARK: - Удаление объекта по индексу нажатой ячейки
     func deleteEntity(at index: Int) {
-        guard let context = context else { return }
-        context.delete(pets[index])
-        /// Сохранение контекста и перезагрузка объектов
-        saveContext(context)
-        loadEntitys()
+//        guard let context = context else { return }
+//        context.delete(pets[index])
+//        /// Сохранение контекста и перезагрузка объектов
+//        saveContext(context)
+//        loadEntitys()
     }
 }
+*/

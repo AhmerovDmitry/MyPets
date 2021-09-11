@@ -14,7 +14,6 @@ protocol CoreDataLoadingServiceProtocol {
     var objects: [OMPetInformation] { get set }
 
     func loadEntitys()
-//    func loadEntity(at index: Int)
 }
 
 protocol CoreDataSavingServiceProtocol {
@@ -22,29 +21,33 @@ protocol CoreDataSavingServiceProtocol {
 }
 
 protocol CoreDataEditingServiceProtocol {
-//    func editingEntity(_ entity: OMPetInformation, at index: Int?)
+    func editingEntity(_ entity: OMPetInformation, at index: Int)
     func removeEntity(at index: Int)
 }
 
 protocol FileManagerServiceProtocol {
     var photoName: String { get }
-    func savePhoto(photoName: String, _ photo: UIImage) -> String?
-    func loadPhoto(photoName: String) -> UIImage?
+    func savePhoto(photoId: Int, photo: UIImage) -> String?
+    func loadPhoto(photoId: Int) -> UIImage?
 }
 
 private protocol SaveContextProtocol {
     func saveContext(_ context: NSManagedObjectContext)
 }
 
-typealias StorageServiceProtocol = CoreDataLoadingServiceProtocol & CoreDataSavingServiceProtocol & CoreDataEditingServiceProtocol & FileManagerServiceProtocol
+typealias StorageServiceProtocol = CoreDataLoadingServiceProtocol & CoreDataSavingServiceProtocol &
+    CoreDataEditingServiceProtocol & FileManagerServiceProtocol
 
 final class StorageService: CoreDataLoadingServiceProtocol {
-    let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
+    let appDelegate = UIApplication.shared.delegate as? AppDelegate
     lazy var context: NSManagedObjectContext? = appDelegate?.persistentContainer.viewContext
     var objects: [OMPetInformation] = []
 }
 
+// MARK: - Сохранение / загрузка фотографии
 extension StorageService: FileManagerServiceProtocol {
+
+    /// Идентификатор сохранения изображений к которому добавляется номер ячейки для уникальности
     var photoName: String {
         return "ObjectPhotoNumberInLibrary_"
     }
@@ -54,10 +57,10 @@ extension StorageService: FileManagerServiceProtocol {
     ///   - photoName: Имя фотографии на устройстве
     ///   - photo: Файл фотографии
     /// - Returns: Путь по которому расположенно изображение
-    func savePhoto(photoName: String, _ photo: UIImage) -> String? {
+    func savePhoto(photoId: Int, photo: UIImage) -> String? {
         guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory,
                                                                 in: .userDomainMask).first else { return nil }
-        let fileName = photoName
+        let fileName = photoName + "\(photoId)"
         let fileURL = documentsDirectory.appendingPathComponent(fileName)
         guard let data = photo.jpegData(compressionQuality: 1) else { return nil }
         if FileManager.default.fileExists(atPath: fileURL.path) {
@@ -81,12 +84,12 @@ extension StorageService: FileManagerServiceProtocol {
     /// Метод загружающий фотографию из директории устройства
     /// - Parameter photoName: Имя загружаемой фотографии
     /// - Returns: Загружаемая фотография или nil
-    func loadPhoto(photoName: String) -> UIImage? {
+    func loadPhoto(photoId: Int) -> UIImage? {
         let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
         let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
         let paths = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)
         if let dirPath = paths.first {
-            let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent(photoName)
+            let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent(photoName + "\(photoId)")
             let image = UIImage(contentsOfFile: imageUrl.path)
             return image
         }
@@ -94,9 +97,11 @@ extension StorageService: FileManagerServiceProtocol {
     }
 }
 
+// MARK: - Загрузка объектов
 extension StorageService {
 
     /// Загрузка всех объектов из CoreData
+    /// происходит в CustomTabBarController
     func loadEntitys() {
         guard let context = context else { return }
         let fetchRequest: NSFetchRequest<OMPetInformation> = OMPetInformation.fetchRequest()
@@ -108,17 +113,13 @@ extension StorageService {
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
     }
-
-    /*
-    /// Загрузка одного объекта из CoreData (или из всех ранее загруженных объектов)
-    /// - Parameter index: Индекс по которому загружается объект
-    func loadEntity(at index: Int) {}
-    */
 }
 
+// MARK: - Сохранение объекта
 extension StorageService: CoreDataSavingServiceProtocol {
 
     /// Сохранение объекта в CoreData
+    /// - Parameter entity: Сохраняемый объект
     func saveEntity(_ entity: OMPetInformation) {
         guard let context = context else { return }
         let entityModel = OMPetInformation(context: context)
@@ -137,15 +138,17 @@ extension StorageService: CoreDataSavingServiceProtocol {
     }
 }
 
+// MARK: - Редактирование / удаление объекта
 extension StorageService: CoreDataEditingServiceProtocol {
 
-    /*
     /// Редактирование объекта по индексу
-    /// - Parameter index: Индекс по которому редактируется объект
-    func editingEntity(_ entity: OMPetInformation, at index: Int? = nil) {
-        // FIXIT: - РЕДАКТИРОВАНИЕ!
+    /// - Parameters:
+    ///   - entity: Редактируемый объект
+    ///   - index: Индекс по которому редактируется объект
+    func editingEntity(_ entity: OMPetInformation, at index: Int) {
+        removeEntity(at: index)
+        saveEntity(entity)
     }
-    */
 
     /// Удаление объекта по индексу
     /// - Parameter index: Индекс по которому удаляется объект
@@ -157,10 +160,11 @@ extension StorageService: CoreDataEditingServiceProtocol {
     }
 }
 
+// MARK: - Сохранение контекста
 extension StorageService: SaveContextProtocol {
 
     /// Сохранение контекста для удобства
-    /// - Parameter context: Контекст для осхранения
+    /// - Parameter context: Контекст для сохранения
     fileprivate func saveContext(_ context: NSManagedObjectContext) {
         if context.hasChanges {
             do {
