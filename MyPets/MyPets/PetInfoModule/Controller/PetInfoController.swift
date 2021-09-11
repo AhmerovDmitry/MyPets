@@ -48,13 +48,13 @@ extension PetInfoController {
     private func setupNavigationController() {
         navigationItem.hidesBackButton = true
         navigationController?.navigationBar.backgroundColor = .clear
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(
-//            image: UIImage(systemName: "camera"),
-//            style: .done,
-//            target: self,
-//            action: #selector(changePetPhoto)
-//        )
-//        navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.dark
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "camera"),
+            style: .done,
+            target: self,
+            action: #selector(changePetPhoto)
+        )
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.dark
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "arrow.uturn.left"),
@@ -63,24 +63,8 @@ extension PetInfoController {
             action: #selector(popToViewControllerAndSaveEntity)
         )
         navigationItem.leftBarButtonItem?.tintColor = UIColor.CustomColor.dark
-///
-        // УДАЛИТЬ ПОСЛЕ ТЕСТИРОВАНИЯ!
-        guard let cameraImage = UIImage(systemName: "camera") else { return }
-        let cameraButton = UIBarButtonItem(image: cameraImage, style: .done,
-                                           target: self, action: #selector(changePetPhoto))
-        guard let trashImage = UIImage(systemName: "trash") else { return }
-        let removeButton = UIBarButtonItem(image: trashImage, style: .done,
-                                                target: self, action: #selector(removeFirstObject))
-        navigationItem.rightBarButtonItems = [removeButton, cameraButton]
-        navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.dark
     }
-    @objc func removeFirstObject() {
-        if let index = collectionCellIndex {
-            petModel.removeObject(at: index)
-        }
-        navigationController?.popViewController(animated: true)
-    }
-///
+
     /// Метод конфигурирования ячейки
     /// задается тайтл и плейсхолдер (все берется из модели)
     private func configureCell(_ cell: PetInfoTableCell, index: Int) {
