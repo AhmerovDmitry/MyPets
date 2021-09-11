@@ -58,12 +58,6 @@ extension PetMenuController {
                                         target: self, action: #selector(presentController))
         navigationItem.rightBarButtonItem = addButton
         navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.purple
-
-        guard let trashImage = UIImage(systemName: "trash") else { return }
-        let removeFirstButton = UIBarButtonItem(image: trashImage, style: .done,
-                                                target: self, action: #selector(removeFirstObject))
-        navigationItem.leftBarButtonItem = removeFirstButton
-        navigationItem.leftBarButtonItem?.tintColor = UIColor.CustomColor.purple
     }
     /// Если в CoreData нет объектов тогда грузится экран с кнопкой "Добавить питомца"
     /// в обратном случае грузится экран с коллекцией (списком объектов)
@@ -81,21 +75,14 @@ extension PetMenuController {
         tappedCellIndex = nil
         navigationController?.pushViewController(controller, animated: true)
     }
-    @objc func removeFirstObject() {
-        if !storageService.objects.isEmpty {
-            storageService.removeEntity(at: 0)
-            petCollectionView.reloadCollectionView()
-        } else {
-            reloadController()
-        }
-    }
 }
 // MARK: - Delegate & DataSource
 extension PetMenuController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.bounds.width / 1.11111, height: view.bounds.height / 3.5)
+        return CGSize(width: view.bounds.width / UIView.ninePartsScreenMultiplier,
+                      height: view.bounds.height / 3.5)
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return storageService.objects.count
@@ -106,10 +93,12 @@ extension PetMenuController: UICollectionViewDelegate, UICollectionViewDataSourc
             withReuseIdentifier: petCollectionView.cellID,
             for: indexPath
         ) as? PetCollectionCell else { return UICollectionViewCell() }
-        cell.configureCell(image: storageService.loadPhoto(photoId: indexPath.row),
-                           name: storageService.objects[indexPath.row].name ?? "Кличка не указана",
-                           breed: storageService.objects[indexPath.row].breed ?? "Порода не указана",
-                           age: storageService.objects[indexPath.row].birthday ?? "01.01.1001")
+        cell.configureCell(
+            photo: storageService.loadPhoto(photoID: storageService.objects[indexPath.row].identifier),
+            name: storageService.objects[indexPath.row].name ?? "Кличка не указана",
+            breed: storageService.objects[indexPath.row].breed ?? "Порода не указана",
+            age: storageService.objects[indexPath.row].birthday ?? "01.01.1001"
+        )
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

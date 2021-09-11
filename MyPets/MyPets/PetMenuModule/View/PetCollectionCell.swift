@@ -19,9 +19,11 @@ final class PetCollectionCell: UICollectionViewCell {
     // MARK: - Properties
     private let petPhoto: UIImageView = {
         let image = UIImageView()
-        image.backgroundColor = UIColor.CustomColor.lightGray
+        image.image = UIImage(named: "unknownImage")
         image.contentMode = .scaleAspectFit
-        image.layer.cornerRadius = 15
+        image.clipsToBounds = true
+        image.backgroundColor = UIColor.CustomColor.lightGray
+        image.layer.cornerRadius = UIView.basicCornerRadius
         image.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         return image
     }()
@@ -107,8 +109,11 @@ extension PetCollectionCell {
 
 // MARK: - Public Methods
 extension PetCollectionCell {
-    func configureCell(image: UIImage?, name: String, breed: String, age: String) {
-        petPhoto.image = image
+    func configureCell(photo: UIImage?, name: String, breed: String, age: String) {
+        if let photo = photo {
+            petPhoto.contentMode = .scaleAspectFill
+            petPhoto.image = photo
+        }
         petName.text = name
         petBreed.text = breed
         petAge.text = age
