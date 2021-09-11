@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		BC0132CF26E15DFE0065F1B7 /* MainWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0132CE26E15DFE0065F1B7 /* MainWeatherModel.swift */; };
 		BC03FE3A25A32F1C00C81BC5 /* ProfileViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC03FE3925A32F1C00C81BC5 /* ProfileViewControllerDelegate.swift */; };
+		BC0D29DF26ED490F00C3AF2D /* PetMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29DE26ED490F00C3AF2D /* PetMenuModel.swift */; };
 		BC0EE6A3259DE49500BE167D /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0EE6A2259DE49500BE167D /* UserProfileViewController.swift */; };
 		BC13029726B9786000CFD87E /* OnboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029626B9785F00CFD87E /* OnboardView.swift */; };
 		BC13029926B9787D00CFD87E /* OnboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029826B9787D00CFD87E /* OnboardController.swift */; };
@@ -102,6 +103,7 @@
 /* Begin PBXFileReference section */
 		BC0132CE26E15DFE0065F1B7 /* MainWeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWeatherModel.swift; sourceTree = "<group>"; };
 		BC03FE3925A32F1C00C81BC5 /* ProfileViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewControllerDelegate.swift; sourceTree = "<group>"; };
+		BC0D29DE26ED490F00C3AF2D /* PetMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetMenuModel.swift; sourceTree = "<group>"; };
 		BC0EE6A2259DE49500BE167D /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		BC13029626B9785F00CFD87E /* OnboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardView.swift; sourceTree = "<group>"; };
 		BC13029826B9787D00CFD87E /* OnboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardController.swift; sourceTree = "<group>"; };
@@ -221,6 +223,14 @@
 			path = "Delegate Methods";
 			sourceTree = "<group>";
 		};
+		BC0D29DD26ED48F500C3AF2D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BC0D29DE26ED490F00C3AF2D /* PetMenuModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		BC0EE6A1259DE47000BE167D /* UserProfileController */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +252,7 @@
 		BC38543626C5AAF000C2F14E /* PetMenuModule */ = {
 			isa = PBXGroup;
 			children = (
+				BC0D29DD26ED48F500C3AF2D /* Model */,
 				BC38543826C5AB1100C2F14E /* View */,
 				BC38543726C5AB0B00C2F14E /* Controller */,
 			);
@@ -973,6 +984,7 @@
 				BC73964D25435F9900A89858 /* LocationViewCell.swift in Sources */,
 				BC99B01F2549A53700050854 /* PetViewCollectionCell.swift in Sources */,
 				BC13029B26B978A000CFD87E /* OnboardModel.swift in Sources */,
+				BC0D29DF26ED490F00C3AF2D /* PetMenuModel.swift in Sources */,
 				BC73964A2542084D00A89858 /* LocationViewDelegate + DataSource.swift in Sources */,
 				BC7EB65726C668F000BE80AE /* PetCollectionCell.swift in Sources */,
 				BCC259EB26C4173700FCAC54 /* MainMenuCollectionCell.swift in Sources */,

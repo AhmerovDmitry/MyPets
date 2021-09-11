@@ -16,6 +16,7 @@ final class PetMenuController: UIViewController {
     // MARK: - Properties
     private let storageService: StorageServiceProtocol
 
+    private let petMenuModel = PetMenuModel()
     private lazy var petMenuView = PetMenuView(frame: view.bounds)
     private lazy var petCollectionView = PetCollectionView(frame: view.bounds)
 
@@ -52,7 +53,7 @@ extension PetMenuController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.CustomColor.dark]
-        navigationItem.title = "Питомцы"
+        navigationItem.title = petMenuModel.controllerTitle
         guard let image = UIImage(systemName: "plus") else { return }
         let addButton = UIBarButtonItem(image: image, style: .done,
                                         target: self, action: #selector(presentController))
@@ -62,7 +63,13 @@ extension PetMenuController {
     /// Если в CoreData нет объектов тогда грузится экран с кнопкой "Добавить питомца"
     /// в обратном случае грузится экран с коллекцией (списком объектов)
     private func addSubview() {
-        storageService.objects.isEmpty ? view.addSubview(petMenuView) : view.addSubview(petCollectionView)
+        if storageService.objects.isEmpty {
+            view.addSubview(petMenuView)
+            petCollectionView.removeFromSuperview()
+        } else {
+            view.addSubview(petCollectionView)
+            petMenuView.removeFromSuperview()
+        }
     }
 }
 // MARK: - Actions
@@ -81,7 +88,7 @@ extension PetMenuController: UICollectionViewDelegate, UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.bounds.width / UIView.ninePartsScreenMultiplier,
+        return CGSize(width: UIView.ninePartsScreenMultiplier,
                       height: view.bounds.height / 3.5)
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -95,9 +102,9 @@ extension PetMenuController: UICollectionViewDelegate, UICollectionViewDataSourc
         ) as? PetCollectionCell else { return UICollectionViewCell() }
         cell.configureCell(
             photo: storageService.loadPhoto(photoID: storageService.objects[indexPath.row].identifier),
-            name: storageService.objects[indexPath.row].name ?? "Кличка не указана",
-            breed: storageService.objects[indexPath.row].breed ?? "Порода не указана",
-            age: storageService.objects[indexPath.row].birthday ?? "01.01.1001"
+            name: storageService.objects[indexPath.row].name ?? petMenuModel.defaultName,
+            breed: storageService.objects[indexPath.row].breed ?? petMenuModel.defaultBreed,
+            age: storageService.objects[indexPath.row].birthday ?? petMenuModel.defaultBirthday
         )
         return cell
     }
