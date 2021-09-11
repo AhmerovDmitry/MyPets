@@ -8,22 +8,31 @@
 import UIKit
 
 protocol TransferPetInformationDelegate: AnyObject {
-    func transferPetInformation(_ information: String)
+    func transferPetInformation(_ information: String?)
 }
 
 final class PetInfoController: UIViewController {
+
     // MARK: - Properties
-    weak var delegate: PetMenuControllerDelegate?
-    private var collectionCellIndex: Int? {
-        didSet {
-            if let index = collectionCellIndex {
-                petModel.loadEntity(at: index)
-            }
-        }
-    }
-    private var cellIndex: IndexPath?
     private var petModel = PetInfoModel()
+    private var objectForFilling = PetObject()
     private lazy var petInfoView = PetInfoView(frame: view.frame)
+    private(set) var storageService: StorageServiceProtocol
+    weak var delegate: PetMenuControllerDelegate?
+    private var collectionCellIndex: Int?
+    private var selectedTableCell: IndexPath?
+
+    // MARK: - Initialization
+    init(storageService: StorageServiceProtocol, collectionCellIndex: Int?) {
+        self.storageService = storageService
+        self.collectionCellIndex = collectionCellIndex
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +53,7 @@ extension PetInfoController {
             image: UIImage(systemName: "camera"),
             style: .done,
             target: self,
-            action: #selector(popToViewControllerAndDeleteEntity)
+            action: #selector(changePetPhoto)
         )
         navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.dark
         navigationItem.leftBarButtonItem = UIBarButtonItem(
@@ -59,61 +68,99 @@ extension PetInfoController {
     /// задается тайтл и плейсхолдер (все берется из модели)
     private func configureCell(_ cell: PetInfoTableCell, index: Int) {
         cell.configureTitle(petModel.menuTitles[index])
-        cell.configurePlaceholder(petModel.petInformation[index])
+        switch index {
+        case 0: cell.configurePlaceholder(objectForFilling.name)
+        case 1: cell.configurePlaceholder(objectForFilling.kind)
+        case 2: cell.configurePlaceholder(objectForFilling.breed)
+        case 3: cell.configurePlaceholder(objectForFilling.birthday)
+        case 4: cell.configurePlaceholder(objectForFilling.weight)
+        case 5: cell.configurePlaceholder(objectForFilling.sterile)
+        case 6: cell.configurePlaceholder(objectForFilling.color)
+        case 7: cell.configurePlaceholder(objectForFilling.hair)
+        case 8: cell.configurePlaceholder(objectForFilling.chipNumber)
+        default: break
+        }
+        if let photo = storageService.loadPhoto(photoId: collectionCellIndex ?? 0) {
+            petInfoView.setPetPhoto(photo)
+        }
     }
     /// Метод открытия контроллера ввода информации
     /// в него передается информация которую пользователь вводил или nil
-    private func presentInputInfoController() {
-        if let index = cellIndex?.row {
-            let controller = InputInfoController()
-            controller.checkTextField(petModel.petInformation[index])
-            controller.delegate = self
-            controller.modalPresentationStyle = .overFullScreen
-            controller.modalTransitionStyle = .crossDissolve
-            present(controller, animated: true, completion: nil)
-        }
-    }
-    /// Перезагрузка ячейки таблицы
-    private func reloadTableViewCell() {
-        if let cellIndex = cellIndex {
-            petInfoView.reloadTableViewCell(at: cellIndex)
-        }
+    private func presentInputInfoController(index: Int) {
+        let controller = InputInfoController()
+//        switch index {
+//        case 0: controller.checkTextField(objectForFilling.name)
+//        case 1: controller.checkTextField(objectForFilling.kind)
+//        case 2: controller.checkTextField(objectForFilling.breed)
+//        case 3: controller.checkTextField(objectForFilling.birthday)
+//        case 4: controller.checkTextField(objectForFilling.weight)
+//        case 5: controller.checkTextField(objectForFilling.sterile)
+//        case 6: controller.checkTextField(objectForFilling.color)
+//        case 7: controller.checkTextField(objectForFilling.hair)
+//        case 8: controller.checkTextField(objectForFilling.chipNumber)
+//        default: break
+//        }
+        controller.delegate = self
+        controller.modalPresentationStyle = .overFullScreen
+        controller.modalTransitionStyle = .crossDissolve
+        present(controller, animated: true, completion: nil)
     }
 }
+
 // MARK: - Actions
 /// Сохранение / удаление модели
 extension PetInfoController {
+
     /// Переходим на предыдущий контроллер сохраняя модель в CoreData
     @objc private func popToViewControllerAndSaveEntity() {
         if let index = collectionCellIndex {
-            petModel.editingEntity(at: index)
+            petModel.prepareObject(forAction: .editedObject, entity: objectForFilling,
+                                   entityIndex: index, storageService: storageService)
         } else {
-            petModel.saveEntityInCoreData()
+            petModel.prepareObject(forAction: .saveObject, entity: objectForFilling,
+                                   storageService: storageService)
         }
         delegate?.reloadController()
         navigationController?.popViewController(animated: true)
     }
-    /// Удаляем выбранный объект и переходим на предыдущий экран
-    @objc private func popToViewControllerAndDeleteEntity() {
-        guard let index = collectionCellIndex else { return }
-        petModel.removeEntityFromCoreData(at: index)
-        delegate?.reloadController()
-        navigationController?.popViewController(animated: true)
+
+    /// Загрузка фотографии из библиотеки
+    @objc private func changePetPhoto() {
+        let photoGallery = UIImagePickerController()
+        photoGallery.allowsEditing = true
+        photoGallery.sourceType = .photoLibrary
+        photoGallery.delegate = self
+        present(photoGallery, animated: true, completion: nil)
     }
 }
+
 // MARK: - Delegate & DataSource
 extension PetInfoController: TransferPetInformationDelegate {
     /// Метод получающий текст который вводит пользователь на экране ввода информации,
     /// после этого введенный текст передается в модель
     /// и ячейка таблицы перезагружается для обновления текста
-    func transferPetInformation(_ information: String) {
-        if let cellIndex = cellIndex {
-            petModel.updateInformation(information, index: cellIndex.row)
-            reloadTableViewCell()
+    /// - Parameter information: Данные, которые вводит пользователь
+    func transferPetInformation(_ information: String?) {
+        if let indexCell = selectedTableCell {
+            switch indexCell.row {
+            case 0: objectForFilling.name = information
+            case 1: objectForFilling.kind = information
+            case 2: objectForFilling.breed = information
+            case 3: objectForFilling.birthday = information
+            case 4: objectForFilling.weight = information
+            case 5: objectForFilling.sterile = information
+            case 6: objectForFilling.color = information
+            case 7: objectForFilling.hair = information
+            case 8: objectForFilling.chipNumber = information
+            default: break
+            }
+            petInfoView.reloadTableViewCell(at: indexCell)
+            selectedTableCell = nil
         }
     }
 }
-/// Delegate и DataSource для коллекции
+
+// MARK: - Delegate и DataSource для коллекции
 extension PetInfoController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -141,7 +188,8 @@ extension PetInfoController: UICollectionViewDelegate, UICollectionViewDataSourc
         return UIEdgeInsets(top: view.bounds.height / 9, left: 0, bottom: 15, right: 0)
     }
 }
-/// Delegate и DataSource для таблицы в которой заполняется информация о питомце
+
+// MARK: - Delegate и DataSource для таблицы в которой заполняется информация о питомце
 extension PetInfoController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.bounds.height / CGFloat(petModel.menuTitles.count)
@@ -158,15 +206,19 @@ extension PetInfoController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        cellIndex = indexPath
-        presentInputInfoController()
+        presentInputInfoController(index: indexPath.row)
+        selectedTableCell = indexPath
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
-// MARK: - Public Methods
-extension PetInfoController {
-    /// Метод принимающий нажатую ячейку для получения нужной модели (удаление / загрузка)
-    func getCellIndex(_ index: Int?) {
-        collectionCellIndex = index
+
+// MARK: - UIImagePickerControllerDelegate
+extension PetInfoController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        guard let image = info[.editedImage] as? UIImage else { return }
+        petInfoView.setPetPhoto(image)
+        objectForFilling.photoUrl = storageService.savePhoto(photoId: collectionCellIndex ?? 0, photo: image)
+        dismiss(animated: true, completion: nil)
     }
 }
