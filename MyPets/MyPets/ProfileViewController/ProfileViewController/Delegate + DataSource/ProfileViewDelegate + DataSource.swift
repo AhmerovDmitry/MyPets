@@ -101,10 +101,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 UserDefaults.standard.set(false, forKey: "isFirstLaunch")
             case 3:
                 UserDefaults.standard.set(false, forKey: "paidStatus")
-            case 4:
-                if !CoreDataManager.shared.pets.isEmpty {
-                    CoreDataManager.shared.deleteEntity(at: CoreDataManager.shared.pets.count - 1)
-                }
+//            case 4:
+//                if !CoreDataManager.shared.pets.isEmpty {
+//                    CoreDataManager.shared.deleteEntity(at: CoreDataManager.shared.pets.count - 1)
+//                }
             default: break
             }
         default: break
