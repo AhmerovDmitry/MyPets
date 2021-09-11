@@ -34,7 +34,7 @@ extension UIView {
         layer.shadowOpacity = 0.2
         layer.shadowOffset = CGSize(width: 0, height: 0)
         layer.shadowRadius = 7
-        layer.cornerRadius = 16
+        layer.cornerRadius = UIView.basicCornerRadius
         layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
         layer.shouldRasterize = true
         layer.rasterizationScale = UIScreen.main.scale
@@ -50,6 +50,10 @@ extension UIView {
         effectView.frame = frame
         view.insertSubview(effectView, at: 0)
     }
+
+    /// Число для определения 0.9 части экрана (примерное)
+    static let ninePartsScreenMultiplier: CGFloat = 1.1111111111
+    static let basicCornerRadius: CGFloat = 16
 
     /*
     /// Анимация тряски вью, возможно не понадобится и прийдется удалить
