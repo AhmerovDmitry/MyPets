@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
 
         /// Проверка ключа из UserDefaults на то, запускается приложение первый раз или нет
-        if userDefaultsService.value(forKey: "isNotFirstLaunch") {
+        if userDefaultsService.value(forKey: .isNotFirstLaunch) {
             window?.rootViewController = tabBarC
         } else {
             window?.rootViewController = onboardVC

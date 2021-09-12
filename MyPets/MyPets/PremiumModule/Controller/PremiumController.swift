@@ -33,12 +33,12 @@ final class PremiumController: UIViewController {
         premiumView.presentControllerCallBack = { [weak self] in
             guard let self = self else { return }
             self.dismiss(animated: true, completion: nil)
-            self.userDefaultsService.setValue(true, forKey: "isAppPurchased")
+            self.userDefaultsService.setValue(true, forKey: .isAppPurchased)
         }
         premiumView.dismissControllerCallBack = { [weak self] in
             guard let self = self else { return }
             self.dismiss(animated: true, completion: nil)
-            self.userDefaultsService.setValue(false, forKey: "isAppPurchased")
+            self.userDefaultsService.setValue(false, forKey: .isAppPurchased)
         }
     }
 }

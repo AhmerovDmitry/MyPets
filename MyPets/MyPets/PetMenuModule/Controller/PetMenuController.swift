@@ -56,7 +56,7 @@ extension PetMenuController {
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.CustomColor.dark]
         navigationItem.title = petMenuModel.controllerTitle
-        if userDefaultsService.value(forKey: "isAppPurchased") {
+        if userDefaultsService.value(forKey: .isAppPurchased) {
             guard let image = UIImage(systemName: "plus") else { return }
             let addButton = UIBarButtonItem(image: image, style: .done,
                                             target: self, action: #selector(presentController))

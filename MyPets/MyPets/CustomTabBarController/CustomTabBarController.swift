@@ -71,7 +71,7 @@ extension CustomTabBarController {
     /// Метод показывающий преимум контроллер если покупка не совершена
     /// Возможно отключение показа контроллера нажатием на кнопку-заглушку "Купить Premium"
     private func presentPremium() {
-        if !userDefaultsService.value(forKey: "isAppPurchased") {
+        if !userDefaultsService.value(forKey: .isAppPurchased) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
                 guard let self = self else { return }
                 let premiumController = PremiumController(userDefaultsService: self.userDefaultsService)
