@@ -8,12 +8,14 @@
 import UIKit
 
 final class CustomTabBarController: UITabBarController {
+    
     // MARK: - Services
-    let storageService = StorageService()
+    let storageService: StorageServiceProtocol
     let userDefaultsService: UserDefaultsServiceProtocol
 
     // MARK: - Lifecycle
-    init(userDefaultsService: UserDefaultsServiceProtocol) {
+    init(storageService: StorageServiceProtocol, userDefaultsService: UserDefaultsServiceProtocol) {
+        self.storageService = storageService
         self.userDefaultsService = userDefaultsService
         super.init(nibName: nil, bundle: nil)
     }

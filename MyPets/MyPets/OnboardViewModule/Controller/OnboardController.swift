@@ -10,13 +10,15 @@ import UIKit
 final class OnboardController: UIViewController {
 
     // MARK: - Properties
+    let storageService: StorageServiceProtocol
     let userDefaultsService: UserDefaultsServiceProtocol
 
     private let onboardContent = OnboardModel()
     private let onboardView = OnboardView(frame: UIScreen.main.bounds)
 
     // MARK: - Lifecycle
-    init(userDefaultsService: UserDefaultsServiceProtocol) {
+    init(storageService: StorageServiceProtocol, userDefaultsService: UserDefaultsServiceProtocol) {
+        self.storageService = storageService
         self.userDefaultsService = userDefaultsService
         super.init(nibName: nil, bundle: nil)
     }
@@ -34,7 +36,8 @@ final class OnboardController: UIViewController {
         super.viewDidAppear(animated)
         onboardView.presentControllerCallBack = { [weak self] in
             guard let self = self else { return }
-            let tabBarController = CustomTabBarController(userDefaultsService: self.userDefaultsService)
+            let tabBarController = CustomTabBarController(storageService: self.storageService,
+                                                          userDefaultsService: self.userDefaultsService)
             tabBarController.modalPresentationStyle = .fullScreen
             self.present(tabBarController, animated: true, completion: nil)
             self.userDefaultsService.setValue(true, forKey: .isAppPurchased)

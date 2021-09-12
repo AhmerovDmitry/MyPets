@@ -17,12 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         // MARK: - Services
+        let storageService = StorageService()
         let userDefaultsService = UserDefaultsService()
 
         /// Если приложение запускается впервые
-        let onboardVC = OnboardController(userDefaultsService: userDefaultsService)
+        let onboardVC = OnboardController(storageService: storageService, userDefaultsService: userDefaultsService)
         /// Если приложение ранее запускалось (запуск без OnboardVC)
-        let tabBarC = CustomTabBarController(userDefaultsService: userDefaultsService)
+        let tabBarC = CustomTabBarController(storageService: storageService, userDefaultsService: userDefaultsService)
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.overrideUserInterfaceStyle = .light
