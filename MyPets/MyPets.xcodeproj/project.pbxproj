@@ -10,6 +10,9 @@
 		BC0132CF26E15DFE0065F1B7 /* MainWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0132CE26E15DFE0065F1B7 /* MainWeatherModel.swift */; };
 		BC03FE3A25A32F1C00C81BC5 /* ProfileViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC03FE3925A32F1C00C81BC5 /* ProfileViewControllerDelegate.swift */; };
 		BC0D29DF26ED490F00C3AF2D /* PetMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29DE26ED490F00C3AF2D /* PetMenuModel.swift */; };
+		BC0D29E126EE9B9100C3AF2D /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29E026EE9B9100C3AF2D /* ProfileController.swift */; };
+		BC0D29E426EE9BB600C3AF2D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29E326EE9BB600C3AF2D /* ProfileView.swift */; };
+		BC0D29E626EE9D1700C3AF2D /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29E526EE9D1700C3AF2D /* ProfileModel.swift */; };
 		BC0EE6A3259DE49500BE167D /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0EE6A2259DE49500BE167D /* UserProfileViewController.swift */; };
 		BC13029726B9786000CFD87E /* OnboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029626B9785F00CFD87E /* OnboardView.swift */; };
 		BC13029926B9787D00CFD87E /* OnboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029826B9787D00CFD87E /* OnboardController.swift */; };
@@ -102,6 +105,9 @@
 		BC0132CE26E15DFE0065F1B7 /* MainWeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWeatherModel.swift; sourceTree = "<group>"; };
 		BC03FE3925A32F1C00C81BC5 /* ProfileViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewControllerDelegate.swift; sourceTree = "<group>"; };
 		BC0D29DE26ED490F00C3AF2D /* PetMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetMenuModel.swift; sourceTree = "<group>"; };
+		BC0D29E026EE9B9100C3AF2D /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		BC0D29E326EE9BB600C3AF2D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		BC0D29E526EE9D1700C3AF2D /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		BC0EE6A2259DE49500BE167D /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		BC13029626B9785F00CFD87E /* OnboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardView.swift; sourceTree = "<group>"; };
 		BC13029826B9787D00CFD87E /* OnboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardController.swift; sourceTree = "<group>"; };
@@ -225,6 +231,16 @@
 				BC0D29DE26ED490F00C3AF2D /* PetMenuModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		BC0D29E226EE9B9E00C3AF2D /* ProfileModule */ = {
+			isa = PBXGroup;
+			children = (
+				BC0D29E526EE9D1700C3AF2D /* ProfileModel.swift */,
+				BC0D29E326EE9BB600C3AF2D /* ProfileView.swift */,
+				BC0D29E026EE9B9100C3AF2D /* ProfileController.swift */,
+			);
+			path = ProfileModule;
 			sourceTree = "<group>";
 		};
 		BC0EE6A1259DE47000BE167D /* UserProfileController */ = {
@@ -408,6 +424,7 @@
 				BC7E9B8C257F8208006D75A1 /* Delegate + DataSource */,
 				BCB3AA3F25AF78D600289B7A /* Extension - @objc */,
 				BC469CA325AA4BE500449E3C /* UITableViewCell */,
+				BC0D29E226EE9B9E00C3AF2D /* ProfileModule */,
 			);
 			path = ProfileViewController;
 			sourceTree = "<group>";
@@ -916,6 +933,7 @@
 				BC7073322534BA3800B2979F /* UIView.swift in Sources */,
 				BCA7B29326ED0D340050BD24 /* PremiumController.swift in Sources */,
 				BC413CD42538A97F002CDD19 /* CustomTabBarController.swift in Sources */,
+				BC0D29E126EE9B9100C3AF2D /* ProfileController.swift in Sources */,
 				BC73002A25723C460010F161 /* PetInfoExtension.swift in Sources */,
 				BC8CE00625C6CBC2005EEFEB /* SupportVCDelegate + DataSource.swift in Sources */,
 				BC7EB66526C6AB1F00BE80AE /* PetInfoCell.swift in Sources */,
@@ -930,6 +948,7 @@
 				BC7EB65D26C688F500BE80AE /* PetInfoController.swift in Sources */,
 				BC413CCE25389494002CDD19 /* LocationViewController.swift in Sources */,
 				BC99B0272549A77C00050854 /* PetInfoViewController.swift in Sources */,
+				BC0D29E426EE9BB600C3AF2D /* ProfileView.swift in Sources */,
 				BCDBF528253F887E00BCBBFB /* Map Settings.swift in Sources */,
 				BC16018426ECE17500666529 /* OMPetInformation+CoreDataProperties.swift in Sources */,
 				BC9402FC26CA7BFF0028E5AC /* InputInfoController.swift in Sources */,
@@ -952,6 +971,7 @@
 				BC9959C226244AF6006CE6E1 /* DewormingVC.swift in Sources */,
 				BC9402E926CA62840028E5AC /* PetInformation.xcdatamodeld in Sources */,
 				BCB3AA4125AF791B00289B7A /* @objc ProfileViewController.swift in Sources */,
+				BC0D29E626EE9D1700C3AF2D /* ProfileModel.swift in Sources */,
 				BCD83D3025F2A72B00F04EF3 /* FoodDelegate + DataSource.swift in Sources */,
 				BC67E24825A0593D008BDBBD /* UserProfileDelegate + DataSource.swift in Sources */,
 				BC0132CF26E15DFE0065F1B7 /* MainWeatherModel.swift in Sources */,
