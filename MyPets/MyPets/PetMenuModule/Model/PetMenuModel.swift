@@ -7,9 +7,30 @@
 
 import Foundation
 
-final class PetMenuModel {
+protocol PetMenuProtocol {
+}
+
+extension PetMenuProtocol {
+    var defaultName: String {
+        get {
+            return "Кличка не указана"
+        }
+    }
+    var defaultBreed: String {
+        get {
+            return "Порода не указана"
+        }
+    }
+    var defaultBirthday: String {
+        get {
+            return "01.01.1001"
+        }
+    }
+}
+
+final class PetMenuModel: PetMenuProtocol {
     let controllerTitle = "Питомцы"
-    let defaultName = "Кличка не указана"
-    let defaultBreed = "Порода не указана"
-    let defaultBirthday = "01.01.1001"
+//    let defaultName = "Кличка не указана"
+//    let defaultBreed = "Порода не указана"
+//    let defaultBirthday = "01.01.1001"
 }
