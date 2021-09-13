@@ -40,7 +40,7 @@ final class OnboardController: UIViewController {
                                                           userDefaultsService: self.userDefaultsService)
             tabBarController.modalPresentationStyle = .fullScreen
             self.present(tabBarController, animated: true, completion: nil)
-            self.userDefaultsService.setValue(true, forKey: .isAppPurchased)
+            self.userDefaultsService.setValue(true, forKey: .isNotFirstLaunch)
         }
     }
 }
