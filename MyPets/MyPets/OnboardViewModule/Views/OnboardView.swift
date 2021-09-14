@@ -8,14 +8,6 @@
 import UIKit
 
 final class OnboardView: UIView {
-
-    // MARK: - LayoutSubviews
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        setupUI()
-    }
-
-    // MARK: - Properties
     var presentControllerCallBack: (() -> Void)?
     private var onboardImage: [String]?
     private var onboardDescription: [String]?
@@ -58,8 +50,11 @@ final class OnboardView: UIView {
     }()
 }
 
-// MARK: - Setup UI
 extension OnboardView {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setupUI()
+    }
     private func setupUI() {
         self.backgroundColor = .white
         setOnboardCollectionViewConstraints()
@@ -107,7 +102,6 @@ extension OnboardView {
     }
 }
 
-// MARK: - Actions
 extension OnboardView {
     @objc private func nextDescriptionView() {
         let nextIndex = pageControl.currentPage + 1
@@ -128,7 +122,6 @@ extension OnboardView {
     }
 }
 
-// MARK: - Delegate & DataSource
 extension OnboardView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return pageControl.numberOfPages
@@ -147,7 +140,6 @@ extension OnboardView: UICollectionViewDelegate, UICollectionViewDataSource {
     }
 }
 
-// MARK: - Public Methods
 extension OnboardView {
     func getOnboardContent(_ content: Any) {
         guard let content = content as? OnboardModel else { return }

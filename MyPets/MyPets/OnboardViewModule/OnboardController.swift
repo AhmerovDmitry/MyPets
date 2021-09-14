@@ -8,25 +8,21 @@
 import UIKit
 
 final class OnboardController: UIViewController {
-
-    // MARK: - Properties
     let storageService: StorageServiceProtocol
     let userDefaultsService: UserDefaultsServiceProtocol
 
-    private let onboardContent = OnboardModel()
+    private let onboardModel: OnboardModelProtocol
     private let onboardView = OnboardView(frame: UIScreen.main.bounds)
 
-    // MARK: - Lifecycle
     init(storageService: StorageServiceProtocol, userDefaultsService: UserDefaultsServiceProtocol) {
         self.storageService = storageService
         self.userDefaultsService = userDefaultsService
+        self.onboardModel = OnboardModel()
         super.init(nibName: nil, bundle: nil)
     }
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViewContent()
@@ -45,10 +41,9 @@ final class OnboardController: UIViewController {
     }
 }
 
-// MARK: - Methods
 extension OnboardController {
     private func updateViewContent() {
-        onboardView.getOnboardContent(onboardContent)
+        onboardView.getOnboardContent(onboardModel)
     }
     private func addOnboardViewInHierarchy() {
         view.addSubview(onboardView)
