@@ -8,7 +8,6 @@
 import UIKit
 
 final class SystemView: UIView {
-
     private var systemModel: SystemModelProtocol
     private var userDefaultsService: UserDefaultsServiceProtocol
 
@@ -23,7 +22,6 @@ final class SystemView: UIView {
         return tableView
     }()
 
-    // MARK: - Initialization & Lifecycle
     init(userDefaultsService: UserDefaultsServiceProtocol) {
         self.systemModel = SystemModel()
         self.userDefaultsService = userDefaultsService
@@ -37,12 +35,10 @@ final class SystemView: UIView {
     }
 }
 
-// MARK: - SetupUI
 extension SystemView {
     private func setupUI() {
         setSystemTableViewConstraints()
     }
-
     private func setSystemTableViewConstraints() {
         self.addSubview(systemTableView)
         systemTableView.translatesAutoresizingMaskIntoConstraints = false
@@ -55,7 +51,6 @@ extension SystemView {
     }
 }
 
-// MARK: - UITableViewDelegate & UITableViewDataSource
 extension SystemView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return systemModel.systemTitleContent.count

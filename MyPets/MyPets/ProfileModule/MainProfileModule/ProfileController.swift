@@ -13,7 +13,6 @@ protocol ProfileViewDelegate: AnyObject {
 }
 
 final class ProfileController: UIViewController {
-
     private let storageService: StorageServiceProtocol
     private let userDefaultsService: UserDefaultsServiceProtocol
 
@@ -25,7 +24,6 @@ final class ProfileController: UIViewController {
     private let profileTableViewCellID = "profileTableViewCellID"
     private var systemViewIsHidden = true
 
-    // MARK: - Initialization
     init(storageService: StorageServiceProtocol, userDefaultsService: UserDefaultsServiceProtocol) {
         self.profileModel = ProfileModel()
         self.profileView = ProfileView(frame: UIScreen.main.bounds)
@@ -34,12 +32,9 @@ final class ProfileController: UIViewController {
         self.userDefaultsService = userDefaultsService
         super.init(nibName: nil, bundle: nil)
     }
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
@@ -48,7 +43,6 @@ final class ProfileController: UIViewController {
         profileView.tableViewDelegateAndDataSource(self)
         profileView.setTableViewID(profileTableViewCellID)
     }
-
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         systemViewIsHidden = true
@@ -56,7 +50,6 @@ final class ProfileController: UIViewController {
     }
 }
 
-// MARK: - Methods
 extension ProfileController {
     private func setupNavigationController() {
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -66,7 +59,6 @@ extension ProfileController {
     }
 }
 
-// MARK: - UITableViewDelegate & UITableViewDataSource
 extension ProfileController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return profileModel.profileTableViewSectionBody.count
