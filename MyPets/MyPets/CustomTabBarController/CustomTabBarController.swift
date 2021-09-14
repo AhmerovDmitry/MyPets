@@ -49,13 +49,13 @@ extension CustomTabBarController {
         petVC.tabBarItem.title = "Питомцы"
         petVC.tabBarItem.image = UIImage(named: "petIcon")
 
-        let locationVC = LocationViewController()
+        let locationVC = LocationController()
         locationVC.tabBarItem.title = "Места"
         locationVC.tabBarItem.image = UIImage(named: "locationIcon")
 
-//        let profileVC = UINavigationController(rootViewController: ProfileViewController())
         let profileVC = UINavigationController(
-            rootViewController: ProfileController(storageService: storageService,userDefaultsService: userDefaultsService)
+            rootViewController: ProfileController(storageService: storageService,
+                                                  userDefaultsService: userDefaultsService)
         )
         profileVC.tabBarItem.title = "Профиль"
         profileVC.tabBarItem.image = UIImage(named: "profileIcon")
