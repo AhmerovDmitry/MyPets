@@ -8,15 +8,11 @@
 import UIKit
 
 final class InputInfoController: UIViewController {
-
-    // MARK: - Properties
     private var keyboardHeight: CGFloat?
     private let inputInfoView = InputInfoView(frame: UIScreen.main.bounds)
 
-    // MARK: - Delegate Properties
     weak var delegate: TransferPetInformationDelegate?
 
-    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubview()
@@ -30,15 +26,10 @@ final class InputInfoController: UIViewController {
     }
 }
 
-// MARK: - Methods
 extension InputInfoController {
     private func addSubview() {
         view.addSubview(inputInfoView)
     }
-}
-
-// MARK: - CallBack Methods
-extension InputInfoController {
     private func callBacksMethods() {
         inputInfoView.dismissControllerCallBack = { [weak self] in
             self?.dismiss(animated: true, completion: nil)
@@ -50,7 +41,6 @@ extension InputInfoController {
     }
 }
 
-// MARK: - Keyboard Methods
 extension InputInfoController {
     private func observerMethods() {
         NotificationCenter.default.addObserver(
@@ -78,7 +68,6 @@ extension InputInfoController {
     }
 }
 
-// MARK: - UITextField Delegate
 extension InputInfoController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -86,7 +75,6 @@ extension InputInfoController: UITextFieldDelegate {
     }
 }
 
-// MARK: - Public Methods
 extension InputInfoController {
     func checkTextField(_ text: String?) {
         guard let text = text else { return }

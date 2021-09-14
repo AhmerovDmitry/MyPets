@@ -8,17 +8,6 @@
 import UIKit
 
 final class InputInfoView: UIView {
-
-    // MARK: - Initialization & Lifecycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupUI()
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    // MARK: - Properties
     var saveInformationCallBack: ((_ textField: UITextField) -> Void)?
     var dismissControllerCallBack: (() -> Void)?
 
@@ -84,9 +73,16 @@ final class InputInfoView: UIView {
         button.addTarget(self, action: #selector(dismissController), for: .touchUpInside)
         return button
     }()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
-// MARK: - Setup UI
 extension InputInfoView {
     private func setupUI() {
         self.backgroundColor = .clear
@@ -187,7 +183,6 @@ extension InputInfoView {
     }
 }
 
-// MARK: - Actions
 @objc
 extension InputInfoView {
     private func saveInformation() {
@@ -198,7 +193,6 @@ extension InputInfoView {
     }
 }
 
-// MARK: - Public Methods
 extension InputInfoView {
     func setTextFieldDelegate<T: UITextFieldDelegate>(_ target: T) {
         textField.delegate = target
