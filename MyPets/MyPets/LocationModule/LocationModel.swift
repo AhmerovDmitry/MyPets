@@ -28,8 +28,6 @@ final class LocationModel: LocationValueProtocol {
                                       "площадка для собак",
                                       "гостиница для животных",
                                       "приют для животных"]
-//    let locationManager = CLLocationManager()
-//    var matchingItems = [MKMapItem]()
     func tappedRequestButtonWithID(_ id: Int) {
         print(id)
     }

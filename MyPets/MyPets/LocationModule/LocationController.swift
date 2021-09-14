@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import MapKit
 
 final class LocationController: UIViewController {
     private let locationModel: LocationValueProtocol
     private let locationView: LocationView
+    private let locationManager = CLLocationManager()
+    private var matchingItems = [MKMapItem]()
     private let placemarkCollectionCellID = "placemarkCollectionCellID"
 
     init() {
@@ -20,13 +23,12 @@ final class LocationController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
     override func loadView() {
         view = locationView
+        locationManager.delegate = self
         locationView.collectionViewDelegateAndDataSource(self)
         locationView.setCollectionViewID(placemarkCollectionCellID)
     }
-
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UIAlertController.presentAlertWithBasicType(
@@ -39,7 +41,6 @@ final class LocationController: UIViewController {
     }
 }
 
-// MARK: - UITableViewDelegate & UITableViewDataSource
 extension LocationController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -58,7 +59,6 @@ extension LocationController: UICollectionViewDelegate, UICollectionViewDataSour
             for: indexPath
         ) as? LocationCollectionCell else { return UICollectionViewCell() }
         cell.configureCell(locationModel.placemarkTitle[indexPath.item])
-        cell.requestButtonAction(self, action: #selector(sendPlacemarkRequest))
         return cell
     }
     func collectionView(_ collectionView: UICollectionView,
@@ -66,10 +66,47 @@ extension LocationController: UICollectionViewDelegate, UICollectionViewDataSour
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        searchInMap(place: locationModel.placemarkRequest[indexPath.item])
+    }
 }
 
-extension LocationController {
-    @objc func sendPlacemarkRequest() {
-        print("REQUEST")
+extension LocationController: CLLocationManagerDelegate {
+    func showUserLocation() {
+        guard let userLocation = locationManager.location?.coordinate else { return }
+        let viewRegion = MKCoordinateRegion(center: userLocation,
+                                            latitudinalMeters: 1000,
+                                            longitudinalMeters: 1000)
+        locationView.setRegion(viewRegion, animated: true)
+    }
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    }
+
+    func searchInMap(place: String?) {
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = place
+        request.region = locationView.region()
+        let search = MKLocalSearch(request: request)
+        search.start(completionHandler: { response, _ in
+            guard let response = response else { return }
+            self.matchingItems = response.mapItems
+            self.dropPinZoomIn(placemarks: self.matchingItems)
+        })
+    }
+
+    func dropPinZoomIn(placemarks: [MKMapItem]) {
+        locationView.removeAnotation()
+        var annotations = [MKPointAnnotation]()
+        for item in placemarks {
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = item.placemark.coordinate
+            annotation.title = item.name
+            if let title = item.placemark.title, let phone = item.phoneNumber {
+                annotation.subtitle = "\(title) \n\(phone)"
+            }
+            annotations.append(annotation)
+        }
+        locationView.addAnnotations(annotations)
     }
 }

@@ -29,7 +29,6 @@ final class LocationView: UIView {
         return collectionView
     }()
 
-    // MARK: - Initialization & Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -37,7 +36,9 @@ final class LocationView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
 
+extension LocationView {
     private func setupUI() {
         setMapViewConstraints()
         setBackgroundPlacemarkViewConstraints()
@@ -83,5 +84,17 @@ extension LocationView {
     }
     func setCollectionViewID(_ id: String) {
         placemarkCollection.register(LocationCollectionCell.self, forCellWithReuseIdentifier: id)
+    }
+    func setRegion(_ region: MKCoordinateRegion, animated: Bool) {
+        mapView.setRegion(region, animated: animated)
+    }
+    func region() -> MKCoordinateRegion {
+        return mapView.region
+    }
+    func removeAnotation() {
+        mapView.removeAnnotations(mapView.annotations)
+    }
+    func addAnnotations(_ annotations: [MKAnnotation]) {
+        mapView.addAnnotations(annotations)
     }
 }

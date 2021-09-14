@@ -39,7 +39,6 @@
 		BC52FFA226D91EDA00A694CB /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC52FFA126D91EDA00A694CB /* Weather.swift */; };
 		BC7073252534A6F600B2979F /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073242534A6F600B2979F /* UIButton.swift */; };
 		BC7073322534BA3800B2979F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073312534BA3800B2979F /* UIView.swift */; };
-		BC73964A2542084D00A89858 /* LocationViewDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7396492542084D00A89858 /* LocationViewDelegate + DataSource.swift */; };
 		BC73964D25435F9900A89858 /* LocationCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC73964C25435F9900A89858 /* LocationCollectionCell.swift */; };
 		BC7EB65526C6678100BE80AE /* PetCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB65426C6678100BE80AE /* PetCollectionView.swift */; };
 		BC7EB65726C668F000BE80AE /* PetCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB65626C668F000BE80AE /* PetCollectionCell.swift */; };
@@ -99,8 +98,6 @@
 		BC8B6BDB26F0AE8E009D9896 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D2A0526F00F6300C3AF2D /* LocationView.swift */; };
 		BC8B6BDC26F0AE90009D9896 /* LocationCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC73964C25435F9900A89858 /* LocationCollectionCell.swift */; };
 		BC8B6BDD26F0AE94009D9896 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D2A0726F00F6F00C3AF2D /* LocationController.swift */; };
-		BC8B6BDE26F0AE99009D9896 /* LocationViewDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7396492542084D00A89858 /* LocationViewDelegate + DataSource.swift */; };
-		BC8B6BDF26F0AE9C009D9896 /* Map Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF527253F887E00BCBBFB /* Map Settings.swift */; };
 		BC8C64F326BF37EF00CA7A90 /* PremiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8C64F226BF37EF00CA7A90 /* PremiumView.swift */; };
 		BC8C64F526BF382A00CA7A90 /* PremiumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8C64F426BF382A00CA7A90 /* PremiumModel.swift */; };
 		BC8E373E26E6B0FB00F3B6A9 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8E373D26E6B0FA00F3B6A9 /* NetworkService.swift */; };
@@ -120,7 +117,6 @@
 		BCC259EB26C4173700FCAC54 /* MainMenuCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC259EA26C4173700FCAC54 /* MainMenuCollectionCell.swift */; };
 		BCC259ED26C41FEA00FCAC54 /* TitleMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC259EC26C41FEA00FCAC54 /* TitleMenuView.swift */; };
 		BCDAEB6E26CFBD990099CF13 /* InputInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDAEB6D26CFBD990099CF13 /* InputInfoView.swift */; };
-		BCDBF528253F887E00BCBBFB /* Map Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF527253F887E00BCBBFB /* Map Settings.swift */; };
 		BCE5115525461A23002FB62E /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE5115425461A23002FB62E /* UIAlertController.swift */; };
 /* End PBXBuildFile section */
 
@@ -168,7 +164,6 @@
 		BC52FFA126D91EDA00A694CB /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		BC7073242534A6F600B2979F /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		BC7073312534BA3800B2979F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
-		BC7396492542084D00A89858 /* LocationViewDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationViewDelegate + DataSource.swift"; sourceTree = "<group>"; };
 		BC73964C25435F9900A89858 /* LocationCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCollectionCell.swift; sourceTree = "<group>"; };
 		BC7EB65426C6678100BE80AE /* PetCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCollectionView.swift; sourceTree = "<group>"; };
 		BC7EB65626C668F000BE80AE /* PetCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCollectionCell.swift; sourceTree = "<group>"; };
@@ -196,7 +191,6 @@
 		BCC259EA26C4173700FCAC54 /* MainMenuCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuCollectionCell.swift; sourceTree = "<group>"; };
 		BCC259EC26C41FEA00FCAC54 /* TitleMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleMenuView.swift; sourceTree = "<group>"; };
 		BCDAEB6D26CFBD990099CF13 /* InputInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputInfoView.swift; sourceTree = "<group>"; };
-		BCDBF527253F887E00BCBBFB /* Map Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Map Settings.swift"; sourceTree = "<group>"; };
 		BCE5115425461A23002FB62E /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -268,7 +262,6 @@
 		BC0D2A0126F00DEE00C3AF2D /* FixOrDelete */ = {
 			isa = PBXGroup;
 			children = (
-				BC413CC7253893C3002CDD19 /* LocationViewController */,
 				BC4CA474262436EF00C2033C /* UICollectionViewCell */,
 			);
 			path = FixOrDelete;
@@ -332,16 +325,6 @@
 			path = OnboardViewModule;
 			sourceTree = "<group>";
 		};
-		BC413CC7253893C3002CDD19 /* LocationViewController */ = {
-			isa = PBXGroup;
-			children = (
-				BC0D2A0226F00F4800C3AF2D /* LocationModule */,
-				BC4D76C825442A380037EA8D /* Delegate + DataSource */,
-				BC4D76CA25442A450037EA8D /* Map Settings */,
-			);
-			path = LocationViewController;
-			sourceTree = "<group>";
-		};
 		BC413CD62538ABBB002CDD19 /* CustomTabBarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,22 +349,6 @@
 				BC4CA476262436EF00C2033C /* BottomMenuCell.swift */,
 			);
 			path = UICollectionViewCell;
-			sourceTree = "<group>";
-		};
-		BC4D76C825442A380037EA8D /* Delegate + DataSource */ = {
-			isa = PBXGroup;
-			children = (
-				BC7396492542084D00A89858 /* LocationViewDelegate + DataSource.swift */,
-			);
-			path = "Delegate + DataSource";
-			sourceTree = "<group>";
-		};
-		BC4D76CA25442A450037EA8D /* Map Settings */ = {
-			isa = PBXGroup;
-			children = (
-				BCDBF527253F887E00BCBBFB /* Map Settings.swift */,
-			);
-			path = "Map Settings";
 			sourceTree = "<group>";
 		};
 		BC70732C2534AE9400B2979F /* PremiumModule */ = {
@@ -490,6 +457,7 @@
 				BC38543626C5AAF000C2F14E /* PetMenuModule */,
 				BC9402FA26CA79920028E5AC /* PetInfoModule */,
 				BCDAEB6926CFBD390099CF13 /* InputPetInfoModule */,
+				BC0D2A0226F00F4800C3AF2D /* LocationModule */,
 				BC0D29E226EE9B9E00C3AF2D /* ProfileModule */,
 				BC0D29F926EFDEB000C3AF2D /* EntitysModule */,
 				BC9F269026BBCC7E000B854F /* Extensions */,
@@ -667,7 +635,6 @@
 				BC8B6BBB26F0ADFF009D9896 /* MainWeatherModel.swift in Sources */,
 				BC33256726F0A9370060DCDD /* MyPetsSnapshotTests.swift in Sources */,
 				BC8B6BBE26F0AE26009D9896 /* PremiumView.swift in Sources */,
-				BC8B6BDF26F0AE9C009D9896 /* Map Settings.swift in Sources */,
 				BC8B6BCC26F0AE5A009D9896 /* InputInfoController.swift in Sources */,
 				BC8B6BA826F0ACEC009D9896 /* OnboardController.swift in Sources */,
 				BC8B6BD526F0AE7A009D9896 /* UIView.swift in Sources */,
@@ -680,7 +647,6 @@
 				BC8B6BB326F0ADA5009D9896 /* CustomTabBarController.swift in Sources */,
 				BC8B6BBD26F0AE24009D9896 /* PremiumModel.swift in Sources */,
 				BC8B6BDA26F0AE8B009D9896 /* LocationModel.swift in Sources */,
-				BC8B6BDE26F0AE99009D9896 /* LocationViewDelegate + DataSource.swift in Sources */,
 				BC8B6BC126F0AE3C009D9896 /* PetMenuView.swift in Sources */,
 				BC8B6BC426F0AE42009D9896 /* PetMenuController.swift in Sources */,
 				BC8B6BD626F0AE7C009D9896 /* UIButton.swift in Sources */,
@@ -721,7 +687,6 @@
 				BC7073252534A6F600B2979F /* UIButton.swift in Sources */,
 				BC7EB65D26C688F500BE80AE /* PetInfoController.swift in Sources */,
 				BC0D29E426EE9BB600C3AF2D /* ProfileView.swift in Sources */,
-				BCDBF528253F887E00BCBBFB /* Map Settings.swift in Sources */,
 				BC16018426ECE17500666529 /* OMPetInformation+CoreDataProperties.swift in Sources */,
 				BC9402FC26CA7BFF0028E5AC /* InputInfoController.swift in Sources */,
 				BC16013826EB7A1A00666529 /* StorageService.swift in Sources */,
@@ -741,7 +706,6 @@
 				BC73964D25435F9900A89858 /* LocationCollectionCell.swift in Sources */,
 				BC13029B26B978A000CFD87E /* OnboardModel.swift in Sources */,
 				BC0D29DF26ED490F00C3AF2D /* PetMenuModel.swift in Sources */,
-				BC73964A2542084D00A89858 /* LocationViewDelegate + DataSource.swift in Sources */,
 				BC7EB65726C668F000BE80AE /* PetCollectionCell.swift in Sources */,
 				BCC259EB26C4173700FCAC54 /* MainMenuCollectionCell.swift in Sources */,
 				BCE5115525461A23002FB62E /* UIAlertController.swift in Sources */,
