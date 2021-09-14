@@ -8,14 +8,6 @@
 import UIKit
 
 final class WeatherMenuView: UIView {
-
-    // MARK: - LayoutSubviews
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        setupUI()
-    }
-
-    // MARK: - Properties
     private let reloadWeatherButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "goforward"), for: .normal)
@@ -67,6 +59,10 @@ final class WeatherMenuView: UIView {
 
 // MARK: - Setup UI
 extension WeatherMenuView {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setupUI()
+    }
     private func setupUI() {
         setSelfViewUI()
         setBackgroundImageConstraints()
@@ -137,6 +133,8 @@ extension WeatherMenuView {
     /// Метод обрабатывающий показания погоды,
     /// добавляет визальный эффект тексту, цифры погоды имеют атрибут bold, а знак градусов ultraLight,
     /// возможна замена символа градусов "°" - "℃"
+    /// - Parameter text: Обрабатываемый текст
+    /// - Returns: Отредактированный текст
     private func changeTextAttribute(_ text: String) -> NSAttributedString {
         let degreeSymbol = NSMutableAttributedString(string: "℃")
         let attrString = NSMutableAttributedString(string: text)
@@ -149,7 +147,7 @@ extension WeatherMenuView {
         return resultString
     }
 }
-// MARK: - Public Methods
+
 extension WeatherMenuView {
     func setupTemperatureLabel(value: String) {
         temperatureLabel.attributedText = changeTextAttribute(value)

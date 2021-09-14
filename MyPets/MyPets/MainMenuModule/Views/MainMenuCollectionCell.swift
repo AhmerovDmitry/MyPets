@@ -8,17 +8,6 @@
 import UIKit
 
 final class MainMenuCollectionCell: UICollectionViewCell {
-
-    // MARK: - Initialization & Lifecycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupUI()
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    // MARK: - Properties
     private let onboardView: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
@@ -33,9 +22,16 @@ final class MainMenuCollectionCell: UICollectionViewCell {
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
-// MARK: - Setup UI
 extension MainMenuCollectionCell {
     private func setupUI() {
         self.setDefaultShadow()

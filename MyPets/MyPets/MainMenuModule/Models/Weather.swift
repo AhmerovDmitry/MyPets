@@ -7,7 +7,6 @@
 
 import UIKit
 
-/// Модель для погодного API
 struct WeatherDescription: Codable {
     let weather: [WeatherDescription]
     let main: Temperature
@@ -20,7 +19,6 @@ struct WeatherDescription: Codable {
     }
 }
 
-/// Модель для собственного API
 struct WeatherImages: Codable {
     let homeImages: [String]
     let strollImages: [String]
@@ -28,22 +26,21 @@ struct WeatherImages: Codable {
 }
 
 /*
- СПИСОК ПОГОДНЫХ ЯВЛЕНИЙ ДЛЯ ЗАГРУЗКИ КАРТИНОК
- Thunderstorm - Гроза
- Rain - Дождь
- Snow - Снег
- Mist - Туман
- Smoke - Дым
- Dust - Пыль
- Fog - Туман
- Sand - Песок
- Dust - Пыль
- Ash - Пепел
- Squall - Шквал
- Tornado - Торнадо
-
- Clear - Чистое небо
- Clouds - Облачно
- Drizzle - Морось
- Haze - Туман
- */
+СПИСОК ПОГОДНЫХ ЯВЛЕНИЙ ДЛЯ ЗАГРУЗКИ КАРТИНОК
+Thunderstorm - Гроза
+Rain - Дождь
+Snow - Снег
+Mist - Туман
+Smoke - Дым
+Dust - Пыль
+Fog - Туман
+Sand - Песок
+Dust - Пыль
+Ash - Пепел
+Squall - Шквал
+Tornado - Торнадо
+Clear - Чистое небо
+Clouds - Облачно
+Drizzle - Морось
+Haze - Туман
+*/

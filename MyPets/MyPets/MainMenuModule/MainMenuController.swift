@@ -9,8 +9,6 @@ import UIKit
 import MapKit
 
 final class MainMenuController: UIViewController {
-
-    // MARK: - Properties
     private let networkService = NetworkService()
     private let locationManager = CLLocationManager()
     private var state: String?
@@ -20,44 +18,27 @@ final class MainMenuController: UIViewController {
     private var checkerMainImage: UIImage?
     private var checkerBackgroundImage: UIImage?
 
-    // MARK: - View & Model
     private var mainWeatherModel = MainWeatherModel()
     private let mainMenuView = MainMenuView(frame: UIScreen.main.bounds)
 
-    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(mainMenuView)
+        mainMenuView.setDefaultShadow()
         mainMenuView.weatherMenuView.reloadWeatherButtonAction(self, #selector(reloadWeatherButtonAction))
         mainMenuView.weatherMenuView.startAnimation()
         setupNavigationController()
-        addSubview()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         checkLoactionEnable()
     }
+
     private func setupNavigationController() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.backgroundColor = .white
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.CustomColor.dark]
         navigationItem.title = "Главная"
-    }
-    private func addSubview() {
-        view.addSubview(mainMenuView)
-        mainMenuView.setDefaultShadow()
-    }
-    private func requestDataChecker() {
-        guard let temperature = checkerTemperature else { return }
-        guard let mainImage = checkerMainImage else { return }
-        guard let backgroundImage = checkerBackgroundImage else { return }
-        mainMenuView.weatherMenuView.setupTemperatureLabel(value: temperature)
-        mainMenuView.weatherMenuView.setupMainImage(mainImage)
-        mainMenuView.weatherMenuView.setupBackgroundImage(backgroundImage)
-        mainMenuView.weatherMenuView.stopAnimation()
-        mainMenuView.weatherMenuView.presentWeatherElements()
-    }
-    @objc private func reloadWeatherButtonAction() {
-        checkLoactionEnable()
     }
 }
 
@@ -146,15 +127,23 @@ extension MainMenuController {
             }
         }
     }
+    private func requestDataChecker() {
+        guard let temperature = checkerTemperature else { return }
+        guard let mainImage = checkerMainImage else { return }
+        guard let backgroundImage = checkerBackgroundImage else { return }
+        mainMenuView.weatherMenuView.setupTemperatureLabel(value: temperature)
+        mainMenuView.weatherMenuView.setupMainImage(mainImage)
+        mainMenuView.weatherMenuView.setupBackgroundImage(backgroundImage)
+        mainMenuView.weatherMenuView.stopAnimation()
+        mainMenuView.weatherMenuView.presentWeatherElements()
+    }
 }
 
-// MARK: - Location Settings
 extension MainMenuController: CLLocationManagerDelegate {
     private func setupLocationManager() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
     }
-
     func checkLoactionEnable() {
         if CLLocationManager.locationServicesEnabled() {
             setupLocationManager()
@@ -165,7 +154,6 @@ extension MainMenuController: CLLocationManagerDelegate {
                                               systemWayUrl: "App-Prefs:root=LOCATION_SERVICES")
         }
     }
-
     func checkAutorization() {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedAlways, .authorizedWhenInUse:
@@ -188,7 +176,6 @@ extension MainMenuController: CLLocationManagerDelegate {
             break
         }
     }
-
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first?.coordinate {
             mainWeatherModel.setUserCoordinate(lat: "\(location.latitude)", lon: "\(location.longitude)")
@@ -199,8 +186,13 @@ extension MainMenuController: CLLocationManagerDelegate {
             locationManager.stopUpdatingLocation()
         }
     }
-
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         checkAutorization()
+    }
+}
+
+extension MainMenuController {
+    @objc private func reloadWeatherButtonAction() {
+        checkLoactionEnable()
     }
 }

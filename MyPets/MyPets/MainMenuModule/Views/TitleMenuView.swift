@@ -8,14 +8,6 @@
 import UIKit
 
 final class TitleMenuView: UIView {
-
-    // MARK: - LayoutSubviews
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        setupUI()
-    }
-
-    // MARK: - Properties
     private let backgroundImageView = UIImageView(image: UIImage(named: "mainMenuTitleViewImage"))
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -33,8 +25,11 @@ final class TitleMenuView: UIView {
     }()
 }
 
-// MARK: - Setup UI
 extension TitleMenuView {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setupUI()
+    }
     private func setupUI() {
         setSelfViewUI()
         setBackgroundImageViewConstraints()
