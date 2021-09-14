@@ -42,7 +42,6 @@ final class MainMenuController: UIViewController {
     }
 }
 
-// MARK: - Network Methods
 extension MainMenuController {
     private func getWeatherInformation(at url: URL?) {
         guard let url = url else { return }
