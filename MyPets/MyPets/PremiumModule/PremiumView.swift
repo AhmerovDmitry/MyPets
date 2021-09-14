@@ -8,20 +8,6 @@
 import UIKit
 
 final class PremiumView: UIView {
-
-    // MARK: - LayoutSubviews
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        setupUI()
-        self.setGradientEffect(self,
-                               colorOne: colorOne, colorTwo: colorTwo,
-                               startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 1))
-    }
-
-    // MARK: - Properties
-    private let colorOne = UIColor(red: 137 / 255, green: 46 / 255, blue: 223 / 255, alpha: 1)
-    private let colorTwo = UIColor(red: 212 / 255, green: 165 / 255, blue: 255 / 255, alpha: 1)
-
     var presentControllerCallBack: (() -> Void)?
     var dismissControllerCallBack: (() -> Void)?
     private var premiumText: [String]?
@@ -102,8 +88,17 @@ final class PremiumView: UIView {
     )
 }
 
-// MARK: - Setup UI
 extension PremiumView {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setupUI()
+        self.setGradientEffect(
+            self,
+            colorOne: UIColor.PurpleGradientColor.darkPurple,
+            colorTwo: UIColor.PurpleGradientColor.lightPurple,
+            startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 1)
+        )
+    }
     private func setupUI() {
         self.backgroundColor = .white
         setCloseButtonConstraints()
@@ -166,7 +161,6 @@ extension PremiumView {
     }
 }
 
-// MARK: - Actions
 extension PremiumView {
     @objc func closeController() {
         dismissControllerCallBack?()
@@ -174,9 +168,11 @@ extension PremiumView {
     @objc func closeControllerWithPurchase() {
         presentControllerCallBack?()
     }
+    func getPremiumContent(_ content: PremiumModelProtocol) {
+        premiumText = content.description
+    }
 }
 
-// MARK: - Delegate & DataSource
 extension PremiumView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return premiumText?.count ?? 0
@@ -196,13 +192,5 @@ extension PremiumView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let cellHeight = tableView.frame.size.height / 5
         return cellHeight
-    }
-}
-
-// MARK: - Public Methods
-extension PremiumView {
-    func getOnboardContent(_ content: Any) {
-        guard let content = content as? PremiumModel else { return }
-        premiumText = content.description
     }
 }

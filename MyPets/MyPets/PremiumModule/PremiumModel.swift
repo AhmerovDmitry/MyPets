@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct PremiumModel {
+protocol PremiumModelProtocol {
+    var description: [String] { get }
+}
+
+struct PremiumModel: PremiumModelProtocol {
     let description = [
         "Неограниченное количество питомцев",
         "В разработке",
@@ -18,6 +22,7 @@ struct PremiumModel {
 }
 
 /*
+----- ОСТАВИТЬ ДЛЯ ДАЛЬНЕЙШЕЙ РАЗРАБОТКИ -----
 "Неограниченное количество питомцев",
 "Календарь прививок, лечение и профилактика болезней",
 "Заболевания, назначения врача",

@@ -8,25 +8,23 @@
 import UIKit
 
 final class PremiumController: UIViewController {
-    // MARK: - Properties
     private let userDefaultsService: UserDefaultsServiceProtocol
-    private let premiumContent = PremiumModel()
-    private let premiumView = PremiumView(frame: UIScreen.main.bounds)
 
-    // MARK: - Lifecycle
+    private let premiumModel: PremiumModelProtocol
+    private let premiumView: PremiumView
+
     init(userDefaultsService: UserDefaultsServiceProtocol) {
         self.userDefaultsService = userDefaultsService
+        self.premiumModel = PremiumModel()
+        self.premiumView = PremiumView(frame: UIScreen.main.bounds)
         super.init(nibName: nil, bundle: nil)
     }
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func loadView() {
+        view = premiumView
         updateViewContent()
-        addSubview()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -41,13 +39,8 @@ final class PremiumController: UIViewController {
             self.userDefaultsService.setValue(false, forKey: .isAppPurchased)
         }
     }
-}
-// MARK: - Methods
-extension PremiumController {
+    
     private func updateViewContent() {
-        premiumView.getOnboardContent(premiumContent)
-    }
-    private func addSubview() {
-        view.addSubview(premiumView)
+        premiumView.getPremiumContent(premiumModel)
     }
 }
