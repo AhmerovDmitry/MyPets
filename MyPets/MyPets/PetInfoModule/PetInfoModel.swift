@@ -8,7 +8,6 @@
 import UIKit
 
 final class PetInfoModel {
-
     private let storageService: StorageServiceProtocol
     private(set) var objectForFilling: PetDTO
 
@@ -58,7 +57,6 @@ final class PetInfoModel {
     }
 }
 
-// MARK: - Работа с хранилищем
 extension PetInfoModel {
     func saveObject() {
         storageService.saveEntity(objectForFilling)
@@ -66,21 +64,18 @@ extension PetInfoModel {
             storageService.savePhoto(photoID: objectForFilling.identifier, photo: photo)
         }
     }
-
     func removeObject(at index: Int) {
         storageService.removeEntity(at: index)
         if objectForFilling.photo != nil {
             storageService.removePhoto(photoID: objectForFilling.identifier)
         }
     }
-
     func editedObject(at index: Int) {
         storageService.editingEntity(objectForFilling, at: index)
         if let photo = objectForFilling.photo {
             storageService.savePhoto(photoID: objectForFilling.identifier, photo: photo)
         }
     }
-
     func loadPhoto() -> UIImage? {
         return storageService.loadPhoto(photoID: objectForFilling.identifier)
     }

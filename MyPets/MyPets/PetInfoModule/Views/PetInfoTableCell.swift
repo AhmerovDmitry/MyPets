@@ -8,15 +8,6 @@
 import UIKit
 
 final class PetInfoTableCell: UITableViewCell {
-    // MARK: - Initialization & Lifecycle
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupUI()
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    // MARK: - Properties
     private let cellLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
@@ -33,8 +24,16 @@ final class PetInfoTableCell: UITableViewCell {
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupUI()
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
-// MARK: - Setup UI
+
 extension PetInfoTableCell {
     private func setupUI() {
         self.backgroundColor = .white
@@ -62,11 +61,7 @@ extension PetInfoTableCell {
         ])
     }
 }
-// MARK: - Public Methods
-/// Методы настройки ячейки
-/// Тайтл задается данными по умолчанию
-/// А плейсхолдер проверяет, что если значений нет, тогда используется имя по умолчанию, а если есть
-/// тогда устанавлвается заданная ранее информация
+
 extension PetInfoTableCell {
     func configureTitle(_ value: String?) {
         cellLabel.text = value

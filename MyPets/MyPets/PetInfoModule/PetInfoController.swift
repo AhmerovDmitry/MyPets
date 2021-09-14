@@ -12,27 +12,21 @@ protocol TransferPetInformationDelegate: AnyObject {
 }
 
 final class PetInfoController: UIViewController {
-
-    // MARK: - Properties
     weak var delegate: PetMenuControllerDelegate?
     private var petModel: PetInfoModel
     private var petInfoView: PetInfoView
     private var collectionCellIndex: Int?
     private var selectedTableCell: IndexPath?
 
-    // MARK: - Initialization
     init(storageService: StorageServiceProtocol, collectionCellIndex: Int?) {
         self.petModel = PetInfoModel(storageService: storageService, cellIndex: collectionCellIndex)
         self.petInfoView = PetInfoView(frame: UIScreen.main.bounds)
         self.collectionCellIndex = collectionCellIndex
         super.init(nibName: nil, bundle: nil)
     }
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -43,7 +37,7 @@ final class PetInfoController: UIViewController {
         petInfoView.tableViewDelegateAndDataSource(self)
     }
 }
-// MARK: - Methods
+
 extension PetInfoController {
     private func setupNavigationController() {
         navigationItem.hidesBackButton = true
@@ -64,7 +58,6 @@ extension PetInfoController {
         )
         navigationItem.leftBarButtonItem?.tintColor = UIColor.CustomColor.dark
     }
-
     /// Метод конфигурирования ячейки
     /// задается тайтл и плейсхолдер (все берется из модели)
     private func configureCell(_ cell: PetInfoTableCell, index: Int) {
@@ -83,7 +76,6 @@ extension PetInfoController {
         }
         petInfoView.setPetPhoto(petModel.loadPhoto())
     }
-
     /// Метод открытия контроллера ввода информации
     /// в него передается информация которую пользователь вводил или nil
     private func presentInputInfoController(index: Int) {
@@ -107,10 +99,8 @@ extension PetInfoController {
     }
 }
 
-// MARK: - Actions
 /// Сохранение / удаление модели
 extension PetInfoController {
-
     /// Переходим на предыдущий контроллер сохраняя модель в CoreData
     @objc private func popToViewControllerAndSaveEntity() {
         if !petModel.isObjectNil() {
@@ -123,7 +113,6 @@ extension PetInfoController {
         }
         navigationController?.popViewController(animated: true)
     }
-
     /// Загрузка фотографии из библиотеки
     @objc private func changePetPhoto() {
         let photoGallery = UIImagePickerController()
@@ -134,7 +123,6 @@ extension PetInfoController {
     }
 }
 
-// MARK: - Delegate & DataSource
 extension PetInfoController: TransferPetInformationDelegate {
     /// Метод получающий текст который вводит пользователь на экране ввода информации,
     /// после этого введенный текст передается в модель
@@ -149,7 +137,6 @@ extension PetInfoController: TransferPetInformationDelegate {
     }
 }
 
-// MARK: - Delegate и DataSource для коллекции
 extension PetInfoController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -180,7 +167,6 @@ extension PetInfoController: UICollectionViewDelegate, UICollectionViewDataSourc
     }
 }
 
-// MARK: - Delegate и DataSource для таблицы в которой заполняется информация о питомце
 extension PetInfoController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.bounds.height / CGFloat(petModel.menuTitles.count)
@@ -203,7 +189,6 @@ extension PetInfoController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-// MARK: - UIImagePickerControllerDelegate
 extension PetInfoController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {

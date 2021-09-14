@@ -8,15 +8,6 @@
 import UIKit
 
 final class PetInfoCell: UIView {
-    // MARK: - Initialization & Lifecycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupUI()
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    // MARK: - Properties
     private let petNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.CustomColor.dark
@@ -34,8 +25,16 @@ final class PetInfoCell: UIView {
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 1))
         return tableView
     }()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
-// MARK: - Setup UI
+
 extension PetInfoCell {
     private func setupUI() {
         self.layer.cornerRadius = UIView.basicCornerRadius
@@ -65,7 +64,7 @@ extension PetInfoCell {
         ])
     }
 }
-// MARK: - Public Methods
+
 extension PetInfoCell {
     /// Методы делегата и дата сорса, которые передаются в контроллер для работы с ними
     func tableViewDelegate<T: UITableViewDelegate>(_ target: T) {
