@@ -23,10 +23,9 @@ final class OnboardController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func loadView() {
+        view = onboardView
         updateViewContent()
-        addOnboardViewInHierarchy()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -44,8 +43,5 @@ final class OnboardController: UIViewController {
 extension OnboardController {
     private func updateViewContent() {
         onboardView.getOnboardContent(onboardModel)
-    }
-    private func addOnboardViewInHierarchy() {
-        view.addSubview(onboardView)
     }
 }

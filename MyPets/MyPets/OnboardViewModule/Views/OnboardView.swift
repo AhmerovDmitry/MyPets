@@ -120,6 +120,11 @@ extension OnboardView {
     @objc private func presentController(_ parent: UIViewController) {
         presentControllerCallBack?()
     }
+    func getOnboardContent(_ content: OnboardModelProtocol) {
+        pageControl.numberOfPages = content.description.count
+        onboardImage = content.imagesName
+        onboardDescription = content.description
+    }
 }
 
 extension OnboardView: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -137,13 +142,5 @@ extension OnboardView: UICollectionViewDelegate, UICollectionViewDataSource {
             description: onboardDescription?[indexPath.item] ?? ""
         )
         return cell
-    }
-}
-
-extension OnboardView {
-    func getOnboardContent(_ content: OnboardModelProtocol) {
-        pageControl.numberOfPages = content.description.count
-        onboardImage = content.imagesName
-        onboardDescription = content.description
     }
 }
