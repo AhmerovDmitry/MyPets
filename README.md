@@ -59,7 +59,7 @@
 ```
 Описание в процессе добавления
 ```
-- [ ] - Хотя бы один snapshot тест (разрешается использовать внешнюю библиотеку)
+- [X] - Хотя бы один snapshot тест (разрешается использовать внешнюю библиотеку)
 * Добавил snapshot тесты, специально "уронил" тест для наглядности
 
 <img width="300" alt="reference_screenshot" src="https://user-images.githubusercontent.com/62261655/133247591-af5ebea5-1ea2-4b6e-a211-5339cd1f0325.png"><img width="300" alt="failure_screenshot" src="https://user-images.githubusercontent.com/62261655/133247644-ae5ae734-7e4b-4ce9-b874-bf1d2b7b8791.png"><img width="300" alt="difference_screenshot" src="https://user-images.githubusercontent.com/62261655/133247692-c3e51f30-7cbf-4f03-80e0-e99376430b26.png">
