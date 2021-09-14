@@ -12,8 +12,6 @@ protocol PetMenuControllerDelegate: AnyObject {
 }
 
 final class PetMenuController: UIViewController {
-
-    // MARK: - Properties
     private let storageService: StorageServiceProtocol
     private let userDefaultsService: UserDefaultsServiceProtocol
 
@@ -23,18 +21,14 @@ final class PetMenuController: UIViewController {
 
     private var tappedCellIndex: Int?
 
-    // MARK: - Initialization
     init(storageService: StorageServiceProtocol, userDefaultsService: UserDefaultsServiceProtocol) {
         self.storageService = storageService
         self.userDefaultsService = userDefaultsService
         super.init(nibName: nil, bundle: nil)
     }
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         petCollectionView.collectionViewDelegate(self)
@@ -42,13 +36,12 @@ final class PetMenuController: UIViewController {
         setCallBacksTransfers()
         setupNavigationController()
     }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         addSubview()
     }
 }
-// MARK: - Methods
+
 extension PetMenuController {
     private func setCallBacksTransfers() {
         petMenuView.presentControllerCallBack = { [weak self] in
@@ -81,7 +74,7 @@ extension PetMenuController {
         }
     }
 }
-// MARK: - Actions
+
 extension PetMenuController {
     @objc private func presentController() {
         let controller = PetInfoController(storageService: storageService, collectionCellIndex: tappedCellIndex)
@@ -92,7 +85,7 @@ extension PetMenuController {
         navigationController?.pushViewController(controller, animated: true)
     }
 }
-// MARK: - Delegate & DataSource
+
 extension PetMenuController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -127,6 +120,7 @@ extension PetMenuController: UICollectionViewDelegate, UICollectionViewDataSourc
         return UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
     }
 }
+
 extension PetMenuController: PetMenuControllerDelegate {
     func reloadController() {
         self.petCollectionView.reloadCollectionView()

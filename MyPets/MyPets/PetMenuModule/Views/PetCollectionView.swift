@@ -8,15 +8,6 @@
 import UIKit
 
 final class PetCollectionView: UIView {
-    // MARK: - Initialization & Lifecycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupUI()
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    // MARK: - Properties
     let cellID = "PetCollectionCell"
     private lazy var petCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -28,9 +19,16 @@ final class PetCollectionView: UIView {
         collectionView.register(PetCollectionCell.self, forCellWithReuseIdentifier: cellID)
         return collectionView
     }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
-// MARK: - Setup UI
 extension PetCollectionView {
     private func setupUI() {
         self.backgroundColor = .white
@@ -48,7 +46,6 @@ extension PetCollectionView {
     }
 }
 
-// MARK: - Public Methods
 extension PetCollectionView {
     func collectionViewDelegate<T: UICollectionViewDelegate>(_ target: T) {
         petCollection.delegate = target

@@ -8,19 +8,6 @@
 import UIKit
 
 final class PetMenuView: UIView {
-    // MARK: - Initialization & Lifecycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupUI()
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        addPetButton.layer.cornerRadius = addPetButton.bounds.height / 2
-    }
-    // MARK: - Properties
     var presentControllerCallBack: (() -> Void)?
     private lazy var mainStackView: UIStackView = {
         let stackView = UIStackView()
@@ -65,6 +52,10 @@ final class PetMenuView: UIView {
 
 // MARK: - Setup UI
 extension PetMenuView {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setupUI()
+    }
     private func setupUI() {
         self.backgroundColor = .white
         setMainStackViewConstraints()
