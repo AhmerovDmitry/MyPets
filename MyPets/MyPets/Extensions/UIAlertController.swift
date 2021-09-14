@@ -8,7 +8,6 @@
 import UIKit
 
 extension UIAlertController {
-
     /// Алерт для отображения проблем с геолокацией
     /// - Parameters:
     ///   - target: Контроллер на котором показывается алерт
@@ -28,7 +27,6 @@ extension UIAlertController {
         alert.addAction(settingsAction)
         target.present(alert, animated: true, completion: nil)
     }
-
     /// Алерт для отображения сетевой ошибки
     /// - Parameters:
     ///   - target: Контроллер на котором показывается алерт
@@ -41,8 +39,6 @@ extension UIAlertController {
         alert.addAction(UIAlertAction(title: "Продолжить", style: .cancel, handler: nil))
         target.present(alert, animated: true, completion: completion)
     }
-
-
     /// Базовый алерт контроллер отображающий заголовок и сообщение
     /// Служит для базового предупреждения/оповещения пользователя
     /// - Parameters:
