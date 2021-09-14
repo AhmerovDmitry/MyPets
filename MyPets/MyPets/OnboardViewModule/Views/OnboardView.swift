@@ -141,8 +141,7 @@ extension OnboardView: UICollectionViewDelegate, UICollectionViewDataSource {
 }
 
 extension OnboardView {
-    func getOnboardContent(_ content: Any) {
-        guard let content = content as? OnboardModel else { return }
+    func getOnboardContent(_ content: OnboardModelProtocol) {
         pageControl.numberOfPages = content.description.count
         onboardImage = content.imagesName
         onboardDescription = content.description
