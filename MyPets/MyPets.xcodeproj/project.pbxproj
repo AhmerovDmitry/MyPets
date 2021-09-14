@@ -283,6 +283,7 @@
 		BC0D2A0126F00DEE00C3AF2D /* FixOrDelete */ = {
 			isa = PBXGroup;
 			children = (
+				BC413CC7253893C3002CDD19 /* LocationViewController */,
 				BC4CA474262436EF00C2033C /* UICollectionViewCell */,
 			);
 			path = FixOrDelete;
@@ -559,7 +560,6 @@
 				BC0D29E226EE9B9E00C3AF2D /* ProfileModule */,
 				BC0D29F926EFDEB000C3AF2D /* EntitysModule */,
 				BC9F269026BBCC7E000B854F /* Extensions */,
-				BC413CC7253893C3002CDD19 /* LocationViewController */,
 				BC413CC8253893D2002CDD19 /* ProfileViewController */,
 			);
 			path = MyPets;
@@ -658,7 +658,6 @@
 				TargetAttributes = {
 					BC33256326F0A9370060DCDD = {
 						CreatedOnToolsVersion = 12.5;
-						TestTargetID = BCB60FFE2530C82400C4FD2F;
 					};
 					BCB60FFE2530C82400C4FD2F = {
 						CreatedOnToolsVersion = 12.0;
@@ -879,9 +878,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ahmerovdmitry.MyPetsSnapshotTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MyPets;
 			};
 			name = Debug;
 		};
@@ -899,9 +898,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ahmerovdmitry.MyPetsSnapshotTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MyPets;
 			};
 			name = Release;
 		};
