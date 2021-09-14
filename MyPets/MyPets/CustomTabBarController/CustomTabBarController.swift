@@ -8,22 +8,17 @@
 import UIKit
 
 final class CustomTabBarController: UITabBarController {
-    
-    // MARK: - Services
     let storageService: StorageServiceProtocol
     let userDefaultsService: UserDefaultsServiceProtocol
 
-    // MARK: - Lifecycle
     init(storageService: StorageServiceProtocol, userDefaultsService: UserDefaultsServiceProtocol) {
         self.storageService = storageService
         self.userDefaultsService = userDefaultsService
         super.init(nibName: nil, bundle: nil)
     }
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Тут начинается загрузка данных из CoreData для ускорения обработки данных
@@ -37,7 +32,6 @@ final class CustomTabBarController: UITabBarController {
 // MARK: - Setup UI
 extension CustomTabBarController {
     private func setupControllers() {
-
         let mainVC = UINavigationController(rootViewController: MainMenuController())
         mainVC.tabBarItem.title = "Главная"
         mainVC.tabBarItem.image = UIImage(named: "generalIcon")
@@ -70,9 +64,7 @@ extension CustomTabBarController {
     }
 }
 
-// MARK: - Methods
 extension CustomTabBarController {
-    
     /// Метод показывающий преимум контроллер если покупка не совершена
     /// Возможно отключение показа контроллера нажатием на кнопку-заглушку "Купить Premium"
     private func presentPremium() {
