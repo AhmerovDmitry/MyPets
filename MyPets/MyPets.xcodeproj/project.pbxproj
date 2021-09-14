@@ -48,7 +48,6 @@
 		BC7EB66126C6A09400BE80AE /* PetInfoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB66026C6A09400BE80AE /* PetInfoCollectionCell.swift */; };
 		BC7EB66526C6AB1F00BE80AE /* PetInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB66426C6AB1F00BE80AE /* PetInfoCell.swift */; };
 		BC7EB66726C6CA9900BE80AE /* PetInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB66626C6CA9900BE80AE /* PetInfoModel.swift */; };
-		BC859AE125B383B000FDD33B /* AboutAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC859AE025B383B000FDD33B /* AboutAppController.swift */; };
 		BC8B6BA826F0ACEC009D9896 /* OnboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029826B9787D00CFD87E /* OnboardController.swift */; };
 		BC8B6BA926F0AD00009D9896 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91F2F32627423D006CCE3B /* UserDefaultsService.swift */; };
 		BC8B6BAA26F0AD09009D9896 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC16013726EB7A1A00666529 /* StorageService.swift */; };
@@ -95,7 +94,6 @@
 		BC8B6BD526F0AE7A009D9896 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073312534BA3800B2979F /* UIView.swift */; };
 		BC8B6BD626F0AE7C009D9896 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073242534A6F600B2979F /* UIButton.swift */; };
 		BC8B6BD726F0AE7E009D9896 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE5115425461A23002FB62E /* UIAlertController.swift */; };
-		BC8B6BD826F0AE81009D9896 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB3AA4325AF8CD000289B7A /* UIViewController.swift */; };
 		BC8B6BD926F0AE85009D9896 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29F526EFC1DF00C3AF2D /* UITableViewCell.swift */; };
 		BC8B6BDA26F0AE8B009D9896 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D2A0326F00F5800C3AF2D /* LocationModel.swift */; };
 		BC8B6BDB26F0AE8E009D9896 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D2A0526F00F6300C3AF2D /* LocationView.swift */; };
@@ -103,15 +101,8 @@
 		BC8B6BDD26F0AE94009D9896 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D2A0726F00F6F00C3AF2D /* LocationController.swift */; };
 		BC8B6BDE26F0AE99009D9896 /* LocationViewDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7396492542084D00A89858 /* LocationViewDelegate + DataSource.swift */; };
 		BC8B6BDF26F0AE9C009D9896 /* Map Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF527253F887E00BCBBFB /* Map Settings.swift */; };
-		BC8B6BE026F0AEA3009D9896 /* AboutAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC859AE025B383B000FDD33B /* AboutAppController.swift */; };
-		BC8B6BE126F0AEA8009D9896 /* SupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8CDFFE25C6BB85005EEFEB /* SupportViewController.swift */; };
-		BC8B6BE226F0AEAA009D9896 /* SupportVCDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8CE00525C6CBC2005EEFEB /* SupportVCDelegate + DataSource.swift */; };
-		BC8B6BE326F0AEAD009D9896 /* SupportVC - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8CE00825C6CBF6005EEFEB /* SupportVC - Extension.swift */; };
 		BC8C64F326BF37EF00CA7A90 /* PremiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8C64F226BF37EF00CA7A90 /* PremiumView.swift */; };
 		BC8C64F526BF382A00CA7A90 /* PremiumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8C64F426BF382A00CA7A90 /* PremiumModel.swift */; };
-		BC8CDFFF25C6BB85005EEFEB /* SupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8CDFFE25C6BB85005EEFEB /* SupportViewController.swift */; };
-		BC8CE00625C6CBC2005EEFEB /* SupportVCDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8CE00525C6CBC2005EEFEB /* SupportVCDelegate + DataSource.swift */; };
-		BC8CE00925C6CBF6005EEFEB /* SupportVC - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8CE00825C6CBF6005EEFEB /* SupportVC - Extension.swift */; };
 		BC8E373E26E6B0FB00F3B6A9 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8E373D26E6B0FA00F3B6A9 /* NetworkService.swift */; };
 		BC91F2F42627423D006CCE3B /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91F2F32627423D006CCE3B /* UserDefaultsService.swift */; };
 		BC9402E926CA62840028E5AC /* PetInformation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BC9402E726CA62840028E5AC /* PetInformation.xcdatamodeld */; };
@@ -119,7 +110,6 @@
 		BC9402FC26CA7BFF0028E5AC /* InputInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9402FB26CA7BFF0028E5AC /* InputInfoController.swift */; };
 		BC9F268F26BBCC5D000B854F /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9F268E26BBCC5D000B854F /* UIColor.swift */; };
 		BCA7B29326ED0D340050BD24 /* PremiumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8C64F026BF379700CA7A90 /* PremiumController.swift */; };
-		BCB3AA4425AF8CD000289B7A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB3AA4325AF8CD000289B7A /* UIViewController.swift */; };
 		BCB5E1CC26F0BA89002F3E95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB610022530C82400C4FD2F /* AppDelegate.swift */; };
 		BCB5E1CD26F0BAAA002F3E95 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8E373D26E6B0FA00F3B6A9 /* NetworkService.swift */; };
 		BCB610032530C82400C4FD2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB610022530C82400C4FD2F /* AppDelegate.swift */; };
@@ -187,20 +177,15 @@
 		BC7EB66026C6A09400BE80AE /* PetInfoCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoCollectionCell.swift; sourceTree = "<group>"; };
 		BC7EB66426C6AB1F00BE80AE /* PetInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoCell.swift; sourceTree = "<group>"; };
 		BC7EB66626C6CA9900BE80AE /* PetInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoModel.swift; sourceTree = "<group>"; };
-		BC859AE025B383B000FDD33B /* AboutAppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppController.swift; sourceTree = "<group>"; };
 		BC8C64F026BF379700CA7A90 /* PremiumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumController.swift; sourceTree = "<group>"; };
 		BC8C64F226BF37EF00CA7A90 /* PremiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumView.swift; sourceTree = "<group>"; };
 		BC8C64F426BF382A00CA7A90 /* PremiumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumModel.swift; sourceTree = "<group>"; };
-		BC8CDFFE25C6BB85005EEFEB /* SupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportViewController.swift; sourceTree = "<group>"; };
-		BC8CE00525C6CBC2005EEFEB /* SupportVCDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SupportVCDelegate + DataSource.swift"; sourceTree = "<group>"; };
-		BC8CE00825C6CBF6005EEFEB /* SupportVC - Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SupportVC - Extension.swift"; sourceTree = "<group>"; };
 		BC8E373D26E6B0FA00F3B6A9 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		BC91F2F32627423D006CCE3B /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		BC9402E826CA62840028E5AC /* PetInformation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PetInformation.xcdatamodel; sourceTree = "<group>"; };
 		BC9402F826CA6AB70028E5AC /* PetInfoTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoTableCell.swift; sourceTree = "<group>"; };
 		BC9402FB26CA7BFF0028E5AC /* InputInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputInfoController.swift; sourceTree = "<group>"; };
 		BC9F268E26BBCC5D000B854F /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		BCB3AA4325AF8CD000289B7A /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		BCB60FFF2530C82400C4FD2F /* MyPets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCB610022530C82400C4FD2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCB6100B2530C82700C4FD2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -357,15 +342,6 @@
 			path = LocationViewController;
 			sourceTree = "<group>";
 		};
-		BC413CC8253893D2002CDD19 /* ProfileViewController */ = {
-			isa = PBXGroup;
-			children = (
-				BC8CDFFD25C6BB5D005EEFEB /* SupportViewController */,
-				BC859ADF25B3838600FDD33B /* AboutAppController */,
-			);
-			path = ProfileViewController;
-			sourceTree = "<group>";
-		};
 		BC413CD62538ABBB002CDD19 /* CustomTabBarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -438,48 +414,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		BC859ADF25B3838600FDD33B /* AboutAppController */ = {
-			isa = PBXGroup;
-			children = (
-				BC859AE025B383B000FDD33B /* AboutAppController.swift */,
-			);
-			path = AboutAppController;
-			sourceTree = "<group>";
-		};
-		BC8CDFFD25C6BB5D005EEFEB /* SupportViewController */ = {
-			isa = PBXGroup;
-			children = (
-				BC8CE00225C6CB67005EEFEB /* UIViewController */,
-				BC8CE00325C6CB73005EEFEB /* Delegate + DataSource */,
-				BC8CE00425C6CB84005EEFEB /* Extension */,
-			);
-			path = SupportViewController;
-			sourceTree = "<group>";
-		};
-		BC8CE00225C6CB67005EEFEB /* UIViewController */ = {
-			isa = PBXGroup;
-			children = (
-				BC8CDFFE25C6BB85005EEFEB /* SupportViewController.swift */,
-			);
-			path = UIViewController;
-			sourceTree = "<group>";
-		};
-		BC8CE00325C6CB73005EEFEB /* Delegate + DataSource */ = {
-			isa = PBXGroup;
-			children = (
-				BC8CE00525C6CBC2005EEFEB /* SupportVCDelegate + DataSource.swift */,
-			);
-			path = "Delegate + DataSource";
-			sourceTree = "<group>";
-		};
-		BC8CE00425C6CB84005EEFEB /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				BC8CE00825C6CBF6005EEFEB /* SupportVC - Extension.swift */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
 		BC8E373C26E6B0CD00F3B6A9 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -519,7 +453,6 @@
 				BC7073242534A6F600B2979F /* UIButton.swift */,
 				BCE5115425461A23002FB62E /* UIAlertController.swift */,
 				BC9F268E26BBCC5D000B854F /* UIColor.swift */,
-				BCB3AA4325AF8CD000289B7A /* UIViewController.swift */,
 				BC0D29F526EFC1DF00C3AF2D /* UITableViewCell.swift */,
 			);
 			path = Extensions;
@@ -560,7 +493,6 @@
 				BC0D29E226EE9B9E00C3AF2D /* ProfileModule */,
 				BC0D29F926EFDEB000C3AF2D /* EntitysModule */,
 				BC9F269026BBCC7E000B854F /* Extensions */,
-				BC413CC8253893D2002CDD19 /* ProfileViewController */,
 			);
 			path = MyPets;
 			sourceTree = "<group>";
@@ -711,12 +643,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC8B6BCD26F0AE60009D9896 /* ProfileModel.swift in Sources */,
-				BC8B6BE026F0AEA3009D9896 /* AboutAppController.swift in Sources */,
 				BC8B6BAC26F0AD2B009D9896 /* OMPetInformation+CoreDataProperties.swift in Sources */,
 				BC8B6BDB26F0AE8E009D9896 /* LocationView.swift in Sources */,
 				BC8B6BB426F0ADB3009D9896 /* UIColor.swift in Sources */,
-				BC8B6BE126F0AEA8009D9896 /* SupportViewController.swift in Sources */,
-				BC8B6BD826F0AE81009D9896 /* UIViewController.swift in Sources */,
 				BC8B6BB626F0ADF3009D9896 /* MainMenuView.swift in Sources */,
 				BC8B6BB026F0AD75009D9896 /* OnboardModel.swift in Sources */,
 				BC8B6BBA26F0ADFC009D9896 /* Weather.swift in Sources */,
@@ -734,7 +663,6 @@
 				BC8B6BAB26F0AD29009D9896 /* OMPetInformation+CoreDataClass.swift in Sources */,
 				BC8B6BB826F0ADF7009D9896 /* MainMenuCollectionCell.swift in Sources */,
 				BC8B6BD326F0AE74009D9896 /* EntitysView.swift in Sources */,
-				BC8B6BE326F0AEAD009D9896 /* SupportVC - Extension.swift in Sources */,
 				BC8B6BC326F0AE40009D9896 /* PetCollectionCell.swift in Sources */,
 				BC8B6BBB26F0ADFF009D9896 /* MainWeatherModel.swift in Sources */,
 				BC33256726F0A9370060DCDD /* MyPetsSnapshotTests.swift in Sources */,
@@ -756,7 +684,6 @@
 				BC8B6BC126F0AE3C009D9896 /* PetMenuView.swift in Sources */,
 				BC8B6BC426F0AE42009D9896 /* PetMenuController.swift in Sources */,
 				BC8B6BD626F0AE7C009D9896 /* UIButton.swift in Sources */,
-				BC8B6BE226F0AEAA009D9896 /* SupportVCDelegate + DataSource.swift in Sources */,
 				BC8B6BAE26F0AD3D009D9896 /* PetDTO.swift in Sources */,
 				BCB5E1CD26F0BAAA002F3E95 /* NetworkService.swift in Sources */,
 				BC8B6BCB26F0AE57009D9896 /* InputInfoView.swift in Sources */,
@@ -784,7 +711,6 @@
 				BCA7B29326ED0D340050BD24 /* PremiumController.swift in Sources */,
 				BC413CD42538A97F002CDD19 /* CustomTabBarController.swift in Sources */,
 				BC0D29E126EE9B9100C3AF2D /* ProfileController.swift in Sources */,
-				BC8CE00625C6CBC2005EEFEB /* SupportVCDelegate + DataSource.swift in Sources */,
 				BC7EB66526C6AB1F00BE80AE /* PetInfoCell.swift in Sources */,
 				BC7EB66726C6CA9900BE80AE /* PetInfoModel.swift in Sources */,
 				BC16018326ECE17500666529 /* OMPetInformation+CoreDataClass.swift in Sources */,
@@ -798,7 +724,6 @@
 				BCDBF528253F887E00BCBBFB /* Map Settings.swift in Sources */,
 				BC16018426ECE17500666529 /* OMPetInformation+CoreDataProperties.swift in Sources */,
 				BC9402FC26CA7BFF0028E5AC /* InputInfoController.swift in Sources */,
-				BC8CDFFF25C6BB85005EEFEB /* SupportViewController.swift in Sources */,
 				BC16013826EB7A1A00666529 /* StorageService.swift in Sources */,
 				BC13029D26B9878B00CFD87E /* OnboardCollectionCell.swift in Sources */,
 				BC38543D26C5ABCF00C2F14E /* PetMenuView.swift in Sources */,
@@ -808,7 +733,6 @@
 				BC13029726B9786000CFD87E /* OnboardView.swift in Sources */,
 				BC91F2F42627423D006CCE3B /* UserDefaultsService.swift in Sources */,
 				BC52FFA026D91B9D00A694CB /* WeatherMenuView.swift in Sources */,
-				BC8CE00925C6CBF6005EEFEB /* SupportVC - Extension.swift in Sources */,
 				BC0D29F226EFA33D00C3AF2D /* SystemView.swift in Sources */,
 				BC9402E926CA62840028E5AC /* PetInformation.xcdatamodeld in Sources */,
 				BC0D29E626EE9D1700C3AF2D /* ProfileModel.swift in Sources */,
@@ -828,13 +752,11 @@
 				BCDAEB6E26CFBD990099CF13 /* InputInfoView.swift in Sources */,
 				BC13029926B9787D00CFD87E /* OnboardController.swift in Sources */,
 				BC0D29F026EF7F8F00C3AF2D /* EntitysView.swift in Sources */,
-				BC859AE125B383B000FDD33B /* AboutAppController.swift in Sources */,
 				BC8C64F526BF382A00CA7A90 /* PremiumModel.swift in Sources */,
 				BC7EB66126C6A09400BE80AE /* PetInfoCollectionCell.swift in Sources */,
 				BC9F268F26BBCC5D000B854F /* UIColor.swift in Sources */,
 				BC8E373E26E6B0FB00F3B6A9 /* NetworkService.swift in Sources */,
 				BCB610032530C82400C4FD2F /* AppDelegate.swift in Sources */,
-				BCB3AA4425AF8CD000289B7A /* UIViewController.swift in Sources */,
 				BC0D2A0826F00F6F00C3AF2D /* LocationController.swift in Sources */,
 				BC8C64F326BF37EF00CA7A90 /* PremiumView.swift in Sources */,
 				BC0D29F426EFA38500C3AF2D /* SystemModel.swift in Sources */,
