@@ -41,4 +41,21 @@ extension UIAlertController {
         alert.addAction(UIAlertAction(title: "Продолжить", style: .cancel, handler: nil))
         target.present(alert, animated: true, completion: completion)
     }
+
+
+    /// Базовый алерт контроллер отображающий заголовок и сообщение
+    /// Служит для базового предупреждения/оповещения пользователя
+    /// - Parameters:
+    ///   - target: Контроллер на котором показывается алерт
+    ///   - title: Заголовок
+    ///   - message: Сообщение в теле алерта
+    ///   - style: Стиль алерт контроллера
+    static func presentAlertWithBasicType(_ target: UIViewController,
+                                          title: String?, message: String?,
+                                          style: UIAlertController.Style) {
+        let alert = UIAlertController(title: title, message: message,
+                                      preferredStyle: style)
+        alert.addAction(UIAlertAction(title: "Продолжить", style: .cancel, handler: nil))
+        target.present(alert, animated: true, completion: nil)
+    }
 }
