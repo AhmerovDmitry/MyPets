@@ -50,7 +50,6 @@ final class StorageService: CoreDataLoadingServiceProtocol {
 
 // MARK: - Сохранение / загрузка фотографии
 extension StorageService: FileManagerServiceProtocol {
-
     /// Метод сохраняющий фотографию на устройстве
     /// - Parameters:
     ///   - photoID: Индекс сохраняемой фотографии
@@ -78,7 +77,6 @@ extension StorageService: FileManagerServiceProtocol {
             print("error saving file with error", error)
         }
     }
-
     /// Метод загружающий фотографию из директории устройства
     /// - Parameter photoID: Индекс загружаемой фотографии
     /// - Returns: Загружаемая фотография или nil
@@ -93,8 +91,6 @@ extension StorageService: FileManagerServiceProtocol {
         }
         return nil
     }
-
-
     /// Метод удаляющий фотографию из директории устройства по индексу
     /// - Parameter photoID: Индекс удаляемой фотографии
     func removePhoto(photoID: String) {
@@ -115,7 +111,6 @@ extension StorageService: FileManagerServiceProtocol {
 
 // MARK: - Загрузка объектов
 extension StorageService {
-
     /// Загрузка всех объектов из CoreData
     /// происходит в CustomTabBarController
     func loadEntitys() {
@@ -133,7 +128,6 @@ extension StorageService {
 
 // MARK: - Сохранение объекта
 extension StorageService: CoreDataSavingServiceProtocol {
-
     /// Сохранение объекта в CoreData
     /// - Parameter entity: Сохраняемый объект
     func saveEntity(_ entity: PetDTO) {
@@ -148,7 +142,6 @@ extension StorageService: CoreDataSavingServiceProtocol {
 
 // MARK: - Редактирование / удаление объекта
 extension StorageService: CoreDataEditingServiceProtocol {
-
     /// Редактирование объекта по индексу
     /// - Parameters:
     ///   - entity: Редактируемый объект
@@ -159,7 +152,6 @@ extension StorageService: CoreDataEditingServiceProtocol {
         saveContext(context)
         loadEntitys()
     }
-
     /// Удаление объекта по индексу
     /// - Parameter index: Индекс по которому удаляется объект
     func removeEntity(at index: Int) {
@@ -172,7 +164,6 @@ extension StorageService: CoreDataEditingServiceProtocol {
 
 // MARK: - Сохранение контекста
 extension StorageService: SaveContextProtocol {
-
     /// Сохранение контекста для удобства
     /// - Parameter context: Контекст для сохранения
     fileprivate func saveContext(_ context: NSManagedObjectContext) {
@@ -191,6 +182,7 @@ extension StorageService: SaveContextProtocol {
 // MARK: - Создание уникального идентификатора
 extension StorageService: ObjectIdentifierProtocol {
     func createIdentifier() -> String {
-        return UUID().uuidString
+        let uuid = UUID().uuidString
+        return uuid
     }
 }
