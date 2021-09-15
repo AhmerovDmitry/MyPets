@@ -13,9 +13,11 @@ final class InputInfoController: UIViewController {
 
     weak var delegate: TransferPetInformationDelegate?
 
+    override func loadView() {
+        view = inputInfoView
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        addSubview()
         observerMethods()
         callBacksMethods()
         inputInfoView.setTextFieldDelegate(self)
@@ -27,9 +29,6 @@ final class InputInfoController: UIViewController {
 }
 
 extension InputInfoController {
-    private func addSubview() {
-        view.addSubview(inputInfoView)
-    }
     private func callBacksMethods() {
         inputInfoView.dismissControllerCallBack = { [weak self] in
             self?.dismiss(animated: true, completion: nil)

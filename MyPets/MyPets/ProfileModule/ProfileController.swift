@@ -35,10 +35,11 @@ final class ProfileController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    override func loadView() {
+        view = profileView
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .lightGray
-        view.addSubview(profileView)
         setupNavigationController()
         profileView.tableViewDelegateAndDataSource(self)
         profileView.setTableViewID(profileTableViewCellID)

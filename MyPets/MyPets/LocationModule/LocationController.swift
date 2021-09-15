@@ -25,6 +25,9 @@ final class LocationController: UIViewController {
     }
     override func loadView() {
         view = locationView
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
         locationManager.delegate = self
         locationView.collectionViewDelegateAndDataSource(self)
         locationView.setCollectionViewID(placemarkCollectionCellID)

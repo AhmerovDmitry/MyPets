@@ -25,6 +25,9 @@ final class OnboardController: UIViewController {
     }
     override func loadView() {
         view = onboardView
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         updateViewContent()
     }
     override func viewDidAppear(_ animated: Bool) {

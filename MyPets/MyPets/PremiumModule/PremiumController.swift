@@ -24,6 +24,9 @@ final class PremiumController: UIViewController {
     }
     override func loadView() {
         view = premiumView
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         updateViewContent()
     }
     override func viewDidAppear(_ animated: Bool) {
