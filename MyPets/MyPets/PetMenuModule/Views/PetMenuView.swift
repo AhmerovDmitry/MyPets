@@ -42,12 +42,14 @@ final class PetMenuView: UIView {
         label.numberOfLines = 2
         return label
     }()
-    private let addPetButton = UIButton.createStandartButton(
-        title: "Добавить питомца",
-        backgroundColor: UIColor.CustomColor.purple,
-        action: #selector(presentController),
-        target: self
-    )
+    private let addPetButton = TypicalProjectButtonBuilder()
+        .with(title: "Добавить питомца")
+        .with(titleColor: .white)
+        .with(font: UIFont.systemFont(ofSize: 17, weight: .regular))
+        .with(backgroundColor: UIColor.CustomColor.purple)
+        .with(adjustsFontSizeToFitWidth: true)
+        .with(self, action: #selector(presentController))
+        .build()
 }
 
 // MARK: - Setup UI
@@ -84,6 +86,7 @@ extension PetMenuView {
     private func setAddPetButtonConstraints() {
         self.addSubview(addPetButton)
         addPetButton.translatesAutoresizingMaskIntoConstraints = false
+        addPetButton.layer.cornerRadius = addPetButton.bounds.height / 2
         NSLayoutConstraint.activate([
             addPetButton.topAnchor.constraint(equalTo: self.centerYAnchor, constant: 64),
             addPetButton.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.06),

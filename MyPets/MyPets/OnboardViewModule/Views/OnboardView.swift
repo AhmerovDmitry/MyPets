@@ -22,9 +22,16 @@ final class OnboardView: UIView {
         }
         return pageControl
     }()
-    private let doneButton = UIButton.createStandartButton(
-        title: "Далее", backgroundColor: .white, action: #selector(nextDescriptionView), target: self
-    )
+    private var doneButton = TypicalProjectButtonBuilder()
+        .with(title: "Далее")
+        .with(titleColor: UIColor.CustomColor.purple)
+        .with(font: UIFont.systemFont(ofSize: 17, weight: .regular))
+        .with(borderWidth: 1)
+        .with(borderColor: UIColor.CustomColor.purple.cgColor)
+        .with(backgroundColor: .white)
+        .with(adjustsFontSizeToFitWidth: true)
+        .with(self, action: #selector(nextDescriptionView))
+        .build()
     private let skipButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Пропустить", for: .normal)
@@ -85,6 +92,7 @@ extension OnboardView {
     private func setDoneButtonConstraints() {
         self.addSubview(doneButton)
         doneButton.translatesAutoresizingMaskIntoConstraints = false
+        doneButton.layer.cornerRadius = doneButton.bounds.height / 2
         NSLayoutConstraint.activate([
             doneButton.topAnchor.constraint(equalTo: pageControl.bottomAnchor, constant: 32),
             doneButton.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.06),
@@ -109,13 +117,20 @@ extension OnboardView {
         pageControl.currentPage = nextIndex
         onboardCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         if nextIndex == (onboardImage?.count ?? 0) - 1 {
+
             // Кнопка изменяется на последнем слайде
-            doneButton.removeTarget(nil, action: nil, for: .allEvents)
-            doneButton.setTitle("Приступим!", for: .normal)
-            doneButton.backgroundColor = UIColor.CustomColor.purple
-            doneButton.setTitleColor(.white, for: .normal)
-            doneButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
+
+            let newDoneButton = TypicalProjectButtonBuilder()
+                .with(title: "Приступим!")
+                .with(titleColor: .white)
+                .with(font: UIFont.systemFont(ofSize: 17, weight: .regular))
+                .with(backgroundColor: UIColor.CustomColor.purple)
+                .with(adjustsFontSizeToFitWidth: true)
+                .with(self, action: #selector(presentController))
+                .build()
+            doneButton = newDoneButton
             skipButton.isHidden = true
+            layoutSubviews()
         }
     }
     @objc private func presentController(_ parent: UIViewController) {

@@ -83,9 +83,14 @@ final class PremiumView: UIView {
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
-    private let buyButton = UIButton.createStandartButton(
-        title: "Получить Premium", backgroundColor: .white, action: #selector(closeControllerWithPurchase), target: self
-    )
+    private let buyButton = TypicalProjectButtonBuilder()
+        .with(title: "Получить Premium")
+        .with(titleColor: UIColor.CustomColor.purple)
+        .with(font: UIFont.systemFont(ofSize: 17, weight: .regular))
+        .with(backgroundColor: .white)
+        .with(adjustsFontSizeToFitWidth: true)
+        .with(self, action: #selector(closeControllerWithPurchase))
+        .build()
 }
 
 extension PremiumView {
@@ -152,6 +157,7 @@ extension PremiumView {
     private func setBuyButtonConstraints() {
         self.addSubview(buyButton)
         buyButton.translatesAutoresizingMaskIntoConstraints = false
+        buyButton.layer.cornerRadius = buyButton.bounds.height / 2
         NSLayoutConstraint.activate([
             buyButton.topAnchor.constraint(equalTo: mainStackView.bottomAnchor, constant: 32),
             buyButton.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.06),
