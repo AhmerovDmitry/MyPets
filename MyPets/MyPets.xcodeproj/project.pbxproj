@@ -22,6 +22,7 @@
 		BC0D2A0626F00F6300C3AF2D /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D2A0526F00F6300C3AF2D /* LocationView.swift */; };
 		BC0D2A0826F00F6F00C3AF2D /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D2A0726F00F6F00C3AF2D /* LocationController.swift */; };
 		BC0F3D7D26F3871F0069ADA1 /* PetPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0F3D7C26F3871F0069ADA1 /* PetPhotoView.swift */; };
+		BC0F3D8526F396E20069ADA1 /* MyPetsUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0F3D8426F396E20069ADA1 /* MyPetsUnitTests.swift */; };
 		BC13029726B9786000CFD87E /* OnboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029626B9785F00CFD87E /* OnboardView.swift */; };
 		BC13029926B9787D00CFD87E /* OnboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029826B9787D00CFD87E /* OnboardController.swift */; };
 		BC13029B26B978A000CFD87E /* OnboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029A26B978A000CFD87E /* OnboardModel.swift */; };
@@ -119,6 +120,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		BC0F3D8726F396E20069ADA1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCB60FF72530C82400C4FD2F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BCB60FFE2530C82400C4FD2F;
+			remoteInfo = MyPets;
+		};
 		BCFECA5226F2327700286EF6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BCB60FF72530C82400C4FD2F /* Project object */;
@@ -144,6 +152,9 @@
 		BC0D2A0526F00F6300C3AF2D /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 		BC0D2A0726F00F6F00C3AF2D /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		BC0F3D7C26F3871F0069ADA1 /* PetPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetPhotoView.swift; sourceTree = "<group>"; };
+		BC0F3D8226F396E20069ADA1 /* MyPetsUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyPetsUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC0F3D8426F396E20069ADA1 /* MyPetsUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPetsUnitTests.swift; sourceTree = "<group>"; };
+		BC0F3D8626F396E20069ADA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC13029626B9785F00CFD87E /* OnboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardView.swift; sourceTree = "<group>"; };
 		BC13029826B9787D00CFD87E /* OnboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardController.swift; sourceTree = "<group>"; };
 		BC13029A26B978A000CFD87E /* OnboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardModel.swift; sourceTree = "<group>"; };
@@ -194,6 +205,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		BC0F3D7F26F396E20069ADA1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BCB60FFC2530C82400C4FD2F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -258,6 +276,15 @@
 				BC0D2A0726F00F6F00C3AF2D /* LocationController.swift */,
 			);
 			path = LocationModule;
+			sourceTree = "<group>";
+		};
+		BC0F3D8326F396E20069ADA1 /* MyPetsUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				BC0F3D8426F396E20069ADA1 /* MyPetsUnitTests.swift */,
+				BC0F3D8626F396E20069ADA1 /* Info.plist */,
+			);
+			path = MyPetsUnitTests;
 			sourceTree = "<group>";
 		};
 		BC33255F26F0A0350060DCDD /* Views */ = {
@@ -397,6 +424,7 @@
 				BCB610012530C82400C4FD2F /* MyPets */,
 				BCB610182530C87800C4FD2F /* Assets + LS + Info.plist */,
 				BCFECA4E26F2327600286EF6 /* MyPetsSnapshotTests */,
+				BC0F3D8326F396E20069ADA1 /* MyPetsUnitTests */,
 				BCB610002530C82400C4FD2F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -406,6 +434,7 @@
 			children = (
 				BCB60FFF2530C82400C4FD2F /* MyPets.app */,
 				BCFECA4D26F2327600286EF6 /* MyPetsSnapshotTests.xctest */,
+				BC0F3D8226F396E20069ADA1 /* MyPetsUnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -499,6 +528,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		BC0F3D8126F396E20069ADA1 /* MyPetsUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC0F3D8926F396E20069ADA1 /* Build configuration list for PBXNativeTarget "MyPetsUnitTests" */;
+			buildPhases = (
+				BC0F3D7E26F396E20069ADA1 /* Sources */,
+				BC0F3D7F26F396E20069ADA1 /* Frameworks */,
+				BC0F3D8026F396E20069ADA1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BC0F3D8826F396E20069ADA1 /* PBXTargetDependency */,
+			);
+			name = MyPetsUnitTests;
+			productName = MyPetsUnitTests;
+			productReference = BC0F3D8226F396E20069ADA1 /* MyPetsUnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		BCB60FFE2530C82400C4FD2F /* MyPets */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BCB610132530C82700C4FD2F /* Build configuration list for PBXNativeTarget "MyPets" */;
@@ -548,6 +595,9 @@
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
+					BC0F3D8126F396E20069ADA1 = {
+						CreatedOnToolsVersion = 12.5;
+					};
 					BCB60FFE2530C82400C4FD2F = {
 						CreatedOnToolsVersion = 12.0;
 					};
@@ -574,11 +624,19 @@
 			targets = (
 				BCB60FFE2530C82400C4FD2F /* MyPets */,
 				BCFECA4C26F2327600286EF6 /* MyPetsSnapshotTests */,
+				BC0F3D8126F396E20069ADA1 /* MyPetsUnitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		BC0F3D8026F396E20069ADA1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BCB60FFD2530C82400C4FD2F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -598,6 +656,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		BC0F3D7E26F396E20069ADA1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC0F3D8526F396E20069ADA1 /* MyPetsUnitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BCB60FFB2530C82400C4FD2F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -721,6 +787,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		BC0F3D8826F396E20069ADA1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BCB60FFE2530C82400C4FD2F /* MyPets */;
+			targetProxy = BC0F3D8726F396E20069ADA1 /* PBXContainerItemProxy */;
+		};
 		BCFECA5326F2327700286EF6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BCB60FFE2530C82400C4FD2F /* MyPets */;
@@ -740,6 +811,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		BC0F3D8A26F396E20069ADA1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7JDNVBEZLP;
+				INFOPLIST_FILE = MyPetsUnitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ahmerovdmitry.MyPetsUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BC0F3D8B26F396E20069ADA1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7JDNVBEZLP;
+				INFOPLIST_FILE = MyPetsUnitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ahmerovdmitry.MyPetsUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		BCB610112530C82700C4FD2F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -942,6 +1051,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BC0F3D8926F396E20069ADA1 /* Build configuration list for PBXNativeTarget "MyPetsUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC0F3D8A26F396E20069ADA1 /* Debug */,
+				BC0F3D8B26F396E20069ADA1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BCB60FFA2530C82400C4FD2F /* Build configuration list for PBXProject "MyPets" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
