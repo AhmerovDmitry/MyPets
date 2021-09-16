@@ -34,7 +34,6 @@
 		BC38543B26C5AB4700C2F14E /* PetMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC38543A26C5AB4700C2F14E /* PetMenuController.swift */; };
 		BC38543D26C5ABCF00C2F14E /* PetMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC38543C26C5ABCF00C2F14E /* PetMenuView.swift */; };
 		BC413CD42538A97F002CDD19 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC413CD32538A97F002CDD19 /* CustomTabBarController.swift */; };
-		BC4CA47D262436EF00C2033C /* BottomMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA476262436EF00C2033C /* BottomMenuCell.swift */; };
 		BC52FFA026D91B9D00A694CB /* WeatherMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC52FF9F26D91B9D00A694CB /* WeatherMenuView.swift */; };
 		BC7073252534A6F600B2979F /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073242534A6F600B2979F /* UIButton.swift */; };
 		BC7073322534BA3800B2979F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073312534BA3800B2979F /* UIView.swift */; };
@@ -157,7 +156,6 @@
 		BC38543A26C5AB4700C2F14E /* PetMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetMenuController.swift; sourceTree = "<group>"; };
 		BC38543C26C5ABCF00C2F14E /* PetMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetMenuView.swift; sourceTree = "<group>"; };
 		BC413CD32538A97F002CDD19 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
-		BC4CA476262436EF00C2033C /* BottomMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomMenuCell.swift; sourceTree = "<group>"; };
 		BC52FF9F26D91B9D00A694CB /* WeatherMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMenuView.swift; sourceTree = "<group>"; };
 		BC7073242534A6F600B2979F /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		BC7073312534BA3800B2979F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -252,14 +250,6 @@
 			path = EntitysModule;
 			sourceTree = "<group>";
 		};
-		BC0D2A0126F00DEE00C3AF2D /* FixOrDelete */ = {
-			isa = PBXGroup;
-			children = (
-				BC4CA474262436EF00C2033C /* UICollectionViewCell */,
-			);
-			path = FixOrDelete;
-			sourceTree = "<group>";
-		};
 		BC0D2A0226F00F4800C3AF2D /* LocationModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,14 +315,6 @@
 				BCFECA9126F2366E00286EF6 /* Controller */,
 			);
 			path = MainMenuModule;
-			sourceTree = "<group>";
-		};
-		BC4CA474262436EF00C2033C /* UICollectionViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				BC4CA476262436EF00C2033C /* BottomMenuCell.swift */,
-			);
-			path = UICollectionViewCell;
 			sourceTree = "<group>";
 		};
 		BC70732C2534AE9400B2979F /* PremiumModule */ = {
@@ -431,7 +413,6 @@
 		BCB610012530C82400C4FD2F /* MyPets */ = {
 			isa = PBXGroup;
 			children = (
-				BC0D2A0126F00DEE00C3AF2D /* FixOrDelete */,
 				BCB610022530C82400C4FD2F /* AppDelegate.swift */,
 				BC8E373C26E6B0CD00F3B6A9 /* Services */,
 				BC3C7C752532F54700209C51 /* OnboardViewModule */,
@@ -662,7 +643,6 @@
 				BC7EB65726C668F000BE80AE /* PetCollectionCell.swift in Sources */,
 				BCE5115525461A23002FB62E /* UIAlertController.swift in Sources */,
 				BCC259E926C4142A00FCAC54 /* MainMenuController.swift in Sources */,
-				BC4CA47D262436EF00C2033C /* BottomMenuCell.swift in Sources */,
 				BC16018026ECBF6800666529 /* PetDTO.swift in Sources */,
 				BCDAEB6E26CFBD990099CF13 /* InputInfoView.swift in Sources */,
 				BC13029926B9787D00CFD87E /* OnboardController.swift in Sources */,
