@@ -20,6 +20,20 @@
                ReferencedContainer = "container:MyPets.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BCFECA4C26F2327600286EF6"
+               BuildableName = "MyPetsSnapshotTests.xctest"
+               BlueprintName = "MyPetsSnapshotTests"
+               ReferencedContainer = "container:MyPets.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -34,39 +48,19 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BC16014626ECA4C400666529"
-               BuildableName = "SnapshotTests.xctest"
-               BlueprintName = "SnapshotTests"
-               ReferencedContainer = "container:MyPets.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BC16015526ECA6D300666529"
-               BuildableName = "MyPetsUnitTests.xctest"
-               BlueprintName = "MyPetsUnitTests"
-               ReferencedContainer = "container:MyPets.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BC16016326ECA6E400666529"
-               BuildableName = "MyPetsUITests.xctest"
-               BlueprintName = "MyPetsUITests"
-               ReferencedContainer = "container:MyPets.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BC33256326F0A9370060DCDD"
+               BlueprintIdentifier = "BCFECA4C26F2327600286EF6"
                BuildableName = "MyPetsSnapshotTests.xctest"
                BlueprintName = "MyPetsSnapshotTests"
+               ReferencedContainer = "container:MyPets.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BCFECA3026F2320200286EF6"
+               BuildableName = "MyPetsUITests.xctest"
+               BlueprintName = "MyPetsUITests"
                ReferencedContainer = "container:MyPets.xcodeproj">
             </BuildableReference>
          </TestableReference>
