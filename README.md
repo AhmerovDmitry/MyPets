@@ -51,8 +51,9 @@
 
 <img width="300" alt="reference_screenshot" src="https://user-images.githubusercontent.com/62261655/133247591-af5ebea5-1ea2-4b6e-a211-5339cd1f0325.png"><img width="300" alt="failure_screenshot" src="https://user-images.githubusercontent.com/62261655/133247644-ae5ae734-7e4b-4ce9-b874-bf1d2b7b8791.png"><img width="300" alt="difference_screenshot" src="https://user-images.githubusercontent.com/62261655/133247692-c3e51f30-7cbf-4f03-80e0-e99376430b26.png">
 
-- [ ] - Использование Архитектурных подходов и шаблонов проектирования
-
+- [X] - Использование Архитектурных подходов и шаблонов проектирования
+* В качестве архитектуры использую MVC
+* Для стандартных кнопок (3 одинаковые кнопки в проекте) использую Builder
 
 - [X] - Верстка UI в коде
 * Весь UI приложения верстается с помощью кода
@@ -64,7 +65,7 @@
 
 
 #### Необязательные:
-- [ ] - Кастомные анимации
+- [X] - Кастомные анимации
 * Собсвенный шиммер для скрытия загрузки
 
 - [X] - Swiftlint
