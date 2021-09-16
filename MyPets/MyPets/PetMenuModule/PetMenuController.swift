@@ -90,8 +90,7 @@ extension PetMenuController: UICollectionViewDelegate, UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIView.ninePartsScreenMultiplier,
-                      height: view.bounds.height / 3.5)
+        return CGSize(width: UIView.ninePartsScreenMultiplier, height: view.bounds.height / 3.5)
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return storageService.objects.count
