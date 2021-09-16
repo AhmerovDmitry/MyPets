@@ -1,11 +1,11 @@
 //
-//  Weather.swift
+//  GetWeatherResponse.swift
 //  MyPets
 //
-//  Created by Дмитрий Ахмеров on 27.08.2021.
+//  Created by Дмитрий Ахмеров on 15.09.2021.
 //
 
-import UIKit
+import Foundation
 
 struct WeatherDescription: Codable {
     let weather: [WeatherDescription]
