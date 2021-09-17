@@ -83,14 +83,11 @@ final class PremiumView: UIView {
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
-    private let buyButton = TypicalProjectButtonBuilder()
-        .with(title: "Получить Premium")
-        .with(titleColor: UIColor.CustomColor.purple)
-        .with(font: UIFont.systemFont(ofSize: 17, weight: .regular))
-        .with(backgroundColor: .white)
-        .with(adjustsFontSizeToFitWidth: true)
-        .with(self, action: #selector(closeControllerWithPurchase))
-        .build()
+    private let buyButton = UIButton.createTypicalButton(title: "Получить Premium",
+                                                         backgroundColor: .white,
+                                                         borderWidth: nil,
+                                                         target: self,
+                                                         action: #selector(closeControllerWithPurchase))
 }
 
 extension PremiumView {

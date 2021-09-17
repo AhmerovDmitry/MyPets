@@ -22,16 +22,11 @@ final class OnboardView: UIView {
         }
         return pageControl
     }()
-    private var doneButton = TypicalProjectButtonBuilder()
-        .with(title: "Далее")
-        .with(titleColor: UIColor.CustomColor.purple)
-        .with(font: UIFont.systemFont(ofSize: 17, weight: .regular))
-        .with(borderWidth: 1)
-        .with(borderColor: UIColor.CustomColor.purple.cgColor)
-        .with(backgroundColor: .white)
-        .with(adjustsFontSizeToFitWidth: true)
-        .with(self, action: #selector(nextDescriptionView))
-        .build()
+    private var doneButton = UIButton.createTypicalButton(title: "Далее",
+                                                          backgroundColor: .white,
+                                                          borderWidth: 1,
+                                                          target: self,
+                                                          action: #selector(nextDescriptionView))
     private let skipButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Пропустить", for: .normal)
@@ -120,15 +115,11 @@ extension OnboardView {
 
             // Кнопка изменяется на последнем слайде
 
-            let newDoneButton = TypicalProjectButtonBuilder()
-                .with(title: "Приступим!")
-                .with(titleColor: .white)
-                .with(font: UIFont.systemFont(ofSize: 17, weight: .regular))
-                .with(backgroundColor: UIColor.CustomColor.purple)
-                .with(adjustsFontSizeToFitWidth: true)
-                .with(self, action: #selector(presentController))
-                .build()
-            doneButton = newDoneButton
+            doneButton = UIButton.createTypicalButton(title: "Приступим!",
+                                                      backgroundColor: UIColor.CustomColor.purple,
+                                                      borderWidth: nil,
+                                                      target: self,
+                                                      action: #selector(presentController))
             skipButton.isHidden = true
             layoutSubviews()
         }
