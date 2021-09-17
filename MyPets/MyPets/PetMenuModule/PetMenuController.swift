@@ -67,10 +67,12 @@ extension PetMenuController {
         if storageService.objects.isEmpty {
             view.addSubview(petMenuView)
             petCollectionView.removeFromSuperview()
+            petMenuView.layoutSubviews()
         } else {
             view.addSubview(petCollectionView)
             petMenuView.removeFromSuperview()
             petCollectionView.reloadCollectionView()
+            petCollectionView.layoutSubviews()
         }
     }
 }
