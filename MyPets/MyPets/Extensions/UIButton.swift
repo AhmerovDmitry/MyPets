@@ -7,63 +7,31 @@
 
 import UIKit
 
-final class TypicalProjectButtonBuilder {
-    private var title: String?
-    private var titleColor: UIColor?
-    private var backgroundColor: UIColor?
-    private var font: UIFont?
-    private var adjustsFontSizeToFitWidth: Bool?
-    private var borderWidth: CGFloat?
-    private var borderColor: CGColor?
-    private var action: Selector?
-    private var target: Any?
+extension UIButton {
 
-    func with(title: String) -> TypicalProjectButtonBuilder {
-        self.title = title
-        return self
-    }
-    func with(titleColor: UIColor) -> TypicalProjectButtonBuilder {
-        self.titleColor = titleColor
-        return self
-    }
-    func with(backgroundColor: UIColor) -> TypicalProjectButtonBuilder {
-        self.backgroundColor = backgroundColor
-        return self
-    }
-    func with(font: UIFont) -> TypicalProjectButtonBuilder {
-        self.font = font
-        return self
-    }
-    func with(adjustsFontSizeToFitWidth: Bool) -> TypicalProjectButtonBuilder {
-        self.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth
-        return self
-    }
-    func with(borderWidth: CGFloat) -> TypicalProjectButtonBuilder {
-        self.borderWidth = borderWidth
-        return self
-    }
-    func with(borderColor: CGColor) -> TypicalProjectButtonBuilder {
-        self.borderColor = borderColor
-        return self
-    }
-    func with(_ target: Any, action: Selector) -> TypicalProjectButtonBuilder {
-        self.target = target
-        self.action = action
-        return self
-    }
+    // Расширение для стандартной кнопки
 
-    func build() -> UIButton {
+    static func createTypicalButton(title: String,
+                                    backgroundColor: UIColor,
+                                    borderWidth: CGFloat?,
+                                    target: Any?,
+                                    action: Selector) -> UIButton {
         let button = UIButton(type: .system)
         button.setTitle(title, for: .normal)
-        button.setTitleColor(titleColor, for: .normal)
         button.backgroundColor = backgroundColor
-        button.titleLabel?.font = font
-        button.titleLabel?.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth ?? false
-        button.layer.borderWidth = borderWidth ?? 0
-        button.layer.borderColor = borderColor ?? UIColor.clear.cgColor
-        if let action = action {
-            button.addTarget(target, action: action, for: .touchUpInside)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        button.addTarget(target, action: action, for: .touchUpInside)
+        if let width = borderWidth {
+            button.layer.borderWidth = width
+            button.layer.borderColor = UIColor.CustomColor.purple.cgColor
         }
+        if backgroundColor == .white {
+            button.setTitleColor(UIColor.CustomColor.purple, for: .normal)
+        } else {
+            button.setTitleColor(.white, for: .normal)
+        }
+
         return button
     }
 }
