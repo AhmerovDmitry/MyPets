@@ -73,7 +73,5 @@
 
     * [Официальный репозиторий Swiftlint](https://github.com/realm/SwiftLint/)
 
-    * [Paul Hudson](https://github.com/twostraws/Unwrap)
-
 - [ ] - Системы аналитики и анализа крэшей (с использованием стороних зависимостей)
 ![Alt-текст](https://upload.wikimedia.org/wikipedia/commons/9/9b/Sberbank_Logo_2020.svg "Сбербанк")
