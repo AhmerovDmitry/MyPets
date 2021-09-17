@@ -13,7 +13,7 @@ protocol NetworkServiceProtocol {
                                   decodeModel: T.Type,
                                   completion: @escaping(Result<T, NetworkServiceError>) -> Void)
     func cancelNetworkRequest()
-    func loadImage(at url: String) -> UIImage?
+    func downloadImage(at url: String) -> UIImage?
 }
 
 final class NetworkService {
@@ -64,7 +64,7 @@ extension NetworkService: NetworkServiceProtocol {
     /// Метод загрузки изображения из сети
     /// - Parameter url: Строка с сылкой на изображение
     /// - Returns: Полученное изображение из сети
-    func loadImage(at url: String) -> UIImage? {
+    func downloadImage(at url: String) -> UIImage? {
         guard let url = URL(string: url) else { return nil }
         guard let imageData = try? Data(contentsOf: url) else { return nil }
         let image = UIImage(data: imageData)

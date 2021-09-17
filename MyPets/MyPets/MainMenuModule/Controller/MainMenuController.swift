@@ -93,11 +93,11 @@ extension MainMenuController {
                     let randomNumber = Int.random(in: 0...data.homeImages.count - 1)
                     switch state {
                     case "Clear", "Clouds", "Drizzle", "Haze":
-                        mainImage = self?.networkService.loadImage(at: data.strollImages[randomNumber])
+                        mainImage = self?.networkService.downloadImage(at: data.strollImages[randomNumber])
                     default:
-                        mainImage = self?.networkService.loadImage(at: data.homeImages[randomNumber])
+                        mainImage = self?.networkService.downloadImage(at: data.homeImages[randomNumber])
                     }
-                    backgroundImage = self?.networkService.loadImage(at: data.backgroundImage)
+                    backgroundImage = self?.networkService.downloadImage(at: data.backgroundImage)
                     dispatchGroup.leave()
                 case .failure(let error):
                     self?.networkError(error, withTitle: "Сетевая ошибка")
@@ -119,6 +119,13 @@ extension MainMenuController {
         }
     }
 
+    /// Метод проверяющий данные полученные из сети
+    /// - Parameters:
+    ///   - temp: Температура
+    ///   - main: Главное изображение
+    ///   - background: Бекграундная картинка
+    ///   - timer: Таймер для остановки
+    ///   - requestTimer: Количество запросов для остановки в случае превышения 60 секунд
     func networkDataChecker(temp: String?,
                             main: UIImage?,
                             background: UIImage?,
