@@ -42,7 +42,7 @@ final class PremiumController: UIViewController {
             self.userDefaultsService.setValue(false, forKey: .isAppPurchased)
         }
     }
-    
+
     private func updateViewContent() {
         premiumView.getPremiumContent(premiumModel)
     }

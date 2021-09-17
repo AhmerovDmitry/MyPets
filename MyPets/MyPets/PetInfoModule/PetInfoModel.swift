@@ -24,6 +24,8 @@ final class PetInfoModel {
         "Номер чипа"
     ]
 
+    // Решил разгрузить контроллер и вынес логику storageService в модель
+
     init(storageService: StorageServiceProtocol, cellIndex: Int?) {
         self.storageService = storageService
 

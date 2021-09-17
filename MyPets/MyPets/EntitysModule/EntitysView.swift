@@ -36,7 +36,7 @@ extension EntitysView {
             entitysTableView.topAnchor.constraint(equalTo: self.topAnchor),
             entitysTableView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             entitysTableView.leftAnchor.constraint(equalTo: self.leftAnchor),
-            entitysTableView.rightAnchor.constraint(equalTo: self.rightAnchor),
+            entitysTableView.rightAnchor.constraint(equalTo: self.rightAnchor)
         ])
     }
 }

@@ -30,7 +30,7 @@ struct MainWeatherModel {
     }
 
     // API картинок
-    
+
     let httpAdditionalHeaders = ["secret-key": "$2b$10$Fk4etsK4fRpWVHR/RDgUOurwV7bW10aCC2rT4M13xO6CgnY4Bphbi"]
     let imagesURL = URL(string: "https://api.jsonbin.io/b/6127b582076a223676b18d03/6")
 }

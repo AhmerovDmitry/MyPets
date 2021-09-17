@@ -34,7 +34,7 @@ extension InputInfoController {
             self?.dismiss(animated: true, completion: nil)
         }
         inputInfoView.saveInformationCallBack = { [weak self] textField in
-            self?.delegate?.transferPetInformation(textField.text ?? nil)
+            self?.delegate?.transferPetInformation(textField.text)
             self?.dismiss(animated: true, completion: nil)
         }
     }

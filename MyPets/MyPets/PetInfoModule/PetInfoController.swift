@@ -130,7 +130,7 @@ extension PetInfoController: TransferPetInformationDelegate {
     /// и ячейка таблицы перезагружается для обновления текста
     /// - Parameter information: Данные, которые вводит пользователь
     func transferPetInformation(_ information: String?) {
-        if let indexCell = selectedTableCell  {
+        if let indexCell = selectedTableCell {
             petModel.changeObjectInformation(at: indexCell.row, information)
             petInfoView.reloadTableViewCell(at: indexCell)
             selectedTableCell = nil

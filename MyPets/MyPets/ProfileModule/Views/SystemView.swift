@@ -46,7 +46,7 @@ extension SystemView {
             systemTableView.topAnchor.constraint(equalTo: self.topAnchor),
             systemTableView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             systemTableView.leftAnchor.constraint(equalTo: self.leftAnchor),
-            systemTableView.rightAnchor.constraint(equalTo: self.rightAnchor),
+            systemTableView.rightAnchor.constraint(equalTo: self.rightAnchor)
         ])
     }
 }

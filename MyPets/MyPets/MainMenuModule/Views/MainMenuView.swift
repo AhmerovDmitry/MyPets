@@ -8,7 +8,7 @@
 import UIKit
 
 final class MainMenuView: UIView {
-    let weatherMenuView = WeatherMenuView()
+    let weatherView = WeatherMenuView()
     private let shimmerView = ShimmerView()
     private let petPhotoView = PetPhotoView()
 }
@@ -25,30 +25,30 @@ extension MainMenuView {
         setPetPhotoViewConstraint()
     }
     private func setWeatherMenuViewConstraints() {
-        self.addSubview(weatherMenuView)
-        weatherMenuView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(weatherView)
+        weatherView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            weatherMenuView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 12),
-            weatherMenuView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            weatherMenuView.heightAnchor.constraint(equalToConstant: self.bounds.height / 6),
-            weatherMenuView.widthAnchor.constraint(equalToConstant: UIView.ninePartsScreenMultiplier)
+            weatherView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 12),
+            weatherView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            weatherView.heightAnchor.constraint(equalToConstant: self.bounds.height / 6),
+            weatherView.widthAnchor.constraint(equalToConstant: UIView.ninePartsScreenMultiplier)
         ])
     }
     private func setShimmerViewConstraints() {
-        weatherMenuView.addSubview(shimmerView)
+        weatherView.addSubview(shimmerView)
         shimmerView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            shimmerView.centerXAnchor.constraint(equalTo: weatherMenuView.centerXAnchor),
-            shimmerView.centerYAnchor.constraint(equalTo: weatherMenuView.centerYAnchor),
-            shimmerView.heightAnchor.constraint(equalTo: weatherMenuView.heightAnchor, multiplier: 0.7),
-            shimmerView.widthAnchor.constraint(equalTo: weatherMenuView.heightAnchor, multiplier: 0.7)
+            shimmerView.centerXAnchor.constraint(equalTo: weatherView.centerXAnchor),
+            shimmerView.centerYAnchor.constraint(equalTo: weatherView.centerYAnchor),
+            shimmerView.heightAnchor.constraint(equalTo: weatherView.heightAnchor, multiplier: 0.7),
+            shimmerView.widthAnchor.constraint(equalTo: weatherView.heightAnchor, multiplier: 0.7)
         ])
     }
     private func setPetPhotoViewConstraint() {
         self.addSubview(petPhotoView)
         petPhotoView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            petPhotoView.topAnchor.constraint(equalTo: weatherMenuView.bottomAnchor, constant: 12),
+            petPhotoView.topAnchor.constraint(equalTo: weatherView.bottomAnchor, constant: 12),
             petPhotoView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             petPhotoView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
             petPhotoView.widthAnchor.constraint(equalTo: self.widthAnchor)
@@ -60,11 +60,11 @@ extension MainMenuView {
     func stopShimmerAnimation() {
         shimmerView.isHidden = true
         shimmerView.stopAnimation()
-        weatherMenuView.visibleWeatherElements()
+        weatherView.visibleWeatherElements()
     }
     func startShimmerAnimation() {
         shimmerView.isHidden = false
         shimmerView.startAnimation()
-        weatherMenuView.hiddenWeatherElements()
+        weatherView.hiddenWeatherElements()
     }
 }

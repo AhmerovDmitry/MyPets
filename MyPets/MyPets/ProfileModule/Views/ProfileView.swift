@@ -34,7 +34,7 @@ extension ProfileView {
             profileTableView.topAnchor.constraint(equalTo: self.topAnchor),
             profileTableView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             profileTableView.leftAnchor.constraint(equalTo: self.leftAnchor),
-            profileTableView.rightAnchor.constraint(equalTo: self.rightAnchor),
+            profileTableView.rightAnchor.constraint(equalTo: self.rightAnchor)
         ])
     }
 }

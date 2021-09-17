@@ -19,7 +19,7 @@ final class PetCollectionView: UIView {
         collectionView.register(PetCollectionCell.self, forCellWithReuseIdentifier: cellID)
         return collectionView
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()

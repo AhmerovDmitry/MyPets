@@ -34,9 +34,9 @@ extension MainMenuController: CLLocationManagerDelegate {
                     + "хотите изменить свое решение?",
                 systemWayUrl: UIApplication.openSettingsURLString
             )
-            mainMenuView.stopShimmerAnimation()
+            mainView.stopShimmerAnimation()
         case .restricted:
-            mainMenuView.stopShimmerAnimation()
+            mainView.stopShimmerAnimation()
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
         @unknown default:
@@ -45,7 +45,7 @@ extension MainMenuController: CLLocationManagerDelegate {
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first?.coordinate {
-            mainWeatherModel.setUserCoordinate(lat: "\(location.latitude)", lon: "\(location.longitude)")
+            mainModel.setUserCoordinate(lat: "\(location.latitude)", lon: "\(location.longitude)")
             locationManager.stopUpdatingLocation()
             isGetUserCoordinate = true
         }

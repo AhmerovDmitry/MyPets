@@ -70,6 +70,6 @@ extension EntitysController: UITableViewDelegate, UITableViewDataSource {
         entitysModel.removeObject(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .fade)
         tableView.reloadData()
-        if entitysModel.getObjects().count == 0 { popViewController() }
+        if entitysModel.getObjects().isEmpty { popViewController() }
     }
 }
