@@ -43,10 +43,6 @@ extension CustomTabBarController {
         petVC.tabBarItem.title = "Питомцы"
         petVC.tabBarItem.image = UIImage(named: "petIcon")
 
-        let locationVC = LocationController()
-        locationVC.tabBarItem.title = "Места"
-        locationVC.tabBarItem.image = UIImage(named: "locationIcon")
-
         let profileVC = UINavigationController(
             rootViewController: ProfileController(storageService: storageService,
                                                   userDefaultsService: userDefaultsService)
@@ -60,7 +56,7 @@ extension CustomTabBarController {
         tabBar.unselectedItemTintColor = UIColor.CustomColor.gray
         tabBar.tintColor = UIColor.CustomColor.purple
 
-        viewControllers = [mainVC, petVC, locationVC, profileVC]
+        viewControllers = [mainVC, petVC, profileVC]
     }
 }
 
