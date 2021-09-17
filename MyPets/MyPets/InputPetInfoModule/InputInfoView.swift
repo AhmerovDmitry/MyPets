@@ -21,11 +21,6 @@ final class InputInfoView: UIView {
         label.textColor = UIColor.CustomColor.lightGray
         return label
     }()
-    private let backgroundView: UIView = {
-        let view = UIView()
-        view.setBlurEffect(view, frame: UIScreen.main.bounds)
-        return view
-    }()
     private let textFieldBackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.CustomColor.lightGray
@@ -40,22 +35,9 @@ final class InputInfoView: UIView {
         textField.returnKeyType = .done
         return textField
     }()
-    private let handOutline: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "handTapOutline")?.withRenderingMode(.alwaysTemplate)
-        image.tintColor = UIColor.CustomColor.lightGray
-        image.alpha = 0.5
-        return image
-    }()
     private let catOutline: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "catOutline")?.withRenderingMode(.alwaysTemplate)
-        image.tintColor = UIColor.CustomColor.lightGray
-        return image
-    }()
-    private let dogOutline: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "dogOutline")?.withRenderingMode(.alwaysTemplate)
         image.tintColor = UIColor.CustomColor.lightGray
         return image
     }()
@@ -85,26 +67,13 @@ final class InputInfoView: UIView {
 
 extension InputInfoView {
     private func setupUI() {
-        self.backgroundColor = .clear
-        setBackgroundViewConstraints()
+        setBlurEffect(self, frame: self.frame)
         setTextFieldBackgroundViewConstraints()
         setTextFieldConstraints()
-        setHandOutlineConstraints()
         setCatOutlineConstraints()
-        setDogOutlineConstraints()
         setTitleLableConstraints()
         setSaveButtonConstraints()
         setCancelButtonConstraints()
-    }
-    private func setBackgroundViewConstraints() {
-        self.addSubview(backgroundView)
-        backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            backgroundView.topAnchor.constraint(equalTo: self.topAnchor),
-            backgroundView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            backgroundView.leftAnchor.constraint(equalTo: self.leftAnchor),
-            backgroundView.rightAnchor.constraint(equalTo: self.rightAnchor)
-        ])
     }
     private func setTitleLableConstraints() {
         self.addSubview(titleLabel)
@@ -135,16 +104,6 @@ extension InputInfoView {
             textField.rightAnchor.constraint(equalTo: textFieldBackgroundView.rightAnchor, constant: -15)
         ])
     }
-    private func setHandOutlineConstraints() {
-        self.addSubview(handOutline)
-        handOutline.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            handOutline.heightAnchor.constraint(equalTo: textFieldBackgroundView.heightAnchor, multiplier: 0.5),
-            handOutline.widthAnchor.constraint(equalTo: handOutline.heightAnchor),
-            handOutline.topAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor),
-            handOutline.rightAnchor.constraint(equalTo: textFieldBackgroundView.rightAnchor)
-        ])
-    }
     private func setCatOutlineConstraints() {
         self.addSubview(catOutline)
         catOutline.translatesAutoresizingMaskIntoConstraints = false
@@ -155,21 +114,11 @@ extension InputInfoView {
             catOutline.leftAnchor.constraint(equalTo: self.centerXAnchor)
         ])
     }
-    private func setDogOutlineConstraints() {
-        backgroundView.addSubview(dogOutline)
-        dogOutline.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            dogOutline.widthAnchor.constraint(equalTo: backgroundView.widthAnchor, multiplier: 0.3),
-            dogOutline.heightAnchor.constraint(equalTo: dogOutline.widthAnchor),
-            dogOutline.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor),
-            dogOutline.leftAnchor.constraint(equalTo: backgroundView.leftAnchor)
-        ])
-    }
     private func setSaveButtonConstraints() {
         self.addSubview(saveButton)
         saveButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            saveButton.topAnchor.constraint(equalTo: handOutline.bottomAnchor),
+            saveButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 6),
             saveButton.leftAnchor.constraint(equalTo: textFieldBackgroundView.leftAnchor)
         ])
     }
@@ -177,7 +126,7 @@ extension InputInfoView {
         self.addSubview(cancelButton)
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            cancelButton.topAnchor.constraint(equalTo: handOutline.bottomAnchor),
+            cancelButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 6),
             cancelButton.rightAnchor.constraint(equalTo: textFieldBackgroundView.rightAnchor)
         ])
     }
@@ -196,20 +145,6 @@ extension InputInfoView {
 extension InputInfoView {
     func setTextFieldDelegate<T: UITextFieldDelegate>(_ target: T) {
         textField.delegate = target
-    }
-    func moveUp(_ point: CGFloat) {
-        if backgroundView.frame.origin.y == 0 {
-            backgroundView.frame.origin.y -= point
-            [titleLabel, catOutline, textFieldBackgroundView, handOutline, saveButton, cancelButton].forEach {
-                $0.frame.origin.y -= dogOutline.frame.height
-            }
-        }
-    }
-    func moveDown(_ point: CGFloat) {
-        backgroundView.frame.origin.y = 0
-        [titleLabel, catOutline, textFieldBackgroundView, handOutline, saveButton, cancelButton].forEach {
-            $0.frame.origin.y += dogOutline.frame.height
-        }
     }
     func textFieldValue(_ text: String) {
         textField.text = text

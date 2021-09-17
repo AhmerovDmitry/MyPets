@@ -18,13 +18,16 @@ final class InputInfoController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        observerMethods()
         callBacksMethods()
         inputInfoView.setTextFieldDelegate(self)
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        setKeyboardObservers()
         inputInfoView.textFieldFirstResponder()
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
@@ -41,25 +44,25 @@ extension InputInfoController {
 }
 
 extension InputInfoController {
-    private func observerMethods() {
-        NotificationCenter.default.addObserver(
-            self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil
-        )
-        NotificationCenter.default.addObserver(
-            self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil
-        )
+    private func setKeyboardObservers() {
+        let notification = NotificationCenter.default
+        notification.addObserver(self, selector: #selector(keyboardWillShow),
+                                 name: UIResponder.keyboardWillShowNotification, object: nil)
+        notification.addObserver(self, selector: #selector(keyboardWillHide),
+                                 name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+
     @objc private func keyboardWillShow(_ notification: Notification) {
         if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             keyboardHeight = keyboardFrame.cgRectValue.height
-            UIView.animate(withDuration: 0.1) { [weak self] in
-                self?.inputInfoView.moveUp(self?.keyboardHeight ?? 0)
+            if view.frame.origin.y == 0 {
+                view.frame.origin.y -= (keyboardHeight ?? 0) / 2
             }
         }
     }
     @objc private func keyboardWillHide(_ notification: Notification) {
-        UIView.animate(withDuration: 0.1) { [weak self] in
-            self?.inputInfoView.moveDown(self?.keyboardHeight ?? 0)
+        if view.frame.origin.y != 0 {
+            view.frame.origin.y = 0
         }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
