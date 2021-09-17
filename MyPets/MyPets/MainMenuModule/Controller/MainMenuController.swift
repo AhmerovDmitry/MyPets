@@ -45,7 +45,6 @@ final class MainMenuController: UIViewController {
         mainView.stopShimmerAnimation()
         networkService.cancelNetworkRequest()
     }
-
     private func setupNavigationController() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.backgroundColor = .white
@@ -55,23 +54,6 @@ final class MainMenuController: UIViewController {
 }
 
 extension MainMenuController {
-    /// Метод загружающий изображение по ссылке
-    /// - Parameter string: URL в виде строки, преобразется внутри метода в запрос
-    /// - Returns: Возвращает опциональную картинку
-    private func downloadImage(at string: String?) -> UIImage? {
-        guard let string = string else { return nil }
-        guard let url = URL(string: string) else { return nil }
-        guard let imageData = try? Data(contentsOf: url) else { return nil }
-        let image = UIImage(data: imageData)
-        return image
-    }
-}
-
-extension MainMenuController {
-    @objc private func reloadWeatherButtonAction() {
-        checkLoactionEnable()
-    }
-
     private func loadData() {
         var state: String?, temp: String?, mainImage: UIImage?, backgroundImage: UIImage?
 
