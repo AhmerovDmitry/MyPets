@@ -18,7 +18,7 @@ opt_in_rules:
   - operator_usage_whitespace
   - closure_end_indentation
   - first_where
-  # - number_separator (100000  =>  100_000)
+#  - number_separator (100000  =>  100_000)
   - prohibited_super_call
   - fatal_error_message
   - unneeded_parentheses_in_closure_argument

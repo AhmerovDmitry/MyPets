@@ -18,9 +18,6 @@
 		BC0D29F626EFC1DF00C3AF2D /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29F526EFC1DF00C3AF2D /* UITableViewCell.swift */; };
 		BC0D29F826EFDEA900C3AF2D /* EntitysController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29F726EFDEA900C3AF2D /* EntitysController.swift */; };
 		BC0D29FC26EFDF3300C3AF2D /* EntitysModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29FB26EFDF3300C3AF2D /* EntitysModel.swift */; };
-		BC0D2A0426F00F5800C3AF2D /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D2A0326F00F5800C3AF2D /* LocationModel.swift */; };
-		BC0D2A0626F00F6300C3AF2D /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D2A0526F00F6300C3AF2D /* LocationView.swift */; };
-		BC0D2A0826F00F6F00C3AF2D /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D2A0726F00F6F00C3AF2D /* LocationController.swift */; };
 		BC0F3D7D26F3871F0069ADA1 /* PetPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0F3D7C26F3871F0069ADA1 /* PetPhotoView.swift */; };
 		BC0F3D8526F396E20069ADA1 /* MyPetsUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0F3D8426F396E20069ADA1 /* MyPetsUnitTests.swift */; };
 		BC13029726B9786000CFD87E /* OnboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029626B9785F00CFD87E /* OnboardView.swift */; };
@@ -38,7 +35,6 @@
 		BC52FFA026D91B9D00A694CB /* WeatherMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC52FF9F26D91B9D00A694CB /* WeatherMenuView.swift */; };
 		BC7073252534A6F600B2979F /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073242534A6F600B2979F /* UIButton.swift */; };
 		BC7073322534BA3800B2979F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073312534BA3800B2979F /* UIView.swift */; };
-		BC73964D25435F9900A89858 /* LocationCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC73964C25435F9900A89858 /* LocationCollectionCell.swift */; };
 		BC7EB65526C6678100BE80AE /* PetCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB65426C6678100BE80AE /* PetCollectionView.swift */; };
 		BC7EB65726C668F000BE80AE /* PetCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB65626C668F000BE80AE /* PetCollectionCell.swift */; };
 		BC7EB65D26C688F500BE80AE /* PetInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB65C26C688F500BE80AE /* PetInfoController.swift */; };
@@ -101,10 +97,6 @@
 		BCFECA7F26F2351400286EF6 /* PetInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB65E26C699CD00BE80AE /* PetInfoView.swift */; };
 		BCFECA8026F2351900286EF6 /* InputInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDAEB6D26CFBD990099CF13 /* InputInfoView.swift */; };
 		BCFECA8126F2351900286EF6 /* InputInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9402FB26CA7BFF0028E5AC /* InputInfoController.swift */; };
-		BCFECA8226F2351F00286EF6 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D2A0326F00F5800C3AF2D /* LocationModel.swift */; };
-		BCFECA8326F2351F00286EF6 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D2A0526F00F6300C3AF2D /* LocationView.swift */; };
-		BCFECA8426F2351F00286EF6 /* LocationCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC73964C25435F9900A89858 /* LocationCollectionCell.swift */; };
-		BCFECA8526F2351F00286EF6 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D2A0726F00F6F00C3AF2D /* LocationController.swift */; };
 		BCFECA8626F2352800286EF6 /* EntitysModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29FB26EFDF3300C3AF2D /* EntitysModel.swift */; };
 		BCFECA8726F2352800286EF6 /* EntitysController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29F726EFDEA900C3AF2D /* EntitysController.swift */; };
 		BCFECA8826F2352800286EF6 /* EntitysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29EF26EF7F8F00C3AF2D /* EntitysView.swift */; };
@@ -148,9 +140,6 @@
 		BC0D29F526EFC1DF00C3AF2D /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
 		BC0D29F726EFDEA900C3AF2D /* EntitysController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitysController.swift; sourceTree = "<group>"; };
 		BC0D29FB26EFDF3300C3AF2D /* EntitysModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitysModel.swift; sourceTree = "<group>"; };
-		BC0D2A0326F00F5800C3AF2D /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
-		BC0D2A0526F00F6300C3AF2D /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
-		BC0D2A0726F00F6F00C3AF2D /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		BC0F3D7C26F3871F0069ADA1 /* PetPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetPhotoView.swift; sourceTree = "<group>"; };
 		BC0F3D8226F396E20069ADA1 /* MyPetsUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyPetsUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC0F3D8426F396E20069ADA1 /* MyPetsUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPetsUnitTests.swift; sourceTree = "<group>"; };
@@ -170,7 +159,6 @@
 		BC52FF9F26D91B9D00A694CB /* WeatherMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMenuView.swift; sourceTree = "<group>"; };
 		BC7073242534A6F600B2979F /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		BC7073312534BA3800B2979F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
-		BC73964C25435F9900A89858 /* LocationCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCollectionCell.swift; sourceTree = "<group>"; };
 		BC7EB65426C6678100BE80AE /* PetCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCollectionView.swift; sourceTree = "<group>"; };
 		BC7EB65626C668F000BE80AE /* PetCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCollectionCell.swift; sourceTree = "<group>"; };
 		BC7EB65C26C688F500BE80AE /* PetInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoController.swift; sourceTree = "<group>"; };
@@ -268,16 +256,6 @@
 			path = EntitysModule;
 			sourceTree = "<group>";
 		};
-		BC0D2A0226F00F4800C3AF2D /* LocationModule */ = {
-			isa = PBXGroup;
-			children = (
-				BC0D2A0326F00F5800C3AF2D /* LocationModel.swift */,
-				BC33255F26F0A0350060DCDD /* Views */,
-				BC0D2A0726F00F6F00C3AF2D /* LocationController.swift */,
-			);
-			path = LocationModule;
-			sourceTree = "<group>";
-		};
 		BC0F3D8326F396E20069ADA1 /* MyPetsUnitTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -285,15 +263,6 @@
 				BC0F3D8626F396E20069ADA1 /* Info.plist */,
 			);
 			path = MyPetsUnitTests;
-			sourceTree = "<group>";
-		};
-		BC33255F26F0A0350060DCDD /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				BC0D2A0526F00F6300C3AF2D /* LocationView.swift */,
-				BC73964C25435F9900A89858 /* LocationCollectionCell.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		BC38543626C5AAF000C2F14E /* PetMenuModule */ = {
@@ -451,7 +420,6 @@
 				BC38543626C5AAF000C2F14E /* PetMenuModule */,
 				BC9402FA26CA79920028E5AC /* PetInfoModule */,
 				BCDAEB6926CFBD390099CF13 /* InputPetInfoModule */,
-				BC0D2A0226F00F4800C3AF2D /* LocationModule */,
 				BC0D29E226EE9B9E00C3AF2D /* ProfileModule */,
 				BC0D29F926EFDEB000C3AF2D /* EntitysModule */,
 				BC9F269026BBCC7E000B854F /* Extensions */,
@@ -535,6 +503,7 @@
 				BC0F3D7E26F396E20069ADA1 /* Sources */,
 				BC0F3D7F26F396E20069ADA1 /* Frameworks */,
 				BC0F3D8026F396E20069ADA1 /* Resources */,
+				BC5C556D26F4393900AEE040 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -553,6 +522,7 @@
 				BCB60FFB2530C82400C4FD2F /* Sources */,
 				BCB60FFC2530C82400C4FD2F /* Frameworks */,
 				BCB60FFD2530C82400C4FD2F /* Resources */,
+				BC5C556E26F4399800AEE040 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -655,6 +625,43 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		BC5C556D26F4393900AEE040 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		BC5C556E26F4399800AEE040 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BC0F3D7E26F396E20069ADA1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -678,9 +685,7 @@
 				BC16018326ECE17500666529 /* OMPetInformation+CoreDataClass.swift in Sources */,
 				BC7EB65526C6678100BE80AE /* PetCollectionView.swift in Sources */,
 				BC0F3D7D26F3871F0069ADA1 /* PetPhotoView.swift in Sources */,
-				BC0D2A0426F00F5800C3AF2D /* LocationModel.swift in Sources */,
 				BC0D29FC26EFDF3300C3AF2D /* EntitysModel.swift in Sources */,
-				BC0D2A0626F00F6300C3AF2D /* LocationView.swift in Sources */,
 				BC7073252534A6F600B2979F /* UIButton.swift in Sources */,
 				BC7EB65D26C688F500BE80AE /* PetInfoController.swift in Sources */,
 				BC0D29E426EE9BB600C3AF2D /* ProfileView.swift in Sources */,
@@ -702,7 +707,6 @@
 				BC0D29E626EE9D1700C3AF2D /* ProfileModel.swift in Sources */,
 				BC0132CF26E15DFE0065F1B7 /* MainWeatherModel.swift in Sources */,
 				BC9402F926CA6AB70028E5AC /* PetInfoTableCell.swift in Sources */,
-				BC73964D25435F9900A89858 /* LocationCollectionCell.swift in Sources */,
 				BC13029B26B978A000CFD87E /* OnboardModel.swift in Sources */,
 				BC26F06626F2072500403961 /* ShimmerView.swift in Sources */,
 				BC0D29DF26ED490F00C3AF2D /* PetMenuModel.swift in Sources */,
@@ -718,7 +722,6 @@
 				BCFECA9726F2499900286EF6 /* GetWeatherResponse.swift in Sources */,
 				BC9F268F26BBCC5D000B854F /* UIColor.swift in Sources */,
 				BCB610032530C82400C4FD2F /* AppDelegate.swift in Sources */,
-				BC0D2A0826F00F6F00C3AF2D /* LocationController.swift in Sources */,
 				BC8C64F326BF37EF00CA7A90 /* PremiumView.swift in Sources */,
 				BCE6ACA626F21011007CDB81 /* NetworkServiceError.swift in Sources */,
 				BC0D29F426EFA38500C3AF2D /* SystemModel.swift in Sources */,
@@ -749,7 +752,6 @@
 				BCFECA8926F2352C00286EF6 /* UIColor.swift in Sources */,
 				BCFECA8B26F2352C00286EF6 /* UIAlertController.swift in Sources */,
 				BCFECA7926F2350D00286EF6 /* PetMenuView.swift in Sources */,
-				BCFECA8426F2351F00286EF6 /* LocationCollectionCell.swift in Sources */,
 				BCFECA6126F234C600286EF6 /* PetDTO.swift in Sources */,
 				BCFECA5B26F234A300286EF6 /* AppDelegate.swift in Sources */,
 				BCFECA7126F2350300286EF6 /* MainMenuView.swift in Sources */,
@@ -776,10 +778,7 @@
 				BCFECA6C26F234F900286EF6 /* PremiumController.swift in Sources */,
 				BCFECA5C26F234AE00286EF6 /* SystemView.swift in Sources */,
 				BCFECA7C26F2351400286EF6 /* PetInfoTableCell.swift in Sources */,
-				BCFECA8326F2351F00286EF6 /* LocationView.swift in Sources */,
 				BCFECA8F26F2354000286EF6 /* NetworkServiceError.swift in Sources */,
-				BCFECA8226F2351F00286EF6 /* LocationModel.swift in Sources */,
-				BCFECA8526F2351F00286EF6 /* LocationController.swift in Sources */,
 				BCFECA6A26F234F900286EF6 /* PremiumModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
