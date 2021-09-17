@@ -5,7 +5,7 @@
 //  Created by Дмитрий Ахмеров on 15.09.2021.
 //
 
-import Foundation
+import UIKit
 
 protocol NetworkServiceProtocol {
     func loadJSONData<T: Codable>(from url: URL?,
@@ -13,6 +13,7 @@ protocol NetworkServiceProtocol {
                                   decodeModel: T.Type,
                                   completion: @escaping(Result<T, NetworkServiceError>) -> Void)
     func cancelNetworkRequest()
+    func loadImage(at url: String) -> UIImage?
 }
 
 final class NetworkService {
@@ -44,21 +45,33 @@ extension NetworkService: NetworkServiceProtocol {
         var request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad)
         request.timeoutInterval = 60
 
-        sessionDataTask = session.dataTask(with: request, completionHandler: { [weak self] data, response, error in
+        sessionDataTask = session.dataTask(with: request, completionHandler: { [weak self] data, response, _ in
             guard let self = self else { return }
             do {
-                let response = try self.httpResponse(data: data, response: response)
-                guard let data = self.decodeJson(type: decodeModel, from: response) else {
+                let data = try self.httpResponse(data: data, response: response)
+                guard let response = self.decodeJson(type: decodeModel, from: data) else {
                     completion(.failure(.decodable))
                     return
                 }
-                completion(.success(data))
+                completion(.success(response))
             } catch {
                 completion(.failure(.network))
             }
         })
         sessionDataTask?.resume()
     }
+
+    /// Метод загрузки изображения из сети
+    /// - Parameter url: Строка с сылкой на изображение
+    /// - Returns: Полученное изображение из сети
+    func loadImage(at url: String) -> UIImage? {
+        guard let url = URL(string: url) else { return nil }
+        guard let imageData = try? Data(contentsOf: url) else { return nil }
+        let image = UIImage(data: imageData)
+        return image
+    }
+
+    /// Метод отменяющий запрос в сеть
 
     func cancelNetworkRequest() {
         if let task = sessionDataTask {
