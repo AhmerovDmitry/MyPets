@@ -12,8 +12,8 @@ final class MainMenuController: UIViewController {
     let networkService: NetworkServiceProtocol = NetworkService()
     var locationManager = CLLocationManager()
 
-    var mainWeatherModel = MainWeatherModel()
-    let mainMenuView = MainMenuView(frame: UIScreen.main.bounds)
+    var mainModel = MainWeatherModel()
+    let mainView = MainMenuView(frame: UIScreen.main.bounds)
 
     var isGetUserCoordinate = false {
         didSet {
@@ -24,24 +24,25 @@ final class MainMenuController: UIViewController {
     }
 
     override func loadView() {
-        view = mainMenuView
+        view = mainView
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainMenuView.setDefaultShadow()
+        mainView.setDefaultShadow()
         setupNavigationController()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         locationManager = CLLocationManager()
-        mainMenuView.startShimmerAnimation()
+        mainView.startShimmerAnimation()
         checkLoactionEnable()
     }
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         viewWillAppear(animated)
         locationManager.delegate = nil
         isGetUserCoordinate = false
-        mainMenuView.stopShimmerAnimation()
+        mainView.stopShimmerAnimation()
         networkService.cancelNetworkRequest()
     }
 
@@ -72,10 +73,7 @@ extension MainMenuController {
     }
 
     private func loadData() {
-        var state: String?
-        var temperature: String?
-        var mainImage: UIImage?
-        var backgroundImage: UIImage?
+        var state: String?, temp: String?, mainImage: UIImage?, backgroundImage: UIImage?
 
         // Очередь и группа для того чтобы сначала получать данные о погоде
         // так как на их основании составляется запрос картинок
@@ -87,18 +85,15 @@ extension MainMenuController {
 
         dispatchGroup.enter()
         serialQueue.async { [weak self] in
-            guard let self = self else { return }
-            self.networkService.loadJSONData(from: self.mainWeatherModel.weatherURL,
-                                             httpAdditionalHeaders: nil,
+            self?.networkService.loadJSONData(from: self?.mainModel.weatherURL, httpAdditionalHeaders: nil,
                                              decodeModel: WeatherDescription.self) { result in
                 switch result {
                 case .success(let data):
-                    guard let temp = data.main.temp else { return }
                     state = data.weather.last?.main
-                    temperature = "\(Int(round(temp)))"
+                    temp = "\(Int(round(data.main.temp ?? 0.0)))"
                     dispatchGroup.leave()
                 case .failure(let error):
-                    self.networkError(error, withTitle: "Сетевая ошибка")
+                    self?.networkError(error, withTitle: "Сетевая ошибка")
                     dispatchGroup.leave()
                 }
             }
@@ -108,46 +103,55 @@ extension MainMenuController {
 
         dispatchGroup.enter()
         serialQueue.async { [weak self] in
-            guard let self = self else { return }
-            self.networkService.loadJSONData(from: self.mainWeatherModel.imagesURL,
-                                             httpAdditionalHeaders: self.mainWeatherModel.httpAdditionalHeaders,
+            self?.networkService.loadJSONData(from: self?.mainModel.imagesURL,
+                                             httpAdditionalHeaders: self?.mainModel.httpAdditionalHeaders,
                                              decodeModel: WeatherImages.self) { result in
                 switch result {
                 case .success(let data):
                     let randomNumber = Int.random(in: 0...data.homeImages.count - 1)
                     switch state {
                     case "Clear", "Clouds", "Drizzle", "Haze":
-                        mainImage = self.loadImage(at: data.strollImages[randomNumber])
+                        mainImage = self?.networkService.loadImage(at: data.strollImages[randomNumber])
                     default:
-                        mainImage = self.loadImage(at: data.homeImages[randomNumber])
+                        mainImage = self?.networkService.loadImage(at: data.homeImages[randomNumber])
                     }
-                    backgroundImage = self.loadImage(at: data.backgroundImage)
+                    backgroundImage = self?.networkService.loadImage(at: data.backgroundImage)
                     dispatchGroup.leave()
                 case .failure(let error):
-                    self.networkError(error, withTitle: "Сетевая ошибка")
+                    self?.networkError(error, withTitle: "Сетевая ошибка")
                     dispatchGroup.leave()
                 }
             }
         }
 
+        var requestTimer = 0
+
         // Таймер для повтроной проверки данных каждые 2 секунды
         // в течении 60 секунд
 
-        var requestTimer = 0
-
         Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { timer in
             requestTimer += 1
-            if requestTimer == 30 && (temperature == nil || mainImage == nil || backgroundImage == nil) {
+            self.networkDataChecker(
+                temp: temp, main: mainImage, background: backgroundImage, timer: timer, requestTimer: requestTimer
+            )
+        }
+    }
+
+    func networkDataChecker(temp: String?,
+                            main: UIImage?,
+                            background: UIImage?,
+                            timer: Timer,
+                            requestTimer: Int) {
+        if requestTimer == 30 && (temp == nil || main == nil || background == nil) {
+            timer.invalidate()
+            self.networkError(.network, withTitle: "Превышен интервал ожидания запроса")
+        } else if temp != nil && main != nil && background != nil {
+            DispatchQueue.main.async {
                 timer.invalidate()
-                self.networkError(.network, withTitle: "Превышен интервал ожидания запроса")
-            } else if (temperature != nil && mainImage != nil && backgroundImage != nil) {
-                DispatchQueue.main.async {
-                    timer.invalidate()
-                    self.mainMenuView.stopShimmerAnimation()
-                    self.mainMenuView.weatherMenuView.presentWeatherElements(temp: temperature,
-                                                                             mainImage: mainImage,
-                                                                             backgroundImage: backgroundImage)
-                }
+                self.mainView.stopShimmerAnimation()
+                self.mainView.weatherView.presentWeatherElements(temp: temp,
+                                                                 mainImage: main,
+                                                                 backgroundImage: background)
             }
         }
     }
@@ -159,24 +163,14 @@ extension MainMenuController {
     ///   - withTitle: Заголовок ошибки
     private func networkError(_ error: NetworkServiceError, withTitle: String) {
         DispatchQueue.main.async {
-            self.mainMenuView.stopShimmerAnimation()
+            self.mainView.stopShimmerAnimation()
             UIAlertController.presentAlertWithBasicType(self,
                                                         title: withTitle,
                                                         message: error.message,
                                                         style: .actionSheet)
-            self.mainMenuView.weatherMenuView.presentWeatherElements(temp: nil,
-                                                                     mainImage: nil,
-                                                                     backgroundImage: nil)
+            self.mainView.weatherView.presentWeatherElements(temp: nil,
+                                                             mainImage: nil,
+                                                             backgroundImage: nil)
         }
-    }
-
-    /// Метод загрузки изображения из сети
-    /// - Parameter url: Строка с сылкой на изображение
-    /// - Returns: Полученное изображение из сети
-    private func loadImage(at url: String) -> UIImage? {
-        guard let url = URL(string: url) else { return nil }
-        guard let imageData = try? Data(contentsOf: url) else { return nil }
-        let image = UIImage(data: imageData)
-        return image
     }
 }
