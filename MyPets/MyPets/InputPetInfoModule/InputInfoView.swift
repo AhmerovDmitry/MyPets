@@ -25,7 +25,6 @@ final class InputInfoView: UIView {
         let view = UIView()
         view.backgroundColor = UIColor.CustomColor.lightGray
         view.clipsToBounds = true
-        view.layer.cornerRadius = UIScreen.main.bounds.height * 0.06 / 2
         return view
     }()
     private let textField: UITextField = {
@@ -41,27 +40,26 @@ final class InputInfoView: UIView {
         image.tintColor = UIColor.CustomColor.lightGray
         return image
     }()
-    private let saveButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Сохранить", for: .normal)
-        button.tintColor = UIColor.CustomColor.lightGray
-        button.addTarget(self, action: #selector(saveInformation), for: .touchUpInside)
-        return button
-    }()
-    private let cancelButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Отменить", for: .normal)
-        button.tintColor = .red
-        button.addTarget(self, action: #selector(dismissController), for: .touchUpInside)
-        return button
-    }()
-
+    private let saveButton = UIButton.createTypicalButton(title: "Сохранить",
+                                                          backgroundColor: .white,
+                                                          borderWidth: nil,
+                                                          target: self,
+                                                          action: #selector(saveInformation))
+    private let cancelButton = UIButton.createTypicalButton(title: "Отменить",
+                                                            backgroundColor: .white,
+                                                            borderWidth: nil,
+                                                            target: self,
+                                                            action: #selector(dismissController))
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setCornerRadiusForElements()
     }
 }
 
@@ -118,17 +116,26 @@ extension InputInfoView {
         self.addSubview(saveButton)
         saveButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            saveButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 6),
-            saveButton.leftAnchor.constraint(equalTo: textFieldBackgroundView.leftAnchor)
+            saveButton.topAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor, constant: 6),
+            saveButton.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.06),
+            saveButton.leftAnchor.constraint(equalTo: textFieldBackgroundView.leftAnchor),
+            saveButton.rightAnchor.constraint(equalTo: self.centerXAnchor, constant: -3)
         ])
     }
     private func setCancelButtonConstraints() {
         self.addSubview(cancelButton)
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            cancelButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 6),
-            cancelButton.rightAnchor.constraint(equalTo: textFieldBackgroundView.rightAnchor)
+            cancelButton.topAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor, constant: 6),
+            cancelButton.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.06),
+            cancelButton.rightAnchor.constraint(equalTo: textFieldBackgroundView.rightAnchor),
+            cancelButton.leftAnchor.constraint(equalTo: self.centerXAnchor, constant: 3)
         ])
+    }
+    private func setCornerRadiusForElements() {
+        textFieldBackgroundView.layer.cornerRadius = textFieldBackgroundView.bounds.height / 2
+        saveButton.layer.cornerRadius = saveButton.bounds.height / 2
+        cancelButton.layer.cornerRadius = saveButton.bounds.height / 2
     }
 }
 
