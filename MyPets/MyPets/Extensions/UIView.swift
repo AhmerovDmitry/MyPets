@@ -54,20 +54,4 @@ extension UIView {
     /// Число для определения 0.9 части экрана (примерное)
     static let ninePartsScreenMultiplier: CGFloat = UIScreen.main.bounds.width / 1.1111111111
     static let basicCornerRadius: CGFloat = 16
-
-    /*
-    /// Анимация тряски вью, возможно не понадобится и прийдется удалить
-    func startShakeAnimation() {
-        let animation = CABasicAnimation(keyPath: "position")
-        animation.duration = 0.1
-        animation.repeatCount = .infinity
-        animation.autoreverses = true
-        animation.fromValue = NSValue(cgPoint: CGPoint(x: self.center.x - 5, y: self.center.y))
-        animation.toValue = NSValue(cgPoint: CGPoint(x: self.center.x + 5, y: self.center.y))
-        self.layer.add(animation, forKey: "position")
-    }
-    func stopShakeAnimation() {
-        self.layer.removeAnimation(forKey: "position")
-    }
-    */
 }
