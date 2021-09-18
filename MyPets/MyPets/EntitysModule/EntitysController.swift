@@ -10,7 +10,6 @@ import UIKit
 final class EntitysController: UIViewController {
     private var entitysModel: EntitysModel
     private var entitysView: EntitysView
-    private let entitysTableViewCellID = "entitysTableViewCellID"
 
     init(storageService: StorageService) {
         self.entitysModel = EntitysModel(storageService: storageService)
@@ -22,8 +21,10 @@ final class EntitysController: UIViewController {
     }
     override func loadView() {
         view = entitysView
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
         entitysView.tableViewDelegateAndDataSource(self)
-        entitysView.setTableViewID(entitysTableViewCellID)
         setupNavigationController()
     }
     override func viewDidDisappear(_ animated: Bool) {
@@ -35,16 +36,18 @@ final class EntitysController: UIViewController {
 extension EntitysController {
     private func setupNavigationController() {
         navigationItem.title = "Список питомцев"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: "arrow.uturn.left"),
-            style: .done,
-            target: self,
-            action: #selector(popViewController)
-        )
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.uturn.left"), style: .done,
+                                                           target: self, action: #selector(popViewController))
         navigationItem.leftBarButtonItem?.tintColor = UIColor.CustomColor.purple
     }
     @objc func popViewController() {
         navigationController?.popViewController(animated: true)
+    }
+    private func updateCellContent(_ cell: UITableViewCell, index: Int) {
+        cell.textLabel?.tintColor = UIColor.CustomColor.darkGray
+        cell.textLabel?.adjustsFontSizeToFitWidth = true
+        cell.textLabel?.text = entitysModel.getObjects()[index].name ?? entitysModel.defaultName
+        cell.detailTextLabel?.text = entitysModel.getObjects()[index].breed ?? entitysModel.defaultBreed
     }
 }
 
@@ -53,12 +56,9 @@ extension EntitysController: UITableViewDelegate, UITableViewDataSource {
         entitysModel.getObjects().count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: entitysTableViewCellID, for: indexPath)
-        cell = UITableViewCell(style: .subtitle, reuseIdentifier: entitysTableViewCellID)
-        cell.textLabel?.tintColor = UIColor.CustomColor.darkGray
-        cell.textLabel?.adjustsFontSizeToFitWidth = true
-        cell.textLabel?.text = entitysModel.getObjects()[indexPath.row].name ?? entitysModel.defaultName
-        cell.detailTextLabel?.text = entitysModel.getObjects()[indexPath.row].breed ?? entitysModel.defaultBreed
+        var cell = tableView.dequeueReusableCell(withIdentifier: entitysView.entitysTableViewCellID, for: indexPath)
+        cell = UITableViewCell(style: .subtitle, reuseIdentifier: entitysView.entitysTableViewCellID)
+        updateCellContent(cell, index: indexPath.row)
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

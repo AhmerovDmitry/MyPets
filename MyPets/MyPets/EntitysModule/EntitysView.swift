@@ -8,11 +8,13 @@
 import UIKit
 
 final class EntitysView: UIView {
-    private var entitysTableView: UITableView = {
+    let entitysTableViewCellID = "entitysTableViewCellID"
+    private lazy var entitysTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = .white
         tableView.isScrollEnabled = false
         tableView.tableFooterView = UIView()
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: entitysTableViewCellID)
         return tableView
     }()
 
@@ -45,8 +47,5 @@ extension EntitysView {
     func tableViewDelegateAndDataSource<T>(_ target: T) where T: UITableViewDelegate, T: UITableViewDataSource {
         entitysTableView.delegate = target
         entitysTableView.dataSource = target
-    }
-    func setTableViewID(_ id: String) {
-        entitysTableView.register(UITableViewCell.self, forCellReuseIdentifier: id)
     }
 }
