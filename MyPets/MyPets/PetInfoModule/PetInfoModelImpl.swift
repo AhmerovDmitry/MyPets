@@ -7,7 +7,15 @@
 
 import UIKit
 
-final class PetInfoModel {
+protocol PetInfoModel {
+    var objectForFilling: PetDTO { get }
+
+    func changeObjectInformation(at  index: Int, _ information: String?)
+    func changeObjectPhoto(_ photo: UIImage)
+    func isObjectNil() -> Bool
+}
+
+final class PetInfoModelImpl {
     private let storageService: StorageService
     private(set) var objectForFilling: PetDTO
 
@@ -59,7 +67,7 @@ final class PetInfoModel {
     }
 }
 
-extension PetInfoModel {
+extension PetInfoModelImpl {
     func saveObject() {
         storageService.saveEntity(objectForFilling)
         if let photo = objectForFilling.photo {
@@ -83,7 +91,7 @@ extension PetInfoModel {
     }
 }
 
-extension PetInfoModel {
+extension PetInfoModelImpl: PetInfoModel {
     func changeObjectInformation(at  index: Int, _ information: String?) {
         let info: String?
         if information == "" {

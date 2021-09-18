@@ -17,13 +17,13 @@ protocol TransferPetBirthdayDelegate: AnyObject {
 
 final class PetInfoController: UIViewController {
     weak var delegate: PetMenuControllerDelegate?
-    private var petModel: PetInfoModel
+    private var petModel: PetInfoModelImpl
     private var petInfoView: PetInfoView
     private var collectionCellIndex: Int?
     private var selectedTableCell: IndexPath?
 
     init(storageService: StorageService, collectionCellIndex: Int?) {
-        self.petModel = PetInfoModel(storageService: storageService, cellIndex: collectionCellIndex)
+        self.petModel = PetInfoModelImpl(storageService: storageService, cellIndex: collectionCellIndex)
         self.petInfoView = PetInfoView(frame: UIScreen.main.bounds)
         self.collectionCellIndex = collectionCellIndex
         super.init(nibName: nil, bundle: nil)
@@ -43,7 +43,7 @@ final class PetInfoController: UIViewController {
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        popToViewControllerAndSaveEntity()
+        saveObject()
     }
 }
 
@@ -53,19 +53,15 @@ extension PetInfoController {
         navigationController?.navigationBar.backgroundColor = .clear
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "camera"),
-            style: .done,
-            target: self,
-            action: #selector(changePetPhoto)
+            style: .done, target: self, action: #selector(changePetPhoto)
         )
-        navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.dark
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.purple
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "arrow.uturn.left"),
-            style: .done,
-            target: self,
-            action: #selector(popToViewControllerAndSaveEntity)
+            style: .done, target: self, action: #selector(popToViewController)
         )
-        navigationItem.leftBarButtonItem?.tintColor = UIColor.CustomColor.dark
+        navigationItem.leftBarButtonItem?.tintColor = UIColor.CustomColor.purple
     }
     /// Метод конфигурирования ячейки
     /// задается тайтл и плейсхолдер (все берется из модели)
@@ -90,7 +86,7 @@ extension PetInfoController {
     private func presentInputInfoController(index: Int) {
         if index == 3 {
             let controller = DatePickerController()
-            controller.setDate(petModel.objectForFilling.birthday)
+            controller.setDate(petModel.objectForFilling.birthday ?? "")
             controller.delegate = self
             controller.modalPresentationStyle = .overFullScreen
             controller.modalTransitionStyle = .crossDissolve
@@ -119,28 +115,31 @@ extension PetInfoController {
 
 /// Сохранение / удаление модели
 extension PetInfoController {
-    /// Переходим на предыдущий контроллер сохраняя модель в CoreData
-    @objc private func popToViewControllerAndSaveEntity() {
+    /// Переходим на предыдущий контроллер
+    @objc private func popToViewController() {
+        delegate?.reloadController()
+        navigationController?.popViewController(animated: true)
+    }
+    /// Сохраняем объект
+    /// Загрузка фотографии из библиотеки
+    func saveObject() {
         // Пользователь зашел впервые
         if collectionCellIndex == nil {
             // И нормально заполнил модель
             if !petModel.isObjectNil() {
                 petModel.saveObject()
             }
-        // Пользователь зашел не впервые
+            // Пользователь зашел не впервые
         } else if let index = collectionCellIndex {
             // И убрал все поля из модели
             if petModel.isObjectNil() {
                 petModel.removeObject(at: index)
-            // Отредактировал модель и оставил поля
+                // Отредактировал модель и оставил поля
             } else {
                 petModel.editedObject(at: index)
             }
         }
-        delegate?.reloadController()
-        navigationController?.popViewController(animated: true)
     }
-    /// Загрузка фотографии из библиотеки
     @objc private func changePetPhoto() {
         let photoGallery = UIImagePickerController()
         photoGallery.allowsEditing = true
@@ -156,6 +155,7 @@ extension PetInfoController: TransferPetInformationDelegate, TransferPetBirthday
     /// после этого введенный текст передается в модель
     /// и ячейка таблицы перезагружается для обновления текста
     /// - Parameter information: Данные, которые вводит пользователь
+
     func transferPetInformation(_ information: String?) {
         if let indexCell = selectedTableCell {
             petModel.changeObjectInformation(at: indexCell.row, information)
@@ -163,8 +163,10 @@ extension PetInfoController: TransferPetInformationDelegate, TransferPetBirthday
             selectedTableCell = nil
         }
     }
+
     /// Метод обновления даты рождения питомца
     /// - Parameter information: Данные которые ввел пользователь
+
     func transferPetBirthday(_ information: String) {
         if let indexCell = selectedTableCell {
             petModel.changeObjectInformation(at: indexCell.row, information)
