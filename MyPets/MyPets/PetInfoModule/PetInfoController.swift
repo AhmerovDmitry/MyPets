@@ -11,6 +11,10 @@ protocol TransferPetInformationDelegate: AnyObject {
     func transferPetInformation(_ information: String?)
 }
 
+protocol TransferPetBirthdayDelegate: AnyObject {
+    func transferPetBirthday(_ information: String)
+}
+
 final class PetInfoController: UIViewController {
     weak var delegate: PetMenuControllerDelegate?
     private var petModel: PetInfoModel
@@ -18,7 +22,7 @@ final class PetInfoController: UIViewController {
     private var collectionCellIndex: Int?
     private var selectedTableCell: IndexPath?
 
-    init(storageService: StorageServiceProtocol, collectionCellIndex: Int?) {
+    init(storageService: StorageService, collectionCellIndex: Int?) {
         self.petModel = PetInfoModel(storageService: storageService, cellIndex: collectionCellIndex)
         self.petInfoView = PetInfoView(frame: UIScreen.main.bounds)
         self.collectionCellIndex = collectionCellIndex
@@ -36,6 +40,10 @@ final class PetInfoController: UIViewController {
         petInfoView.collectionViewDelegate(self)
         petInfoView.collectionViewDataSource(self)
         petInfoView.tableViewDelegateAndDataSource(self)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        popToViewControllerAndSaveEntity()
     }
 }
 
@@ -80,23 +88,32 @@ extension PetInfoController {
     /// Метод открытия контроллера ввода информации
     /// в него передается информация которую пользователь вводил или nil
     private func presentInputInfoController(index: Int) {
-        let controller = InputInfoController()
-        switch index {
-        case 0: controller.checkTextField(petModel.objectForFilling.name)
-        case 1: controller.checkTextField(petModel.objectForFilling.kind)
-        case 2: controller.checkTextField(petModel.objectForFilling.breed)
-        case 3: controller.checkTextField(petModel.objectForFilling.birthday)
-        case 4: controller.checkTextField(petModel.objectForFilling.weight)
-        case 5: controller.checkTextField(petModel.objectForFilling.sterile)
-        case 6: controller.checkTextField(petModel.objectForFilling.color)
-        case 7: controller.checkTextField(petModel.objectForFilling.hair)
-        case 8: controller.checkTextField(petModel.objectForFilling.chipNumber)
-        default: break
+        if index == 3 {
+            let controller = DatePickerController()
+            controller.setDate(petModel.objectForFilling.birthday)
+            controller.delegate = self
+            controller.modalPresentationStyle = .overFullScreen
+            controller.modalTransitionStyle = .crossDissolve
+            present(controller, animated: true, completion: nil)
+        } else {
+            let controller = InputInfoController()
+            switch index {
+            case 0: controller.checkTextField(petModel.objectForFilling.name)
+            case 1: controller.checkTextField(petModel.objectForFilling.kind)
+            case 2: controller.checkTextField(petModel.objectForFilling.breed)
+            case 3: controller.checkTextField(petModel.objectForFilling.birthday)
+            case 4: controller.checkTextField(petModel.objectForFilling.weight)
+            case 5: controller.checkTextField(petModel.objectForFilling.sterile)
+            case 6: controller.checkTextField(petModel.objectForFilling.color)
+            case 7: controller.checkTextField(petModel.objectForFilling.hair)
+            case 8: controller.checkTextField(petModel.objectForFilling.chipNumber)
+            default: break
+            }
+            controller.delegate = self
+            controller.modalPresentationStyle = .overFullScreen
+            controller.modalTransitionStyle = .crossDissolve
+            present(controller, animated: true, completion: nil)
         }
-        controller.delegate = self
-        controller.modalPresentationStyle = .overFullScreen
-        controller.modalTransitionStyle = .crossDissolve
-        present(controller, animated: true, completion: nil)
     }
 }
 
@@ -104,14 +121,23 @@ extension PetInfoController {
 extension PetInfoController {
     /// Переходим на предыдущий контроллер сохраняя модель в CoreData
     @objc private func popToViewControllerAndSaveEntity() {
-        if !petModel.isObjectNil() {
-            if let index = collectionCellIndex {
-                petModel.editedObject(at: index)
-            } else {
+        // Пользователь зашел впервые
+        if collectionCellIndex == nil {
+            // И нормально заполнил модель
+            if !petModel.isObjectNil() {
                 petModel.saveObject()
             }
-            delegate?.reloadController()
+        // Пользователь зашел не впервые
+        } else if let index = collectionCellIndex {
+            // И убрал все поля из модели
+            if petModel.isObjectNil() {
+                petModel.removeObject(at: index)
+            // Отредактировал модель и оставил поля
+            } else {
+                petModel.editedObject(at: index)
+            }
         }
+        delegate?.reloadController()
         navigationController?.popViewController(animated: true)
     }
     /// Загрузка фотографии из библиотеки
@@ -124,12 +150,22 @@ extension PetInfoController {
     }
 }
 
-extension PetInfoController: TransferPetInformationDelegate {
+extension PetInfoController: TransferPetInformationDelegate, TransferPetBirthdayDelegate {
+
     /// Метод получающий текст который вводит пользователь на экране ввода информации,
     /// после этого введенный текст передается в модель
     /// и ячейка таблицы перезагружается для обновления текста
     /// - Parameter information: Данные, которые вводит пользователь
     func transferPetInformation(_ information: String?) {
+        if let indexCell = selectedTableCell {
+            petModel.changeObjectInformation(at: indexCell.row, information)
+            petInfoView.reloadTableViewCell(at: indexCell)
+            selectedTableCell = nil
+        }
+    }
+    /// Метод обновления даты рождения питомца
+    /// - Parameter information: Данные которые ввел пользователь
+    func transferPetBirthday(_ information: String) {
         if let indexCell = selectedTableCell {
             petModel.changeObjectInformation(at: indexCell.row, information)
             petInfoView.reloadTableViewCell(at: indexCell)
