@@ -8,10 +8,11 @@
 import UIKit
 
 final class PremiumView: UIView {
-    var presentControllerCallBack: (() -> Void)?
-    var dismissControllerCallBack: (() -> Void)?
-    private var premiumText: [String]?
-    private let cellID = "PremiumCellId"
+
+    weak var delegate: PremiumControllerDelegate?
+
+    let cellID = "PremiumCellId"
+    
     private lazy var mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.alignment = .center
@@ -61,8 +62,6 @@ final class PremiumView: UIView {
         tableView.separatorColor = .white
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 1))
-        tableView.delegate = self
-        tableView.dataSource = self
         return tableView
     }()
     private let priceLabel: UILabel = {
@@ -174,35 +173,15 @@ extension PremiumView {
 }
 
 extension PremiumView {
-    @objc func closeController() {
-        dismissControllerCallBack?()
+    @objc private func closeController() {
+        delegate?.dismissController(withPurchase: false)
     }
-    @objc func closeControllerWithPurchase() {
-        presentControllerCallBack?()
+    @objc private func closeControllerWithPurchase() {
+        delegate?.dismissController(withPurchase: true)
     }
-    func getPremiumContent(_ content: PremiumModelProtocol) {
-        premiumText = content.description
-    }
-}
-
-extension PremiumView: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return premiumText?.count ?? 0
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
-        cell.backgroundColor = .clear
-        cell.selectionStyle = .none
-        cell.textLabel?.textAlignment = .center
-        cell.textLabel?.textColor = .white
-        cell.textLabel?.numberOfLines = 2
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        cell.textLabel?.adjustsFontSizeToFitWidth = true
-        cell.textLabel?.text = premiumText?[indexPath.row].description
-        return cell
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let cellHeight = tableView.frame.size.height / 5
-        return cellHeight
+    func tableViewDelegateAndDataSource<T>(_ target: T) where T: UITableViewDelegate,
+                                                                      T: UITableViewDataSource {
+        premiumTableView.delegate = target
+        premiumTableView.dataSource = target
     }
 }

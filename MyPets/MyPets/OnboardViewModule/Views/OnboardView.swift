@@ -12,7 +12,7 @@ final class OnboardView: UIView {
     weak var delegate: OnboardControllerDelegate?
 
     let cellID = "OnboardCellId"
-    
+
     private let pageControl: UIPageControl = {
         let pageControl = UIPageControl()
         pageControl.currentPage = 0

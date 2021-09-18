@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol PremiumControllerDelegate: AnyObject {
+    func dismissController(withPurchase: Bool)
+}
+
 final class PremiumController: UIViewController {
     private let userDefaultsService: UserDefaultsService
 
@@ -27,23 +31,44 @@ final class PremiumController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateViewContent()
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        premiumView.presentControllerCallBack = { [weak self] in
-            guard let self = self else { return }
-            self.dismiss(animated: true, completion: nil)
-            self.userDefaultsService.setValue(true, forKey: .isAppPurchased)
-        }
-        premiumView.dismissControllerCallBack = { [weak self] in
-            guard let self = self else { return }
-            self.dismiss(animated: true, completion: nil)
-            self.userDefaultsService.setValue(false, forKey: .isAppPurchased)
-        }
+        premiumView.delegate = self
+        premiumView.tableViewDelegateAndDataSource(self)
     }
 
-    private func updateViewContent() {
-        premiumView.getPremiumContent(premiumModel)
+    private func updateCellContent(_ cell: UITableViewCell, index: Int) {
+        cell.backgroundColor = .clear
+        cell.selectionStyle = .none
+        cell.textLabel?.textAlignment = .center
+        cell.textLabel?.textColor = .white
+        cell.textLabel?.numberOfLines = 2
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        cell.textLabel?.adjustsFontSizeToFitWidth = true
+        cell.textLabel?.text = premiumModel.description[index]
+    }
+}
+
+extension PremiumController: PremiumControllerDelegate {
+    func dismissController(withPurchase: Bool) {
+        dismiss(animated: true, completion: nil)
+        if withPurchase {
+            self.userDefaultsService.setValue(true, forKey: .isAppPurchased)
+            return
+        }
+        self.userDefaultsService.setValue(false, forKey: .isAppPurchased)
+    }
+}
+
+extension PremiumController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return premiumModel.description.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: premiumView.cellID, for: indexPath)
+        updateCellContent(cell, index: indexPath.row)
+        return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let cellHeight = tableView.frame.size.height / CGFloat(premiumModel.description.count)
+        return cellHeight
     }
 }
