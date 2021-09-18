@@ -88,27 +88,34 @@ final class PremiumView: UIView {
                                                          borderWidth: nil,
                                                          target: self,
                                                          action: #selector(closeControllerWithPurchase))
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setCornerRadiusForElements()
+    }
 }
 
 extension PremiumView {
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        setupUI()
-        self.setGradientEffect(
-            self,
-            colorOne: UIColor.PurpleGradientColor.darkPurple,
-            colorTwo: UIColor.PurpleGradientColor.lightPurple,
-            startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 1)
-        )
-    }
     private func setupUI() {
-        self.backgroundColor = .white
+        setSelfViewUI()
         setCloseButtonConstraints()
         setMainStackViewConstraints()
         setTitleStackViewConstraints()
         setPremiumTableViewConstraints()
         setPriceLabelsConstraints()
         setBuyButtonConstraints()
+    }
+    private func setSelfViewUI() {
+        self.backgroundColor = .white
+        self.setGradientEffect(self, colorOne: UIColor.PurpleGradientColor.darkPurple,
+                               colorTwo: UIColor.PurpleGradientColor.lightPurple,
+                               startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 1))
     }
     private func setCloseButtonConstraints() {
         self.addSubview(closeButton)
@@ -154,13 +161,15 @@ extension PremiumView {
     private func setBuyButtonConstraints() {
         self.addSubview(buyButton)
         buyButton.translatesAutoresizingMaskIntoConstraints = false
-        buyButton.layer.cornerRadius = buyButton.bounds.height / 2
         NSLayoutConstraint.activate([
             buyButton.topAnchor.constraint(equalTo: mainStackView.bottomAnchor, constant: 32),
             buyButton.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.06),
             buyButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
             buyButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
+    }
+    private func setCornerRadiusForElements() {
+        buyButton.layer.cornerRadius = buyButton.bounds.height / 2
     }
 }
 

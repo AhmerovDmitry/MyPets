@@ -11,18 +11,25 @@ final class MainMenuView: UIView {
     let weatherView = WeatherMenuView()
     private let shimmerView = ShimmerView()
     private let petPhotoView = PetPhotoView()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 extension MainMenuView {
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        setupUI()
-    }
     private func setupUI() {
-        self.backgroundColor = .white
+        setSelfViewUI()
         setWeatherMenuViewConstraints()
         setShimmerViewConstraints()
         setPetPhotoViewConstraint()
+    }
+    private func setSelfViewUI() {
+        self.backgroundColor = .white
     }
     private func setWeatherMenuViewConstraints() {
         self.addSubview(weatherView)

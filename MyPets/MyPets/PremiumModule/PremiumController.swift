@@ -8,12 +8,12 @@
 import UIKit
 
 final class PremiumController: UIViewController {
-    private let userDefaultsService: UserDefaultsServiceProtocol
+    private let userDefaultsService: UserDefaultsService
 
     private let premiumModel: PremiumModelProtocol
     private let premiumView: PremiumView
 
-    init(userDefaultsService: UserDefaultsServiceProtocol) {
+    init(userDefaultsService: UserDefaultsService) {
         self.userDefaultsService = userDefaultsService
         self.premiumModel = PremiumModel()
         self.premiumView = PremiumView(frame: UIScreen.main.bounds)

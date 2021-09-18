@@ -12,7 +12,7 @@ final class EntitysController: UIViewController {
     private var entitysView: EntitysView
     private let entitysTableViewCellID = "entitysTableViewCellID"
 
-    init(storageService: StorageServiceProtocol) {
+    init(storageService: StorageService) {
         self.entitysModel = EntitysModel(storageService: storageService)
         self.entitysView = EntitysView(frame: UIScreen.main.bounds)
         super.init(nibName: nil, bundle: nil)

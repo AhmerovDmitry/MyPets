@@ -33,13 +33,14 @@ final class PetPhotoView: UIView {
         }
         return pageControl
     }()
-}
 
-extension PetPhotoView {
     override func layoutSubviews() {
         super.layoutSubviews()
         setupUI()
     }
+}
+
+extension PetPhotoView {
     private func setupUI() {
         setPageControlConstraints()
         setPetPhotoCollectionViewConstraints()

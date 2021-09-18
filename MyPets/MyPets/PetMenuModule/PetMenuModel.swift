@@ -18,7 +18,7 @@ extension PetMenuProtocol {
         return "Порода не указана"
     }
     var defaultBirthday: String {
-        return "01.01.1001"
+        return "00.00.00"
     }
 }
 

@@ -8,13 +8,13 @@
 import UIKit
 
 final class OnboardController: UIViewController {
-    let storageService: StorageServiceProtocol
-    let userDefaultsService: UserDefaultsServiceProtocol
+    let storageService: StorageService
+    let userDefaultsService: UserDefaultsService
 
     private let onboardModel: OnboardModelProtocol
     private let onboardView = OnboardView(frame: UIScreen.main.bounds)
 
-    init(storageService: StorageServiceProtocol, userDefaultsService: UserDefaultsServiceProtocol) {
+    init(storageService: StorageService, userDefaultsService: UserDefaultsService) {
         self.storageService = storageService
         self.userDefaultsService = userDefaultsService
         self.onboardModel = OnboardModel()

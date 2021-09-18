@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 
 final class MainMenuController: UIViewController {
-    let networkService: NetworkServiceProtocol = NetworkService()
+    private let networkService: NetworkServiceProtocol = NetworkService()
     var locationManager = CLLocationManager()
 
     var mainModel = MainWeatherModel()

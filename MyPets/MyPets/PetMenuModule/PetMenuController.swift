@@ -12,8 +12,8 @@ protocol PetMenuControllerDelegate: AnyObject {
 }
 
 final class PetMenuController: UIViewController {
-    private let storageService: StorageServiceProtocol
-    private let userDefaultsService: UserDefaultsServiceProtocol
+    private let storageService: StorageService
+    private let userDefaultsService: UserDefaultsService
 
     private let petMenuModel = PetMenuModel()
     private lazy var petMenuView = PetMenuView(frame: view.bounds)
@@ -21,7 +21,7 @@ final class PetMenuController: UIViewController {
 
     private var tappedCellIndex: Int?
 
-    init(storageService: StorageServiceProtocol, userDefaultsService: UserDefaultsServiceProtocol) {
+    init(storageService: StorageService, userDefaultsService: UserDefaultsService) {
         self.storageService = storageService
         self.userDefaultsService = userDefaultsService
         super.init(nibName: nil, bundle: nil)

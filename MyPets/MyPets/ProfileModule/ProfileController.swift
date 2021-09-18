@@ -13,8 +13,8 @@ protocol ProfileViewDelegate: AnyObject {
 }
 
 final class ProfileController: UIViewController {
-    private let storageService: StorageServiceProtocol
-    private let userDefaultsService: UserDefaultsServiceProtocol
+    private let storageService: StorageService
+    private let userDefaultsService: UserDefaultsService
 
     private let profileModel: ProfileModelProtocol
     private let profileView: ProfileView
@@ -24,12 +24,12 @@ final class ProfileController: UIViewController {
     private let profileTableViewCellID = "profileTableViewCellID"
     private var systemViewIsHidden = true
 
-    init(storageService: StorageServiceProtocol, userDefaultsService: UserDefaultsServiceProtocol) {
+    init(storageService: StorageService, userDefaultsService: UserDefaultsService) {
+        self.storageService = storageService
+        self.userDefaultsService = userDefaultsService
         self.profileModel = ProfileModel()
         self.profileView = ProfileView(frame: UIScreen.main.bounds)
         self.systemView = SystemView(userDefaultsService: userDefaultsService)
-        self.storageService = storageService
-        self.userDefaultsService = userDefaultsService
         super.init(nibName: nil, bundle: nil)
     }
     required init?(coder: NSCoder) {

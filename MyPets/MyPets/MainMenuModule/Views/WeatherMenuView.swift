@@ -25,15 +25,21 @@ final class WeatherMenuView: UIView {
         label.textColor = UIColor.CustomColor.dark
         return label
     }()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    override func layoutSubviews() {
+        setSelfViewUI()
+    }
 }
 
 extension WeatherMenuView {
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        setupUI()
-    }
     private func setupUI() {
-        setSelfViewUI()
         setBackgroundImageConstraints()
         setMainImageConstraints()
         setTemperatureLabelConstraints()

@@ -8,7 +8,7 @@
 import UIKit
 
 final class PetInfoModel {
-    private let storageService: StorageServiceProtocol
+    private let storageService: StorageService
     private(set) var objectForFilling: PetDTO
 
     /// Массив со стройками которые заполняют тайтл ячейки таблицы
@@ -26,7 +26,7 @@ final class PetInfoModel {
 
     // Решил разгрузить контроллер и вынес логику storageService в модель
 
-    init(storageService: StorageServiceProtocol, cellIndex: Int?) {
+    init(storageService: StorageService, cellIndex: Int?) {
         self.storageService = storageService
 
         if let index = cellIndex {
@@ -43,7 +43,7 @@ final class PetInfoModel {
             self.objectForFilling.chipNumber = storageService.objects[index].chipNumber
             self.objectForFilling.photo = storageService.loadPhoto(photoID: self.objectForFilling.identifier)
         } else {
-            self.objectForFilling = PetDTO(identifier: storageService.createIdentifier())
+            self.objectForFilling = PetDTO(identifier: storageService.identifier)
 
             self.objectForFilling.name = nil
             self.objectForFilling.kind = nil
@@ -84,17 +84,23 @@ extension PetInfoModel {
 }
 
 extension PetInfoModel {
-    func changeObjectInformation(at index: Int, _ information: String?) {
+    func changeObjectInformation(at  index: Int, _ information: String?) {
+        let info: String?
+        if information == "" {
+            info = nil
+        } else {
+            info = information
+        }
         switch index {
-        case 0: objectForFilling.name = information
-        case 1: objectForFilling.kind = information
-        case 2: objectForFilling.breed = information
-        case 3: objectForFilling.birthday = information
-        case 4: objectForFilling.weight = information
-        case 5: objectForFilling.sterile = information
-        case 6: objectForFilling.color = information
-        case 7: objectForFilling.hair = information
-        case 8: objectForFilling.chipNumber = information
+        case 0: objectForFilling.name = info
+        case 1: objectForFilling.kind = info
+        case 2: objectForFilling.breed = info
+        case 3: objectForFilling.birthday = info
+        case 4: objectForFilling.weight = info
+        case 5: objectForFilling.sterile = info
+        case 6: objectForFilling.color = info
+        case 7: objectForFilling.hair = info
+        case 8: objectForFilling.chipNumber = info
         default: break
         }
     }

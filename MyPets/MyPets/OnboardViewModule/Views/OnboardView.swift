@@ -50,19 +50,30 @@ final class OnboardView: UIView {
         collectionView.register(OnboardCollectionCell.self, forCellWithReuseIdentifier: cellID)
         return collectionView
     }()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setCornerRadiusForElements()
+    }
 }
 
 extension OnboardView {
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        setupUI()
-    }
     private func setupUI() {
-        self.backgroundColor = .white
+        setSelfViewUI()
         setOnboardCollectionViewConstraints()
         setPageControlConstraints()
         setDoneButtonConstraints()
         setCloseButtonConstraints()
+    }
+    private func setSelfViewUI() {
+        self.backgroundColor = .white
     }
     private func setOnboardCollectionViewConstraints() {
         self.addSubview(onboardCollectionView)
@@ -87,7 +98,6 @@ extension OnboardView {
     private func setDoneButtonConstraints() {
         self.addSubview(doneButton)
         doneButton.translatesAutoresizingMaskIntoConstraints = false
-        doneButton.layer.cornerRadius = doneButton.bounds.height / 2
         NSLayoutConstraint.activate([
             doneButton.topAnchor.constraint(equalTo: pageControl.bottomAnchor, constant: 32),
             doneButton.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.06),
@@ -103,6 +113,9 @@ extension OnboardView {
             skipButton.rightAnchor.constraint(lessThanOrEqualTo: self.rightAnchor, constant: -32)
         ])
     }
+    private func setCornerRadiusForElements() {
+        doneButton.layer.cornerRadius = doneButton.bounds.height / 2
+    }
 }
 
 extension OnboardView {
@@ -115,13 +128,13 @@ extension OnboardView {
 
             // Кнопка изменяется на последнем слайде
 
-            doneButton = UIButton.createTypicalButton(title: "Приступим!",
-                                                      backgroundColor: UIColor.CustomColor.purple,
-                                                      borderWidth: nil,
-                                                      target: self,
-                                                      action: #selector(presentController))
+            doneButton.removeTarget(nil, action: nil, for: .allEvents)
+            doneButton.setTitle("Приступим!", for: .normal)
+            doneButton.backgroundColor = UIColor.CustomColor.purple
+            doneButton.setTitleColor(.white, for: .normal)
+            doneButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
+
             skipButton.isHidden = true
-            layoutSubviews()
         }
     }
     @objc private func presentController(_ parent: UIViewController) {

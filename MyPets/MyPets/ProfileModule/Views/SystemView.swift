@@ -9,7 +9,7 @@ import UIKit
 
 final class SystemView: UIView {
     private var systemModel: SystemModelProtocol
-    private var userDefaultsService: UserDefaultsServiceProtocol
+    private var userDefaultsService: UserDefaultsService
 
     private let systemTableViewCellID = "systemTableViewCellID"
     private lazy var systemTableView: UITableView = {
@@ -22,7 +22,7 @@ final class SystemView: UIView {
         return tableView
     }()
 
-    init(userDefaultsService: UserDefaultsServiceProtocol) {
+    init(userDefaultsService: UserDefaultsService) {
         self.systemModel = SystemModel()
         self.userDefaultsService = userDefaultsService
         super.init(frame: CGRect(x: 0, y: 0,
