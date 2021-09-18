@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Privacy - Photo Library Usage Description </key>
+	<string>Чтобы загружать фотографии в карточки, на потребуется доступ к библиотеке.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Чтобы определить погоду в вашем регионе, нам потребуется ваше местоположение.</string>
 	<key>CFBundleDevelopmentRegion</key>
