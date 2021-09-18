@@ -10,47 +10,104 @@ import XCTest
 
 class UserDefaultsServiceTests: XCTestCase {
 
-    private var userDefaultsService: UserDefaultsServiceProtocol!
+    private var systemUnderTest: UserDefaultsService!
+    private var repositoryMock: MockUDRepository!
 
-    override func setUp() {
-        super.setUp()
-        userDefaultsService = UserDefaultsService()
+    override func setUpWithError() throws {
+        try super.setUpWithError()
+        repositoryMock = MockUDRepository()
+        systemUnderTest = UserDefaultsServiceImpl(repository: repositoryMock)
     }
 
-    func testThatValueAppPurchasedEqualTrue() {
-        // arrange
-        userDefaultsService.setValue(true, forKey: .isAppPurchased)
+    override func tearDownWithError() throws {
+        repositoryMock = nil
+        systemUnderTest = nil
+        try super.tearDownWithError()
+    }
+
+    func testValueIsTrueIfValueForKeyIsAppPurchasedIsSet() throws {
         // act
-        let result = userDefaultsService.value(forKey: .isAppPurchased)
+        systemUnderTest.setValue(true, forKey: .isAppPurchased)
+        // assert
+        let result = try XCTUnwrap(repositoryMock.repository["isAppPurchased"] as? Bool)
+        XCTAssertTrue(result)
+    }
+
+    func testValueIsFalseIfValueForKeyIsAppPurchasedIsSet() throws {
+        // act
+        systemUnderTest.setValue(false, forKey: .isAppPurchased)
+        // assert
+        let result = try XCTUnwrap(repositoryMock.repository["isAppPurchased"] as? Bool)
+        XCTAssertFalse(result)
+    }
+
+    func testValueIsTrueIfValueForKeyIsAppPurchasedAsTrue() throws {
+        // arrange
+        repositoryMock.repository["isAppPurchased"] = true
+        // act
+        let result = systemUnderTest.value(forKey: .isAppPurchased)
         // assert
         XCTAssertTrue(result)
     }
 
-    func testThatValueAppPurchasedEqualFalse() {
+    func testValueIsFalseIfValueForKeyIsAppPurchasedAsTrue() throws {
         // arrange
-        userDefaultsService.setValue(false, forKey: .isAppPurchased)
+        repositoryMock.repository["isAppPurchased"] = false
         // act
-        let result = userDefaultsService.value(forKey: .isAppPurchased)
+        let result = systemUnderTest.value(forKey: .isAppPurchased)
         // assert
         XCTAssertFalse(result)
     }
 
-    func testThatValueNotFirstLaunchEqualTrue() {
+    func testValueIsFalseIfValueForKeyIsAppPurchasedDoesNotExist() throws {
         // arrange
-        userDefaultsService.setValue(true, forKey: .isNotFirstLaunch)
+        repositoryMock.repository["isAppPurchased"] = nil
         // act
-        let result = userDefaultsService.value(forKey: .isNotFirstLaunch)
+        let result = systemUnderTest.value(forKey: .isAppPurchased)
+        // assert
+        XCTAssertFalse(result)
+    }
+
+    func testValueIsTrueIfValueForKeyIsNotFirstLaunchIsSet() throws {
+        // act
+        systemUnderTest.setValue(true, forKey: .isNotFirstLaunch)
+        // assert
+        let result = try XCTUnwrap(repositoryMock.repository["isNotFirstLaunch"] as? Bool)
+        XCTAssertTrue(result)
+    }
+
+    func testValueIsFalseIfValueForKeyIsNotFirstLaunchIsSet() throws {
+        // act
+        systemUnderTest.setValue(false, forKey: .isNotFirstLaunch)
+        // assert
+        let result = try XCTUnwrap(repositoryMock.repository["isNotFirstLaunch"] as? Bool)
+        XCTAssertFalse(result)
+    }
+
+    func testValueIsTrueIfValueForKeyIsNotFirstLaunchAsTrue() throws {
+        // arrange
+        repositoryMock.repository["isNotFirstLaunch"] = true
+        // act
+        let result = systemUnderTest.value(forKey: .isNotFirstLaunch)
         // assert
         XCTAssertTrue(result)
     }
 
-    func testThatValueNotFirstLaunchEqualFalse() {
+    func testValueIsFalseIfValueForKeyIsNotFirstLaunchAsTrue() throws {
         // arrange
-        userDefaultsService.setValue(false, forKey: .isNotFirstLaunch)
+        repositoryMock.repository["isNotFirstLaunch"] = false
         // act
-        let result = userDefaultsService.value(forKey: .isNotFirstLaunch)
+        let result = systemUnderTest.value(forKey: .isNotFirstLaunch)
         // assert
         XCTAssertFalse(result)
     }
 
+    func testValueIsFalseIfValueForKeyIsNotFirstLaunchDoesNotExist() throws {
+        // arrange
+        repositoryMock.repository["isNotFirstLaunch"] = nil
+        // act
+        let result = systemUnderTest.value(forKey: .isNotFirstLaunch)
+        // assert
+        XCTAssertFalse(result)
+    }
 }
