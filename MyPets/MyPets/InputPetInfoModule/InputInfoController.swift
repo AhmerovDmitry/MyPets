@@ -7,7 +7,12 @@
 
 import UIKit
 
+protocol InputInfoDelegate: AnyObject {
+    func saveInformation()
+}
+
 final class InputInfoController: UIViewController {
+    private var transferedInformation: String?
     private var keyboardHeight: CGFloat?
     private let inputInfoView = InputInfoView(frame: UIScreen.main.bounds)
 
@@ -18,7 +23,7 @@ final class InputInfoController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        callBacksMethods()
+        inputInfoView.delegate = self
         inputInfoView.setTextFieldDelegate(self)
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -31,15 +36,13 @@ final class InputInfoController: UIViewController {
     }
 }
 
-extension InputInfoController {
-    private func callBacksMethods() {
-        inputInfoView.dismissControllerCallBack = { [weak self] in
-            self?.dismiss(animated: true, completion: nil)
-        }
-        inputInfoView.saveInformationCallBack = { [weak self] textField in
-            self?.delegate?.transferPetInformation(textField.text)
-            self?.dismiss(animated: true, completion: nil)
-        }
+extension InputInfoController: DataTransferDelegate {
+    func transferInformation(_ info: Any?) {
+        delegate?.transferPetInformation(transferedInformation)
+        dismiss(animated: true, completion: nil)
+    }
+    func dismissController() {
+        dismiss(animated: true, completion: nil)
     }
 }
 
@@ -74,6 +77,9 @@ extension InputInfoController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        transferedInformation = textField.text
     }
 }
 

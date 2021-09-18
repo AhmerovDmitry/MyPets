@@ -8,8 +8,8 @@
 import UIKit
 
 final class InputInfoView: UIView {
-    var saveInformationCallBack: ((_ textField: UITextField) -> Void)?
-    var dismissControllerCallBack: (() -> Void)?
+
+    weak var delegate: DataTransferDelegate?
 
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -141,11 +141,11 @@ extension InputInfoView {
 
 @objc
 extension InputInfoView {
-    private func saveInformation() {
-        saveInformationCallBack?(textField)
+    func saveInformation() {
+        delegate?.transferInformation(nil)
     }
-    private func dismissController() {
-        dismissControllerCallBack?()
+    func dismissController() {
+        delegate?.dismissController()
     }
 }
 

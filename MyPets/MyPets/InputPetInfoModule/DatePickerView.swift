@@ -8,8 +8,8 @@
 import UIKit
 
 final class DatePickerView: UIView {
-    var saveInformationCallBack: ((_ datePicker: UIDatePicker) -> Void)?
-    var dismissControllerCallBack: (() -> Void)?
+
+    weak var delegate: DataTransferDelegate?
 
     private let datePicker: UIDatePicker = {
         let picker = UIDatePicker()
@@ -41,7 +41,7 @@ final class DatePickerView: UIView {
                                                             backgroundColor: .white,
                                                             borderWidth: nil,
                                                             target: self,
-                                                            action: #selector(saveInformation))
+                                                            action: #selector(dismissController))
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -52,6 +52,7 @@ final class DatePickerView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         setCornerRadiusForElements()
+        datePicker.date = delegate?.setDateForDatePicker() ?? Date()
     }
 }
 
@@ -110,15 +111,9 @@ extension DatePickerView {
 @objc
 extension DatePickerView {
     private func saveInformation() {
-        saveInformationCallBack?(datePicker)
+        delegate?.transferInformation(datePicker.date)
     }
     private func dismissController() {
-        dismissControllerCallBack?()
-    }
-}
-
-extension DatePickerView {
-    func setDate(_ date: Date) {
-        datePicker.date = date
+        delegate?.dismissController()
     }
 }
