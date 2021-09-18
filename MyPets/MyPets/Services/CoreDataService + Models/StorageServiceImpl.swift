@@ -8,7 +8,15 @@
 import UIKit
 import CoreData
 
-protocol CoreDataLoadingServiceProtocol {
+protocol FMRepository {
+    func removeItem(atPath path: String) throws
+    func urls(for directory: FileManager.SearchPathDirectory, in domainMask: FileManager.SearchPathDomainMask) -> [URL]
+    func fileExists(atPath path: String) -> Bool
+}
+
+extension FileManager: FMRepository {}
+
+protocol CoreDataLoadingService {
     var appDelegate: AppDelegate? { get }
     var context: NSManagedObjectContext? { get }
     var objects: [OMPetInformation] { get set }
@@ -16,101 +24,102 @@ protocol CoreDataLoadingServiceProtocol {
     func loadEntitys()
 }
 
-protocol CoreDataSavingServiceProtocol {
+protocol CoreDataSavingService {
     func saveEntity(_ entity: PetDTO)
 }
 
-protocol CoreDataEditingServiceProtocol {
+protocol CoreDataEditingService {
     func editingEntity(_ entity: PetDTO, at index: Int)
     func removeEntity(at index: Int)
 }
 
-protocol FileManagerServiceProtocol {
-    func savePhoto(photoID: String, photo: UIImage)
+protocol FileManagerService {
     func loadPhoto(photoID: String) -> UIImage?
+    func savePhoto(photoID: String, photo: UIImage)
     func removePhoto(photoID: String)
 }
 
-private protocol SaveContextProtocol {
+private protocol SaveContext {
     func saveContext(_ context: NSManagedObjectContext)
 }
 
-protocol ObjectIdentifierProtocol {
-    func createIdentifier() -> String
+protocol ObjectIdentifier {
+    var identifier: String { get }
 }
 
-typealias StorageServiceProtocol = CoreDataLoadingServiceProtocol & CoreDataSavingServiceProtocol &
-    CoreDataEditingServiceProtocol & FileManagerServiceProtocol & ObjectIdentifierProtocol
+typealias StorageService = CoreDataLoadingService & CoreDataSavingService &
+    CoreDataEditingService & FileManagerService & ObjectIdentifier
 
-final class StorageService: CoreDataLoadingServiceProtocol {
+final class StorageServiceImpl: CoreDataLoadingService {
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
     lazy var context: NSManagedObjectContext? = appDelegate?.persistentContainer.viewContext
     var objects: [OMPetInformation] = []
+
+    private var repository: FMRepository
+
+    init(repository: FMRepository) {
+        self.repository = repository
+    }
 }
 
-// MARK: - Сохранение / загрузка фотографии
-extension StorageService: FileManagerServiceProtocol {
+// MARK: - Загрузка / сохранение / удаление фотографий
+extension StorageServiceImpl: FileManagerService {
+    /// Метод загружающий фотографию из директории устройства
+    /// - Parameter photoID: Индекс загружаемой фотографии
+    /// - Returns: Загружаемая фотография или nil
+    func loadPhoto(photoID: String) -> UIImage? {
+        guard let documentsDirectory = FileManager.default.urls(
+                for: .documentDirectory, in: .userDomainMask).first else { return nil }
+        let fileName = photoID
+        let fileURL = documentsDirectory.appendingPathComponent(fileName)
+        if let image = UIImage(contentsOfFile: fileURL.path) {
+            return image
+        }
+        return nil
+    }
     /// Метод сохраняющий фотографию на устройстве
     /// - Parameters:
     ///   - photoID: Индекс сохраняемой фотографии
     ///   - photo: Файл фотографии
     /// - Returns: Путь по которому расположенно изображение
     func savePhoto(photoID: String, photo: UIImage) {
-        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory,
-                                                                in: .userDomainMask).first else { return }
+        guard let documentsDirectory = FileManager.default.urls(
+                for: .documentDirectory, in: .userDomainMask).first else { return }
         let fileName = photoID
         let fileURL = documentsDirectory.appendingPathComponent(fileName)
         guard let data = photo.jpegData(compressionQuality: 1) else { return }
         if FileManager.default.fileExists(atPath: fileURL.path) {
             do {
                 try FileManager.default.removeItem(atPath: fileURL.path)
-                print("Removed old image")
             } catch let removeError {
-                print("couldn't remove file at path", removeError)
+                debugPrint("По указанному пути файл не найден:", removeError)
             }
         }
         do {
             try data.write(to: fileURL)
-            print("Photo saved!")
-            print(fileURL)
         } catch let error {
-            print("error saving file with error", error)
+            debugPrint("Ошибка сохранения файла:", error)
         }
-    }
-    /// Метод загружающий фотографию из директории устройства
-    /// - Parameter photoID: Индекс загружаемой фотографии
-    /// - Returns: Загружаемая фотография или nil
-    func loadPhoto(photoID: String) -> UIImage? {
-        let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
-        let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
-        let paths = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)
-        if let dirPath = paths.first {
-            let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent(photoID)
-            let image = UIImage(contentsOfFile: imageUrl.path)
-            return image
-        }
-        return nil
     }
     /// Метод удаляющий фотографию из директории устройства по индексу
     /// - Parameter photoID: Индекс удаляемой фотографии
     func removePhoto(photoID: String) {
-        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory,
-                                                                in: .userDomainMask).first else { return }
+        guard let documentsDirectory = FileManager.default.urls(
+                for: .documentDirectory, in: .userDomainMask).first else { return }
         let fileName = photoID
         let fileURL = documentsDirectory.appendingPathComponent(fileName)
         if FileManager.default.fileExists(atPath: fileURL.path) {
             do {
                 try FileManager.default.removeItem(atPath: fileURL.path)
-                print("Removed old image")
-            } catch let removeError {
-                print("couldn't remove file at path", removeError)
+            } catch {
+                debugPrint(error.localizedDescription)
             }
         }
     }
 }
 
 // MARK: - Загрузка объектов
-extension StorageService {
+extension StorageServiceImpl {
     /// Загрузка всех объектов из CoreData
     /// происходит в CustomTabBarController
     func loadEntitys() {
@@ -127,7 +136,7 @@ extension StorageService {
 }
 
 // MARK: - Сохранение объекта
-extension StorageService: CoreDataSavingServiceProtocol {
+extension StorageServiceImpl: CoreDataSavingService {
     /// Сохранение объекта в CoreData
     /// - Parameter entity: Сохраняемый объект
     func saveEntity(_ entity: PetDTO) {
@@ -141,7 +150,7 @@ extension StorageService: CoreDataSavingServiceProtocol {
 }
 
 // MARK: - Редактирование / удаление объекта
-extension StorageService: CoreDataEditingServiceProtocol {
+extension StorageServiceImpl: CoreDataEditingService {
     /// Редактирование объекта по индексу
     /// - Parameters:
     ///   - entity: Редактируемый объект
@@ -163,7 +172,7 @@ extension StorageService: CoreDataEditingServiceProtocol {
 }
 
 // MARK: - Сохранение контекста
-extension StorageService: SaveContextProtocol {
+extension StorageServiceImpl: SaveContext {
     /// Сохранение контекста для удобства
     /// - Parameter context: Контекст для сохранения
     fileprivate func saveContext(_ context: NSManagedObjectContext) {
@@ -180,9 +189,8 @@ extension StorageService: SaveContextProtocol {
 }
 
 // MARK: - Создание уникального идентификатора
-extension StorageService: ObjectIdentifierProtocol {
-    func createIdentifier() -> String {
-        let uuid = UUID().uuidString
-        return uuid
+extension StorageServiceImpl: ObjectIdentifier {
+    var identifier: String {
+        return UUID().uuidString
     }
 }
