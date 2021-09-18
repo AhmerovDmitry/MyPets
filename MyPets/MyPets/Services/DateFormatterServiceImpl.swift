@@ -7,12 +7,12 @@
 
 import UIKit
 
-protocol FormatterDate {
+protocol DateFormatterService {
     func dateToString(_ date: Date) -> String
-    func stringToDate(_ string: String) -> Date
+    func stringToDate(_ string: String) -> Date?
 }
 
-final class DateFormatterService: FormatterDate {
+final class DateFormatterServiceImpl: DateFormatterService {
     let formatter = DateFormatter()
 
     func dateToString(_ date: Date) -> String {
@@ -21,9 +21,9 @@ final class DateFormatterService: FormatterDate {
         return date
     }
 
-    func stringToDate(_ string: String) -> Date {
+    func stringToDate(_ string: String) -> Date? {
         formatter.dateFormat = "dd.MM.yy"
-        guard let date = formatter.date(from: string) else { return Date() }
+        guard let date = formatter.date(from: string) else { return nil }
         return date
     }
 }
