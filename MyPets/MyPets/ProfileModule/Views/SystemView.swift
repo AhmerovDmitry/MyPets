@@ -8,6 +8,9 @@
 import UIKit
 
 final class SystemView: UIView {
+
+    weak var delegate: SystemViewResetButtonsDelegate?
+
     private var systemModel: SystemModelProtocol
     private var userDefaultsService: UserDefaultsService
 
@@ -65,21 +68,13 @@ extension SystemView: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
-        case 0: resetLaunchStatus()
-        case 1: resetPurchase()
+        case 0: delegate?.resetLaunchStatus()
+        case 1: delegate?.resetPurchaseStatus()
         default: break
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewCell.heightSubRow
-    }
-    func resetLaunchStatus() {
-        userDefaultsService.setValue(false, forKey: .isNotFirstLaunch)
-        debugPrint("Статус запуска приложения сброшен")
-    }
-    func resetPurchase() {
-        userDefaultsService.setValue(false, forKey: .isAppPurchased)
-        debugPrint("Статус покупки приложения сброшен")
     }
 }

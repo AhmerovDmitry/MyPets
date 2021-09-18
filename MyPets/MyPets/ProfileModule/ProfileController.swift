@@ -12,6 +12,11 @@ protocol ProfileViewDelegate: AnyObject {
     func userRemoveObject()
 }
 
+protocol SystemViewResetButtonsDelegate: AnyObject {
+    func resetLaunchStatus()
+    func resetPurchaseStatus()
+}
+
 final class ProfileController: UIViewController {
     private let storageService: StorageService
     private let userDefaultsService: UserDefaultsService
@@ -40,6 +45,7 @@ final class ProfileController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        systemView.delegate = self
         setupNavigationController()
         profileView.tableViewDelegateAndDataSource(self)
         profileView.setTableViewID(profileTableViewCellID)
@@ -122,6 +128,17 @@ extension ProfileController {
         let premiumController = PremiumController(userDefaultsService: userDefaultsService)
         premiumController.modalPresentationStyle = .fullScreen
         self.present(premiumController, animated: true, completion: nil)
+    }
+}
+
+extension ProfileController: SystemViewResetButtonsDelegate {
+    func resetLaunchStatus() {
+        userDefaultsService.setValue(false, forKey: .isNotFirstLaunch)
+        debugPrint("Статус запуска приложения сброшен")
+    }
+    func resetPurchaseStatus() {
+        userDefaultsService.setValue(false, forKey: .isAppPurchased)
+        debugPrint("Статус покупки приложения сброшен")
     }
 }
 
