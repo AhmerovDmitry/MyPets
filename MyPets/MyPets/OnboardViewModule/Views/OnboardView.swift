@@ -8,10 +8,11 @@
 import UIKit
 
 final class OnboardView: UIView {
-    var presentControllerCallBack: (() -> Void)?
-    private var onboardImage: [String]?
-    private var onboardDescription: [String]?
-    private let cellID = "OnboardCellId"
+
+    weak var delegate: OnboardControllerDelegate?
+
+    let cellID = "OnboardCellId"
+    
     private let pageControl: UIPageControl = {
         let pageControl = UIPageControl()
         pageControl.currentPage = 0
@@ -45,14 +46,13 @@ final class OnboardView: UIView {
         collectionView.isPagingEnabled = true
         collectionView.backgroundColor = .white
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.delegate = self
-        collectionView.dataSource = self
         collectionView.register(OnboardCollectionCell.self, forCellWithReuseIdentifier: cellID)
         return collectionView
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        delegate?.collectionViewDelegateAndDataSource(onboardCollectionView)
         setupUI()
     }
     required init?(coder: NSCoder) {
@@ -120,11 +120,10 @@ extension OnboardView {
 
 extension OnboardView {
     @objc private func nextDescriptionView() {
-        let nextIndex = pageControl.currentPage + 1
-        let indexPath = IndexPath(item: nextIndex, section: 0)
-        pageControl.currentPage = nextIndex
+        pageControl.currentPage += 1
+        let indexPath = IndexPath(item: pageControl.currentPage, section: 0)
         onboardCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        if nextIndex == (onboardImage?.count ?? 0) - 1 {
+        if pageControl.currentPage == 3 {
 
             // Кнопка изменяется на последнем слайде
 
@@ -138,29 +137,17 @@ extension OnboardView {
         }
     }
     @objc private func presentController(_ parent: UIViewController) {
-        presentControllerCallBack?()
-    }
-    func getOnboardContent(_ content: OnboardModelProtocol) {
-        pageControl.numberOfPages = content.description.count
-        onboardImage = content.imagesName
-        onboardDescription = content.description
+        delegate?.presentTabBarController()
     }
 }
 
-extension OnboardView: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pageControl.numberOfPages
+extension OnboardView {
+    func setPageControl(countPage count: Int) {
+        pageControl.numberOfPages = count
     }
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: cellID,
-            for: indexPath
-        ) as? OnboardCollectionCell else { return UICollectionViewCell() }
-        cell.configureCell(
-            image: onboardImage?[indexPath.item] ?? "",
-            description: onboardDescription?[indexPath.item] ?? ""
-        )
-        return cell
+    func collectionViewDelegateAndDataSource<T>(_ target: T) where T: UICollectionViewDelegate,
+                                                                   T: UICollectionViewDataSource {
+        onboardCollectionView.delegate = target
+        onboardCollectionView.dataSource = target
     }
 }

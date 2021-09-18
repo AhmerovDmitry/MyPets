@@ -7,17 +7,23 @@
 
 import UIKit
 
+protocol OnboardControllerDelegate: AnyObject {
+    func presentTabBarController()
+    func collectionViewDelegateAndDataSource(_ collection: UICollectionView)
+}
+
 final class OnboardController: UIViewController {
     let storageService: StorageService
     let userDefaultsService: UserDefaultsService
 
     private let onboardModel: OnboardModelProtocol
-    private let onboardView = OnboardView(frame: UIScreen.main.bounds)
+    private let onboardView: OnboardView
 
     init(storageService: StorageService, userDefaultsService: UserDefaultsService) {
         self.storageService = storageService
         self.userDefaultsService = userDefaultsService
         self.onboardModel = OnboardModel()
+        self.onboardView = OnboardView(frame: UIScreen.main.bounds)
         super.init(nibName: nil, bundle: nil)
     }
     required init?(coder: NSCoder) {
@@ -28,23 +34,36 @@ final class OnboardController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateViewContent()
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        onboardView.presentControllerCallBack = { [weak self] in
-            guard let self = self else { return }
-            let tabBarController = CustomTabBarController(storageService: self.storageService,
-                                                          userDefaultsService: self.userDefaultsService)
-            tabBarController.modalPresentationStyle = .fullScreen
-            self.present(tabBarController, animated: true, completion: nil)
-            self.userDefaultsService.setValue(true, forKey: .isNotFirstLaunch)
-        }
+        onboardView.delegate = self
+        onboardView.collectionViewDelegateAndDataSource(self)
+        onboardView.setPageControl(countPage: onboardModel.description.count)
     }
 }
 
-extension OnboardController {
-    private func updateViewContent() {
-        onboardView.getOnboardContent(onboardModel)
+extension OnboardController: OnboardControllerDelegate {
+    func collectionViewDelegateAndDataSource(_ collection: UICollectionView) {
+        collection.delegate = self
+        collection.dataSource = self
+    }
+    func presentTabBarController() {
+        let tabBarController = CustomTabBarController(storageService: storageService,
+                                                      userDefaultsService: userDefaultsService)
+        tabBarController.modalPresentationStyle = .fullScreen
+        present(tabBarController, animated: true, completion: nil)
+        userDefaultsService.setValue(true, forKey: .isNotFirstLaunch)
+    }
+}
+
+extension OnboardController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return onboardModel.description.count
+    }
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: onboardView.cellID, for: indexPath
+        ) as? OnboardCollectionCell else { return UICollectionViewCell() }
+        cell.configureCell(image: onboardModel.imagesName[indexPath.row],
+                           description: onboardModel.description[indexPath.row])
+        return cell
     }
 }
