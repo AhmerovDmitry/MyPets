@@ -12,7 +12,7 @@ final class MainMenuController: UIViewController {
     private let networkService: NetworkServiceProtocol = NetworkService()
     var locationManager = CLLocationManager()
 
-    var mainModel = MainWeatherModel()
+    var mainModel = MainWeatherModelImpl()
     let mainView = MainMenuView(frame: UIScreen.main.bounds)
 
     var isGetUserCoordinate = false {
