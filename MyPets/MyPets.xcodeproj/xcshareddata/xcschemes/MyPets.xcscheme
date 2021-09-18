@@ -33,7 +33,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BCDA7E9826F4B99A00C48EC1"
+               BlueprintIdentifier = "BC3369B826F60E7100C40691"
                BuildableName = "MyPetsUnitTests.xctest"
                BlueprintName = "MyPetsUnitTests"
                ReferencedContainer = "container:MyPets.xcodeproj">
@@ -62,6 +62,13 @@
             ReferencedContainer = "container:MyPets.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "OS_ACTIVITY_MODE"
+            value = "disable"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
