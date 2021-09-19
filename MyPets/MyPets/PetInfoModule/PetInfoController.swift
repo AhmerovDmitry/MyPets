@@ -49,6 +49,7 @@ final class PetInfoController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         saveObject()
+        popToViewController()
     }
 
     // MARK: - UI
