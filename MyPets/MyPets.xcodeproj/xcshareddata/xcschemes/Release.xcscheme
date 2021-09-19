@@ -28,6 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BCCED7C126F7CC9900A47637"
+               BuildableName = "MyPetsSnapshot.xctest"
+               BlueprintName = "MyPetsSnapshot"
+               ReferencedContainer = "container:MyPets.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BCCED81626F7D06700A47637"
+               BuildableName = "MyPetsUITests.xctest"
+               BlueprintName = "MyPetsUITests"
+               ReferencedContainer = "container:MyPets.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

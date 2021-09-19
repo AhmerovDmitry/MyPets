@@ -6,3 +6,10 @@
 //
 
 import Foundation
+import XCTest
+
+protocol Page {
+    var app: XCUIApplication { get }
+
+    init(app: XCUIApplication)
+}

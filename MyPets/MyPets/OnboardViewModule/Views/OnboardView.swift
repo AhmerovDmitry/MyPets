@@ -109,6 +109,7 @@ final class OnboardView: UIView {
             doneButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
             doneButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
+        doneButton.accessibilityIdentifier = "doneButton"
     }
     private func setCloseButtonConstraints() {
         self.addSubview(skipButton)
