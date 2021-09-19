@@ -15,7 +15,7 @@ extension UIAlertController {
     ///   - title: Заголовок алерт контроллера
     ///   - message: Сообщение алерт контроллера
     ///   - systemWayUrl: Путь к системным настройкам для удобства включения каких-то функций
-    
+
     static func locationRequest(_ target: UIViewController, title: String, message: String?, systemWayUrl: String?) {
         guard let url = systemWayUrl else { return }
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

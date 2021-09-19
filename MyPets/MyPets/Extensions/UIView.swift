@@ -56,7 +56,7 @@ extension UIView {
     }
 
     /// Число для определения 0.9 части экрана (примерное)
-    
+
     static let ninePartsScreenMultiplier: CGFloat = UIScreen.main.bounds.width / 1.1111111111
     static let basicCornerRadius: CGFloat = 16
 }
