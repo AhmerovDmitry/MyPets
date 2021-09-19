@@ -8,6 +8,9 @@
 import UIKit
 
 final class ShimmerView: UIView {
+
+    // MARK: - Property
+
     private let animationImage: UIImageView = {
         let image = UIImageView()
         image.backgroundColor = .clear
@@ -27,6 +30,8 @@ final class ShimmerView: UIView {
         return image
     }()
 
+    // MARK: - Init / Lifecycle
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -34,6 +39,8 @@ final class ShimmerView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - UI
 
     private func setupUI() {
         self.addSubview(animationImage)
@@ -46,7 +53,7 @@ final class ShimmerView: UIView {
         ])
     }
 
-    // Методы старта и остановки анимации шиммера
+    // MARK: - Methods
 
     func startAnimation() {
         animationImage.isHidden = false

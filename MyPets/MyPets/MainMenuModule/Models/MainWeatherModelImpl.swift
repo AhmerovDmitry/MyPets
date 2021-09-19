@@ -25,8 +25,8 @@ struct MainWeatherModelImpl: MainWeatherModel {
     private(set) var baseURL = "https://api.openweathermap.org/data/2.5/weather?"
     private(set) var userConfig = "units=metric"
     private(set) var URLKey = "appid=10dff189d22023f2127fd521780e2b2d"
-    private(set) var userLat = "lat="
-    private(set) var userLon = "lon="
+    private(set) var userLat = ""
+    private(set) var userLon = ""
     var weatherURL: URL? {
         return URL(string: "\(baseURL)\(userLat)&\(userLon)&\(userConfig)&\(URLKey)")
     }
@@ -35,8 +35,8 @@ struct MainWeatherModelImpl: MainWeatherModel {
     // Координаты берутся с геолокации пользователя
 
     mutating func setUserCoordinate(lat: String, lon: String) {
-        userLat += lat
-        userLon += lon
+        userLat = lat
+        userLon = lon
     }
 
     // API картинок

@@ -9,11 +9,14 @@ import UIKit
 import MapKit
 
 final class MainMenuController: UIViewController {
+
+    // MARK: - Property
+
     private let networkService: NetworkServiceProtocol = NetworkService()
     var locationManager = CLLocationManager()
 
-    var mainModel = MainWeatherModelImpl()
     let mainView = MainMenuView(frame: UIScreen.main.bounds)
+    var mainModel = MainWeatherModelImpl()
 
     var isGetUserCoordinate = false {
         didSet {
@@ -22,6 +25,8 @@ final class MainMenuController: UIViewController {
             }
         }
     }
+
+    // MARK: - Init / Lifecycle
 
     override func loadView() {
         view = mainView
@@ -45,6 +50,9 @@ final class MainMenuController: UIViewController {
         mainView.stopShimmerAnimation()
         networkService.cancelNetworkRequest()
     }
+
+    // MARK: - UI
+
     private func setupNavigationController() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.backgroundColor = .white
@@ -53,9 +61,11 @@ final class MainMenuController: UIViewController {
     }
 }
 
+// MARK: - Methods
+
 extension MainMenuController {
     private func loadData() {
-        var state: String?, temp: String?, mainImage: UIImage?, backgroundImage: UIImage?
+        var state: String?, temp: String?, city: String?, mainImage: UIImage?, backgroundImage: UIImage?
 
         // Очередь и группа для того чтобы сначала получать данные о погоде
         // так как на их основании составляется запрос картинок
@@ -73,6 +83,7 @@ extension MainMenuController {
                 case .success(let data):
                     state = data.weather.last?.main
                     temp = "\(Int(round(data.main.temp ?? 0.0)))"
+                    city = data.name
                     dispatchGroup.leave()
                 case .failure(let error):
                     self?.networkError(error, withTitle: "Сетевая ошибка")
@@ -113,9 +124,8 @@ extension MainMenuController {
 
         Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { timer in
             requestTimer += 1
-            self.networkDataChecker(
-                temp: temp, main: mainImage, background: backgroundImage, timer: timer, requestTimer: requestTimer
-            )
+            self.networkDataChecker(temp: temp, city: city, main: mainImage, background: backgroundImage,
+                                    timer: timer, requestTimer: requestTimer)
         }
     }
 
@@ -126,21 +136,18 @@ extension MainMenuController {
     ///   - background: Бекграундная картинка
     ///   - timer: Таймер для остановки
     ///   - requestTimer: Количество запросов для остановки в случае превышения 60 секунд
-    func networkDataChecker(temp: String?,
-                            main: UIImage?,
-                            background: UIImage?,
-                            timer: Timer,
-                            requestTimer: Int) {
-        if requestTimer == 30 && (temp == nil || main == nil || background == nil) {
+
+    private func networkDataChecker(temp: String?, city: String?, main: UIImage?, background: UIImage?,
+                                    timer: Timer, requestTimer: Int) {
+        if requestTimer == 30 && (temp == nil || city == nil || main == nil || background == nil) {
             timer.invalidate()
             self.networkError(.network, withTitle: "Превышен интервал ожидания запроса")
-        } else if temp != nil && main != nil && background != nil {
+        } else if temp != nil && city != nil && main != nil && background != nil {
             DispatchQueue.main.async {
                 timer.invalidate()
                 self.mainView.stopShimmerAnimation()
-                self.mainView.weatherView.presentWeatherElements(temp: temp,
-                                                                 mainImage: main,
-                                                                 backgroundImage: background)
+                self.mainView.weatherView.presentWeatherElements(temp: temp, city: city,
+                                                                 mainImage: main,bgImage: background)
             }
         }
     }
@@ -150,16 +157,12 @@ extension MainMenuController {
     /// - Parameters:
     ///   - error: Описание ошибки
     ///   - withTitle: Заголовок ошибки
+
     private func networkError(_ error: NetworkServiceError, withTitle: String) {
         DispatchQueue.main.async {
             self.mainView.stopShimmerAnimation()
-            UIAlertController.presentAlertWithBasicType(self,
-                                                        title: withTitle,
-                                                        message: error.message,
-                                                        style: .actionSheet)
-            self.mainView.weatherView.presentWeatherElements(temp: nil,
-                                                             mainImage: nil,
-                                                             backgroundImage: nil)
+            UIAlertController.presentAlertWithBasicType(self, title: withTitle, message: error.message, style: .alert)
+            self.mainView.weatherView.presentWeatherElements(temp: nil, city: nil, mainImage: nil, bgImage: nil)
         }
     }
 }

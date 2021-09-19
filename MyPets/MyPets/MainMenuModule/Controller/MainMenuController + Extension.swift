@@ -18,7 +18,7 @@ extension MainMenuController: CLLocationManagerDelegate {
             setupLocationManager()
             checkAutorization()
         } else {
-            UIAlertController.locationRequest(self, title: "Включить службу геолокации? 🤔",
+            UIAlertController.locationRequest(self, title: "Включить службу геолокации?",
                                               message: "Это нужно для получения погоды в вашей области.",
                                               systemWayUrl: "App-Prefs:root=LOCATION_SERVICES")
         }
@@ -29,7 +29,7 @@ extension MainMenuController: CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
         case .denied:
             UIAlertController.locationRequest(
-                self, title: "Вы запретили использовать местоположение. 😔",
+                self, title: "Вы запретили использовать местоположение.",
                 message: "Без определения местоположения мы не сможем показать погодные данные,"
                     + "хотите изменить свое решение?",
                 systemWayUrl: UIApplication.openSettingsURLString
@@ -44,8 +44,8 @@ extension MainMenuController: CLLocationManagerDelegate {
         }
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first?.coordinate {
-            mainModel.setUserCoordinate(lat: "\(location.latitude)", lon: "\(location.longitude)")
+        if let location = locations.last?.coordinate {
+            mainModel.setUserCoordinate(lat: "lat=\(location.latitude)", lon: "lon=\(location.longitude)")
             locationManager.stopUpdatingLocation()
             isGetUserCoordinate = true
         }
