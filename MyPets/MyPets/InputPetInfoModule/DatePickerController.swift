@@ -10,8 +10,8 @@ import UIKit
 final class DatePickerController: UIViewController {
     private var dateBirthday = Date()
 
-    private let datePickerView = DatePickerView(frame: UIScreen.main.bounds)
-    private let dateFormatter = DateFormatterServiceImpl()
+    private let datePickerView: DatePickerView
+    private let dateFormatter: DateFormatterService
     weak var delegate: TransferPetBirthdayDelegate?
 
     override func loadView() {
@@ -20,6 +20,14 @@ final class DatePickerController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         datePickerView.delegate = self
+    }
+    init() {
+        self.datePickerView = DatePickerView(frame: UIScreen.main.bounds)
+        self.dateFormatter = DateFormatterServiceImpl()
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
