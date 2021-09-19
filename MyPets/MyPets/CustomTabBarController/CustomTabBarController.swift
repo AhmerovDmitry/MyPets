@@ -29,10 +29,16 @@ final class CustomTabBarController: UITabBarController {
         super.viewDidLoad()
         setupControllers()
         presentPremium()
+        setupTabBarSettings()
     }
 
     // MARK: - UI
 
+    private func setupTabBarSettings() {
+        tabBar.shadowImage = UIImage()
+        tabBar.backgroundImage = UIImage()
+        tabBar.clipsToBounds = true
+    }
     private func setupControllers() {
         let mainVC = UINavigationController(rootViewController: MainMenuController())
         mainVC.tabBarItem.title = "Главная"
@@ -68,7 +74,7 @@ extension CustomTabBarController {
 
     /// Метод показывающий преимум контроллер если покупка не совершена
     /// Возможно отключение показа контроллера нажатием на кнопку-заглушку "Купить Premium"
-    
+
     private func presentPremium() {
         if !userDefaultsService.value(forKey: .isAppPurchased) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
