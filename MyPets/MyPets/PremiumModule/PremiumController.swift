@@ -54,7 +54,6 @@ extension PremiumController: PremiumControllerDelegate {
             self.userDefaultsService.setValue(true, forKey: .isAppPurchased)
             return
         }
-        self.userDefaultsService.setValue(false, forKey: .isAppPurchased)
     }
 }
 
