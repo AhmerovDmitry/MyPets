@@ -31,12 +31,12 @@
 		BC2614F526F686C300D4A58D /* DataTransferDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2614F426F686C300D4A58D /* DataTransferDelegate.swift */; };
 		BC2614F726F6A9B700D4A58D /* DataTransferDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2614F426F686C300D4A58D /* DataTransferDelegate.swift */; };
 		BC2614F926F6ABCF00D4A58D /* DatePickerControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2614F826F6ABCF00D4A58D /* DatePickerControllerTests.swift */; };
+		BC26150126F7531C00D4A58D /* PetInfoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC26150026F7531C00D4A58D /* PetInfoCollectionCell.swift */; };
 		BC26F06626F2072500403961 /* ShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC26F06526F2072500403961 /* ShimmerView.swift */; };
 		BC3369BC26F60E7100C40691 /* MyPetsUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3369BB26F60E7100C40691 /* MyPetsUnitTests.swift */; };
 		BC3369C326F60E8500C40691 /* UserDefaultsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5B1AB26F4BED500C47A09 /* UserDefaultsServiceTests.swift */; };
 		BC3369C426F60E8500C40691 /* StorageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1DF0B026F5F28B004B744A /* StorageServiceTests.swift */; };
 		BC3369C526F60EEB00C40691 /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC259E826C4142A00FCAC54 /* MainMenuController.swift */; };
-		BC3369C626F60EEB00C40691 /* PetInfoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB66026C6A09400BE80AE /* PetInfoCollectionCell.swift */; };
 		BC3369C726F60EEB00C40691 /* PetInfoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9402F826CA6AB70028E5AC /* PetInfoTableCell.swift */; };
 		BC3369C826F60EEB00C40691 /* PremiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8C64F226BF37EF00CA7A90 /* PremiumView.swift */; };
 		BC3369C926F60EEB00C40691 /* PetInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB65C26C688F500BE80AE /* PetInfoController.swift */; };
@@ -101,7 +101,6 @@
 		BC7EB65726C668F000BE80AE /* PetCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB65626C668F000BE80AE /* PetCollectionCell.swift */; };
 		BC7EB65D26C688F500BE80AE /* PetInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB65C26C688F500BE80AE /* PetInfoController.swift */; };
 		BC7EB65F26C699CD00BE80AE /* PetInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB65E26C699CD00BE80AE /* PetInfoView.swift */; };
-		BC7EB66126C6A09400BE80AE /* PetInfoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB66026C6A09400BE80AE /* PetInfoCollectionCell.swift */; };
 		BC7EB66526C6AB1F00BE80AE /* PetInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB66426C6AB1F00BE80AE /* PetInfoCell.swift */; };
 		BC7EB66726C6CA9900BE80AE /* PetInfoModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB66626C6CA9900BE80AE /* PetInfoModelImpl.swift */; };
 		BC8C64F326BF37EF00CA7A90 /* PremiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8C64F226BF37EF00CA7A90 /* PremiumView.swift */; };
@@ -166,6 +165,7 @@
 		BC2614F126F671A100D4A58D /* ProfileControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileControllerTests.swift; sourceTree = "<group>"; };
 		BC2614F426F686C300D4A58D /* DataTransferDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferDelegate.swift; sourceTree = "<group>"; };
 		BC2614F826F6ABCF00D4A58D /* DatePickerControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerControllerTests.swift; sourceTree = "<group>"; };
+		BC26150026F7531C00D4A58D /* PetInfoCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetInfoCollectionCell.swift; sourceTree = "<group>"; };
 		BC26F06526F2072500403961 /* ShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerView.swift; sourceTree = "<group>"; };
 		BC3369B926F60E7100C40691 /* MyPetsUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyPetsUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC3369BB26F60E7100C40691 /* MyPetsUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPetsUnitTests.swift; sourceTree = "<group>"; };
@@ -183,7 +183,6 @@
 		BC7EB65626C668F000BE80AE /* PetCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCollectionCell.swift; sourceTree = "<group>"; };
 		BC7EB65C26C688F500BE80AE /* PetInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoController.swift; sourceTree = "<group>"; };
 		BC7EB65E26C699CD00BE80AE /* PetInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoView.swift; sourceTree = "<group>"; };
-		BC7EB66026C6A09400BE80AE /* PetInfoCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoCollectionCell.swift; sourceTree = "<group>"; };
 		BC7EB66426C6AB1F00BE80AE /* PetInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoCell.swift; sourceTree = "<group>"; };
 		BC7EB66626C6CA9900BE80AE /* PetInfoModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoModelImpl.swift; sourceTree = "<group>"; };
 		BC8C64F026BF379700CA7A90 /* PremiumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumController.swift; sourceTree = "<group>"; };
@@ -385,8 +384,8 @@
 			isa = PBXGroup;
 			children = (
 				BC7EB65E26C699CD00BE80AE /* PetInfoView.swift */,
-				BC7EB66026C6A09400BE80AE /* PetInfoCollectionCell.swift */,
 				BC7EB66426C6AB1F00BE80AE /* PetInfoCell.swift */,
+				BC26150026F7531C00D4A58D /* PetInfoCollectionCell.swift */,
 				BC9402F826CA6AB70028E5AC /* PetInfoTableCell.swift */,
 			);
 			path = Views;
@@ -675,7 +674,6 @@
 				BC3369EA26F60EEB00C40691 /* UIView.swift in Sources */,
 				BC2614F726F6A9B700D4A58D /* DataTransferDelegate.swift in Sources */,
 				BC3369DA26F60EEB00C40691 /* ProfileModel.swift in Sources */,
-				BC3369C626F60EEB00C40691 /* PetInfoCollectionCell.swift in Sources */,
 				BC3369C526F60EEB00C40691 /* MainMenuController.swift in Sources */,
 				BC3369E626F60EEB00C40691 /* AppDelegate.swift in Sources */,
 				BC2614F326F6764200D4A58D /* ProfileView.swift in Sources */,
@@ -761,6 +759,7 @@
 				BC52FFA026D91B9D00A694CB /* WeatherMenuView.swift in Sources */,
 				BC0D29F226EFA33D00C3AF2D /* SystemView.swift in Sources */,
 				BC9402E926CA62840028E5AC /* PetInformation.xcdatamodeld in Sources */,
+				BC26150126F7531C00D4A58D /* PetInfoCollectionCell.swift in Sources */,
 				BC0D29E626EE9D1700C3AF2D /* ProfileModel.swift in Sources */,
 				BC0132CF26E15DFE0065F1B7 /* MainWeatherModelImpl.swift in Sources */,
 				BC9402F926CA6AB70028E5AC /* PetInfoTableCell.swift in Sources */,
@@ -776,7 +775,6 @@
 				BC13029926B9787D00CFD87E /* OnboardController.swift in Sources */,
 				BC0D29F026EF7F8F00C3AF2D /* EntitysView.swift in Sources */,
 				BC8C64F526BF382A00CA7A90 /* PremiumModel.swift in Sources */,
-				BC7EB66126C6A09400BE80AE /* PetInfoCollectionCell.swift in Sources */,
 				BCFECA9726F2499900286EF6 /* GetWeatherResponse.swift in Sources */,
 				BC9F268F26BBCC5D000B854F /* UIColor.swift in Sources */,
 				BCB5B20226F4F7A800C47A09 /* DatePickerView.swift in Sources */,
