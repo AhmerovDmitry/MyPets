@@ -8,6 +8,8 @@
 import UIKit
 
 protocol NetworkServiceProtocol {
+    var isLoadingCanceled: Bool { get }
+
     func loadJSONData<T: Codable>(from url: URL?,
                                   httpAdditionalHeaders: [AnyHashable: Any]?,
                                   decodeModel: T.Type,
@@ -18,8 +20,10 @@ protocol NetworkServiceProtocol {
 
 final class NetworkService {
     private let decoder = JSONDecoder()
-    private var session = URLSession.shared
+    private var session = URLSession(configuration: .default)
     private var sessionDataTask: URLSessionDataTask?
+
+    var isLoadingCanceled = false
 }
 
 extension NetworkService: NetworkServiceProtocol {
@@ -55,6 +59,10 @@ extension NetworkService: NetworkServiceProtocol {
                 }
                 completion(.success(response))
             } catch {
+                if self.isLoadingCanceled {
+                    self.isLoadingCanceled = false
+                    return
+                }
                 completion(.failure(.network))
             }
         })
@@ -74,6 +82,7 @@ extension NetworkService: NetworkServiceProtocol {
     /// Метод отменяющий запрос в сеть
 
     func cancelNetworkRequest() {
+        isLoadingCanceled = true
         if let task = sessionDataTask {
             task.cancel()
         }
