@@ -110,7 +110,7 @@ extension ProfileController {
                     self,
                     title: "Версия приложения:",
                     message: appVersion + "." + appBuildVersion,
-                    style: .actionSheet
+                    style: .alert
                 )
             default: break
             }
