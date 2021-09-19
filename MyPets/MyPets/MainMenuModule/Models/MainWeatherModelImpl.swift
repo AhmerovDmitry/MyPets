@@ -13,6 +13,7 @@ protocol MainWeatherModel {
     var URLKey: String { get }
     var userLat: String { get }
     var userLon: String { get }
+    var requestLang: String { get }
     var weatherURL: URL? { get }
 
     mutating func setUserCoordinate(lat: String, lon: String)
@@ -25,10 +26,11 @@ struct MainWeatherModelImpl: MainWeatherModel {
     private(set) var baseURL = "https://api.openweathermap.org/data/2.5/weather?"
     private(set) var userConfig = "units=metric"
     private(set) var URLKey = "appid=10dff189d22023f2127fd521780e2b2d"
+    private(set) var requestLang = "lang=ru"
     private(set) var userLat = ""
     private(set) var userLon = ""
     var weatherURL: URL? {
-        return URL(string: "\(baseURL)\(userLat)&\(userLon)&\(userConfig)&\(URLKey)")
+        return URL(string: "\(baseURL)\(userLat)&\(userLon)&\(userConfig)&\(URLKey)&\(requestLang)")
     }
 
     // Метод изменяет координаты для формирования запроса

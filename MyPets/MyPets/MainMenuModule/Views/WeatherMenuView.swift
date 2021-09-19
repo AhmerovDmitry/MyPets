@@ -28,9 +28,10 @@ final class WeatherMenuView: UIView {
         label.textColor = UIColor.CustomColor.dark
         return label
     }()
-    private let cityName: UILabel = {
+    private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        label.numberOfLines = 2
         label.font = UIFont.systemFont(ofSize: 18, weight: .ultraLight)
         label.adjustsFontSizeToFitWidth = true
         label.textColor = UIColor.CustomColor.dark
@@ -89,15 +90,19 @@ final class WeatherMenuView: UIView {
         temperatureLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             temperatureLabel.topAnchor.constraint(equalTo: self.topAnchor),
-            temperatureLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+            temperatureLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            temperatureLabel.widthAnchor.constraint(equalTo: self.widthAnchor),
+            temperatureLabel.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.2)
         ])
     }
     private func setCityLabelConstraints() {
-        self.addSubview(cityName)
-        cityName.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(descriptionLabel)
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            cityName.topAnchor.constraint(equalTo: temperatureLabel.bottomAnchor, constant: 12),
-            cityName.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+            descriptionLabel.topAnchor.constraint(equalTo: temperatureLabel.bottomAnchor),
+            descriptionLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            descriptionLabel.widthAnchor.constraint(equalTo: self.widthAnchor),
+            descriptionLabel.heightAnchor.constraint(equalTo: temperatureLabel.heightAnchor, multiplier: 0.5)
         ])
     }
 }
@@ -137,19 +142,19 @@ extension WeatherMenuView {
 
     func presentWeatherElements(temp: String?, city: String?, mainImage: UIImage?, bgImage: UIImage?) {
         temperatureLabel.attributedText = changeTextAttribute(temp ?? "--")
-        cityName.text = city ?? "--"
+        descriptionLabel.text = city ?? "--"
         mainWeatherImage.image = mainImage ?? UIImage(named: "networkError")
         backgroundWeatherImage.image = bgImage ?? UIImage()
     }
     func hiddenWeatherElements() {
         temperatureLabel.isHidden = true
-        cityName.isHidden = true
+        descriptionLabel.isHidden = true
         mainWeatherImage.isHidden = true
         backgroundWeatherImage.isHidden = true
     }
     func visibleWeatherElements() {
         temperatureLabel.isHidden = false
-        cityName.isHidden = false
+        descriptionLabel.isHidden = false
         mainWeatherImage.isHidden = false
         backgroundWeatherImage.isHidden = false
     }

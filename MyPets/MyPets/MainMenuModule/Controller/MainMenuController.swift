@@ -33,7 +33,6 @@ final class MainMenuController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainView.setDefaultShadow()
         setupNavigationController()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -65,89 +64,56 @@ final class MainMenuController: UIViewController {
 
 extension MainMenuController {
     private func loadData() {
-        var state: String?, temp: String?, city: String?, mainImage: UIImage?, backgroundImage: UIImage?
+        var state: String?
+        var temp: String?
+        var description: String?
+        var mainImage: UIImage?
+        var backgroundImage: UIImage?
 
-        // Очередь и группа для того чтобы сначала получать данные о погоде
+        // Очередь для того чтобы сначала получать данные о погоде
         // так как на их основании составляется запрос картинок
 
         let serialQueue = DispatchQueue(label: "com.mypets.serialqueue")
-        let dispatchGroup = DispatchGroup()
 
         // Получение данных о погоде (температура и статус погоды)
 
-        dispatchGroup.enter()
-        serialQueue.async { [weak self] in
-            self?.networkService.loadJSONData(from: self?.mainModel.weatherURL, httpAdditionalHeaders: nil,
+        serialQueue.sync { [weak self] in
+            guard let self = self else { return }
+            self.networkService.loadJSONData(from: self.mainModel.weatherURL, httpAdditionalHeaders: nil,
                                              decodeModel: WeatherDescription.self) { result in
                 switch result {
                 case .success(let data):
                     state = data.weather.last?.main
+                    description = "\(data.name ?? "")\n\(data.weather.last?.description?.firstUppercased ?? "")"
                     temp = "\(Int(round(data.main.temp ?? 0.0)))"
-                    city = data.name
-                    dispatchGroup.leave()
                 case .failure(let error):
-                    self?.networkError(error, withTitle: "Сетевая ошибка")
-                    dispatchGroup.leave()
+                    self.networkError(error, withTitle: "Сетевая ошибка")
                 }
             }
-        }
 
-        // Получение картинок
+            // Получение картинок
 
-        dispatchGroup.enter()
-        serialQueue.async { [weak self] in
-            self?.networkService.loadJSONData(from: self?.mainModel.imagesURL,
-                                             httpAdditionalHeaders: self?.mainModel.httpAdditionalHeaders,
+            self.networkService.loadJSONData(from: self.mainModel.imagesURL,
+                                             httpAdditionalHeaders: self.mainModel.httpAdditionalHeaders,
                                              decodeModel: WeatherImages.self) { result in
                 switch result {
                 case .success(let data):
                     let randomNumber = Int.random(in: 0...data.homeImages.count - 1)
                     switch state {
                     case "Clear", "Clouds", "Drizzle", "Haze":
-                        mainImage = self?.networkService.downloadImage(at: data.strollImages[randomNumber])
+                        mainImage = self.networkService.downloadImage(at: data.strollImages[randomNumber])
                     default:
-                        mainImage = self?.networkService.downloadImage(at: data.homeImages[randomNumber])
+                        mainImage = self.networkService.downloadImage(at: data.homeImages[randomNumber])
                     }
-                    backgroundImage = self?.networkService.downloadImage(at: data.backgroundImage)
-                    dispatchGroup.leave()
+                    backgroundImage = self.networkService.downloadImage(at: data.backgroundImage)
+                    DispatchQueue.main.async {
+                        self.mainView.stopShimmerAnimation()
+                        self.mainView.weatherView.presentWeatherElements(temp: temp, city: description,
+                                                                         mainImage: mainImage, bgImage: backgroundImage)
+                    }
                 case .failure(let error):
-                    self?.networkError(error, withTitle: "Сетевая ошибка")
-                    dispatchGroup.leave()
+                    self.networkError(error, withTitle: "Сетевая ошибка")
                 }
-            }
-        }
-
-        var requestTimer = 0
-
-        // Таймер для повтроной проверки данных каждые 2 секунды
-        // в течении 60 секунд
-
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { timer in
-            requestTimer += 1
-            self.networkDataChecker(temp: temp, city: city, main: mainImage, background: backgroundImage,
-                                    timer: timer, requestTimer: requestTimer)
-        }
-    }
-
-    /// Метод проверяющий данные полученные из сети
-    /// - Parameters:
-    ///   - temp: Температура
-    ///   - main: Главное изображение
-    ///   - background: Бекграундная картинка
-    ///   - timer: Таймер для остановки
-    ///   - requestTimer: Количество запросов для остановки в случае превышения 60 секунд
-
-    private func networkDataChecker(temp: String?, city: String?, main: UIImage?, background: UIImage?,
-                                    timer: Timer, requestTimer: Int) {
-        if requestTimer == 30 && (temp == nil || city == nil || main == nil || background == nil) {
-            timer.invalidate()
-            self.networkError(.network, withTitle: "Превышен интервал ожидания запроса")
-        } else if temp != nil && city != nil && main != nil && background != nil {
-            DispatchQueue.main.async {
-                timer.invalidate()
-                self.mainView.stopShimmerAnimation()
-                self.mainView.weatherView.presentWeatherElements(temp: temp, city: city,
-                                                                 mainImage: main,bgImage: background)
             }
         }
     }
