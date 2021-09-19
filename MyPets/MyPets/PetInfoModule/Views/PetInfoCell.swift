@@ -8,6 +8,9 @@
 import UIKit
 
 final class PetInfoCell: UIView {
+
+    // MARK: - Property
+
     private let petNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.CustomColor.dark
@@ -26,6 +29,8 @@ final class PetInfoCell: UIView {
         return tableView
     }()
 
+    // MARK: - Init / Lifecycle
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -33,9 +38,9 @@ final class PetInfoCell: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
 
-extension PetInfoCell {
+    // MARK: - UI
+
     private func setupUI() {
         self.layer.cornerRadius = UIView.basicCornerRadius
         self.clipsToBounds = true
@@ -65,19 +70,27 @@ extension PetInfoCell {
     }
 }
 
+// MARK: - Mathods
+
 extension PetInfoCell {
+
     /// Методы делегата и дата сорса, которые передаются в контроллер для работы с ними
+
     func tableViewDelegate<T: UITableViewDelegate>(_ target: T) {
         petInfoTable.delegate = target
     }
     func tableViewDataSource<T: UITableViewDataSource>(_ target: T) {
         petInfoTable.dataSource = target
     }
+
     /// Регистрация ячейки с использованием идентификатора
+
     func setTableViewID(_ id: String) {
         petInfoTable.register(PetInfoTableCell.self, forCellReuseIdentifier: id)
     }
+
     /// Перезагрузка одной ячейки после изменения значения в ней
+
     func reloadTableViewCell(at indexPath: IndexPath) {
         petInfoTable.reloadRows(at: [indexPath], with: .none)
     }

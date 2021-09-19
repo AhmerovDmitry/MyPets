@@ -8,6 +8,9 @@
 import UIKit
 
 final class OnboardCollectionCell: UICollectionViewCell {
+
+    // MARK: - Property
+
     private let onboardView: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
@@ -23,6 +26,8 @@ final class OnboardCollectionCell: UICollectionViewCell {
         return label
     }()
 
+    // MARK: - Init / Lifecycle
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -30,9 +35,9 @@ final class OnboardCollectionCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
 
-extension OnboardCollectionCell {
+    // MARK: - UI
+
     private func setupUI() {
         setDescriptionLabelConstraints()
         setOnboardViewConstraints()
@@ -58,6 +63,8 @@ extension OnboardCollectionCell {
         ])
     }
 }
+
+// MARK: - Public Methods
 
 extension OnboardCollectionCell {
     func configureCell(image: String, description: String) {

@@ -8,19 +8,17 @@
 import UIKit
 
 final class DatePickerController: UIViewController {
+
+    // MARK: - Property
+
     private var dateBirthday = Date()
 
     private let datePickerView: DatePickerView
     private let dateFormatter: DateFormatterService
     weak var delegate: TransferPetBirthdayDelegate?
 
-    override func loadView() {
-        view = datePickerView
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        datePickerView.delegate = self
-    }
+    // MARK: - Init / Lifecycle
+
     init() {
         self.datePickerView = DatePickerView(frame: UIScreen.main.bounds)
         self.dateFormatter = DateFormatterServiceImpl()
@@ -29,7 +27,16 @@ final class DatePickerController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    override func loadView() {
+        view = datePickerView
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        datePickerView.delegate = self
+    }
 }
+
+// MARK: - Methods
 
 extension DatePickerController: DataTransferDelegate {
     func transferInformation(_ info: Any?) {

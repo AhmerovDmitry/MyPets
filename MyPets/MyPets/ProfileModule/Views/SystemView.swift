@@ -9,6 +9,8 @@ import UIKit
 
 final class SystemView: UIView {
 
+    // MARK: - Property
+
     weak var delegate: SystemViewResetButtonsDelegate?
 
     private var systemModel: SystemModelProtocol
@@ -25,6 +27,8 @@ final class SystemView: UIView {
         return tableView
     }()
 
+    // MARK: - Init / Lifecycle
+
     init(userDefaultsService: UserDefaultsService) {
         self.systemModel = SystemModel()
         self.userDefaultsService = userDefaultsService
@@ -36,9 +40,9 @@ final class SystemView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
 
-extension SystemView {
+    // MARK: - UI
+
     private func setupUI() {
         setSystemTableViewConstraints()
     }
@@ -53,6 +57,8 @@ extension SystemView {
         ])
     }
 }
+
+// MARK: - Methods
 
 extension SystemView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

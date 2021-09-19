@@ -7,15 +7,22 @@
 
 import UIKit
 
+// MARK: - Delegate
+
 protocol PremiumControllerDelegate: AnyObject {
     func dismissController(withPurchase: Bool)
 }
 
 final class PremiumController: UIViewController {
+
+    // MARK: - Property
+
     private let userDefaultsService: UserDefaultsService
 
     private let premiumModel: PremiumModelProtocol
     private let premiumView: PremiumView
+
+    // MARK: - Init / Lifecycle
 
     init(userDefaultsService: UserDefaultsService) {
         self.userDefaultsService = userDefaultsService
@@ -34,7 +41,18 @@ final class PremiumController: UIViewController {
         premiumView.delegate = self
         premiumView.tableViewDelegateAndDataSource(self)
     }
+}
 
+// MARK: - Methods
+
+extension PremiumController: PremiumControllerDelegate {
+    func dismissController(withPurchase: Bool) {
+        dismiss(animated: true, completion: nil)
+        if withPurchase {
+            self.userDefaultsService.setValue(true, forKey: .isAppPurchased)
+            return
+        }
+    }
     private func updateCellContent(_ cell: UITableViewCell, index: Int) {
         cell.backgroundColor = .clear
         cell.selectionStyle = .none
@@ -44,16 +62,6 @@ final class PremiumController: UIViewController {
         cell.textLabel?.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         cell.textLabel?.adjustsFontSizeToFitWidth = true
         cell.textLabel?.text = premiumModel.description[index]
-    }
-}
-
-extension PremiumController: PremiumControllerDelegate {
-    func dismissController(withPurchase: Bool) {
-        dismiss(animated: true, completion: nil)
-        if withPurchase {
-            self.userDefaultsService.setValue(true, forKey: .isAppPurchased)
-            return
-        }
     }
 }
 

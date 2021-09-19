@@ -8,11 +8,16 @@
 import UIKit
 
 final class ProfileView: UIView {
+
+    // MARK: - Property
+
     private var profileTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = .white
         return tableView
     }()
+
+    // MARK: - Init / Lifecycle
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,9 +26,9 @@ final class ProfileView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
 
-extension ProfileView {
+    // MARK: - UI
+
     private func setupUI() {
         setProfileTableViewConstraints()
     }
@@ -38,6 +43,8 @@ extension ProfileView {
         ])
     }
 }
+
+// MARK: - Methods
 
 extension ProfileView {
     func tableViewDelegateAndDataSource<T>(_ target: T) where T: UITableViewDelegate, T: UITableViewDataSource {

@@ -18,6 +18,9 @@ protocol SystemViewResetButtonsDelegate: AnyObject {
 }
 
 final class ProfileController: UIViewController {
+
+    // MARK: - Property
+
     private let storageService: StorageService
     private let userDefaultsService: UserDefaultsService
 
@@ -28,6 +31,8 @@ final class ProfileController: UIViewController {
 
     private let profileTableViewCellID = "profileTableViewCellID"
     private var systemViewIsHidden = true
+
+    // MARK: - Init / Lifecycle
 
     init(storageService: StorageService, userDefaultsService: UserDefaultsService) {
         self.storageService = storageService
@@ -55,9 +60,9 @@ final class ProfileController: UIViewController {
         systemViewIsHidden = true
         systemTableView?.tableFooterView = nil
     }
-}
 
-extension ProfileController {
+    // MARK: - UI
+
     private func setupNavigationController() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.backgroundColor = .clear
@@ -65,6 +70,8 @@ extension ProfileController {
         navigationItem.title = profileModel.controllerTitle
     }
 }
+
+// MARK: - Methods
 
 extension ProfileController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {

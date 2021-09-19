@@ -7,11 +7,16 @@
 
 import UIKit
 
+// MARK: - Delegate
+
 protocol PetMenuControllerDelegate: AnyObject {
     func reloadController()
 }
 
 final class PetMenuController: UIViewController {
+
+    // MARK: - Property
+
     private let storageService: StorageService
     private let userDefaultsService: UserDefaultsService
 
@@ -20,6 +25,8 @@ final class PetMenuController: UIViewController {
     private lazy var petCollectionView = PetCollectionView(frame: view.bounds)
 
     private var tappedCellIndex: Int?
+
+    // MARK: - Init / Lifecycle
 
     init(storageService: StorageService, userDefaultsService: UserDefaultsService) {
         self.storageService = storageService
@@ -41,14 +48,9 @@ final class PetMenuController: UIViewController {
         addSubview()
         storageService.loadEntitys()
     }
-}
 
-extension PetMenuController {
-    private func setCallBacksTransfers() {
-        petMenuView.presentControllerCallBack = { [weak self] in
-            self?.presentController()
-        }
-    }
+    // MARK: - UI
+
     private func setupNavigationController() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.backgroundColor = .clear
@@ -62,8 +64,10 @@ extension PetMenuController {
             navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.purple
         }
     }
+
     /// Если в CoreData нет объектов тогда грузится экран с кнопкой "Добавить питомца"
     /// в обратном случае грузится экран с коллекцией (списком объектов)
+
     private func addSubview() {
         if storageService.objects.isEmpty {
             view.addSubview(petMenuView)
@@ -78,12 +82,21 @@ extension PetMenuController {
     }
 }
 
+// MARK: - Methods
+
 extension PetMenuController {
+    private func setCallBacksTransfers() {
+        petMenuView.presentControllerCallBack = { [weak self] in
+            self?.presentController()
+        }
+    }
     @objc private func presentController() {
         let controller = PetInfoController(storageService: storageService, collectionCellIndex: tappedCellIndex)
         controller.delegate = self
+
         /// Сбрасываю индекс чтобы он не сохранялся при повторном открытии экрана без использования ячеек,
         /// открытие окна с помощью кнопки "+"
+        
         tappedCellIndex = nil
         navigationController?.pushViewController(controller, animated: true)
     }

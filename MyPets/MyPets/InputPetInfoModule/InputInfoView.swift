@@ -9,6 +9,8 @@ import UIKit
 
 final class InputInfoView: UIView {
 
+    // MARK: - Property
+
     weak var delegate: DataTransferDelegate?
 
     private let titleLabel: UILabel = {
@@ -50,6 +52,9 @@ final class InputInfoView: UIView {
                                                             borderWidth: nil,
                                                             target: self,
                                                             action: #selector(dismissController))
+
+    // MARK: - Init / Lifecycle
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -57,13 +62,14 @@ final class InputInfoView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - UI
+
     override func layoutSubviews() {
         super.layoutSubviews()
         setCornerRadiusForElements()
     }
-}
 
-extension InputInfoView {
     private func setupUI() {
         setBlurEffect(self, frame: self.frame)
         setTextFieldBackgroundViewConstraints()
@@ -138,6 +144,8 @@ extension InputInfoView {
         cancelButton.layer.cornerRadius = saveButton.bounds.height / 2
     }
 }
+
+// MARK: - Methods
 
 @objc
 extension InputInfoView {

@@ -8,8 +8,13 @@
 import UIKit
 
 final class EntitysController: UIViewController {
+
+    // MARK: - Property
+
     private var entitysModel: EntitysModel
     private var entitysView: EntitysView
+
+    // MARK: - Init / Lifecycle
 
     init(storageService: StorageService) {
         self.entitysModel = EntitysModel(storageService: storageService)
@@ -31,9 +36,9 @@ final class EntitysController: UIViewController {
         super.viewDidDisappear(animated)
         popViewController()
     }
-}
 
-extension EntitysController {
+    // MARK: - UI
+
     private func setupNavigationController() {
         navigationItem.title = "Список питомцев"
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.uturn.left"), style: .done,
@@ -50,6 +55,8 @@ extension EntitysController {
         cell.detailTextLabel?.text = entitysModel.getObjects()[index].breed ?? entitysModel.defaultBreed
     }
 }
+
+// MARK: - Methods
 
 extension EntitysController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

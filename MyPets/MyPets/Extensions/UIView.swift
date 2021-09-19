@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIView {
+
     /// Эффект градиента для вью
     /// Направление вью задается startPoint и endPoint
     /// - Parameters:
@@ -16,6 +17,7 @@ extension UIView {
     ///   - colorTwo: Второй цвет градиента
     ///   - startPoint: Стартовая точка откуда пойдет градиент
     ///   - endPoint: Конечная точка где закончится градиент
+
     func setGradientEffect(_ view: UIView,
                            colorOne: UIColor, colorTwo: UIColor,
                            startPoint: CGPoint, endPoint: CGPoint) {
@@ -29,6 +31,7 @@ extension UIView {
     }
 
     /// Метод добавляет тень во все стороны от вью
+
     func setDefaultShadow() {
         layer.shadowColor = UIColor.CustomColor.dark.cgColor
         layer.shadowOpacity = 0.2
@@ -44,6 +47,7 @@ extension UIView {
     /// - Parameters:
     ///   - view: Вью на которую накладывается размытие
     ///   - frame: Размер этой вью для сопоставления эффекта размытия со вью
+
     func setBlurEffect(_ view: UIView, frame: CGRect) {
         let blurEffect = UIBlurEffect(style: .dark)
         let effectView = UIVisualEffectView(effect: blurEffect)
@@ -52,6 +56,7 @@ extension UIView {
     }
 
     /// Число для определения 0.9 части экрана (примерное)
+    
     static let ninePartsScreenMultiplier: CGFloat = UIScreen.main.bounds.width / 1.1111111111
     static let basicCornerRadius: CGFloat = 16
 }

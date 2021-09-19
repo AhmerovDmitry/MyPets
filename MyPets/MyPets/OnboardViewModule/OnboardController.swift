@@ -7,17 +7,24 @@
 
 import UIKit
 
+// MARK: - Delegate
+
 protocol OnboardControllerDelegate: AnyObject {
     func presentTabBarController()
     func collectionViewDelegateAndDataSource(_ collection: UICollectionView)
 }
 
 final class OnboardController: UIViewController {
+
+    // MARK: - Property
+
     let storageService: StorageService
     let userDefaultsService: UserDefaultsService
 
     private let onboardModel: OnboardModelProtocol
     private let onboardView: OnboardView
+
+    // MARK: - Init / Lifecycle
 
     init(storageService: StorageService, userDefaultsService: UserDefaultsService) {
         self.storageService = storageService
@@ -39,6 +46,8 @@ final class OnboardController: UIViewController {
         onboardView.setPageControl(countPage: onboardModel.description.count)
     }
 }
+
+// MARK: - Delegate Methods
 
 extension OnboardController: OnboardControllerDelegate {
     func collectionViewDelegateAndDataSource(_ collection: UICollectionView) {

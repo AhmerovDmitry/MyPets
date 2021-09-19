@@ -8,6 +8,9 @@
 import UIKit
 
 final class PetCollectionCell: UICollectionViewCell {
+
+    // MARK: - Property
+
     private let petPhoto: UIImageView = {
         let image = UIImageView()
         image.clipsToBounds = true
@@ -43,6 +46,8 @@ final class PetCollectionCell: UICollectionViewCell {
         return label
     }()
 
+    // MARK: - Init / Lifecycle
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -50,9 +55,9 @@ final class PetCollectionCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
 
-extension PetCollectionCell {
+    // MARK: - UI
+
     override func prepareForReuse() {
         super.prepareForReuse()
         petPhoto.image = nil
@@ -106,6 +111,8 @@ extension PetCollectionCell {
         ])
     }
 }
+
+// MARK: - Public Methods
 
 extension PetCollectionCell {
     func configureCell(photo: UIImage?, name: String, breed: String, age: String) {

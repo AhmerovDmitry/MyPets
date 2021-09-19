@@ -12,11 +12,16 @@ protocol InputInfoDelegate: AnyObject {
 }
 
 final class InputInfoController: UIViewController {
+
+    // MARK: - Property
+
     private var transferedInformation: String?
     private var keyboardHeight: CGFloat?
     private let inputInfoView = InputInfoView(frame: UIScreen.main.bounds)
 
     weak var delegate: TransferPetInformationDelegate?
+
+    // MARK: - Init / Lifecycle
 
     override func loadView() {
         view = inputInfoView
@@ -35,6 +40,8 @@ final class InputInfoController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
 }
+
+// MARK: - Methods
 
 extension InputInfoController: DataTransferDelegate {
     func transferInformation(_ info: Any?) {

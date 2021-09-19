@@ -9,6 +9,8 @@ import UIKit
 
 final class OnboardView: UIView {
 
+    // MARK: - Property
+
     weak var delegate: OnboardControllerDelegate?
 
     let cellID = "OnboardCellId"
@@ -50,6 +52,8 @@ final class OnboardView: UIView {
         return collectionView
     }()
 
+    // MARK: - Init / Lifecycle
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         delegate?.collectionViewDelegateAndDataSource(onboardCollectionView)
@@ -58,13 +62,14 @@ final class OnboardView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - UI
+
     override func layoutSubviews() {
         super.layoutSubviews()
         setCornerRadiusForElements()
     }
-}
 
-extension OnboardView {
     private func setupUI() {
         setSelfViewUI()
         setOnboardCollectionViewConstraints()
@@ -118,6 +123,8 @@ extension OnboardView {
     }
 }
 
+// MARK: - Methods
+
 extension OnboardView {
     @objc private func nextDescriptionView() {
         pageControl.currentPage += 1
@@ -140,6 +147,8 @@ extension OnboardView {
         delegate?.presentTabBarController()
     }
 }
+
+// MARK: - Public Methods
 
 extension OnboardView {
     func setPageControl(countPage count: Int) {

@@ -9,10 +9,12 @@ import UIKit
 
 final class PremiumView: UIView {
 
+    // MARK: - Property
+
     weak var delegate: PremiumControllerDelegate?
 
     let cellID = "PremiumCellId"
-    
+
     private lazy var mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.alignment = .center
@@ -87,6 +89,9 @@ final class PremiumView: UIView {
                                                          borderWidth: nil,
                                                          target: self,
                                                          action: #selector(closeControllerWithPurchase))
+
+    // MARK: - Init / Lifecycle
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -94,13 +99,14 @@ final class PremiumView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - UI
+
     override func layoutSubviews() {
         super.layoutSubviews()
         setCornerRadiusForElements()
     }
-}
 
-extension PremiumView {
     private func setupUI() {
         setSelfViewUI()
         setCloseButtonConstraints()
@@ -171,6 +177,8 @@ extension PremiumView {
         buyButton.layer.cornerRadius = buyButton.bounds.height / 2
     }
 }
+
+// MARK: - Methods
 
 extension PremiumView {
     @objc private func closeController() {

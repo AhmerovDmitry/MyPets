@@ -8,6 +8,9 @@
 import UIKit
 
 final class CustomTabBarController: UITabBarController {
+
+    // MARK: - Property
+
     let storageService: StorageService
     let userDefaultsService: UserDefaultsService
 
@@ -16,19 +19,20 @@ final class CustomTabBarController: UITabBarController {
         self.userDefaultsService = userDefaultsService
         super.init(nibName: nil, bundle: nil)
     }
+
+    // MARK: - Init / Lifecycle
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupControllers()
         presentPremium()
     }
-}
 
-// MARK: - Setup UI
-extension CustomTabBarController {
+    // MARK: - UI
+
     private func setupControllers() {
         let mainVC = UINavigationController(rootViewController: MainMenuController())
         mainVC.tabBarItem.title = "Главная"
@@ -58,9 +62,13 @@ extension CustomTabBarController {
     }
 }
 
+// MARK: - Methods
+
 extension CustomTabBarController {
+
     /// Метод показывающий преимум контроллер если покупка не совершена
     /// Возможно отключение показа контроллера нажатием на кнопку-заглушку "Купить Premium"
+    
     private func presentPremium() {
         if !userDefaultsService.value(forKey: .isAppPurchased) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in

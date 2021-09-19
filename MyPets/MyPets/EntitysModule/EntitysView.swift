@@ -8,7 +8,11 @@
 import UIKit
 
 final class EntitysView: UIView {
+
+    // MARK: - Property
+
     let entitysTableViewCellID = "entitysTableViewCellID"
+
     private lazy var entitysTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = .white
@@ -18,6 +22,8 @@ final class EntitysView: UIView {
         return tableView
     }()
 
+    // MARK: - Init / Lifecycle
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -25,9 +31,9 @@ final class EntitysView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
 
-extension EntitysView {
+    // MARK: - UI
+
     private func setupUI() {
         setChildrenProfileTableViewConstraints()
     }
@@ -42,6 +48,8 @@ extension EntitysView {
         ])
     }
 }
+
+// MARK: - Methods
 
 extension EntitysView {
     func tableViewDelegateAndDataSource<T>(_ target: T) where T: UITableViewDelegate, T: UITableViewDataSource {

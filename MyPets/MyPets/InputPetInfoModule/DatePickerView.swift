@@ -9,6 +9,8 @@ import UIKit
 
 final class DatePickerView: UIView {
 
+    // MARK: - Property
+
     weak var delegate: DataTransferDelegate?
 
     private let datePicker: UIDatePicker = {
@@ -42,6 +44,9 @@ final class DatePickerView: UIView {
                                                             borderWidth: nil,
                                                             target: self,
                                                             action: #selector(dismissController))
+
+    // MARK: - Init / Lifecycle
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -49,14 +54,15 @@ final class DatePickerView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - UI
+
     override func layoutSubviews() {
         super.layoutSubviews()
         setCornerRadiusForElements()
         datePicker.date = delegate?.setDateForDatePicker() ?? Date()
     }
-}
 
-extension DatePickerView {
     private func setupUI() {
         setBlurEffect(self, frame: self.frame)
         setDatePickerConstraints()
@@ -107,6 +113,8 @@ extension DatePickerView {
         cancelButton.layer.cornerRadius = saveButton.bounds.height / 2
     }
 }
+
+// MARK: - Methods
 
 @objc
 extension DatePickerView {

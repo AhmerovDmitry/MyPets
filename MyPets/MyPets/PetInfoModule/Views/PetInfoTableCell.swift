@@ -8,6 +8,9 @@
 import UIKit
 
 final class PetInfoTableCell: UITableViewCell {
+
+    // MARK: - Property
+
     private let cellLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
@@ -25,6 +28,8 @@ final class PetInfoTableCell: UITableViewCell {
         return label
     }()
 
+    // MARK: - Init / Lifecycle
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
@@ -32,9 +37,9 @@ final class PetInfoTableCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
 
-extension PetInfoTableCell {
+    // MARK: - UI
+
     private func setupUI() {
         self.backgroundColor = .white
         setCellLabelConstraints()
@@ -61,6 +66,8 @@ extension PetInfoTableCell {
         ])
     }
 }
+
+// MARK: - Methods
 
 extension PetInfoTableCell {
     func configureTitle(_ value: String?) {

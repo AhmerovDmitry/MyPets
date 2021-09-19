@@ -8,7 +8,11 @@
 import UIKit
 
 final class PetMenuView: UIView {
+
+    // MARK: - Property
+
     var presentControllerCallBack: (() -> Void)?
+
     private lazy var mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.alignment = .center
@@ -47,6 +51,9 @@ final class PetMenuView: UIView {
                                                             borderWidth: nil,
                                                             target: self,
                                                             action: #selector(presentController))
+
+    // MARK: - Init / Lifecycle
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -54,14 +61,14 @@ final class PetMenuView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - UI
+
     override func layoutSubviews() {
         super.layoutSubviews()
         setCornerRadiusForElements()
     }
-}
 
-// MARK: - Setup UI
-extension PetMenuView {
     private func setupUI() {
         self.backgroundColor = .white
         setMainStackViewConstraints()
@@ -102,7 +109,8 @@ extension PetMenuView {
     }
 }
 
-// MARK: - Actions
+// MARK: - Methods
+
 extension PetMenuView {
     @objc private func presentController() {
         presentControllerCallBack?()
