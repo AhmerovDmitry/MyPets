@@ -79,7 +79,8 @@ final class PetMenuView: UIView {
         self.addSubview(mainStackView)
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            mainStackView.bottomAnchor.constraint(equalTo: self.centerYAnchor),
+            mainStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            mainStackView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.4),
             mainStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             mainStackView.widthAnchor.constraint(equalTo: self.widthAnchor)
         ])
@@ -98,7 +99,7 @@ final class PetMenuView: UIView {
         self.addSubview(addPetButton)
         addPetButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            addPetButton.topAnchor.constraint(equalTo: self.centerYAnchor, constant: 64),
+            addPetButton.topAnchor.constraint(equalTo: mainStackView.bottomAnchor, constant: 64),
             addPetButton.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.06),
             addPetButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
             addPetButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)

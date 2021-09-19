@@ -45,8 +45,8 @@ final class PetMenuController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        addSubview()
         storageService.loadEntitys()
+        addSubview()
     }
 
     // MARK: - UI
@@ -73,12 +73,12 @@ final class PetMenuController: UIViewController {
             view.addSubview(petMenuView)
             petCollectionView.removeFromSuperview()
             petMenuView.layoutSubviews()
-        } else {
-            view.addSubview(petCollectionView)
-            petMenuView.removeFromSuperview()
-            petCollectionView.reloadCollectionView()
-            petCollectionView.layoutSubviews()
+            return
         }
+        view.addSubview(petCollectionView)
+        petMenuView.removeFromSuperview()
+        petCollectionView.reloadCollectionView()
+        petCollectionView.layoutSubviews()
     }
 }
 
@@ -96,7 +96,7 @@ extension PetMenuController {
 
         /// Сбрасываю индекс чтобы он не сохранялся при повторном открытии экрана без использования ячеек,
         /// открытие окна с помощью кнопки "+"
-        
+
         tappedCellIndex = nil
         navigationController?.pushViewController(controller, animated: true)
     }
