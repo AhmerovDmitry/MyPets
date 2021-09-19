@@ -18,7 +18,6 @@
 		BC0D29F626EFC1DF00C3AF2D /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29F526EFC1DF00C3AF2D /* UITableViewCell.swift */; };
 		BC0D29F826EFDEA900C3AF2D /* EntitysController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29F726EFDEA900C3AF2D /* EntitysController.swift */; };
 		BC0D29FC26EFDF3300C3AF2D /* EntitysModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29FB26EFDF3300C3AF2D /* EntitysModel.swift */; };
-		BC0F3D7D26F3871F0069ADA1 /* PetPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0F3D7C26F3871F0069ADA1 /* PetPhotoView.swift */; };
 		BC13029726B9786000CFD87E /* OnboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029626B9785F00CFD87E /* OnboardView.swift */; };
 		BC13029926B9787D00CFD87E /* OnboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029826B9787D00CFD87E /* OnboardController.swift */; };
 		BC13029B26B978A000CFD87E /* OnboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029A26B978A000CFD87E /* OnboardModel.swift */; };
@@ -30,6 +29,8 @@
 		BC2614F226F671A100D4A58D /* ProfileControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2614F126F671A100D4A58D /* ProfileControllerTests.swift */; };
 		BC2614F326F6764200D4A58D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29E326EE9BB600C3AF2D /* ProfileView.swift */; };
 		BC2614F526F686C300D4A58D /* DataTransferDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2614F426F686C300D4A58D /* DataTransferDelegate.swift */; };
+		BC2614F726F6A9B700D4A58D /* DataTransferDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2614F426F686C300D4A58D /* DataTransferDelegate.swift */; };
+		BC2614F926F6ABCF00D4A58D /* DatePickerControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2614F826F6ABCF00D4A58D /* DatePickerControllerTests.swift */; };
 		BC26F06626F2072500403961 /* ShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC26F06526F2072500403961 /* ShimmerView.swift */; };
 		BC3369BC26F60E7100C40691 /* MyPetsUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3369BB26F60E7100C40691 /* MyPetsUnitTests.swift */; };
 		BC3369C326F60E8500C40691 /* UserDefaultsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5B1AB26F4BED500C47A09 /* UserDefaultsServiceTests.swift */; };
@@ -68,7 +69,6 @@
 		BC3369E526F60EEB00C40691 /* PremiumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8C64F026BF379700CA7A90 /* PremiumController.swift */; };
 		BC3369E626F60EEB00C40691 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB610022530C82400C4FD2F /* AppDelegate.swift */; };
 		BC3369E726F60EEB00C40691 /* EntitysController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29F726EFDEA900C3AF2D /* EntitysController.swift */; };
-		BC3369E826F60EEB00C40691 /* PetPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0F3D7C26F3871F0069ADA1 /* PetPhotoView.swift */; };
 		BC3369E926F60EEB00C40691 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073242534A6F600B2979F /* UIButton.swift */; };
 		BC3369EA26F60EEB00C40691 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073312534BA3800B2979F /* UIView.swift */; };
 		BC3369EB26F60EEB00C40691 /* GetWeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFECA9626F2499900286EF6 /* GetWeatherResponse.swift */; };
@@ -153,7 +153,6 @@
 		BC0D29F526EFC1DF00C3AF2D /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
 		BC0D29F726EFDEA900C3AF2D /* EntitysController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitysController.swift; sourceTree = "<group>"; };
 		BC0D29FB26EFDF3300C3AF2D /* EntitysModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitysModel.swift; sourceTree = "<group>"; };
-		BC0F3D7C26F3871F0069ADA1 /* PetPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetPhotoView.swift; sourceTree = "<group>"; };
 		BC13029626B9785F00CFD87E /* OnboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardView.swift; sourceTree = "<group>"; };
 		BC13029826B9787D00CFD87E /* OnboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardController.swift; sourceTree = "<group>"; };
 		BC13029A26B978A000CFD87E /* OnboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardModel.swift; sourceTree = "<group>"; };
@@ -166,6 +165,7 @@
 		BC1DF0B026F5F28B004B744A /* StorageServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageServiceTests.swift; sourceTree = "<group>"; };
 		BC2614F126F671A100D4A58D /* ProfileControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileControllerTests.swift; sourceTree = "<group>"; };
 		BC2614F426F686C300D4A58D /* DataTransferDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferDelegate.swift; sourceTree = "<group>"; };
+		BC2614F826F6ABCF00D4A58D /* DatePickerControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerControllerTests.swift; sourceTree = "<group>"; };
 		BC26F06526F2072500403961 /* ShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerView.swift; sourceTree = "<group>"; };
 		BC3369B926F60E7100C40691 /* MyPetsUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyPetsUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC3369BB26F60E7100C40691 /* MyPetsUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPetsUnitTests.swift; sourceTree = "<group>"; };
@@ -280,21 +280,15 @@
 			path = Mock;
 			sourceTree = "<group>";
 		};
-		BC2614F626F6999200D4A58D /* Flow */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Flow;
-			sourceTree = "<group>";
-		};
 		BC3369BA26F60E7100C40691 /* MyPetsUnitTests */ = {
 			isa = PBXGroup;
 			children = (
 				BCB5B1AB26F4BED500C47A09 /* UserDefaultsServiceTests.swift */,
-				BC336A2F26F65A6600C40691 /* DateFormatterServiceTests.swift */,
 				BC1DF0B026F5F28B004B744A /* StorageServiceTests.swift */,
+				BC336A2F26F65A6600C40691 /* DateFormatterServiceTests.swift */,
 				BC2614F126F671A100D4A58D /* ProfileControllerTests.swift */,
 				BC336A2426F622B800C40691 /* MainWeatherModelTests.swift */,
+				BC2614F826F6ABCF00D4A58D /* DatePickerControllerTests.swift */,
 				BC1DF0AD26F5DFAD004B744A /* Mock */,
 				BC3369BB26F60E7100C40691 /* MyPetsUnitTests.swift */,
 				BC3369BD26F60E7100C40691 /* Info.plist */,
@@ -476,7 +470,6 @@
 				BCDAEB6926CFBD390099CF13 /* InputPetInfoModule */,
 				BC0D29E226EE9B9E00C3AF2D /* ProfileModule */,
 				BC0D29F926EFDEB000C3AF2D /* EntitysModule */,
-				BC2614F626F6999200D4A58D /* Flow */,
 				BC9F269026BBCC7E000B854F /* Extensions */,
 			);
 			path = MyPets;
@@ -506,7 +499,6 @@
 			children = (
 				BCC259E626C40D3E00FCAC54 /* MainMenuView.swift */,
 				BC52FF9F26D91B9D00A694CB /* WeatherMenuView.swift */,
-				BC0F3D7C26F3871F0069ADA1 /* PetPhotoView.swift */,
 				BC26F06526F2072500403961 /* ShimmerView.swift */,
 			);
 			path = Views;
@@ -670,7 +662,6 @@
 				BC3369E426F60EEB00C40691 /* ProfileController.swift in Sources */,
 				BC3369DF26F60EEB00C40691 /* MainMenuView.swift in Sources */,
 				BC3369CB26F60EEB00C40691 /* EntitysModel.swift in Sources */,
-				BC3369E826F60EEB00C40691 /* PetPhotoView.swift in Sources */,
 				BC3369C326F60E8500C40691 /* UserDefaultsServiceTests.swift in Sources */,
 				BC3369FA26F60F0300C40691 /* MockUDRepository.swift in Sources */,
 				BC3369F826F60EEB00C40691 /* StorageServiceImpl.swift in Sources */,
@@ -682,6 +673,7 @@
 				BC3369EB26F60EEB00C40691 /* GetWeatherResponse.swift in Sources */,
 				BC3369D126F60EEB00C40691 /* CustomTabBarController.swift in Sources */,
 				BC3369EA26F60EEB00C40691 /* UIView.swift in Sources */,
+				BC2614F726F6A9B700D4A58D /* DataTransferDelegate.swift in Sources */,
 				BC3369DA26F60EEB00C40691 /* ProfileModel.swift in Sources */,
 				BC3369C626F60EEB00C40691 /* PetInfoCollectionCell.swift in Sources */,
 				BC3369C526F60EEB00C40691 /* MainMenuController.swift in Sources */,
@@ -702,6 +694,7 @@
 				BC3369DD26F60EEB00C40691 /* DateFormatterServiceImpl.swift in Sources */,
 				BC3369F026F60EEB00C40691 /* OMPetInformation+CoreDataProperties.swift in Sources */,
 				BC3369F126F60EEB00C40691 /* UIAlertController.swift in Sources */,
+				BC2614F926F6ABCF00D4A58D /* DatePickerControllerTests.swift in Sources */,
 				BC3369EC26F60EEB00C40691 /* InputInfoController.swift in Sources */,
 				BC3369FB26F60F0300C40691 /* MockUserDefaultsService.swift in Sources */,
 				BC3369D526F60EEB00C40691 /* UIColor.swift in Sources */,
@@ -749,7 +742,6 @@
 				BCB5B20826F506FD00C47A09 /* DateFormatterServiceImpl.swift in Sources */,
 				BC16018326ECE17500666529 /* OMPetInformation+CoreDataClass.swift in Sources */,
 				BC7EB65526C6678100BE80AE /* PetCollectionView.swift in Sources */,
-				BC0F3D7D26F3871F0069ADA1 /* PetPhotoView.swift in Sources */,
 				BC0D29FC26EFDF3300C3AF2D /* EntitysModel.swift in Sources */,
 				BC7073252534A6F600B2979F /* UIButton.swift in Sources */,
 				BC7EB65D26C688F500BE80AE /* PetInfoController.swift in Sources */,
