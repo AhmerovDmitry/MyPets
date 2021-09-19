@@ -16,11 +16,16 @@ protocol TransferPetBirthdayDelegate: AnyObject {
 }
 
 final class PetInfoController: UIViewController {
+
+    // MARK: - Property
+
     weak var delegate: PetMenuControllerDelegate?
     private var petModel: PetInfoModelImpl
     private var petInfoView: PetInfoView
     private var collectionCellIndex: Int?
     private var selectedTableCell: IndexPath?
+
+    // MARK: - Init / Lifecycle
 
     init(storageService: StorageService, collectionCellIndex: Int?) {
         self.petModel = PetInfoModelImpl(storageService: storageService, cellIndex: collectionCellIndex)
@@ -45,9 +50,9 @@ final class PetInfoController: UIViewController {
         super.viewWillDisappear(animated)
         saveObject()
     }
-}
 
-extension PetInfoController {
+    // MARK: - UI
+
     private func setupNavigationController() {
         navigationItem.hidesBackButton = true
         navigationController?.navigationBar.backgroundColor = .clear
@@ -63,8 +68,12 @@ extension PetInfoController {
         )
         navigationItem.leftBarButtonItem?.tintColor = UIColor.CustomColor.purple
     }
+
+    // MARK: - Methods
+
     /// Метод конфигурирования ячейки
     /// задается тайтл и плейсхолдер (все берется из модели)
+
     private func configureCell(_ cell: PetInfoTableCell, index: Int) {
         cell.configureTitle(petModel.menuTitles[index])
         switch index {
@@ -81,8 +90,10 @@ extension PetInfoController {
         }
         petInfoView.setPetPhoto(petModel.loadPhoto())
     }
+
     /// Метод открытия контроллера ввода информации
     /// в него передается информация которую пользователь вводил или nil
+
     private func presentInputInfoController(index: Int) {
         if index == 3 {
             let controller = DatePickerController()
@@ -188,7 +199,7 @@ extension PetInfoController: UICollectionViewDelegate, UICollectionViewDataSourc
         }
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        1
+        2
     }
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
