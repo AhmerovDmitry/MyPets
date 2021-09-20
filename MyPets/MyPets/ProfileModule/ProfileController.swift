@@ -141,11 +141,15 @@ extension ProfileController {
 extension ProfileController: SystemViewResetButtonsDelegate {
     func resetLaunchStatus() {
         userDefaultsService.setValue(false, forKey: .isNotFirstLaunch)
+        #if debug
         debugPrint("Статус запуска приложения сброшен")
+        #endif
     }
     func resetPurchaseStatus() {
         userDefaultsService.setValue(false, forKey: .isAppPurchased)
+        #if debug
         debugPrint("Статус покупки приложения сброшен")
+        #endif
     }
 }
 

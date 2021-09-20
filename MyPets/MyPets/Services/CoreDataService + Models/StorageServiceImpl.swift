@@ -92,13 +92,17 @@ extension StorageServiceImpl {
             do {
                 try FileManager.default.removeItem(atPath: fileURL.path)
             } catch let removeError {
+                #if debug
                 debugPrint("По указанному пути файл не найден:", removeError)
+                #endif
             }
         }
         do {
             try data.write(to: fileURL)
         } catch let error {
+            #if debug
             debugPrint("Ошибка сохранения файла:", error)
+            #endif
         }
     }
     /// Метод удаляющий фотографию из директории устройства по индексу
@@ -112,7 +116,9 @@ extension StorageServiceImpl {
             do {
                 try FileManager.default.removeItem(atPath: fileURL.path)
             } catch {
+                #if debug
                 debugPrint(error.localizedDescription)
+                #endif
             }
         }
     }
