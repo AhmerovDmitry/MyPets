@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BC0132CF26E15DFE0065F1B7 /* MainWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0132CE26E15DFE0065F1B7 /* MainWeatherModel.swift */; };
+		BC0132CF26E15DFE0065F1B7 /* MainWeatherModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0132CE26E15DFE0065F1B7 /* MainWeatherModelImpl.swift */; };
 		BC0D29DF26ED490F00C3AF2D /* PetMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29DE26ED490F00C3AF2D /* PetMenuModel.swift */; };
 		BC0D29E126EE9B9100C3AF2D /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29E026EE9B9100C3AF2D /* ProfileController.swift */; };
 		BC0D29E426EE9BB600C3AF2D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29E326EE9BB600C3AF2D /* ProfileView.swift */; };
@@ -18,124 +18,201 @@
 		BC0D29F626EFC1DF00C3AF2D /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29F526EFC1DF00C3AF2D /* UITableViewCell.swift */; };
 		BC0D29F826EFDEA900C3AF2D /* EntitysController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29F726EFDEA900C3AF2D /* EntitysController.swift */; };
 		BC0D29FC26EFDF3300C3AF2D /* EntitysModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29FB26EFDF3300C3AF2D /* EntitysModel.swift */; };
-		BC0D2A0426F00F5800C3AF2D /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D2A0326F00F5800C3AF2D /* LocationModel.swift */; };
-		BC0D2A0626F00F6300C3AF2D /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D2A0526F00F6300C3AF2D /* LocationView.swift */; };
-		BC0D2A0826F00F6F00C3AF2D /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D2A0726F00F6F00C3AF2D /* LocationController.swift */; };
 		BC13029726B9786000CFD87E /* OnboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029626B9785F00CFD87E /* OnboardView.swift */; };
 		BC13029926B9787D00CFD87E /* OnboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029826B9787D00CFD87E /* OnboardController.swift */; };
 		BC13029B26B978A000CFD87E /* OnboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029A26B978A000CFD87E /* OnboardModel.swift */; };
 		BC13029D26B9878B00CFD87E /* OnboardCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029C26B9878B00CFD87E /* OnboardCollectionCell.swift */; };
-		BC16013826EB7A1A00666529 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC16013726EB7A1A00666529 /* StorageService.swift */; };
+		BC16013826EB7A1A00666529 /* StorageServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC16013726EB7A1A00666529 /* StorageServiceImpl.swift */; };
 		BC16018026ECBF6800666529 /* PetDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC16017F26ECBF6800666529 /* PetDTO.swift */; };
 		BC16018326ECE17500666529 /* OMPetInformation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC16018126ECE17500666529 /* OMPetInformation+CoreDataClass.swift */; };
 		BC16018426ECE17500666529 /* OMPetInformation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC16018226ECE17500666529 /* OMPetInformation+CoreDataProperties.swift */; };
-		BC33256726F0A9370060DCDD /* MyPetsSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC33256626F0A9370060DCDD /* MyPetsSnapshotTests.swift */; };
-		BC33257026F0A9D60060DCDD /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = BC33256F26F0A9D60060DCDD /* SnapshotTesting */; };
-		BC38543B26C5AB4700C2F14E /* PetMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC38543A26C5AB4700C2F14E /* PetMenuController.swift */; };
+		BC2614F526F686C300D4A58D /* DataTransferDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2614F426F686C300D4A58D /* DataTransferDelegate.swift */; };
+		BC26150126F7531C00D4A58D /* PetInfoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC26150026F7531C00D4A58D /* PetInfoCollectionCell.swift */; };
+		BC26150426F7705800D4A58D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC26150326F7705800D4A58D /* String.swift */; };
+		BC26F06626F2072500403961 /* ShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC26F06526F2072500403961 /* ShimmerView.swift */; };
+		BC3369C326F60E8500C40691 /* UserDefaultsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5B1AB26F4BED500C47A09 /* UserDefaultsServiceTests.swift */; };
+		BC3369F726F60EEB00C40691 /* UserDefaultsServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91F2F32627423D006CCE3B /* UserDefaultsServiceImpl.swift */; };
+		BC3369FA26F60F0300C40691 /* MockUDRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5B20A26F531CF00C47A09 /* MockUDRepository.swift */; };
+		BC336A2526F622B800C40691 /* MainWeatherModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC336A2426F622B800C40691 /* MainWeatherModelTests.swift */; };
+		BC336A3026F65A6600C40691 /* DateFormatterServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC336A2F26F65A6600C40691 /* DateFormatterServiceTests.swift */; };
 		BC38543D26C5ABCF00C2F14E /* PetMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC38543C26C5ABCF00C2F14E /* PetMenuView.swift */; };
 		BC413CD42538A97F002CDD19 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC413CD32538A97F002CDD19 /* CustomTabBarController.swift */; };
-		BC4CA47D262436EF00C2033C /* BottomMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA476262436EF00C2033C /* BottomMenuCell.swift */; };
 		BC52FFA026D91B9D00A694CB /* WeatherMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC52FF9F26D91B9D00A694CB /* WeatherMenuView.swift */; };
-		BC52FFA226D91EDA00A694CB /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC52FFA126D91EDA00A694CB /* Weather.swift */; };
+		BC56F08A26F8C5DA00B15FFA /* PetMenuModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC56F08926F8C5DA00B15FFA /* PetMenuModelTests.swift */; };
+		BC56F09726F8E16900B15FFA /* SpyNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC56F09626F8E16900B15FFA /* SpyNetworkService.swift */; };
 		BC7073252534A6F600B2979F /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073242534A6F600B2979F /* UIButton.swift */; };
 		BC7073322534BA3800B2979F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073312534BA3800B2979F /* UIView.swift */; };
-		BC73964A2542084D00A89858 /* LocationViewDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7396492542084D00A89858 /* LocationViewDelegate + DataSource.swift */; };
-		BC73964D25435F9900A89858 /* LocationCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC73964C25435F9900A89858 /* LocationCollectionCell.swift */; };
 		BC7EB65526C6678100BE80AE /* PetCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB65426C6678100BE80AE /* PetCollectionView.swift */; };
 		BC7EB65726C668F000BE80AE /* PetCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB65626C668F000BE80AE /* PetCollectionCell.swift */; };
 		BC7EB65D26C688F500BE80AE /* PetInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB65C26C688F500BE80AE /* PetInfoController.swift */; };
 		BC7EB65F26C699CD00BE80AE /* PetInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB65E26C699CD00BE80AE /* PetInfoView.swift */; };
-		BC7EB66126C6A09400BE80AE /* PetInfoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB66026C6A09400BE80AE /* PetInfoCollectionCell.swift */; };
 		BC7EB66526C6AB1F00BE80AE /* PetInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB66426C6AB1F00BE80AE /* PetInfoCell.swift */; };
-		BC7EB66726C6CA9900BE80AE /* PetInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB66626C6CA9900BE80AE /* PetInfoModel.swift */; };
-		BC859AE125B383B000FDD33B /* AboutAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC859AE025B383B000FDD33B /* AboutAppController.swift */; };
-		BC8B6BA826F0ACEC009D9896 /* OnboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029826B9787D00CFD87E /* OnboardController.swift */; };
-		BC8B6BA926F0AD00009D9896 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91F2F32627423D006CCE3B /* UserDefaultsService.swift */; };
-		BC8B6BAA26F0AD09009D9896 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC16013726EB7A1A00666529 /* StorageService.swift */; };
-		BC8B6BAB26F0AD29009D9896 /* OMPetInformation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC16018126ECE17500666529 /* OMPetInformation+CoreDataClass.swift */; };
-		BC8B6BAC26F0AD2B009D9896 /* OMPetInformation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC16018226ECE17500666529 /* OMPetInformation+CoreDataProperties.swift */; };
-		BC8B6BAD26F0AD35009D9896 /* PetInformation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BC9402E726CA62840028E5AC /* PetInformation.xcdatamodeld */; };
-		BC8B6BAE26F0AD3D009D9896 /* PetDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC16017F26ECBF6800666529 /* PetDTO.swift */; };
-		BC8B6BB026F0AD75009D9896 /* OnboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029A26B978A000CFD87E /* OnboardModel.swift */; };
-		BC8B6BB126F0AD78009D9896 /* OnboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029626B9785F00CFD87E /* OnboardView.swift */; };
-		BC8B6BB226F0AD7B009D9896 /* OnboardCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029C26B9878B00CFD87E /* OnboardCollectionCell.swift */; };
-		BC8B6BB326F0ADA5009D9896 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC413CD32538A97F002CDD19 /* CustomTabBarController.swift */; };
-		BC8B6BB426F0ADB3009D9896 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9F268E26BBCC5D000B854F /* UIColor.swift */; };
-		BC8B6BB526F0ADEF009D9896 /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC259E826C4142A00FCAC54 /* MainMenuController.swift */; };
-		BC8B6BB626F0ADF3009D9896 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC259E626C40D3E00FCAC54 /* MainMenuView.swift */; };
-		BC8B6BB726F0ADF5009D9896 /* TitleMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC259EC26C41FEA00FCAC54 /* TitleMenuView.swift */; };
-		BC8B6BB826F0ADF7009D9896 /* MainMenuCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC259EA26C4173700FCAC54 /* MainMenuCollectionCell.swift */; };
-		BC8B6BB926F0ADF9009D9896 /* WeatherMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC52FF9F26D91B9D00A694CB /* WeatherMenuView.swift */; };
-		BC8B6BBA26F0ADFC009D9896 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC52FFA126D91EDA00A694CB /* Weather.swift */; };
-		BC8B6BBB26F0ADFF009D9896 /* MainWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0132CE26E15DFE0065F1B7 /* MainWeatherModel.swift */; };
-		BC8B6BBD26F0AE24009D9896 /* PremiumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8C64F426BF382A00CA7A90 /* PremiumModel.swift */; };
-		BC8B6BBE26F0AE26009D9896 /* PremiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8C64F226BF37EF00CA7A90 /* PremiumView.swift */; };
-		BC8B6BBF26F0AE29009D9896 /* PremiumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8C64F026BF379700CA7A90 /* PremiumController.swift */; };
-		BC8B6BC026F0AE39009D9896 /* PetMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29DE26ED490F00C3AF2D /* PetMenuModel.swift */; };
-		BC8B6BC126F0AE3C009D9896 /* PetMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC38543C26C5ABCF00C2F14E /* PetMenuView.swift */; };
-		BC8B6BC226F0AE3E009D9896 /* PetCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB65426C6678100BE80AE /* PetCollectionView.swift */; };
-		BC8B6BC326F0AE40009D9896 /* PetCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB65626C668F000BE80AE /* PetCollectionCell.swift */; };
-		BC8B6BC426F0AE42009D9896 /* PetMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC38543A26C5AB4700C2F14E /* PetMenuController.swift */; };
-		BC8B6BC526F0AE47009D9896 /* PetInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB66626C6CA9900BE80AE /* PetInfoModel.swift */; };
-		BC8B6BC626F0AE4B009D9896 /* PetInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB65E26C699CD00BE80AE /* PetInfoView.swift */; };
-		BC8B6BC726F0AE4D009D9896 /* PetInfoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB66026C6A09400BE80AE /* PetInfoCollectionCell.swift */; };
-		BC8B6BC826F0AE4F009D9896 /* PetInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB66426C6AB1F00BE80AE /* PetInfoCell.swift */; };
-		BC8B6BC926F0AE51009D9896 /* PetInfoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9402F826CA6AB70028E5AC /* PetInfoTableCell.swift */; };
-		BC8B6BCA26F0AE53009D9896 /* PetInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB65C26C688F500BE80AE /* PetInfoController.swift */; };
-		BC8B6BCB26F0AE57009D9896 /* InputInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDAEB6D26CFBD990099CF13 /* InputInfoView.swift */; };
-		BC8B6BCC26F0AE5A009D9896 /* InputInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9402FB26CA7BFF0028E5AC /* InputInfoController.swift */; };
-		BC8B6BCD26F0AE60009D9896 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29E526EE9D1700C3AF2D /* ProfileModel.swift */; };
-		BC8B6BCE26F0AE62009D9896 /* SystemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29F326EFA38500C3AF2D /* SystemModel.swift */; };
-		BC8B6BCF26F0AE65009D9896 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29E326EE9BB600C3AF2D /* ProfileView.swift */; };
-		BC8B6BD026F0AE68009D9896 /* SystemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29F126EFA33D00C3AF2D /* SystemView.swift */; };
-		BC8B6BD126F0AE6A009D9896 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29E026EE9B9100C3AF2D /* ProfileController.swift */; };
-		BC8B6BD226F0AE71009D9896 /* EntitysModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29FB26EFDF3300C3AF2D /* EntitysModel.swift */; };
-		BC8B6BD326F0AE74009D9896 /* EntitysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29EF26EF7F8F00C3AF2D /* EntitysView.swift */; };
-		BC8B6BD426F0AE76009D9896 /* EntitysController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29F726EFDEA900C3AF2D /* EntitysController.swift */; };
-		BC8B6BD526F0AE7A009D9896 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073312534BA3800B2979F /* UIView.swift */; };
-		BC8B6BD626F0AE7C009D9896 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073242534A6F600B2979F /* UIButton.swift */; };
-		BC8B6BD726F0AE7E009D9896 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE5115425461A23002FB62E /* UIAlertController.swift */; };
-		BC8B6BD826F0AE81009D9896 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB3AA4325AF8CD000289B7A /* UIViewController.swift */; };
-		BC8B6BD926F0AE85009D9896 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29F526EFC1DF00C3AF2D /* UITableViewCell.swift */; };
-		BC8B6BDA26F0AE8B009D9896 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D2A0326F00F5800C3AF2D /* LocationModel.swift */; };
-		BC8B6BDB26F0AE8E009D9896 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D2A0526F00F6300C3AF2D /* LocationView.swift */; };
-		BC8B6BDC26F0AE90009D9896 /* LocationCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC73964C25435F9900A89858 /* LocationCollectionCell.swift */; };
-		BC8B6BDD26F0AE94009D9896 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D2A0726F00F6F00C3AF2D /* LocationController.swift */; };
-		BC8B6BDE26F0AE99009D9896 /* LocationViewDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7396492542084D00A89858 /* LocationViewDelegate + DataSource.swift */; };
-		BC8B6BDF26F0AE9C009D9896 /* Map Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF527253F887E00BCBBFB /* Map Settings.swift */; };
-		BC8B6BE026F0AEA3009D9896 /* AboutAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC859AE025B383B000FDD33B /* AboutAppController.swift */; };
-		BC8B6BE126F0AEA8009D9896 /* SupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8CDFFE25C6BB85005EEFEB /* SupportViewController.swift */; };
-		BC8B6BE226F0AEAA009D9896 /* SupportVCDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8CE00525C6CBC2005EEFEB /* SupportVCDelegate + DataSource.swift */; };
-		BC8B6BE326F0AEAD009D9896 /* SupportVC - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8CE00825C6CBF6005EEFEB /* SupportVC - Extension.swift */; };
+		BC7EB66726C6CA9900BE80AE /* PetInfoModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB66626C6CA9900BE80AE /* PetInfoModelImpl.swift */; };
 		BC8C64F326BF37EF00CA7A90 /* PremiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8C64F226BF37EF00CA7A90 /* PremiumView.swift */; };
 		BC8C64F526BF382A00CA7A90 /* PremiumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8C64F426BF382A00CA7A90 /* PremiumModel.swift */; };
-		BC8CDFFF25C6BB85005EEFEB /* SupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8CDFFE25C6BB85005EEFEB /* SupportViewController.swift */; };
-		BC8CE00625C6CBC2005EEFEB /* SupportVCDelegate + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8CE00525C6CBC2005EEFEB /* SupportVCDelegate + DataSource.swift */; };
-		BC8CE00925C6CBF6005EEFEB /* SupportVC - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8CE00825C6CBF6005EEFEB /* SupportVC - Extension.swift */; };
-		BC8E373E26E6B0FB00F3B6A9 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8E373D26E6B0FA00F3B6A9 /* NetworkService.swift */; };
-		BC91F2F42627423D006CCE3B /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91F2F32627423D006CCE3B /* UserDefaultsService.swift */; };
+		BC91F2F42627423D006CCE3B /* UserDefaultsServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91F2F32627423D006CCE3B /* UserDefaultsServiceImpl.swift */; };
 		BC9402E926CA62840028E5AC /* PetInformation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BC9402E726CA62840028E5AC /* PetInformation.xcdatamodeld */; };
 		BC9402F926CA6AB70028E5AC /* PetInfoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9402F826CA6AB70028E5AC /* PetInfoTableCell.swift */; };
 		BC9402FC26CA7BFF0028E5AC /* InputInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9402FB26CA7BFF0028E5AC /* InputInfoController.swift */; };
 		BC9F268F26BBCC5D000B854F /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9F268E26BBCC5D000B854F /* UIColor.swift */; };
 		BCA7B29326ED0D340050BD24 /* PremiumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8C64F026BF379700CA7A90 /* PremiumController.swift */; };
-		BCB3AA4425AF8CD000289B7A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB3AA4325AF8CD000289B7A /* UIViewController.swift */; };
-		BCB5E1CC26F0BA89002F3E95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB610022530C82400C4FD2F /* AppDelegate.swift */; };
-		BCB5E1CD26F0BAAA002F3E95 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8E373D26E6B0FA00F3B6A9 /* NetworkService.swift */; };
+		BCB5B20226F4F7A800C47A09 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5B20126F4F7A800C47A09 /* DatePickerView.swift */; };
+		BCB5B20526F4FB7A00C47A09 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5B20426F4FB7A00C47A09 /* DatePickerController.swift */; };
+		BCB5B20826F506FD00C47A09 /* DateFormatterServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5B20726F506FD00C47A09 /* DateFormatterServiceImpl.swift */; };
+		BCB5B20B26F531CF00C47A09 /* MockUDRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5B20A26F531CF00C47A09 /* MockUDRepository.swift */; };
 		BCB610032530C82400C4FD2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB610022530C82400C4FD2F /* AppDelegate.swift */; };
 		BCB6100C2530C82700C4FD2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCB6100B2530C82700C4FD2F /* Assets.xcassets */; };
 		BCB6100F2530C82700C4FD2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCB6100D2530C82700C4FD2F /* LaunchScreen.storyboard */; };
 		BCC259E726C40D3E00FCAC54 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC259E626C40D3E00FCAC54 /* MainMenuView.swift */; };
 		BCC259E926C4142A00FCAC54 /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC259E826C4142A00FCAC54 /* MainMenuController.swift */; };
-		BCC259EB26C4173700FCAC54 /* MainMenuCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC259EA26C4173700FCAC54 /* MainMenuCollectionCell.swift */; };
-		BCC259ED26C41FEA00FCAC54 /* TitleMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC259EC26C41FEA00FCAC54 /* TitleMenuView.swift */; };
+		BCCED77926F7A64800A47637 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCED77826F7A64800A47637 /* NetworkServiceTests.swift */; };
+		BCCED7D326F7CD5400A47637 /* MyPetsSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCED7D226F7CD5400A47637 /* MyPetsSnapshotTests.swift */; };
+		BCCED7DC26F7CD6900A47637 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = BCCED7DB26F7CD6900A47637 /* SnapshotTesting */; };
+		BCCED7DD26F7CE7A00A47637 /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC259E826C4142A00FCAC54 /* MainMenuController.swift */; };
+		BCCED7DE26F7CE7A00A47637 /* OnboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029A26B978A000CFD87E /* OnboardModel.swift */; };
+		BCCED7DF26F7CE7A00A47637 /* PetInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB65C26C688F500BE80AE /* PetInfoController.swift */; };
+		BCCED7E026F7CE7A00A47637 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB610022530C82400C4FD2F /* AppDelegate.swift */; };
+		BCCED7E126F7CE7A00A47637 /* StorageServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC16013726EB7A1A00666529 /* StorageServiceImpl.swift */; };
+		BCCED7E226F7CE7A00A47637 /* ShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC26F06526F2072500403961 /* ShimmerView.swift */; };
+		BCCED7E326F7CE7A00A47637 /* PremiumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8C64F426BF382A00CA7A90 /* PremiumModel.swift */; };
+		BCCED7E426F7CE7A00A47637 /* EntitysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29EF26EF7F8F00C3AF2D /* EntitysView.swift */; };
+		BCCED7E526F7CE7A00A47637 /* PetCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB65626C668F000BE80AE /* PetCollectionCell.swift */; };
+		BCCED7E626F7CE7A00A47637 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFECA9826F24ECC00286EF6 /* NetworkService.swift */; };
+		BCCED7E726F7CE7A00A47637 /* PetMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC38543C26C5ABCF00C2F14E /* PetMenuView.swift */; };
+		BCCED7E826F7CE7A00A47637 /* PetInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB66426C6AB1F00BE80AE /* PetInfoCell.swift */; };
+		BCCED7E926F7CE7A00A47637 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC413CD32538A97F002CDD19 /* CustomTabBarController.swift */; };
+		BCCED7EA26F7CE7A00A47637 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073242534A6F600B2979F /* UIButton.swift */; };
+		BCCED7EB26F7CE7A00A47637 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29E526EE9D1700C3AF2D /* ProfileModel.swift */; };
+		BCCED7EC26F7CE7A00A47637 /* PetInfoModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB66626C6CA9900BE80AE /* PetInfoModelImpl.swift */; };
+		BCCED7ED26F7CE7A00A47637 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29E326EE9BB600C3AF2D /* ProfileView.swift */; };
+		BCCED7EE26F7CE7A00A47637 /* OMPetInformation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC16018126ECE17500666529 /* OMPetInformation+CoreDataClass.swift */; };
+		BCCED7EF26F7CE7A00A47637 /* MainMenuController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFECA9226F2368700286EF6 /* MainMenuController + Extension.swift */; };
+		BCCED7F026F7CE7A00A47637 /* DateFormatterServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5B20726F506FD00C47A09 /* DateFormatterServiceImpl.swift */; };
+		BCCED7F126F7CE7A00A47637 /* PetMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29DE26ED490F00C3AF2D /* PetMenuModel.swift */; };
+		BCCED7F226F7CE7A00A47637 /* SystemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29F126EFA33D00C3AF2D /* SystemView.swift */; };
+		BCCED7F326F7CE7A00A47637 /* OnboardCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029C26B9878B00CFD87E /* OnboardCollectionCell.swift */; };
+		BCCED7F426F7CE7A00A47637 /* PetInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB65E26C699CD00BE80AE /* PetInfoView.swift */; };
+		BCCED7F526F7CE7A00A47637 /* PetCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB65426C6678100BE80AE /* PetCollectionView.swift */; };
+		BCCED7F626F7CE7A00A47637 /* OnboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029626B9785F00CFD87E /* OnboardView.swift */; };
+		BCCED7F726F7CE7A00A47637 /* GetWeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFECA9626F2499900286EF6 /* GetWeatherResponse.swift */; };
+		BCCED7F826F7CE7A00A47637 /* PetInfoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC26150026F7531C00D4A58D /* PetInfoCollectionCell.swift */; };
+		BCCED7F926F7CE7A00A47637 /* PremiumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8C64F026BF379700CA7A90 /* PremiumController.swift */; };
+		BCCED7FA26F7CE7A00A47637 /* WeatherMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC52FF9F26D91B9D00A694CB /* WeatherMenuView.swift */; };
+		BCCED7FB26F7CE7A00A47637 /* EntitysModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29FB26EFDF3300C3AF2D /* EntitysModel.swift */; };
+		BCCED7FC26F7CE7A00A47637 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9F268E26BBCC5D000B854F /* UIColor.swift */; };
+		BCCED7FD26F7CE7A00A47637 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29F526EFC1DF00C3AF2D /* UITableViewCell.swift */; };
+		BCCED7FE26F7CE7A00A47637 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073312534BA3800B2979F /* UIView.swift */; };
+		BCCED7FF26F7CE7A00A47637 /* PetInfoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9402F826CA6AB70028E5AC /* PetInfoTableCell.swift */; };
+		BCCED80026F7CE7A00A47637 /* PremiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8C64F226BF37EF00CA7A90 /* PremiumView.swift */; };
+		BCCED80126F7CE7A00A47637 /* PetDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC16017F26ECBF6800666529 /* PetDTO.swift */; };
+		BCCED80226F7CE7A00A47637 /* OMPetInformation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC16018226ECE17500666529 /* OMPetInformation+CoreDataProperties.swift */; };
+		BCCED80326F7CE7A00A47637 /* PetMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC38543A26C5AB4700C2F14E /* PetMenuController.swift */; };
+		BCCED80426F7CE7A00A47637 /* EntitysController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29F726EFDEA900C3AF2D /* EntitysController.swift */; };
+		BCCED80526F7CE7A00A47637 /* DataTransferDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2614F426F686C300D4A58D /* DataTransferDelegate.swift */; };
+		BCCED80626F7CE7A00A47637 /* SystemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29F326EFA38500C3AF2D /* SystemModel.swift */; };
+		BCCED80726F7CE7A00A47637 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29E026EE9B9100C3AF2D /* ProfileController.swift */; };
+		BCCED80826F7CE7A00A47637 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5B20126F4F7A800C47A09 /* DatePickerView.swift */; };
+		BCCED80926F7CE7A00A47637 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5B20426F4FB7A00C47A09 /* DatePickerController.swift */; };
+		BCCED80A26F7CE7A00A47637 /* MainWeatherModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0132CE26E15DFE0065F1B7 /* MainWeatherModelImpl.swift */; };
+		BCCED80B26F7CE7A00A47637 /* UserDefaultsServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91F2F32627423D006CCE3B /* UserDefaultsServiceImpl.swift */; };
+		BCCED80C26F7CE7A00A47637 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC259E626C40D3E00FCAC54 /* MainMenuView.swift */; };
+		BCCED80D26F7CE7A00A47637 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE5115425461A23002FB62E /* UIAlertController.swift */; };
+		BCCED80E26F7CE7A00A47637 /* InputInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9402FB26CA7BFF0028E5AC /* InputInfoController.swift */; };
+		BCCED80F26F7CE7A00A47637 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC26150326F7705800D4A58D /* String.swift */; };
+		BCCED81026F7CE7A00A47637 /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE6ACA526F21011007CDB81 /* NetworkServiceError.swift */; };
+		BCCED81126F7CE7A00A47637 /* InputInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDAEB6D26CFBD990099CF13 /* InputInfoView.swift */; };
+		BCCED81226F7CE7A00A47637 /* OnboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029826B9787D00CFD87E /* OnboardController.swift */; };
+		BCCED81A26F7D06700A47637 /* MyPetsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCED81926F7D06700A47637 /* MyPetsUITests.swift */; };
+		BCCED82326F7D0EF00A47637 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCED82226F7D0EF00A47637 /* Page.swift */; };
+		BCCED82526F7D32600A47637 /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCED82426F7D32600A47637 /* OnboardingPage.swift */; };
+		BCCED82926F7D78700A47637 /* TabBarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCED82826F7D78700A47637 /* TabBarPage.swift */; };
+		BCCED82A26F7DEEF00A47637 /* UserDefaultsServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91F2F32627423D006CCE3B /* UserDefaultsServiceImpl.swift */; };
+		BCCED82B26F7DF2600A47637 /* DataTransferDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2614F426F686C300D4A58D /* DataTransferDelegate.swift */; };
+		BCCED82C26F7DF2600A47637 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFECA9826F24ECC00286EF6 /* NetworkService.swift */; };
+		BCCED82D26F7DF2600A47637 /* MainWeatherModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0132CE26E15DFE0065F1B7 /* MainWeatherModelImpl.swift */; };
+		BCCED82E26F7DF2600A47637 /* DateFormatterServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5B20726F506FD00C47A09 /* DateFormatterServiceImpl.swift */; };
+		BCCED82F26F7DF2600A47637 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC259E626C40D3E00FCAC54 /* MainMenuView.swift */; };
+		BCCED83026F7DF2600A47637 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5B20126F4F7A800C47A09 /* DatePickerView.swift */; };
+		BCCED83126F7DF2600A47637 /* InputInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDAEB6D26CFBD990099CF13 /* InputInfoView.swift */; };
+		BCCED83226F7DF2600A47637 /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC259E826C4142A00FCAC54 /* MainMenuController.swift */; };
+		BCCED83326F7DF2600A47637 /* OnboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029826B9787D00CFD87E /* OnboardController.swift */; };
+		BCCED83426F7DF2600A47637 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29E326EE9BB600C3AF2D /* ProfileView.swift */; };
+		BCCED83526F7DF2600A47637 /* EntitysController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29F726EFDEA900C3AF2D /* EntitysController.swift */; };
+		BCCED83626F7DF2600A47637 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29F526EFC1DF00C3AF2D /* UITableViewCell.swift */; };
+		BCCED83726F7DF2600A47637 /* GetWeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFECA9626F2499900286EF6 /* GetWeatherResponse.swift */; };
+		BCCED83826F7DF2600A47637 /* InputInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9402FB26CA7BFF0028E5AC /* InputInfoController.swift */; };
+		BCCED83926F7DF2600A47637 /* MainMenuController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFECA9226F2368700286EF6 /* MainMenuController + Extension.swift */; };
+		BCCED83A26F7DF2600A47637 /* OnboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029A26B978A000CFD87E /* OnboardModel.swift */; };
+		BCCED83B26F7DF2600A47637 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE5115425461A23002FB62E /* UIAlertController.swift */; };
+		BCCED83C26F7DF2600A47637 /* StorageServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC16013726EB7A1A00666529 /* StorageServiceImpl.swift */; };
+		BCCED83D26F7DF2600A47637 /* OnboardCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029C26B9878B00CFD87E /* OnboardCollectionCell.swift */; };
+		BCCED83E26F7DF2600A47637 /* EntitysModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29FB26EFDF3300C3AF2D /* EntitysModel.swift */; };
+		BCCED83F26F7DF2600A47637 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073312534BA3800B2979F /* UIView.swift */; };
+		BCCED84026F7DF2600A47637 /* PremiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8C64F226BF37EF00CA7A90 /* PremiumView.swift */; };
+		BCCED84126F7DF2600A47637 /* PetInfoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9402F826CA6AB70028E5AC /* PetInfoTableCell.swift */; };
+		BCCED84226F7DF2600A47637 /* PremiumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8C64F026BF379700CA7A90 /* PremiumController.swift */; };
+		BCCED84326F7DF2600A47637 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073242534A6F600B2979F /* UIButton.swift */; };
+		BCCED84426F7DF2600A47637 /* PetInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB65E26C699CD00BE80AE /* PetInfoView.swift */; };
+		BCCED84526F7DF2600A47637 /* PetInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB65C26C688F500BE80AE /* PetInfoController.swift */; };
+		BCCED84626F7DF2600A47637 /* OMPetInformation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC16018226ECE17500666529 /* OMPetInformation+CoreDataProperties.swift */; };
+		BCCED84726F7DF2600A47637 /* ShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC26F06526F2072500403961 /* ShimmerView.swift */; };
+		BCCED84826F7DF2600A47637 /* PetMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC38543A26C5AB4700C2F14E /* PetMenuController.swift */; };
+		BCCED84926F7DF2600A47637 /* PetDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC16017F26ECBF6800666529 /* PetDTO.swift */; };
+		BCCED84A26F7DF2600A47637 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC413CD32538A97F002CDD19 /* CustomTabBarController.swift */; };
+		BCCED84B26F7DF2600A47637 /* EntitysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29EF26EF7F8F00C3AF2D /* EntitysView.swift */; };
+		BCCED84C26F7DF2600A47637 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9F268E26BBCC5D000B854F /* UIColor.swift */; };
+		BCCED84D26F7DF2600A47637 /* PetMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29DE26ED490F00C3AF2D /* PetMenuModel.swift */; };
+		BCCED84E26F7DF2600A47637 /* PremiumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8C64F426BF382A00CA7A90 /* PremiumModel.swift */; };
+		BCCED84F26F7DF2600A47637 /* OMPetInformation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC16018126ECE17500666529 /* OMPetInformation+CoreDataClass.swift */; };
+		BCCED85026F7DF2600A47637 /* PetInfoModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB66626C6CA9900BE80AE /* PetInfoModelImpl.swift */; };
+		BCCED85126F7DF2600A47637 /* SystemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29F126EFA33D00C3AF2D /* SystemView.swift */; };
+		BCCED85226F7DF2600A47637 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB610022530C82400C4FD2F /* AppDelegate.swift */; };
+		BCCED85326F7DF2600A47637 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC26150326F7705800D4A58D /* String.swift */; };
+		BCCED85426F7DF2600A47637 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5B20426F4FB7A00C47A09 /* DatePickerController.swift */; };
+		BCCED85526F7DF2600A47637 /* OnboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029626B9785F00CFD87E /* OnboardView.swift */; };
+		BCCED85626F7DF2600A47637 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29E526EE9D1700C3AF2D /* ProfileModel.swift */; };
+		BCCED85726F7DF2600A47637 /* SystemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29F326EFA38500C3AF2D /* SystemModel.swift */; };
+		BCCED85826F7DF2600A47637 /* PetInfoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC26150026F7531C00D4A58D /* PetInfoCollectionCell.swift */; };
+		BCCED85926F7DF2600A47637 /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE6ACA526F21011007CDB81 /* NetworkServiceError.swift */; };
+		BCCED85A26F7DF2600A47637 /* WeatherMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC52FF9F26D91B9D00A694CB /* WeatherMenuView.swift */; };
+		BCCED85B26F7DF2600A47637 /* PetCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB65426C6678100BE80AE /* PetCollectionView.swift */; };
+		BCCED85C26F7DF2600A47637 /* PetInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB66426C6AB1F00BE80AE /* PetInfoCell.swift */; };
+		BCCED85D26F7DF2600A47637 /* PetMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC38543C26C5ABCF00C2F14E /* PetMenuView.swift */; };
+		BCCED85E26F7DF2600A47637 /* PetCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB65626C668F000BE80AE /* PetCollectionCell.swift */; };
+		BCCED85F26F7DF2600A47637 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29E026EE9B9100C3AF2D /* ProfileController.swift */; };
+		BCCED86026F7FB1A00A47637 /* DateFormatterServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5B20726F506FD00C47A09 /* DateFormatterServiceImpl.swift */; };
+		BCCED86126F7FCCC00A47637 /* MainWeatherModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0132CE26E15DFE0065F1B7 /* MainWeatherModelImpl.swift */; };
+		BCCED86226F80F6A00A47637 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFECA9826F24ECC00286EF6 /* NetworkService.swift */; };
+		BCCED86326F80F7D00A47637 /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE6ACA526F21011007CDB81 /* NetworkServiceError.swift */; };
+		BCCED86726F8126200A47637 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCED86626F8126200A47637 /* MockURLSession.swift */; };
+		BCCED86826F8794100A47637 /* GetWeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFECA9626F2499900286EF6 /* GetWeatherResponse.swift */; };
+		BCCED87026F8B4B300A47637 /* userImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BCCED86F26F8B4B300A47637 /* userImage.jpeg */; };
+		BCCED87326F8BAED00A47637 /* PetMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29DE26ED490F00C3AF2D /* PetMenuModel.swift */; };
+		BCDA7E7826F4B50F00C48EC1 /* PetMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC38543A26C5AB4700C2F14E /* PetMenuController.swift */; };
 		BCDAEB6E26CFBD990099CF13 /* InputInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDAEB6D26CFBD990099CF13 /* InputInfoView.swift */; };
-		BCDBF528253F887E00BCBBFB /* Map Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF527253F887E00BCBBFB /* Map Settings.swift */; };
 		BCE5115525461A23002FB62E /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE5115425461A23002FB62E /* UIAlertController.swift */; };
+		BCE6ACA626F21011007CDB81 /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE6ACA526F21011007CDB81 /* NetworkServiceError.swift */; };
+		BCFECA9326F2368700286EF6 /* MainMenuController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFECA9226F2368700286EF6 /* MainMenuController + Extension.swift */; };
+		BCFECA9726F2499900286EF6 /* GetWeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFECA9626F2499900286EF6 /* GetWeatherResponse.swift */; };
+		BCFECA9926F24ECC00286EF6 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFECA9826F24ECC00286EF6 /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		BC33256926F0A9370060DCDD /* PBXContainerItemProxy */ = {
+		BC3369BE26F60E7100C40691 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCB60FF72530C82400C4FD2F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BCB60FFE2530C82400C4FD2F;
+			remoteInfo = MyPets;
+		};
+		BCCED7D526F7CD5400A47637 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCB60FF72530C82400C4FD2F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BCB60FFE2530C82400C4FD2F;
+			remoteInfo = MyPets;
+		};
+		BCCED81C26F7D06700A47637 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BCB60FF72530C82400C4FD2F /* Project object */;
 			proxyType = 1;
@@ -145,7 +222,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BC0132CE26E15DFE0065F1B7 /* MainWeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWeatherModel.swift; sourceTree = "<group>"; };
+		BC0132CE26E15DFE0065F1B7 /* MainWeatherModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWeatherModelImpl.swift; sourceTree = "<group>"; };
 		BC0D29DE26ED490F00C3AF2D /* PetMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetMenuModel.swift; sourceTree = "<group>"; };
 		BC0D29E026EE9B9100C3AF2D /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		BC0D29E326EE9BB600C3AF2D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -156,51 +233,49 @@
 		BC0D29F526EFC1DF00C3AF2D /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
 		BC0D29F726EFDEA900C3AF2D /* EntitysController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitysController.swift; sourceTree = "<group>"; };
 		BC0D29FB26EFDF3300C3AF2D /* EntitysModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitysModel.swift; sourceTree = "<group>"; };
-		BC0D2A0326F00F5800C3AF2D /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
-		BC0D2A0526F00F6300C3AF2D /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
-		BC0D2A0726F00F6F00C3AF2D /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		BC13029626B9785F00CFD87E /* OnboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardView.swift; sourceTree = "<group>"; };
 		BC13029826B9787D00CFD87E /* OnboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardController.swift; sourceTree = "<group>"; };
 		BC13029A26B978A000CFD87E /* OnboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardModel.swift; sourceTree = "<group>"; };
 		BC13029C26B9878B00CFD87E /* OnboardCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardCollectionCell.swift; sourceTree = "<group>"; };
-		BC16013726EB7A1A00666529 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		BC16013726EB7A1A00666529 /* StorageServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageServiceImpl.swift; sourceTree = "<group>"; };
 		BC16017F26ECBF6800666529 /* PetDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDTO.swift; sourceTree = "<group>"; };
 		BC16018126ECE17500666529 /* OMPetInformation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OMPetInformation+CoreDataClass.swift"; sourceTree = "<group>"; };
 		BC16018226ECE17500666529 /* OMPetInformation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OMPetInformation+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		BC33256426F0A9370060DCDD /* MyPetsSnapshotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyPetsSnapshotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC33256626F0A9370060DCDD /* MyPetsSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPetsSnapshotTests.swift; sourceTree = "<group>"; };
-		BC33256826F0A9370060DCDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC2614F426F686C300D4A58D /* DataTransferDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferDelegate.swift; sourceTree = "<group>"; };
+		BC26150026F7531C00D4A58D /* PetInfoCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetInfoCollectionCell.swift; sourceTree = "<group>"; };
+		BC26150326F7705800D4A58D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		BC26F06526F2072500403961 /* ShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerView.swift; sourceTree = "<group>"; };
+		BC3369B926F60E7100C40691 /* MyPetsUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyPetsUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC3369BD26F60E7100C40691 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC336A2426F622B800C40691 /* MainWeatherModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWeatherModelTests.swift; sourceTree = "<group>"; };
+		BC336A2F26F65A6600C40691 /* DateFormatterServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatterServiceTests.swift; sourceTree = "<group>"; };
 		BC38543A26C5AB4700C2F14E /* PetMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetMenuController.swift; sourceTree = "<group>"; };
 		BC38543C26C5ABCF00C2F14E /* PetMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetMenuView.swift; sourceTree = "<group>"; };
 		BC413CD32538A97F002CDD19 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
-		BC4CA476262436EF00C2033C /* BottomMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomMenuCell.swift; sourceTree = "<group>"; };
 		BC52FF9F26D91B9D00A694CB /* WeatherMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMenuView.swift; sourceTree = "<group>"; };
-		BC52FFA126D91EDA00A694CB /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		BC56F08926F8C5DA00B15FFA /* PetMenuModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetMenuModelTests.swift; sourceTree = "<group>"; };
+		BC56F09626F8E16900B15FFA /* SpyNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyNetworkService.swift; sourceTree = "<group>"; };
 		BC7073242534A6F600B2979F /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		BC7073312534BA3800B2979F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
-		BC7396492542084D00A89858 /* LocationViewDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationViewDelegate + DataSource.swift"; sourceTree = "<group>"; };
-		BC73964C25435F9900A89858 /* LocationCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCollectionCell.swift; sourceTree = "<group>"; };
 		BC7EB65426C6678100BE80AE /* PetCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCollectionView.swift; sourceTree = "<group>"; };
 		BC7EB65626C668F000BE80AE /* PetCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCollectionCell.swift; sourceTree = "<group>"; };
 		BC7EB65C26C688F500BE80AE /* PetInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoController.swift; sourceTree = "<group>"; };
 		BC7EB65E26C699CD00BE80AE /* PetInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoView.swift; sourceTree = "<group>"; };
-		BC7EB66026C6A09400BE80AE /* PetInfoCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoCollectionCell.swift; sourceTree = "<group>"; };
 		BC7EB66426C6AB1F00BE80AE /* PetInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoCell.swift; sourceTree = "<group>"; };
-		BC7EB66626C6CA9900BE80AE /* PetInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoModel.swift; sourceTree = "<group>"; };
-		BC859AE025B383B000FDD33B /* AboutAppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppController.swift; sourceTree = "<group>"; };
+		BC7EB66626C6CA9900BE80AE /* PetInfoModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoModelImpl.swift; sourceTree = "<group>"; };
 		BC8C64F026BF379700CA7A90 /* PremiumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumController.swift; sourceTree = "<group>"; };
 		BC8C64F226BF37EF00CA7A90 /* PremiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumView.swift; sourceTree = "<group>"; };
 		BC8C64F426BF382A00CA7A90 /* PremiumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumModel.swift; sourceTree = "<group>"; };
-		BC8CDFFE25C6BB85005EEFEB /* SupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportViewController.swift; sourceTree = "<group>"; };
-		BC8CE00525C6CBC2005EEFEB /* SupportVCDelegate + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SupportVCDelegate + DataSource.swift"; sourceTree = "<group>"; };
-		BC8CE00825C6CBF6005EEFEB /* SupportVC - Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SupportVC - Extension.swift"; sourceTree = "<group>"; };
-		BC8E373D26E6B0FA00F3B6A9 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		BC91F2F32627423D006CCE3B /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
+		BC91F2F32627423D006CCE3B /* UserDefaultsServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsServiceImpl.swift; sourceTree = "<group>"; };
 		BC9402E826CA62840028E5AC /* PetInformation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PetInformation.xcdatamodel; sourceTree = "<group>"; };
 		BC9402F826CA6AB70028E5AC /* PetInfoTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoTableCell.swift; sourceTree = "<group>"; };
 		BC9402FB26CA7BFF0028E5AC /* InputInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputInfoController.swift; sourceTree = "<group>"; };
 		BC9F268E26BBCC5D000B854F /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		BCB3AA4325AF8CD000289B7A /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		BCB5B1AB26F4BED500C47A09 /* UserDefaultsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsServiceTests.swift; sourceTree = "<group>"; };
+		BCB5B20126F4F7A800C47A09 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		BCB5B20426F4FB7A00C47A09 /* DatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
+		BCB5B20726F506FD00C47A09 /* DateFormatterServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterServiceImpl.swift; sourceTree = "<group>"; };
+		BCB5B20A26F531CF00C47A09 /* MockUDRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUDRepository.swift; sourceTree = "<group>"; };
 		BCB60FFF2530C82400C4FD2F /* MyPets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCB610022530C82400C4FD2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCB6100B2530C82700C4FD2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -208,23 +283,50 @@
 		BCB610102530C82700C4FD2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Assets + LS + Info.plist/Info.plist"; sourceTree = SOURCE_ROOT; };
 		BCC259E626C40D3E00FCAC54 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		BCC259E826C4142A00FCAC54 /* MainMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
-		BCC259EA26C4173700FCAC54 /* MainMenuCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuCollectionCell.swift; sourceTree = "<group>"; };
-		BCC259EC26C41FEA00FCAC54 /* TitleMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleMenuView.swift; sourceTree = "<group>"; };
+		BCCED77826F7A64800A47637 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
+		BCCED7D026F7CD5400A47637 /* MyPetsSnapshotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyPetsSnapshotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCCED7D226F7CD5400A47637 /* MyPetsSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPetsSnapshotTests.swift; sourceTree = "<group>"; };
+		BCCED7D426F7CD5400A47637 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCCED81726F7D06700A47637 /* MyPetsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyPetsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCCED81926F7D06700A47637 /* MyPetsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPetsUITests.swift; sourceTree = "<group>"; };
+		BCCED81B26F7D06700A47637 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCCED82226F7D0EF00A47637 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		BCCED82426F7D32600A47637 /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
+		BCCED82826F7D78700A47637 /* TabBarPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPage.swift; sourceTree = "<group>"; };
+		BCCED86626F8126200A47637 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		BCCED86F26F8B4B300A47637 /* userImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = userImage.jpeg; sourceTree = "<group>"; };
 		BCDAEB6D26CFBD990099CF13 /* InputInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputInfoView.swift; sourceTree = "<group>"; };
-		BCDBF527253F887E00BCBBFB /* Map Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Map Settings.swift"; sourceTree = "<group>"; };
 		BCE5115425461A23002FB62E /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
+		BCE6ACA526F21011007CDB81 /* NetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceError.swift; sourceTree = "<group>"; };
+		BCFECA9226F2368700286EF6 /* MainMenuController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainMenuController + Extension.swift"; sourceTree = "<group>"; };
+		BCFECA9626F2499900286EF6 /* GetWeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWeatherResponse.swift; sourceTree = "<group>"; };
+		BCFECA9826F24ECC00286EF6 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		BC33256126F0A9370060DCDD /* Frameworks */ = {
+		BC3369B626F60E7100C40691 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC33257026F0A9D60060DCDD /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BCB60FFC2530C82400C4FD2F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCCED7CD26F7CD5400A47637 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCCED7DC26F7CD6900A47637 /* SnapshotTesting in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCCED81426F7D06700A47637 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -237,7 +339,9 @@
 		BC0D29E226EE9B9E00C3AF2D /* ProfileModule */ = {
 			isa = PBXGroup;
 			children = (
-				BC0D29FA26EFDEC000C3AF2D /* MainProfileModule */,
+				BC0D29E726EF739800C3AF2D /* Models */,
+				BC0D29E826EF73A700C3AF2D /* Views */,
+				BC0D29E026EE9B9100C3AF2D /* ProfileController.swift */,
 			);
 			path = ProfileModule;
 			sourceTree = "<group>";
@@ -270,51 +374,36 @@
 			path = EntitysModule;
 			sourceTree = "<group>";
 		};
-		BC0D29FA26EFDEC000C3AF2D /* MainProfileModule */ = {
+		BC1DF0AD26F5DFAD004B744A /* Mock */ = {
 			isa = PBXGroup;
 			children = (
-				BC0D29E726EF739800C3AF2D /* Models */,
-				BC0D29E826EF73A700C3AF2D /* Views */,
-				BC0D29E026EE9B9100C3AF2D /* ProfileController.swift */,
+				BC3369FF26F6121C00C40691 /* MockUserDefaultsService */,
+				BCCED77726F7A50700A47637 /* MockNetworkService */,
 			);
-			path = MainProfileModule;
+			path = Mock;
 			sourceTree = "<group>";
 		};
-		BC0D2A0126F00DEE00C3AF2D /* FixOrDelete */ = {
+		BC3369BA26F60E7100C40691 /* MyPetsUnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				BC413CC7253893C3002CDD19 /* LocationViewController */,
-				BC4CA474262436EF00C2033C /* UICollectionViewCell */,
+				BC1DF0AD26F5DFAD004B744A /* Mock */,
+				BC56F0A126F8E25F00B15FFA /* DocumentsForTest */,
+				BCB5B1AB26F4BED500C47A09 /* UserDefaultsServiceTests.swift */,
+				BCCED77826F7A64800A47637 /* NetworkServiceTests.swift */,
+				BC336A2F26F65A6600C40691 /* DateFormatterServiceTests.swift */,
+				BC336A2426F622B800C40691 /* MainWeatherModelTests.swift */,
+				BC56F08926F8C5DA00B15FFA /* PetMenuModelTests.swift */,
+				BC3369BD26F60E7100C40691 /* Info.plist */,
 			);
-			path = FixOrDelete;
+			path = MyPetsUnitTests;
 			sourceTree = "<group>";
 		};
-		BC0D2A0226F00F4800C3AF2D /* LocationModule */ = {
+		BC3369FF26F6121C00C40691 /* MockUserDefaultsService */ = {
 			isa = PBXGroup;
 			children = (
-				BC0D2A0326F00F5800C3AF2D /* LocationModel.swift */,
-				BC33255F26F0A0350060DCDD /* Views */,
-				BC0D2A0726F00F6F00C3AF2D /* LocationController.swift */,
+				BCB5B20A26F531CF00C47A09 /* MockUDRepository.swift */,
 			);
-			path = LocationModule;
-			sourceTree = "<group>";
-		};
-		BC33255F26F0A0350060DCDD /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				BC0D2A0526F00F6300C3AF2D /* LocationView.swift */,
-				BC73964C25435F9900A89858 /* LocationCollectionCell.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		BC33256526F0A9370060DCDD /* MyPetsSnapshotTests */ = {
-			isa = PBXGroup;
-			children = (
-				BC33256626F0A9370060DCDD /* MyPetsSnapshotTests.swift */,
-				BC33256826F0A9370060DCDD /* Info.plist */,
-			);
-			path = MyPetsSnapshotTests;
+			path = MockUserDefaultsService;
 			sourceTree = "<group>";
 		};
 		BC38543626C5AAF000C2F14E /* PetMenuModule */ = {
@@ -347,25 +436,6 @@
 			path = OnboardViewModule;
 			sourceTree = "<group>";
 		};
-		BC413CC7253893C3002CDD19 /* LocationViewController */ = {
-			isa = PBXGroup;
-			children = (
-				BC0D2A0226F00F4800C3AF2D /* LocationModule */,
-				BC4D76C825442A380037EA8D /* Delegate + DataSource */,
-				BC4D76CA25442A450037EA8D /* Map Settings */,
-			);
-			path = LocationViewController;
-			sourceTree = "<group>";
-		};
-		BC413CC8253893D2002CDD19 /* ProfileViewController */ = {
-			isa = PBXGroup;
-			children = (
-				BC8CDFFD25C6BB5D005EEFEB /* SupportViewController */,
-				BC859ADF25B3838600FDD33B /* AboutAppController */,
-			);
-			path = ProfileViewController;
-			sourceTree = "<group>";
-		};
 		BC413CD62538ABBB002CDD19 /* CustomTabBarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -379,33 +449,17 @@
 			children = (
 				BCC259E326C40C8E00FCAC54 /* Models */,
 				BCC259E426C40C9500FCAC54 /* Views */,
-				BCC259E826C4142A00FCAC54 /* MainMenuController.swift */,
+				BCFECA9126F2366E00286EF6 /* Controller */,
 			);
 			path = MainMenuModule;
 			sourceTree = "<group>";
 		};
-		BC4CA474262436EF00C2033C /* UICollectionViewCell */ = {
+		BC56F0A126F8E25F00B15FFA /* DocumentsForTest */ = {
 			isa = PBXGroup;
 			children = (
-				BC4CA476262436EF00C2033C /* BottomMenuCell.swift */,
+				BCCED86F26F8B4B300A47637 /* userImage.jpeg */,
 			);
-			path = UICollectionViewCell;
-			sourceTree = "<group>";
-		};
-		BC4D76C825442A380037EA8D /* Delegate + DataSource */ = {
-			isa = PBXGroup;
-			children = (
-				BC7396492542084D00A89858 /* LocationViewDelegate + DataSource.swift */,
-			);
-			path = "Delegate + DataSource";
-			sourceTree = "<group>";
-		};
-		BC4D76CA25442A450037EA8D /* Map Settings */ = {
-			isa = PBXGroup;
-			children = (
-				BCDBF527253F887E00BCBBFB /* Map Settings.swift */,
-			);
-			path = "Map Settings";
+			path = DocumentsForTest;
 			sourceTree = "<group>";
 		};
 		BC70732C2534AE9400B2979F /* PremiumModule */ = {
@@ -431,61 +485,20 @@
 			isa = PBXGroup;
 			children = (
 				BC7EB65E26C699CD00BE80AE /* PetInfoView.swift */,
-				BC7EB66026C6A09400BE80AE /* PetInfoCollectionCell.swift */,
 				BC7EB66426C6AB1F00BE80AE /* PetInfoCell.swift */,
+				BC26150026F7531C00D4A58D /* PetInfoCollectionCell.swift */,
 				BC9402F826CA6AB70028E5AC /* PetInfoTableCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		BC859ADF25B3838600FDD33B /* AboutAppController */ = {
-			isa = PBXGroup;
-			children = (
-				BC859AE025B383B000FDD33B /* AboutAppController.swift */,
-			);
-			path = AboutAppController;
-			sourceTree = "<group>";
-		};
-		BC8CDFFD25C6BB5D005EEFEB /* SupportViewController */ = {
-			isa = PBXGroup;
-			children = (
-				BC8CE00225C6CB67005EEFEB /* UIViewController */,
-				BC8CE00325C6CB73005EEFEB /* Delegate + DataSource */,
-				BC8CE00425C6CB84005EEFEB /* Extension */,
-			);
-			path = SupportViewController;
-			sourceTree = "<group>";
-		};
-		BC8CE00225C6CB67005EEFEB /* UIViewController */ = {
-			isa = PBXGroup;
-			children = (
-				BC8CDFFE25C6BB85005EEFEB /* SupportViewController.swift */,
-			);
-			path = UIViewController;
-			sourceTree = "<group>";
-		};
-		BC8CE00325C6CB73005EEFEB /* Delegate + DataSource */ = {
-			isa = PBXGroup;
-			children = (
-				BC8CE00525C6CBC2005EEFEB /* SupportVCDelegate + DataSource.swift */,
-			);
-			path = "Delegate + DataSource";
-			sourceTree = "<group>";
-		};
-		BC8CE00425C6CB84005EEFEB /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				BC8CE00825C6CBF6005EEFEB /* SupportVC - Extension.swift */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
 		BC8E373C26E6B0CD00F3B6A9 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				BC8E373D26E6B0FA00F3B6A9 /* NetworkService.swift */,
-				BC91F2F32627423D006CCE3B /* UserDefaultsService.swift */,
+				BC91F2F32627423D006CCE3B /* UserDefaultsServiceImpl.swift */,
 				BC9402EA26CA628A0028E5AC /* CoreDataService + Models */,
+				BCE6ACA726F21018007CDB81 /* NetworkService */,
+				BCB5B20726F506FD00C47A09 /* DateFormatterServiceImpl.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -496,7 +509,7 @@
 				BC16018126ECE17500666529 /* OMPetInformation+CoreDataClass.swift */,
 				BC16018226ECE17500666529 /* OMPetInformation+CoreDataProperties.swift */,
 				BC9402E726CA62840028E5AC /* PetInformation.xcdatamodeld */,
-				BC16013726EB7A1A00666529 /* StorageService.swift */,
+				BC16013726EB7A1A00666529 /* StorageServiceImpl.swift */,
 				BC16017F26ECBF6800666529 /* PetDTO.swift */,
 			);
 			path = "CoreDataService + Models";
@@ -505,7 +518,7 @@
 		BC9402FA26CA79920028E5AC /* PetInfoModule */ = {
 			isa = PBXGroup;
 			children = (
-				BC7EB66626C6CA9900BE80AE /* PetInfoModel.swift */,
+				BC7EB66626C6CA9900BE80AE /* PetInfoModelImpl.swift */,
 				BC7EB65A26C688DD00BE80AE /* Views */,
 				BC7EB65C26C688F500BE80AE /* PetInfoController.swift */,
 			);
@@ -519,8 +532,8 @@
 				BC7073242534A6F600B2979F /* UIButton.swift */,
 				BCE5115425461A23002FB62E /* UIAlertController.swift */,
 				BC9F268E26BBCC5D000B854F /* UIColor.swift */,
-				BCB3AA4325AF8CD000289B7A /* UIViewController.swift */,
 				BC0D29F526EFC1DF00C3AF2D /* UITableViewCell.swift */,
+				BC26150326F7705800D4A58D /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -530,7 +543,9 @@
 			children = (
 				BCB610012530C82400C4FD2F /* MyPets */,
 				BCB610182530C87800C4FD2F /* Assets + LS + Info.plist */,
-				BC33256526F0A9370060DCDD /* MyPetsSnapshotTests */,
+				BC3369BA26F60E7100C40691 /* MyPetsUnitTests */,
+				BCCED7D126F7CD5400A47637 /* MyPetsSnapshotTests */,
+				BCCED81826F7D06700A47637 /* MyPetsUITests */,
 				BCB610002530C82400C4FD2F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -539,7 +554,9 @@
 			isa = PBXGroup;
 			children = (
 				BCB60FFF2530C82400C4FD2F /* MyPets.app */,
-				BC33256426F0A9370060DCDD /* MyPetsSnapshotTests.xctest */,
+				BC3369B926F60E7100C40691 /* MyPetsUnitTests.xctest */,
+				BCCED7D026F7CD5400A47637 /* MyPetsSnapshotTests.xctest */,
+				BCCED81726F7D06700A47637 /* MyPetsUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -547,7 +564,6 @@
 		BCB610012530C82400C4FD2F /* MyPets */ = {
 			isa = PBXGroup;
 			children = (
-				BC0D2A0126F00DEE00C3AF2D /* FixOrDelete */,
 				BCB610022530C82400C4FD2F /* AppDelegate.swift */,
 				BC8E373C26E6B0CD00F3B6A9 /* Services */,
 				BC3C7C752532F54700209C51 /* OnboardViewModule */,
@@ -560,7 +576,6 @@
 				BC0D29E226EE9B9E00C3AF2D /* ProfileModule */,
 				BC0D29F926EFDEB000C3AF2D /* EntitysModule */,
 				BC9F269026BBCC7E000B854F /* Extensions */,
-				BC413CC8253893D2002CDD19 /* ProfileViewController */,
 			);
 			path = MyPets;
 			sourceTree = "<group>";
@@ -578,8 +593,8 @@
 		BCC259E326C40C8E00FCAC54 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BC52FFA126D91EDA00A694CB /* Weather.swift */,
-				BC0132CE26E15DFE0065F1B7 /* MainWeatherModel.swift */,
+				BCFECA9626F2499900286EF6 /* GetWeatherResponse.swift */,
+				BC0132CE26E15DFE0065F1B7 /* MainWeatherModelImpl.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -588,45 +603,100 @@
 			isa = PBXGroup;
 			children = (
 				BCC259E626C40D3E00FCAC54 /* MainMenuView.swift */,
-				BCC259EC26C41FEA00FCAC54 /* TitleMenuView.swift */,
-				BCC259EA26C4173700FCAC54 /* MainMenuCollectionCell.swift */,
 				BC52FF9F26D91B9D00A694CB /* WeatherMenuView.swift */,
+				BC26F06526F2072500403961 /* ShimmerView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		BCCED77726F7A50700A47637 /* MockNetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				BCCED86626F8126200A47637 /* MockURLSession.swift */,
+				BC56F09626F8E16900B15FFA /* SpyNetworkService.swift */,
+			);
+			path = MockNetworkService;
+			sourceTree = "<group>";
+		};
+		BCCED7D126F7CD5400A47637 /* MyPetsSnapshotTests */ = {
+			isa = PBXGroup;
+			children = (
+				BCCED7D226F7CD5400A47637 /* MyPetsSnapshotTests.swift */,
+				BCCED7D426F7CD5400A47637 /* Info.plist */,
+			);
+			path = MyPetsSnapshotTests;
+			sourceTree = "<group>";
+		};
+		BCCED81826F7D06700A47637 /* MyPetsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BCCED82126F7D0B100A47637 /* PageObject */,
+				BCCED81926F7D06700A47637 /* MyPetsUITests.swift */,
+				BCCED81B26F7D06700A47637 /* Info.plist */,
+			);
+			path = MyPetsUITests;
+			sourceTree = "<group>";
+		};
+		BCCED82126F7D0B100A47637 /* PageObject */ = {
+			isa = PBXGroup;
+			children = (
+				BCCED82226F7D0EF00A47637 /* Page.swift */,
+				BCCED82426F7D32600A47637 /* OnboardingPage.swift */,
+				BCCED82826F7D78700A47637 /* TabBarPage.swift */,
+			);
+			path = PageObject;
 			sourceTree = "<group>";
 		};
 		BCDAEB6926CFBD390099CF13 /* InputPetInfoModule */ = {
 			isa = PBXGroup;
 			children = (
+				BC2614F426F686C300D4A58D /* DataTransferDelegate.swift */,
+				BCB5B20126F4F7A800C47A09 /* DatePickerView.swift */,
+				BCB5B20426F4FB7A00C47A09 /* DatePickerController.swift */,
 				BCDAEB6D26CFBD990099CF13 /* InputInfoView.swift */,
 				BC9402FB26CA7BFF0028E5AC /* InputInfoController.swift */,
 			);
 			path = InputPetInfoModule;
 			sourceTree = "<group>";
 		};
+		BCE6ACA726F21018007CDB81 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				BCE6ACA526F21011007CDB81 /* NetworkServiceError.swift */,
+				BCFECA9826F24ECC00286EF6 /* NetworkService.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		BCFECA9126F2366E00286EF6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BCC259E826C4142A00FCAC54 /* MainMenuController.swift */,
+				BCFECA9226F2368700286EF6 /* MainMenuController + Extension.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BC33256326F0A9370060DCDD /* MyPetsSnapshotTests */ = {
+		BC3369B826F60E7100C40691 /* MyPetsUnitTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BC33256B26F0A9370060DCDD /* Build configuration list for PBXNativeTarget "MyPetsSnapshotTests" */;
+			buildConfigurationList = BC3369C026F60E7100C40691 /* Build configuration list for PBXNativeTarget "MyPetsUnitTests" */;
 			buildPhases = (
-				BC33256026F0A9370060DCDD /* Sources */,
-				BC33256126F0A9370060DCDD /* Frameworks */,
-				BC33256226F0A9370060DCDD /* Resources */,
+				BC3369B526F60E7100C40691 /* Sources */,
+				BC3369B626F60E7100C40691 /* Frameworks */,
+				BC3369B726F60E7100C40691 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				BC33256A26F0A9370060DCDD /* PBXTargetDependency */,
+				BC3369BF26F60E7100C40691 /* PBXTargetDependency */,
 			);
-			name = MyPetsSnapshotTests;
-			packageProductDependencies = (
-				BC33256F26F0A9D60060DCDD /* SnapshotTesting */,
-			);
-			productName = MyPetsSnapshotTests;
-			productReference = BC33256426F0A9370060DCDD /* MyPetsSnapshotTests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
+			name = MyPetsUnitTests;
+			productName = MyPetsUnitTests;
+			productReference = BC3369B926F60E7100C40691 /* MyPetsUnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		BCB60FFE2530C82400C4FD2F /* MyPets */ = {
 			isa = PBXNativeTarget;
@@ -635,6 +705,7 @@
 				BCB60FFB2530C82400C4FD2F /* Sources */,
 				BCB60FFC2530C82400C4FD2F /* Frameworks */,
 				BCB60FFD2530C82400C4FD2F /* Resources */,
+				BC5C556E26F4399800AEE040 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -647,6 +718,45 @@
 			productReference = BCB60FFF2530C82400C4FD2F /* MyPets.app */;
 			productType = "com.apple.product-type.application";
 		};
+		BCCED7CF26F7CD5400A47637 /* MyPetsSnapshotTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCCED7D726F7CD5400A47637 /* Build configuration list for PBXNativeTarget "MyPetsSnapshotTests" */;
+			buildPhases = (
+				BCCED7CC26F7CD5400A47637 /* Sources */,
+				BCCED7CD26F7CD5400A47637 /* Frameworks */,
+				BCCED7CE26F7CD5400A47637 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BCCED7D626F7CD5400A47637 /* PBXTargetDependency */,
+			);
+			name = MyPetsSnapshotTests;
+			packageProductDependencies = (
+				BCCED7DB26F7CD6900A47637 /* SnapshotTesting */,
+			);
+			productName = MyPetsSnapshotTests;
+			productReference = BCCED7D026F7CD5400A47637 /* MyPetsSnapshotTests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		BCCED81626F7D06700A47637 /* MyPetsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCCED81E26F7D06700A47637 /* Build configuration list for PBXNativeTarget "MyPetsUITests" */;
+			buildPhases = (
+				BCCED81326F7D06700A47637 /* Sources */,
+				BCCED81426F7D06700A47637 /* Frameworks */,
+				BCCED81526F7D06700A47637 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BCCED81D26F7D06700A47637 /* PBXTargetDependency */,
+			);
+			name = MyPetsUITests;
+			productName = MyPetsUITests;
+			productReference = BCCED81726F7D06700A47637 /* MyPetsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -656,11 +766,20 @@
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
-					BC33256326F0A9370060DCDD = {
+					BC3369B826F60E7100C40691 = {
 						CreatedOnToolsVersion = 12.5;
 					};
 					BCB60FFE2530C82400C4FD2F = {
 						CreatedOnToolsVersion = 12.0;
+						LastSwiftMigration = 1250;
+					};
+					BCCED7CF26F7CD5400A47637 = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = BCB60FFE2530C82400C4FD2F;
+					};
+					BCCED81626F7D06700A47637 = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = BCB60FFE2530C82400C4FD2F;
 					};
 				};
 			};
@@ -674,23 +793,26 @@
 			);
 			mainGroup = BCB60FF62530C82400C4FD2F;
 			packageReferences = (
-				BC33256E26F0A9D60060DCDD /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+				BCCED7DA26F7CD6800A47637 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = BCB610002530C82400C4FD2F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				BCB60FFE2530C82400C4FD2F /* MyPets */,
-				BC33256326F0A9370060DCDD /* MyPetsSnapshotTests */,
+				BC3369B826F60E7100C40691 /* MyPetsUnitTests */,
+				BCCED7CF26F7CD5400A47637 /* MyPetsSnapshotTests */,
+				BCCED81626F7D06700A47637 /* MyPetsUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		BC33256226F0A9370060DCDD /* Resources */ = {
+		BC3369B726F60E7100C40691 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCCED87026F8B4B300A47637 /* userImage.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -703,74 +825,62 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BCCED7CE26F7CD5400A47637 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCCED81526F7D06700A47637 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		BC5C556E26F4399800AEE040 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		BC33256026F0A9370060DCDD /* Sources */ = {
+		BC3369B526F60E7100C40691 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC8B6BCD26F0AE60009D9896 /* ProfileModel.swift in Sources */,
-				BC8B6BE026F0AEA3009D9896 /* AboutAppController.swift in Sources */,
-				BC8B6BAC26F0AD2B009D9896 /* OMPetInformation+CoreDataProperties.swift in Sources */,
-				BC8B6BDB26F0AE8E009D9896 /* LocationView.swift in Sources */,
-				BC8B6BB426F0ADB3009D9896 /* UIColor.swift in Sources */,
-				BC8B6BE126F0AEA8009D9896 /* SupportViewController.swift in Sources */,
-				BC8B6BD826F0AE81009D9896 /* UIViewController.swift in Sources */,
-				BC8B6BB626F0ADF3009D9896 /* MainMenuView.swift in Sources */,
-				BC8B6BB026F0AD75009D9896 /* OnboardModel.swift in Sources */,
-				BC8B6BBA26F0ADFC009D9896 /* Weather.swift in Sources */,
-				BC8B6BC026F0AE39009D9896 /* PetMenuModel.swift in Sources */,
-				BCB5E1CC26F0BA89002F3E95 /* AppDelegate.swift in Sources */,
-				BC8B6BCA26F0AE53009D9896 /* PetInfoController.swift in Sources */,
-				BC8B6BAD26F0AD35009D9896 /* PetInformation.xcdatamodeld in Sources */,
-				BC8B6BBF26F0AE29009D9896 /* PremiumController.swift in Sources */,
-				BC8B6BA926F0AD00009D9896 /* UserDefaultsService.swift in Sources */,
-				BC8B6BCF26F0AE65009D9896 /* ProfileView.swift in Sources */,
-				BC8B6BD226F0AE71009D9896 /* EntitysModel.swift in Sources */,
-				BC8B6BAA26F0AD09009D9896 /* StorageService.swift in Sources */,
-				BC8B6BD026F0AE68009D9896 /* SystemView.swift in Sources */,
-				BC8B6BC726F0AE4D009D9896 /* PetInfoCollectionCell.swift in Sources */,
-				BC8B6BAB26F0AD29009D9896 /* OMPetInformation+CoreDataClass.swift in Sources */,
-				BC8B6BB826F0ADF7009D9896 /* MainMenuCollectionCell.swift in Sources */,
-				BC8B6BD326F0AE74009D9896 /* EntitysView.swift in Sources */,
-				BC8B6BE326F0AEAD009D9896 /* SupportVC - Extension.swift in Sources */,
-				BC8B6BC326F0AE40009D9896 /* PetCollectionCell.swift in Sources */,
-				BC8B6BBB26F0ADFF009D9896 /* MainWeatherModel.swift in Sources */,
-				BC33256726F0A9370060DCDD /* MyPetsSnapshotTests.swift in Sources */,
-				BC8B6BBE26F0AE26009D9896 /* PremiumView.swift in Sources */,
-				BC8B6BDF26F0AE9C009D9896 /* Map Settings.swift in Sources */,
-				BC8B6BCC26F0AE5A009D9896 /* InputInfoController.swift in Sources */,
-				BC8B6BA826F0ACEC009D9896 /* OnboardController.swift in Sources */,
-				BC8B6BD526F0AE7A009D9896 /* UIView.swift in Sources */,
-				BC8B6BC926F0AE51009D9896 /* PetInfoTableCell.swift in Sources */,
-				BC8B6BC226F0AE3E009D9896 /* PetCollectionView.swift in Sources */,
-				BC8B6BB126F0AD78009D9896 /* OnboardView.swift in Sources */,
-				BC8B6BDD26F0AE94009D9896 /* LocationController.swift in Sources */,
-				BC8B6BD726F0AE7E009D9896 /* UIAlertController.swift in Sources */,
-				BC8B6BD926F0AE85009D9896 /* UITableViewCell.swift in Sources */,
-				BC8B6BB326F0ADA5009D9896 /* CustomTabBarController.swift in Sources */,
-				BC8B6BBD26F0AE24009D9896 /* PremiumModel.swift in Sources */,
-				BC8B6BDA26F0AE8B009D9896 /* LocationModel.swift in Sources */,
-				BC8B6BDE26F0AE99009D9896 /* LocationViewDelegate + DataSource.swift in Sources */,
-				BC8B6BC126F0AE3C009D9896 /* PetMenuView.swift in Sources */,
-				BC8B6BC426F0AE42009D9896 /* PetMenuController.swift in Sources */,
-				BC8B6BD626F0AE7C009D9896 /* UIButton.swift in Sources */,
-				BC8B6BE226F0AEAA009D9896 /* SupportVCDelegate + DataSource.swift in Sources */,
-				BC8B6BAE26F0AD3D009D9896 /* PetDTO.swift in Sources */,
-				BCB5E1CD26F0BAAA002F3E95 /* NetworkService.swift in Sources */,
-				BC8B6BCB26F0AE57009D9896 /* InputInfoView.swift in Sources */,
-				BC8B6BB926F0ADF9009D9896 /* WeatherMenuView.swift in Sources */,
-				BC8B6BDC26F0AE90009D9896 /* LocationCollectionCell.swift in Sources */,
-				BC8B6BB226F0AD7B009D9896 /* OnboardCollectionCell.swift in Sources */,
-				BC8B6BCE26F0AE62009D9896 /* SystemModel.swift in Sources */,
-				BC8B6BC626F0AE4B009D9896 /* PetInfoView.swift in Sources */,
-				BC8B6BC526F0AE47009D9896 /* PetInfoModel.swift in Sources */,
-				BC8B6BC826F0AE4F009D9896 /* PetInfoCell.swift in Sources */,
-				BC8B6BB526F0ADEF009D9896 /* MainMenuController.swift in Sources */,
-				BC8B6BB726F0ADF5009D9896 /* TitleMenuView.swift in Sources */,
-				BC8B6BD426F0AE76009D9896 /* EntitysController.swift in Sources */,
-				BC8B6BD126F0AE6A009D9896 /* ProfileController.swift in Sources */,
+				BC3369C326F60E8500C40691 /* UserDefaultsServiceTests.swift in Sources */,
+				BC3369FA26F60F0300C40691 /* MockUDRepository.swift in Sources */,
+				BC3369F726F60EEB00C40691 /* UserDefaultsServiceImpl.swift in Sources */,
+				BCCED77926F7A64800A47637 /* NetworkServiceTests.swift in Sources */,
+				BCCED86026F7FB1A00A47637 /* DateFormatterServiceImpl.swift in Sources */,
+				BC336A3026F65A6600C40691 /* DateFormatterServiceTests.swift in Sources */,
+				BCCED86226F80F6A00A47637 /* NetworkService.swift in Sources */,
+				BCCED87326F8BAED00A47637 /* PetMenuModel.swift in Sources */,
+				BC56F08A26F8C5DA00B15FFA /* PetMenuModelTests.swift in Sources */,
+				BC336A2526F622B800C40691 /* MainWeatherModelTests.swift in Sources */,
+				BCCED86826F8794100A47637 /* GetWeatherResponse.swift in Sources */,
+				BCCED86326F80F7D00A47637 /* NetworkServiceError.swift in Sources */,
+				BCCED86726F8126200A47637 /* MockURLSession.swift in Sources */,
+				BC56F09726F8E16900B15FFA /* SpyNetworkService.swift in Sources */,
+				BCCED86126F7FCCC00A47637 /* MainWeatherModelImpl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -778,77 +888,209 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCC259ED26C41FEA00FCAC54 /* TitleMenuView.swift in Sources */,
+				BC26150426F7705800D4A58D /* String.swift in Sources */,
+				BC2614F526F686C300D4A58D /* DataTransferDelegate.swift in Sources */,
 				BCC259E726C40D3E00FCAC54 /* MainMenuView.swift in Sources */,
 				BC7073322534BA3800B2979F /* UIView.swift in Sources */,
 				BCA7B29326ED0D340050BD24 /* PremiumController.swift in Sources */,
 				BC413CD42538A97F002CDD19 /* CustomTabBarController.swift in Sources */,
 				BC0D29E126EE9B9100C3AF2D /* ProfileController.swift in Sources */,
-				BC8CE00625C6CBC2005EEFEB /* SupportVCDelegate + DataSource.swift in Sources */,
 				BC7EB66526C6AB1F00BE80AE /* PetInfoCell.swift in Sources */,
-				BC7EB66726C6CA9900BE80AE /* PetInfoModel.swift in Sources */,
+				BCDA7E7826F4B50F00C48EC1 /* PetMenuController.swift in Sources */,
+				BC7EB66726C6CA9900BE80AE /* PetInfoModelImpl.swift in Sources */,
+				BCB5B20826F506FD00C47A09 /* DateFormatterServiceImpl.swift in Sources */,
 				BC16018326ECE17500666529 /* OMPetInformation+CoreDataClass.swift in Sources */,
 				BC7EB65526C6678100BE80AE /* PetCollectionView.swift in Sources */,
-				BC0D2A0426F00F5800C3AF2D /* LocationModel.swift in Sources */,
 				BC0D29FC26EFDF3300C3AF2D /* EntitysModel.swift in Sources */,
-				BC0D2A0626F00F6300C3AF2D /* LocationView.swift in Sources */,
 				BC7073252534A6F600B2979F /* UIButton.swift in Sources */,
 				BC7EB65D26C688F500BE80AE /* PetInfoController.swift in Sources */,
 				BC0D29E426EE9BB600C3AF2D /* ProfileView.swift in Sources */,
-				BCDBF528253F887E00BCBBFB /* Map Settings.swift in Sources */,
 				BC16018426ECE17500666529 /* OMPetInformation+CoreDataProperties.swift in Sources */,
 				BC9402FC26CA7BFF0028E5AC /* InputInfoController.swift in Sources */,
-				BC8CDFFF25C6BB85005EEFEB /* SupportViewController.swift in Sources */,
-				BC16013826EB7A1A00666529 /* StorageService.swift in Sources */,
+				BC16013826EB7A1A00666529 /* StorageServiceImpl.swift in Sources */,
 				BC13029D26B9878B00CFD87E /* OnboardCollectionCell.swift in Sources */,
 				BC38543D26C5ABCF00C2F14E /* PetMenuView.swift in Sources */,
 				BC0D29F626EFC1DF00C3AF2D /* UITableViewCell.swift in Sources */,
-				BC38543B26C5AB4700C2F14E /* PetMenuController.swift in Sources */,
+				BCFECA9326F2368700286EF6 /* MainMenuController + Extension.swift in Sources */,
+				BCB5B20526F4FB7A00C47A09 /* DatePickerController.swift in Sources */,
 				BC7EB65F26C699CD00BE80AE /* PetInfoView.swift in Sources */,
+				BCFECA9926F24ECC00286EF6 /* NetworkService.swift in Sources */,
 				BC13029726B9786000CFD87E /* OnboardView.swift in Sources */,
-				BC91F2F42627423D006CCE3B /* UserDefaultsService.swift in Sources */,
+				BC91F2F42627423D006CCE3B /* UserDefaultsServiceImpl.swift in Sources */,
 				BC52FFA026D91B9D00A694CB /* WeatherMenuView.swift in Sources */,
-				BC8CE00925C6CBF6005EEFEB /* SupportVC - Extension.swift in Sources */,
 				BC0D29F226EFA33D00C3AF2D /* SystemView.swift in Sources */,
 				BC9402E926CA62840028E5AC /* PetInformation.xcdatamodeld in Sources */,
+				BC26150126F7531C00D4A58D /* PetInfoCollectionCell.swift in Sources */,
 				BC0D29E626EE9D1700C3AF2D /* ProfileModel.swift in Sources */,
-				BC0132CF26E15DFE0065F1B7 /* MainWeatherModel.swift in Sources */,
+				BC0132CF26E15DFE0065F1B7 /* MainWeatherModelImpl.swift in Sources */,
 				BC9402F926CA6AB70028E5AC /* PetInfoTableCell.swift in Sources */,
-				BC73964D25435F9900A89858 /* LocationCollectionCell.swift in Sources */,
 				BC13029B26B978A000CFD87E /* OnboardModel.swift in Sources */,
+				BC26F06626F2072500403961 /* ShimmerView.swift in Sources */,
 				BC0D29DF26ED490F00C3AF2D /* PetMenuModel.swift in Sources */,
-				BC73964A2542084D00A89858 /* LocationViewDelegate + DataSource.swift in Sources */,
 				BC7EB65726C668F000BE80AE /* PetCollectionCell.swift in Sources */,
-				BCC259EB26C4173700FCAC54 /* MainMenuCollectionCell.swift in Sources */,
 				BCE5115525461A23002FB62E /* UIAlertController.swift in Sources */,
-				BC52FFA226D91EDA00A694CB /* Weather.swift in Sources */,
 				BCC259E926C4142A00FCAC54 /* MainMenuController.swift in Sources */,
-				BC4CA47D262436EF00C2033C /* BottomMenuCell.swift in Sources */,
 				BC16018026ECBF6800666529 /* PetDTO.swift in Sources */,
 				BCDAEB6E26CFBD990099CF13 /* InputInfoView.swift in Sources */,
 				BC13029926B9787D00CFD87E /* OnboardController.swift in Sources */,
 				BC0D29F026EF7F8F00C3AF2D /* EntitysView.swift in Sources */,
-				BC859AE125B383B000FDD33B /* AboutAppController.swift in Sources */,
 				BC8C64F526BF382A00CA7A90 /* PremiumModel.swift in Sources */,
-				BC7EB66126C6A09400BE80AE /* PetInfoCollectionCell.swift in Sources */,
+				BCFECA9726F2499900286EF6 /* GetWeatherResponse.swift in Sources */,
 				BC9F268F26BBCC5D000B854F /* UIColor.swift in Sources */,
-				BC8E373E26E6B0FB00F3B6A9 /* NetworkService.swift in Sources */,
+				BCB5B20226F4F7A800C47A09 /* DatePickerView.swift in Sources */,
 				BCB610032530C82400C4FD2F /* AppDelegate.swift in Sources */,
-				BCB3AA4425AF8CD000289B7A /* UIViewController.swift in Sources */,
-				BC0D2A0826F00F6F00C3AF2D /* LocationController.swift in Sources */,
 				BC8C64F326BF37EF00CA7A90 /* PremiumView.swift in Sources */,
+				BCE6ACA626F21011007CDB81 /* NetworkServiceError.swift in Sources */,
+				BCB5B20B26F531CF00C47A09 /* MockUDRepository.swift in Sources */,
 				BC0D29F426EFA38500C3AF2D /* SystemModel.swift in Sources */,
 				BC0D29F826EFDEA900C3AF2D /* EntitysController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCCED7CC26F7CD5400A47637 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCCED7E626F7CE7A00A47637 /* NetworkService.swift in Sources */,
+				BCCED80926F7CE7A00A47637 /* DatePickerController.swift in Sources */,
+				BCCED80B26F7CE7A00A47637 /* UserDefaultsServiceImpl.swift in Sources */,
+				BCCED7F026F7CE7A00A47637 /* DateFormatterServiceImpl.swift in Sources */,
+				BCCED7D326F7CD5400A47637 /* MyPetsSnapshotTests.swift in Sources */,
+				BCCED80226F7CE7A00A47637 /* OMPetInformation+CoreDataProperties.swift in Sources */,
+				BCCED80326F7CE7A00A47637 /* PetMenuController.swift in Sources */,
+				BCCED7E826F7CE7A00A47637 /* PetInfoCell.swift in Sources */,
+				BCCED7E126F7CE7A00A47637 /* StorageServiceImpl.swift in Sources */,
+				BCCED80726F7CE7A00A47637 /* ProfileController.swift in Sources */,
+				BCCED7FA26F7CE7A00A47637 /* WeatherMenuView.swift in Sources */,
+				BCCED7E426F7CE7A00A47637 /* EntitysView.swift in Sources */,
+				BCCED80A26F7CE7A00A47637 /* MainWeatherModelImpl.swift in Sources */,
+				BCCED7FC26F7CE7A00A47637 /* UIColor.swift in Sources */,
+				BCCED80F26F7CE7A00A47637 /* String.swift in Sources */,
+				BCCED80D26F7CE7A00A47637 /* UIAlertController.swift in Sources */,
+				BCCED7EA26F7CE7A00A47637 /* UIButton.swift in Sources */,
+				BCCED7E526F7CE7A00A47637 /* PetCollectionCell.swift in Sources */,
+				BCCED80626F7CE7A00A47637 /* SystemModel.swift in Sources */,
+				BCCED7FE26F7CE7A00A47637 /* UIView.swift in Sources */,
+				BCCED80E26F7CE7A00A47637 /* InputInfoController.swift in Sources */,
+				BCCED7DE26F7CE7A00A47637 /* OnboardModel.swift in Sources */,
+				BCCED7EE26F7CE7A00A47637 /* OMPetInformation+CoreDataClass.swift in Sources */,
+				BCCED7F726F7CE7A00A47637 /* GetWeatherResponse.swift in Sources */,
+				BCCED7F626F7CE7A00A47637 /* OnboardView.swift in Sources */,
+				BCCED80126F7CE7A00A47637 /* PetDTO.swift in Sources */,
+				BCCED7E226F7CE7A00A47637 /* ShimmerView.swift in Sources */,
+				BCCED80826F7CE7A00A47637 /* DatePickerView.swift in Sources */,
+				BCCED7FB26F7CE7A00A47637 /* EntitysModel.swift in Sources */,
+				BCCED7E926F7CE7A00A47637 /* CustomTabBarController.swift in Sources */,
+				BCCED80426F7CE7A00A47637 /* EntitysController.swift in Sources */,
+				BCCED81126F7CE7A00A47637 /* InputInfoView.swift in Sources */,
+				BCCED7ED26F7CE7A00A47637 /* ProfileView.swift in Sources */,
+				BCCED7DD26F7CE7A00A47637 /* MainMenuController.swift in Sources */,
+				BCCED7F526F7CE7A00A47637 /* PetCollectionView.swift in Sources */,
+				BCCED7F926F7CE7A00A47637 /* PremiumController.swift in Sources */,
+				BCCED7EF26F7CE7A00A47637 /* MainMenuController + Extension.swift in Sources */,
+				BCCED7E326F7CE7A00A47637 /* PremiumModel.swift in Sources */,
+				BCCED7F126F7CE7A00A47637 /* PetMenuModel.swift in Sources */,
+				BCCED7E726F7CE7A00A47637 /* PetMenuView.swift in Sources */,
+				BCCED80C26F7CE7A00A47637 /* MainMenuView.swift in Sources */,
+				BCCED7E026F7CE7A00A47637 /* AppDelegate.swift in Sources */,
+				BCCED7DF26F7CE7A00A47637 /* PetInfoController.swift in Sources */,
+				BCCED7F826F7CE7A00A47637 /* PetInfoCollectionCell.swift in Sources */,
+				BCCED7F426F7CE7A00A47637 /* PetInfoView.swift in Sources */,
+				BCCED7EC26F7CE7A00A47637 /* PetInfoModelImpl.swift in Sources */,
+				BCCED80026F7CE7A00A47637 /* PremiumView.swift in Sources */,
+				BCCED7EB26F7CE7A00A47637 /* ProfileModel.swift in Sources */,
+				BCCED81026F7CE7A00A47637 /* NetworkServiceError.swift in Sources */,
+				BCCED7F226F7CE7A00A47637 /* SystemView.swift in Sources */,
+				BCCED7F326F7CE7A00A47637 /* OnboardCollectionCell.swift in Sources */,
+				BCCED7FF26F7CE7A00A47637 /* PetInfoTableCell.swift in Sources */,
+				BCCED7FD26F7CE7A00A47637 /* UITableViewCell.swift in Sources */,
+				BCCED80526F7CE7A00A47637 /* DataTransferDelegate.swift in Sources */,
+				BCCED81226F7CE7A00A47637 /* OnboardController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCCED81326F7D06700A47637 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCCED83F26F7DF2600A47637 /* UIView.swift in Sources */,
+				BCCED82F26F7DF2600A47637 /* MainMenuView.swift in Sources */,
+				BCCED85326F7DF2600A47637 /* String.swift in Sources */,
+				BCCED83826F7DF2600A47637 /* InputInfoController.swift in Sources */,
+				BCCED85226F7DF2600A47637 /* AppDelegate.swift in Sources */,
+				BCCED83326F7DF2600A47637 /* OnboardController.swift in Sources */,
+				BCCED83126F7DF2600A47637 /* InputInfoView.swift in Sources */,
+				BCCED84326F7DF2600A47637 /* UIButton.swift in Sources */,
+				BCCED83B26F7DF2600A47637 /* UIAlertController.swift in Sources */,
+				BCCED85026F7DF2600A47637 /* PetInfoModelImpl.swift in Sources */,
+				BCCED84A26F7DF2600A47637 /* CustomTabBarController.swift in Sources */,
+				BCCED84126F7DF2600A47637 /* PetInfoTableCell.swift in Sources */,
+				BCCED84B26F7DF2600A47637 /* EntitysView.swift in Sources */,
+				BCCED82926F7D78700A47637 /* TabBarPage.swift in Sources */,
+				BCCED84626F7DF2600A47637 /* OMPetInformation+CoreDataProperties.swift in Sources */,
+				BCCED82326F7D0EF00A47637 /* Page.swift in Sources */,
+				BCCED84926F7DF2600A47637 /* PetDTO.swift in Sources */,
+				BCCED83C26F7DF2600A47637 /* StorageServiceImpl.swift in Sources */,
+				BCCED84526F7DF2600A47637 /* PetInfoController.swift in Sources */,
+				BCCED83026F7DF2600A47637 /* DatePickerView.swift in Sources */,
+				BCCED85E26F7DF2600A47637 /* PetCollectionCell.swift in Sources */,
+				BCCED85426F7DF2600A47637 /* DatePickerController.swift in Sources */,
+				BCCED83A26F7DF2600A47637 /* OnboardModel.swift in Sources */,
+				BCCED84026F7DF2600A47637 /* PremiumView.swift in Sources */,
+				BCCED83526F7DF2600A47637 /* EntitysController.swift in Sources */,
+				BCCED85726F7DF2600A47637 /* SystemModel.swift in Sources */,
+				BCCED85926F7DF2600A47637 /* NetworkServiceError.swift in Sources */,
+				BCCED85A26F7DF2600A47637 /* WeatherMenuView.swift in Sources */,
+				BCCED81A26F7D06700A47637 /* MyPetsUITests.swift in Sources */,
+				BCCED83426F7DF2600A47637 /* ProfileView.swift in Sources */,
+				BCCED85D26F7DF2600A47637 /* PetMenuView.swift in Sources */,
+				BCCED84C26F7DF2600A47637 /* UIColor.swift in Sources */,
+				BCCED84426F7DF2600A47637 /* PetInfoView.swift in Sources */,
+				BCCED85526F7DF2600A47637 /* OnboardView.swift in Sources */,
+				BCCED85826F7DF2600A47637 /* PetInfoCollectionCell.swift in Sources */,
+				BCCED82526F7D32600A47637 /* OnboardingPage.swift in Sources */,
+				BCCED83726F7DF2600A47637 /* GetWeatherResponse.swift in Sources */,
+				BCCED82E26F7DF2600A47637 /* DateFormatterServiceImpl.swift in Sources */,
+				BCCED85B26F7DF2600A47637 /* PetCollectionView.swift in Sources */,
+				BCCED83926F7DF2600A47637 /* MainMenuController + Extension.swift in Sources */,
+				BCCED84D26F7DF2600A47637 /* PetMenuModel.swift in Sources */,
+				BCCED83226F7DF2600A47637 /* MainMenuController.swift in Sources */,
+				BCCED84226F7DF2600A47637 /* PremiumController.swift in Sources */,
+				BCCED85626F7DF2600A47637 /* ProfileModel.swift in Sources */,
+				BCCED82A26F7DEEF00A47637 /* UserDefaultsServiceImpl.swift in Sources */,
+				BCCED82D26F7DF2600A47637 /* MainWeatherModelImpl.swift in Sources */,
+				BCCED83E26F7DF2600A47637 /* EntitysModel.swift in Sources */,
+				BCCED82B26F7DF2600A47637 /* DataTransferDelegate.swift in Sources */,
+				BCCED84726F7DF2600A47637 /* ShimmerView.swift in Sources */,
+				BCCED85F26F7DF2600A47637 /* ProfileController.swift in Sources */,
+				BCCED84E26F7DF2600A47637 /* PremiumModel.swift in Sources */,
+				BCCED82C26F7DF2600A47637 /* NetworkService.swift in Sources */,
+				BCCED85126F7DF2600A47637 /* SystemView.swift in Sources */,
+				BCCED83626F7DF2600A47637 /* UITableViewCell.swift in Sources */,
+				BCCED85C26F7DF2600A47637 /* PetInfoCell.swift in Sources */,
+				BCCED83D26F7DF2600A47637 /* OnboardCollectionCell.swift in Sources */,
+				BCCED84F26F7DF2600A47637 /* OMPetInformation+CoreDataClass.swift in Sources */,
+				BCCED84826F7DF2600A47637 /* PetMenuController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		BC33256A26F0A9370060DCDD /* PBXTargetDependency */ = {
+		BC3369BF26F60E7100C40691 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BCB60FFE2530C82400C4FD2F /* MyPets */;
-			targetProxy = BC33256926F0A9370060DCDD /* PBXContainerItemProxy */;
+			targetProxy = BC3369BE26F60E7100C40691 /* PBXContainerItemProxy */;
+		};
+		BCCED7D626F7CD5400A47637 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BCB60FFE2530C82400C4FD2F /* MyPets */;
+			targetProxy = BCCED7D526F7CD5400A47637 /* PBXContainerItemProxy */;
+		};
+		BCCED81D26F7D06700A47637 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BCB60FFE2530C82400C4FD2F /* MyPets */;
+			targetProxy = BCCED81C26F7D06700A47637 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -864,41 +1106,39 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		BC33256C26F0A9370060DCDD /* Debug */ = {
+		BC3369C126F60E7100C40691 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7JDNVBEZLP;
-				INFOPLIST_FILE = MyPetsSnapshotTests/Info.plist;
+				INFOPLIST_FILE = MyPetsUnitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ahmerovdmitry.MyPetsSnapshotTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ahmerovdmitry.MyPetsUnitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		BC33256D26F0A9370060DCDD /* Release */ = {
+		BC3369C226F60E7100C40691 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7JDNVBEZLP;
-				INFOPLIST_FILE = MyPetsSnapshotTests/Info.plist;
+				INFOPLIST_FILE = MyPetsUnitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ahmerovdmitry.MyPetsSnapshotTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ahmerovdmitry.MyPetsUnitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -962,6 +1202,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VALIDATE_PRODUCT = NO;
 			};
 			name = Debug;
 		};
@@ -1025,6 +1266,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7JDNVBEZLP;
 				INFOPLIST_FILE = "Assets + LS + Info.plist/Info.plist";
@@ -1035,6 +1277,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ahmerovdmitry.MyPets.MyPets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_WORKSPACE = NO;
@@ -1046,6 +1290,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7JDNVBEZLP;
 				INFOPLIST_FILE = "Assets + LS + Info.plist/Info.plist";
@@ -1056,20 +1301,101 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ahmerovdmitry.MyPets.MyPets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_WORKSPACE = NO;
 			};
 			name = Release;
 		};
+		BCCED7D826F7CD5400A47637 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7JDNVBEZLP;
+				INFOPLIST_FILE = MyPetsSnapshotTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ahmerovdmitry.MyPetsSnapshotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = MyPets;
+			};
+			name = Debug;
+		};
+		BCCED7D926F7CD5400A47637 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7JDNVBEZLP;
+				INFOPLIST_FILE = MyPetsSnapshotTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ahmerovdmitry.MyPetsSnapshotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = MyPets;
+			};
+			name = Release;
+		};
+		BCCED81F26F7D06700A47637 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7JDNVBEZLP;
+				INFOPLIST_FILE = MyPetsUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ahmerovdmitry.MyPetsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = MyPets;
+			};
+			name = Debug;
+		};
+		BCCED82026F7D06700A47637 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7JDNVBEZLP;
+				INFOPLIST_FILE = MyPetsUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ahmerovdmitry.MyPetsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = MyPets;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BC33256B26F0A9370060DCDD /* Build configuration list for PBXNativeTarget "MyPetsSnapshotTests" */ = {
+		BC3369C026F60E7100C40691 /* Build configuration list for PBXNativeTarget "MyPetsUnitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BC33256C26F0A9370060DCDD /* Debug */,
-				BC33256D26F0A9370060DCDD /* Release */,
+				BC3369C126F60E7100C40691 /* Debug */,
+				BC3369C226F60E7100C40691 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1092,10 +1418,28 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		BCCED7D726F7CD5400A47637 /* Build configuration list for PBXNativeTarget "MyPetsSnapshotTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCCED7D826F7CD5400A47637 /* Debug */,
+				BCCED7D926F7CD5400A47637 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BCCED81E26F7D06700A47637 /* Build configuration list for PBXNativeTarget "MyPetsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCCED81F26F7D06700A47637 /* Debug */,
+				BCCED82026F7D06700A47637 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		BC33256E26F0A9D60060DCDD /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+		BCCED7DA26F7CD6800A47637 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
 			requirement = {
@@ -1106,9 +1450,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BC33256F26F0A9D60060DCDD /* SnapshotTesting */ = {
+		BCCED7DB26F7CD6900A47637 /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BC33256E26F0A9D60060DCDD /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			package = BCCED7DA26F7CD6800A47637 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
 		};
 /* End XCSwiftPackageProductDependency section */

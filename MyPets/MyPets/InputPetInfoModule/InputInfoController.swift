@@ -7,70 +7,72 @@
 
 import UIKit
 
+protocol InputInfoDelegate: AnyObject {
+    func saveInformation()
+}
+
 final class InputInfoController: UIViewController {
 
-    // MARK: - Properties
+    // MARK: - Property
+
+    private var transferedInformation: String?
     private var keyboardHeight: CGFloat?
     private let inputInfoView = InputInfoView(frame: UIScreen.main.bounds)
 
-    // MARK: - Delegate Properties
     weak var delegate: TransferPetInformationDelegate?
 
-    // MARK: - Lifecycle
+    // MARK: - Init / Lifecycle
+
+    override func loadView() {
+        view = inputInfoView
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        addSubview()
-        observerMethods()
-        callBacksMethods()
+        inputInfoView.delegate = self
         inputInfoView.setTextFieldDelegate(self)
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        setKeyboardObservers()
         inputInfoView.textFieldFirstResponder()
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
 // MARK: - Methods
-extension InputInfoController {
-    private func addSubview() {
-        view.addSubview(inputInfoView)
+
+extension InputInfoController: DataTransferDelegate {
+    func transferInformation(_ info: Any?) {
+        delegate?.transferPetInformation(transferedInformation)
+        dismiss(animated: true, completion: nil)
+    }
+    func dismissController() {
+        dismiss(animated: true, completion: nil)
     }
 }
 
-// MARK: - CallBack Methods
 extension InputInfoController {
-    private func callBacksMethods() {
-        inputInfoView.dismissControllerCallBack = { [weak self] in
-            self?.dismiss(animated: true, completion: nil)
-        }
-        inputInfoView.saveInformationCallBack = { [weak self] textField in
-            self?.delegate?.transferPetInformation(textField.text ?? nil)
-            self?.dismiss(animated: true, completion: nil)
-        }
+    private func setKeyboardObservers() {
+        let notification = NotificationCenter.default
+        notification.addObserver(self, selector: #selector(keyboardWillShow),
+                                 name: UIResponder.keyboardWillShowNotification, object: nil)
+        notification.addObserver(self, selector: #selector(keyboardWillHide),
+                                 name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-}
 
-// MARK: - Keyboard Methods
-extension InputInfoController {
-    private func observerMethods() {
-        NotificationCenter.default.addObserver(
-            self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil
-        )
-        NotificationCenter.default.addObserver(
-            self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil
-        )
-    }
     @objc private func keyboardWillShow(_ notification: Notification) {
         if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             keyboardHeight = keyboardFrame.cgRectValue.height
-            UIView.animate(withDuration: 0.1) { [weak self] in
-                self?.inputInfoView.moveUp(self?.keyboardHeight ?? 0)
+            if view.frame.origin.y == 0 {
+                view.frame.origin.y -= (keyboardHeight ?? 0) / 2
             }
         }
     }
     @objc private func keyboardWillHide(_ notification: Notification) {
-        UIView.animate(withDuration: 0.1) { [weak self] in
-            self?.inputInfoView.moveDown(self?.keyboardHeight ?? 0)
+        if view.frame.origin.y != 0 {
+            view.frame.origin.y = 0
         }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -78,15 +80,26 @@ extension InputInfoController {
     }
 }
 
-// MARK: - UITextField Delegate
 extension InputInfoController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if textField.text?.count ?? 0 > 20 {
+            guard let text = textField.text else { return }
+            textField.text?.removeAll()
+            for (index, character) in text.enumerated() where index < 20 {
+                textField.text?.append(character)
+            }
+            UIAlertController.presentAlertWithBasicType(self, title: "Слишком длинный текст",
+                                                        message: "Длинна текста не должна превышать 20 символов",
+                                                        style: .alert)
+        }
+        transferedInformation = textField.text
+    }
 }
 
-// MARK: - Public Methods
 extension InputInfoController {
     func checkTextField(_ text: String?) {
         guard let text = text else { return }

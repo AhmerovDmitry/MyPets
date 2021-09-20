@@ -27,24 +27,13 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
-      userAttachmentLifetime = "keepAlways"
       codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BC16014626ECA4C400666529"
-               BuildableName = "SnapshotTests.xctest"
-               BlueprintName = "SnapshotTests"
-               ReferencedContainer = "container:MyPets.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BC16015526ECA6D300666529"
+               BlueprintIdentifier = "BC3369B826F60E7100C40691"
                BuildableName = "MyPetsUnitTests.xctest"
                BlueprintName = "MyPetsUnitTests"
                ReferencedContainer = "container:MyPets.xcodeproj">
@@ -54,9 +43,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BC16016326ECA6E400666529"
-               BuildableName = "MyPetsUITests.xctest"
-               BlueprintName = "MyPetsUITests"
+               BlueprintIdentifier = "BCCED7CF26F7CD5400A47637"
+               BuildableName = "MyPetsSnapshotTests.xctest"
+               BlueprintName = "MyPetsSnapshotTests"
                ReferencedContainer = "container:MyPets.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -64,9 +53,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BC33256326F0A9370060DCDD"
-               BuildableName = "MyPetsSnapshotTests.xctest"
-               BlueprintName = "MyPetsSnapshotTests"
+               BlueprintIdentifier = "BCCED81626F7D06700A47637"
+               BuildableName = "MyPetsUITests.xctest"
+               BlueprintName = "MyPetsUITests"
                ReferencedContainer = "container:MyPets.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -82,7 +71,6 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      enableGPUValidationMode = "1"
       allowLocationSimulation = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
@@ -94,13 +82,6 @@
             ReferencedContainer = "container:MyPets.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "OS_ACTIVITY_MODE"
-            value = "disable"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

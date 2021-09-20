@@ -9,117 +9,64 @@ import UIKit
 
 final class MainMenuView: UIView {
 
-    // MARK: - LayoutSubviews
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    // MARK: - Property
+
+    let weatherView = WeatherMenuView()
+    private let shimmerView = ShimmerView()
+
+    // MARK: - Init / Lifecycle
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupUI()
     }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
-    // MARK: - Properties
-    let weatherMenuView = WeatherMenuView()
-    private let titleMenuView = TitleMenuView()
-    private let cellID = "MainMenuCell"
-    private lazy var generalMenuCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = self.bounds.width - UIView.ninePartsScreenMultiplier
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.isPagingEnabled = true
-        collectionView.backgroundColor = .clear
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
-        return collectionView
-    }()
-    private let pageControl: UIPageControl = {
-        let pageControl = UIPageControl()
-        pageControl.currentPage = 0
-        pageControl.currentPageIndicatorTintColor = UIColor.CustomColor.purple
-        pageControl.pageIndicatorTintColor = UIColor.CustomColor.gray
-        pageControl.numberOfPages = 5
-        if #available(iOS 14.0, *) {
-            pageControl.backgroundStyle = .minimal
-        }
-        return pageControl
-    }()
-}
+    // MARK: - UI
 
-// MARK: - Setup UI
-extension MainMenuView {
     private func setupUI() {
-        self.backgroundColor = .white
-        setTitleMenuViewConstraints()
+        setSelfViewUI()
         setWeatherMenuViewConstraints()
-        setPageControlConstraints()
-        setGeneralMenuCollectionViewConstraints()
+        setShimmerViewConstraints()
     }
-    private func setTitleMenuViewConstraints() {
-        self.addSubview(titleMenuView)
-        titleMenuView.translatesAutoresizingMaskIntoConstraints = false
+    private func setSelfViewUI() {
+        self.backgroundColor = .white
+    }
+    func setWeatherMenuViewConstraints() {
+        self.addSubview(weatherView)
+        weatherView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            titleMenuView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 12),
-            titleMenuView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            titleMenuView.heightAnchor.constraint(equalToConstant: self.bounds.height / 6),
-            titleMenuView.widthAnchor.constraint(equalToConstant: UIView.ninePartsScreenMultiplier)
+            weatherView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 12),
+            weatherView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -12),
+            weatherView.widthAnchor.constraint(equalToConstant: UIView.ninePartsScreenMultiplier),
+            weatherView.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
     }
-    private func setWeatherMenuViewConstraints() {
-        self.addSubview(weatherMenuView)
-        weatherMenuView.translatesAutoresizingMaskIntoConstraints = false
+    private func setShimmerViewConstraints() {
+        weatherView.addSubview(shimmerView)
+        shimmerView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            weatherMenuView.topAnchor.constraint(equalTo: titleMenuView.bottomAnchor, constant: 12),
-            weatherMenuView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            weatherMenuView.heightAnchor.constraint(equalToConstant: self.bounds.height / 6),
-            weatherMenuView.widthAnchor.constraint(equalToConstant: UIView.ninePartsScreenMultiplier)
-        ])
-    }
-    private func setGeneralMenuCollectionViewConstraints() {
-        self.addSubview(generalMenuCollectionView)
-        generalMenuCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            generalMenuCollectionView.topAnchor.constraint(equalTo: weatherMenuView.bottomAnchor),
-            generalMenuCollectionView.bottomAnchor.constraint(equalTo: pageControl.topAnchor, constant: 12),
-            generalMenuCollectionView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            generalMenuCollectionView.widthAnchor.constraint(equalTo: self.widthAnchor)
-        ])
-    }
-    private func setPageControlConstraints() {
-        self.addSubview(pageControl)
-        pageControl.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            pageControl.heightAnchor.constraint(equalToConstant: 36),
-            pageControl.widthAnchor.constraint(equalTo: self.widthAnchor),
-            pageControl.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            pageControl.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor)
+            shimmerView.centerXAnchor.constraint(equalTo: weatherView.centerXAnchor),
+            shimmerView.centerYAnchor.constraint(equalTo: weatherView.centerYAnchor),
+            shimmerView.heightAnchor.constraint(equalTo: weatherView.heightAnchor, multiplier: 0.2),
+            shimmerView.widthAnchor.constraint(equalTo: weatherView.heightAnchor, multiplier: 0.2)
         ])
     }
 }
 
-// MARK: - Delegate & DataSource
-extension MainMenuView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0,
-                            left: (self.bounds.width - (UIView.ninePartsScreenMultiplier)) / 2,
-                            bottom: 0,
-                            right: (self.bounds.width - (UIView.ninePartsScreenMultiplier)) / 2)
+// MARK: - Public Methods
+
+extension MainMenuView {
+    func stopShimmerAnimation() {
+        shimmerView.isHidden = true
+        shimmerView.stopAnimation()
+        weatherView.visibleWeatherElements()
     }
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: weatherMenuView.bounds.width, height: collectionView.bounds.height - 24)
-    }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
-    }
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
-        cell.setDefaultShadow()
-        cell.backgroundColor = UIColor.CustomColor.lightGray
-        cell.layer.cornerRadius = UIView.basicCornerRadius
-        return cell
+    func startShimmerAnimation() {
+        shimmerView.isHidden = false
+        shimmerView.startAnimation()
+        weatherView.hiddenWeatherElements()
     }
 }

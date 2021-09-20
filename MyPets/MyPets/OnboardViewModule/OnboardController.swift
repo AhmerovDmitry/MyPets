@@ -7,50 +7,72 @@
 
 import UIKit
 
+// MARK: - Delegate
+
+protocol OnboardControllerDelegate: AnyObject {
+    func presentTabBarController()
+    func collectionViewDelegateAndDataSource(_ collection: UICollectionView)
+}
+
 final class OnboardController: UIViewController {
 
-    // MARK: - Properties
-    let storageService: StorageServiceProtocol
-    let userDefaultsService: UserDefaultsServiceProtocol
+    // MARK: - Property
 
-    private let onboardContent = OnboardModel()
-    private let onboardView = OnboardView(frame: UIScreen.main.bounds)
+    let storageService: StorageService
+    let userDefaultsService: UserDefaultsService
 
-    // MARK: - Lifecycle
-    init(storageService: StorageServiceProtocol, userDefaultsService: UserDefaultsServiceProtocol) {
+    private let onboardModel: OnboardModelProtocol
+    private let onboardView: OnboardView
+
+    // MARK: - Init / Lifecycle
+
+    init(storageService: StorageService, userDefaultsService: UserDefaultsService) {
         self.storageService = storageService
         self.userDefaultsService = userDefaultsService
+        self.onboardModel = OnboardModel()
+        self.onboardView = OnboardView(frame: UIScreen.main.bounds)
         super.init(nibName: nil, bundle: nil)
     }
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        updateViewContent()
-        addOnboardViewInHierarchy()
+    override func loadView() {
+        view = onboardView
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        onboardView.presentControllerCallBack = { [weak self] in
-            guard let self = self else { return }
-            let tabBarController = CustomTabBarController(storageService: self.storageService,
-                                                          userDefaultsService: self.userDefaultsService)
-            tabBarController.modalPresentationStyle = .fullScreen
-            self.present(tabBarController, animated: true, completion: nil)
-            self.userDefaultsService.setValue(true, forKey: .isNotFirstLaunch)
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        onboardView.delegate = self
+        onboardView.collectionViewDelegateAndDataSource(self)
+        onboardView.setPageControl(countPage: onboardModel.description.count)
     }
 }
 
-// MARK: - Methods
-extension OnboardController {
-    private func updateViewContent() {
-        onboardView.getOnboardContent(onboardContent)
+// MARK: - Delegate Methods
+
+extension OnboardController: OnboardControllerDelegate {
+    func collectionViewDelegateAndDataSource(_ collection: UICollectionView) {
+        collection.delegate = self
+        collection.dataSource = self
     }
-    private func addOnboardViewInHierarchy() {
-        view.addSubview(onboardView)
+    func presentTabBarController() {
+        let tabBarController = CustomTabBarController(storageService: storageService,
+                                                      userDefaultsService: userDefaultsService)
+        tabBarController.modalPresentationStyle = .fullScreen
+        present(tabBarController, animated: true, completion: nil)
+        userDefaultsService.setValue(true, forKey: .isNotFirstLaunch)
+    }
+}
+
+extension OnboardController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return onboardModel.description.count
+    }
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: onboardView.cellID, for: indexPath
+        ) as? OnboardCollectionCell else { return UICollectionViewCell() }
+        cell.configureCell(image: onboardModel.imagesName[indexPath.row],
+                           description: onboardModel.description[indexPath.row])
+        return cell
     }
 }

@@ -8,20 +8,9 @@
 import UIKit
 
 final class PetCollectionCell: UICollectionViewCell {
-    // MARK: - Initialization & Lifecycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupUI()
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    // MARK: - Prepare For Reuse
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        petPhoto.image = nil
-    }
-    // MARK: - Properties
+
+    // MARK: - Property
+
     private let petPhoto: UIImageView = {
         let image = UIImageView()
         image.clipsToBounds = true
@@ -56,10 +45,23 @@ final class PetCollectionCell: UICollectionViewCell {
         label.font = UIFont.systemFont(ofSize: 10, weight: .regular)
         return label
     }()
-}
 
-// MARK: - Setup UI
-extension PetCollectionCell {
+    // MARK: - Init / Lifecycle
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - UI
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        petPhoto.image = nil
+    }
     private func setupUI() {
         self.backgroundColor = .white
         self.setDefaultShadow()
@@ -111,6 +113,7 @@ extension PetCollectionCell {
 }
 
 // MARK: - Public Methods
+
 extension PetCollectionCell {
     func configureCell(photo: UIImage?, name: String, breed: String, age: String) {
         petPhoto.contentMode = .scaleAspectFit

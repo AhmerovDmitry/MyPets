@@ -7,7 +7,12 @@
 
 import Foundation
 
-struct OnboardModel {
+protocol OnboardModelProtocol {
+    var imagesName: [String] { get }
+    var description: [String] { get }
+}
+
+struct OnboardModel: OnboardModelProtocol {
     let imagesName = [
         "onboardImage_1",
         "onboardImage_2",

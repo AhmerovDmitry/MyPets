@@ -9,31 +9,16 @@ import UIKit
 
 final class WeatherMenuView: UIView {
 
-    // MARK: - LayoutSubviews
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        setupUI()
-    }
+    // MARK: - Property
 
-    // MARK: - Properties
-    private let reloadWeatherButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "goforward"), for: .normal)
-        button.tintColor = UIColor.CustomColor.darkGray
-        return button
-    }()
     private let backgroundWeatherImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
-        image.isHidden = true
-        image.layer.opacity = 0
         return image
     }()
     private let mainWeatherImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
-        image.isHidden = true
-        image.layer.opacity = 0
         return image
     }()
     private let temperatureLabel: UILabel = {
@@ -41,39 +26,39 @@ final class WeatherMenuView: UIView {
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
         label.textColor = UIColor.CustomColor.dark
-        label.isHidden = true
-        label.layer.opacity = 0
         return label
     }()
-    private let animationImage: UIImageView = {
-        let image = UIImageView()
-        image.backgroundColor = .clear
-        image.contentMode = .scaleAspectFit
-        let imagesArray: [UIImage] = [UIImage(named: "DogAnimationFrame_0") ?? UIImage(),
-                                      UIImage(named: "DogAnimationFrame_1") ?? UIImage(),
-                                      UIImage(named: "DogAnimationFrame_2") ?? UIImage(),
-                                      UIImage(named: "DogAnimationFrame_3") ?? UIImage(),
-                                      UIImage(named: "DogAnimationFrame_4") ?? UIImage(),
-                                      UIImage(named: "DogAnimationFrame_5") ?? UIImage(),
-                                      UIImage(named: "DogAnimationFrame_6") ?? UIImage(),
-                                      UIImage(named: "DogAnimationFrame_7") ?? UIImage(),
-                                      UIImage(named: "DogAnimationFrame_8") ?? UIImage()]
-        image.animationImages = imagesArray
-        image.animationDuration = 1
-        image.animationRepeatCount = .max
-        return image
+    private let descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.numberOfLines = 2
+        label.font = UIFont.systemFont(ofSize: 18, weight: .ultraLight)
+        label.adjustsFontSizeToFitWidth = true
+        label.textColor = UIColor.CustomColor.dark
+        return label
     }()
-}
 
-// MARK: - Setup UI
-extension WeatherMenuView {
-    private func setupUI() {
+    // MARK: - Init / Lifecycle
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - UI
+
+    override func layoutSubviews() {
         setSelfViewUI()
+    }
+
+    private func setupUI() {
         setBackgroundImageConstraints()
         setMainImageConstraints()
         setTemperatureLabelConstraints()
-        setLoadingAnimationConstraints()
-        setReloadWeatherButtonConstraints()
+        setCityLabelConstraints()
     }
     private func setSelfViewUI() {
         self.setDefaultShadow()
@@ -84,10 +69,10 @@ extension WeatherMenuView {
         self.addSubview(backgroundWeatherImage)
         backgroundWeatherImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            backgroundWeatherImage.topAnchor.constraint(equalTo: self.topAnchor),
-            backgroundWeatherImage.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            backgroundWeatherImage.leftAnchor.constraint(equalTo: self.centerXAnchor),
-            backgroundWeatherImage.rightAnchor.constraint(equalTo: self.rightAnchor)
+            backgroundWeatherImage.widthAnchor.constraint(equalTo: self.widthAnchor),
+            backgroundWeatherImage.heightAnchor.constraint(equalTo: self.widthAnchor),
+            backgroundWeatherImage.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            backgroundWeatherImage.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
     private func setMainImageConstraints() {
@@ -105,38 +90,33 @@ extension WeatherMenuView {
         temperatureLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             temperatureLabel.topAnchor.constraint(equalTo: self.topAnchor),
-            temperatureLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            temperatureLabel.rightAnchor.constraint(equalTo: self.centerXAnchor),
-            temperatureLabel.leftAnchor.constraint(equalTo: self.leftAnchor)
+            temperatureLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            temperatureLabel.widthAnchor.constraint(equalTo: self.widthAnchor),
+            temperatureLabel.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.2)
         ])
     }
-    private func setLoadingAnimationConstraints() {
-        self.addSubview(animationImage)
-        animationImage.translatesAutoresizingMaskIntoConstraints = false
+    private func setCityLabelConstraints() {
+        self.addSubview(descriptionLabel)
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            animationImage.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.7),
-            animationImage.widthAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.7),
-            animationImage.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            animationImage.centerXAnchor.constraint(equalTo: self.centerXAnchor)
-        ])
-    }
-    private func setReloadWeatherButtonConstraints() {
-        self.addSubview(reloadWeatherButton)
-        reloadWeatherButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            reloadWeatherButton.topAnchor.constraint(equalTo: self.topAnchor),
-            reloadWeatherButton.rightAnchor.constraint(equalTo: self.rightAnchor),
-            reloadWeatherButton.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.2),
-            reloadWeatherButton.widthAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.2)
+            descriptionLabel.topAnchor.constraint(equalTo: temperatureLabel.bottomAnchor),
+            descriptionLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            descriptionLabel.widthAnchor.constraint(equalTo: self.widthAnchor),
+            descriptionLabel.heightAnchor.constraint(equalTo: temperatureLabel.heightAnchor, multiplier: 0.5)
         ])
     }
 }
 
 // MARK: - Methods
+
 extension WeatherMenuView {
+
     /// Метод обрабатывающий показания погоды,
     /// добавляет визальный эффект тексту, цифры погоды имеют атрибут bold, а знак градусов ultraLight,
     /// возможна замена символа градусов "°" - "℃"
+    /// - Parameter text: Обрабатываемый текст
+    /// - Returns: Отредактированный текст
+
     private func changeTextAttribute(_ text: String) -> NSAttributedString {
         let degreeSymbol = NSMutableAttributedString(string: "℃")
         let attrString = NSMutableAttributedString(string: text)
@@ -149,52 +129,33 @@ extension WeatherMenuView {
         return resultString
     }
 }
+
 // MARK: - Public Methods
+
 extension WeatherMenuView {
-    func setupTemperatureLabel(value: String) {
-        temperatureLabel.attributedText = changeTextAttribute(value)
+
+    /// Метод обновляющий эллементы вью
+    /// - Parameters:
+    ///   - temp: Температура в строке, изменяется в NSAttributedString
+    ///   - mainImage: Главное изображение
+    ///   - backgroundImage: Бекграунд изображение
+
+    func presentWeatherElements(temp: String?, city: String?, mainImage: UIImage?, bgImage: UIImage?) {
+        temperatureLabel.attributedText = changeTextAttribute(temp ?? "--")
+        descriptionLabel.text = city ?? "--"
+        mainWeatherImage.image = mainImage ?? UIImage(named: "networkError")
+        backgroundWeatherImage.image = bgImage ?? UIImage()
     }
-    func setupMainImage(_ image: UIImage) {
-        mainWeatherImage.image = image
-    }
-    func setupBackgroundImage(_ image: UIImage) {
-        backgroundWeatherImage.image = image
-    }
-    func setupDefaultElements() {
-        guard let mainImage = UIImage(named: "networkError") else { return }
-        setupTemperatureLabel(value: "--")
-        setupMainImage(mainImage)
-        presentWeatherElements()
-    }
-    func removeDefaultElements() {
-        backgroundWeatherImage.isHidden = true
-        mainWeatherImage.isHidden = true
+    func hiddenWeatherElements() {
         temperatureLabel.isHidden = true
+        descriptionLabel.isHidden = true
+        mainWeatherImage.isHidden = true
+        backgroundWeatherImage.isHidden = true
     }
-    func startAnimation() {
-        animationImage.startAnimating()
-        animationImage.isHidden = false
-    }
-    func stopAnimation() {
-        animationImage.stopAnimating()
-        animationImage.isHidden = true
-    }
-    func presentWeatherElements() {
-        backgroundWeatherImage.isHidden = false
-        mainWeatherImage.isHidden = false
+    func visibleWeatherElements() {
         temperatureLabel.isHidden = false
-        UIView.animate(withDuration: 0.5) { [weak self] in
-            self?.backgroundWeatherImage.layer.opacity = 1
-            self?.mainWeatherImage.layer.opacity = 1
-            self?.temperatureLabel.layer.opacity = 1
-        }
-    }
-    func removeElements() {
-        temperatureLabel.attributedText = nil
-        mainWeatherImage.image = nil
-        backgroundWeatherImage.image = nil
-    }
-    func reloadWeatherButtonAction(_ target: UIViewController, _ action: Selector) {
-        reloadWeatherButton.addTarget(target, action: action, for: .touchUpInside)
+        descriptionLabel.isHidden = false
+        mainWeatherImage.isHidden = false
+        backgroundWeatherImage.isHidden = false
     }
 }

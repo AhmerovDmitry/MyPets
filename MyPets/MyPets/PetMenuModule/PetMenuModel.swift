@@ -12,19 +12,13 @@ protocol PetMenuProtocol {
 
 extension PetMenuProtocol {
     var defaultName: String {
-        get {
-            return "Кличка не указана"
-        }
+        return "Кличка не указана"
     }
     var defaultBreed: String {
-        get {
-            return "Порода не указана"
-        }
+        return "Порода не указана"
     }
     var defaultBirthday: String {
-        get {
-            return "01.01.1001"
-        }
+        return "00.00.00"
     }
 }
 

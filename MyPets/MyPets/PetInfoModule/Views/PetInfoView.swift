@@ -8,16 +8,6 @@
 import UIKit
 
 final class PetInfoView: UIView {
-    // MARK: - Initialization & Lifecycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupUI()
-        petInfoCell.setTableViewID(tableCellID)
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    // MARK: - Properties
     let tableCellID = "PetTableCell"
     let collectionCellID = "PetCollectionCell"
     private let petInfoCell = PetInfoCell()
@@ -39,8 +29,17 @@ final class PetInfoView: UIView {
         collectionView.register(PetInfoCollectionCell.self, forCellWithReuseIdentifier: collectionCellID)
         return collectionView
     }()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+        petInfoCell.setTableViewID(tableCellID)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
-// MARK: - Setup UI
+
 extension PetInfoView {
     private func setupUI() {
         self.backgroundColor = .white
@@ -68,7 +67,7 @@ extension PetInfoView {
         ])
     }
 }
-// MARK: - Public Methods
+
 extension PetInfoView {
     /// Метод задает первоя ячейке в коллекции кастомную ячейку в виде таблицы с информацией
     /// которую должен заполнять пользователь

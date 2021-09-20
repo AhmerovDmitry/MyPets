@@ -8,15 +8,9 @@
 import UIKit
 
 final class PetInfoCell: UIView {
-    // MARK: - Initialization & Lifecycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupUI()
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    // MARK: - Properties
+
+    // MARK: - Property
+
     private let petNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.CustomColor.dark
@@ -34,9 +28,19 @@ final class PetInfoCell: UIView {
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 1))
         return tableView
     }()
-}
-// MARK: - Setup UI
-extension PetInfoCell {
+
+    // MARK: - Init / Lifecycle
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - UI
+
     private func setupUI() {
         self.layer.cornerRadius = UIView.basicCornerRadius
         self.clipsToBounds = true
@@ -65,20 +69,28 @@ extension PetInfoCell {
         ])
     }
 }
-// MARK: - Public Methods
+
+// MARK: - Mathods
+
 extension PetInfoCell {
+
     /// Методы делегата и дата сорса, которые передаются в контроллер для работы с ними
+
     func tableViewDelegate<T: UITableViewDelegate>(_ target: T) {
         petInfoTable.delegate = target
     }
     func tableViewDataSource<T: UITableViewDataSource>(_ target: T) {
         petInfoTable.dataSource = target
     }
+
     /// Регистрация ячейки с использованием идентификатора
+
     func setTableViewID(_ id: String) {
         petInfoTable.register(PetInfoTableCell.self, forCellReuseIdentifier: id)
     }
+
     /// Перезагрузка одной ячейки после изменения значения в ней
+
     func reloadTableViewCell(at indexPath: IndexPath) {
         petInfoTable.reloadRows(at: [indexPath], with: .none)
     }

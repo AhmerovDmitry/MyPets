@@ -7,15 +7,18 @@
 
 import UIKit
 
+// MARK: - Delegate
+
 protocol PetMenuControllerDelegate: AnyObject {
     func reloadController()
 }
 
 final class PetMenuController: UIViewController {
 
-    // MARK: - Properties
-    private let storageService: StorageServiceProtocol
-    private let userDefaultsService: UserDefaultsServiceProtocol
+    // MARK: - Property
+
+    private let storageService: StorageService
+    private let userDefaultsService: UserDefaultsService
 
     private let petMenuModel = PetMenuModel()
     private lazy var petMenuView = PetMenuView(frame: view.bounds)
@@ -23,18 +26,16 @@ final class PetMenuController: UIViewController {
 
     private var tappedCellIndex: Int?
 
-    // MARK: - Initialization
-    init(storageService: StorageServiceProtocol, userDefaultsService: UserDefaultsServiceProtocol) {
+    // MARK: - Init / Lifecycle
+
+    init(storageService: StorageService, userDefaultsService: UserDefaultsService) {
         self.storageService = storageService
         self.userDefaultsService = userDefaultsService
         super.init(nibName: nil, bundle: nil)
     }
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         petCollectionView.collectionViewDelegate(self)
@@ -42,19 +43,14 @@ final class PetMenuController: UIViewController {
         setCallBacksTransfers()
         setupNavigationController()
     }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        storageService.loadEntitys()
         addSubview()
     }
-}
-// MARK: - Methods
-extension PetMenuController {
-    private func setCallBacksTransfers() {
-        petMenuView.presentControllerCallBack = { [weak self] in
-            self?.presentController()
-        }
-    }
+
+    // MARK: - UI
+
     private func setupNavigationController() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.backgroundColor = .clear
@@ -68,37 +64,49 @@ extension PetMenuController {
             navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColor.purple
         }
     }
+
     /// Если в CoreData нет объектов тогда грузится экран с кнопкой "Добавить питомца"
     /// в обратном случае грузится экран с коллекцией (списком объектов)
+
     private func addSubview() {
         if storageService.objects.isEmpty {
             view.addSubview(petMenuView)
             petCollectionView.removeFromSuperview()
-        } else {
-            view.addSubview(petCollectionView)
-            petMenuView.removeFromSuperview()
-            petCollectionView.reloadCollectionView()
+            petMenuView.layoutSubviews()
+            return
         }
+        view.addSubview(petCollectionView)
+        petMenuView.removeFromSuperview()
+        petCollectionView.reloadCollectionView()
+        petCollectionView.layoutSubviews()
     }
 }
-// MARK: - Actions
+
+// MARK: - Methods
+
 extension PetMenuController {
+    private func setCallBacksTransfers() {
+        petMenuView.presentControllerCallBack = { [weak self] in
+            self?.presentController()
+        }
+    }
     @objc private func presentController() {
         let controller = PetInfoController(storageService: storageService, collectionCellIndex: tappedCellIndex)
         controller.delegate = self
+
         /// Сбрасываю индекс чтобы он не сохранялся при повторном открытии экрана без использования ячеек,
         /// открытие окна с помощью кнопки "+"
+
         tappedCellIndex = nil
         navigationController?.pushViewController(controller, animated: true)
     }
 }
-// MARK: - Delegate & DataSource
+
 extension PetMenuController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIView.ninePartsScreenMultiplier,
-                      height: view.bounds.height / 3.5)
+        return CGSize(width: UIView.ninePartsScreenMultiplier, height: view.bounds.height / 3.5)
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return storageService.objects.count
@@ -127,6 +135,7 @@ extension PetMenuController: UICollectionViewDelegate, UICollectionViewDataSourc
         return UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
     }
 }
+
 extension PetMenuController: PetMenuControllerDelegate {
     func reloadController() {
         self.petCollectionView.reloadCollectionView()

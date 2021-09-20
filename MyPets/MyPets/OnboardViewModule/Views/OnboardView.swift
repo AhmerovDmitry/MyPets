@@ -9,17 +9,12 @@ import UIKit
 
 final class OnboardView: UIView {
 
-    // MARK: - LayoutSubviews
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        setupUI()
-    }
+    // MARK: - Property
 
-    // MARK: - Properties
-    var presentControllerCallBack: (() -> Void)?
-    private var onboardImage: [String]?
-    private var onboardDescription: [String]?
-    private let cellID = "OnboardCellId"
+    weak var delegate: OnboardControllerDelegate?
+
+    let cellID = "OnboardCellId"
+
     private let pageControl: UIPageControl = {
         let pageControl = UIPageControl()
         pageControl.currentPage = 0
@@ -30,9 +25,11 @@ final class OnboardView: UIView {
         }
         return pageControl
     }()
-    private let doneButton = UIButton.createStandartButton(
-        title: "Далее", backgroundColor: .white, action: #selector(nextDescriptionView), target: self
-    )
+    private var doneButton = UIButton.createTypicalButton(title: "Далее",
+                                                          backgroundColor: .white,
+                                                          borderWidth: 1,
+                                                          target: self,
+                                                          action: #selector(nextDescriptionView))
     private let skipButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Пропустить", for: .normal)
@@ -51,21 +48,37 @@ final class OnboardView: UIView {
         collectionView.isPagingEnabled = true
         collectionView.backgroundColor = .white
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.delegate = self
-        collectionView.dataSource = self
         collectionView.register(OnboardCollectionCell.self, forCellWithReuseIdentifier: cellID)
         return collectionView
     }()
-}
 
-// MARK: - Setup UI
-extension OnboardView {
+    // MARK: - Init / Lifecycle
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        delegate?.collectionViewDelegateAndDataSource(onboardCollectionView)
+        setupUI()
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - UI
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setCornerRadiusForElements()
+    }
+
     private func setupUI() {
-        self.backgroundColor = .white
+        setSelfViewUI()
         setOnboardCollectionViewConstraints()
         setPageControlConstraints()
         setDoneButtonConstraints()
         setCloseButtonConstraints()
+    }
+    private func setSelfViewUI() {
+        self.backgroundColor = .white
     }
     private func setOnboardCollectionViewConstraints() {
         self.addSubview(onboardCollectionView)
@@ -96,6 +109,7 @@ extension OnboardView {
             doneButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
             doneButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
+        doneButton.accessibilityIdentifier = "doneButton"
     }
     private func setCloseButtonConstraints() {
         self.addSubview(skipButton)
@@ -105,54 +119,45 @@ extension OnboardView {
             skipButton.rightAnchor.constraint(lessThanOrEqualTo: self.rightAnchor, constant: -32)
         ])
     }
+    private func setCornerRadiusForElements() {
+        doneButton.layer.cornerRadius = doneButton.bounds.height / 2
+    }
 }
 
-// MARK: - Actions
+// MARK: - Methods
+
 extension OnboardView {
     @objc private func nextDescriptionView() {
-        let nextIndex = pageControl.currentPage + 1
-        let indexPath = IndexPath(item: nextIndex, section: 0)
-        pageControl.currentPage = nextIndex
+        pageControl.currentPage += 1
+        let indexPath = IndexPath(item: pageControl.currentPage, section: 0)
         onboardCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        if nextIndex == 3 {
+        if pageControl.currentPage == 3 {
+
+            // Кнопка изменяется на последнем слайде
+
             doneButton.removeTarget(nil, action: nil, for: .allEvents)
             doneButton.setTitle("Приступим!", for: .normal)
             doneButton.backgroundColor = UIColor.CustomColor.purple
             doneButton.setTitleColor(.white, for: .normal)
             doneButton.addTarget(self, action: #selector(presentController), for: .touchUpInside)
+
             skipButton.isHidden = true
         }
     }
     @objc private func presentController(_ parent: UIViewController) {
-        presentControllerCallBack?()
-    }
-}
-
-// MARK: - Delegate & DataSource
-extension OnboardView: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pageControl.numberOfPages
-    }
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: cellID,
-            for: indexPath
-        ) as? OnboardCollectionCell else { return UICollectionViewCell() }
-        cell.configureCell(
-            image: onboardImage?[indexPath.item] ?? "",
-            description: onboardDescription?[indexPath.item] ?? ""
-        )
-        return cell
+        delegate?.presentTabBarController()
     }
 }
 
 // MARK: - Public Methods
+
 extension OnboardView {
-    func getOnboardContent(_ content: Any) {
-        guard let content = content as? OnboardModel else { return }
-        pageControl.numberOfPages = content.description.count
-        onboardImage = content.imagesName
-        onboardDescription = content.description
+    func setPageControl(countPage count: Int) {
+        pageControl.numberOfPages = count
+    }
+    func collectionViewDelegateAndDataSource<T>(_ target: T) where T: UICollectionViewDelegate,
+                                                                   T: UICollectionViewDataSource {
+        onboardCollectionView.delegate = target
+        onboardCollectionView.dataSource = target
     }
 }

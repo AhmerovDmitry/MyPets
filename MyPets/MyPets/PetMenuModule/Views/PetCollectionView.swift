@@ -8,16 +8,11 @@
 import UIKit
 
 final class PetCollectionView: UIView {
-    // MARK: - Initialization & Lifecycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupUI()
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    // MARK: - Properties
+
+    // MARK: - Property
+
     let cellID = "PetCollectionCell"
+
     private lazy var petCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -28,13 +23,25 @@ final class PetCollectionView: UIView {
         collectionView.register(PetCollectionCell.self, forCellWithReuseIdentifier: cellID)
         return collectionView
     }()
-}
 
-// MARK: - Setup UI
-extension PetCollectionView {
+    // MARK: - Init / Lifecycle
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - UI
+
     private func setupUI() {
-        self.backgroundColor = .white
+        setSelfUI()
         setPetCollectionConstraints()
+    }
+    private func setSelfUI() {
+        self.backgroundColor = .white
     }
     private func setPetCollectionConstraints() {
         self.addSubview(petCollection)
@@ -49,6 +56,7 @@ extension PetCollectionView {
 }
 
 // MARK: - Public Methods
+
 extension PetCollectionView {
     func collectionViewDelegate<T: UICollectionViewDelegate>(_ target: T) {
         petCollection.delegate = target

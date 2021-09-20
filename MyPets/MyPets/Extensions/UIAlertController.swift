@@ -15,6 +15,7 @@ extension UIAlertController {
     ///   - title: Заголовок алерт контроллера
     ///   - message: Сообщение алерт контроллера
     ///   - systemWayUrl: Путь к системным настройкам для удобства включения каких-то функций
+
     static func locationRequest(_ target: UIViewController, title: String, message: String?, systemWayUrl: String?) {
         guard let url = systemWayUrl else { return }
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -34,6 +35,7 @@ extension UIAlertController {
     ///   - target: Контроллер на котором показывается алерт
     ///   - error: Ошибка сетевого запроса
     ///   - completion: Комплишн хендлер если нужно что-то сделать после закрытия алерта
+
     static func presentAlertWithRequestError(_ target: UIViewController, error: Error?, completion: (() -> Void)?) {
         let alert = UIAlertController(title: "Упс, что-то пошло не по плану!",
                                       message: error?.localizedDescription,
@@ -42,7 +44,6 @@ extension UIAlertController {
         target.present(alert, animated: true, completion: completion)
     }
 
-
     /// Базовый алерт контроллер отображающий заголовок и сообщение
     /// Служит для базового предупреждения/оповещения пользователя
     /// - Parameters:
@@ -50,6 +51,7 @@ extension UIAlertController {
     ///   - title: Заголовок
     ///   - message: Сообщение в теле алерта
     ///   - style: Стиль алерт контроллера
+
     static func presentAlertWithBasicType(_ target: UIViewController,
                                           title: String?, message: String?,
                                           style: UIAlertController.Style) {

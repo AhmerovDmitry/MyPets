@@ -7,47 +7,75 @@
 
 import UIKit
 
-final class PremiumController: UIViewController {
-    // MARK: - Properties
-    private let userDefaultsService: UserDefaultsServiceProtocol
-    private let premiumContent = PremiumModel()
-    private let premiumView = PremiumView(frame: UIScreen.main.bounds)
+// MARK: - Delegate
 
-    // MARK: - Lifecycle
-    init(userDefaultsService: UserDefaultsServiceProtocol) {
+protocol PremiumControllerDelegate: AnyObject {
+    func dismissController(withPurchase: Bool)
+}
+
+final class PremiumController: UIViewController {
+
+    // MARK: - Property
+
+    private let userDefaultsService: UserDefaultsService
+
+    private let premiumModel: PremiumModelProtocol
+    private let premiumView: PremiumView
+
+    // MARK: - Init / Lifecycle
+
+    init(userDefaultsService: UserDefaultsService) {
         self.userDefaultsService = userDefaultsService
+        self.premiumModel = PremiumModel()
+        self.premiumView = PremiumView(frame: UIScreen.main.bounds)
         super.init(nibName: nil, bundle: nil)
     }
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        updateViewContent()
-        addSubview()
+    override func loadView() {
+        view = premiumView
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        premiumView.presentControllerCallBack = { [weak self] in
-            guard let self = self else { return }
-            self.dismiss(animated: true, completion: nil)
-            self.userDefaultsService.setValue(true, forKey: .isAppPurchased)
-        }
-        premiumView.dismissControllerCallBack = { [weak self] in
-            guard let self = self else { return }
-            self.dismiss(animated: true, completion: nil)
-            self.userDefaultsService.setValue(false, forKey: .isAppPurchased)
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        premiumView.delegate = self
+        premiumView.tableViewDelegateAndDataSource(self)
     }
 }
+
 // MARK: - Methods
-extension PremiumController {
-    private func updateViewContent() {
-        premiumView.getOnboardContent(premiumContent)
+
+extension PremiumController: PremiumControllerDelegate {
+    func dismissController(withPurchase: Bool) {
+        dismiss(animated: true, completion: nil)
+        if withPurchase {
+            self.userDefaultsService.setValue(true, forKey: .isAppPurchased)
+            return
+        }
     }
-    private func addSubview() {
-        view.addSubview(premiumView)
+    private func updateCellContent(_ cell: UITableViewCell, index: Int) {
+        cell.backgroundColor = .clear
+        cell.selectionStyle = .none
+        cell.textLabel?.textAlignment = .center
+        cell.textLabel?.textColor = .white
+        cell.textLabel?.numberOfLines = 2
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        cell.textLabel?.adjustsFontSizeToFitWidth = true
+        cell.textLabel?.text = premiumModel.description[index]
+    }
+}
+
+extension PremiumController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return premiumModel.description.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: premiumView.cellID, for: indexPath)
+        updateCellContent(cell, index: indexPath.row)
+        return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let cellHeight = tableView.frame.size.height / CGFloat(premiumModel.description.count)
+        return cellHeight
     }
 }

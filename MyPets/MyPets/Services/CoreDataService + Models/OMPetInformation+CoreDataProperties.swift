@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension OMPetInformation {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<OMPetInformation> {
@@ -30,6 +29,6 @@ extension OMPetInformation {
 
 }
 
-extension OMPetInformation : Identifiable {
+extension OMPetInformation: Identifiable {
 
 }

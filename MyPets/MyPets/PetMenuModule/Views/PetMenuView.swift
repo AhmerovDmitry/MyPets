@@ -8,20 +8,11 @@
 import UIKit
 
 final class PetMenuView: UIView {
-    // MARK: - Initialization & Lifecycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupUI()
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        addPetButton.layer.cornerRadius = addPetButton.bounds.height / 2
-    }
-    // MARK: - Properties
+
+    // MARK: - Property
+
     var presentControllerCallBack: (() -> Void)?
+
     private lazy var mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.alignment = .center
@@ -55,16 +46,29 @@ final class PetMenuView: UIView {
         label.numberOfLines = 2
         return label
     }()
-    private let addPetButton = UIButton.createStandartButton(
-        title: "Добавить питомца",
-        backgroundColor: UIColor.CustomColor.purple,
-        action: #selector(presentController),
-        target: self
-    )
-}
+    private let addPetButton = UIButton.createTypicalButton(title: "Добавить питомца",
+                                                            backgroundColor: UIColor.CustomColor.purple,
+                                                            borderWidth: nil,
+                                                            target: self,
+                                                            action: #selector(presentController))
 
-// MARK: - Setup UI
-extension PetMenuView {
+    // MARK: - Init / Lifecycle
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - UI
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setCornerRadiusForElements()
+    }
+
     private func setupUI() {
         self.backgroundColor = .white
         setMainStackViewConstraints()
@@ -75,7 +79,8 @@ extension PetMenuView {
         self.addSubview(mainStackView)
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            mainStackView.bottomAnchor.constraint(equalTo: self.centerYAnchor),
+            mainStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            mainStackView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.4),
             mainStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             mainStackView.widthAnchor.constraint(equalTo: self.widthAnchor)
         ])
@@ -94,15 +99,19 @@ extension PetMenuView {
         self.addSubview(addPetButton)
         addPetButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            addPetButton.topAnchor.constraint(equalTo: self.centerYAnchor, constant: 64),
+            addPetButton.topAnchor.constraint(equalTo: mainStackView.bottomAnchor, constant: 64),
             addPetButton.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.06),
             addPetButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
             addPetButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
     }
+    private func setCornerRadiusForElements() {
+        addPetButton.layer.cornerRadius = addPetButton.bounds.height / 2
+    }
 }
 
-// MARK: - Actions
+// MARK: - Methods
+
 extension PetMenuView {
     @objc private func presentController() {
         presentControllerCallBack?()

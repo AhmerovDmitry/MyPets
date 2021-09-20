@@ -17,4 +17,9 @@ extension UIColor {
         static let lightGray = UIColor(red: 247 / 255, green: 247 / 255, blue: 247 / 255, alpha: 1.0)
         static let lightGray2 = UIColor(red: 233 / 255, green: 236 / 255, blue: 240 / 255, alpha: 1.0)
     }
+
+    struct PurpleGradientColor {
+        static let darkPurple = UIColor(red: 137 / 255, green: 46 / 255, blue: 223 / 255, alpha: 1)
+        static let lightPurple = UIColor(red: 212 / 255, green: 165 / 255, blue: 255 / 255, alpha: 1)
+    }
 }

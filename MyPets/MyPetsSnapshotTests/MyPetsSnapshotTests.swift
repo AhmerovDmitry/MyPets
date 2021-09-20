@@ -2,7 +2,7 @@
 //  MyPetsSnapshotTests.swift
 //  MyPetsSnapshotTests
 //
-//  Created by Дмитрий Ахмеров on 14.09.2021.
+//  Created by Дмитрий Ахмеров on 19.09.2021.
 //
 
 import SnapshotTesting
@@ -10,8 +10,8 @@ import XCTest
 @testable import MyPets
 
 class MyPetsSnapshotTests: XCTestCase {
-    let storageService = StorageService()
-    let userDefaultsService = UserDefaultsService()
+    let storageService = StorageServiceImpl(repository: FileManager.default)
+    let userDefaultsService = UserDefaultsServiceImpl(repository: UserDefaults.standard)
 
     func testProfileController() throws {
         let sut = ProfileController(storageService: storageService, userDefaultsService: userDefaultsService)

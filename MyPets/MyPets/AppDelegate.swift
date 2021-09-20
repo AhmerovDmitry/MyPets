@@ -12,13 +12,17 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var userDefaultsService: UserDefaultsService?
+    var storageService: StorageService?
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         // MARK: - Services
-        let storageService = StorageService()
-        let userDefaultsService = UserDefaultsService()
+        storageService = StorageServiceImpl(repository: FileManager.default)
+        guard let storageService = storageService else { return false }
+        userDefaultsService = UserDefaultsServiceImpl(repository: UserDefaults.standard)
+        guard let userDefaultsService = userDefaultsService else { return false }
 
         /// Если приложение запускается впервые
         let onboardVC = OnboardController(storageService: storageService, userDefaultsService: userDefaultsService)

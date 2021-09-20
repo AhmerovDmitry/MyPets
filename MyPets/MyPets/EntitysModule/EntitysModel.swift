@@ -8,9 +8,9 @@
 import UIKit
 
 final class EntitysModel: PetMenuProtocol {
-    private let storageService: StorageServiceProtocol
+    private let storageService: StorageService
 
-    init(storageService: StorageServiceProtocol) {
+    init(storageService: StorageService) {
         self.storageService = storageService
     }
 

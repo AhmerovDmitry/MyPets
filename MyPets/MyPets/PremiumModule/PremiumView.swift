@@ -9,23 +9,12 @@ import UIKit
 
 final class PremiumView: UIView {
 
-    // MARK: - LayoutSubviews
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        setupUI()
-        self.setGradientEffect(self,
-                               colorOne: colorOne, colorTwo: colorTwo,
-                               startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 1))
-    }
+    // MARK: - Property
 
-    // MARK: - Properties
-    private let colorOne = UIColor(red: 137 / 255, green: 46 / 255, blue: 223 / 255, alpha: 1)
-    private let colorTwo = UIColor(red: 212 / 255, green: 165 / 255, blue: 255 / 255, alpha: 1)
+    weak var delegate: PremiumControllerDelegate?
 
-    var presentControllerCallBack: (() -> Void)?
-    var dismissControllerCallBack: (() -> Void)?
-    private var premiumText: [String]?
-    private let cellID = "PremiumCellId"
+    let cellID = "PremiumCellId"
+
     private lazy var mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.alignment = .center
@@ -75,8 +64,6 @@ final class PremiumView: UIView {
         tableView.separatorColor = .white
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 1))
-        tableView.delegate = self
-        tableView.dataSource = self
         return tableView
     }()
     private let priceLabel: UILabel = {
@@ -97,21 +84,43 @@ final class PremiumView: UIView {
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
-    private let buyButton = UIButton.createStandartButton(
-        title: "Получить Premium", backgroundColor: .white, action: #selector(closeControllerWithPurchase), target: self
-    )
-}
+    private let buyButton = UIButton.createTypicalButton(title: "Получить Premium",
+                                                         backgroundColor: .white,
+                                                         borderWidth: nil,
+                                                         target: self,
+                                                         action: #selector(closeControllerWithPurchase))
 
-// MARK: - Setup UI
-extension PremiumView {
+    // MARK: - Init / Lifecycle
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - UI
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setCornerRadiusForElements()
+    }
+
     private func setupUI() {
-        self.backgroundColor = .white
+        setSelfViewUI()
         setCloseButtonConstraints()
         setMainStackViewConstraints()
         setTitleStackViewConstraints()
         setPremiumTableViewConstraints()
         setPriceLabelsConstraints()
         setBuyButtonConstraints()
+    }
+    private func setSelfViewUI() {
+        self.backgroundColor = .white
+        self.setGradientEffect(self, colorOne: UIColor.PurpleGradientColor.darkPurple,
+                               colorTwo: UIColor.PurpleGradientColor.lightPurple,
+                               startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 1))
     }
     private func setCloseButtonConstraints() {
         self.addSubview(closeButton)
@@ -164,45 +173,23 @@ extension PremiumView {
             buyButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
     }
+    private func setCornerRadiusForElements() {
+        buyButton.layer.cornerRadius = buyButton.bounds.height / 2
+    }
 }
 
-// MARK: - Actions
+// MARK: - Methods
+
 extension PremiumView {
-    @objc func closeController() {
-        dismissControllerCallBack?()
+    @objc private func closeController() {
+        delegate?.dismissController(withPurchase: false)
     }
-    @objc func closeControllerWithPurchase() {
-        presentControllerCallBack?()
+    @objc private func closeControllerWithPurchase() {
+        delegate?.dismissController(withPurchase: true)
     }
-}
-
-// MARK: - Delegate & DataSource
-extension PremiumView: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return premiumText?.count ?? 0
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
-        cell.backgroundColor = .clear
-        cell.selectionStyle = .none
-        cell.textLabel?.textAlignment = .center
-        cell.textLabel?.textColor = .white
-        cell.textLabel?.numberOfLines = 2
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        cell.textLabel?.adjustsFontSizeToFitWidth = true
-        cell.textLabel?.text = premiumText?[indexPath.row].description
-        return cell
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let cellHeight = tableView.frame.size.height / 5
-        return cellHeight
-    }
-}
-
-// MARK: - Public Methods
-extension PremiumView {
-    func getOnboardContent(_ content: Any) {
-        guard let content = content as? PremiumModel else { return }
-        premiumText = content.description
+    func tableViewDelegateAndDataSource<T>(_ target: T) where T: UITableViewDelegate,
+                                                                      T: UITableViewDataSource {
+        premiumTableView.delegate = target
+        premiumTableView.dataSource = target
     }
 }
