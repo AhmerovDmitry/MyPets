@@ -12,8 +12,8 @@ final class MainMenuController: UIViewController {
 
     // MARK: - Property
 
-    private lazy var weatherNetworkService = NetworkService(httpAdditionalHeaders: nil)
-    private lazy var imagesNetworkService = NetworkService(httpAdditionalHeaders: self.mainModel.httpAdditionalHeaders)
+    private let weatherNetworkService = NetworkService(httpAdditionalHeaders: nil)
+    private lazy var imagesNetworkService = NetworkService(httpAdditionalHeaders: mainModel.httpAdditionalHeaders)
     var locationManager = CLLocationManager()
 
     let mainView = MainMenuView(frame: UIScreen.main.bounds)
@@ -72,54 +72,52 @@ extension MainMenuController {
         var mainImage: UIImage?
         var backgroundImage: UIImage?
 
-        // Очередь для того чтобы сначала получать данные о погоде
-        // так как на их основании составляется запрос картинок
-
-        let serialQueue = DispatchQueue(label: "com.mypets.serialqueue")
-        let semaphore = DispatchSemaphore(value: 1)
+        let serialQueue = DispatchQueue(label: "com.ahmerovdmitry.mypets")
+        let dispatchGroup = DispatchGroup()
 
         // Получение данных о погоде (температура и статус погоды)
 
-        serialQueue.sync { [weak self] in
-            semaphore.wait()
-            guard let self = self else { return }
-            self.weatherNetworkService.loadJSONData(from: self.mainModel.weatherURL,
-                                             decodeModel: WeatherDescription.self) { result in
+        dispatchGroup.enter()
+        serialQueue.async { [weak self] in
+            self?.weatherNetworkService.loadJSONData(from: self?.mainModel.weatherURL,
+                                                     decodeModel: WeatherDescription.self) { result in
                 switch result {
                 case .success(let data):
                     state = data.weather.last?.main
                     description = "\(data.name ?? "")\n\(data.weather.last?.description?.firstUppercased ?? "")"
                     temp = "\(Int(round(data.main.temp ?? 0.0)))"
-                    semaphore.signal()
                 case .failure(let error):
-                    self.networkError(error, withTitle: "Сетевая ошибка")
-                    return
+                    self?.networkError(error, withTitle: "Сетевая ошибка"); return
                 }
+                dispatchGroup.leave()
             }
+        }
 
-            // Получение картинок
+        // Получение картинок
 
-            self.imagesNetworkService.loadJSONData(from: self.mainModel.imagesURL,
-                                             decodeModel: WeatherImages.self) { result in
+        serialQueue.async { [weak self] in
+            dispatchGroup.wait()
+            dispatchGroup.enter()
+            self?.imagesNetworkService.loadJSONData(from: self?.mainModel.imagesURL,
+                                                    decodeModel: WeatherImages.self) { result in
                 switch result {
                 case .success(let data):
                     let randomNumber = Int.random(in: 0...data.homeImages.count - 1)
                     switch state {
                     case "Clear", "Clouds", "Drizzle", "Haze":
-                        mainImage = self.imagesNetworkService.downloadImage(at: data.strollImages[randomNumber])
-                    case .none: self.loadData()
-                    default: mainImage = self.imagesNetworkService.downloadImage(at: data.homeImages[randomNumber])
+                        mainImage = self?.imagesNetworkService.downloadImage(at: data.strollImages[randomNumber])
+                    default: mainImage = self?.imagesNetworkService.downloadImage(at: data.homeImages[randomNumber])
                     }
-                    backgroundImage = self.imagesNetworkService.downloadImage(at: data.backgroundImage)
+                    backgroundImage = self?.imagesNetworkService.downloadImage(at: data.backgroundImage)
                     DispatchQueue.main.async {
-                        self.mainView.stopShimmerAnimation()
-                        self.mainView.weatherView.presentWeatherElements(temp: temp, city: description,
-                                                                         mainImage: mainImage, bgImage: backgroundImage)
+                        self?.mainView.stopShimmerAnimation()
+                        self?.mainView.weatherView.presentWeatherElements(
+                            temp: temp, city: description, mainImage: mainImage, bgImage: backgroundImage)
                     }
                 case .failure(let error):
-                    self.networkError(error, withTitle: "Сетевая ошибка")
-                    return
+                    self?.networkError(error, withTitle: "Сетевая ошибка"); return
                 }
+                dispatchGroup.leave()
             }
         }
     }
