@@ -86,6 +86,16 @@ extension InputInfoController: UITextFieldDelegate {
         return true
     }
     func textFieldDidChangeSelection(_ textField: UITextField) {
+        if textField.text?.count ?? 0 > 20 {
+            guard let text = textField.text else { return }
+            textField.text?.removeAll()
+            for (index, character) in text.enumerated() where index < 20 {
+                textField.text?.append(character)
+            }
+            UIAlertController.presentAlertWithBasicType(self, title: "Слишком длинный текст",
+                                                        message: "Длинна текста не должна превышать 20 символов",
+                                                        style: .alert)
+        }
         transferedInformation = textField.text
     }
 }
