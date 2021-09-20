@@ -35,7 +35,6 @@ final class CustomTabBarController: UITabBarController {
     // MARK: - UI
 
     private func setupTabBarSettings() {
-        tabBar.setDefaultShadow()
         tabBar.backgroundColor = .white
         tabBar.backgroundImage = UIImage()
         tabBar.shadowImage = UIImage()
