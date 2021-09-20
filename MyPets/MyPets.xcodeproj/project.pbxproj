@@ -26,24 +26,19 @@
 		BC16018026ECBF6800666529 /* PetDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC16017F26ECBF6800666529 /* PetDTO.swift */; };
 		BC16018326ECE17500666529 /* OMPetInformation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC16018126ECE17500666529 /* OMPetInformation+CoreDataClass.swift */; };
 		BC16018426ECE17500666529 /* OMPetInformation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC16018226ECE17500666529 /* OMPetInformation+CoreDataProperties.swift */; };
-		BC2614F226F671A100D4A58D /* ProfileControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2614F126F671A100D4A58D /* ProfileControllerTests.swift */; };
 		BC2614F526F686C300D4A58D /* DataTransferDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2614F426F686C300D4A58D /* DataTransferDelegate.swift */; };
-		BC2614F926F6ABCF00D4A58D /* DatePickerControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2614F826F6ABCF00D4A58D /* DatePickerControllerTests.swift */; };
 		BC26150126F7531C00D4A58D /* PetInfoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC26150026F7531C00D4A58D /* PetInfoCollectionCell.swift */; };
 		BC26150426F7705800D4A58D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC26150326F7705800D4A58D /* String.swift */; };
 		BC26F06626F2072500403961 /* ShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC26F06526F2072500403961 /* ShimmerView.swift */; };
 		BC3369C326F60E8500C40691 /* UserDefaultsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5B1AB26F4BED500C47A09 /* UserDefaultsServiceTests.swift */; };
-		BC3369C426F60E8500C40691 /* StorageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1DF0B026F5F28B004B744A /* StorageServiceTests.swift */; };
 		BC3369F726F60EEB00C40691 /* UserDefaultsServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91F2F32627423D006CCE3B /* UserDefaultsServiceImpl.swift */; };
 		BC3369FA26F60F0300C40691 /* MockUDRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5B20A26F531CF00C47A09 /* MockUDRepository.swift */; };
-		BC3369FB26F60F0300C40691 /* MockUserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5B20D26F531DC00C47A09 /* MockUserDefaultsService.swift */; };
-		BC3369FC26F60F0300C40691 /* MockFMRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1DF0AE26F5DFEB004B744A /* MockFMRepository.swift */; };
-		BC3369FE26F6121700C40691 /* MockStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3369FD26F6121700C40691 /* MockStorageService.swift */; };
 		BC336A2526F622B800C40691 /* MainWeatherModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC336A2426F622B800C40691 /* MainWeatherModelTests.swift */; };
 		BC336A3026F65A6600C40691 /* DateFormatterServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC336A2F26F65A6600C40691 /* DateFormatterServiceTests.swift */; };
 		BC38543D26C5ABCF00C2F14E /* PetMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC38543C26C5ABCF00C2F14E /* PetMenuView.swift */; };
 		BC413CD42538A97F002CDD19 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC413CD32538A97F002CDD19 /* CustomTabBarController.swift */; };
 		BC52FFA026D91B9D00A694CB /* WeatherMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC52FF9F26D91B9D00A694CB /* WeatherMenuView.swift */; };
+		BC56F08A26F8C5DA00B15FFA /* PetMenuModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC56F08926F8C5DA00B15FFA /* PetMenuModelTests.swift */; };
 		BC7073252534A6F600B2979F /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073242534A6F600B2979F /* UIButton.swift */; };
 		BC7073322534BA3800B2979F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073312534BA3800B2979F /* UIView.swift */; };
 		BC7EB65526C6678100BE80AE /* PetCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB65426C6678100BE80AE /* PetCollectionView.swift */; };
@@ -64,13 +59,11 @@
 		BCB5B20526F4FB7A00C47A09 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5B20426F4FB7A00C47A09 /* DatePickerController.swift */; };
 		BCB5B20826F506FD00C47A09 /* DateFormatterServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5B20726F506FD00C47A09 /* DateFormatterServiceImpl.swift */; };
 		BCB5B20B26F531CF00C47A09 /* MockUDRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5B20A26F531CF00C47A09 /* MockUDRepository.swift */; };
-		BCB5B20E26F531DC00C47A09 /* MockUserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5B20D26F531DC00C47A09 /* MockUserDefaultsService.swift */; };
 		BCB610032530C82400C4FD2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB610022530C82400C4FD2F /* AppDelegate.swift */; };
 		BCB6100C2530C82700C4FD2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCB6100B2530C82700C4FD2F /* Assets.xcassets */; };
 		BCB6100F2530C82700C4FD2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCB6100D2530C82700C4FD2F /* LaunchScreen.storyboard */; };
 		BCC259E726C40D3E00FCAC54 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC259E626C40D3E00FCAC54 /* MainMenuView.swift */; };
 		BCC259E926C4142A00FCAC54 /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC259E826C4142A00FCAC54 /* MainMenuController.swift */; };
-		BCCED77626F7A50000A47637 /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCED77526F7A50000A47637 /* MockNetworkService.swift */; };
 		BCCED77926F7A64800A47637 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCED77826F7A64800A47637 /* NetworkServiceTests.swift */; };
 		BCCED7D326F7CD5400A47637 /* MyPetsSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCED7D226F7CD5400A47637 /* MyPetsSnapshotTests.swift */; };
 		BCCED7DC26F7CD6900A47637 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = BCCED7DB26F7CD6900A47637 /* SnapshotTesting */; };
@@ -188,6 +181,12 @@
 		BCCED85F26F7DF2600A47637 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29E026EE9B9100C3AF2D /* ProfileController.swift */; };
 		BCCED86026F7FB1A00A47637 /* DateFormatterServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5B20726F506FD00C47A09 /* DateFormatterServiceImpl.swift */; };
 		BCCED86126F7FCCC00A47637 /* MainWeatherModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0132CE26E15DFE0065F1B7 /* MainWeatherModelImpl.swift */; };
+		BCCED86226F80F6A00A47637 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFECA9826F24ECC00286EF6 /* NetworkService.swift */; };
+		BCCED86326F80F7D00A47637 /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE6ACA526F21011007CDB81 /* NetworkServiceError.swift */; };
+		BCCED86726F8126200A47637 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCED86626F8126200A47637 /* MockURLSession.swift */; };
+		BCCED86826F8794100A47637 /* GetWeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFECA9626F2499900286EF6 /* GetWeatherResponse.swift */; };
+		BCCED87026F8B4B300A47637 /* userImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BCCED86F26F8B4B300A47637 /* userImage.jpeg */; };
+		BCCED87326F8BAED00A47637 /* PetMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29DE26ED490F00C3AF2D /* PetMenuModel.swift */; };
 		BCDA7E7826F4B50F00C48EC1 /* PetMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC38543A26C5AB4700C2F14E /* PetMenuController.swift */; };
 		BCDAEB6E26CFBD990099CF13 /* InputInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDAEB6D26CFBD990099CF13 /* InputInfoView.swift */; };
 		BCE5115525461A23002FB62E /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE5115425461A23002FB62E /* UIAlertController.swift */; };
@@ -241,23 +240,19 @@
 		BC16017F26ECBF6800666529 /* PetDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDTO.swift; sourceTree = "<group>"; };
 		BC16018126ECE17500666529 /* OMPetInformation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OMPetInformation+CoreDataClass.swift"; sourceTree = "<group>"; };
 		BC16018226ECE17500666529 /* OMPetInformation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OMPetInformation+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		BC1DF0AE26F5DFEB004B744A /* MockFMRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFMRepository.swift; sourceTree = "<group>"; };
-		BC1DF0B026F5F28B004B744A /* StorageServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageServiceTests.swift; sourceTree = "<group>"; };
-		BC2614F126F671A100D4A58D /* ProfileControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileControllerTests.swift; sourceTree = "<group>"; };
 		BC2614F426F686C300D4A58D /* DataTransferDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferDelegate.swift; sourceTree = "<group>"; };
-		BC2614F826F6ABCF00D4A58D /* DatePickerControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerControllerTests.swift; sourceTree = "<group>"; };
 		BC26150026F7531C00D4A58D /* PetInfoCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetInfoCollectionCell.swift; sourceTree = "<group>"; };
 		BC26150326F7705800D4A58D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		BC26F06526F2072500403961 /* ShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerView.swift; sourceTree = "<group>"; };
 		BC3369B926F60E7100C40691 /* MyPetsUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyPetsUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC3369BD26F60E7100C40691 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BC3369FD26F6121700C40691 /* MockStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStorageService.swift; sourceTree = "<group>"; };
 		BC336A2426F622B800C40691 /* MainWeatherModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWeatherModelTests.swift; sourceTree = "<group>"; };
 		BC336A2F26F65A6600C40691 /* DateFormatterServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatterServiceTests.swift; sourceTree = "<group>"; };
 		BC38543A26C5AB4700C2F14E /* PetMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetMenuController.swift; sourceTree = "<group>"; };
 		BC38543C26C5ABCF00C2F14E /* PetMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetMenuView.swift; sourceTree = "<group>"; };
 		BC413CD32538A97F002CDD19 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		BC52FF9F26D91B9D00A694CB /* WeatherMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMenuView.swift; sourceTree = "<group>"; };
+		BC56F08926F8C5DA00B15FFA /* PetMenuModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetMenuModelTests.swift; sourceTree = "<group>"; };
 		BC7073242534A6F600B2979F /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		BC7073312534BA3800B2979F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		BC7EB65426C6678100BE80AE /* PetCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCollectionView.swift; sourceTree = "<group>"; };
@@ -279,7 +274,6 @@
 		BCB5B20426F4FB7A00C47A09 /* DatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
 		BCB5B20726F506FD00C47A09 /* DateFormatterServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterServiceImpl.swift; sourceTree = "<group>"; };
 		BCB5B20A26F531CF00C47A09 /* MockUDRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUDRepository.swift; sourceTree = "<group>"; };
-		BCB5B20D26F531DC00C47A09 /* MockUserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDefaultsService.swift; sourceTree = "<group>"; };
 		BCB60FFF2530C82400C4FD2F /* MyPets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCB610022530C82400C4FD2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCB6100B2530C82700C4FD2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -287,7 +281,6 @@
 		BCB610102530C82700C4FD2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Assets + LS + Info.plist/Info.plist"; sourceTree = SOURCE_ROOT; };
 		BCC259E626C40D3E00FCAC54 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		BCC259E826C4142A00FCAC54 /* MainMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
-		BCCED77526F7A50000A47637 /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
 		BCCED77826F7A64800A47637 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		BCCED7D026F7CD5400A47637 /* MyPetsSnapshotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyPetsSnapshotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCCED7D226F7CD5400A47637 /* MyPetsSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPetsSnapshotTests.swift; sourceTree = "<group>"; };
@@ -298,6 +291,8 @@
 		BCCED82226F7D0EF00A47637 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		BCCED82426F7D32600A47637 /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
 		BCCED82826F7D78700A47637 /* TabBarPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPage.swift; sourceTree = "<group>"; };
+		BCCED86626F8126200A47637 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		BCCED86F26F8B4B300A47637 /* userImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = userImage.jpeg; path = TestDocuments/userImage.jpeg; sourceTree = "<group>"; };
 		BCDAEB6D26CFBD990099CF13 /* InputInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputInfoView.swift; sourceTree = "<group>"; };
 		BCE5115425461A23002FB62E /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		BCE6ACA526F21011007CDB81 /* NetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceError.swift; sourceTree = "<group>"; };
@@ -381,7 +376,6 @@
 			isa = PBXGroup;
 			children = (
 				BC3369FF26F6121C00C40691 /* MockUserDefaultsService */,
-				BC336A0026F6122D00C40691 /* MockStorageService */,
 				BCCED77726F7A50700A47637 /* MockNetworkService */,
 			);
 			path = Mock;
@@ -390,13 +384,12 @@
 		BC3369BA26F60E7100C40691 /* MyPetsUnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				BCCED86F26F8B4B300A47637 /* userImage.jpeg */,
 				BCB5B1AB26F4BED500C47A09 /* UserDefaultsServiceTests.swift */,
 				BCCED77826F7A64800A47637 /* NetworkServiceTests.swift */,
-				BC1DF0B026F5F28B004B744A /* StorageServiceTests.swift */,
 				BC336A2F26F65A6600C40691 /* DateFormatterServiceTests.swift */,
-				BC2614F126F671A100D4A58D /* ProfileControllerTests.swift */,
 				BC336A2426F622B800C40691 /* MainWeatherModelTests.swift */,
-				BC2614F826F6ABCF00D4A58D /* DatePickerControllerTests.swift */,
+				BC56F08926F8C5DA00B15FFA /* PetMenuModelTests.swift */,
 				BC1DF0AD26F5DFAD004B744A /* Mock */,
 				BC3369BD26F60E7100C40691 /* Info.plist */,
 			);
@@ -406,19 +399,9 @@
 		BC3369FF26F6121C00C40691 /* MockUserDefaultsService */ = {
 			isa = PBXGroup;
 			children = (
-				BCB5B20D26F531DC00C47A09 /* MockUserDefaultsService.swift */,
 				BCB5B20A26F531CF00C47A09 /* MockUDRepository.swift */,
 			);
 			path = MockUserDefaultsService;
-			sourceTree = "<group>";
-		};
-		BC336A0026F6122D00C40691 /* MockStorageService */ = {
-			isa = PBXGroup;
-			children = (
-				BC3369FD26F6121700C40691 /* MockStorageService.swift */,
-				BC1DF0AE26F5DFEB004B744A /* MockFMRepository.swift */,
-			);
-			path = MockStorageService;
 			sourceTree = "<group>";
 		};
 		BC38543626C5AAF000C2F14E /* PetMenuModule */ = {
@@ -619,7 +602,7 @@
 		BCCED77726F7A50700A47637 /* MockNetworkService */ = {
 			isa = PBXGroup;
 			children = (
-				BCCED77526F7A50000A47637 /* MockNetworkService.swift */,
+				BCCED86626F8126200A47637 /* MockURLSession.swift */,
 			);
 			path = MockNetworkService;
 			sourceTree = "<group>";
@@ -818,6 +801,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCCED87026F8B4B300A47637 /* userImage.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -874,17 +858,16 @@
 				BC3369C326F60E8500C40691 /* UserDefaultsServiceTests.swift in Sources */,
 				BC3369FA26F60F0300C40691 /* MockUDRepository.swift in Sources */,
 				BC3369F726F60EEB00C40691 /* UserDefaultsServiceImpl.swift in Sources */,
-				BC3369C426F60E8500C40691 /* StorageServiceTests.swift in Sources */,
 				BCCED77926F7A64800A47637 /* NetworkServiceTests.swift in Sources */,
-				BC2614F926F6ABCF00D4A58D /* DatePickerControllerTests.swift in Sources */,
-				BCCED77626F7A50000A47637 /* MockNetworkService.swift in Sources */,
-				BC3369FB26F60F0300C40691 /* MockUserDefaultsService.swift in Sources */,
 				BCCED86026F7FB1A00A47637 /* DateFormatterServiceImpl.swift in Sources */,
 				BC336A3026F65A6600C40691 /* DateFormatterServiceTests.swift in Sources */,
+				BCCED86226F80F6A00A47637 /* NetworkService.swift in Sources */,
+				BCCED87326F8BAED00A47637 /* PetMenuModel.swift in Sources */,
+				BC56F08A26F8C5DA00B15FFA /* PetMenuModelTests.swift in Sources */,
 				BC336A2526F622B800C40691 /* MainWeatherModelTests.swift in Sources */,
-				BC3369FC26F60F0300C40691 /* MockFMRepository.swift in Sources */,
-				BC3369FE26F6121700C40691 /* MockStorageService.swift in Sources */,
-				BC2614F226F671A100D4A58D /* ProfileControllerTests.swift in Sources */,
+				BCCED86826F8794100A47637 /* GetWeatherResponse.swift in Sources */,
+				BCCED86326F80F7D00A47637 /* NetworkServiceError.swift in Sources */,
+				BCCED86726F8126200A47637 /* MockURLSession.swift in Sources */,
 				BCCED86126F7FCCC00A47637 /* MainWeatherModelImpl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -929,7 +912,6 @@
 				BC0D29E626EE9D1700C3AF2D /* ProfileModel.swift in Sources */,
 				BC0132CF26E15DFE0065F1B7 /* MainWeatherModelImpl.swift in Sources */,
 				BC9402F926CA6AB70028E5AC /* PetInfoTableCell.swift in Sources */,
-				BCB5B20E26F531DC00C47A09 /* MockUserDefaultsService.swift in Sources */,
 				BC13029B26B978A000CFD87E /* OnboardModel.swift in Sources */,
 				BC26F06626F2072500403961 /* ShimmerView.swift in Sources */,
 				BC0D29DF26ED490F00C3AF2D /* PetMenuModel.swift in Sources */,

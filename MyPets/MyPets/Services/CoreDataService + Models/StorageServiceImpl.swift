@@ -39,7 +39,7 @@ protocol FileManagerService {
     func removePhoto(photoID: String)
 }
 
-private protocol SaveContext {
+protocol SaveContext {
     func saveContext(_ context: NSManagedObjectContext)
 }
 
@@ -48,9 +48,9 @@ protocol ObjectIdentifier {
 }
 
 typealias StorageService = CoreDataLoadingService & CoreDataSavingService &
-    CoreDataEditingService & FileManagerService & ObjectIdentifier
+    CoreDataEditingService & FileManagerService & SaveContext & ObjectIdentifier
 
-final class StorageServiceImpl: CoreDataLoadingService {
+final class StorageServiceImpl: StorageService {
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
     lazy var context: NSManagedObjectContext? = appDelegate?.persistentContainer.viewContext
     var objects: [OMPetInformation] = []
@@ -63,7 +63,7 @@ final class StorageServiceImpl: CoreDataLoadingService {
 }
 
 // MARK: - Загрузка / сохранение / удаление фотографий
-extension StorageServiceImpl: FileManagerService {
+extension StorageServiceImpl {
     /// Метод загружающий фотографию из директории устройства
     /// - Parameter photoID: Индекс загружаемой фотографии
     /// - Returns: Загружаемая фотография или nil
@@ -136,7 +136,7 @@ extension StorageServiceImpl {
 }
 
 // MARK: - Сохранение объекта
-extension StorageServiceImpl: CoreDataSavingService {
+extension StorageServiceImpl {
     /// Сохранение объекта в CoreData
     /// - Parameter entity: Сохраняемый объект
     func saveEntity(_ entity: PetDTO) {
@@ -150,7 +150,7 @@ extension StorageServiceImpl: CoreDataSavingService {
 }
 
 // MARK: - Редактирование / удаление объекта
-extension StorageServiceImpl: CoreDataEditingService {
+extension StorageServiceImpl {
     /// Редактирование объекта по индексу
     /// - Parameters:
     ///   - entity: Редактируемый объект
@@ -172,10 +172,10 @@ extension StorageServiceImpl: CoreDataEditingService {
 }
 
 // MARK: - Сохранение контекста
-extension StorageServiceImpl: SaveContext {
+extension StorageServiceImpl {
     /// Сохранение контекста для удобства
     /// - Parameter context: Контекст для сохранения
-    fileprivate func saveContext(_ context: NSManagedObjectContext) {
+    func saveContext(_ context: NSManagedObjectContext) {
         if context.hasChanges {
             do {
                 try context.save()
@@ -189,7 +189,7 @@ extension StorageServiceImpl: SaveContext {
 }
 
 // MARK: - Создание уникального идентификатора
-extension StorageServiceImpl: ObjectIdentifier {
+extension StorageServiceImpl {
     var identifier: String {
         return UUID().uuidString
     }

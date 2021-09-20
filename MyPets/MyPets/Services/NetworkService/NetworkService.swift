@@ -10,46 +10,69 @@ import UIKit
 protocol NetworkServiceProtocol {
     var isLoadingCanceled: Bool { get }
 
-    func loadJSONData<T: Codable>(from url: URL?,
-                                  httpAdditionalHeaders: [AnyHashable: Any]?,
-                                  decodeModel: T.Type,
+    func loadJSONData<T: Codable>(from url: URL?, decodeModel: T.Type,
                                   completion: @escaping(Result<T, NetworkServiceError>) -> Void)
     func cancelNetworkRequest()
     func downloadImage(at url: String) -> UIImage?
 }
 
+protocol Networking {
+    func performDataTask(with request: URLRequest,
+                         completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> NetworkDataTask
+}
+extension URLSession: Networking {
+    func performDataTask(with request: URLRequest,
+                         completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> NetworkDataTask {
+        return dataTask(with: request, completionHandler: completionHandler)
+    }
+}
+protocol NetworkDataTask {
+    func resume()
+    func cancel()
+}
+extension URLSessionDataTask: NetworkDataTask {}
+
 final class NetworkService {
     private let decoder = JSONDecoder()
-    private var session = URLSession(configuration: .default)
-    private var sessionDataTask: URLSessionDataTask?
+    private var session: Networking
+    private var sessionDataTask: NetworkDataTask?
 
     var isLoadingCanceled = false
-}
 
-extension NetworkService: NetworkServiceProtocol {
-    /// Метод запроса данных из сети
-    /// - Parameters:
-    ///   - url: URL запроса
-    ///   - httpAdditionalHeaders: Хеддер, если он отсутствует, то будет выполнена дефолтная реализация
-    ///   - decodeModel: Дженерик модель в которую будут декодированы данные
-    ///   - completion: Комплишн хендлер выполнения
-    func loadJSONData<T: Codable>(from url: URL?,
-                                  httpAdditionalHeaders: [AnyHashable: Any]?,
-                                  decodeModel: T.Type,
-                                  completion: @escaping (Result<T, NetworkServiceError>) -> Void) {
+    init(session: Networking) {
+        self.session = session
+    }
+
+    convenience init(httpAdditionalHeaders: [AnyHashable: Any]?) {
 
         let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = httpAdditionalHeaders
         configuration.urlCache = URLCache(memoryCapacity: 5 * 1_000_000,
                                           diskCapacity: 5 * 1_000_000,
                                           diskPath: "weatherCache")
-        session = URLSession(configuration: configuration)
+        let session = URLSession(configuration: configuration)
+
+        self.init(session: session)
+    }
+}
+
+extension NetworkService: NetworkServiceProtocol {
+
+    /// Метод запроса данных из сети
+    /// - Parameters:
+    ///   - url: URL запроса
+    ///   - httpAdditionalHeaders: Хеддер, если он отсутствует, то будет выполнена дефолтная реализация
+    ///   - decodeModel: Дженерик модель в которую будут декодированы данные
+    ///   - completion: Комплишн хендлер выполнения
+    func loadJSONData<T: Codable>(from url: URL?, decodeModel: T.Type,
+                                  completion: @escaping (Result<T, NetworkServiceError>) -> Void) {
+
         guard let url = url else { return }
 
         var request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad)
         request.timeoutInterval = 60
 
-        sessionDataTask = session.dataTask(with: request, completionHandler: { [weak self] data, response, _ in
+        sessionDataTask = session.performDataTask(with: request, completionHandler: { [weak self] data, response, _ in
             guard let self = self else { return }
             do {
                 let data = try self.httpResponse(data: data, response: response)

@@ -6,28 +6,27 @@
 //
 
 import XCTest
-@testable import MyPets
 
 class UserDefaultsServiceTests: XCTestCase {
 
-    private var systemUnderTest: UserDefaultsService!
+    private var sut: UserDefaultsService!
     private var repositoryMock: MockUDRepository!
 
     override func setUpWithError() throws {
         try super.setUpWithError()
         repositoryMock = MockUDRepository()
-        systemUnderTest = UserDefaultsServiceImpl(repository: repositoryMock)
+        sut = UserDefaultsServiceImpl(repository: repositoryMock)
     }
 
     override func tearDownWithError() throws {
         repositoryMock = nil
-        systemUnderTest = nil
+        sut = nil
         try super.tearDownWithError()
     }
 
     func testValueIsTrueIfValueForKeyIsAppPurchasedIsSet() throws {
         // act
-        systemUnderTest.setValue(true, forKey: .isAppPurchased)
+        sut.setValue(true, forKey: .isAppPurchased)
         // assert
         let result = try XCTUnwrap(repositoryMock.repository["isAppPurchased"] as? Bool)
         XCTAssertTrue(result)
@@ -35,7 +34,7 @@ class UserDefaultsServiceTests: XCTestCase {
 
     func testValueIsFalseIfValueForKeyIsAppPurchasedIsSet() throws {
         // act
-        systemUnderTest.setValue(false, forKey: .isAppPurchased)
+        sut.setValue(false, forKey: .isAppPurchased)
         // assert
         let result = try XCTUnwrap(repositoryMock.repository["isAppPurchased"] as? Bool)
         XCTAssertFalse(result)
@@ -45,7 +44,7 @@ class UserDefaultsServiceTests: XCTestCase {
         // arrange
         repositoryMock.repository["isAppPurchased"] = true
         // act
-        let result = systemUnderTest.value(forKey: .isAppPurchased)
+        let result = sut.value(forKey: .isAppPurchased)
         // assert
         XCTAssertTrue(result)
     }
@@ -54,7 +53,7 @@ class UserDefaultsServiceTests: XCTestCase {
         // arrange
         repositoryMock.repository["isAppPurchased"] = false
         // act
-        let result = systemUnderTest.value(forKey: .isAppPurchased)
+        let result = sut.value(forKey: .isAppPurchased)
         // assert
         XCTAssertFalse(result)
     }
@@ -63,14 +62,14 @@ class UserDefaultsServiceTests: XCTestCase {
         // arrange
         repositoryMock.repository["isAppPurchased"] = nil
         // act
-        let result = systemUnderTest.value(forKey: .isAppPurchased)
+        let result = sut.value(forKey: .isAppPurchased)
         // assert
         XCTAssertFalse(result)
     }
 
     func testValueIsTrueIfValueForKeyIsNotFirstLaunchIsSet() throws {
         // act
-        systemUnderTest.setValue(true, forKey: .isNotFirstLaunch)
+        sut.setValue(true, forKey: .isNotFirstLaunch)
         // assert
         let result = try XCTUnwrap(repositoryMock.repository["isNotFirstLaunch"] as? Bool)
         XCTAssertTrue(result)
@@ -78,7 +77,7 @@ class UserDefaultsServiceTests: XCTestCase {
 
     func testValueIsFalseIfValueForKeyIsNotFirstLaunchIsSet() throws {
         // act
-        systemUnderTest.setValue(false, forKey: .isNotFirstLaunch)
+        sut.setValue(false, forKey: .isNotFirstLaunch)
         // assert
         let result = try XCTUnwrap(repositoryMock.repository["isNotFirstLaunch"] as? Bool)
         XCTAssertFalse(result)
@@ -88,7 +87,7 @@ class UserDefaultsServiceTests: XCTestCase {
         // arrange
         repositoryMock.repository["isNotFirstLaunch"] = true
         // act
-        let result = systemUnderTest.value(forKey: .isNotFirstLaunch)
+        let result = sut.value(forKey: .isNotFirstLaunch)
         // assert
         XCTAssertTrue(result)
     }
@@ -97,7 +96,7 @@ class UserDefaultsServiceTests: XCTestCase {
         // arrange
         repositoryMock.repository["isNotFirstLaunch"] = false
         // act
-        let result = systemUnderTest.value(forKey: .isNotFirstLaunch)
+        let result = sut.value(forKey: .isNotFirstLaunch)
         // assert
         XCTAssertFalse(result)
     }
@@ -106,7 +105,7 @@ class UserDefaultsServiceTests: XCTestCase {
         // arrange
         repositoryMock.repository["isNotFirstLaunch"] = nil
         // act
-        let result = systemUnderTest.value(forKey: .isNotFirstLaunch)
+        let result = sut.value(forKey: .isNotFirstLaunch)
         // assert
         XCTAssertFalse(result)
     }
