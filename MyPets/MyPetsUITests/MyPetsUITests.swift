@@ -19,7 +19,8 @@ class MyPetsUITests: XCTestCase {
         app.launchArguments += ["-isAppPurchased", "TRUE"]
         app.launch()
         addUIInterruptionMonitor(withDescription: "System Dialog") { alert -> Bool in
-            alert.buttons["Allow Once"].tap()
+//            для устройств на английском языке использовать - alert.buttons["Allow Once"].tap()
+            alert.buttons["Однократно"].tap()
             return true
         }
         app.tap()
