@@ -12,7 +12,8 @@ final class MainMenuController: UIViewController {
 
     // MARK: - Property
 
-    private let networkService: NetworkServiceProtocol = NetworkService()
+    private let networkService = NetworkService(httpAdditionalHeaders: nil)
+    private lazy var imageNetworkService = NetworkService(httpAdditionalHeaders: self.mainModel.httpAdditionalHeaders)
     var locationManager = CLLocationManager()
 
     let mainView = MainMenuView(frame: UIScreen.main.bounds)
@@ -79,7 +80,7 @@ extension MainMenuController {
 
         serialQueue.sync { [weak self] in
             guard let self = self else { return }
-            self.networkService.loadJSONData(from: self.mainModel.weatherURL, httpAdditionalHeaders: nil,
+            self.networkService.loadJSONData(from: self.mainModel.weatherURL,
                                              decodeModel: WeatherDescription.self) { result in
                 switch result {
                 case .success(let data):
@@ -93,9 +94,8 @@ extension MainMenuController {
 
             // Получение картинок
 
-            self.networkService.loadJSONData(from: self.mainModel.imagesURL,
-                                             httpAdditionalHeaders: self.mainModel.httpAdditionalHeaders,
-                                             decodeModel: WeatherImages.self) { result in
+            self.imageNetworkService.loadJSONData(from: self.mainModel.imagesURL,
+                                                  decodeModel: WeatherImages.self) { result in
                 switch result {
                 case .success(let data):
                     let randomNumber = Int.random(in: 0...data.homeImages.count - 1)
