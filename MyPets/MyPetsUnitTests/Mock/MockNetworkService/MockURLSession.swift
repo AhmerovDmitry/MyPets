@@ -20,15 +20,3 @@ class MockURLSession: Networking {
         return networkDataTaskDoubleToReturn ?? NetworkDataTaskSpy()
     }
 }
-
-class NetworkDataTaskSpy: NetworkDataTask {
-    var resumeCounter = 0
-    var cancelCounter = 0
-
-    func resume() {
-        resumeCounter += 1
-    }
-    func cancel() {
-        cancelCounter += 1
-    }
-}
