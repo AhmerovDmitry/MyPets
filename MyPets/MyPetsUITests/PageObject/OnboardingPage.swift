@@ -11,7 +11,7 @@ import XCTest
 class OnboardingPage: Page {
     var app: XCUIApplication
 
-    var skipButton: XCUIElement {
+    var doneButton: XCUIElement {
         app.buttons.element(matching: .button, identifier: "doneButton")
     }
 
