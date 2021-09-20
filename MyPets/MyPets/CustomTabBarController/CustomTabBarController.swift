@@ -35,9 +35,12 @@ final class CustomTabBarController: UITabBarController {
     // MARK: - UI
 
     private func setupTabBarSettings() {
-        tabBar.shadowImage = UIImage()
+        tabBar.setDefaultShadow()
+        tabBar.backgroundColor = .white
         tabBar.backgroundImage = UIImage()
-        tabBar.clipsToBounds = true
+        tabBar.shadowImage = UIImage()
+        tabBar.unselectedItemTintColor = UIColor.CustomColor.gray
+        tabBar.tintColor = UIColor.CustomColor.purple
     }
     private func setupControllers() {
         let mainVC = UINavigationController(rootViewController: MainMenuController())
@@ -57,12 +60,6 @@ final class CustomTabBarController: UITabBarController {
         )
         profileVC.tabBarItem.title = "Профиль"
         profileVC.tabBarItem.image = UIImage(named: "profileIcon")
-
-        tabBar.backgroundColor = .white
-        tabBar.backgroundImage = UIImage()
-        tabBar.shadowImage = UIImage()
-        tabBar.unselectedItemTintColor = UIColor.CustomColor.gray
-        tabBar.tintColor = UIColor.CustomColor.purple
 
         viewControllers = [mainVC, petVC, profileVC]
     }
