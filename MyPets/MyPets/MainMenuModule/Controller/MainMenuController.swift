@@ -12,7 +12,8 @@ final class MainMenuController: UIViewController {
 
     // MARK: - Property
 
-    private let networkService: NetworkServiceProtocol = NetworkService()
+    private lazy var weatherNetworkService = NetworkService(httpAdditionalHeaders: nil)
+    private lazy var imagesNetworkService = NetworkService(httpAdditionalHeaders: self.mainModel.httpAdditionalHeaders)
     var locationManager = CLLocationManager()
 
     let mainView = MainMenuView(frame: UIScreen.main.bounds)
@@ -47,7 +48,8 @@ final class MainMenuController: UIViewController {
         locationManager.delegate = nil
         isGetUserCoordinate = false
         mainView.stopShimmerAnimation()
-        networkService.cancelNetworkRequest()
+        weatherNetworkService.cancelNetworkRequest()
+        imagesNetworkService.cancelNetworkRequest()
     }
 
     // MARK: - UI
@@ -74,38 +76,41 @@ extension MainMenuController {
         // так как на их основании составляется запрос картинок
 
         let serialQueue = DispatchQueue(label: "com.mypets.serialqueue")
+        let semaphore = DispatchSemaphore(value: 1)
 
         // Получение данных о погоде (температура и статус погоды)
 
         serialQueue.sync { [weak self] in
+            semaphore.wait()
             guard let self = self else { return }
-            self.networkService.loadJSONData(from: self.mainModel.weatherURL, httpAdditionalHeaders: nil,
+            self.weatherNetworkService.loadJSONData(from: self.mainModel.weatherURL,
                                              decodeModel: WeatherDescription.self) { result in
                 switch result {
                 case .success(let data):
                     state = data.weather.last?.main
                     description = "\(data.name ?? "")\n\(data.weather.last?.description?.firstUppercased ?? "")"
                     temp = "\(Int(round(data.main.temp ?? 0.0)))"
+                    semaphore.signal()
                 case .failure(let error):
                     self.networkError(error, withTitle: "Сетевая ошибка")
+                    return
                 }
             }
 
             // Получение картинок
 
-            self.networkService.loadJSONData(from: self.mainModel.imagesURL,
-                                             httpAdditionalHeaders: self.mainModel.httpAdditionalHeaders,
+            self.imagesNetworkService.loadJSONData(from: self.mainModel.imagesURL,
                                              decodeModel: WeatherImages.self) { result in
                 switch result {
                 case .success(let data):
                     let randomNumber = Int.random(in: 0...data.homeImages.count - 1)
                     switch state {
                     case "Clear", "Clouds", "Drizzle", "Haze":
-                        mainImage = self.networkService.downloadImage(at: data.strollImages[randomNumber])
-                    default:
-                        mainImage = self.networkService.downloadImage(at: data.homeImages[randomNumber])
+                        mainImage = self.imagesNetworkService.downloadImage(at: data.strollImages[randomNumber])
+                    case .none: self.loadData()
+                    default: mainImage = self.imagesNetworkService.downloadImage(at: data.homeImages[randomNumber])
                     }
-                    backgroundImage = self.networkService.downloadImage(at: data.backgroundImage)
+                    backgroundImage = self.imagesNetworkService.downloadImage(at: data.backgroundImage)
                     DispatchQueue.main.async {
                         self.mainView.stopShimmerAnimation()
                         self.mainView.weatherView.presentWeatherElements(temp: temp, city: description,
@@ -113,6 +118,7 @@ extension MainMenuController {
                     }
                 case .failure(let error):
                     self.networkError(error, withTitle: "Сетевая ошибка")
+                    return
                 }
             }
         }

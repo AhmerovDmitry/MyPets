@@ -39,6 +39,7 @@
 		BC413CD42538A97F002CDD19 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC413CD32538A97F002CDD19 /* CustomTabBarController.swift */; };
 		BC52FFA026D91B9D00A694CB /* WeatherMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC52FF9F26D91B9D00A694CB /* WeatherMenuView.swift */; };
 		BC56F08A26F8C5DA00B15FFA /* PetMenuModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC56F08926F8C5DA00B15FFA /* PetMenuModelTests.swift */; };
+		BC56F09726F8E16900B15FFA /* SpyNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC56F09626F8E16900B15FFA /* SpyNetworkService.swift */; };
 		BC7073252534A6F600B2979F /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073242534A6F600B2979F /* UIButton.swift */; };
 		BC7073322534BA3800B2979F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7073312534BA3800B2979F /* UIView.swift */; };
 		BC7EB65526C6678100BE80AE /* PetCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB65426C6678100BE80AE /* PetCollectionView.swift */; };
@@ -253,6 +254,7 @@
 		BC413CD32538A97F002CDD19 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		BC52FF9F26D91B9D00A694CB /* WeatherMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMenuView.swift; sourceTree = "<group>"; };
 		BC56F08926F8C5DA00B15FFA /* PetMenuModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetMenuModelTests.swift; sourceTree = "<group>"; };
+		BC56F09626F8E16900B15FFA /* SpyNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyNetworkService.swift; sourceTree = "<group>"; };
 		BC7073242534A6F600B2979F /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		BC7073312534BA3800B2979F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		BC7EB65426C6678100BE80AE /* PetCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCollectionView.swift; sourceTree = "<group>"; };
@@ -292,7 +294,7 @@
 		BCCED82426F7D32600A47637 /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
 		BCCED82826F7D78700A47637 /* TabBarPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPage.swift; sourceTree = "<group>"; };
 		BCCED86626F8126200A47637 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
-		BCCED86F26F8B4B300A47637 /* userImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = userImage.jpeg; path = TestDocuments/userImage.jpeg; sourceTree = "<group>"; };
+		BCCED86F26F8B4B300A47637 /* userImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = userImage.jpeg; sourceTree = "<group>"; };
 		BCDAEB6D26CFBD990099CF13 /* InputInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputInfoView.swift; sourceTree = "<group>"; };
 		BCE5115425461A23002FB62E /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		BCE6ACA526F21011007CDB81 /* NetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceError.swift; sourceTree = "<group>"; };
@@ -384,13 +386,13 @@
 		BC3369BA26F60E7100C40691 /* MyPetsUnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				BCCED86F26F8B4B300A47637 /* userImage.jpeg */,
+				BC1DF0AD26F5DFAD004B744A /* Mock */,
+				BC56F0A126F8E25F00B15FFA /* DocumentsForTest */,
 				BCB5B1AB26F4BED500C47A09 /* UserDefaultsServiceTests.swift */,
 				BCCED77826F7A64800A47637 /* NetworkServiceTests.swift */,
 				BC336A2F26F65A6600C40691 /* DateFormatterServiceTests.swift */,
 				BC336A2426F622B800C40691 /* MainWeatherModelTests.swift */,
 				BC56F08926F8C5DA00B15FFA /* PetMenuModelTests.swift */,
-				BC1DF0AD26F5DFAD004B744A /* Mock */,
 				BC3369BD26F60E7100C40691 /* Info.plist */,
 			);
 			path = MyPetsUnitTests;
@@ -450,6 +452,14 @@
 				BCFECA9126F2366E00286EF6 /* Controller */,
 			);
 			path = MainMenuModule;
+			sourceTree = "<group>";
+		};
+		BC56F0A126F8E25F00B15FFA /* DocumentsForTest */ = {
+			isa = PBXGroup;
+			children = (
+				BCCED86F26F8B4B300A47637 /* userImage.jpeg */,
+			);
+			path = DocumentsForTest;
 			sourceTree = "<group>";
 		};
 		BC70732C2534AE9400B2979F /* PremiumModule */ = {
@@ -603,6 +613,7 @@
 			isa = PBXGroup;
 			children = (
 				BCCED86626F8126200A47637 /* MockURLSession.swift */,
+				BC56F09626F8E16900B15FFA /* SpyNetworkService.swift */,
 			);
 			path = MockNetworkService;
 			sourceTree = "<group>";
@@ -868,6 +879,7 @@
 				BCCED86826F8794100A47637 /* GetWeatherResponse.swift in Sources */,
 				BCCED86326F80F7D00A47637 /* NetworkServiceError.swift in Sources */,
 				BCCED86726F8126200A47637 /* MockURLSession.swift in Sources */,
+				BC56F09726F8E16900B15FFA /* SpyNetworkService.swift in Sources */,
 				BCCED86126F7FCCC00A47637 /* MainWeatherModelImpl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
