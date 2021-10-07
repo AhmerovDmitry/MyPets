@@ -14,9 +14,12 @@ final class CustomTabBarController: UITabBarController {
     let storageService: StorageService
     let userDefaultsService: UserDefaultsService
 
+    let customTabBarView: CustomTabBarView
+
     init(storageService: StorageService, userDefaultsService: UserDefaultsService) {
         self.storageService = storageService
         self.userDefaultsService = userDefaultsService
+        self.customTabBarView = CustomTabBarView()
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -29,17 +32,30 @@ final class CustomTabBarController: UITabBarController {
         super.viewDidLoad()
         setupControllers()
         presentPremium()
+        setupCustomTabBarView()
         setupTabBarSettings()
     }
 
     // MARK: - UI
 
     private func setupTabBarSettings() {
-        tabBar.backgroundColor = .white
+        tabBar.backgroundColor = .clear
         tabBar.backgroundImage = UIImage()
         tabBar.shadowImage = UIImage()
+        tabBar.clipsToBounds = true
         tabBar.unselectedItemTintColor = UIColor.CustomColor.gray
         tabBar.tintColor = UIColor.CustomColor.purple
+        view.bringSubviewToFront(tabBar)
+    }
+    private func setupCustomTabBarView() {
+        view.addSubview(customTabBarView)
+        customTabBarView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            customTabBarView.topAnchor.constraint(equalTo: tabBar.topAnchor),
+            customTabBarView.bottomAnchor.constraint(equalTo: tabBar.bottomAnchor),
+            customTabBarView.leftAnchor.constraint(equalTo: tabBar.leftAnchor),
+            customTabBarView.rightAnchor.constraint(equalTo: tabBar.rightAnchor)
+        ])
     }
     private func setupControllers() {
         let mainVC = UINavigationController(rootViewController: MainMenuController())
