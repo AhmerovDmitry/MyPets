@@ -15,13 +15,11 @@ final class CustomTabBarController: UITabBarController {
     let userDefaultsService: UserDefaultsService
 
     let customTabBarView: CustomTabBarView
-    let addPetButton: TabBarAddPetButton
 
     init(storageService: StorageService, userDefaultsService: UserDefaultsService) {
         self.storageService = storageService
         self.userDefaultsService = userDefaultsService
         self.customTabBarView = CustomTabBarView()
-        self.addPetButton = TabBarAddPetButton()
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -36,7 +34,6 @@ final class CustomTabBarController: UITabBarController {
         presentPremium()
         setupCustomTabBarView()
         setupTabBarSettings()
-        setupTabBarAddPetButton()
     }
 
     // MARK: - UI
@@ -58,16 +55,6 @@ final class CustomTabBarController: UITabBarController {
             customTabBarView.bottomAnchor.constraint(equalTo: tabBar.bottomAnchor, constant: tabBar.bounds.height),
             customTabBarView.leftAnchor.constraint(equalTo: tabBar.leftAnchor),
             customTabBarView.rightAnchor.constraint(equalTo: tabBar.rightAnchor)
-        ])
-    }
-    private func setupTabBarAddPetButton() {
-        view.addSubview(addPetButton)
-        addPetButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            addPetButton.widthAnchor.constraint(equalTo: tabBar.widthAnchor, multiplier: 0.15),
-            addPetButton.heightAnchor.constraint(equalTo: tabBar.widthAnchor, multiplier: 0.15),
-            addPetButton.centerXAnchor.constraint(equalTo: tabBar.centerXAnchor),
-            addPetButton.centerYAnchor.constraint(equalTo: tabBar.topAnchor)
         ])
     }
     private func setupControllers() {
