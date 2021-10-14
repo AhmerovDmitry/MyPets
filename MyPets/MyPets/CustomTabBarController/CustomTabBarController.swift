@@ -15,11 +15,13 @@ final class CustomTabBarController: UITabBarController {
     let userDefaultsService: UserDefaultsService
 
     let customTabBarView: CustomTabBarView
+    let addPetButton: TabBarAddPetButton
 
     init(storageService: StorageService, userDefaultsService: UserDefaultsService) {
         self.storageService = storageService
         self.userDefaultsService = userDefaultsService
         self.customTabBarView = CustomTabBarView()
+        self.addPetButton = TabBarAddPetButton()
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -34,6 +36,7 @@ final class CustomTabBarController: UITabBarController {
         presentPremium()
         setupCustomTabBarView()
         setupTabBarSettings()
+        setupTabBarAddPetButton()
     }
 
     // MARK: - UI
@@ -52,9 +55,19 @@ final class CustomTabBarController: UITabBarController {
         customTabBarView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             customTabBarView.topAnchor.constraint(equalTo: tabBar.topAnchor),
-            customTabBarView.bottomAnchor.constraint(equalTo: tabBar.bottomAnchor),
+            customTabBarView.bottomAnchor.constraint(equalTo: tabBar.bottomAnchor, constant: tabBar.bounds.height),
             customTabBarView.leftAnchor.constraint(equalTo: tabBar.leftAnchor),
             customTabBarView.rightAnchor.constraint(equalTo: tabBar.rightAnchor)
+        ])
+    }
+    private func setupTabBarAddPetButton() {
+        view.addSubview(addPetButton)
+        addPetButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            addPetButton.widthAnchor.constraint(equalTo: tabBar.widthAnchor, multiplier: 0.15),
+            addPetButton.heightAnchor.constraint(equalTo: tabBar.widthAnchor, multiplier: 0.15),
+            addPetButton.centerXAnchor.constraint(equalTo: tabBar.centerXAnchor),
+            addPetButton.centerYAnchor.constraint(equalTo: tabBar.topAnchor)
         ])
     }
     private func setupControllers() {
@@ -69,6 +82,13 @@ final class CustomTabBarController: UITabBarController {
         petVC.tabBarItem.title = "Питомцы"
         petVC.tabBarItem.image = UIImage(named: "petIcon")
 
+        let mapVC = UINavigationController(
+            rootViewController: PetMenuController(storageService: storageService,
+                                                  userDefaultsService: userDefaultsService)
+        )
+        mapVC.tabBarItem.title = "Места"
+        mapVC.tabBarItem.image = UIImage(named: "petIcon")
+
         let profileVC = UINavigationController(
             rootViewController: ProfileController(storageService: storageService,
                                                   userDefaultsService: userDefaultsService)
@@ -76,7 +96,7 @@ final class CustomTabBarController: UITabBarController {
         profileVC.tabBarItem.title = "Профиль"
         profileVC.tabBarItem.image = UIImage(named: "profileIcon")
 
-        viewControllers = [mainVC, petVC, profileVC]
+        viewControllers = [mainVC, petVC, mapVC, profileVC]
     }
 }
 
