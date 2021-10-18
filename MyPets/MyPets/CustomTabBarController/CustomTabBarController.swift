@@ -69,12 +69,9 @@ final class CustomTabBarController: UITabBarController {
         petVC.tabBarItem.title = "Питомцы"
         petVC.tabBarItem.image = UIImage(named: "petIcon")
 
-        let mapVC = UINavigationController(
-            rootViewController: PetMenuController(storageService: storageService,
-                                                  userDefaultsService: userDefaultsService)
-        )
+        let mapVC = MapController()
         mapVC.tabBarItem.title = "Места"
-        mapVC.tabBarItem.image = UIImage(named: "petIcon")
+        mapVC.tabBarItem.image = UIImage(named: "mapIcon")
 
         let profileVC = UINavigationController(
             rootViewController: ProfileController(storageService: storageService,
