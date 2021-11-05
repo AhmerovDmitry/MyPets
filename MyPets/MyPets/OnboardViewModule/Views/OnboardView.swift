@@ -35,7 +35,7 @@ final class OnboardView: UIView {
         button.setTitle("Пропустить", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         button.setTitleColor(UIColor.CustomColor.purple, for: .normal)
-        button.addTarget(self, action: #selector(presentController), for: .touchUpInside)
+        button.addTarget(OnboardView.self, action: #selector(presentController), for: .touchUpInside)
         return button
     }()
     private lazy var onboardCollectionView: UICollectionView = {

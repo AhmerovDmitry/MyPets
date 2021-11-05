@@ -38,7 +38,7 @@ final class PremiumView: UIView {
         button.tintColor = .white
         button.contentHorizontalAlignment = .fill
         button.contentVerticalAlignment = .fill
-        button.addTarget(self, action: #selector(closeController), for: .touchUpInside)
+        button.addTarget(PremiumView.self, action: #selector(closeController), for: .touchUpInside)
         return button
     }()
     private let titleLogo: UIImageView = {
