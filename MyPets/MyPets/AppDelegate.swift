@@ -11,46 +11,36 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
-    var userDefaultsService: UserDefaultsService?
-    var storageService: StorageService?
+	var window: UIWindow?
 
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+	func application(_ application: UIApplication,
+					 didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        // MARK: - Services
-        storageService = StorageServiceImpl(repository: FileManager.default)
-        guard let storageService = storageService else { return false }
-        userDefaultsService = UserDefaultsServiceImpl(repository: UserDefaults.standard)
-        guard let userDefaultsService = userDefaultsService else { return false }
+		// MARK: - Services
 
-        /// Если приложение запускается впервые
-        let onboardVC = OnboardController(storageService: storageService, userDefaultsService: userDefaultsService)
-        /// Если приложение ранее запускалось (запуск без OnboardVC)
-        let tabBarC = CustomTabBarController(storageService: storageService, userDefaultsService: userDefaultsService)
+		/// Сервис для работы с сохранением/загрузкой легковесных данных
+		let userDefaultsService = UserDefaultsService(repository: UserDefaults.standard)
 
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.overrideUserInterfaceStyle = .light
-        window?.makeKeyAndVisible()
+		/// Координатор переходов
+		let coordinator = ScreenCoordinator(userDefaultsService: userDefaultsService)
 
-        /// Проверка ключа из UserDefaults на то, запускается приложение первый раз или нет
-        if userDefaultsService.value(forKey: .isNotFirstLaunch) {
-            window?.rootViewController = tabBarC
-        } else {
-            window?.rootViewController = onboardVC
-        }
+		window = UIWindow(frame: UIScreen.main.bounds)
+		window?.overrideUserInterfaceStyle = .light
+		window?.makeKeyAndVisible()
 
-        return true
-    }
+		window?.rootViewController = coordinator.startFlow()
 
-    // MARK: - Core Data stack
-    lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "PetInformation")
-        container.loadPersistentStores(completionHandler: { _, error  in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
+		return true
+	}
+
+	// MARK: - Core Data stack
+	lazy var persistentContainer: NSPersistentContainer = {
+		let container = NSPersistentContainer(name: "PetInformation")
+		container.loadPersistentStores(completionHandler: { _, error  in
+			if let error = error as NSError? {
+				fatalError("Unresolved error \(error), \(error.userInfo)")
+			}
+		})
+		return container
+	}()
 }

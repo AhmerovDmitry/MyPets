@@ -38,7 +38,6 @@ final class PremiumView: UIView {
         button.tintColor = .white
         button.contentHorizontalAlignment = .fill
         button.contentVerticalAlignment = .fill
-        button.addTarget(PremiumView.self, action: #selector(closeController), for: .touchUpInside)
         return button
     }()
     private let titleLogo: UIImageView = {
@@ -95,6 +94,7 @@ final class PremiumView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
+		setButtonAction()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -178,10 +178,18 @@ final class PremiumView: UIView {
     }
 }
 
+// MARK: - Buttons Methods
+
+extension PremiumView {
+	private func setButtonAction() {
+		closeButton.addTarget(self, action: #selector(closeControllerWithoutPurchase), for: .touchUpInside)
+	}
+}
+
 // MARK: - Methods
 
 extension PremiumView {
-    @objc private func closeController() {
+    @objc private func closeControllerWithoutPurchase() {
         delegate?.dismissController(withPurchase: false)
     }
     @objc private func closeControllerWithPurchase() {
