@@ -82,7 +82,8 @@ final class OnboardCollectionCell: UICollectionViewCell {
 
 extension OnboardCollectionCell {
 
-	func configureCell(image: String, description: String) {
+	func configureCell(image: String?, description: String?) {
+		guard let image = image, let description = description else { return }
 		onboardView.image = UIImage(named: image)
 		descriptionLabel.text = description
 	}
