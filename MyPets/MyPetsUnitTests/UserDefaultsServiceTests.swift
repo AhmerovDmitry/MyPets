@@ -15,7 +15,7 @@ class UserDefaultsServiceTests: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         repositoryMock = MockUDRepository()
-        sut = UserDefaultsServiceImpl(repository: repositoryMock)
+        sut = UserDefaultsService(repository: repositoryMock)
     }
 
     override func tearDownWithError() throws {

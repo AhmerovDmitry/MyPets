@@ -11,7 +11,7 @@ import XCTest
 
 class MyPetsSnapshotTests: XCTestCase {
     let storageService = StorageServiceImpl(repository: FileManager.default)
-    let userDefaultsService = UserDefaultsServiceImpl(repository: UserDefaults.standard)
+    let userDefaultsService = UserDefaultsService(repository: UserDefaults.standard)
 
     func testProfileController() throws {
         let sut = ProfileController(storageService: storageService, userDefaultsService: userDefaultsService)

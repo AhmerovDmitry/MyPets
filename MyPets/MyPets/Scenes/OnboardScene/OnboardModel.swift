@@ -7,18 +7,18 @@
 
 import Foundation
 
-protocol OnboardModelProtocol {
-    var imagesName: [String] { get }
-    var description: [String] { get }
-}
+/// Модель данных для экрана обучения
+struct OnboardModel {
 
-struct OnboardModel: OnboardModelProtocol {
+	/// Название изображений
     let imagesName = [
         "onboardImage_1",
         "onboardImage_2",
         "onboardImage_3",
         "onboardImage_4"
     ]
+
+	/// Описание страниц обучения
     let description = [
         "Следите за погодными условиями прямо в приложении",
         "Вся информация о питомце всегда под рукой",
