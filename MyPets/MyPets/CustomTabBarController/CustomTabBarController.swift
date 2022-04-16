@@ -94,10 +94,10 @@ extension CustomTabBarController {
     private func presentPremium() {
         if !userDefaultsService.value(forKey: .isAppPurchased) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-                guard let self = self else { return }
-                let premiumController = PremiumController(userDefaultsService: self.userDefaultsService)
-                premiumController.modalPresentationStyle = .fullScreen
-                self.present(premiumController, animated: true, completion: nil)
+//                guard let self = self else { return }
+//                let premiumController = PremiumController(userDefaultsService: self.userDefaultsService)
+//                premiumController.modalPresentationStyle = .fullScreen
+//                self.present(premiumController, animated: true, completion: nil)
             }
         }
     }

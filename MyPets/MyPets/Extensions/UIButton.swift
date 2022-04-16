@@ -31,6 +31,8 @@ extension UIButton {
         } else {
             button.setTitleColor(.white, for: .normal)
         }
+		button.accessibilityIdentifier = "doneButton"
+		button.translatesAutoresizingMaskIntoConstraints = false
 
         return button
     }

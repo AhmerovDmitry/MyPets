@@ -17,6 +17,9 @@ protocol OnboardViewControllerProtocol: AnyObject {
 	/// Обновление сцены
 	/// - Parameter model: Модель данных
 	func updateScene(from model: OnboardModel)
+
+	/// Показать экран
+	func presentScreen()
 }
 
 /// Контроллер обучающего экрана
@@ -31,6 +34,9 @@ class OnboardViewController: UIViewController {
 	/// Интерактор экрана обучения
 	private let interactor: OnboardInteractorProtocol
 
+	/// Координатор переходов
+	private let coordinator: ScreenCoordinatorProtocol
+
 	/// Модель данных для экрана обучения
 	private var model: OnboardModel?
 
@@ -38,11 +44,15 @@ class OnboardViewController: UIViewController {
 	/// - Parameters:
 	///  - userDefaultsService: Сервис работы с сохранением легковесных данных
 	///  - interactor: Интерактор экрана обучения
+	///  - coordinator: Координатор переходов
+	///  - onboardView: Вью экрана обучения
 	init(userDefaultsService: UserDefaultsServiceProtocol,
 		 interactor: OnboardInteractorProtocol,
+		 coordinator: ScreenCoordinatorProtocol,
 		 onboardView: OnboardViewProtocol = OnboardView(frame: UIScreen.main.bounds)) {
 		self.userDefaultsService = userDefaultsService
 		self.interactor = interactor
+		self.coordinator = coordinator
 		self.onboardView = onboardView
 		super.init(nibName: nil, bundle: nil)
 	}
@@ -57,6 +67,7 @@ class OnboardViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		onboardView.setViewParent(controller: self)
 		onboardView.setCollectionViewDelegate(self)
 		onboardView.setCollectionViewDataSource(self)
 		displayOnboard()
@@ -79,14 +90,18 @@ extension OnboardViewController: OnboardViewControllerProtocol {
 		self.model = model
 		onboardView.setPageControl(count: model.imageNameList.count)
 	}
+
+	func presentScreen() {
+		coordinator.showPremiumScene()
+	}
 }
 
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource
 
 extension OnboardViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		guard let cellCount = model?.imageNameList.count else { return 0 }
-		return cellCount
+		return model?.imageNameList.count ?? 0
 	}
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
