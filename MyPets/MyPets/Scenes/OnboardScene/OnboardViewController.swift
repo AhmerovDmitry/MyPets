@@ -77,7 +77,7 @@ extension OnboardViewController: OnboardViewControllerProtocol {
 
 	func updateScene(from model: OnboardModel) {
 		self.model = model
-		onboardView.setPageControl(count: model.imagesName.count)
+		onboardView.setPageControl(count: model.imageNameList.count)
 	}
 }
 
@@ -85,7 +85,7 @@ extension OnboardViewController: OnboardViewControllerProtocol {
 
 extension OnboardViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		guard let cellCount = model?.imagesName.count else { return 0 }
+		guard let cellCount = model?.imageNameList.count else { return 0 }
 		return cellCount
 	}
 
@@ -94,8 +94,8 @@ extension OnboardViewController: UICollectionViewDelegate, UICollectionViewDataS
 			withReuseIdentifier: onboardView.cellID,
 			for: indexPath) as? OnboardCollectionCell else { return UICollectionViewCell() }
 
-		cell.configureCell(image: model?.imagesName[indexPath.row],
-						   description: model?.description[indexPath.row])
+		cell.configureCell(image: model?.imageNameList[indexPath.row],
+						   description: model?.descriptionList[indexPath.row])
 
 		return cell
 	}

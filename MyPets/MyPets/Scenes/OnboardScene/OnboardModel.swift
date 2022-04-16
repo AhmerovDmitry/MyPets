@@ -11,7 +11,7 @@ import Foundation
 struct OnboardModel {
 
 	/// Название изображений
-    let imagesName = [
+    let imageNameList = [
         "onboardImage_1",
         "onboardImage_2",
         "onboardImage_3",
@@ -19,7 +19,7 @@ struct OnboardModel {
     ]
 
 	/// Описание страниц обучения
-    let description = [
+    let descriptionList = [
         "Следите за погодными условиями прямо в приложении",
         "Вся информация о питомце всегда под рукой",
         "Выбирайте, куда сходить с любимым питомцем",

@@ -34,8 +34,8 @@ final class OnboardInteractorTests: XCTestCase {
 		sut.fetchData()
 
 		// assert
-		XCTAssertEqual(model.imagesName.count, presenter.model.imagesName.count)
-		XCTAssertEqual(model.description.count, presenter.model.description.count)
+		XCTAssertEqual(model.imageNameList.count, presenter.model.imageNameList.count)
+		XCTAssertEqual(model.descriptionList.count, presenter.model.descriptionList.count)
 	}
 
 	func testInteractorFetchingValidImagesName() {
@@ -46,11 +46,11 @@ final class OnboardInteractorTests: XCTestCase {
 		sut.fetchData()
 
 		// assert
-		XCTAssertEqual(model.imagesName.count, 4)
-		XCTAssertEqual(model.imagesName[0], "onboardImage_1")
-		XCTAssertEqual(model.imagesName[1], "onboardImage_2")
-		XCTAssertEqual(model.imagesName[2], "onboardImage_3")
-		XCTAssertEqual(model.imagesName[3], "onboardImage_4")
+		XCTAssertEqual(model.imageNameList.count, 4)
+		XCTAssertEqual(model.imageNameList[0], presenter.model.imageNameList[0])
+		XCTAssertEqual(model.imageNameList[1], presenter.model.imageNameList[1])
+		XCTAssertEqual(model.imageNameList[2], presenter.model.imageNameList[2])
+		XCTAssertEqual(model.imageNameList[3], presenter.model.imageNameList[3])
 	}
 
 	func testInteractorFetchingValidDescriptions() {
@@ -61,10 +61,10 @@ final class OnboardInteractorTests: XCTestCase {
 		sut.fetchData()
 
 		// assert
-		XCTAssertEqual(model.description.count, 4)
-		XCTAssertEqual(model.description[0], "Следите за погодными условиями прямо в приложении")
-		XCTAssertEqual(model.description[1], "Вся информация о питомце всегда под рукой")
-		XCTAssertEqual(model.description[2], "Выбирайте, куда сходить с любимым питомцем")
-		XCTAssertEqual(model.description[3], "Получите Premium для снятия ограничений")
+		XCTAssertEqual(model.descriptionList.count, 4)
+		XCTAssertEqual(model.descriptionList[0], presenter.model.descriptionList[0])
+		XCTAssertEqual(model.descriptionList[1], presenter.model.descriptionList[1])
+		XCTAssertEqual(model.descriptionList[2], presenter.model.descriptionList[2])
+		XCTAssertEqual(model.descriptionList[3], presenter.model.descriptionList[3])
 	}
 }
