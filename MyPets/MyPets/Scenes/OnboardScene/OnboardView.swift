@@ -79,18 +79,22 @@ final class OnboardView: UIView {
 		super.init(frame: frame)
 		setupUI()
 	}
+
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-
-	// MARK: - Setup UI
 
 	override func layoutSubviews() {
 		super.layoutSubviews()
 		setCornerRadiusForElements()
 	}
+}
 
-	private func setupUI() {
+// MARK: - Private Setup UI
+
+private extension OnboardView {
+
+	func setupUI() {
 		setSelfViewUI()
 		setCollectionViewConstraints()
 		setPageControlConstraints()
@@ -98,11 +102,11 @@ final class OnboardView: UIView {
 		setCloseButtonConstraints()
 	}
 
-	private func setSelfViewUI() {
+	func setSelfViewUI() {
 		self.backgroundColor = .white
 	}
 
-	private func setCollectionViewConstraints() {
+	func setCollectionViewConstraints() {
 		self.addSubview(collectionView)
 		collectionView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -114,7 +118,7 @@ final class OnboardView: UIView {
 		])
 	}
 
-	private func setPageControlConstraints() {
+	func setPageControlConstraints() {
 		self.addSubview(pageControl)
 		pageControl.translatesAutoresizingMaskIntoConstraints = false
 
@@ -126,7 +130,7 @@ final class OnboardView: UIView {
 		])
 	}
 
-	private func setDoneButtonConstraints() {
+	func setDoneButtonConstraints() {
 		self.addSubview(doneButton)
 		doneButton.translatesAutoresizingMaskIntoConstraints = false
 
@@ -139,7 +143,7 @@ final class OnboardView: UIView {
 		doneButton.accessibilityIdentifier = "doneButton"
 	}
 
-	private func setCloseButtonConstraints() {
+	func setCloseButtonConstraints() {
 		self.addSubview(skipButton)
 		skipButton.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -148,16 +152,16 @@ final class OnboardView: UIView {
 		])
 	}
 
-	private func setCornerRadiusForElements() {
+	func setCornerRadiusForElements() {
 		doneButton.layer.cornerRadius = doneButton.bounds.height / 2
 	}
 }
 
-// MARK: - Methods
+// MARK: - User Interactions
 
-extension OnboardView {
+private extension OnboardView {
 
-	@objc private func nextDescriptionView() {
+	@objc func nextDescriptionView() {
 		pageControl.currentPage += 1
 		let indexPath = IndexPath(item: pageControl.currentPage, section: 0)
 		collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
@@ -174,8 +178,7 @@ extension OnboardView {
 			skipButton.isHidden = true
 		}
 	}
-	@objc private func presentController(_ parent: UIViewController) {
-		//        delegate?.presentTabBarController()
+	@objc func presentController(_ parent: UIViewController) {
 	}
 }
 

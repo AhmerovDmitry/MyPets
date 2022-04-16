@@ -31,17 +31,22 @@ class OnboardViewController: UIViewController {
 	/// Интерактор экрана обучения
 	private let interactor: OnboardInteractorProtocol
 
+	/// Модель данных для экрана обучения
 	private var model: OnboardModel?
 
 	/// Инициализатор
-	/// - Parameter userDefaultsService: Сервис работы с сохранением легковесных данных
+	/// - Parameters:
+	///  - userDefaultsService: Сервис работы с сохранением легковесных данных
+	///  - interactor: Интерактор экрана обучения
 	init(userDefaultsService: UserDefaultsServiceProtocol,
-		 interactor: OnboardInteractorProtocol) {
+		 interactor: OnboardInteractorProtocol,
+		 onboardView: OnboardViewProtocol = OnboardView(frame: UIScreen.main.bounds)) {
 		self.userDefaultsService = userDefaultsService
 		self.interactor = interactor
-		self.onboardView = OnboardView(frame: UIScreen.main.bounds)
+		self.onboardView = onboardView
 		super.init(nibName: nil, bundle: nil)
 	}
+
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
@@ -72,25 +77,25 @@ extension OnboardViewController: OnboardViewControllerProtocol {
 
 	func updateScene(from model: OnboardModel) {
 		self.model = model
-		onboardView.setPageControl(count: model.imagesName.count)
+		onboardView.setPageControl(count: model.imageNameList.count)
 	}
 }
 
+// MARK: - UICollectionViewDelegate, UICollectionViewDataSource
+
 extension OnboardViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		guard let cellCount = model?.imagesName.count else { return 0 }
+		guard let cellCount = model?.imageNameList.count else { return 0 }
 		return cellCount
 	}
 
-	func collectionView(_ collectionView: UICollectionView,
-						cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		guard let cell = collectionView.dequeueReusableCell(
 			withReuseIdentifier: onboardView.cellID,
-			for: indexPath
-		) as? OnboardCollectionCell else { return UICollectionViewCell() }
+			for: indexPath) as? OnboardCollectionCell else { return UICollectionViewCell() }
 
-		cell.configureCell(image: model?.imagesName[indexPath.row] ?? "",
-						   description: model?.description[indexPath.row] ?? "")
+		cell.configureCell(image: model?.imageNameList[indexPath.row],
+						   description: model?.descriptionList[indexPath.row])
 
 		return cell
 	}

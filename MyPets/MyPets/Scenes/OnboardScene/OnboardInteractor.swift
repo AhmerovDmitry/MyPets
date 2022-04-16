@@ -33,7 +33,6 @@ final class OnboardInteractor {
 extension OnboardInteractor: OnboardInteractorProtocol {
 
 	func fetchData() {
-		let model = OnboardModel()
-		presenter.prepareData(from: model)
+		presenter.prepareData(from: OnboardModel())
 	}
 }
