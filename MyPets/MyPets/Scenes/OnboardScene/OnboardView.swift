@@ -23,12 +23,18 @@ protocol OnboardViewProtocol: UIView {
 	/// - Parameter controller: Контроллер, который будет являться источником данных коллекции
 	func setCollectionViewDataSource<T: UICollectionViewDataSource>(_ controller: T)
 
+	/// Установить родительский контроллер для вью
+	func setViewParent(controller: OnboardViewControllerProtocol)
+
 	/// Идентификатор ячейки
 	var cellID: String { get }
 }
 
 /// Вью обучения
 final class OnboardView: UIView {
+
+	/// Контроллер экрана обучения
+	weak var controller: OnboardViewControllerProtocol?
 
 	// MARK: UI Elements
 
@@ -40,6 +46,7 @@ final class OnboardView: UIView {
 		if #available(iOS 14.0, *) {
 			pageControl.backgroundStyle = .minimal
 		}
+		pageControl.translatesAutoresizingMaskIntoConstraints = false
 
 		return pageControl
 	}()
@@ -56,6 +63,7 @@ final class OnboardView: UIView {
 		button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)
 		button.setTitleColor(UIColor.CustomColor.purple, for: .normal)
 		button.addTarget(OnboardView.self, action: #selector(presentController), for: .touchUpInside)
+		button.translatesAutoresizingMaskIntoConstraints = false
 
 		return button
 	}()
@@ -71,6 +79,7 @@ final class OnboardView: UIView {
 		collectionView.backgroundColor = .white
 		collectionView.showsHorizontalScrollIndicator = false
 		collectionView.register(OnboardCollectionCell.self, forCellWithReuseIdentifier: cellID)
+		collectionView.translatesAutoresizingMaskIntoConstraints = false
 
 		return collectionView
 	}()
@@ -95,58 +104,24 @@ final class OnboardView: UIView {
 private extension OnboardView {
 
 	func setupUI() {
-		setSelfViewUI()
-		setCollectionViewConstraints()
-		setPageControlConstraints()
-		setDoneButtonConstraints()
-		setCloseButtonConstraints()
-	}
-
-	func setSelfViewUI() {
-		self.backgroundColor = .white
-	}
-
-	func setCollectionViewConstraints() {
-		self.addSubview(collectionView)
-		collectionView.translatesAutoresizingMaskIntoConstraints = false
+		[collectionView, pageControl, doneButton, skipButton].forEach { self.addSubview($0) }
 
 		NSLayoutConstraint.activate([
 			collectionView.topAnchor.constraint(equalTo: self.topAnchor),
 			collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
 			collectionView.leftAnchor.constraint(equalTo: self.leftAnchor),
-			collectionView.rightAnchor.constraint(equalTo: self.rightAnchor)
-		])
-	}
+			collectionView.rightAnchor.constraint(equalTo: self.rightAnchor),
 
-	func setPageControlConstraints() {
-		self.addSubview(pageControl)
-		pageControl.translatesAutoresizingMaskIntoConstraints = false
-
-		NSLayoutConstraint.activate([
 			pageControl.heightAnchor.constraint(equalToConstant: 10),
 			pageControl.widthAnchor.constraint(equalTo: self.widthAnchor),
 			pageControl.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-			pageControl.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: self.bounds.height * 0.06 + 16)
-		])
-	}
+			pageControl.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: self.bounds.height * 0.06 + 16),
 
-	func setDoneButtonConstraints() {
-		self.addSubview(doneButton)
-		doneButton.translatesAutoresizingMaskIntoConstraints = false
-
-		NSLayoutConstraint.activate([
 			doneButton.topAnchor.constraint(equalTo: pageControl.bottomAnchor, constant: 32),
 			doneButton.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.06),
 			doneButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
-			doneButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
-		])
-		doneButton.accessibilityIdentifier = "doneButton"
-	}
+			doneButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
 
-	func setCloseButtonConstraints() {
-		self.addSubview(skipButton)
-		skipButton.translatesAutoresizingMaskIntoConstraints = false
-		NSLayoutConstraint.activate([
 			skipButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 32),
 			skipButton.rightAnchor.constraint(lessThanOrEqualTo: self.rightAnchor, constant: -32)
 		])
@@ -178,7 +153,8 @@ private extension OnboardView {
 			skipButton.isHidden = true
 		}
 	}
-	@objc func presentController(_ parent: UIViewController) {
+	@objc func presentController() {
+		controller?.presentScreen()
 	}
 }
 
@@ -200,5 +176,9 @@ extension OnboardView: OnboardViewProtocol {
 
 	func setCollectionViewDataSource<T: UICollectionViewDataSource>(_ controller: T) {
 		collectionView.dataSource = controller
+	}
+
+	func setViewParent(controller: OnboardViewControllerProtocol) {
+		self.controller = controller
 	}
 }

@@ -132,9 +132,9 @@ extension ProfileController {
         }
     }
     private func presentPremiumController() {
-        let premiumController = PremiumController(userDefaultsService: userDefaultsService)
-        premiumController.modalPresentationStyle = .fullScreen
-        self.present(premiumController, animated: true, completion: nil)
+//        let premiumController = PremiumController(userDefaultsService: userDefaultsService)
+//        premiumController.modalPresentationStyle = .fullScreen
+//        self.present(premiumController, animated: true, completion: nil)
     }
 }
 

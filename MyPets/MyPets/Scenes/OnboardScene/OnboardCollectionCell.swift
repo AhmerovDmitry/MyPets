@@ -15,7 +15,7 @@ protocol OnboardCollectionCellProtocol {
 	/// - Parameters:
 	///  - image: Изображение
 	///  - description: Описание
-	func configureCell(image: String, description: String)
+	func configureCell(image: String?, description: String?)
 }
 
 /// Ячейка экрана обучения
@@ -26,6 +26,7 @@ final class OnboardCollectionCell: UICollectionViewCell {
 	private let onboardView: UIImageView = {
 		let image = UIImageView()
 		image.contentMode = .scaleAspectFit
+		image.translatesAutoresizingMaskIntoConstraints = false
 
 		return image
 	}()
@@ -37,6 +38,7 @@ final class OnboardCollectionCell: UICollectionViewCell {
 		label.textColor = UIColor.CustomColor.dark
 		label.numberOfLines = 2
 		label.adjustsFontSizeToFitWidth = true
+		label.translatesAutoresizingMaskIntoConstraints = false
 
 		return label
 	}()
@@ -53,25 +55,15 @@ final class OnboardCollectionCell: UICollectionViewCell {
 	// MARK: - Setup UI
 
 	private func setupUI() {
-		setDescriptionLabelConstraints()
-		setOnboardViewConstraints()
-	}
-
-	private func setDescriptionLabelConstraints() {
 		self.addSubview(descriptionLabel)
-		descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+		self.addSubview(onboardView)
+
 		NSLayoutConstraint.activate([
 			descriptionLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.7),
 			descriptionLabel.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.06),
 			descriptionLabel.topAnchor.constraint(equalTo: self.centerYAnchor),
-			descriptionLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor)
-		])
-	}
+			descriptionLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
 
-	private func setOnboardViewConstraints() {
-		self.addSubview(onboardView)
-		onboardView.translatesAutoresizingMaskIntoConstraints = false
-		NSLayoutConstraint.activate([
 			onboardView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
 			onboardView.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
 			onboardView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
@@ -80,7 +72,9 @@ final class OnboardCollectionCell: UICollectionViewCell {
 	}
 }
 
-extension OnboardCollectionCell {
+// MARK: - OnboardCollectionCellProtocol
+
+extension OnboardCollectionCell: OnboardCollectionCellProtocol {
 
 	func configureCell(image: String?, description: String?) {
 		guard let image = image, let description = description else { return }
