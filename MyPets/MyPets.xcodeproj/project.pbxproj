@@ -46,6 +46,7 @@
 		3018500F280AE30000237B8E /* PremiumInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30185004280AC0FA00237B8E /* PremiumInteractor.swift */; };
 		30185010280AE30300237B8E /* PremiumPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30185006280AC10000237B8E /* PremiumPresenter.swift */; };
 		30185011280AE30400237B8E /* PremiumPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30185006280AC10000237B8E /* PremiumPresenter.swift */; };
+		30185014280BFFAD00237B8E /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30185013280BFFAD00237B8E /* BackgroundViewController.swift */; };
 		BC0132CF26E15DFE0065F1B7 /* MainWeatherModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0132CE26E15DFE0065F1B7 /* MainWeatherModelImpl.swift */; };
 		BC0D29DF26ED490F00C3AF2D /* PetMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29DE26ED490F00C3AF2D /* PetMenuModel.swift */; };
 		BC0D29E126EE9B9100C3AF2D /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29E026EE9B9100C3AF2D /* ProfileController.swift */; };
@@ -266,6 +267,7 @@
 		30185004280AC0FA00237B8E /* PremiumInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumInteractor.swift; sourceTree = "<group>"; };
 		30185006280AC10000237B8E /* PremiumPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumPresenter.swift; sourceTree = "<group>"; };
 		30185008280AC56300237B8E /* PremiumTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumTableCell.swift; sourceTree = "<group>"; };
+		30185013280BFFAD00237B8E /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
 		BC0132CE26E15DFE0065F1B7 /* MainWeatherModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWeatherModelImpl.swift; sourceTree = "<group>"; };
 		BC0D29DE26ED490F00C3AF2D /* PetMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetMenuModel.swift; sourceTree = "<group>"; };
 		BC0D29E026EE9B9100C3AF2D /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 		3012B9D627933B30003AB5DF /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				30185012280BFF8500237B8E /* BackgroundScene */,
 				3012B9D727933B3A003AB5DF /* OnboardScene */,
 				30185003280ABD5000237B8E /* PremiumScene */,
 			);
@@ -434,6 +437,14 @@
 				30185006280AC10000237B8E /* PremiumPresenter.swift */,
 			);
 			path = PremiumScene;
+			sourceTree = "<group>";
+		};
+		30185012280BFF8500237B8E /* BackgroundScene */ = {
+			isa = PBXGroup;
+			children = (
+				30185013280BFFAD00237B8E /* BackgroundViewController.swift */,
+			);
+			path = BackgroundScene;
 			sourceTree = "<group>";
 		};
 		BC0D29E226EE9B9E00C3AF2D /* ProfileModule */ = {
@@ -1000,6 +1011,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30185014280BFFAD00237B8E /* BackgroundViewController.swift in Sources */,
 				BC26150426F7705800D4A58D /* String.swift in Sources */,
 				BC2614F526F686C300D4A58D /* DataTransferDelegate.swift in Sources */,
 				BCC259E726C40D3E00FCAC54 /* MainMenuView.swift in Sources */,

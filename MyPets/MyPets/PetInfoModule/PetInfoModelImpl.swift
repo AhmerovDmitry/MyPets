@@ -16,7 +16,7 @@ protocol PetInfoModel {
 }
 
 final class PetInfoModelImpl {
-    private let storageService: StorageService
+    private let storageService: StorageServiceProtocol
     private(set) var objectForFilling: PetDTO
 
     /// Массив со стройками которые заполняют тайтл ячейки таблицы
@@ -34,7 +34,7 @@ final class PetInfoModelImpl {
 
     // Решил разгрузить контроллер и вынес логику storageService в модель
 
-    init(storageService: StorageService, cellIndex: Int?) {
+    init(storageService: StorageServiceProtocol, cellIndex: Int?) {
         self.storageService = storageService
 
         if let index = cellIndex {

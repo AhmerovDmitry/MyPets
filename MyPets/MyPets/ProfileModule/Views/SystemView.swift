@@ -14,7 +14,7 @@ final class SystemView: UIView {
     weak var delegate: SystemViewResetButtonsDelegate?
 
     private var systemModel: SystemModelProtocol
-    private var userDefaultsService: UserDefaultsService
+    private var userDefaultsService: UserDefaultsServiceProtocol
 
     private let systemTableViewCellID = "systemTableViewCellID"
     private lazy var systemTableView: UITableView = {
@@ -29,7 +29,7 @@ final class SystemView: UIView {
 
     // MARK: - Init / Lifecycle
 
-    init(userDefaultsService: UserDefaultsService) {
+    init(userDefaultsService: UserDefaultsServiceProtocol) {
         self.systemModel = SystemModel()
         self.userDefaultsService = userDefaultsService
         super.init(frame: CGRect(x: 0, y: 0,

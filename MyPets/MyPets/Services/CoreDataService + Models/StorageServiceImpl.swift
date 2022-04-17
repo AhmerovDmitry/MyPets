@@ -47,10 +47,10 @@ protocol ObjectIdentifier {
     var identifier: String { get }
 }
 
-typealias StorageService = CoreDataLoadingService & CoreDataSavingService &
+typealias StorageServiceProtocol = CoreDataLoadingService & CoreDataSavingService &
     CoreDataEditingService & FileManagerService & SaveContext & ObjectIdentifier
 
-final class StorageServiceImpl: StorageService {
+final class StorageService: StorageServiceProtocol {
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
     lazy var context: NSManagedObjectContext? = appDelegate?.persistentContainer.viewContext
     var objects: [OMPetInformation] = []
@@ -63,7 +63,7 @@ final class StorageServiceImpl: StorageService {
 }
 
 // MARK: - Загрузка / сохранение / удаление фотографий
-extension StorageServiceImpl {
+extension StorageService {
     /// Метод загружающий фотографию из директории устройства
     /// - Parameter photoID: Индекс загружаемой фотографии
     /// - Returns: Загружаемая фотография или nil
@@ -125,7 +125,7 @@ extension StorageServiceImpl {
 }
 
 // MARK: - Загрузка объектов
-extension StorageServiceImpl {
+extension StorageService {
     /// Загрузка всех объектов из CoreData
     /// происходит в CustomTabBarController
     func loadEntitys() {
@@ -142,7 +142,7 @@ extension StorageServiceImpl {
 }
 
 // MARK: - Сохранение объекта
-extension StorageServiceImpl {
+extension StorageService {
     /// Сохранение объекта в CoreData
     /// - Parameter entity: Сохраняемый объект
     func saveEntity(_ entity: PetDTO) {
@@ -156,7 +156,7 @@ extension StorageServiceImpl {
 }
 
 // MARK: - Редактирование / удаление объекта
-extension StorageServiceImpl {
+extension StorageService {
     /// Редактирование объекта по индексу
     /// - Parameters:
     ///   - entity: Редактируемый объект
@@ -178,7 +178,7 @@ extension StorageServiceImpl {
 }
 
 // MARK: - Сохранение контекста
-extension StorageServiceImpl {
+extension StorageService {
     /// Сохранение контекста для удобства
     /// - Parameter context: Контекст для сохранения
     func saveContext(_ context: NSManagedObjectContext) {
@@ -195,7 +195,7 @@ extension StorageServiceImpl {
 }
 
 // MARK: - Создание уникального идентификатора
-extension StorageServiceImpl {
+extension StorageService {
     var identifier: String {
         return UUID().uuidString
     }

@@ -27,14 +27,14 @@ extension MainMenuController: CLLocationManagerDelegate {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedAlways, .authorizedWhenInUse:
             locationManager.startUpdatingLocation()
-        case .denied:
-            UIAlertController.locationRequest(
-                self, title: "Вы запретили использовать местоположение.",
-                message: "Без определения местоположения мы не сможем показать погодные данные,"
-                    + "хотите изменить свое решение?",
-                systemWayUrl: UIApplication.openSettingsURLString
-            )
-            mainView.stopShimmerAnimation()
+        case .denied: break
+//            UIAlertController.locationRequest(
+//                self, title: "Вы запретили использовать местоположение.",
+//                message: "Без определения местоположения мы не сможем показать погодные данные,"
+//                    + "хотите изменить свое решение?",
+//                systemWayUrl: UIApplication.openSettingsURLString
+//            )
+//            mainView.stopShimmerAnimation()
         case .restricted:
             mainView.stopShimmerAnimation()
         case .notDetermined:

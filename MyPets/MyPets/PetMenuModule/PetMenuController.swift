@@ -17,8 +17,8 @@ final class PetMenuController: UIViewController {
 
     // MARK: - Property
 
-    private let storageService: StorageService
-    private let userDefaultsService: UserDefaultsService
+    private let storageService: StorageServiceProtocol
+    private let userDefaultsService: UserDefaultsServiceProtocol
 
     private let petMenuModel = PetMenuModel()
     private lazy var petMenuView = PetMenuView(frame: view.bounds)
@@ -28,7 +28,7 @@ final class PetMenuController: UIViewController {
 
     // MARK: - Init / Lifecycle
 
-    init(storageService: StorageService, userDefaultsService: UserDefaultsService) {
+    init(storageService: StorageServiceProtocol, userDefaultsService: UserDefaultsServiceProtocol) {
         self.storageService = storageService
         self.userDefaultsService = userDefaultsService
         super.init(nibName: nil, bundle: nil)

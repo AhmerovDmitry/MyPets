@@ -16,33 +16,43 @@ protocol ScreenCoordinatorProtocol {
 	func startFlow() -> UIViewController
 
 	/// Показать экран с обучением
-	/// - Returns: Контроллер для запуска
-	func showOnboardScene() -> UIViewController
+	func showOnboardScene(parent: UIViewController)
+
+	/// Показать основной экран с нижним навигационным элементом
+	func showMainTabBarScene(parent: UIViewController)
 
 	/// Показать экран с возможностью купить премиум версию
-	func showPremiumScene()
+	func showPremiumScene(parent: UIViewController)
 }
 
 /// Координатор переходов
 final class ScreenCoordinator: ScreenCoordinatorProtocol {
 
+	/// Сервис для работы с сохранением/загрузкой легковесных данных
 	private let userDefaultsService: UserDefaultsServiceProtocol
 
+	/// Сервис для работы с сохранением данных в CoreData
+	private let storageService: StorageServiceProtocol
+
 	/// Инициализатор
-	/// - Parameter userDefaultsService: Сервис для работы с сохранением/загрузкой легковесных данных
-	init(userDefaultsService: UserDefaultsServiceProtocol) {
+	/// - Parameters:
+	///  - userDefaultsService: Сервис для работы с сохранением/загрузкой легковесных данных
+	///  - storaService: Сервис для работы с сохранением данных в CoreData
+	init(userDefaultsService: UserDefaultsServiceProtocol,
+		 storageService: StorageServiceProtocol) {
 		self.userDefaultsService = userDefaultsService
+		self.storageService = storageService
 	}
 
 	func startFlow() -> UIViewController {
-		if userDefaultsService.value(forKey: .isNotFirstLaunch) {
-			return showOnboardScene()
-		} else {
-			return showOnboardScene()
-		}
+		let controller = BackgroundViewController(userDefaultsService: userDefaultsService,
+												  storageService: storageService,
+												  coordinator: self)
+
+		return controller
 	}
 
-	func showOnboardScene() -> UIViewController {
+	func showOnboardScene(parent: UIViewController) {
 		let presenter = OnboardPresenter()
 		let interactor = OnboardInteractor(presenter: presenter)
 		let viewController = OnboardViewController(userDefaultsService: userDefaultsService,
@@ -50,18 +60,33 @@ final class ScreenCoordinator: ScreenCoordinatorProtocol {
 												   coordinator: self)
 		presenter.viewController = viewController
 
-		return viewController
+		present(controller: viewController, parent: parent)
 	}
 
-	func showPremiumScene() {
+	func showMainTabBarScene(parent: UIViewController) {
+		let viewController = CustomTabBarController(storageService: storageService,
+													userDefaultsService: userDefaultsService)
+
+		present(controller: viewController, parent: parent)
+	}
+
+	func showPremiumScene(parent: UIViewController) {
 		let presenter = PremiumPresenter()
 		let interactor = PremiumInteractor(presenter: presenter)
 		let viewController = PremiumViewController(userDefaultsService: userDefaultsService, interactor: interactor)
 		presenter.viewController = viewController
 
-		guard let topController = UIApplication.shared.windows
-				.filter({ $0.isKeyWindow }).last?.rootViewController else { return }
-		viewController.modalPresentationStyle = .fullScreen
-		topController.present(viewController, animated: true)
+		present(controller: viewController, parent: parent)
+	}
+}
+
+private extension ScreenCoordinator {
+
+	/// Модально показать экран в полном окне
+	/// - Parameter controller: Контроллер для показа
+	func present(controller: UIViewController, parent: UIViewController) {
+
+		controller.modalPresentationStyle = .fullScreen
+		parent.present(controller, animated: true)
 	}
 }

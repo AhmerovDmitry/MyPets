@@ -11,12 +11,12 @@ final class CustomTabBarController: UITabBarController {
 
     // MARK: - Property
 
-    let storageService: StorageService
-    let userDefaultsService: UserDefaultsService
+    let storageService: StorageServiceProtocol
+    let userDefaultsService: UserDefaultsServiceProtocol
 
     let customTabBarView: CustomTabBarView
 
-    init(storageService: StorageService, userDefaultsService: UserDefaultsService) {
+    init(storageService: StorageServiceProtocol, userDefaultsService: UserDefaultsServiceProtocol) {
         self.storageService = storageService
         self.userDefaultsService = userDefaultsService
         self.customTabBarView = CustomTabBarView()
