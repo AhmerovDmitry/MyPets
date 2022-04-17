@@ -27,7 +27,7 @@ final class PetInfoController: UIViewController {
 
     // MARK: - Init / Lifecycle
 
-    init(storageService: StorageService, collectionCellIndex: Int?) {
+    init(storageService: StorageServiceProtocol, collectionCellIndex: Int?) {
         self.petModel = PetInfoModelImpl(storageService: storageService, cellIndex: collectionCellIndex)
         self.petInfoView = PetInfoView(frame: UIScreen.main.bounds)
         self.collectionCellIndex = collectionCellIndex

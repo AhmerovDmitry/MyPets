@@ -72,10 +72,6 @@ class OnboardViewController: UIViewController {
 		onboardView.setCollectionViewDataSource(self)
 		displayOnboard()
 	}
-
-	private func presentTabBarController() {
-		userDefaultsService.setValue(true, forKey: .isNotFirstLaunch)
-	}
 }
 
 // MARK: - OnboardViewControllerProtocol
@@ -92,7 +88,8 @@ extension OnboardViewController: OnboardViewControllerProtocol {
 	}
 
 	func presentScreen() {
-		coordinator.showPremiumScene()
+		userDefaultsService.setValue(true, forKey: .isNotFirstLaunch)
+		coordinator.showMainTabBarScene(parent: self)
 	}
 }
 

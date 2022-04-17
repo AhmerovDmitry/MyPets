@@ -21,8 +21,8 @@ final class ProfileController: UIViewController {
 
     // MARK: - Property
 
-    private let storageService: StorageService
-    private let userDefaultsService: UserDefaultsService
+    private let storageService: StorageServiceProtocol
+    private let userDefaultsService: UserDefaultsServiceProtocol
 
     private let profileModel: ProfileModelProtocol
     private let profileView: ProfileView
@@ -34,7 +34,7 @@ final class ProfileController: UIViewController {
 
     // MARK: - Init / Lifecycle
 
-    init(storageService: StorageService, userDefaultsService: UserDefaultsService) {
+    init(storageService: StorageServiceProtocol, userDefaultsService: UserDefaultsServiceProtocol) {
         self.storageService = storageService
         self.userDefaultsService = userDefaultsService
         self.profileModel = ProfileModel()

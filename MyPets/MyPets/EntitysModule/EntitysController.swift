@@ -16,7 +16,7 @@ final class EntitysController: UIViewController {
 
     // MARK: - Init / Lifecycle
 
-    init(storageService: StorageService) {
+    init(storageService: StorageServiceProtocol) {
         self.entitysModel = EntitysModel(storageService: storageService)
         self.entitysView = EntitysView(frame: UIScreen.main.bounds)
         super.init(nibName: nil, bundle: nil)

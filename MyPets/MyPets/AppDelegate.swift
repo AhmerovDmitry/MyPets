@@ -21,8 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		/// Сервис для работы с сохранением/загрузкой легковесных данных
 		let userDefaultsService = UserDefaultsService(repository: UserDefaults.standard)
 
+		/// Сервис для работы с сохранением данных в CoreData
+		let storageService = StorageService(repository: FileManager.default)
+
 		/// Координатор переходов
-		let coordinator = ScreenCoordinator(userDefaultsService: userDefaultsService)
+		let coordinator = ScreenCoordinator(userDefaultsService: userDefaultsService, storageService: storageService)
 
 		window = UIWindow(frame: UIScreen.main.bounds)
 		window?.overrideUserInterfaceStyle = .light
