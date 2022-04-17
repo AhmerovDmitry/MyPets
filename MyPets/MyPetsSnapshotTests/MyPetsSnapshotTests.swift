@@ -10,7 +10,7 @@ import XCTest
 @testable import MyPets
 
 class MyPetsSnapshotTests: XCTestCase {
-    let storageService = StorageServiceImpl(repository: FileManager.default)
+    let storageService = StorageService(repository: FileManager.default)
     let userDefaultsService = UserDefaultsService(repository: UserDefaults.standard)
 
     func testProfileController() throws {

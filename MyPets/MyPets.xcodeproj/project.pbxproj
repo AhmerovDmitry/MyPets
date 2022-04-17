@@ -47,6 +47,10 @@
 		30185010280AE30300237B8E /* PremiumPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30185006280AC10000237B8E /* PremiumPresenter.swift */; };
 		30185011280AE30400237B8E /* PremiumPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30185006280AC10000237B8E /* PremiumPresenter.swift */; };
 		30185014280BFFAD00237B8E /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30185013280BFFAD00237B8E /* BackgroundViewController.swift */; };
+		3070D590280C1086002DC511 /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30185013280BFFAD00237B8E /* BackgroundViewController.swift */; };
+		3070D591280C1087002DC511 /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30185013280BFFAD00237B8E /* BackgroundViewController.swift */; };
+		3070D593280C10A0002DC511 /* PremiumPresenterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3070D592280C10A0002DC511 /* PremiumPresenterSpy.swift */; };
+		3070D595280C10AB002DC511 /* PremiumInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3070D594280C10AB002DC511 /* PremiumInteractorTests.swift */; };
 		BC0132CF26E15DFE0065F1B7 /* MainWeatherModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0132CE26E15DFE0065F1B7 /* MainWeatherModelImpl.swift */; };
 		BC0D29DF26ED490F00C3AF2D /* PetMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29DE26ED490F00C3AF2D /* PetMenuModel.swift */; };
 		BC0D29E126EE9B9100C3AF2D /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29E026EE9B9100C3AF2D /* ProfileController.swift */; };
@@ -268,6 +272,8 @@
 		30185006280AC10000237B8E /* PremiumPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumPresenter.swift; sourceTree = "<group>"; };
 		30185008280AC56300237B8E /* PremiumTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumTableCell.swift; sourceTree = "<group>"; };
 		30185013280BFFAD00237B8E /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
+		3070D592280C10A0002DC511 /* PremiumPresenterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumPresenterSpy.swift; sourceTree = "<group>"; };
+		3070D594280C10AB002DC511 /* PremiumInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumInteractorTests.swift; sourceTree = "<group>"; };
 		BC0132CE26E15DFE0065F1B7 /* MainWeatherModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWeatherModelImpl.swift; sourceTree = "<group>"; };
 		BC0D29DE26ED490F00C3AF2D /* PetMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetMenuModel.swift; sourceTree = "<group>"; };
 		BC0D29E026EE9B9100C3AF2D /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
@@ -413,6 +419,7 @@
 			isa = PBXGroup;
 			children = (
 				30184FE2280AAC9500237B8E /* OnboardSceneTests */,
+				3070D58F280C105F002DC511 /* PremiumSceneTests */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -445,6 +452,15 @@
 				30185013280BFFAD00237B8E /* BackgroundViewController.swift */,
 			);
 			path = BackgroundScene;
+			sourceTree = "<group>";
+		};
+		3070D58F280C105F002DC511 /* PremiumSceneTests */ = {
+			isa = PBXGroup;
+			children = (
+				3070D592280C10A0002DC511 /* PremiumPresenterSpy.swift */,
+				3070D594280C10AB002DC511 /* PremiumInteractorTests.swift */,
+			);
+			path = PremiumSceneTests;
 			sourceTree = "<group>";
 		};
 		BC0D29E226EE9B9E00C3AF2D /* ProfileModule */ = {
@@ -991,6 +1007,7 @@
 				BC3369FA26F60F0300C40691 /* MockUDRepository.swift in Sources */,
 				BC3369F726F60EEB00C40691 /* UserDefaultsService.swift in Sources */,
 				BCCED77926F7A64800A47637 /* NetworkServiceTests.swift in Sources */,
+				3070D595280C10AB002DC511 /* PremiumInteractorTests.swift in Sources */,
 				BCCED86026F7FB1A00A47637 /* DateFormatterServiceImpl.swift in Sources */,
 				BC336A3026F65A6600C40691 /* DateFormatterServiceTests.swift in Sources */,
 				BCCED86226F80F6A00A47637 /* NetworkService.swift in Sources */,
@@ -1004,6 +1021,7 @@
 				BCCED86726F8126200A47637 /* MockURLSession.swift in Sources */,
 				BC56F09726F8E16900B15FFA /* SpyNetworkService.swift in Sources */,
 				BCCED86126F7FCCC00A47637 /* MainWeatherModelImpl.swift in Sources */,
+				3070D593280C10A0002DC511 /* PremiumPresenterSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1112,6 +1130,7 @@
 				BCCED7FE26F7CE7A00A47637 /* UIView.swift in Sources */,
 				BCCED80E26F7CE7A00A47637 /* InputInfoController.swift in Sources */,
 				BCCED7EE26F7CE7A00A47637 /* OMPetInformation+CoreDataClass.swift in Sources */,
+				3070D590280C1086002DC511 /* BackgroundViewController.swift in Sources */,
 				BCCED7F726F7CE7A00A47637 /* GetWeatherResponse.swift in Sources */,
 				BCCED80126F7CE7A00A47637 /* PetDTO.swift in Sources */,
 				30184FED280AB2D400237B8E /* OnboardPresenter.swift in Sources */,
@@ -1171,6 +1190,7 @@
 				BCCED85026F7DF2600A47637 /* PetInfoModelImpl.swift in Sources */,
 				BCCED84A26F7DF2600A47637 /* CustomTabBarController.swift in Sources */,
 				BCCED84126F7DF2600A47637 /* PetInfoTableCell.swift in Sources */,
+				3070D591280C1087002DC511 /* BackgroundViewController.swift in Sources */,
 				3018500F280AE30000237B8E /* PremiumInteractor.swift in Sources */,
 				BCCED84B26F7DF2600A47637 /* EntitysView.swift in Sources */,
 				BCCED82926F7D78700A47637 /* TabBarPage.swift in Sources */,
