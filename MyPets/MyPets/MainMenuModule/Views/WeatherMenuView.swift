@@ -61,7 +61,7 @@ final class WeatherMenuView: UIView {
         setCityLabelConstraints()
     }
     private func setSelfViewUI() {
-        self.setDefaultShadow()
+		self.setDefaultShadow()
         self.backgroundColor = UIColor.CustomColor.lightGray
         self.layer.cornerRadius = UIView.basicCornerRadius
     }

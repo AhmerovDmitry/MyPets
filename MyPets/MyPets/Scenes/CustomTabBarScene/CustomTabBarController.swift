@@ -49,15 +49,10 @@ final class CustomTabBarController: UITabBarController {
 	// MARK: - Setup Tab Bar
 
 	private func setupTabBarSettings() {
-		tabBar.layer.cornerRadius = UIView.basicCornerRadius
-		tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
 		tabBar.backgroundColor = .white
 		tabBar.backgroundImage = UIImage()
-		tabBar.shadowImage = UIImage()
-		tabBar.clipsToBounds = true
 		tabBar.unselectedItemTintColor = UIColor.CustomColor.gray
 		tabBar.tintColor = UIColor.CustomColor.purple
-		view.bringSubviewToFront(tabBar)
 		viewControllers = [
 			setupController(MainMenuController(),
 							title: "Главная",
