@@ -8,9 +8,8 @@
 
 import UIKit
 
+/// Таб бар контроллера для выбора основных экранов
 final class CustomTabBarController: UITabBarController {
-
-	// MARK: - Property
 
 	/// Координатор переходов
 	private let coordinator: ScreenCoordinatorProtocol
@@ -40,7 +39,7 @@ final class CustomTabBarController: UITabBarController {
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-	
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		presentPremium()
@@ -78,7 +77,7 @@ final class CustomTabBarController: UITabBarController {
 
 // MARK: - Help Methods
 
-extension CustomTabBarController {
+private extension CustomTabBarController {
 
 	/// Установка навигационного контроллера
 	/// - Parameters:
@@ -86,7 +85,7 @@ extension CustomTabBarController {
 	///   - title: Заголовок таба контроллера
 	///   - image: Изображение таба контроллера
 	/// - Returns: Контроллер с настройками
-	private func setupController(_ controller: UIViewController, title: String, image: UIImage?) -> UIViewController {
+	func setupController(_ controller: UIViewController, title: String, image: UIImage?) -> UIViewController {
 		let controller = UINavigationController(rootViewController: controller)
 		controller.tabBarItem.title = title
 		controller.tabBarItem.image = image
@@ -96,7 +95,7 @@ extension CustomTabBarController {
 
 	/// Метод показывающий преимум контроллер если покупка не совершена
 	/// Возможно отключение показа контроллера нажатием на кнопку-заглушку "Купить Premium"
-	private func presentPremium() {
+	func presentPremium() {
 		if !userDefaultsService.value(forKey: .isAppPurchased) {
 			DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
 				guard let self = self else { return }

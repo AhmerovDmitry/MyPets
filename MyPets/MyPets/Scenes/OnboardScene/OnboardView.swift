@@ -141,9 +141,7 @@ private extension OnboardView {
 		let indexPath = IndexPath(item: pageControl.currentPage, section: 0)
 		collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
 		if pageControl.currentPage == 3 {
-
-			// Кнопка изменяется на последнем слайде
-
+			/// Кнопка изменяется на последнем слайде
 			doneButton.removeTarget(nil, action: nil, for: .allEvents)
 			doneButton.setTitle("Приступим!", for: .normal)
 			doneButton.backgroundColor = UIColor.CustomColor.purple

@@ -11,18 +11,18 @@ import Foundation
 struct OnboardModel {
 
 	/// Название изображений
-    let imageNameList = [
-        "onboardImage_1",
-        "onboardImage_2",
-        "onboardImage_3",
-        "onboardImage_4"
-    ]
+	let imageNameList = [
+		"onboardImage_1",
+		"onboardImage_2",
+		"onboardImage_3",
+		"onboardImage_4"
+	]
 
 	/// Описание страниц обучения
-    let descriptionList = [
-        "Следите за погодными условиями прямо в приложении",
-        "Вся информация о питомце всегда под рукой",
-        "Выбирайте, куда сходить с любимым питомцем",
-        "Получите Premium для снятия ограничений"
-    ]
+	let descriptionList = [
+		"Следите за погодными условиями прямо в приложении",
+		"Вся информация о питомце всегда под рукой",
+		"Выбирайте, куда сходить с любимым питомцем",
+		"Получите Premium для снятия ограничений"
+	]
 }

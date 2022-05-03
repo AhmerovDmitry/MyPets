@@ -23,6 +23,7 @@ final class MapController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+		navigationController?.isNavigationBarHidden = true
         mapView.collectionViewDelegateAndDataSource(self)
     }
 }
