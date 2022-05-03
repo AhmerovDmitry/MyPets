@@ -64,7 +64,8 @@ final class ScreenCoordinator: ScreenCoordinatorProtocol {
 	}
 
 	func showMainTabBarScene(parent: UIViewController) {
-		let viewController = CustomTabBarController(storageService: storageService,
+		let viewController = CustomTabBarController(coordinator: self,
+													storageService: storageService,
 													userDefaultsService: userDefaultsService)
 
 		present(controller: viewController, parent: parent)

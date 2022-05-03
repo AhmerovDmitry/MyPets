@@ -27,8 +27,6 @@
 		30184FF6280AB2DE00237B8E /* OnboardCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029C26B9878B00CFD87E /* OnboardCollectionCell.swift */; };
 		30184FF7280AB2E100237B8E /* OnboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029A26B978A000CFD87E /* OnboardModel.swift */; };
 		30184FF8280AB2E200237B8E /* OnboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13029A26B978A000CFD87E /* OnboardModel.swift */; };
-		30184FF9280AB2EF00237B8E /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD4A6B9270EFE4F001C82A9 /* CustomTabBarView.swift */; };
-		30184FFA280AB2F000237B8E /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD4A6B9270EFE4F001C82A9 /* CustomTabBarView.swift */; };
 		30184FFB280AB2F900237B8E /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC73C4627181AE500D829D7 /* MapController.swift */; };
 		30184FFC280AB2FA00237B8E /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC73C4627181AE500D829D7 /* MapController.swift */; };
 		30184FFD280AB30300237B8E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1678922718A74D0008250C /* MapView.swift */; };
@@ -227,7 +225,6 @@
 		BCCED86826F8794100A47637 /* GetWeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFECA9626F2499900286EF6 /* GetWeatherResponse.swift */; };
 		BCCED87026F8B4B300A47637 /* userImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BCCED86F26F8B4B300A47637 /* userImage.jpeg */; };
 		BCCED87326F8BAED00A47637 /* PetMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0D29DE26ED490F00C3AF2D /* PetMenuModel.swift */; };
-		BCD4A6BA270EFE4F001C82A9 /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD4A6B9270EFE4F001C82A9 /* CustomTabBarView.swift */; };
 		BCDA7E7826F4B50F00C48EC1 /* PetMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC38543A26C5AB4700C2F14E /* PetMenuController.swift */; };
 		BCDAEB6E26CFBD990099CF13 /* InputInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDAEB6D26CFBD990099CF13 /* InputInfoView.swift */; };
 		BCE5115525461A23002FB62E /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE5115425461A23002FB62E /* UIAlertController.swift */; };
@@ -350,7 +347,6 @@
 		BCCED82826F7D78700A47637 /* TabBarPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPage.swift; sourceTree = "<group>"; };
 		BCCED86626F8126200A47637 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 		BCCED86F26F8B4B300A47637 /* userImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = userImage.jpeg; sourceTree = "<group>"; };
-		BCD4A6B9270EFE4F001C82A9 /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
 		BCDAEB6D26CFBD990099CF13 /* InputInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputInfoView.swift; sourceTree = "<group>"; };
 		BCE5115425461A23002FB62E /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		BCE6ACA526F21011007CDB81 /* NetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceError.swift; sourceTree = "<group>"; };
@@ -398,6 +394,7 @@
 				30185012280BFF8500237B8E /* BackgroundScene */,
 				3012B9D727933B3A003AB5DF /* OnboardScene */,
 				30185003280ABD5000237B8E /* PremiumScene */,
+				3038052628212B58005AEF50 /* CustomTabBarScene */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -452,6 +449,14 @@
 				30185013280BFFAD00237B8E /* BackgroundViewController.swift */,
 			);
 			path = BackgroundScene;
+			sourceTree = "<group>";
+		};
+		3038052628212B58005AEF50 /* CustomTabBarScene */ = {
+			isa = PBXGroup;
+			children = (
+				BC413CD32538A97F002CDD19 /* CustomTabBarController.swift */,
+			);
+			path = CustomTabBarScene;
 			sourceTree = "<group>";
 		};
 		3070D58F280C105F002DC511 /* PremiumSceneTests */ = {
@@ -552,15 +557,6 @@
 				BC7EB65626C668F000BE80AE /* PetCollectionCell.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		BC413CD62538ABBB002CDD19 /* CustomTabBarController */ = {
-			isa = PBXGroup;
-			children = (
-				BC413CD32538A97F002CDD19 /* CustomTabBarController.swift */,
-				BCD4A6B9270EFE4F001C82A9 /* CustomTabBarView.swift */,
-			);
-			path = CustomTabBarController;
 			sourceTree = "<group>";
 		};
 		BC4CA473262436EF00C2033C /* MainMenuModule */ = {
@@ -668,7 +664,6 @@
 				30184FDA2807413200237B8E /* ScreenCoordinator.swift */,
 				3012B9D627933B30003AB5DF /* Scenes */,
 				BC8E373C26E6B0CD00F3B6A9 /* Services */,
-				BC413CD62538ABBB002CDD19 /* CustomTabBarController */,
 				BC4CA473262436EF00C2033C /* MainMenuModule */,
 				BC38543626C5AAF000C2F14E /* PetMenuModule */,
 				BC9402FA26CA79920028E5AC /* PetInfoModule */,
@@ -1091,7 +1086,6 @@
 				30184FDB2807413200237B8E /* ScreenCoordinator.swift in Sources */,
 				BCB5B20226F4F7A800C47A09 /* DatePickerView.swift in Sources */,
 				BCB610032530C82400C4FD2F /* AppDelegate.swift in Sources */,
-				BCD4A6BA270EFE4F001C82A9 /* CustomTabBarView.swift in Sources */,
 				BC8C64F326BF37EF00CA7A90 /* PremiumView.swift in Sources */,
 				BCE6ACA626F21011007CDB81 /* NetworkServiceError.swift in Sources */,
 				BCB5B20B26F531CF00C47A09 /* MockUDRepository.swift in Sources */,
@@ -1136,7 +1130,6 @@
 				30184FED280AB2D400237B8E /* OnboardPresenter.swift in Sources */,
 				BCCED7E226F7CE7A00A47637 /* ShimmerView.swift in Sources */,
 				30184FFB280AB2F900237B8E /* MapController.swift in Sources */,
-				30184FF9280AB2EF00237B8E /* CustomTabBarView.swift in Sources */,
 				BCCED80826F7CE7A00A47637 /* DatePickerView.swift in Sources */,
 				30184FF3280AB2DB00237B8E /* OnboardView.swift in Sources */,
 				BCCED7FB26F7CE7A00A47637 /* EntitysModel.swift in Sources */,
@@ -1228,7 +1221,6 @@
 				30184FFC280AB2FA00237B8E /* MapController.swift in Sources */,
 				BCCED84226F7DF2600A47637 /* PremiumViewController.swift in Sources */,
 				BCCED85626F7DF2600A47637 /* ProfileModel.swift in Sources */,
-				30184FFA280AB2F000237B8E /* CustomTabBarView.swift in Sources */,
 				BCCED82A26F7DEEF00A47637 /* UserDefaultsService.swift in Sources */,
 				BCCED82D26F7DF2600A47637 /* MainWeatherModelImpl.swift in Sources */,
 				30185011280AE30400237B8E /* PremiumPresenter.swift in Sources */,
