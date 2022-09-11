@@ -34,16 +34,16 @@ final class DatePickerView: UIView {
         image.tintColor = UIColor.CustomColor.lightGray
         return image
     }()
-    private let saveButton = UIButton.createTypicalButton(title: "Сохранить",
-                                                          backgroundColor: .white,
-                                                          borderWidth: nil,
-                                                          target: self,
-                                                          action: #selector(saveInformation))
-    private let cancelButton = UIButton.createTypicalButton(title: "Отменить",
-                                                            backgroundColor: .white,
-                                                            borderWidth: nil,
-                                                            target: self,
-                                                            action: #selector(dismissController))
+	private lazy var saveButton = UIButton.createTypicalButton(title: "Сохранить",
+															   backgroundColor: .white,
+															   borderWidth: nil,
+															   target: self,
+															   action: #selector(saveInformation))
+	private lazy var cancelButton = UIButton.createTypicalButton(title: "Отменить",
+																 backgroundColor: .white,
+																 borderWidth: nil,
+																 target: self,
+																 action: #selector(dismissController))
 
     // MARK: - Init / Lifecycle
 

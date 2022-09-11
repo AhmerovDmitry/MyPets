@@ -51,11 +51,11 @@ final class OnboardView: UIView {
 		return pageControl
 	}()
 
-	private var doneButton = UIButton.createTypicalButton(title: "Далее",
-														  backgroundColor: .white,
-														  borderWidth: 1,
-														  target: self,
-														  action: #selector(nextDescriptionView))
+	private lazy var doneButton = UIButton.createTypicalButton(title: "Далее",
+															   backgroundColor: .white,
+															   borderWidth: 1,
+															   target: self,
+															   action: #selector(nextDescriptionView))
 
 	private let skipButton: UIButton = {
 		let button = UIButton(type: .system)

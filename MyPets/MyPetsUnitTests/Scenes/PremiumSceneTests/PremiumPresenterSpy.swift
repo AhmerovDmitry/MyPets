@@ -10,7 +10,7 @@ import Foundation
 @testable import MyPets
 
 final class PremiumPresenterSpy: PremiumPresenterProtocol {
-	
+
 	var model = PremiumModel()
 
 	func prepareData(from model: PremiumModel) {

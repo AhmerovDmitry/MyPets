@@ -5,6 +5,7 @@ disabled_rules:
   - closure_parameter_position
   - todo
   - superfluous_disable_command
+  - large_tuple
 
 opt_in_rules:
   - static_operator

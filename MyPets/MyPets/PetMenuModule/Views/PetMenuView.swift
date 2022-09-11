@@ -46,11 +46,11 @@ final class PetMenuView: UIView {
         label.numberOfLines = 2
         return label
     }()
-    private let addPetButton = UIButton.createTypicalButton(title: "Добавить питомца",
-                                                            backgroundColor: UIColor.CustomColor.purple,
-                                                            borderWidth: nil,
-                                                            target: self,
-                                                            action: #selector(presentController))
+	private lazy var addPetButton = UIButton.createTypicalButton(title: "Добавить питомца",
+																 backgroundColor: UIColor.CustomColor.purple,
+																 borderWidth: nil,
+																 target: self,
+																 action: #selector(presentController))
 
     // MARK: - Init / Lifecycle
 
