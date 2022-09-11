@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		/// Сервис для работы с сохранением данных в CoreData
 		let storageService = StorageService(repository: FileManager.default)
 
-		/// Координатор переходов
+		/// Координатор переходов между экранами
 		let coordinator = ScreenCoordinator(userDefaultsService: userDefaultsService, storageService: storageService)
 
 		window = UIWindow(frame: UIScreen.main.bounds)
