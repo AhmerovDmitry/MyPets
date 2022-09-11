@@ -122,11 +122,11 @@ final class PremiumView: UIView {
 		return label
 	}()
 
-	private let buyButton = UIButton.createTypicalButton(title: "Получить Premium",
-														 backgroundColor: .white,
-														 borderWidth: nil,
-														 target: self,
-														 action: #selector(closeControllerWithPurchase))
+	private lazy var buyButton = UIButton.createTypicalButton(title: "Получить Premium",
+															  backgroundColor: .white,
+															  borderWidth: nil,
+															  target: self,
+															  action: #selector(closeControllerWithPurchase))
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)

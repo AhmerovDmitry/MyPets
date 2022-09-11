@@ -41,7 +41,7 @@ final class BackgroundViewController: UIViewController {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		userDefaultsService.value(forKey: .isNotFirstLaunch) ?
-			coordinator.showMainTabBarScene(parent: self) :
-			coordinator.showOnboardScene(parent: self)
+			coordinator.present(controller: .mainTabBarScene, on: self) :
+			coordinator.present(controller: .onboardScene, on: self)
 	}
 }

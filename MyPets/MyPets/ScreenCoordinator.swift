@@ -8,6 +8,16 @@
 
 import UIKit
 
+/// Список сцен приложения
+enum AppScenes {
+	/// Сцена обучения
+	case onboardScene
+	/// Сцена покупки премиум подписки
+	case premiumScene
+	/// Сцена главного экрана
+	case mainTabBarScene
+}
+
 /// Протокол координатора
 protocol ScreenCoordinatorProtocol {
 
@@ -15,14 +25,11 @@ protocol ScreenCoordinatorProtocol {
 	/// - Returns: Стартовый контроллер
 	func startFlow() -> UIViewController
 
-	/// Показать экран с обучением
-	func showOnboardScene(parent: UIViewController)
-
-	/// Показать основной экран с нижним навигационным элементом
-	func showMainTabBarScene(parent: UIViewController)
-
-	/// Показать экран с возможностью купить премиум версию
-	func showPremiumScene(parent: UIViewController)
+	/// Функция показа контроллеров
+	/// - Parameters:
+	///   - controller: Контроллера для показа
+	///   - parent: Родительский контроллер
+	func present(controller: AppScenes, on parent: UIViewController)
 }
 
 /// Координатор переходов
@@ -52,7 +59,23 @@ final class ScreenCoordinator: ScreenCoordinatorProtocol {
 		return controller
 	}
 
-	func showOnboardScene(parent: UIViewController) {
+	func present(controller: AppScenes, on parent: UIViewController) {
+		switch controller {
+		case .onboardScene:
+			showOnboardScene(on: parent)
+		case .premiumScene:
+			showPremiumScene(on: parent)
+		case .mainTabBarScene:
+			showMainTabBarScene(on: parent)
+		}
+	}
+}
+
+// MARK: - Controller Builders
+
+private extension ScreenCoordinator {
+
+	func showOnboardScene(on parent: UIViewController) {
 		let presenter = OnboardPresenter()
 		let interactor = OnboardInteractor(presenter: presenter)
 		let viewController = OnboardViewController(userDefaultsService: userDefaultsService,
@@ -63,7 +86,7 @@ final class ScreenCoordinator: ScreenCoordinatorProtocol {
 		present(controller: viewController, parent: parent)
 	}
 
-	func showMainTabBarScene(parent: UIViewController) {
+	func showMainTabBarScene(on parent: UIViewController) {
 		let viewController = CustomTabBarController(coordinator: self,
 													storageService: storageService,
 													userDefaultsService: userDefaultsService)
@@ -71,7 +94,7 @@ final class ScreenCoordinator: ScreenCoordinatorProtocol {
 		present(controller: viewController, parent: parent)
 	}
 
-	func showPremiumScene(parent: UIViewController) {
+	func showPremiumScene(on parent: UIViewController) {
 		let presenter = PremiumPresenter()
 		let interactor = PremiumInteractor(presenter: presenter)
 		let viewController = PremiumViewController(userDefaultsService: userDefaultsService, interactor: interactor)

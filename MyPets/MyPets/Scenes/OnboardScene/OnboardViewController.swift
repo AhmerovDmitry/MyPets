@@ -89,7 +89,7 @@ extension OnboardViewController: OnboardViewControllerProtocol {
 
 	func presentScreen() {
 		userDefaultsService.setValue(true, forKey: .isNotFirstLaunch)
-		coordinator.showMainTabBarScene(parent: self)
+		coordinator.present(controller: .mainTabBarScene, on: self)
 	}
 }
 
